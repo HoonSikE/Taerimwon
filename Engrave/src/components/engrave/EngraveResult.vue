@@ -1,53 +1,51 @@
 <template>
-  <div class="engrave">
-    <h1>명지사 각인 주문하기2</h1>
+  <div class="engrave1">
+    <h1>명지사 각인 주문접수</h1>
     <div>
-      각인 안내<br/>
-      <span>
-        <input type="radio" name="radio1" checked>
-        각인[일반]
-      </span>
-      <span>
-        <input type="radio" name="radio2">
-        각인[본관]
-      </span>
-      <span>
-        <input type="radio" name="radio3">
-        각인[본관(位)]
-      </span>
-      <span>
-        <input type="radio" name="radio4">
-        각인[기독교]
-      </span>
-      <span>
-        <input type="radio" name="radio5">
-        각인[기독교(位)]
-      </span>
-      <span>
-        <input type="radio" name="radio6">
-        각인[천주교]
-      </span>
-      <span>
-        <input type="radio" name="radio7">
-        각인[천주교(位)]
-      </span>
+      각인
+      <hr>
+      <div>
+        <span>
+          <img src="http://" alt="사진"/>
+        </span>
+        <span>
+          각인종류<br/>
+          각인 [일반]<br/>
+          <RouterLink to="/engrave/sample">각인시안 미리보기</RouterLink><br/>
+        </span>
+      </div>
     </div>
-    <br/>
     <div>
-      정보 입력
+      주문 정보
+      <hr>
       <div>
-        고인성함 입력<br/>
-        <input type="text" name="name" v-bind="name" placeholder="고인성함"/>
+        <span>선택지역</span>
+        <span>경기도</span>
       </div>
       <div>
-        출생일 선택<br/>
-        <input type="date" name="date1" v-bind="date1"/>
+        <span>소속</span>
+        <span>개인</span>
       </div>
       <div>
-        사망일 선택<br/>
-        <input type="date" name="date2" v-bind="date2"/>
+        <span>회사명</span>
+        <span>ㅇㅇ라이프</span>
       </div>
-      
+      <div>
+        <span>담당의전</span>
+        <span>홍길동</span>
+      </div>
+      <div>
+        <span>담당의전팀장 연락처</span>
+        <span>010-1234-5678</span>
+      </div>
+      <div>
+        <span>화장 장소</span>
+        <span>밀양</span>
+      </div>
+      <div>
+        <span>화장 일자/ 시간</span>
+        <span>ㅇㅇ</span>
+      </div>
     </div>
   </div>
 </template>

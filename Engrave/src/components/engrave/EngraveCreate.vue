@@ -32,7 +32,7 @@
         각인[천주교(位)]
       </span>
     </div>
-    <br/>
+    <hr>
     <div>
       정보 입력
       <div>
@@ -49,15 +49,14 @@
       </div>
       
     </div>
-    <br/>
+    <hr>
     <div>
       <div>
         각인종류<br/>
         일반
       </div>
       <div>
-        <a href="#result" @click="$router.push('/result')">뭐지</a><br/>
-        <RouterLink to="/engrave/result">결과</RouterLink><br/>
+        <RouterLink to="/engrave/result">각인 주문하기</RouterLink><br/>
         <input type="button" value="각인 주문하기"/>
       </div>
     </div>

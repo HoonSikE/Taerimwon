@@ -10,7 +10,7 @@ import Hello from './components/Hello.vue'
       <Hello msg="명지사 테스트" />
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/engrave">engrave</RouterLink>
+        <RouterLink to="/engrave">Engrave</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
