@@ -15,6 +15,7 @@ import Hello from './components/Hello.vue'
       </nav>
     </div>
     <router-view></router-view>
+    <hr>
     <div>header</div>
   </header>
 </template>
