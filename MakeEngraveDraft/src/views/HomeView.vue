@@ -1,9 +1,10 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <div>
+      <h1>메인화면 입니다</h1>
+    </div>
   </main>
 </template>
