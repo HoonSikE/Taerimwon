@@ -17,7 +17,7 @@
           </span>
           <span class="span2">
             <span class="span2_1">故</span>
-            <span>홍길동</span>
+            <span>{{$route.query.name}}</span>
           </span>
           <span class="span1">
             <span class="span1_1">卒</span>
@@ -30,6 +30,12 @@
           </span>
         </div>
       </div>
+    </div>
+    <br/>
+    <div>
+        {{$route.query.name}}
+        {{$route.query.date1}}
+        {{$route.query.date2}}
     </div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import EngraveView from '../components/EngraveView.vue'
+import EngraveView from '../views/EngraveView.vue'
 import AboutView from '../views/AboutView.vue'
 import EngraveCreateView from '../components/engrave/EngraveCreateView.vue'
 import EngraveCreate1 from '../components/engrave/create/EngraveCreate1.vue'
@@ -33,34 +33,52 @@ const router = createRouter({
           redirect: '/engrave/create/1',
           children: [
             {
-              path: '1',
+              path: '1', // 일반
               name: 'engravecreate1',
               component: EngraveCreate1,
+              props: (route) => ({
+                type: route.query.type,
+              })
             },
             {
-              path: '2',
+              path: '2', // 기독교
               name: 'engravecreate2',
               component: EngraveCreate2,
+              props: (route) => ({
+                type: route.query.type,
+              })
             },
             {
-              path: '3',
+              path: '3', // 불교
               name: 'engravecreate3',
               component: EngraveCreate3,
+              props: (route) => ({
+                type: route.query.type,
+              })
             },
             {
-              path: '4',
+              path: '4', // 천주교
               name: 'engravecreate4',
               component: EngraveCreate4,
+              props: (route) => ({
+                type: route.query.type,
+              })
             },
             {
-              path: '5',
+              path: '5', // SGI
               name: 'engravecreate5',
               component: EngraveCreate5,
+              props: (route) => ({
+                type: route.query.type,
+              })
             },
             {
-              path: '6',
+              path: '6', // 묘법
               name: 'engravecreate6',
               component: EngraveCreate6,
+              props: (route) => ({
+                type: route.query.type,
+              })
             },
           ],
         },
@@ -68,11 +86,21 @@ const router = createRouter({
           path: 'result',
           name: 'engraveresult',
           component: EngraveResult,
+          props: (route) => ({
+            name: route.query.name,
+            date1: route.query.date1,
+            date2: route.query.date2
+          })
         },
         {
           path: 'sample',
           name: 'engravesample',
           component: EngraveSample,
+          props: (route) => ({
+            name: route.query.name,
+            date1: route.query.date1,
+            date2: route.query.date2
+          })
         }
       ],
     },
