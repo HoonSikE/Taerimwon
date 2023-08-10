@@ -4,7 +4,7 @@
       정보 입력 ({{type}})
       <div>
         고인성함 입력<br/>
-        <input v-model="name" type="text" placeholder="고인성함"/>
+        <input v-model="name" type="text" :placeholder="defaultNamePlaceholder"/>
       </div>
       <div>
         출생일 선택<br/>
@@ -33,7 +33,7 @@
         일반
       </div>
       <div>
-        <router-link :to="'/engrave/result?' + 'name=' + name + '&date1=' + date1 + '&date2='+ date2">각인 주문하기</router-link>
+        <router-link :to="'/engrave/result?' + 'name=' + encodedName + '&date1=' + date1 + '&date2='+ date2">각인 주문하기</router-link>
       </div>
     </div>
   </div>
@@ -50,16 +50,26 @@ export default {
       inputValue: '', // 입력값을 저장할 데이터 속성
     };
   },
+  computed: {
+    encodedName() {
+      const trimmedName = this.name.trim();
+      return trimmedName === '' ? '홍길동' : encodeURIComponent(trimmedName);
+    },
+    defaultNamePlaceholder() {
+      // 여기서 기본 placeholder 값을 설정합니다
+      return '홍길동';
+    },
+  }
 };
 </script>
 
 
 <style>
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   .about {
     min-height: 100vh;
     display: flex;
     align-items: center;
   }
-}
+} */
 </style>

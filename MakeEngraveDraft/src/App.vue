@@ -6,7 +6,6 @@ import { RouterLink, RouterView } from 'vue-router'
   <header>
     <img alt="logo" class="logo" src="@/assets/images/logo.png" width="125" height="125" />
     <div class="wrapper">
-      <Hello msg="명지사 테스트" />
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/engrave">Engrave</RouterLink>
@@ -55,7 +54,7 @@ nav a:first-of-type {
   border: 0;
 }
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   header {
     display: flex;
     place-items: center;
@@ -80,5 +79,5 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
-}
+} */
 </style>

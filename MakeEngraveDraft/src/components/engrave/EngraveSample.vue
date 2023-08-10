@@ -8,11 +8,11 @@
         <div class="div1">
           <span class="span1">
             <span class="span1_1">生</span>
-            <span class="span1_2">2001</span>
+            <span class="span1_2">{{date1_1}}</span>
             <span class="span1_3">●</span>
-            <span class="span1_2">08</span>
+            <span class="span1_2">{{date1_2}}</span>
             <span class="span1_3">●</span>
-            <span class="span1_2">01</span>
+            <span class="span1_2">{{date1_3}}</span>
             <span class="span1_1">陽</span>
           </span>
           <span class="span2">
@@ -21,33 +21,57 @@
           </span>
           <span class="span1">
             <span class="span1_1">卒</span>
-            <span class="span1_2">2023</span>
+            <span class="span1_2">{{date2_1}}</span>
             <span class="span1_3">●</span>
-            <span class="span1_2">11</span>
+            <span class="span1_2">{{date2_2}}</span>
             <span class="span1_3">●</span>
-            <span class="span1_2">11</span>
+            <span class="span1_2">{{date2_3}}</span>
             <span class="span1_1">陽</span>
           </span>
         </div>
       </div>
     </div>
     <br/>
-    <div>
+    <!-- <div>
         {{$route.query.name}}
         {{$route.query.date1}}
         {{$route.query.date2}}
     </div>
+    <br/>
+    <div>
+      {{date1_1}}
+      {{date1_2}}
+      {{date1_3}}
+      {{date2_1}}
+      {{date2_2}}
+      {{date2_3}}
+    </div> -->
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      date1_1: this.$route.query.date1.substr(0,4),
+      date1_2: this.$route.query.date1.substr(5,2),
+      date1_3: this.$route.query.date1.substr(8,2),
+      date2_1: this.$route.query.date2.substr(0,4),
+      date2_2: this.$route.query.date2.substr(5,2),
+      date2_3: this.$route.query.date2.substr(8,2),
+    };
+  },
+};
+</script>
+
 <style>
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   .about {
     min-height: 100vh;
     display: flex;
     align-items: center;
   }
-}
+} */
 
 .div0{
   margin-top: 10px;
