@@ -26,7 +26,7 @@
           <input v-model="name" type="text" :placeholder="defaultNamePlaceholder"/>
         </span>
         <br>
-        <span>
+        <span v-if="selectedType === 'another'">
           직분 입력<br/>
           <input v-model="name2" type="text" :placeholder="defaultName2Placeholder"/>
         </span>

@@ -40,7 +40,7 @@
 
     <div>
       <!-- <RouterLink to="/engrave/sample">각인시안 미리보기</RouterLink><br/> -->
-      <router-link :to="'/engrave/sample?' + 'name=' + $route.query.name + '&date1=' + $route.query.date1 + '&date2='+ $route.query.date2">전체 화면</router-link>
+      <!-- <router-link :to="'/engrave/sample?' + 'name=' + $route.query.name + '&date1=' + $route.query.date1 + '&date2='+ $route.query.date2">전체 화면</router-link> -->
       <!-- <div>
         {{$route.query.name}}
         {{$route.query.date1}}

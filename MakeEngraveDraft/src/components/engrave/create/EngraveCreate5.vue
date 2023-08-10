@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div>
-      ● 종류
+      ● 종류<br>
       정보 입력 ({{type}})
       <div class="link-container">
         <button

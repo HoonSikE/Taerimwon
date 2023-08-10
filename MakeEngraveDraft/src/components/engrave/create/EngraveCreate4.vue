@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div>
-      ● 종류
+      ● 종류<br>
       정보 입력 ({{type}})
       <div class="link-container">
         <button
@@ -27,7 +27,7 @@
           <input v-model="name" type="text" :placeholder="defaultNamePlaceholder"/>
         </span>
         <br>
-        <span>
+        <span v-if="selectedType === 'another'">
           세례명 입력<br/>
           <input v-model="name2" type="text" :placeholder="defaultName2Placeholder"/>
         </span>

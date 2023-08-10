@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div>
-      ● 종류
+      ● 종류<br>
       정보 입력 ({{type}})
       <div class="link-container">
         <button
@@ -22,15 +22,15 @@
         </button>
       </div>
       <div>
-        고인성함 입력<br/>
+        * 고인성함 입력<br/>
         <input v-model="name" type="text" :placeholder="defaultNamePlaceholder"/>
       </div>
-      <div>
+      <div v-if="selectedType === 'another'">
         형제이름 입력<br/>
         <input v-model="name2" type="text" :placeholder="defaultName2Placeholder"/>
       </div>
       <div>
-        출생일 선택<br/>
+        * 출생일 선택<br/>
         <input v-model="date1" type="date" placeholder="1900-01-01"/>
         <select name="date1Select" v-model="date1Select">
           <option value="양력" selected="selected">양력</option>
@@ -39,7 +39,7 @@
         <!-- <input type="date" id="date1" v-bind="date1"/> -->
       </div>
       <div>
-        사망일 선택<br/>
+        *사망일 선택<br/>
         <input v-model="date2" type="date"/>
         <select name="date2Select" v-model="date2Select">
           <option value="양력" selected="selected">양력</option>
@@ -66,7 +66,7 @@
         일반
       </div>
       <div>
-        <router-link :to="'/engrave/result?' + 'name=' + encodedName + '&date1=' + date1 + '&date2='+ date2">각인 주문하기</router-link>
+        <router-link :to="'/engrave/result?' + 'name=' + encodedName + '&date1=' + date1 + '&date2='+ date2">결과 보기</router-link>
       </div>
     </div>
   </div>
