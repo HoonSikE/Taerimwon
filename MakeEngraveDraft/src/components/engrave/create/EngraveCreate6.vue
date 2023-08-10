@@ -1,7 +1,18 @@
 <template>
   <div class="">
     <div>
+      ● 종류
       정보 입력 ({{type}})
+      <div class="link-container">
+        <button
+          class="link-item"
+          :class="{ selected: selectedType === 'default' }"
+          @click="selectedType = 'default'"
+        >
+          <img src="../../../assets/images/engrave/example/묘법.png" width="80" height="100" alt="기독교(직분x)">
+          <span class="selectText">[기본]</span>
+        </button>
+      </div>
       <div>
         고인성함 입력<br/>
         <input v-model="name" type="text" :placeholder="defaultNamePlaceholder"/>
@@ -33,6 +44,7 @@ export default {
   data() {
     return {
       type: '묘법',
+      selectedType: 'default', // 초기 선택 타입 설정
       name: '',
       date1: '1900-01-01',
       date2: new Date().toISOString().substr(0, 10),

@@ -76,7 +76,7 @@ export default {
 
 .resultBackground {
   /* background-image: url("../../assets/images/background/일반(공).png"); */
-  background-image: url("../../assets/images/background/불교(공).png");
+  background-image: url("../../assets/images/engrave/background/불교(공).png");
   background-size: cover; /* 배경 이미지를 컨테이너에 꽉 차게 늘리기 */
   background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
   background-position: center; /* 배경 이미지 중앙 정렬 */
