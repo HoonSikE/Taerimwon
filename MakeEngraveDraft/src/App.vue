@@ -80,4 +80,10 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 } */
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* 화면 전체 높이 기준으로 가운데 정렬 */
+}
 </style>
