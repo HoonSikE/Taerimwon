@@ -7,43 +7,43 @@
       <div class="link-container">
         <RouterLink to="/engrave/create/1" class="link-item" @click="selectOption(1)">
           <img src="../../assets/images/example/일반.png" width="80" height="100" alt="일반">
-          <span class="selectText">각인[일반]</span>
+          <span class="selectText">[일반]</span>
         </RouterLink>
         <RouterLink to="/engrave/create/1" class="link-item" @click="selectOption(2)">
           <img src="../../assets/images/example/일반(형제).png" width="80" height="100" alt="일반/형제">
-          <span class="selectText">각인[일반(형제)]</span>
+          <span class="selectText">[일반(형제)]</span>
         </RouterLink>
         <RouterLink to="/engrave/create/2" class="link-item" @click="selectOption(3)">
           <img src="../../assets/images/example/기독교.png" width="80" height="100" alt="기독교">
-          <span class="selectText">각인[기독교]</span>
+          <span class="selectText">[기독교]</span>
         </RouterLink>
         <RouterLink to="/engrave/create/3" class="link-item" @click="selectOption(4)">
           <img src="../../assets/images/example/불교.png" width="80" height="100" alt="불교">
-          <span class="selectText">각인[불교]</span>
+          <span class="selectText">[불교]</span>
         </RouterLink>
         <RouterLink to="/engrave/create/4" class="link-item" @click="selectOption(5)">
           <img src="../../assets/images/example/천주교.png" width="80" height="100" alt="천주교">
-          <span class="selectText">각인[천주교]</span>
+          <span class="selectText">[천주교]</span>
         </RouterLink>
         <RouterLink to="/engrave/create/3" class="link-item" @click="selectOption(6)">
           <img src="../../assets/images/example/불교(법명).png" width="80" height="100" alt="불교(법명)">
-          <span class="selectText">각인[불교(법명)]</span>
+          <span class="selectText">[불교(법명)]</span>
         </RouterLink>
         <RouterLink to="/engrave/create/2" class="link-item" @click="selectOption(7)">
           <img src="../../assets/images/example/기독교(직분x).png" width="80" height="100" alt="기독교(직분x)">
-          <span class="selectText">각인[기독교(직분x)]</span>
+          <span class="selectText">[기독교(직분x)]</span>
         </RouterLink>
         <RouterLink to="/engrave/create/4" class="link-item" @click="selectOption(8)">
           <img src="../../assets/images/example/천주교(세례명x).png" width="80" height="100" alt="천주교(세례명x)">
-          <span class="selectText">각인[천주교(세례명x)]</span>
+          <span class="selectText">[천주교(세례명x)]</span>
         </RouterLink>
         <RouterLink to="/engrave/create/5" class="link-item" @click="selectOption(9)">
           <img src="../../assets/images/example/sgi.png" width="80" height="100" alt="SGI">
-          <span class="selectText">각인[SGI]</span>
+          <span class="selectText">[SGI]</span>
         </RouterLink>
         <RouterLink to="/engrave/create/6" class="link-item" @click="selectOption(10)">
           <img src="../../assets/images/example/묘법.png" width="80" height="100" alt="묘법">
-          <span class="selectText">각인[묘법]</span>
+          <span class="selectText">[묘법]</span>
         </RouterLink>
       </div>
     </div>

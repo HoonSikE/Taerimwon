@@ -3,8 +3,15 @@
     <div>
       정보 입력 ({{type}})
       <div>
-        고인성함 입력<br/>
-        <input v-model="name" type="text" :placeholder="defaultNamePlaceholder"/>
+        <span>
+          고인성함 입력<br/>
+          <input v-model="name" type="text" :placeholder="defaultNamePlaceholder"/>
+        </span>
+        <br>
+        <span>
+          세례명 입력<br/>
+          <input v-model="name2" type="text" :placeholder="defaultName2Placeholder"/>
+        </span>
       </div>
       <div>
         출생일 선택<br/>
@@ -34,6 +41,7 @@ export default {
     return {
       type: '천주교',
       name: '',
+      name2: '',
       date1: '1900-01-01',
       date2: new Date().toISOString().substr(0, 10),
       inputValue: '', // 입력값을 저장할 데이터 속성
@@ -47,6 +55,10 @@ export default {
     defaultNamePlaceholder() {
       // 여기서 기본 placeholder 값을 설정합니다
       return '홍길동';
+    },
+    defaultName2Placeholder() {
+      // 여기서 기본 placeholder 값을 설정합니다
+      return '세례명';
     },
   }
 };
