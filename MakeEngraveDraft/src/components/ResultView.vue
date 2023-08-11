@@ -8,109 +8,66 @@
     각인 예시
     <br>
     <!-- 일반 -->
-    <div class="image-text-container" v-if="type === '일반'">
+    <div class="image-text-container">
       <div class="image-container">
-        <div v-if="selectedType === '일반'">
+        <div v-if="type === '일반' && selectedType === '일반'">
           <img src="../assets/images/engrave/background/일반(공).png" width="100%" alt="일반">
         </div>
-        <div v-if="selectedType === '형제'">
+        <div v-if="type === '일반' && selectedType === '형제'">
           <img src="../assets/images/engrave/background/일반형제(공).png" width="100%" alt="형제">
+        </div>
+        <div v-if="type === '기독교'">
+          <img src="../assets/images/engrave/background/기독교(공).png" width="100%" alt="기독교">
+        </div>
+        <div v-if="type === '불교'">
+          <img src="../assets/images/engrave/background/불교(공).png" width="100%" alt="불교">
+        </div>
+        <div v-if="type === '천주교'">
+          <img src="../assets/images/engrave/background/천주교(공).png" width="100%" alt="천주교">
+        </div>
+        <div v-if="type === 'SGI'">
+          <img src="../assets/images/engrave/background/sgi(공).png" width="100%" alt="SGI">
+        </div>
+        <div v-if="type === '묘법'">
+          <img src="../assets/images/engrave/background/묘법(공).png" width="100%" alt="묘법">
         </div>
       </div>
       <div class="text-container">
-        <div v-if="selectedType === '일반'">
-          <div class="resultTextHorizontal">
-            <span class="resultText1">
-              <span class="resultText1_2">{{date1_1}}</span>
-              <span class="resultText1_3">●</span>
-              <span class="resultText1_2">{{date1_2}}</span>
-              <span class="resultText1_3">●</span>
-              <span class="resultText1_2">{{date1_3}}</span>
-              <span class="span1_1">陽</span>
-            </span>
-            <span class="resultText2">
-              <span>{{$route.query.name1}}</span>
-            </span>
-            <span class="resultText1">
-              <span class="resultText1_2">{{date2_1}}</span>
-              <span class="resultText1_3">●</span>
-              <span class="resultText1_2">{{date2_2}}</span>
-              <span class="resultText1_3">●</span>
-              <span class="resultText1_2">{{date2_3}}</span>
-              <span class="span1_1">陽</span>
-            </span>
-          </div>
-        </div>
+        <span class="resultText1">
+          <span class="">{{date1_1}}</span>
+          <span class="">●</span>
+          <span class="">{{date1_2}}</span>
+          <span class="">●</span>
+          <span class="">{{date1_3}}</span>
+          <span v-if="date1Type==='음력'" class="">陰</span>
+          <span v-if="date1Type==='양력'" class="">陽</span>
+        </span>
+        <!-- <div v-if="selectedType === '일반'"> -->
+        <span class="resultText2" v-if="selectedType === '일반' || selectedType === '기독교' || selectedType === '불교'
+                                  || selectedType === '천주교' || selectedType === 'SGI' || selectedType === '묘법'">
+          <span>{{$route.query.name1}}</span>
+        </span>
+        <span class="resultText2" v-if="selectedType === '직분' || selectedType === '법명'">
+          <span>{{$route.query.name1}}</span>
+        </span>
+        <span class="resultText2" v-if="selectedType === '형제' || selectedType === '세례명'">
+          <span>{{$route.query.name1}}</span>
+        </span>
+        <!-- </div> -->
+        <span class="resultText1">
+          <span class="">{{date2_1}}</span>
+          <span class="">●</span>
+          <span class="">{{date2_2}}</span>
+          <span class="">●</span>
+          <span class="">{{date2_3}}</span>
+          <span v-if="date2Type==='음력'" class="">陰</span>
+          <span v-if="date2Type==='양력'" class="">陽</span>
+        </span>
         <div v-if="selectedType === '직분'">
           일반(형제)
         </div>
       </div>
     </div>
-    <!-- 기독교 -->
-    <div class="image-text-container" v-if="type === '기독교'">
-      <div class="image-container">
-        <img src="../assets/images/engrave/background/기독교(공).png" width="100%" alt="기독교">
-      </div>
-      <div class="text-container">
-        <div v-if="selectedType === '기독교'">
-          기독교
-        </div>
-        <div v-if="selectedType === '직분'">
-          기독교(직분)
-        </div>
-      </div>
-    </div>
-    <!-- 불교 -->
-    <div class="image-text-container" v-if="type === '불교'">
-      <div class="image-container">
-        <img src="../assets/images/engrave/background/불교(공).png" width="100%" alt="불교">
-      </div>
-      <div class="text-container">
-        <div v-if="selectedType === '불교'">
-          불교
-        </div>
-        <div v-if="selectedType === '법명'">
-          불교(법명)
-        </div>
-      </div>
-    </div>
-    <!-- 천주교 -->
-    <div class="image-text-container" v-if="type === '천주교'">
-      <div class="image-container">
-        <img src="../assets/images/engrave/background/천주교(공).png" width="100%" alt="천주교">
-      </div>
-      <div class="text-container">
-        <div v-if="selectedType === '천주교'">
-          천주교
-        </div>
-        <div v-if="selectedType === '세례명'">
-          천주교(세례명)
-        </div>
-      </div>
-    </div>
-    <!-- SGI -->
-    <div class="image-text-container" v-if="type === 'SGI'">
-      <div class="image-container">
-        <img src="../assets/images/engrave/background/sgi(공).png" width="100%" alt="SGI">
-      </div>
-      <div class="text-container">
-        <div v-if="selectedType === 'SGI'">
-          SGI
-        </div>
-      </div>
-    </div>
-    <!-- 묘법 -->
-    <div class="image-text-container" v-if="type === '묘법'">
-      <div class="image-container">
-        <img src="../assets/images/engrave/background/묘법(공).png" width="100%" alt="묘법">
-      </div>
-      <div class="text-container">
-        <div v-if="selectedType === '묘법'">
-          묘법
-        </div>
-      </div>
-    </div>
-    <hr>
     <!-- 위패 -->
     <div class="image-text-container">
       <div class="image-container">
@@ -148,34 +105,14 @@
         </div>
       </div>
       <div class="text-container">
-        <div v-if="name0 !== '없음'">
-          <div v-if="type === '일반'">
+        <span class="resultText3">
+          <div v-if="name0 !== '없음'">
             {{name0}}
           </div>
-          <div v-if="type === '기독교'">
-            {{name0}}
-          </div>
-          <div v-if="type === '불교'">
-            {{name0}}
-          </div>
-          <div v-if="type === '천주교'">
-            {{name0}}
-          </div>
-        </div>
-        <div v-else>
-          <div v-if="type === '일반'">
+          <div v-else>
             {{name1}}
           </div>
-          <div v-if="type === '기독교'">
-            {{name1}}
-          </div>
-          <div v-if="type === '불교'">
-            {{name1}}
-          </div>
-          <div v-if="type === '천주교'">
-            {{name1}}
-          </div>
-        </div>
+        </span>
       </div>
     </div>
     <br>
@@ -253,16 +190,53 @@ export default {
 
 .text-container {
   position: absolute;
-  top: 50%;
+  top: 62%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  width: 100%;
+  height: 75%;
 
   color: black;
   font-family: "궁서체";
   font-weight: bold;
-  font-size: 50px;
-  writing-mode: vertical-rl; /* 세로로 쓰기 설정 */
+  
+  writing-mode: vertical-lr; /* 세로로 쓰기 설정 */
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+
+  background-color: blue;
+}
+
+.resultText1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+
+  height: 100%;
+  width: 33.3333%;
+  background-color: rgb(221, 255, 0);
+}
+.resultText2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+
+  height: 100%;
+  width: 33.3333%;
+  background-color: rgb(70, 79, 10);
+}
+.resultText3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  
+  height: 100%;
+  width: 50%;
+  margin-left: 10%;
+  background-color: rgb(251, 0, 0);
 }
 </style>

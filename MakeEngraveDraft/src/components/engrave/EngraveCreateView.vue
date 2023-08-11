@@ -91,7 +91,7 @@ export default {
   display: block;
   margin: 0 auto;
   width: 80px;
-  height: 100px;
+  /* height: 100px; */
 }
 
 .link-item .selectText {

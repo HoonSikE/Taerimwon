@@ -9,7 +9,6 @@ import EngraveCreateDetail from '../components/engrave/create/EngraveCreateDetai
 import TabletCreateView from '../components/tablet/TabletCreateView.vue'
 
 import ResultView from '../components/ResultView.vue'
-import EngraveSample from '../components/engrave/EngraveSample.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -76,16 +75,6 @@ const router = createRouter({
             selectedType2: route.query.selectedType2,
           })
         },
-        {
-          path: 'sample',
-          name: 'engravesample',
-          component: EngraveSample,
-          props: (route) => ({
-            name: route.query.name,
-            date1: route.query.date1,
-            date2: route.query.date2
-          })
-        }
       ],
     },
     {
