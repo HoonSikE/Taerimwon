@@ -65,6 +65,7 @@ const router = createRouter({
           component: ResultView,
           props: (route) => ({
             type: route.query.type,
+            name0: route.query.name0,
             name1: route.query.name1,
             name2: route.query.name2,
             date1: route.query.date1,
@@ -72,6 +73,7 @@ const router = createRouter({
             date2: route.query.date2,
             date2Type: route.query.date2Type,
             selectedType: route.query.selectedType,
+            selectedType2: route.query.selectedType2,
           })
         },
         {

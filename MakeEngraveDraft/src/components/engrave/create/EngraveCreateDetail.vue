@@ -11,7 +11,7 @@
             :class="{ selected: selectedType === '일반' }"
             @click="selectedType = '일반'"
           >
-            <img src="../../../assets/images/engrave/example/일반.png" width="80" height="100" alt="일반">
+            <img src="../../../assets/images/engrave/example/일반.png" width="80" height="130" alt="일반">
             <span class="selectText">[기본]</span>
           </button>
           <button
@@ -19,7 +19,7 @@
             :class="{ selected: selectedType === '형제' }"
             @click="selectedType = '형제'"
           >
-            <img src="../../../assets/images/engrave/example/일반(형제).png" width="80" height="100" alt="형제">
+            <img src="../../../assets/images/engrave/example/일반(형제).png" width="80" height="130" alt="형제">
             <span class="selectText">[형제]</span>
           </button>
         </div>
@@ -30,7 +30,7 @@
             :class="{ selected: selectedType === '기독교' }"
             @click="selectedType = '기독교'"
           >
-            <img src="../../../assets/images/engrave/example/기독교(직분x).png" width="80" height="100" alt="기독교(직분x)">
+            <img src="../../../assets/images/engrave/example/기독교(직분x).png" width="80" height="130" alt="기독교(직분x)">
             <span class="selectText">[기본]</span>
           </button>
           <button
@@ -38,7 +38,7 @@
             :class="{ selected: selectedType === '직분' }"
             @click="selectedType = '직분'"
           >
-            <img src="../../../assets/images/engrave/example/기독교.png" width="80" height="100" alt="기독교(직분)">
+            <img src="../../../assets/images/engrave/example/기독교.png" width="80" height="130" alt="기독교(직분)">
             <span class="selectText">[직분]</span>
           </button>
         </div>
@@ -49,7 +49,7 @@
             :class="{ selected: selectedType === '불교' }"
             @click="selectedType = '불교'"
           >
-            <img src="../../../assets/images/engrave/example/불교.png" width="80" height="100" alt="불교">
+            <img src="../../../assets/images/engrave/example/불교.png" width="80" height="130" alt="불교">
             <span class="selectText">[기본]</span>
           </button>
           <button
@@ -57,7 +57,7 @@
             :class="{ selected: selectedType === '법명' }"
             @click="selectedType = '법명'"
           >
-            <img src="../../../assets/images/engrave/example/불교(법명).png" width="80" height="100" alt="불교(법명)">
+            <img src="../../../assets/images/engrave/example/불교(법명).png" width="80" height="130" alt="불교(법명)">
             <span class="selectText">[법명]</span>
           </button> 
         </div>
@@ -68,7 +68,7 @@
             :class="{ selected: selectedType === '천주교' }"
             @click="selectedType = '천주교'"
           >
-            <img src="../../../assets/images/engrave/example/천주교(세례명x).png" width="80" height="100" alt="천주교)">
+            <img src="../../../assets/images/engrave/example/천주교(세례명x).png" width="80" height="130" alt="천주교)">
             <span class="selectText">[기본]</span>
           </button>
           <button
@@ -76,7 +76,7 @@
             :class="{ selected: selectedType === '세례명' }"
             @click="selectedType = '세례명'"
           >
-            <img src="../../../assets/images/engrave/example/천주교.png" width="80" height="100" alt="천주교(세례명)">
+            <img src="../../../assets/images/engrave/example/천주교.png" width="80" height="130" alt="천주교(세례명)">
             <span class="selectText">[세례명]</span>
           </button>
         </div>
@@ -87,7 +87,7 @@
             :class="{ selected: selectedType === 'SGI' }"
             @click="selectedType = 'SGI'"
           >
-            <img src="../../../assets/images/engrave/example/sgi.png" width="80" height="100" alt="SGI">
+            <img src="../../../assets/images/engrave/example/sgi.png" width="80" height="130" alt="SGI">
             <span class="selectText">[기본]</span>
           </button>
         </div>
@@ -98,7 +98,7 @@
             :class="{ selected: selectedType === '묘법' }"
             @click="selectedType = '묘법'"
           >
-            <img src="../../../assets/images/engrave/example/묘법.png" width="80" height="100" alt="묘법">
+            <img src="../../../assets/images/engrave/example/묘법.png" width="80" height="130" alt="묘법">
             <span class="selectText">[기본]</span>
           </button>
         </div>
@@ -144,8 +144,8 @@
       </div>
     </div>
     <hr>
-    <div v-if="type !== 'SGI' && type !== '묘법'">
-      <div v-if="showRouterView">
+    <div v-if="showRouterView">
+      <div v-if="type !== 'SGI' && type !== '묘법'">
         <RouterLink :to="'/engrave/engraveCreate/engraveDetail/tabletCreate?' + 'type=' + type 
                         + '&name1=' + encodedName1 + '&name2=' + encodedName2 
                         + '&date1=' + date1 + '&date1Type=' + date1Type 
@@ -155,33 +155,15 @@
           위패 주문하기
         </RouterLink>
       </div>
-      <div v-if="!showRouterView">
-        <button @click="toggleRouterView">위패 주문하지 않기</button>
-        <router-view></router-view>
-      </div>
-    </div>
-    <div v-else>
       <router-link :to="'/engrave/result?' + 'type=' + type 
-                  + '&name1=' + name1 + '&name2='+ name2 
-                  + '&date1=' + date1 + '&date1Type=' + date1Type 
-                  + '&date2=' + date2 + '&date2Type=' + date2Type
-                  + '&selectedType=' + selectedType">예시 보기</router-link>
-      <div>
-        종류: {{type}}
-        <br>
-        본관: {{name0}}
-        <br>
-        이름: {{name1}}
-        <br>
-        이름2: {{name2}}
-        <br>
-        출생일: {{date1}} , {{date1Type}}
-        <br>
-        사망일: {{date2}} , {{date2Type}}
-        <br>
-        종류: {{selectedType}}
-        <br>
-      </div>
+              + '&name0=' + '없음' + '&name1=' + encodedName1 + '&name2='+ encodedName2 
+              + '&date1=' + date1 + '&date1Type=' + date1Type 
+              + '&date2=' + date2 + '&date2Type=' + date2Type
+              + '&selectedType=' + selectedType + '&selectedType2=없음'">예시 보기</router-link>
+    </div>
+    <div v-if="!showRouterView">
+      <button @click="toggleRouterView">위패 주문하지 않기</button>
+      <router-view></router-view>
     </div>
   </div>
 </template>

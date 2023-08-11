@@ -1,50 +1,204 @@
 <template>
   <div class="">
-    <h1>각인 주문접수</h1>
-    <div>
-      <div>
-        각인
-        <span>
-          각인종류<br/>
-          각인 [일반]<br/>
-        </span>
+    <router-link :to="'/engrave/engraveCreate/engraveDetail?type='
+           + type + '&selectedType=' + selectedType + '&showRouterView=true'">
+          [이전 페이지]
+    </router-link>
+    <br>
+    각인 예시
+    <br>
+    <!-- 일반 -->
+    <div class="image-text-container" v-if="type === '일반'">
+      <div class="image-container">
+        <div v-if="selectedType === '일반'">
+          <img src="../assets/images/engrave/background/일반(공).png" width="100%" alt="일반">
+        </div>
+        <div v-if="selectedType === '형제'">
+          <img src="../assets/images/engrave/background/일반형제(공).png" width="100%" alt="형제">
+        </div>
+      </div>
+      <div class="text-container">
+        <div v-if="selectedType === '일반'">
+          <div class="resultTextHorizontal">
+            <span class="resultText1">
+              <span class="resultText1_2">{{date1_1}}</span>
+              <span class="resultText1_3">●</span>
+              <span class="resultText1_2">{{date1_2}}</span>
+              <span class="resultText1_3">●</span>
+              <span class="resultText1_2">{{date1_3}}</span>
+              <span class="span1_1">陽</span>
+            </span>
+            <span class="resultText2">
+              <span>{{$route.query.name1}}</span>
+            </span>
+            <span class="resultText1">
+              <span class="resultText1_2">{{date2_1}}</span>
+              <span class="resultText1_3">●</span>
+              <span class="resultText1_2">{{date2_2}}</span>
+              <span class="resultText1_3">●</span>
+              <span class="resultText1_2">{{date2_3}}</span>
+              <span class="span1_1">陽</span>
+            </span>
+          </div>
+        </div>
+        <div v-if="selectedType === '직분'">
+          일반(형제)
+        </div>
+      </div>
+    </div>
+    <!-- 기독교 -->
+    <div class="image-text-container" v-if="type === '기독교'">
+      <div class="image-container">
+        <img src="../assets/images/engrave/background/기독교(공).png" width="100%" alt="기독교">
+      </div>
+      <div class="text-container">
+        <div v-if="selectedType === '기독교'">
+          기독교
+        </div>
+        <div v-if="selectedType === '직분'">
+          기독교(직분)
+        </div>
+      </div>
+    </div>
+    <!-- 불교 -->
+    <div class="image-text-container" v-if="type === '불교'">
+      <div class="image-container">
+        <img src="../assets/images/engrave/background/불교(공).png" width="100%" alt="불교">
+      </div>
+      <div class="text-container">
+        <div v-if="selectedType === '불교'">
+          불교
+        </div>
+        <div v-if="selectedType === '법명'">
+          불교(법명)
+        </div>
+      </div>
+    </div>
+    <!-- 천주교 -->
+    <div class="image-text-container" v-if="type === '천주교'">
+      <div class="image-container">
+        <img src="../assets/images/engrave/background/천주교(공).png" width="100%" alt="천주교">
+      </div>
+      <div class="text-container">
+        <div v-if="selectedType === '천주교'">
+          천주교
+        </div>
+        <div v-if="selectedType === '세례명'">
+          천주교(세례명)
+        </div>
+      </div>
+    </div>
+    <!-- SGI -->
+    <div class="image-text-container" v-if="type === 'SGI'">
+      <div class="image-container">
+        <img src="../assets/images/engrave/background/sgi(공).png" width="100%" alt="SGI">
+      </div>
+      <div class="text-container">
+        <div v-if="selectedType === 'SGI'">
+          SGI
+        </div>
+      </div>
+    </div>
+    <!-- 묘법 -->
+    <div class="image-text-container" v-if="type === '묘법'">
+      <div class="image-container">
+        <img src="../assets/images/engrave/background/묘법(공).png" width="100%" alt="묘법">
+      </div>
+      <div class="text-container">
+        <div v-if="selectedType === '묘법'">
+          묘법
+        </div>
       </div>
     </div>
     <hr>
-    <div class="resultBackground">
-      <div class="resultText">
-        <span class="resultText1">
-          <!-- <span class="span1_1">生</span> -->
-          <span class="resultText1_2">{{date1_1}}</span>
-          <span class="resultText1_3">●</span>
-          <span class="resultText1_2">{{date1_2}}</span>
-          <span class="resultText1_3">●</span>
-          <span class="resultText1_2">{{date1_3}}</span>
-          <!-- <span class="span1_1">陽</span> -->
-        </span>
-        <span class="resultText2">
-          <!-- <span class="span2_1">故</span> -->
-          <span>{{$route.query.name}}</span>
-        </span>
-        <span class="resultText1">
-          <!-- <span class="span1_1">卒</span> -->
-          <span class="resultText1_2">{{date2_1}}</span>
-          <span class="resultText1_3">●</span>
-          <span class="resultText1_2">{{date2_2}}</span>
-          <span class="resultText1_3">●</span>
-          <span class="resultText1_2">{{date2_3}}</span>
-          <!-- <span class="span1_1">陽</span> -->
-        </span>
+    <!-- 위패 -->
+    <div class="image-text-container">
+      <div class="image-container">
+        <div v-if="selectedType2 !== '없음'">
+          위패 예시
+          <div v-if="name0 !== '없음'">
+            <div v-if="type === '일반'">
+              <img src="../assets/images/memorialTablet/background/본관출력시안/일반(본관출력시안).png" width="100%" alt="일반">
+            </div>
+            <div v-if="type === '기독교'">
+              <img src="../assets/images/memorialTablet/background/본관출력시안/기독교(본관출력시안).png" width="100%" alt="기독교">
+            </div>
+            <div v-if="type === '불교'">
+              <img src="../assets/images/memorialTablet/background/본관출력시안/불교(본관출력시안).png" width="100%" alt="불교">
+            </div>
+            <div v-if="type === '천주교'">
+              <img src="../assets/images/memorialTablet/background/본관출력시안/천주교(본관출력시안).png" width="100%" alt="천주교">
+            </div>
+          </div>
+          <div v-else>
+            <div v-if="type === '일반'">
+              <img src="../assets/images/memorialTablet/background/이름출력시안/일반(이름출력시안).png" width="100%" alt="일반">
+            </div>
+            <div v-if="type === '기독교'">
+              <img src="../assets/images/memorialTablet/background/이름출력시안/기독교(이름출력시안).png" width="100%" alt="기독교">
+            </div>
+            <div v-if="type === '불교'">
+              <img src="../assets/images/memorialTablet/background/이름출력시안/불교(이름출력시안).png" width="100%" alt="불교">
+            </div>
+            <div v-if="type === '천주교'">
+              <img src="../assets/images/memorialTablet/background/이름출력시안/천주교(이름출력시안).png" width="100%" alt="천주교">
+            </div>
+          </div>
+          <hr>
+        </div>
+      </div>
+      <div class="text-container">
+        <div v-if="name0 !== '없음'">
+          <div v-if="type === '일반'">
+            {{name0}}
+          </div>
+          <div v-if="type === '기독교'">
+            {{name0}}
+          </div>
+          <div v-if="type === '불교'">
+            {{name0}}
+          </div>
+          <div v-if="type === '천주교'">
+            {{name0}}
+          </div>
+        </div>
+        <div v-else>
+          <div v-if="type === '일반'">
+            {{name1}}
+          </div>
+          <div v-if="type === '기독교'">
+            {{name1}}
+          </div>
+          <div v-if="type === '불교'">
+            {{name1}}
+          </div>
+          <div v-if="type === '천주교'">
+            {{name1}}
+          </div>
+        </div>
       </div>
     </div>
-
+    <br>
     <div>
-      <router-link :to="'/engrave/result?' + 'name=' + $route.query.name + '&date1=' + $route.query.date1 + '&date2='+ $route.query.date2">전체 화면</router-link>
-      <!-- <div>
-        {{$route.query.name}}
-        {{$route.query.date1}}
-        {{$route.query.date2}}
-      </div> -->
+        종류: {{type}}
+        <br>
+        본관: {{name0}}
+        <br>
+        이름: {{name1}}
+        <br>
+        이름2: {{name2}}
+        <br>
+        출생일: {{date1}} , {{date1Type}}
+        <br>
+        사망일: {{date2}} , {{date2Type}}
+        <br>
+        종류: {{selectedType}}
+        <br>
+        종류: {{selectedType2}}
+      <br>
+    </div>
+    <div>
+      <!-- <router-link :to="'/engrave/result?' + 'name=' + $route.query.name + '&date1=' + $route.query.date1 + '&date2='+ $route.query.date2">전체 화면</router-link> -->
     </div>
   </div>
 </template>
@@ -53,6 +207,17 @@
 export default {
   data() {
     return {
+      type: this.$route.query.type,
+      name0: this.$route.query.name0,
+      name1: this.$route.query.name1,
+      name2: this.$route.query.name2,
+      date1: this.$route.query.date1,
+      date1Type: this.$route.query.date1Type,
+      date2: this.$route.query.date2,
+      date2Type: this.$route.query.date2Type,
+      selectedType: this.$route.query.selectedType, // 초기 선택 타입 설정
+      selectedType2: this.$route.query.selectedType2, // 초기 선택 타입 설정
+
       date1_1: this.$route.query.date1.substr(0,4),
       date1_2: this.$route.query.date1.substr(5,2),
       date1_3: this.$route.query.date1.substr(8,2),
@@ -73,71 +238,31 @@ export default {
   }
 } */
 
-.resultBackground {
-  /* background-image: url("../../assets/images/background/일반(공).png"); */
-  background-image: url("../../assets/images/engrave/background/불교(공).png");
-  background-size: cover; /* 배경 이미지를 컨테이너에 꽉 차게 늘리기 */
-  background-repeat: no-repeat; /* 배경 이미지 반복 방지 */
-  background-position: center; /* 배경 이미지 중앙 정렬 */
-  width: 391px;
-  height: 646px;
+.image-text-container {
+  position: relative;
+  width: 50%;
+  /* height: 80%; */
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.resultText {
-  color: black;
+.image-container img {
   width: 100%;
   height: 100%;
 }
 
-.resultText1{
-  /* background-color: blue; */
-  margin-top: 45%;
-  writing-mode: vertical-rl; /* 세로로 쓰기 설정 */
-  text-orientation: upright; /* 텍스트 방향 유지 */
-  /* border: 2px solid #09c; */
-}
-.resultText1_1{
-  /* background-color: pink; */
-  font-size: 35px;
+.text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: black;
   font-family: "궁서체";
   font-weight: bold;
-  /* border: 2px solid #09c; */
-}
-.resultText1_2{
-  /* background-color: red; */
   font-size: 50px;
-  font-family: "궁서체";
-  font-weight: bold;
-  /* border: 2px solid #09c; */
-}
-.resultText1_3{
-  /* background-color: green; */
-  font-size: 20px;
-  font-family: "궁서체";
-  font-weight: bold;
-  /* border: 2px solid #09c; */
-}
-.resultText2{
-  /* background-color: orange; */
-  margin-top: 40%;
-  /* width: 50%; */
-  margin-bottom: 10px;
-  font-size: 140px;
-  font-family: "궁서체";
-  font-weight: bold;
   writing-mode: vertical-rl; /* 세로로 쓰기 설정 */
   text-orientation: upright; /* 텍스트 방향 유지 */
-  /* transform: translate(0, -3%); */
-  /* border: 2px solid #09c; */
-}
-.resultText2_1{
-  /* background-color: yellow; */
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 0px;
-  font-size: 60px;
-  font-family: "궁서체";
-  font-weight: bold;
-  /* border: 2px solid #09c; */
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 }
 </style>

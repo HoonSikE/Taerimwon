@@ -11,14 +11,14 @@
               class="link-item"
               :class="{ selected: selectedType2 === '일반' }"
               @click="selectedType2 = '일반'">
-            <img src="../../assets/images/memorialTablet/example/이름시안/일반.png" width="80" height="100" alt="일반">
+            <img src="../../assets/images/memorialTablet/example/이름시안/일반.png" width="80" height="240" alt="일반">
             <span class="selectText">[일반]</span>
           </button>
           <button
               class="link-item"
               :class="{ selected: selectedType2 === '일반(본관)' }"
               @click="selectedType2 = '일반(본관)'">
-            <img src="../../assets/images/memorialTablet/example/본관시안/일반(본관).png" width="80" height="100" alt="일반(본관)">
+            <img src="../../assets/images/memorialTablet/example/본관시안/일반(본관).png" width="80" height="240" alt="일반(본관)">
             <span class="selectText">[일반(본관)]</span>
           </button>
         </div>
@@ -28,14 +28,14 @@
               class="link-item"
               :class="{ selected: selectedType2 === '기독교' }"
               @click="selectedType2 = '기독교'">
-            <img src="../../assets/images/memorialTablet/example/이름시안/기독교.png" width="80" height="100" alt="기독교">
+            <img src="../../assets/images/memorialTablet/example/이름시안/기독교.png" width="80" height="240" alt="기독교">
             <span class="selectText">[기독교]</span>
           </button>
           <button
               class="link-item"
               :class="{ selected: selectedType2 === '기독교(본관)' }"
               @click="selectedType2 = '기독교(본관)'">
-            <img src="../../assets/images/memorialTablet/example/본관시안/기독교(본관).png" width="80" height="100" alt="기독교(본관)">
+            <img src="../../assets/images/memorialTablet/example/본관시안/기독교(본관).png" width="80" height="240" alt="기독교(본관)">
             <span class="selectText">[기독교(본관)]</span>
           </button>
         </div>
@@ -45,14 +45,14 @@
               class="link-item"
               :class="{ selected: selectedType2 === '불교' }"
               @click="selectedType2 = '불교'">
-            <img src="../../assets/images/memorialTablet/example/이름시안/불교.png" width="80" height="100" alt="불교">
+            <img src="../../assets/images/memorialTablet/example/이름시안/불교.png" width="80" height="240" alt="불교">
             <span class="selectText">[불교]</span>
           </button>
           <button
               class="link-item"
               :class="{ selected: selectedType2 === '불교(본관)' }"
               @click="selectedType2 = '불교(본관)'">
-            <img src="../../assets/images/memorialTablet/example/본관시안/불교(본관).png" width="80" height="100" alt="불교(본관)">
+            <img src="../../assets/images/memorialTablet/example/본관시안/불교(본관).png" width="80" height="240" alt="불교(본관)">
             <span class="selectText">[불교(본관)]</span>
           </button>
         </div>
@@ -62,14 +62,14 @@
               class="link-item"
               :class="{ selected: selectedType2 === '천주교' }"
               @click="selectedType2 = '천주교'">
-            <img src="../../assets/images/memorialTablet/example/이름시안/천주교.png" width="80" height="100" alt="천주교">
+            <img src="../../assets/images/memorialTablet/example/이름시안/천주교.png" width="80" height="240" alt="천주교">
             <span class="selectText">[천주교]</span>
           </button>
           <button
               class="link-item"
               :class="{ selected: selectedType2 === '천주교(본관)' }"
               @click="selectedType2 = '천주교(본관)'">
-            <img src="../../assets/images/memorialTablet/example/본관시안/천주교(본관).png" width="80" height="100" alt="천주교(본관)">
+            <img src="../../assets/images/memorialTablet/example/본관시안/천주교(본관).png" width="80" height="240" alt="천주교(본관)">
             <span class="selectText">[천주교(본관)]</span>
           </button>
         </div>
@@ -77,47 +77,36 @@
     </div>
     <!-- 정보입력 -->
     <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
-      * 본관 입력<br/>
+      * 본관 내용 입력<br/>
       <input v-model="name0" type="text" :placeholder="defaultName0Placeholder"/>
     </div>
-    <div>
-      * 고인성함 입력<br/>
-      <input v-model="name1" type="text" :placeholder="name1"/>
-    </div>
-    <span v-if="selectedType === '직분'">
+    <span v-if="type === '기독교'">
       직분 입력<br/>
       <input v-model="name2" type="text" :placeholder="name2"/>
     </span>
-    <span v-if="selectedType === '법명'">
+    <!-- <span v-if="selectedType === '법명'">
       법명 입력<br/>
       <input v-model="name2" type="text" :placeholder="name2"/>
-    </span>
-    <span v-if="selectedType === '세례명'">
+    </span> -->
+    <span v-if="type === '천주교'">
       세례명 입력<br/>
       <input v-model="name2" type="text" :placeholder="name2"/>
     </span>
     <hr>
-    <!-- <router-link to="/engrave/result">dd</router-link> -->
-    <router-link :to="'/engrave/result?' + 'type=' + type 
-                  + '&name1=' + name1 + '&name2='+ name2 
+    <!-- 본관에 따른 데이터 전송값 변경 -->
+    <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
+      <router-link :to="'/engrave/result?' + 'type=' + type 
+                  + '&name0=' + encodedName0 + '&name1=' + name1 + '&name2='+ name2 
                   + '&date1=' + date1 + '&date1Type=' + date1Type 
                   + '&date2=' + date2 + '&date2Type=' + date2Type
-                  + '&selectedType=' + selectedType">예시 보기</router-link>
-    <div>
-      종류: {{type}}
-      <br>
-      본관: {{name0}}
-      <br>
-      이름: {{name1}}
-      <br>
-      이름2: {{name2}}
-      <br>
-      출생일: {{date1}} , {{date1Type}}
-      <br>
-      사망일: {{date2}} , {{date2Type}}
-      <br>
-      종류: {{selectedType}}
-      <br>
+                  + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2">예시 보기</router-link>
+    </div>
+    <div v-else>
+      <router-link :to="'/engrave/result?' + 'type=' + type 
+                  + '&name0=' + '없음' + '&name1=' + name1 + '&name2='+ name2 
+                  + '&date1=' + date1 + '&date1Type=' + date1Type 
+                  + '&date2=' + date2 + '&date2Type=' + date2Type
+                  + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2">예시 보기</router-link>
     </div>
   </div>
 </template>
@@ -127,6 +116,7 @@ export default {
   data() {
     return {
       type: this.$route.query.type,
+      name0: '',
       name1: this.$route.query.name1,
       name2: this.$route.query.name2,
       date1: this.$route.query.date1,
@@ -138,7 +128,7 @@ export default {
     };
   },
   computed: {
-    encodedName1() {
+    encodedName0() {
       const trimmedName0 = this.name0.trim();
       return trimmedName0 === '' ? '본관' : encodeURIComponent(trimmedName0);
     },
@@ -151,6 +141,9 @@ export default {
   watch: {
     '$route.query.type': function(newType) {
       this.type = newType;
+    },
+    '$route.query.name0': function(newName0) {
+      this.name0 = newName0;
     },
     '$route.query.name1': function(newName1) {
       this.name1 = newName1;
