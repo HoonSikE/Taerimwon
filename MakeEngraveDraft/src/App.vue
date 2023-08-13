@@ -3,33 +3,56 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header>
-    <img alt="logo" class="logo" src="@/assets/images/logo.png" width="125" height="125" />
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/engrave">Engrave</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-    <router-view></router-view>
+  <div>
+    <header>
+      <div class="text-align-center" >
+        <RouterLink to="/">
+        <img alt="logo" class="logo" src="@/assets/images/logo.png" width="160" height="160" />
+        </RouterLink>
+      </div>
+      <div class="wrapper">
+        <nav>
+          <!-- <RouterLink to="/">Home</RouterLink> -->
+          <!-- <RouterLink to="/engrave">Engrave</RouterLink> -->
+          <!-- <RouterLink to="/about">About</RouterLink> -->
+        </nav>
+      </div>
+    </header>
+    <body>
+      <router-view></router-view>
+    </body>
     <hr>
-    <div>footer</div>
-  </header>
+    <footer>
+      <div>
+        ● 문의사항<br>
+        ☎️ 연락처: 010-4509-7485<br>
+        📨 Email: hoongrammer@gmail.com
+      </div>
+    </footer>
+  </div>
 </template>
 
 <style scoped>
-header {
+/* header {
   line-height: 1.5;
   max-height: 100vh;
-}
+} */
 
 .logo {
-  display: block;
-  margin: 0 auto 2rem;
+  /* display: block; */
+  /* margin: 0 auto 2rem; */
 }
 
-nav {
+.text-align-center {
+  text-align: center;
+}
+
+footer {
+  font-size: 14px;
+  font-family: "BMEULJIROTTF";
+}
+
+/* nav {
   width: 100%;
   font-size: 12px;
   text-align: center;
@@ -52,7 +75,7 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
-}
+} */
 
 /* @media (min-width: 1024px) {
   header {
@@ -80,10 +103,29 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 } */
-.center-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* 화면 전체 높이 기준으로 가운데 정렬 */
+
+@font-face {
+    font-family: '궁서';
+    src: url('../assets/fonts/궁서.TTF');
+}
+
+@font-face {
+    font-family: '한양해서';
+    src: url('../assets/fonts/한양해서.TTF') format('truetype');
+}
+
+@font-face {
+    font-family: 'NotoSerifTC';
+    src: url('../assets/fonts/NotoSerifTC-Bold.otf');
+}
+
+@font-face {
+    font-family: 'CENTURY';
+    src: url('../assets/fonts/CENTURY.TTF') format('truetype');
+}
+
+@font-face {
+    font-family: 'BMEULJIROTTF';
+    src: url('../assets/fonts/BMEULJIROTTF.ttf');
 }
 </style>
