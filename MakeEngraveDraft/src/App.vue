@@ -28,9 +28,7 @@
   </div>
 </template>
 
-<script type="module">
-import { RouterLink, RouterView } from 'vue-router';
-
+<script>
 export default {
   name: "App",
   data() {
@@ -38,8 +36,6 @@ export default {
     };
   },
   components: {
-    RouterLink,
-    RouterView,
   },
   methods: {},
 };
