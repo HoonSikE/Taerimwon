@@ -28,7 +28,7 @@
   </div>
 </template>
 
-<script>
+<script type="module">
 import { RouterLink, RouterView } from 'vue-router';
 
 export default {
