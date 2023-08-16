@@ -1,20 +1,11 @@
 <template>
   <div class="">
     <!-- 본관에 따른 데이터 전송값 변경 -->
-    <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
-      <router-link :to="'/engrave/result?' + 'type=' + type 
-                  + '&name0=' + encodedName0 + '&name1=' + name1 + '&name2='+ name2 
-                  + '&date1=' + date1 + '&date1Type=' + date1Type 
-                  + '&date2=' + date2 + '&date2Type=' + date2Type
-                  + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title4">👉 [이전 페이지]</router-link>
-    </div>
-    <div v-else>
-      <router-link :to="'/engrave/result?' + 'type=' + type 
-                  + '&name0=' + '없음' + '&name1=' + name1 + '&name2='+ name2 
-                  + '&date1=' + date1 + '&date1Type=' + date1Type 
-                  + '&date2=' + date2 + '&date2Type=' + date2Type
-                  + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title4">👉 [이전 페이지]</router-link>
-    </div>
+    <router-link :to="'/engrave/result?' + 'type=' + type 
+                + '&name0=' + name0 + '&name1=' + name1 + '&name2='+ name2 
+                + '&date1=' + date1 + '&date1Type=' + date1Type 
+                + '&date2=' + date2 + '&date2Type=' + date2Type
+                + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title4">👉 [이전 페이지]</router-link>
     <div class="container">
       <!-- 위패 -->
       <div class="image-text-container2">
