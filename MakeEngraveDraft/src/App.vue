@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <div>
+  <div id="app">
     <header>
       <div class="text-align-center" >
         <RouterLink to="/">
