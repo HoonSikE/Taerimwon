@@ -31,13 +31,6 @@
 <script>
 export default {
   name: "App",
-  data() {
-    return {
-    };
-  },
-  components: {
-  },
-  methods: {},
 };
 </script>
 
@@ -48,10 +41,10 @@ export default {
   max-height: 100vh;
 } */
 
-.logo {
+/* .logo { */
   /* display: block; */
   /* margin: 0 auto 2rem; */
-}
+/* } */
 
 .text-align-center {
   text-align: center;

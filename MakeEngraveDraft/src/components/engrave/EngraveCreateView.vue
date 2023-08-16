@@ -116,10 +116,10 @@ export default {
   margin-bottom: 6px;
 }
 
-.link-container {
+/* .link-container { */
   /* display: inline-block; */
   /* display: flex; */
-}
+/* } */
 
 .link-item {
   display: inline-block;
