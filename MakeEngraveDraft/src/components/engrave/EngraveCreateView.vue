@@ -37,7 +37,7 @@
           <RouterLink to="/engrave/engraveCreate/engraveDetail?type=SGI&selectedType=SGI&showRouterView=true" class="link-item"
               :class="{ selected: selectedType === 'SGI' }"
               @click="selectedType = 'SGI'">
-            <img src="../../assets/images/engrave/example/SGI.png" width="80" height="130" alt="SGI">
+            <img src="../../assets/images/engrave/example/sgi.png" width="80" height="130" alt="SGI">
             <span class="selectText">[SGI]</span>
           </RouterLink>
           <RouterLink to="/engrave/engraveCreate/engraveDetail?type=묘법&selectedType=묘법&showRouterView=true" class="link-item"
