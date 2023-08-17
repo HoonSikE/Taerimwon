@@ -350,11 +350,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 58px;
 
   color: black;
   font-family: "궁서체";
-  font-weight: 900;
+  /* font-weight: 900; */
+  font-size: 58px;
   margin-top: 4%;
   letter-spacing:21px;
 
@@ -490,7 +490,7 @@ export default {
   color: black;
   font-family: "궁서체";
   font-weight: 900;
-  font-size: 80px;
+  font-size: 90px;
   letter-spacing:65px;
 
   /* font-weight: 900; */
