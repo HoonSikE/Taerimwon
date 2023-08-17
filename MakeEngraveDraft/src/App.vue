@@ -108,13 +108,8 @@ nav a:first-of-type {
 } */
 
 @font-face {
-    font-family: '궁서';
-    src: url('../assets/fonts/궁서.TTF');
-}
-
-@font-face {
-    font-family: '한양해서';
-    src: url('../assets/fonts/한양해서.TTF') format('truetype');
+    font-family: 'HYHaeSo';
+    src: url('../assets/fonts/HYHaeSo.ttf');
 }
 
 @font-face {
@@ -124,7 +119,7 @@ nav a:first-of-type {
 
 @font-face {
     font-family: 'CENTURY';
-    src: url('../assets/fonts/CENTURY.TTF') format('truetype');
+    src: url('../assets/fonts/CENTURY.ttf');
 }
 
 @font-face {

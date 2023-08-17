@@ -83,7 +83,7 @@ export default {
 .image-text-container {
   position: relative;
   width: 200px;
-  /* width: 30%; */
+  width: 30%;
   /* height: 80%; */
   background-repeat: no-repeat;
   background-position: center;
