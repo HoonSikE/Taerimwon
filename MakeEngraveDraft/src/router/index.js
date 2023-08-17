@@ -12,6 +12,8 @@ import ResultView from '../components/result/ResultView.vue'
 import ResultEngrave from '../components/result/fullScreen/ResultEngrave.vue'
 import ResultTablet from '../components/result/fullScreen/ResultTablet.vue'
 
+import NotFound from '../components/NotFound.vue'; // 404 페이지 컴포넌트
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -119,7 +121,15 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: AboutView
-    }
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      redirect: "/404",
+    },
+    {
+      path: "/404",
+      component: NotFound
+    },
   ]
 })
 
