@@ -86,6 +86,9 @@
                   <span class="resultText3_1-tablet" v-if="name1.length === 2 || name1.length === 3">
                     {{encodedName1}}
                   </span>
+                  <span class="resultText3_1-tablet-4" v-if="name1.length === 4">
+                    {{encodedName1}}
+                  </span>
                 </span>
                 <!-- 위 글자 -->
                 <span class="resultText3_2-tablet" v-if="type === '기독교'">
@@ -93,10 +96,16 @@
                   <span class="resultText3_2_1-tablet" v-if="name1.length === 2 || name1.length === 3">
                     {{encodedName1}}
                   </span>
+                  <span class="resultText3_2_1-tablet-4" v-if="name1.length === 4">
+                    {{encodedName1}}
+                  </span>
                 </span>
                 <!-- 아래 글자 -->
                 <span class="resultText3_3-tablet" v-if="type === '천주교'">
                   <span class="resultText3_3_1-tablet" v-if="name1.length === 2 || name1.length === 3">
+                    {{encodedName1}}
+                  </span>
+                  <span class="resultText3_3_1-tablet-4" v-if="name1.length === 4">
                     {{encodedName1}}
                   </span>
                   <span class="resultText3_3_2-tablet">{{name2}}</span>
@@ -217,6 +226,24 @@ export default {
 
   /* background-color: rgba(251, 0, 0, 0.384); */
 }
+.resultText3_1-tablet-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: black;
+  font-family: "궁서체";
+  font-weight: 900;
+
+  font-size: 24vw;
+  margin-top: 24%;
+  letter-spacing:0.5em;
+
+  height: auto;
+  width: 60vw;
+
+  /* background-color: rgba(251, 0, 0, 0.384); */
+}
 /* 위 글자 (직분)*/
 .resultText3_2-tablet {
   display: flex;
@@ -238,6 +265,14 @@ export default {
   font-size: 24.2vw;
   margin-top: 5%;
   letter-spacing:0.6em;
+
+  font-weight: 900;
+  /* background-color: rgba(8, 218, 127, 0.473); */
+}
+.resultText3_2_1-tablet-4 {
+  font-size: 24.2vw;
+  margin-top: 2.5%;
+  letter-spacing:0.25em;
 
   font-weight: 900;
   /* background-color: rgba(8, 218, 127, 0.473); */
@@ -273,6 +308,15 @@ export default {
   font-size: 24.6vw;
   margin-top: 8%;
   letter-spacing:0.5em;
+
+  font-weight: 900;
+  /* background-color: rgb(70, 79, 10); */
+}
+.resultText3_3_1-tablet-4 {
+  font-size: 24.6vw;
+  margin-top: 4%;
+  margin-bottom: 1%;
+  letter-spacing:0.2em;
 
   font-weight: 900;
   /* background-color: rgb(70, 79, 10); */

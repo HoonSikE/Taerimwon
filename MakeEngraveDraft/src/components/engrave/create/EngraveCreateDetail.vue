@@ -141,6 +141,7 @@
           </div>
           <div>
             <input v-model="date1" type="date" placeholder="1900-01-01"/>
+            &nbsp;
             <!-- 날짜 입력 -->
             <select name="date1Type" v-model="date1Type">
               <option value="양력" selected="selected">양력</option>
@@ -149,6 +150,7 @@
           </div>
           <div>
             <input v-model="date2" type="date"/>
+            &nbsp;
             <select name="date2Type" v-model="date2Type">
               <option value="양력" selected="selected">양력</option>
               <option value="음력">음력</option>
@@ -159,26 +161,40 @@
     </div>
     <hr>
     <div v-if="showRouterView">
-      <div v-if="type !== 'SGI' && type !== '묘법'">
-        <RouterLink :to="'/engrave/engraveCreate/engraveDetail/tabletCreate?' + 'type=' + type 
-                        + '&name1=' + encodedName1 + '&name2=' + encodedName2 
-                        + '&date1=' + date1 + '&date1Type=' + date1Type 
-                        + '&date2=' + date2 + '&date2Type=' + date2Type
-                        + '&selectedType=' + selectedType"
-                    @click="toggleRouterView">
-          <div class="title4">
-            👉 위패 주문하기
-            <span class="title4_1">
-              (Click!!)
-            </span>
-          </div>
-        </RouterLink>
+      <div v-if="showName1Warning" class="warning_text">
+        - 성함을 2~4글자로 입력해주세요.
       </div>
-      <router-link :to="'/engrave/result?' + 'type=' + type 
-              + '&name0=' + '없음' + '&name1=' + encodedName1 + '&name2='+ encodedName2 
-              + '&date1=' + date1 + '&date1Type=' + date1Type 
-              + '&date2=' + date2 + '&date2Type=' + date2Type
-              + '&selectedType=' + selectedType + '&selectedType2=없음'" class="title4">👉 예시 보기 (각인)</router-link>
+      <div v-else-if="showName1KoreanWarning" class="warning_text">
+        - 성함을 한국어로 올바르게 입력해주세요.
+      </div>
+      <div v-else-if="showName2Warning && (selectedType === '직분' || selectedType === '법명' || selectedType === '세례명')" class="warning_text">
+        - {{selectedType}}을 2~3글자로 입력해주세요.
+      </div>
+      <div v-else-if="showName2KoreanWarning && (selectedType === '직분' || selectedType === '법명' || selectedType === '세례명')" class="warning_text">
+        - {{selectedType}}을 한국어로 올바르게 입력해주세요.
+      </div>
+      <div v-else>
+        <div v-if="type !== 'SGI' && type !== '묘법'">
+          <RouterLink :to="'/engrave/engraveCreate/engraveDetail/tabletCreate?' + 'type=' + type 
+                          + '&name1=' + encodedName1 + '&name2=' + encodedName2 
+                          + '&date1=' + date1 + '&date1Type=' + date1Type 
+                          + '&date2=' + date2 + '&date2Type=' + date2Type
+                          + '&selectedType=' + selectedType"
+                      @click="toggleRouterView">
+            <div class="title4">
+              👉 위패 주문하기
+              <span class="title4_1">
+                (Click!!)
+              </span>
+            </div>
+          </RouterLink>
+        </div>
+        <router-link :to="'/engrave/result?' + 'type=' + type 
+                + '&name0=' + '없음' + '&name1=' + encodedName1 + '&name2='+ encodedName2 
+                + '&date1=' + date1 + '&date1Type=' + date1Type 
+                + '&date2=' + date2 + '&date2Type=' + date2Type
+                + '&selectedType=' + selectedType + '&selectedType2=없음'" class="title4">👉 예시 보기 (각인)</router-link>
+      </div>
     </div>
     <div v-if="!showRouterView">
       <div class="title5" @click="toggleRouterView">👉 위패 주문하지 않기!!</div>
@@ -227,6 +243,32 @@ export default {
       // 여기서 기본 placeholder 값을 설정합니다
       return this.selectedType;
     },
+    showName1Warning() {
+      const name1Length = this.name1.trim().length;
+      return (name1Length < 2 || name1Length > 4) && name1Length !== 0;
+    },
+    showName1KoreanWarning() {
+      // 한글 문자에 대한 정규식
+      const koreanRegex = /[가-힣]/;
+
+      if(this.name1.length === 0)
+        return false;
+
+      return !koreanRegex.test(this.name1);
+    },
+    showName2Warning() {
+      const name2Length = this.name2.trim().length;
+      return (name2Length < 2 || name2Length > 3) && name2Length !== 0;
+    },
+    showName2KoreanWarning() {
+      // 한글 문자에 대한 정규식
+      const koreanRegex = /[가-힣]/;
+
+      if(this.name2.length === 0)
+        return false;
+
+      return !koreanRegex.test(this.name2);
+    },
   },
   methods: {
     toggleRouterView() {
@@ -235,6 +277,12 @@ export default {
   },
   // 매개변수의 변경 사항을 감지
   watch: {
+    'name1': function(newName1) {
+      this.name1 = newName1;
+    },
+    'name2': function(newName2) {
+      this.name2 = newName2;
+    },
     '$route.query.type': function(newType) {
       this.type = newType;
     },
@@ -314,5 +362,11 @@ export default {
 
 input::placeholder {
   text-align: center;
+}
+
+.warning_text{
+  font-size: 18px;
+  font-family: "BMEULJIROTTF";
+  color: rgb(246, 63, 63);
 }
 </style>

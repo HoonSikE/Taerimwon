@@ -113,11 +113,6 @@ nav a:first-of-type {
 }
 
 @font-face {
-    font-family: 'NotoSerifTC';
-    src: url('../assets/fonts/NotoSerifTC-Bold.otf');
-}
-
-@font-face {
     font-family: 'CENTURY';
     src: url('../assets/fonts/CENTURY.ttf');
 }

@@ -658,7 +658,7 @@ export default {
   font-weight: 900;
   /* background-color: rgb(70, 79, 10); */
 }
-.resultText2_5_1 {
+.resultText2_5_1-4 {
   font-size: 7.9vw;
   margin-top: -2%;
   letter-spacing:-0.08em;

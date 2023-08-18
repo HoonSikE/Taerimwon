@@ -120,14 +120,14 @@ const router = createRouter({
       name: 'about',
       component: AboutView
     },
-    {
-      path: "/:catchAll(.*)",
-      redirect: "/404",
-    },
-    {
-      path: "/404",
-      redirect: '/engrave/engraveCreate/engraveDetail?type=일반&selectedType=일반&showRouterView=true',
-    },
+    // {
+    //   path: "/:catchAll(.*)",
+    //   redirect: "/404",
+    // },
+    // {
+    //   path: "/404",
+    //   redirect: '/engrave/engraveCreate/engraveDetail?type=일반&selectedType=일반&showRouterView=true',
+    // },
   ]
 })
 

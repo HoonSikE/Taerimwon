@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div class="title">
-      각인 생성하기
+      각인 생성하기 17:47
     </div>
     <div class="title2">
       ● 각인 종류

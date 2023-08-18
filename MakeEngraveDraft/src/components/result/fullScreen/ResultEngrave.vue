@@ -64,10 +64,16 @@
               <span class="resultText2-engrave" v-if="name1.length === 2 || name1.length === 3">
                 {{encodedName1}}
               </span>
+              <span class="resultText2-engrave-4" v-if="name1.length === 4">
+                {{encodedName1}}
+              </span>
             </span>
             <!-- 아래 글자 1 -->
             <span class="" v-if="selectedType === '형제'">
               <span class="resultText2_1-engrave" v-if="name1.length === 2 || name1.length === 3">
+                {{encodedName1}}
+              </span>
+              <span class="resultText2_1-engrave-4" v-if="name1.length === 4">
                 {{encodedName1}}
               </span>
             </span>
@@ -76,10 +82,16 @@
               <span class="resultText2_2-engrave" v-if="name1.length === 2 || name1.length === 3">
                 {{encodedName1}}
               </span>
+              <span class="resultText2_2-engrave-4" v-if="name1.length === 4">
+                {{encodedName1}}
+              </span>
             </span>
             <!-- 위 아래 글자 -->
             <span class="" v-if="selectedType === '묘법'">
               <span class="resultText2_3-engrave" v-if="name1.length === 2 || name1.length === 3">
+                {{encodedName1}}
+              </span>
+              <span class="resultText2_3-engrave-4" v-if="name1.length === 4">
                 {{encodedName1}}
               </span>
             </span>
@@ -88,12 +100,18 @@
               <span class="resultText2_4_1-engrave" v-if="name1.length === 2 || name1.length === 3">
                 {{encodedName1}}
               </span>
+              <span class="resultText2_4_1-engrave-4" v-if="name1.length === 4">
+                {{encodedName1}}
+              </span>
               <span class="resultText2_4_2-engrave">{{name2}}</span>
             </span>
             <!-- 위 글자 2-->
             <span class="resultText2_5-engrave" v-if="selectedType === '직분' || selectedType === '법명'">
               <span class="resultText2_5_2-engrave">{{name2}}</span>
               <span class="resultText2_5_1-engrave" v-if="name1.length === 2 || name1.length === 3">
+                {{encodedName1}}
+              </span>
+              <span class="resultText2_5_1-engrave-4" v-if="name1.length === 4">
                 {{encodedName1}}
               </span>
             </span>
@@ -288,6 +306,22 @@ export default {
   width: 24vw;
   /* background-color: rgba(145, 108, 108, 0.662); */
 }
+.resultText2-engrave-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: black;
+  font-family: "궁서체";
+  font-weight: 900;
+  font-size: 18.4vw;
+  margin-top: 23%;
+  letter-spacing:0.2em;
+
+  height: auto;
+  width: 24vw;
+  /* background-color: rgba(145, 108, 108, 0.662); */
+}
 
 /* 형제 */
 .resultText2_1-engrave {
@@ -302,6 +336,23 @@ export default {
   font-size: 18.4vw;
   margin-top: 6%;
   letter-spacing:0.26em;
+
+  height: 100%;
+  width: 33.3333%;
+  /* background-color: rgba(70, 79, 10, 0.475); */
+}
+.resultText2_1-engrave-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: black;
+  font-family: "궁서체";
+  font-weight: 900;
+
+  font-size: 16.4vw;
+  margin-top: 4%;
+  letter-spacing:-0.02em;
 
   height: 100%;
   width: 33.3333%;
@@ -325,6 +376,22 @@ export default {
   width: 33.3333%;
   /* background-color: rgba(70, 79, 10, 0.394); */
 }
+.resultText2_2-engrave-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: black;
+  font-family: "궁서체";
+  font-weight: 900;
+
+  font-size: 18.4vw;
+  margin-top: 13%;
+  letter-spacing:0.06em;
+
+  height: 100%;
+  width: 33.3333%;
+}
 
 /* 묘법 */
 .resultText2_3-engrave {
@@ -339,6 +406,23 @@ export default {
   font-size: 18.4vw;
   margin-top: 9%;
   letter-spacing:0.22em;
+
+  height: 100%;
+  width: 33.3333%;
+  /* background-color: rgba(70, 79, 10, 0.438); */
+}
+.resultText2_3-engrave-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: black;
+  font-family: "궁서체";
+  font-weight: 900;
+
+  font-size: 18.4vw;
+  margin-top: 7%;
+  letter-spacing:-0.08em;
 
   height: 100%;
   width: 33.3333%;
@@ -365,6 +449,15 @@ export default {
   font-size: 18.4vw;
   margin-top: 28%;
   letter-spacing:0.28em;
+
+  font-weight: 900;
+  /* background-color: rgb(70, 79, 10); */
+}
+.resultText2_4_1-engrave-4 {
+  font-size: 18.4vw;
+  margin-top: 28%;
+  margin-bottom: 2%;
+  letter-spacing:-0.04em;
 
   font-weight: 900;
   /* background-color: rgb(70, 79, 10); */
@@ -404,6 +497,14 @@ export default {
   font-weight: 900;
   /* background-color: rgb(70, 79, 10); */
 }
+.resultText2_5_1-engrave-4 {
+  font-size: 18.4vw;
+  margin-top: -2%;
+  letter-spacing:-0.04em;
+
+  font-weight: 900;
+  /* background-color: rgb(70, 79, 10); */
+}
 /* 이름2 */
 .resultText2_5_2-engrave {
   font-size: 10.5vw;
@@ -413,96 +514,5 @@ export default {
   font-weight: 900;
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
-}
-
-/* 위패 */
-/* 일반 */
-.resultText3_1-engrave {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: black;
-  font-family: "궁서체";
-  font-weight: 900;
-
-  font-size: 8vw;
-  margin-top: 27%;
-  letter-spacing:0.9em;
-
-  height: auto;
-  width: 20vw;
-
-  background-color: rgba(251, 0, 0, 0.384);
-}
-/* 위 글자 (직분)*/
-.resultText3_2-engrave {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: black;
-  font-family: "궁서체";
-  font-weight: 900;
-
-  margin-top: 19%;
-
-  height: auto;
-  width: 20vw;
-  background-color: rgba(221, 255, 0, 0.443);
-}
-/* 이름1 */
-.resultText3_2_1-engrave {
-  font-size: 7.2vw;
-  margin-top: 5%;
-  letter-spacing:0.6em;
-
-  font-weight: 900;
-  background-color: rgba(8, 218, 127, 0.473);
-}
-/* 이름2 */
-.resultText3_2_2-engrave {
-  font-size: 4.8vw;
-  margin-top: 4%;
-  letter-spacing:-0.05em;
-
-  font-weight: 900;
-  writing-mode: horizontal-tb;
-  background-color: rgba(246, 71, 2, 0.414);
-}
-/* 아래 글자(세례명) */
-.resultText3_3-engrave {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: black;
-  font-family: "궁서체";
-  font-weight: 900;
-
-  margin-top: 19%;
-
-  height: auto;
-  width: 20vw;
-  background-color: rgb(221, 255, 0);
-}
-/* 이름1 */
-.resultText3_3_1-engrave {
-  font-size: 7.6vw;
-  margin-top: 8%;
-  letter-spacing:0.5em;
-
-  font-weight: 900;
-  background-color: rgb(70, 79, 10);
-}
-/* 이름2 */
-.resultText3_3_2-engrave {
-  font-size: 5.2vw;
-  margin-top: -5%;
-  letter-spacing:-0.05em;
-
-  font-weight: 900;
-  writing-mode: horizontal-tb;
-  background-color: rgb(246, 71, 2);
 }
 </style>
