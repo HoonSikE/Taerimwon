@@ -8,26 +8,10 @@
       <!-- 각인 -->
       <div class="image-text-container">
         <div class="title2">● 각인 예시 
-          <!-- 본관에 따른 데이터 전송값 변경 -->
-          <span v-if="name0 !== '없음'">
-            <router-link :to="'/engrave/resultEngrave?' + 'type=' + type 
-                        + '&name0=' + name0 + '&name1=' + name1 + '&name2='+ name2 
-                        + '&date1=' + date1 + '&date1Type=' + date1Type 
-                        + '&date2=' + date2 + '&date2Type=' + date2Type
-                        + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title7">&nbsp;&nbsp;&nbsp;(🔎 크게보기)</router-link>
-          </span>
-          <span v-else>
-            <router-link :to="'/engrave/resultEngrave?' + 'type=' + type 
-                        + '&name0=' + '없음' + '&name1=' + name1 + '&name2='+ name2 
-                        + '&date1=' + date1 + '&date1Type=' + date1Type 
-                        + '&date2=' + date2 + '&date2Type=' + date2Type
-                        + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title7">&nbsp;&nbsp;&nbsp;(🔎 크게보기)</router-link>
-          </span>
           <div class="title6">&nbsp;&nbsp;- {{type}} 
             <span v-if="type !== selectedType"> [{{selectedType}}] </span>
           </div>
         </div>
-
         <div class="image-text-container1_1">
           <div class="image-container1">
             <div v-if="type === '일반' && selectedType === '일반'">
@@ -69,10 +53,16 @@
               <span class="resultText2" v-if="name1.length === 2 || name1.length === 3">
                 {{encodedName1}}
               </span>
+              <span class="resultText2-4" v-if="name1.length === 4">
+                {{encodedName1}}
+              </span>
             </span>
             <!-- 아래 글자 1 -->
             <span class="" v-if="selectedType === '형제'">
               <span class="resultText2_1" v-if="name1.length === 2 || name1.length === 3">
+                {{encodedName1}}
+              </span>
+              <span class="resultText2_1-4" v-if="name1.length === 4">
                 {{encodedName1}}
               </span>
             </span>
@@ -81,10 +71,16 @@
               <span class="resultText2_2" v-if="name1.length === 2 || name1.length === 3">
                 {{encodedName1}}
               </span>
+              <span class="resultText2_2-4" v-if="name1.length === 4">
+                {{encodedName1}}
+              </span>
             </span>
             <!-- 위 아래 글자 -->
             <span class="" v-if="selectedType === '묘법'">
               <span class="resultText2_3" v-if="name1.length === 2 || name1.length === 3">
+                {{encodedName1}}
+              </span>
+              <span class="resultText2_3-4" v-if="name1.length === 4">
                 {{encodedName1}}
               </span>
             </span>
@@ -93,12 +89,18 @@
               <span class="resultText2_4_1" v-if="name1.length === 2 || name1.length === 3">
                 {{encodedName1}}
               </span>
+              <span class="resultText2_4_1-4" v-if="name1.length === 4">
+                {{encodedName1}}
+              </span>
               <span class="resultText2_4_2">{{name2}}</span>
             </span>
             <!-- 위 글자 2-->
             <span class="resultText2_5" v-if="selectedType === '직분' || selectedType === '법명'">
               <span class="resultText2_5_2">{{name2}}</span>
               <span class="resultText2_5_1" v-if="name1.length === 2 || name1.length === 3">
+                {{encodedName1}}
+              </span>
+              <span class="resultText2_5_1" v-if="name1.length === 4">
                 {{encodedName1}}
               </span>
             </span>
@@ -114,16 +116,25 @@
             </span>
           </div>
         </div>
+        <!-- 본관에 따른 데이터 전송값 변경 -->
+          <span v-if="name0 !== '없음'">
+            <router-link :to="'/engrave/resultEngrave?' + 'type=' + type 
+                        + '&name0=' + name0 + '&name1=' + name1 + '&name2='+ name2 
+                        + '&date1=' + date1 + '&date1Type=' + date1Type 
+                        + '&date2=' + date2 + '&date2Type=' + date2Type
+                        + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title7">&nbsp;&nbsp;&nbsp;🔎 크게보기</router-link>
+          </span>
+          <span v-else>
+            <router-link :to="'/engrave/resultEngrave?' + 'type=' + type 
+                        + '&name0=' + '없음' + '&name1=' + name1 + '&name2='+ name2 
+                        + '&date1=' + date1 + '&date1Type=' + date1Type 
+                        + '&date2=' + date2 + '&date2Type=' + date2Type
+                        + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title7">&nbsp;&nbsp;&nbsp;🔎 크게보기</router-link>
+          </span>
       </div>
       <!-- 위패 -->
       <div class="image-text-container2" v-if="selectedType2 !== '없음'">
         <div class="title2">● 위패 예시
-          <!-- 본관에 따른 데이터 전송값 변경 -->
-          <router-link :to="'/engrave/resultTablet?' + 'type=' + type 
-                      + '&name0=' + name0 + '&name1=' + name1 + '&name2='+ name2 
-                      + '&date1=' + date1 + '&date1Type=' + date1Type 
-                      + '&date2=' + date2 + '&date2Type=' + date2Type
-                      + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title7">&nbsp;&nbsp;&nbsp;(🔎 크게보기)</router-link>
           <div class="title6">&nbsp;&nbsp;- {{type}} 
             <span v-if="name0 !== '없음'"> [본관] </span>
           </div>
@@ -191,11 +202,17 @@
                   <span class="resultText3_1" v-if="name1.length === 2 || name1.length === 3">
                     {{encodedName1}}
                   </span>
+                  <span class="resultText3_1-4" v-if="name1.length === 4">
+                    {{encodedName1}}
+                  </span>
                 </span>
                 <!-- 위 글자 -->
                 <span class="resultText3_2" v-if="type === '기독교'">
                   <span class="resultText3_2_2">{{name2}}</span>
                   <span class="resultText3_2_1" v-if="name1.length === 2 || name1.length === 3">
+                    {{encodedName1}}
+                  </span>
+                  <span class="resultText3_2_1-4" v-if="name1.length === 4">
                     {{encodedName1}}
                   </span>
                 </span>
@@ -204,12 +221,21 @@
                   <span class="resultText3_3_1" v-if="name1.length === 2 || name1.length === 3">
                     {{encodedName1}}
                   </span>
+                  <span class="resultText3_3_1-4" v-if="name1.length === 4">
+                    {{encodedName1}}
+                  </span>
                   <span class="resultText3_3_2">{{name2}}</span>
                 </span>
               </div>
             </div>
           </div>
         </div>
+        <!-- 본관에 따른 데이터 전송값 변경 -->
+          <router-link :to="'/engrave/resultTablet?' + 'type=' + type 
+                      + '&name0=' + name0 + '&name1=' + name1 + '&name2='+ name2 
+                      + '&date1=' + date1 + '&date1Type=' + date1Type 
+                      + '&date2=' + date2 + '&date2Type=' + date2Type
+                      + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title7">&nbsp;&nbsp;&nbsp;🔎 크게보기</router-link>
       </div>
       <br>
       <!-- <div>
@@ -439,6 +465,23 @@ export default {
   /* background-color: rgba(145, 108, 108, 0.662); */
 }
 
+.resultText2-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: black;
+  font-family: "궁서체";
+  font-weight: 900;
+  font-size: 7.9vw;
+  margin-top: 16%;
+  letter-spacing:0.07em;
+
+  height: auto;
+  width: 10vw;
+  /* background-color: rgba(145, 108, 108, 0.662); */
+}
+
 /* 형제 */
 .resultText2_1 {
   display: flex;
@@ -452,6 +495,23 @@ export default {
   font-size: 8.4vw;
   margin-top: 4%;
   letter-spacing:0.11em;
+
+  height: 100%;
+  width: 33.3333%;
+  /* background-color: rgba(70, 79, 10, 0.475); */
+}
+.resultText2_1-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: black;
+  font-family: "궁서체";
+  font-weight: 900;
+
+  font-size: 7.2vw;
+  margin-top: 3%;
+  letter-spacing:-0.03em;
 
   height: 100%;
   width: 33.3333%;
@@ -476,6 +536,24 @@ export default {
   /* background-color: rgb(70, 79, 10); */
 }
 
+.resultText2_2-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: black;
+  font-family: "궁서체";
+  font-weight: 900;
+
+  font-size: 7.9vw;
+  margin-top: 12%;
+  letter-spacing:0.0em;
+
+  height: 100%;
+  width: 33.3333%;
+  /* background-color: rgb(70, 79, 10); */
+}
+
 /* 묘법 */
 .resultText2_3 {
   display: flex;
@@ -489,6 +567,24 @@ export default {
   font-size: 8.4vw;
   margin-top: 7%;
   letter-spacing:0.05em;
+
+  height: 100%;
+  width: 33.3333%;
+  /* background-color: rgb(70, 79, 10); */
+}
+
+.resultText2_3-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: black;
+  font-family: "궁서체";
+  font-weight: 900;
+
+  font-size: 7.2vw;
+  margin-top: 6.5%;
+  letter-spacing:-0.05em;
 
   height: 100%;
   width: 33.3333%;
@@ -515,6 +611,14 @@ export default {
   font-size: 8.4vw;
   margin-top: 26%;
   letter-spacing:0.12em;
+
+  font-weight: 900;
+  /* background-color: rgb(70, 79, 10); */
+}
+.resultText2_4_1-4 {
+  font-size: 7.9vw;
+  margin-top: 26%;
+  letter-spacing:-0.08em;
 
   font-weight: 900;
   /* background-color: rgb(70, 79, 10); */
@@ -554,6 +658,14 @@ export default {
   font-weight: 900;
   /* background-color: rgb(70, 79, 10); */
 }
+.resultText2_5_1 {
+  font-size: 7.9vw;
+  margin-top: -2%;
+  letter-spacing:-0.08em;
+
+  font-weight: 900;
+  /* background-color: rgb(70, 79, 10); */
+}
 /* 이름2 */
 .resultText2_5_2 {
   font-size: 4.5vw;
@@ -585,6 +697,25 @@ export default {
 
   /* background-color: rgba(251, 0, 0, 0.384); */
 }
+
+.resultText3_1-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: black;
+  font-family: "궁서체";
+  font-weight: 900;
+
+  font-size: 8vw;
+  margin-top: 20%;
+  letter-spacing:0.4em;
+
+  height: auto;
+  width: 20vw;
+
+  /* background-color: rgba(251, 0, 0, 0.384); */
+}
 /* 위 글자 (직분)*/
 .resultText3_2 {
   display: flex;
@@ -606,6 +737,15 @@ export default {
   font-size: 7.2vw;
   margin-top: 5%;
   letter-spacing:0.6em;
+
+  font-weight: 900;
+  /* background-color: rgba(8, 218, 127, 0.473); */
+}
+.resultText3_2_1-4 {
+  font-size: 7.2vw;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  letter-spacing:0.3em;
 
   font-weight: 900;
   /* background-color: rgba(8, 218, 127, 0.473); */
@@ -641,6 +781,14 @@ export default {
   font-size: 7.6vw;
   margin-top: 8%;
   letter-spacing:0.5em;
+
+  font-weight: 900;
+  /* background-color: rgb(70, 79, 10); */
+}
+.resultText3_3_1-4 {
+  font-size: 7.6vw;
+  margin-top: 5%;
+  letter-spacing:0.2em;
 
   font-weight: 900;
   /* background-color: rgb(70, 79, 10); */
