@@ -161,17 +161,17 @@
     </div>
     <hr>
     <div v-if="showRouterView">
-      <div v-if="showName1Warning" class="warning_text">
-        - 성함을 2~4글자로 입력해주세요.
-      </div>
-      <div v-else-if="showName1KoreanWarning" class="warning_text">
+      <div v-if="showName1KoreanWarning" class="warning_text">
         - 성함을 한국어로 올바르게 입력해주세요.
       </div>
-      <div v-else-if="showName2Warning && (selectedType === '직분' || selectedType === '법명' || selectedType === '세례명')" class="warning_text">
-        - {{selectedType}}을 2~3글자로 입력해주세요.
+      <div v-else-if="showName1Warning" class="warning_text">
+        - 성함을 2~4글자로 입력해주세요.
       </div>
       <div v-else-if="showName2KoreanWarning && (selectedType === '직분' || selectedType === '법명' || selectedType === '세례명')" class="warning_text">
         - {{selectedType}}을 한국어로 올바르게 입력해주세요.
+      </div>
+      <div v-else-if="showName2Warning && (selectedType === '직분' || selectedType === '법명' || selectedType === '세례명')" class="warning_text">
+        - {{selectedType}}을 2~3글자로 입력해주세요.
       </div>
       <div v-else>
         <div v-if="type !== 'SGI' && type !== '묘법'">

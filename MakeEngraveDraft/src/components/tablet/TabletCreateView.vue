@@ -116,20 +116,29 @@
       </span>
     </div>
 
-    <!-- 본관에 따른 데이터 전송값 변경 -->
-    <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
-      <router-link :to="'/engrave/result?' + 'type=' + type 
-                  + '&name0=' + encodedName0 + '&name1=' + name1 + '&name2='+ name2 
-                  + '&date1=' + date1 + '&date1Type=' + date1Type 
-                  + '&date2=' + date2 + '&date2Type=' + date2Type
-                  + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title4">👉 예시 보기 (각인/위패)</router-link>
+    
+    <div v-if="showName0KoreanWarning" class="warning_text">
+        - 본관을 한국어로 올바르게 입력해주세요.
+    </div>
+    <div v-else-if="showName0Warning" class="warning_text">
+        - 본관을 5~8글자로 입력해주세요.
     </div>
     <div v-else>
-      <router-link :to="'/engrave/result?' + 'type=' + type 
-                  + '&name0=' + '없음' + '&name1=' + name1 + '&name2='+ name2 
-                  + '&date1=' + date1 + '&date1Type=' + date1Type 
-                  + '&date2=' + date2 + '&date2Type=' + date2Type
-                  + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title4">👉 예시 보기 (각인/위패)</router-link>
+      <!-- 본관에 따른 데이터 전송값 변경 -->
+      <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
+        <router-link :to="'/engrave/result?' + 'type=' + type 
+                    + '&name0=' + encodedName0 + '&name1=' + name1 + '&name2='+ name2 
+                    + '&date1=' + date1 + '&date1Type=' + date1Type 
+                    + '&date2=' + date2 + '&date2Type=' + date2Type
+                    + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title4">👉 예시 보기 (각인/위패)</router-link>
+      </div>
+      <div v-else>
+        <router-link :to="'/engrave/result?' + 'type=' + type 
+                    + '&name0=' + '없음' + '&name1=' + name1 + '&name2='+ name2 
+                    + '&date1=' + date1 + '&date1Type=' + date1Type 
+                    + '&date2=' + date2 + '&date2Type=' + date2Type
+                    + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title4">👉 예시 보기 (각인/위패)</router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -176,6 +185,19 @@ export default {
       else if(this.selectedType2 === "천주교(본관)")
         return '희빈홍씨길동';
       return '본관';
+    },
+    showName0Warning() {
+      const name0Length = this.name0.trim().length;
+      return (name0Length < 5 || name0Length > 8) && name0Length !== 0;
+    },
+    showName0KoreanWarning() {
+      // 한글 문자에 대한 정규식
+      const koreanRegex = /[가-힣]/;
+
+      if(this.name0.length === 0)
+        return false;
+
+      return !koreanRegex.test(this.name0);
     },
   },
   // 매개변수의 변경 사항을 감지
