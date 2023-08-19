@@ -28,19 +28,19 @@
         <div v-if="type === '기독교'">
           <button
             class="link-item"
-            :class="{ selected: selectedType === '기독교' }"
-            @click="selectedType = '기독교', showRouterView = true"
-          >
-            <img src="../../../assets/images/engrave/example/기독교(직분x).png" width="80" height="130" alt="기독교(직분x)">
-            <span class="selectText">[기본]</span>
-          </button>
-          <button
-            class="link-item"
             :class="{ selected: selectedType === '직분' }"
             @click="selectedType = '직분', showRouterView = true"
           >
             <img src="../../../assets/images/engrave/example/기독교.png" width="80" height="130" alt="기독교(직분)">
-            <span class="selectText">[직분]</span>
+            <span class="selectText">[기본]</span>
+          </button>
+          <button
+            class="link-item"
+            :class="{ selected: selectedType === '기독교' }"
+            @click="selectedType = '기독교', showRouterView = true"
+          >
+            <img src="../../../assets/images/engrave/example/기독교(직분x).png" width="80" height="130" alt="기독교(직분x)">
+            <span class="selectText">[직분X]</span>
           </button>
         </div>
         <!-- 불교 -->
@@ -66,19 +66,19 @@
         <div v-if="type === '천주교'">
           <button
             class="link-item"
-            :class="{ selected: selectedType === '천주교' }"
-            @click="selectedType = '천주교', showRouterView = true"
-          >
-            <img src="../../../assets/images/engrave/example/천주교(세례명x).png" width="80" height="130" alt="천주교)">
-            <span class="selectText">[기본]</span>
-          </button>
-          <button
-            class="link-item"
             :class="{ selected: selectedType === '세례명' }"
             @click="selectedType = '세례명', showRouterView = true"
           >
             <img src="../../../assets/images/engrave/example/천주교.png" width="80" height="130" alt="천주교(세례명)">
-            <span class="selectText">[세례명]</span>
+            <span class="selectText">[기본]</span>
+          </button>
+          <button
+            class="link-item"
+            :class="{ selected: selectedType === '천주교' }"
+            @click="selectedType = '천주교', showRouterView = true"
+          >
+            <img src="../../../assets/images/engrave/example/천주교(세례명x).png" width="80" height="130" alt="천주교)">
+            <span class="selectText">[세례명X]</span>
           </button>
         </div>
         <!-- SGI -->
@@ -170,8 +170,11 @@
       <div v-else-if="showName2KoreanWarning && (selectedType === '직분' || selectedType === '법명' || selectedType === '세례명')" class="warning_text">
         - {{selectedType}}을 한국어로 올바르게 입력해주세요.
       </div>
-      <div v-else-if="showName2Warning && (selectedType === '직분' || selectedType === '법명' || selectedType === '세례명')" class="warning_text">
-        - {{selectedType}}을 2~3글자로 입력해주세요.
+      <div v-else-if="showName2Warning && (selectedType === '직분' || selectedType === '법명')" class="warning_text">
+        - {{selectedType}}을 2~4글자로 입력해주세요.
+      </div>
+      <div v-else-if="showName3Warning && (selectedType === '세례명')" class="warning_text">
+        - {{selectedType}}을 2~6글자로 입력해주세요.
       </div>
       <div v-else>
         <div v-if="type !== 'SGI' && type !== '묘법'">
@@ -249,25 +252,33 @@ export default {
     },
     showName1KoreanWarning() {
       // 한글 문자에 대한 정규식
-      const koreanRegex = /[가-힣]/;
+      const koreanRegex= /^[가-힣]*$/;
+      const koreanConsonantVowelRegex = /^[가-힣&&[^ㅏ-ㅣㅑ-ㅣㅓ-ㅣㅕ-ㅣㅗ-ㅣㅛ-ㅣㅜ-ㅣㅠ-ㅣㅡ-ㅣ]]*$/;
 
       if(this.name1.length === 0)
         return false;
 
-      return !koreanRegex.test(this.name1);
+      // return !koreanRegex.test(this.name1);
+      return !(koreanRegex.test(this.name1) && !koreanConsonantVowelRegex.test(this.name1));
     },
     showName2Warning() {
       const name2Length = this.name2.trim().length;
-      return (name2Length < 2 || name2Length > 3) && name2Length !== 0;
+      return (name2Length < 2 || name2Length > 4) && name2Length !== 0;
+    },
+    showName3Warning() {
+      const name2Length = this.name2.trim().length;
+      return (name2Length < 2 || name2Length > 6) && name2Length !== 0;
     },
     showName2KoreanWarning() {
       // 한글 문자에 대한 정규식
-      const koreanRegex = /[가-힣]/;
+      const koreanRegex= /^[가-힣]*$/;
+      const koreanConsonantVowelRegex = /^[가-힣&&[^ㅏ-ㅣㅑ-ㅣㅓ-ㅣㅕ-ㅣㅗ-ㅣㅛ-ㅣㅜ-ㅣㅠ-ㅣㅡ-ㅣ]]*$/;
 
       if(this.name2.length === 0)
         return false;
 
-      return !koreanRegex.test(this.name2);
+      // return !koreanRegex.test(this.name2);
+      return !(koreanRegex.test(this.name2) && !koreanConsonantVowelRegex.test(this.name2));
     },
   },
   methods: {

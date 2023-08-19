@@ -192,12 +192,14 @@ export default {
     },
     showName0KoreanWarning() {
       // 한글 문자에 대한 정규식
-      const koreanRegex = /[가-힣]/;
+      const koreanRegex= /^[가-힣]*$/;
+      const koreanConsonantVowelRegex = /^[가-힣&&[^ㅏ-ㅣㅑ-ㅣㅓ-ㅣㅕ-ㅣㅗ-ㅣㅛ-ㅣㅜ-ㅣㅠ-ㅣㅡ-ㅣ]]*$/;
 
       if(this.name0.length === 0)
         return false;
 
-      return !koreanRegex.test(this.name0);
+      // return !koreanRegex.test(this.name0);
+      return !(koreanRegex.test(this.name0) && !koreanConsonantVowelRegex.test(this.name0));
     },
   },
   // 매개변수의 변경 사항을 감지

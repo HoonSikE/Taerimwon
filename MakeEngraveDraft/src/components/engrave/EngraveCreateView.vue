@@ -1,8 +1,9 @@
 <template>
   <div class="">
     <div class="title">
-      각인 생성하기 17:47
+      각인 생성하기 
     </div>
+    2023-08-19 23:38
     <div class="title2">
       ● 각인 종류
     </div>
@@ -16,7 +17,7 @@
             <img src="../../assets/images/engrave/example/일반.png" width="80" height="130" alt="일반">
             <span class="selectText">[일반]</span>
           </RouterLink>
-          <RouterLink to="/engrave/engraveCreate/engraveDetail?type=기독교&selectedType=기독교&showRouterView=true" class="link-item"
+          <RouterLink to="/engrave/engraveCreate/engraveDetail?type=기독교&selectedType=직분&showRouterView=true" class="link-item"
               :class="{ selected: selectedType === '기독교' }"
               @click="selectedType = '기독교'">
             <img src="../../assets/images/engrave/example/기독교.png" width="80" height="130" alt="기독교">
@@ -28,7 +29,7 @@
             <img src="../../assets/images/engrave/example/불교.png" width="80" height="130" alt="불교">
             <span class="selectText">[불교]</span>
           </RouterLink>
-          <RouterLink to="/engrave/engraveCreate/engraveDetail?type=천주교&selectedType=천주교&showRouterView=true" class="link-item"
+          <RouterLink to="/engrave/engraveCreate/engraveDetail?type=천주교&selectedType=세례명&showRouterView=true" class="link-item"
               :class="{ selected: selectedType === '천주교' }"
               @click="selectedType = '천주교'">
             <img src="../../assets/images/engrave/example/천주교.png" width="80" height="130" alt="천주교">

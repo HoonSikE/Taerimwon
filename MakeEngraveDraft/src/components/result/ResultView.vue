@@ -92,15 +92,32 @@
               <span class="resultText2_4_1-4" v-if="name1.length === 4">
                 {{encodedName1}}
               </span>
-              <span class="resultText2_4_2">{{name2}}</span>
+              <span class="resultText2_4_2" v-if="name2.length === 2 || name2.length === 3">
+                {{name2}}
+              </span>
+              <span class="resultText2_4_2-4" v-if="name2.length === 4">
+                {{name2}}
+              </span>
+              <span class="resultText2_4_2-5" v-if="name2.length === 5">
+                {{name2}}
+              </span>
+              <span class="resultText2_4_2-6" v-if="name2.length === 6">
+                {{name2}}
+              </span>
             </span>
             <!-- 위 글자 2-->
             <span class="resultText2_5" v-if="selectedType === '직분' || selectedType === '법명'">
-              <span class="resultText2_5_2">{{name2}}</span>
+              <span class="resultText2_5_2" v-if="name2.length === 2 || name2.length === 3">
+                {{name2}}
+              </span>
+              <span class="resultText2_5_2-4" v-if="name2.length === 4">
+                {{name2}}
+              </span>
+
               <span class="resultText2_5_1" v-if="name1.length === 2 || name1.length === 3">
                 {{encodedName1}}
               </span>
-              <span class="resultText2_5_1" v-if="name1.length === 4">
+              <span class="resultText2_5_1-4" v-if="name1.length === 4">
                 {{encodedName1}}
               </span>
             </span>
@@ -208,7 +225,12 @@
                 </span>
                 <!-- 위 글자 -->
                 <span class="resultText3_2" v-if="type === '기독교'">
-                  <span class="resultText3_2_2">{{name2}}</span>
+                  <span class="resultText3_2_2" v-if="name2.length === 2 || name2.length === 3">
+                    {{name2}}
+                  </span>
+                  <span class="resultText3_2_2-4" v-if="name2.length === 4">
+                    {{name2}}
+                  </span>
                   <span class="resultText3_2_1" v-if="name1.length === 2 || name1.length === 3">
                     {{encodedName1}}
                   </span>
@@ -224,7 +246,18 @@
                   <span class="resultText3_3_1-4" v-if="name1.length === 4">
                     {{encodedName1}}
                   </span>
-                  <span class="resultText3_3_2">{{name2}}</span>
+                  <span class="resultText3_3_2" v-if="name2.length === 2 || name2.length === 3">
+                    {{name2}}
+                  </span>
+                  <span class="resultText3_3_2-4" v-if="name2.length === 4">
+                    {{name2}}
+                  </span>
+                  <span class="resultText3_3_2-5" v-if="name2.length === 5">
+                    {{name2}}
+                  </span>
+                  <span class="resultText3_3_2-6" v-if="name2.length === 6">
+                    {{name2}}
+                  </span>
                 </span>
               </div>
             </div>
@@ -633,7 +666,34 @@ export default {
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
-/* 위 글자 */
+.resultText2_4_2-4 {
+  font-size: 4.2vw;
+  margin-top: -1%;
+  letter-spacing:-0.22em;
+
+  font-weight: 900;
+  writing-mode: horizontal-tb;
+  /* background-color: rgb(246, 71, 2); */
+}
+.resultText2_4_2-5 {
+  font-size: 3.8vw;
+  margin-top: -1%;
+  letter-spacing:-0.25em;
+
+  font-weight: 900;
+  writing-mode: horizontal-tb;
+  /* background-color: rgb(246, 71, 2); */
+}
+.resultText2_4_2-6 {
+  font-size: 3.6vw;
+  margin-top: -1%;
+  letter-spacing:-0.35em;
+
+  font-weight: 900;
+  writing-mode: horizontal-tb;
+  /* background-color: rgb(246, 71, 2); */
+}
+/* 위 글자 직분*/
 .resultText2_5 {
   display: flex;
   justify-content: center;
@@ -671,6 +731,16 @@ export default {
   font-size: 4.5vw;
   margin-top: 18%;
   letter-spacing:-0.14em;
+
+  font-weight: 900;
+  writing-mode: horizontal-tb;
+  /* background-color: rgb(246, 71, 2); */
+}
+/* 이름2 */
+.resultText2_5_2-4 {
+  font-size: 4.2vw;
+  margin-top: 20%;
+  letter-spacing:-0.18em;
 
   font-weight: 900;
   writing-mode: horizontal-tb;
@@ -760,6 +830,15 @@ export default {
   writing-mode: horizontal-tb;
   /* background-color: rgba(246, 71, 2, 0.414); */
 }
+.resultText3_2_2-4 {
+  font-size: 4.8vw;
+  margin-top: 4%;
+  letter-spacing:-0.18em;
+
+  font-weight: 900;
+  writing-mode: horizontal-tb;
+  /* background-color: rgba(246, 71, 2, 0.414); */
+}
 /* 아래 글자(세례명) */
 .resultText3_3 {
   display: flex;
@@ -798,6 +877,33 @@ export default {
   font-size: 5.2vw;
   margin-top: -5%;
   letter-spacing:-0.05em;
+
+  font-weight: 900;
+  writing-mode: horizontal-tb;
+  /* background-color: rgb(246, 71, 2); */
+}
+.resultText3_3_2-4 {
+  font-size: 5.2vw;
+  margin-top: -5%;
+  letter-spacing:-0.22em;
+
+  font-weight: 900;
+  writing-mode: horizontal-tb;
+  /* background-color: rgb(246, 71, 2); */
+}
+.resultText3_3_2-5 {
+  font-size: 4.5vw;
+  margin-top: -5%;
+  letter-spacing:-0.27em;
+
+  font-weight: 900;
+  writing-mode: horizontal-tb;
+  /* background-color: rgb(246, 71, 2); */
+}
+.resultText3_3_2-6 {
+  font-size: 4.0vw;
+  margin-top: -5%;
+  letter-spacing:-0.32em;
 
   font-weight: 900;
   writing-mode: horizontal-tb;
@@ -915,7 +1021,6 @@ export default {
 .title6 {
   font-size: 15px;
   font-family: "BMEULJIROTTF";
-  cursor: pointer;
 }
 
 .title7 {

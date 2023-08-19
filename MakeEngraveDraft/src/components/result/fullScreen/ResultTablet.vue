@@ -108,7 +108,12 @@
                   <span class="resultText3_3_1-tablet-4" v-if="name1.length === 4">
                     {{encodedName1}}
                   </span>
-                  <span class="resultText3_3_2-tablet">{{name2}}</span>
+                  <span class="resultText3_3_2-tablet" v-if="name2.length === 2 || name2.length === 3 || name2.length === 4 || name2.length === 5">
+                    {{name2}}
+                  </span>
+                  <span class="resultText3_3_2-tablet-6" v-if="name2.length === 6">
+                    {{name2}}
+                  </span>
                 </span>
               </div>
             </div>
@@ -326,6 +331,15 @@ export default {
   font-size: 11.2vw;
   margin-top: -5%;
   letter-spacing:-0.05em;
+
+  font-weight: 900;
+  writing-mode: horizontal-tb;
+  /* background-color: rgb(246, 71, 2); */
+}
+.resultText3_3_2-tablet-6 {
+  font-size: 11.2vw;
+  margin-top: -5%;
+  letter-spacing:-0.25em;
 
   font-weight: 900;
   writing-mode: horizontal-tb;

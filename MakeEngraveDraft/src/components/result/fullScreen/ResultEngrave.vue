@@ -103,11 +103,27 @@
               <span class="resultText2_4_1-engrave-4" v-if="name1.length === 4">
                 {{encodedName1}}
               </span>
-              <span class="resultText2_4_2-engrave">{{name2}}</span>
+              <span class="resultText2_4_2-engrave" v-if="name2.length === 2 || name2.length === 3">
+                {{name2}}
+              </span>
+              <span class="resultText2_4_2-engrave-4" v-if="name2.length === 4">
+                {{name2}}
+              </span>
+              <span class="resultText2_4_2-engrave-5" v-if="name2.length === 5">
+                {{name2}}
+              </span>
+              <span class="resultText2_4_2-engrave-6" v-if="name2.length === 6">
+                {{name2}}
+              </span>
             </span>
             <!-- 위 글자 2-->
             <span class="resultText2_5-engrave" v-if="selectedType === '직분' || selectedType === '법명'">
-              <span class="resultText2_5_2-engrave">{{name2}}</span>
+              <span class="resultText2_5_2-engrave" v-if="name2.length === 2 || name2.length === 3">
+                {{name2}}
+              </span>
+              <span class="resultText2_5_2-engrave-4" v-if="name2.length === 4">
+                {{name2}}
+              </span>
               <span class="resultText2_5_1-engrave" v-if="name1.length === 2 || name1.length === 3">
                 {{encodedName1}}
               </span>
@@ -472,6 +488,33 @@ export default {
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
+.resultText2_4_2-engrave-4 {
+  font-size: 10.5vw;
+  margin-top: -4%;
+  letter-spacing:-0.22em;
+
+  font-weight: 900;
+  writing-mode: horizontal-tb;
+  /* background-color: rgb(246, 71, 2); */
+}
+.resultText2_4_2-engrave-5 {
+  font-size: 9.5vw;
+  margin-top: -4%;
+  letter-spacing:-0.25em;
+
+  font-weight: 900;
+  writing-mode: horizontal-tb;
+  /* background-color: rgb(246, 71, 2); */
+}
+.resultText2_4_2-engrave-6 {
+  font-size: 8.8vw;
+  margin-top: -4%;
+  letter-spacing:-0.37em;
+
+  font-weight: 900;
+  writing-mode: horizontal-tb;
+  /* background-color: rgb(246, 71, 2); */
+}
 /* 위 글자 */
 .resultText2_5-engrave {
   display: flex;
@@ -510,6 +553,15 @@ export default {
   font-size: 10.5vw;
   margin-top: 25%;
   letter-spacing:-0.04em;
+
+  font-weight: 900;
+  writing-mode: horizontal-tb;
+  /* background-color: rgb(246, 71, 2); */
+}
+.resultText2_5_2-engrave-4 {
+  font-size: 10.5vw;
+  margin-top: 28%;
+  letter-spacing:-0.20em;
 
   font-weight: 900;
   writing-mode: horizontal-tb;
