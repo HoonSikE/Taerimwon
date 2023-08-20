@@ -705,6 +705,7 @@ export default {
 .resultText2_4_1-4 {
   font-size: 7.5vw;
   margin-top: 2vw;
+  /* padding-bottom: 0vw; */
   letter-spacing:0.5vw;
 
   /* background-color: rgb(70, 79, 10); */
@@ -737,7 +738,7 @@ export default {
 .resultText2_4_2-6 {
   font-size: 3.6vw;
   margin-top: -1vw;
-  letter-spacing:-1.4vw;
+  letter-spacing:-1.1vw;
 
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
