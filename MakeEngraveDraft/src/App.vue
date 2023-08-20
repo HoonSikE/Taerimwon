@@ -6,7 +6,7 @@
         <img alt="logo" class="logo" src="@/assets/images/logo.png" width="160" height="160" />
         </RouterLink>
       </div>
-      <div class="wrapper">
+      <div class="router-view-wrapper">
         <nav>
           <!-- <RouterLink to="/">Home</RouterLink> -->
           <!-- <RouterLink to="/engrave">Engrave</RouterLink> -->
@@ -48,6 +48,10 @@ export default {
 
 .text-align-center {
   text-align: center;
+}
+
+.router-view-wrapper {
+  margin-top: 1rem; /* 원하는 간격 크기 설정 */
 }
 
 footer {

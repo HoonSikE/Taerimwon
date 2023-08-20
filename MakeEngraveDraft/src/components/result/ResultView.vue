@@ -35,102 +35,102 @@
             <div v-if="type === '묘법'">
               <img src="../../assets/images/engrave/background/묘법(공).png" height="100%" alt="묘법">
             </div>
-          </div>
-          <div class="text-container">
-            <span class="resultText1">
-              <span class="resultText1_1">{{date1_1}}</span>
-              <span class="resultText1_2">•</span>
-              <span class="resultText1_1">{{date1_2}}</span>
-              <span class="resultText1_2">•</span>
-              <span class="resultText1_1">{{date1_3}}</span>
-              <span v-if="date1Type==='음력'" class="resultText1_3">陰</span>
-              <span v-if="date1Type==='양력'" class="resultText1_3">陽</span>
-            </span>
-            <!-- <div v-if="selectedType === '일반'"> -->
-            <!-- 그대로 -->
-            <span class="" v-if="selectedType === '일반' || selectedType === '기독교' || selectedType === '불교'
-                                      || selectedType === '천주교'">
-              <span class="resultText2" v-if="name1.length === 2 || name1.length === 3">
-                {{encodedName1}}
+            <div class="text-container">
+              <span class="resultText1">
+                <span class="resultText1_1">{{date1_1}}</span>
+                <span class="resultText1_2">•</span>
+                <span class="resultText1_1">{{date1_2}}</span>
+                <span class="resultText1_2">•</span>
+                <span class="resultText1_1">{{date1_3}}</span>
+                <span v-if="date1Type==='음력'" class="resultText1_3">陰</span>
+                <span v-if="date1Type==='양력'" class="resultText1_3">陽</span>
               </span>
-              <span class="resultText2-4" v-if="name1.length === 4">
-                {{encodedName1}}
+              <!-- <div v-if="selectedType === '일반'"> -->
+              <!-- 그대로 -->
+              <span class="" v-if="selectedType === '일반' || selectedType === '기독교' || selectedType === '불교'
+                                        || selectedType === '천주교'">
+                <span class="resultText2" v-if="name1.length === 2 || name1.length === 3">
+                  {{encodedName1}}
+                </span>
+                <span class="resultText2-4" v-if="name1.length === 4">
+                  {{encodedName1}}
+                </span>
               </span>
-            </span>
-            <!-- 아래 글자 1 -->
-            <span class="" v-if="selectedType === '형제'">
-              <span class="resultText2_1" v-if="name1.length === 2 || name1.length === 3">
-                {{encodedName1}}
+              <!-- 아래 글자 1 -->
+              <span class="" v-if="selectedType === '형제'">
+                <span class="resultText2_1" v-if="name1.length === 2 || name1.length === 3">
+                  {{encodedName1}}
+                </span>
+                <span class="resultText2_1-4" v-if="name1.length === 4">
+                  {{encodedName1}}
+                </span>
               </span>
-              <span class="resultText2_1-4" v-if="name1.length === 4">
-                {{encodedName1}}
+              <!-- 위 글자 1 -->
+              <span class="" v-if="selectedType === 'SGI'">
+                <span class="resultText2_2" v-if="name1.length === 2 || name1.length === 3">
+                  {{encodedName1}}
+                </span>
+                <span class="resultText2_2-4" v-if="name1.length === 4">
+                  {{encodedName1}}
+                </span>
               </span>
-            </span>
-            <!-- 위 글자 1 -->
-            <span class="" v-if="selectedType === 'SGI'">
-              <span class="resultText2_2" v-if="name1.length === 2 || name1.length === 3">
-                {{encodedName1}}
+              <!-- 위 아래 글자 -->
+              <span class="" v-if="selectedType === '묘법'">
+                <span class="resultText2_3" v-if="name1.length === 2 || name1.length === 3">
+                  {{encodedName1}}
+                </span>
+                <span class="resultText2_3-4" v-if="name1.length === 4">
+                  {{encodedName1}}
+                </span>
               </span>
-              <span class="resultText2_2-4" v-if="name1.length === 4">
-                {{encodedName1}}
+              <!-- 아래 글자 2 -->
+              <span class="resultText2_4" v-if="selectedType === '세례명'">
+                <span class="resultText2_4_1" v-if="name1.length === 2 || name1.length === 3">
+                  {{encodedName1}}
+                </span>
+                <span class="resultText2_4_1-4" v-if="name1.length === 4">
+                  {{encodedName1}}
+                </span>
+                <span class="resultText2_4_2" v-if="name2.length === 2 || name2.length === 3">
+                  {{name2}}
+                </span>
+                <span class="resultText2_4_2-4" v-if="name2.length === 4">
+                  {{name2}}
+                </span>
+                <span class="resultText2_4_2-5" v-if="name2.length === 5">
+                  {{name2}}
+                </span>
+                <span class="resultText2_4_2-6" v-if="name2.length === 6">
+                  {{name2}}
+                </span>
               </span>
-            </span>
-            <!-- 위 아래 글자 -->
-            <span class="" v-if="selectedType === '묘법'">
-              <span class="resultText2_3" v-if="name1.length === 2 || name1.length === 3">
-                {{encodedName1}}
-              </span>
-              <span class="resultText2_3-4" v-if="name1.length === 4">
-                {{encodedName1}}
-              </span>
-            </span>
-            <!-- 아래 글자 2 -->
-            <span class="resultText2_4" v-if="selectedType === '세례명'">
-              <span class="resultText2_4_1" v-if="name1.length === 2 || name1.length === 3">
-                {{encodedName1}}
-              </span>
-              <span class="resultText2_4_1-4" v-if="name1.length === 4">
-                {{encodedName1}}
-              </span>
-              <span class="resultText2_4_2" v-if="name2.length === 2 || name2.length === 3">
-                {{name2}}
-              </span>
-              <span class="resultText2_4_2-4" v-if="name2.length === 4">
-                {{name2}}
-              </span>
-              <span class="resultText2_4_2-5" v-if="name2.length === 5">
-                {{name2}}
-              </span>
-              <span class="resultText2_4_2-6" v-if="name2.length === 6">
-                {{name2}}
-              </span>
-            </span>
-            <!-- 위 글자 2-->
-            <span class="resultText2_5" v-if="selectedType === '직분' || selectedType === '법명'">
-              <span class="resultText2_5_2" v-if="name2.length === 2 || name2.length === 3">
-                {{name2}}
-              </span>
-              <span class="resultText2_5_2-4" v-if="name2.length === 4">
-                {{name2}}
-              </span>
+              <!-- 위 글자 2-->
+              <span class="resultText2_5" v-if="selectedType === '직분' || selectedType === '법명'">
+                <span class="resultText2_5_2" v-if="name2.length === 2 || name2.length === 3">
+                  {{name2}}
+                </span>
+                <span class="resultText2_5_2-4" v-if="name2.length === 4">
+                  {{name2}}
+                </span>
 
-              <span class="resultText2_5_1" v-if="name1.length === 2 || name1.length === 3">
-                {{encodedName1}}
+                <span class="resultText2_5_1" v-if="name1.length === 2 || name1.length === 3">
+                  {{encodedName1}}
+                </span>
+                <span class="resultText2_5_1-4" v-if="name1.length === 4">
+                  {{encodedName1}}
+                </span>
               </span>
-              <span class="resultText2_5_1-4" v-if="name1.length === 4">
-                {{encodedName1}}
+              <!-- </div> -->
+              <span class="resultText1">
+                <span class="resultText1_1">{{date2_1}}</span>
+                <span class="resultText1_2">•</span>
+                <span class="resultText1_1">{{date2_2}}</span>
+                <span class="resultText1_2">•</span>
+                <span class="resultText1_1">{{date2_3}}</span>
+                <span v-if="date2Type==='음력'" class="resultText1_3">陰</span>
+                <span v-if="date2Type==='양력'" class="resultText1_3">陽</span>
               </span>
-            </span>
-            <!-- </div> -->
-            <span class="resultText1">
-              <span class="resultText1_1">{{date2_1}}</span>
-              <span class="resultText1_2">•</span>
-              <span class="resultText1_1">{{date2_2}}</span>
-              <span class="resultText1_2">•</span>
-              <span class="resultText1_1">{{date2_3}}</span>
-              <span v-if="date2Type==='음력'" class="resultText1_3">陰</span>
-              <span v-if="date2Type==='양력'" class="resultText1_3">陽</span>
-            </span>
+            </div>
           </div>
         </div>
         <!-- 본관에 따른 데이터 전송값 변경 -->
@@ -439,6 +439,7 @@ export default {
 .image-container1 img {
   width: 30vw;
   height: auto;
+  /* background-color: rgb(0, 255, 17); */
 }
 
 .image-container2 img {
@@ -447,16 +448,16 @@ export default {
 }
 
 .text-container {
-  width: 30vw;
+  width: 100%;
   height: auto;
 
-  transform: translate(-100%, 0%);
+  transform: translate(0%, -100%);
 
   writing-mode: vertical-lr; /* 세로로 쓰기 설정 */
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 
-  /* background-color: rgba(255, 0, 157, 0.461); */
+  background-color: rgba(255, 0, 157, 0.461);
 }
 
 .text-container2 {
@@ -477,8 +478,8 @@ export default {
   justify-content: center;
   align-items: center;
 
-  margin-top: 28%;
-  margin-bottom: 7%;
+  margin-top: -11%;
+  /* margin-bottom: 7%; */
 
   height: auto;
   width: 10vw;
@@ -491,8 +492,8 @@ export default {
   font-weight: 900;
 
   font-size: 3.5vw;
-  margin-top: -0.05em;
-  letter-spacing:-0.19em;
+  /* margin-top: 0.05em; */
+  letter-spacing:-0.25em;
 
   width: 100%;
   /* height: 100%; */
@@ -511,7 +512,7 @@ export default {
 
   font-size: 3.5vw;
   margin-top: -0.3em;
-  letter-spacing:-0.2em;
+  letter-spacing:-0.5em;
 
   width: 100%;
   /* height: 100%; */
@@ -524,12 +525,11 @@ export default {
 
 .resultText1_3 {
   color: black;
-  /* font-family: "한양해서"; */
   font-family: "HYHaeSo";
   font-weight: 900;
  
   font-size: 5vw;
-  /* margin-top: -0em; */
+  margin-top: 0.2em;
   /* letter-spacing:-0em; */
 
   width: 100%;
@@ -549,9 +549,9 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
+  font-weight: 500;
   font-size: 8.4vw;
-  margin-top: 22%;
+  /* margin-top: 22%; */
   letter-spacing:0.4em;
 
   height: auto;
