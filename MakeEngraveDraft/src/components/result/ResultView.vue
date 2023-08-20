@@ -451,7 +451,7 @@ export default {
   width: 30vw;
   height: auto;
 
-  transform: translate(0%, -100%);
+  transform: translate(0%, -110%);
 
   writing-mode: vertical-lr; /* 세로로 쓰기 설정 */
   text-orientation: upright; /* 텍스트 방향 유지 */
