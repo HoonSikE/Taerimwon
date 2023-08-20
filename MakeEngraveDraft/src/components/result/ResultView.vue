@@ -470,7 +470,7 @@ export default {
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 
-  background-color: rgba(255, 0, 157, 0.461);
+  /* background-color: rgba(255, 0, 157, 0.461); */
 }
 
 .resultText1 {
@@ -478,12 +478,12 @@ export default {
   justify-content: center;
   align-items: center;
 
-  /* margin-top: -5vw; */
+  /* margin-top: -9vw; */
   /* margin-bottom: 7%; */
 
   height: auto;
   width: 10vw;
-  /* background-color: rgba(9, 255, 0, 0.551); */
+  background-color: rgba(9, 255, 0, 0.551);
 }
 
 .resultText1_1 {
@@ -512,6 +512,7 @@ export default {
 
   font-size: 3.5vw;
   margin-top: -1.5vw;
+  margin-right: 0.3vw;
   letter-spacing:-1.0vw;
 
   width: 100%;
@@ -551,12 +552,12 @@ export default {
   font-family: "HYGungSo";
   font-weight: 500;
   font-size: 8.4vw;
-  margin-top: -0.5vw;
+  margin-top: 0.0vw;
   letter-spacing:3.5vw;
 
   height: auto;
   width: 10vw;
-  /* background-color: rgba(145, 108, 108, 0.662); */
+  background-color: rgba(145, 108, 108, 0.662);
 }
 
 .resultText2-4 {
