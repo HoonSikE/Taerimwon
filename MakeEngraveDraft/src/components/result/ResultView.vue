@@ -186,79 +186,79 @@
                 <img src="../../assets/images/memorialTablet/background/이름출력시안/천주교(이름출력시안).png" height="100%" alt="천주교">
               </div>
             </div>
-          </div>
-          <div class="text-container2">
-            <!-- <span class="resultText3"> -->
-            <!-- 위패 추가 -->
-            <div v-if="selectedType2 !== '없음'">
-              <!-- 본관 선택 o -->
-              <div v-if="name0 !== '없음'">
-                <!-- 일반 -->
-                <span class="resultText4_1_1" v-if="type === '일반'">
-                  {{name0}}
-                </span>
-                <!-- 불교 -->
-                <span class="resultText4_1_2" v-if="type === '불교'">
-                  {{name0}}
-                </span>
-                <!-- 위 글자 -->
-                <span class="resultText4_2" v-if="type === '기독교'">
-                  <span class="resultText4_2_2">{{name2}}</span>
-                  <span class="resultText4_2_1">{{name0}}</span>
-                </span>
-                <!-- 아래 글자 -->
-                <span class="resultText4_3" v-if="type === '천주교'">
-                  <span class="resultText4_3_1">{{name0}}</span>
-                  <span class="resultText4_3_2">{{name2}}</span>
-                </span>
-              </div>
-              <!-- 본관 선택 x-->
-              <div v-else>
-                <!-- 일반 -->
-                <span class="" v-if="type === '일반' || type === '불교'">
-                  <span class="resultText3_1" v-if="name1.length === 2 || name1.length === 3">
-                    {{encodedName1}}
+            <div class="text-container2">
+              <!-- <span class="resultText3"> -->
+              <!-- 위패 추가 -->
+              <div v-if="selectedType2 !== '없음'">
+                <!-- 본관 선택 o -->
+                <div v-if="name0 !== '없음'">
+                  <!-- 일반 -->
+                  <span class="resultText4_1_1" v-if="type === '일반'">
+                    {{name0}}
                   </span>
-                  <span class="resultText3_1-4" v-if="name1.length === 4">
-                    {{encodedName1}}
+                  <!-- 불교 -->
+                  <span class="resultText4_1_2" v-if="type === '불교'">
+                    {{name0}}
                   </span>
-                </span>
-                <!-- 위 글자 -->
-                <span class="resultText3_2" v-if="type === '기독교'">
-                  <span class="resultText3_2_2" v-if="name2.length === 2 || name2.length === 3">
-                    {{name2}}
+                  <!-- 위 글자 -->
+                  <span class="resultText4_2" v-if="type === '기독교'">
+                    <span class="resultText4_2_2">{{name2}}</span>
+                    <span class="resultText4_2_1">{{name0}}</span>
                   </span>
-                  <span class="resultText3_2_2-4" v-if="name2.length === 4">
-                    {{name2}}
+                  <!-- 아래 글자 -->
+                  <span class="resultText4_3" v-if="type === '천주교'">
+                    <span class="resultText4_3_1">{{name0}}</span>
+                    <span class="resultText4_3_2">{{name2}}</span>
                   </span>
-                  <span class="resultText3_2_1" v-if="name1.length === 2 || name1.length === 3">
-                    {{encodedName1}}
+                </div>
+                <!-- 본관 선택 x-->
+                <div v-else>
+                  <!-- 일반 -->
+                  <span class="" v-if="type === '일반' || type === '불교'">
+                    <span class="resultText3_1" v-if="name1.length === 2 || name1.length === 3">
+                      {{encodedName1}}
+                    </span>
+                    <span class="resultText3_1-4" v-if="name1.length === 4">
+                      {{encodedName1}}
+                    </span>
                   </span>
-                  <span class="resultText3_2_1-4" v-if="name1.length === 4">
-                    {{encodedName1}}
+                  <!-- 위 글자 -->
+                  <span class="resultText3_2" v-if="type === '기독교'">
+                    <span class="resultText3_2_2" v-if="name2.length === 2 || name2.length === 3">
+                      {{name2}}
+                    </span>
+                    <span class="resultText3_2_2-4" v-if="name2.length === 4">
+                      {{name2}}
+                    </span>
+                    <span class="resultText3_2_1" v-if="name1.length === 2 || name1.length === 3">
+                      {{encodedName1}}
+                    </span>
+                    <span class="resultText3_2_1-4" v-if="name1.length === 4">
+                      {{encodedName1}}
+                    </span>
                   </span>
-                </span>
-                <!-- 아래 글자 -->
-                <span class="resultText3_3" v-if="type === '천주교'">
-                  <span class="resultText3_3_1" v-if="name1.length === 2 || name1.length === 3">
-                    {{encodedName1}}
+                  <!-- 아래 글자 -->
+                  <span class="resultText3_3" v-if="type === '천주교'">
+                    <span class="resultText3_3_1" v-if="name1.length === 2 || name1.length === 3">
+                      {{encodedName1}}
+                    </span>
+                    <span class="resultText3_3_1-4" v-if="name1.length === 4">
+                      {{encodedName1}}
+                    </span>
+                    <span class="resultText3_3_2" v-if="name2.length === 2 || name2.length === 3">
+                      {{name2}}
+                    </span>
+                    <span class="resultText3_3_2-4" v-if="name2.length === 4">
+                      {{name2}}
+                    </span>
+                    <span class="resultText3_3_2-5" v-if="name2.length === 5">
+                      {{name2}}
+                    </span>
+                    <span class="resultText3_3_2-6" v-if="name2.length === 6">
+                      {{name2}}
+                    </span>
                   </span>
-                  <span class="resultText3_3_1-4" v-if="name1.length === 4">
-                    {{encodedName1}}
-                  </span>
-                  <span class="resultText3_3_2" v-if="name2.length === 2 || name2.length === 3">
-                    {{name2}}
-                  </span>
-                  <span class="resultText3_3_2-4" v-if="name2.length === 4">
-                    {{name2}}
-                  </span>
-                  <span class="resultText3_3_2-5" v-if="name2.length === 5">
-                    {{name2}}
-                  </span>
-                  <span class="resultText3_3_2-6" v-if="name2.length === 6">
-                    {{name2}}
-                  </span>
-                </span>
+                </div>
               </div>
             </div>
           </div>
@@ -464,13 +464,13 @@ export default {
   width: 20vw;
   height: auto;
 
-  transform: translate(-100%, 0%);
+  transform: translate(0%, -100%);
 
   writing-mode: vertical-lr; /* 세로로 쓰기 설정 */
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 
-  /* background-color: rgba(255, 0, 157, 0.461); */
+  background-color: rgba(255, 0, 157, 0.461);
 }
 
 .resultText1 {
@@ -478,7 +478,7 @@ export default {
   justify-content: center;
   align-items: center;
 
-  margin-top: -11%;
+  margin-top: -5vw;
   /* margin-bottom: 7%; */
 
   height: auto;
@@ -493,7 +493,7 @@ export default {
 
   font-size: 3.5vw;
   /* margin-top: 0.05em; */
-  letter-spacing:-0.25em;
+  letter-spacing:-0.95vw;
 
   width: 100%;
   /* height: 100%; */
@@ -511,8 +511,8 @@ export default {
   font-weight: bold;
 
   font-size: 3.5vw;
-  margin-top: -0.3em;
-  letter-spacing:-0.5em;
+  margin-top: -1.2vw;
+  letter-spacing:-1.8vw;
 
   width: 100%;
   /* height: 100%; */
@@ -529,7 +529,7 @@ export default {
   font-weight: 900;
  
   font-size: 5vw;
-  margin-top: 0.2em;
+  margin-top: 0.9vw;
   /* letter-spacing:-0em; */
 
   width: 100%;
@@ -551,8 +551,8 @@ export default {
   font-family: "HYGungSo";
   font-weight: 500;
   font-size: 8.4vw;
-  /* margin-top: 22%; */
-  letter-spacing:0.4em;
+  margin-top: -0.5vw;
+  letter-spacing:3.5vw;
 
   height: auto;
   width: 10vw;
