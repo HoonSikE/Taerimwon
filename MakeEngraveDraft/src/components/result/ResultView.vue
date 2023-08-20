@@ -448,7 +448,7 @@ export default {
 }
 
 .text-container {
-  width: 100%;
+  width: 30vw;
   height: auto;
 
   transform: translate(0%, -100%);
@@ -493,7 +493,7 @@ export default {
 
   font-size: 3.5vw;
   /* margin-top: 0.05em; */
-  letter-spacing:-0.95vw;
+  letter-spacing:-0.55vw;
 
   width: 100%;
   /* height: 100%; */
@@ -511,8 +511,8 @@ export default {
   font-weight: bold;
 
   font-size: 3.5vw;
-  margin-top: -1.2vw;
-  letter-spacing:-1.8vw;
+  margin-top: -0.5vw;
+  letter-spacing:-1.0vw;
 
   width: 100%;
   /* height: 100%; */
