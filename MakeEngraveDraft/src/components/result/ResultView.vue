@@ -462,7 +462,7 @@ export default {
 
 .text-container2 {
   width: 20vw;
-  height: auto;
+  height: 48vw;
 
   transform: translate(0%, -100%);
 
@@ -567,7 +567,6 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  /* font-weight: 900; */
   font-size: 7.9vw;
   /* margin-top: 16%; */
   letter-spacing:1.2vw;
@@ -585,7 +584,6 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  /* font-weight: 900; */
 
   font-size: 8.4vw;
   /* margin-top: -1vw; */
@@ -603,7 +601,6 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  /* font-weight: 900; */
 
   font-size: 7.2vw;
   padding-bottom: 8.0vw;
@@ -621,10 +618,9 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  /* font-weight: 900; */
 
   font-size: 8.4vw;
-  padding-bottom: 0.0vw;
+  padding-top: 3.0vw;
   letter-spacing:2.0vw;
 
   height: 100%;
@@ -639,10 +635,9 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  /* font-weight: 900; */
 
   font-size: 7.9vw;
-  padding-bottom: 0.0vw;
+  padding-top: 4.0vw;
   letter-spacing:0.2vw;
 
   height: 100%;
@@ -658,10 +653,9 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  /* font-weight: 900; */
 
   font-size: 8.4vw;
-  padding-bottom: 6.0vw;
+  padding-bottom: 3.0vw;
   letter-spacing:0.7vw;
 
   height: 100%;
@@ -676,11 +670,10 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  /* font-weight: 900; */
 
   font-size: 7.2vw;
-  padding-bottom: 7.0vw;
-  letter-spacing:-0.3vw;
+  padding-bottom: 3.0vw;
+  letter-spacing:-0.5vw;
 
   height: 100%;
   width: 33.3333%;
@@ -694,9 +687,8 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
 
-  margin-top: -3%;
+  /* margin-top: -3%; */
 
   height: 100%;
   width: 33.3333%;
@@ -705,54 +697,48 @@ export default {
 /* 이름1 */
 .resultText2_4_1 {
   font-size: 8.4vw;
-  margin-top: 26%;
-  letter-spacing:0.12em;
+  margin-top: 3vw;
+  letter-spacing:2.0vw;
 
-  font-weight: 900;
   /* background-color: rgb(70, 79, 10); */
 }
 .resultText2_4_1-4 {
-  font-size: 7.9vw;
-  margin-top: 26%;
-  letter-spacing:-0.08em;
+  font-size: 7.5vw;
+  margin-top: 2vw;
+  letter-spacing:0.5vw;
 
-  font-weight: 900;
   /* background-color: rgb(70, 79, 10); */
 }
 /* 이름2 */
 .resultText2_4_2 {
   font-size: 4.5vw;
-  margin-top: -1%;
-  letter-spacing:-0.04em;
+  margin-top: -1vw;
+  letter-spacing:-0.5vw;
 
-  font-weight: 900;
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText2_4_2-4 {
   font-size: 4.2vw;
-  margin-top: -1%;
-  letter-spacing:-0.22em;
+  margin-top: -1vw;
+  letter-spacing:-0.8vw;
 
-  font-weight: 900;
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText2_4_2-5 {
   font-size: 3.8vw;
-  margin-top: -1%;
-  letter-spacing:-0.25em;
+  margin-top: -1vw;
+  letter-spacing:-0.8vw;
 
-  font-weight: 900;
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText2_4_2-6 {
   font-size: 3.6vw;
-  margin-top: -1%;
-  letter-spacing:-0.35em;
+  margin-top: -1vw;
+  letter-spacing:-1.4vw;
 
-  font-weight: 900;
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
@@ -764,9 +750,8 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
 
-  margin-top: -3%;
+  /* margin-top: -3%; */
 
   height: 100%;
   width: 33.3333%;
@@ -775,37 +760,33 @@ export default {
 /* 이름1 */
 .resultText2_5_1 {
   font-size: 8.4vw;
-  margin-top: -1%;
-  letter-spacing:0.12em;
+  /* margin-top: 3vw; */
+  letter-spacing:2.0vw;
 
-  font-weight: 900;
   /* background-color: rgb(70, 79, 10); */
 }
 .resultText2_5_1-4 {
   font-size: 7.9vw;
-  margin-top: -2%;
-  letter-spacing:-0.08em;
+  /* margin-top: 3vw; */
+  letter-spacing:0.0vw;
 
-  font-weight: 900;
   /* background-color: rgb(70, 79, 10); */
 }
 /* 이름2 */
 .resultText2_5_2 {
   font-size: 4.5vw;
-  margin-top: 18%;
-  letter-spacing:-0.14em;
+  margin-top: -1vw;
+  letter-spacing:-0.5vw;
 
-  font-weight: 900;
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
 /* 이름2 */
 .resultText2_5_2-4 {
   font-size: 4.2vw;
-  margin-top: 20%;
-  letter-spacing:-0.18em;
+  margin-top: -1vw;
+  letter-spacing:-0.5vw;
 
-  font-weight: 900;
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
@@ -819,10 +800,9 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 500;
 
   font-size: 8vw;
-  /* margin-top: 27%; */
+  padding-top: 3vw;
   letter-spacing:7.0vw;
 
   height: auto;
@@ -841,8 +821,7 @@ export default {
   /* font-weight: 900; */
 
   font-size: 8vw;
-  /* margin-top: 1vw; */
-  margin-bottom: 1vw;
+  padding-top: 1vw;
   letter-spacing:3.5vw;
 
   height: auto;
@@ -858,9 +837,8 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
 
-  margin-top: 19%;
+  /* margin-top: 19%; */
 
   height: auto;
   width: 20vw;
@@ -869,37 +847,32 @@ export default {
 /* 이름1 */
 .resultText3_2_1 {
   font-size: 7.2vw;
-  margin-top: 5%;
-  letter-spacing:0.6em;
+  margin-top: 2vw;
+  letter-spacing:6.0vw;
 
-  font-weight: 900;
   /* background-color: rgba(8, 218, 127, 0.473); */
 }
 .resultText3_2_1-4 {
   font-size: 7.2vw;
-  margin-top: 2%;
-  margin-bottom: 5%;
-  letter-spacing:0.3em;
+  margin-top: 0vw;
+  letter-spacing:2.5vw;
 
-  font-weight: 900;
   /* background-color: rgba(8, 218, 127, 0.473); */
 }
 /* 이름2 */
 .resultText3_2_2 {
   font-size: 4.8vw;
-  margin-top: 4%;
-  letter-spacing:-0.05em;
+  margin-top: 1vw;
+  letter-spacing:-0.6vw;
 
-  font-weight: 900;
   writing-mode: horizontal-tb;
   /* background-color: rgba(246, 71, 2, 0.414); */
 }
 .resultText3_2_2-4 {
   font-size: 4.8vw;
-  margin-top: 4%;
-  letter-spacing:-0.18em;
+  margin-top: -3vw;
+  letter-spacing:-0.6vw;
 
-  font-weight: 900;
   writing-mode: horizontal-tb;
   /* background-color: rgba(246, 71, 2, 0.414); */
 }
@@ -911,9 +884,8 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
 
-  margin-top: 19%;
+  /* margin-top: 19%; */
 
   height: auto;
   width: 20vw;
@@ -922,54 +894,48 @@ export default {
 /* 이름1 */
 .resultText3_3_1 {
   font-size: 7.6vw;
-  margin-top: 8%;
-  letter-spacing:0.5em;
+  margin-top: 0vw;
+  letter-spacing:6.0vw;
 
-  font-weight: 900;
   /* background-color: rgb(70, 79, 10); */
 }
 .resultText3_3_1-4 {
   font-size: 7.6vw;
-  margin-top: 5%;
-  letter-spacing:0.2em;
+  margin-bottom: 3vw;
+  letter-spacing:2.0vw;
 
-  font-weight: 900;
   /* background-color: rgb(70, 79, 10); */
 }
 /* 이름2 */
 .resultText3_3_2 {
   font-size: 5.2vw;
-  margin-top: -5%;
-  letter-spacing:-0.05em;
+  margin-top: -6vw;
+  letter-spacing:-0.6vw;
 
-  font-weight: 900;
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText3_3_2-4 {
   font-size: 5.2vw;
-  margin-top: -5%;
-  letter-spacing:-0.22em;
+  margin-top: -3.5vw;
+  letter-spacing:-1.0vw;
 
-  font-weight: 900;
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText3_3_2-5 {
   font-size: 4.5vw;
-  margin-top: -5%;
-  letter-spacing:-0.27em;
+  margin-top: -3.5vw;
+  letter-spacing:-1.0vw;
 
-  font-weight: 900;
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText3_3_2-6 {
   font-size: 4.0vw;
-  margin-top: -5%;
-  letter-spacing:-0.32em;
+  margin-top: -3.0vw;
+  letter-spacing:-1.2vw;
 
-  font-weight: 900;
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
@@ -983,11 +949,10 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
 
   font-size: 6.6vw;
-  margin-top: 0%;
-  letter-spacing:0.0em;
+  padding-bottom: 11vw;
+  letter-spacing:0.2vw;
   
   height: auto;
   width: 20vw;
@@ -1001,11 +966,10 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
 
   font-size: 6.6vw;
-  margin-top: 9%;
-  letter-spacing:-0.1em;
+  margin-top: -5vw;
+  letter-spacing:-0.8vw;
   
   height: auto;
   width: 20vw;
@@ -1019,7 +983,6 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
 
   margin-top: -18%;
 
@@ -1030,19 +993,17 @@ export default {
 /* 이름1 */
 .resultText4_2_1 {
   font-size: 5.8vw;
-  margin-top: -1%;
-  letter-spacing:-0.05em;
+  margin-top: -1.0vw;
+  letter-spacing:0.1vw;
 
-  font-weight: 900;
   /* background-color: rgb(70, 79, 10); */
 }
 /* 이름2 */
 .resultText4_2_2 {
   font-size: 4.2vw;
-  margin-top: 19%;
-  letter-spacing:-0.05em;
+  margin-top: -1vw;
+  letter-spacing:-0.05vw;
 
-  font-weight: 900;
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
@@ -1054,9 +1015,8 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
 
-  margin-top: 0%;
+  /* margin-top: 0%; */
 
   height: auto;
   width: 20vw;
@@ -1065,19 +1025,17 @@ export default {
 /* 이름1 */
 .resultText4_3_1 {
   font-size: 5.8vw;
-  margin-top: 20%;
-  letter-spacing:0.05em;
+  margin-top: 0vw;
+  letter-spacing:0.8vw;
 
-  font-weight: 900;
   /* background-color: rgb(70, 79, 10); */
 }
 /* 이름2 */
 .resultText4_3_2 {
   font-size: 4.2vw;
-  margin-top: 0%;
-  letter-spacing:-0.05em;
+  margin-top: -1vw;
+  letter-spacing:-0.5vw;
 
-  font-weight: 900;
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
