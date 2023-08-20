@@ -457,7 +457,7 @@ export default {
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 
-  /* background-color: rgba(255, 0, 157, 0.461); */
+  background-color: rgba(255, 0, 157, 0.461);
 }
 
 .text-container2 {
@@ -470,7 +470,7 @@ export default {
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 
-  /* background-color: rgba(255, 0, 157, 0.461); */
+  background-color: rgba(255, 0, 157, 0.461);
 }
 
 .resultText1 {
@@ -567,10 +567,10 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
+  /* font-weight: 900; */
   font-size: 7.9vw;
-  margin-top: 16%;
-  letter-spacing:0.07em;
+  /* margin-top: 16%; */
+  letter-spacing:1.2vw;
 
   height: auto;
   width: 10vw;
@@ -837,11 +837,11 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
+  /* font-weight: 900; */
 
   font-size: 8vw;
-  margin-top: 20%;
-  letter-spacing:0.4em;
+  /* margin-top: 1vw; */
+  letter-spacing:3.5vw;
 
   height: auto;
   width: 20vw;
