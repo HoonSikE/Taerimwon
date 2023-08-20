@@ -4,7 +4,7 @@
            + type + '&selectedType=' + selectedType + '&showRouterView=true'" class="title4">
           👉 [이전 페이지]
     </router-link>
-    <div class="container">
+    <div class="container" id="capture-element">
       <!-- 각인 -->
       <div class="image-text-container">
         <div class="title2">● 각인 예시 
@@ -271,32 +271,33 @@
                       + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title7">&nbsp;&nbsp;&nbsp;🔎 크게보기</router-link>
       </div>
       <br>
-      <!-- <div>
-          종류: {{type}}
-          <br>
-          본관: {{name0}}
-          <br>
-          이름: {{name1}}
-          <br>
-          이름2: {{name2}}
-          <br>
-          출생일: {{date1}} , {{date1Type}}
-          <br>
-          사망일: {{date2}} , {{date2Type}}
-          <br>
-          selectedType: {{selectedType}}
-          <br>
-          selectedType2: {{selectedType2}}
-        <br>
-      </div> -->
-      <div>
-        <!-- <router-link :to="'/engrave/result?' + 'name=' + $route.query.name + '&date1=' + $route.query.date1 + '&date2='+ $route.query.date2">전체 화면</router-link> -->
-      </div>
     </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <!-- <a v-if="checkMobile() === 'android'" class="title8" href="sms:01045097485?body=보내고 싶은 메시지%0adddㅇㅇㅇ">안드로이드 문자보내기</a> -->
+    <!-- <a v-if="checkMobile() === 'ios'" class="title8" href="sms:01045097485&body=보내고 싶은 메시지%0adddㅇㅇㅇ">iOS8 미만 문자보내기</a> -->
+    <!-- <div v-if="checkMobile() === 'other'" class="title4" href="sms:01045097485;body=보내고 싶은 메시지">iOS8 이상 문자보내기</div> -->
+    <a v-if="isIOS" class="title8" :href="iosSMSEntry">아이폰 SMS 보내기</a>
+    <a v-if="isAndroid" class="title8" :href="androidSMSEntry">안드로이드 SMS 보내기</a><br>
+    <a v-if="isAndroid" class="title8" :href="androidMMSEntry">안드로이드 MMS 보내기</a>
+    <a v-if="isUnknown" class="title8">호환되지 않는 기종입니다.</a>
+
+    <br>
+    <button @click="captureAndSendMMS">MMS 보내기</button>
+    <br>
+    <button @click="captureAndDisplayImage">캡처 및 이미지 표시</button>
+    <br>
+    <img :src="capturedImageData" alt="캡처된 이미지">
   </div>
 </template>
 
 <script>
+import html2canvas from 'html2canvas';
+
 export default {
   data() {
     return {
@@ -317,6 +318,8 @@ export default {
       date2_1: this.$route.query.date2.substr(0,4),
       date2_2: this.$route.query.date2.substr(5,2),
       date2_3: this.$route.query.date2.substr(8,2),
+
+      capturedImageData: '',
     };
   },
   computed: {
@@ -327,6 +330,63 @@ export default {
         return trimmedName1.substr(0, 1) + " " + trimmedName1.substr(1, 1);
       }
       return trimmedName1;
+    },
+    isIOS() {
+      return this.checkMobile() === 'ios';
+    },
+    iosSMSEntry() {
+      const phoneNumber = '01045097485';
+      const message = encodeURIComponent('보내고 싶은 메시지\n새로운 줄');
+      return `sms:${phoneNumber}&body=${message}`;
+    },
+    isAndroid() {
+      return this.checkMobile() === 'android';
+    },
+    androidSMSEntry() {
+      const phoneNumber = '01045097485';
+      const message = encodeURIComponent('보내고 싶은 메시지\n아에이오우');
+      return `sms:${phoneNumber}?body=${message}`;
+    },
+    androidMMSEntry() {
+      const phoneNumber = '01045097485';
+      const message = encodeURIComponent('보내고 싶은 메시지\n새로운 줄');
+      const imageData = this.capturedImageData;
+      const mmsURL = `content://com.android.mms.MessageBuilder`;
+      return `${mmsURL}?recipient=${phoneNumber}&attachment=${imageData}&subject=${message}`;
+    },
+    isUnknown() {
+      return this.checkMobile() === 'unknown';
+    },
+  },
+  methods: {
+    checkMobile() {
+      // 현재 사용자 기기가 iOS인지 Android인지 확인하는 메서드
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return "ios";
+      } else if (/android/i.test(userAgent)) {
+        return "android";
+      }
+      return "unknown";
+    },
+    async captureAndSendMMS() {
+      const phoneNumber = '01045097485';
+      const message = encodeURIComponent('보내고 싶은 메시지');
+      const mmsWithImageURL = `${mmsURL}?recipient=${phoneNumber}&attachment=${imageData}&subject=${message}`;
+
+      // 이미지 데이터는 이미 capturedImageData에 저장되어 있으므로 그대로 사용
+      const imageData = this.capturedImageData;
+
+      // Android Intent URI를 생성하여 MMS 앱을 엽니다.
+      const intentURI = `sms:${phoneNumber}?body=${message}&attachment=${imageData}`;
+
+      // 생성된 URI로 Android Intent를 호출합니다.
+      window.location.href = intentURI;
+    },
+    async captureAndDisplayImage() {
+      const captureElement = document.getElementById('capture-element');
+      const canvas = await html2canvas(captureElement);
+      this.capturedImageData = canvas.toDataURL('image/jpeg');
     },
   },
 };
@@ -431,8 +491,8 @@ export default {
   font-weight: 900;
 
   font-size: 3.5vw;
-  margin-top: -0.15em;
-  letter-spacing:-0.29em;
+  margin-top: -0.05em;
+  letter-spacing:-0.19em;
 
   width: 100%;
   /* height: 100%; */
@@ -450,7 +510,7 @@ export default {
   font-weight: bold;
 
   font-size: 3.5vw;
-  margin-top: -0.5em;
+  margin-top: -0.3em;
   letter-spacing:-0.2em;
 
   width: 100%;
@@ -464,7 +524,8 @@ export default {
 
 .resultText1_3 {
   color: black;
-  font-family: "한양해서";
+  /* font-family: "한양해서"; */
+  font-family: "HYHaeSo";
   font-weight: 900;
  
   font-size: 5vw;
@@ -487,7 +548,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
   font-size: 8.4vw;
   margin-top: 22%;
@@ -504,7 +565,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
   font-size: 7.9vw;
   margin-top: 16%;
@@ -522,7 +583,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
 
   font-size: 8.4vw;
@@ -539,7 +600,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
 
   font-size: 7.2vw;
@@ -557,7 +618,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
 
   font-size: 8.4vw;
@@ -575,7 +636,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
 
   font-size: 7.9vw;
@@ -594,7 +655,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
 
   font-size: 8.4vw;
@@ -612,7 +673,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
 
   font-size: 7.2vw;
@@ -630,7 +691,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
 
   margin-top: -3%;
@@ -700,7 +761,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
 
   margin-top: -3%;
@@ -755,7 +816,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
 
   font-size: 8vw;
@@ -774,7 +835,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
 
   font-size: 8vw;
@@ -793,7 +854,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
 
   margin-top: 19%;
@@ -846,7 +907,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
 
   margin-top: 19%;
@@ -918,7 +979,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
 
   font-size: 6.6vw;
@@ -936,7 +997,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
 
   font-size: 6.6vw;
@@ -954,7 +1015,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
 
   margin-top: -18%;
@@ -989,7 +1050,7 @@ export default {
   align-items: center;
 
   color: black;
-  font-family: "궁서체";
+  font-family: "HYGungSo";
   font-weight: 900;
 
   margin-top: 0%;
@@ -1029,5 +1090,13 @@ export default {
   color: rgb(111, 103, 255);
   font-family: "BMEULJIROTTF";
   cursor: pointer;
+}
+
+.title8 {
+  font-size: 20px;
+  font-family: "BMEULJIROTTF";
+  color: rgb(255, 149, 0);
+
+  text-align: center;
 }
 </style>

@@ -106,19 +106,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 } */
-
-@font-face {
-    font-family: 'HYHaeSo';
-    src: url('../assets/fonts/HYHaeSo.ttf');
-}
-
-@font-face {
-    font-family: 'CENTURY';
-    src: url('../assets/fonts/CENTURY.ttf');
-}
-
-@font-face {
-    font-family: 'BMEULJIROTTF';
-    src: url('../assets/fonts/BMEULJIROTTF.ttf');
-}
 </style>
