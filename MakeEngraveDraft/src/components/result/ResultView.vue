@@ -585,11 +585,11 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
+  /* font-weight: 900; */
 
   font-size: 8.4vw;
-  margin-top: 4%;
-  letter-spacing:0.11em;
+  margin-top: -1vw;
+  letter-spacing:1.5vw;
 
   height: 100%;
   width: 33.3333%;
@@ -602,11 +602,11 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
+  /* font-weight: 900; */
 
   font-size: 7.2vw;
-  margin-top: 3%;
-  letter-spacing:-0.03em;
+  margin-top: -1.5vw;
+  letter-spacing:0.2vw;
 
   height: 100%;
   width: 33.3333%;
@@ -841,6 +841,7 @@ export default {
 
   font-size: 8vw;
   /* margin-top: 1vw; */
+  margin-bottom: 1vw;
   letter-spacing:3.5vw;
 
   height: auto;
