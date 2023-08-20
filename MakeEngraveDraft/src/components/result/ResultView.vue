@@ -267,7 +267,7 @@
       </div>
       <div v-else>
         위패 유무: O<br>
-        <div v-if="selectedType2 == '없음'">
+        <div v-if="name0 !== '없음'">
           위패 종류: 본관<br>
           본관 내용: {{this.name0}}<br>
         </div>
@@ -276,7 +276,7 @@
           <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
             {{this.selectedType}}명: {{this.name2}}<br>
           </div>
-          위패 내용: {{this.name1}}<br>
+          고인 성함: {{this.name1}}<br>
         </div>
       </div>
     </div>
@@ -330,15 +330,8 @@ export default {
     },
     iosSMSEntry() {
       const phoneNumber = '01045097485';
-      const msg = '[각인 주문]\n'
-        + '각인 종류: ' + '' + '\n상세 종류' + ''
-        +'\n고인 성함' + name1
-        + '\n출생일' + date1 + ' ' + this.date1Type 
-        + '\n사망일' + date2 + ' ' + this.date2Type;
 
-
-        
-      const message = encodeURIComponent(msg);
+      const message = encodeURIComponent(this.getMsg());
       return `sms:${phoneNumber}&body=${message}`;
     },
     isAndroid() {
@@ -346,7 +339,7 @@ export default {
     },
     androidSMSEntry() {
       const phoneNumber = '01045097485';
-      const message = encodeURIComponent('보내고 싶은 메시지\n아에이오우');
+      const message = encodeURIComponent(this.getMsg());
       return `sms:${phoneNumber}?body=${message}`;
     },
     isUnknown() {
@@ -408,6 +401,34 @@ export default {
       const textContainer = document.querySelector('.text-container2');
       textContainer.style.transform = 'translate(0%, -100%)';
     },
+    getMsg() {
+      var msg = '[각인 주문]\n'
+        + '각인 종류: ' + this.type + '\n상세 종류: ' + this.selectedType;
+        
+      if(this.selectedType === '직분' || this.selectedType === '법명' || this.selectedType === '세례명')
+        msg += '\n' + this.selectedType + '명: ' + this.name2;
+
+      msg += '\n\n고인 성함: ' + this.name1
+        + '\n출생일: ' + this.date1 + ' ' + this.date1Type 
+        + '\n사망일: ' + this.date2 + ' ' + this.date2Type;
+
+      if(this.selectedType2 == '없음')
+        msg += '\n위패 유무: X';
+      else {
+        msg += '\n위패 유무: O';
+        if(this.name0 !== '없음'){
+          msg += '\n위패 종류: 본관' + '\n본관 내용: ' + this.name0;
+        }else{
+          msg += '\n위패 종류: 일반';
+          if(this.selectedType === '직분' || this.selectedType === '법명' || this.selectedType === '세례명')
+            msg += '\n' + this.selectedType + '명: ' + this.name2;
+          msg += '\n고인 성함: ' + this.name1;
+        }
+      }
+      console.log(msg);
+
+      return msg;
+    }
   },
 };
 </script>

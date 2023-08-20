@@ -3,7 +3,6 @@
     <div class="title">
       각인 생성하기 
     </div>
-    2023-08-20 17:42
     <div class="title2">
       ● 각인 종류
     </div>
