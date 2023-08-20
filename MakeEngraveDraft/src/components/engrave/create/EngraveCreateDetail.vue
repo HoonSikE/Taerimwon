@@ -140,8 +140,10 @@
             <input v-model="name2" type="text" :placeholder="defaultName2Placeholder"/>
           </div>
           <div>
-            <input v-model="date1" type="date" placeholder="1900-01-01"/>
-            &nbsp;
+            <!-- <input v-model="date1" type="date" placeholder="1900-01-01"/> -->
+            <input v-model="date1_1" type="text" placeholder="년도" style="width: 4em;">.
+            <input v-model="date1_2" type="text" placeholder="월" style="width: 2em;">.
+            <input v-model="date1_3" type="text" placeholder="일" style="width: 2em;">.&nbsp;
             <!-- 날짜 입력 -->
             <select name="date1Type" v-model="date1Type">
               <option value="양력" selected="selected">양력</option>
@@ -149,8 +151,9 @@
             </select>
           </div>
           <div>
-            <input v-model="date2" type="date"/>
-            &nbsp;
+            <input v-model="date2_1" type="text" placeholder="년도" style="width: 4em;">.
+            <input v-model="date2_2" type="text" placeholder="월" style="width: 2em;">.
+            <input v-model="date2_3" type="text" placeholder="일" style="width: 2em;">.&nbsp;
             <select name="date2Type" v-model="date2Type">
               <option value="양력" selected="selected">양력</option>
               <option value="음력">음력</option>
@@ -176,12 +179,24 @@
       <div v-else-if="showName3Warning && (selectedType === '세례명')" class="warning_text">
         - {{selectedType}}을 2~6글자로 입력해주세요.
       </div>
+      <div v-else-if="showDate1_2Warning" class="warning_text">
+        - 출생일을 월을 올바르게 입력해주세요.
+      </div>
+      <div v-else-if="showDate1_3Warning" class="warning_text">
+        - 출생일을 일을 올바르게 입력해주세요.
+      </div>
+      <div v-else-if="showDate2_2Warning" class="warning_text">
+        - 사망일을 월을 올바르게 입력해주세요.
+      </div>
+      <div v-else-if="showDate2_3Warning" class="warning_text">
+        - 사망일을 일을 올바르게 입력해주세요.
+      </div>
       <div v-else>
         <div v-if="type !== 'SGI' && type !== '묘법'">
           <RouterLink :to="'/engrave/engraveCreate/engraveDetail/tabletCreate?' + 'type=' + type 
                           + '&name1=' + encodedName1 + '&name2=' + encodedName2 
-                          + '&date1=' + date1 + '&date1Type=' + date1Type 
-                          + '&date2=' + date2 + '&date2Type=' + date2Type
+                          + '&date1=' + encodedDate1 + '&date1Type=' + date1Type 
+                          + '&date2=' + encodedDate2 + '&date2Type=' + date2Type
                           + '&selectedType=' + selectedType"
                       @click="toggleRouterView">
             <div class="title4">
@@ -194,8 +209,8 @@
         </div>
         <router-link :to="'/engrave/result?' + 'type=' + type 
                 + '&name0=' + '없음' + '&name1=' + encodedName1 + '&name2='+ encodedName2 
-                + '&date1=' + date1 + '&date1Type=' + date1Type 
-                + '&date2=' + date2 + '&date2Type=' + date2Type
+                + '&date1=' + encodedDate1 + '&date1Type=' + date1Type 
+                + '&date2=' + encodedDate2 + '&date2Type=' + date2Type
                 + '&selectedType=' + selectedType + '&selectedType2=없음'" class="title4">👉 예시 보기 (각인)</router-link>
       </div>
     </div>
@@ -209,15 +224,31 @@
 <script>
 export default {
   data() {
+    const currentDate = new Date().toLocaleString('ko-KR');
+    console.log('currentDate:', currentDate); // 현재 currentDate 값 출력
+    const [year, month, day] = currentDate.split('.').map(value => parseInt(value.trim()));
+    console.log('year:', year, 'month:', month, 'day:', day); // year, month, day 값 출력
+
+    const formattedMonth = month < 10 ? `0${month}` : month.toString();
+    console.log('formattedMonth:', formattedMonth); // formattedMonth 값 출력
+    const formattedDay = day < 10 ? `0${day}` : day.toString();
+    console.log('formattedDay:', formattedDay); // formattedDay 값 출력
+
     return {
       type: this.$route.query.type,
       selectedType: this.$route.query.selectedType, // 초기 선택 타입 설정
       name1: '',
       name2: '',
-      date1: '1920-08-01',
+      date1_1: '',
+      date1_2: '',
+      date1_3: '',
+      date2_1: year,
+      date2_2: formattedMonth,
+      date2_3: formattedDay,
+      // date1: '1920-08-01',
+      // date2: new Date().toISOString().substr(0, 10),
       date1Type: '양력',
       date2Type: '양력',
-      date2: new Date().toISOString().substr(0, 10),
       showRouterView: this.$route.query.showRouterView,
     };
   },
@@ -279,6 +310,34 @@ export default {
 
       // return !koreanRegex.test(this.name2);
       return !(koreanRegex.test(this.name2) && !koreanConsonantVowelRegex.test(this.name2));
+    },
+    encodedDate1() {
+      if(this.date1_1 == '' || this.date1_2 == '' || this.date1_3 == '')
+        return '1912-03-14';
+      return this.date1_1 + '-' + this.date1_2 + '-' + this.date1_3;
+    },
+    encodedDate2() {
+      return this.date2_1 + '-' + this.date2_2 + '-' + this.date2_3;
+    },
+    showDate1_2Warning(){
+      const month = parseInt(this.date1_2);
+      return month < 1 || month > 12;
+    },
+    showDate1_3Warning(){
+      const month = parseInt(this.date1_2);
+      const day = parseInt(this.date1_3);
+      const maxDay = new Date(2023, month, 0).getDate();
+      return day < 1 || day > maxDay;
+    },
+    showDate2_2Warning(){
+      const month = parseInt(this.date2_2);
+      return month < 1 || month > 12;
+    },
+    showDate2_3Warning(){
+      const month = parseInt(this.date2_2);
+      const day = parseInt(this.date2_3);
+      const maxDay = new Date(2023, month, 0).getDate();
+      return day < 1 || day > maxDay;
     },
   },
   methods: {

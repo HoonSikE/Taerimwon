@@ -4,7 +4,7 @@
            + type + '&selectedType=' + selectedType + '&showRouterView=true'" class="title4">
           👉 [이전 페이지]
     </router-link>
-    <div class="container" id="capture-element">
+    <div class="container">
       <!-- 각인 -->
       <div class="image-text-container">
         <div class="title2">● 각인 예시 
@@ -12,7 +12,7 @@
             <span v-if="type !== selectedType"> [{{selectedType}}] </span>
           </div>
         </div>
-        <div class="image-text-container1_1">
+        <div class="image-text-container1_1" id="capture-element" :class="{ 'fullscreen': isFullscreen }" @click="toggleFullscreen">
           <div class="image-container1">
             <div v-if="type === '일반' && selectedType === '일반'">
               <img src="../../assets/images/engrave/background/일반(공).png" height="100%" alt="일반">
@@ -156,7 +156,7 @@
             <span v-if="name0 !== '없음'"> [본관] </span>
           </div>
         </div>
-        <div class="image-text-container1_1">
+        <div class="image-text-container1_1"  :class="{ 'fullscreen': isFullscreen2 }" @click="toggleFullscreen2">
           <div class="image-container2">
             <div v-if="name0 !== '없음'">
               <div v-if="type === '일반'">
@@ -319,6 +319,8 @@ export default {
       date2_2: this.$route.query.date2.substr(5,2),
       date2_3: this.$route.query.date2.substr(8,2),
 
+      isFullscreen: false,
+      isFullscreen2: false,
       capturedImageData: '',
     };
   },
@@ -383,6 +385,12 @@ export default {
       // 생성된 URI로 Android Intent를 호출합니다.
       window.location.href = intentURI;
     },
+    toggleFullscreen() {
+      this.isFullscreen = !this.isFullscreen;
+    },
+    toggleFullscreen2() {
+      this.isFullscreen2 = !this.isFullscreen2;
+    },
     async captureAndDisplayImage() {
       const captureElement = document.getElementById('capture-element');
       const canvas = await html2canvas(captureElement);
@@ -400,6 +408,19 @@ export default {
     align-items: center;
   }
 } */
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
   display: flex;
   /* justify-content: space-between; 가로로 나란히 정렬 */
@@ -457,7 +478,7 @@ export default {
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 
-  background-color: rgba(255, 0, 157, 0.461);
+  /* background-color: rgba(255, 0, 157, 0.461); */
 }
 
 .text-container2 {
@@ -470,7 +491,7 @@ export default {
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 
-  background-color: rgba(255, 0, 157, 0.461);
+  /* background-color: rgba(255, 0, 157, 0.461); */
 }
 
 .resultText1 {
