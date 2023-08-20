@@ -451,13 +451,13 @@ export default {
   width: 30vw;
   height: auto;
 
-  transform: translate(0%, -110%);
+  transform: translate(0%, -105%);
 
   writing-mode: vertical-lr; /* 세로로 쓰기 설정 */
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 
-  background-color: rgba(255, 0, 157, 0.461);
+  /* background-color: rgba(255, 0, 157, 0.461); */
 }
 
 .text-container2 {
@@ -483,7 +483,7 @@ export default {
 
   height: auto;
   width: 10vw;
-  background-color: rgba(9, 255, 0, 0.551);
+  /* background-color: rgba(9, 255, 0, 0.551); */
 }
 
 .resultText1_1 {
@@ -557,7 +557,7 @@ export default {
 
   height: auto;
   width: 10vw;
-  background-color: rgba(145, 108, 108, 0.662);
+  /* background-color: rgba(145, 108, 108, 0.662); */
 }
 
 .resultText2-4 {
