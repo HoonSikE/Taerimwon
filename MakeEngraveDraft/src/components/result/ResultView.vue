@@ -251,6 +251,36 @@
       </div>
       <br>
     </div>
+    <div>
+      각인 종류: {{this.type}}<br>
+      상세 종류: {{this.selectedType}}<br>
+      <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
+        {{this.selectedType}}명: {{this.name2}}<br>
+      </div>
+      <hr>
+      고인 성함: {{this.name1}}<br>
+      출생일: {{this.date1}} {{this.date1Type}}<br>
+      사망일: {{this.date2}} {{this.date2Type}}<br>
+      <hr>
+      <div v-if="selectedType2 === '없음'">
+        위패 유무: X<br>
+      </div>
+      <div v-else>
+        위패 유무: O<br>
+        <div v-if="selectedType2 == '없음'">
+          위패 종류: 본관<br>
+          본관 내용: {{this.name0}}<br>
+        </div>
+        <div v-else>
+          위패 종류: 일반<br>
+          <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
+            {{this.selectedType}}명: {{this.name2}}<br>
+          </div>
+          위패 내용: {{this.name1}}<br>
+        </div>
+      </div>
+    </div>
+
     <a v-if="isIOS" class="title8" :href="iosSMSEntry">아이폰 SMS 보내기</a>
     <a v-if="isAndroid" class="title8" :href="androidSMSEntry">안드로이드 SMS 보내기</a><br>
     <!-- <a v-if="isAndroid" class="title8" :href="androidMMSEntry">안드로이드 MMS 보내기</a> -->
@@ -284,7 +314,6 @@ export default {
 
       isFullscreen1: false,
       isFullscreen2: false,
-      capturedImageData: '',
     };
   },
   computed: {
@@ -301,7 +330,15 @@ export default {
     },
     iosSMSEntry() {
       const phoneNumber = '01045097485';
-      const message = encodeURIComponent('보내고 싶은 메시지\n새로운 줄');
+      const msg = '[각인 주문]\n'
+        + '각인 종류: ' + '' + '\n상세 종류' + ''
+        +'\n고인 성함' + name1
+        + '\n출생일' + date1 + ' ' + this.date1Type 
+        + '\n사망일' + date2 + ' ' + this.date2Type;
+
+
+        
+      const message = encodeURIComponent(msg);
       return `sms:${phoneNumber}&body=${message}`;
     },
     isAndroid() {
@@ -311,13 +348,6 @@ export default {
       const phoneNumber = '01045097485';
       const message = encodeURIComponent('보내고 싶은 메시지\n아에이오우');
       return `sms:${phoneNumber}?body=${message}`;
-    },
-    androidMMSEntry() {
-      const phoneNumber = '01045097485';
-      const message = encodeURIComponent('보내고 싶은 메시지\n새로운 줄');
-      const imageData = this.capturedImageData;
-      const mmsURL = `content://com.android.mms.MessageBuilder`;
-      return `${mmsURL}?recipient=${phoneNumber}&attachment=${imageData}&subject=${message}`;
     },
     isUnknown() {
       return this.checkMobile() === 'unknown';
@@ -333,20 +363,6 @@ export default {
         return "android";
       }
       return "unknown";
-    },
-    async captureAndSendMMS() {
-      const phoneNumber = '01045097485';
-      const message = encodeURIComponent('보내고 싶은 메시지');
-      const mmsWithImageURL = `${mmsURL}?recipient=${phoneNumber}&attachment=${imageData}&subject=${message}`;
-
-      // 이미지 데이터는 이미 capturedImageData에 저장되어 있으므로 그대로 사용
-      const imageData = this.capturedImageData;
-
-      // Android Intent URI를 생성하여 MMS 앱을 엽니다.
-      const intentURI = `sms:${phoneNumber}?body=${message}&attachment=${imageData}`;
-
-      // 생성된 URI로 Android Intent를 호출합니다.
-      window.location.href = intentURI;
     },
     toggleFullscreen1() {
       this.isFullscreen1 = !this.isFullscreen1;
