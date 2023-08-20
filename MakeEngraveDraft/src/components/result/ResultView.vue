@@ -606,12 +606,12 @@ export default {
   /* font-weight: 900; */
 
   font-size: 7.2vw;
-  padding-bottom: 2.0vw;
-  letter-spacing:1.0vw;
+  padding-bottom: 8.0vw;
+  letter-spacing:-0.2vw;
 
   height: 100%;
   width: 33.3333%;
-  background-color: rgba(70, 79, 10, 0.475);
+  /* background-color: rgba(70, 79, 10, 0.475); */
 }
 /* SGI */
 .resultText2_2 {
@@ -621,15 +621,15 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
+  /* font-weight: 900; */
 
   font-size: 8.4vw;
-  margin-top: 12%;
-  letter-spacing:0.17em;
+  padding-bottom: 0.0vw;
+  letter-spacing:2.0vw;
 
   height: 100%;
   width: 33.3333%;
-  /* background-color: rgb(70, 79, 10); */
+  background-color: rgba(70, 79, 10, 0.481);
 }
 
 .resultText2_2-4 {
@@ -639,11 +639,11 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
+  /* font-weight: 900; */
 
   font-size: 7.9vw;
-  margin-top: 12%;
-  letter-spacing:0.0em;
+  padding-bottom: 0.0vw;
+  letter-spacing:0.2vw;
 
   height: 100%;
   width: 33.3333%;
@@ -658,11 +658,11 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
+  /* font-weight: 900; */
 
   font-size: 8.4vw;
-  margin-top: 7%;
-  letter-spacing:0.05em;
+  padding-bottom: 6.0vw;
+  letter-spacing:0.7vw;
 
   height: 100%;
   width: 33.3333%;
@@ -676,11 +676,11 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
+  /* font-weight: 900; */
 
   font-size: 7.2vw;
-  margin-top: 6.5%;
-  letter-spacing:-0.05em;
+  padding-bottom: 7.0vw;
+  letter-spacing:-0.3vw;
 
   height: 100%;
   width: 33.3333%;
