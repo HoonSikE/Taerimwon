@@ -4,9 +4,13 @@
       각인 생성하기 
     </div>
     2023-08-19 23:38
+    {{checkMobile()}}
     <div class="title2">
       ● 각인 종류
     </div>
+    <a href="sms:01045097485?body=보내고 싶은 메시지">안드로이드 문자보내기</a><br>
+    <a href="sms:01045097485;body=보내고 싶은 메시지">iOS8 이상 문자보내기</a><br>
+    <a href="sms:01045097485&body=보내고 싶은 메시지">iOS8 미만 문자보내기</a><br>
     <!-- 가로 스크롤 가능한 컨테이너 -->
     <div class="text-align-center">
       <div class="scroll-container">
@@ -63,6 +67,22 @@ export default {
     return {
       selectedType: '일반', // 초기 선택 타입 설정
     };
+  },
+  methods: {
+    checkMobile(){
+      var varUA = navigator.userAgent.toLowerCase(); //userAgent 값 얻기
+ 
+      if ( varUA.indexOf('android') > -1) {
+          //안드로이드
+          return "android";
+      } else if ( varUA.indexOf("iphone") > -1||varUA.indexOf("ipad") > -1||varUA.indexOf("ipod") > -1 ) {
+          //IOS
+          return "ios";
+      } else {
+          //아이폰, 안드로이드 외
+          return "other";
+      }
+    }
   },
 };
 </script>
