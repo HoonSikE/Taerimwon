@@ -449,7 +449,7 @@ export default {
 
 .text-container {
   width: 30vw;
-  height: auto;
+  height: 40vw;
 
   transform: translate(0%, -107%);
 
