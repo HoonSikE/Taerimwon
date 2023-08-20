@@ -12,8 +12,8 @@
             <span v-if="type !== selectedType"> [{{selectedType}}] </span>
           </div>
         </div>
-        <div class="image-text-container1_1" id="capture-element" :class="{ 'fullscreen': isFullscreen }" @click="toggleFullscreen">
-          <div class="image-container1">
+        <div class="image-text-container1_1">
+          <div class="image-container1" :class="{ 'fullscreen1': isFullscreen1 }" @click="toggleFullscreen1">
             <div v-if="type === '일반' && selectedType === '일반'">
               <img src="../../assets/images/engrave/background/일반(공).png" height="100%" alt="일반">
             </div>
@@ -133,21 +133,6 @@
             </div>
           </div>
         </div>
-        <!-- 본관에 따른 데이터 전송값 변경 -->
-          <span v-if="name0 !== '없음'">
-            <router-link :to="'/engrave/resultEngrave?' + 'type=' + type 
-                        + '&name0=' + name0 + '&name1=' + name1 + '&name2='+ name2 
-                        + '&date1=' + date1 + '&date1Type=' + date1Type 
-                        + '&date2=' + date2 + '&date2Type=' + date2Type
-                        + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title7">&nbsp;&nbsp;&nbsp;🔎 크게보기</router-link>
-          </span>
-          <span v-else>
-            <router-link :to="'/engrave/resultEngrave?' + 'type=' + type 
-                        + '&name0=' + '없음' + '&name1=' + name1 + '&name2='+ name2 
-                        + '&date1=' + date1 + '&date1Type=' + date1Type 
-                        + '&date2=' + date2 + '&date2Type=' + date2Type
-                        + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title7">&nbsp;&nbsp;&nbsp;🔎 크게보기</router-link>
-          </span>
       </div>
       <!-- 위패 -->
       <div class="image-text-container2" v-if="selectedType2 !== '없음'">
@@ -156,8 +141,8 @@
             <span v-if="name0 !== '없음'"> [본관] </span>
           </div>
         </div>
-        <div class="image-text-container1_1"  :class="{ 'fullscreen': isFullscreen2 }" @click="toggleFullscreen2">
-          <div class="image-container2">
+        <div class="image-text-container1_2">
+          <div class="image-container2" :class="{ 'fullscreen2': isFullscreen2 }" @click="toggleFullscreen2">
             <div v-if="name0 !== '없음'">
               <div v-if="type === '일반'">
                 <img src="../../assets/images/memorialTablet/background/본관출력시안/일반(본관출력시안).png" height="100%" alt="일반">
@@ -263,35 +248,13 @@
             </div>
           </div>
         </div>
-        <!-- 본관에 따른 데이터 전송값 변경 -->
-          <router-link :to="'/engrave/resultTablet?' + 'type=' + type 
-                      + '&name0=' + name0 + '&name1=' + name1 + '&name2='+ name2 
-                      + '&date1=' + date1 + '&date1Type=' + date1Type 
-                      + '&date2=' + date2 + '&date2Type=' + date2Type
-                      + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title7">&nbsp;&nbsp;&nbsp;🔎 크게보기</router-link>
       </div>
       <br>
     </div>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <!-- <a v-if="checkMobile() === 'android'" class="title8" href="sms:01045097485?body=보내고 싶은 메시지%0adddㅇㅇㅇ">안드로이드 문자보내기</a> -->
-    <!-- <a v-if="checkMobile() === 'ios'" class="title8" href="sms:01045097485&body=보내고 싶은 메시지%0adddㅇㅇㅇ">iOS8 미만 문자보내기</a> -->
-    <!-- <div v-if="checkMobile() === 'other'" class="title4" href="sms:01045097485;body=보내고 싶은 메시지">iOS8 이상 문자보내기</div> -->
     <a v-if="isIOS" class="title8" :href="iosSMSEntry">아이폰 SMS 보내기</a>
     <a v-if="isAndroid" class="title8" :href="androidSMSEntry">안드로이드 SMS 보내기</a><br>
-    <a v-if="isAndroid" class="title8" :href="androidMMSEntry">안드로이드 MMS 보내기</a>
-    <a v-if="isUnknown" class="title8">호환되지 않는 기종입니다.</a>
-
-    <br>
-    <button @click="captureAndSendMMS">MMS 보내기</button>
-    <br>
-    <button @click="captureAndDisplayImage">캡처 및 이미지 표시</button>
-    <br>
-    <img :src="capturedImageData" alt="캡처된 이미지">
+    <!-- <a v-if="isAndroid" class="title8" :href="androidMMSEntry">안드로이드 MMS 보내기</a> -->
+    <a v-if="isUnknown" class="title8">문자호환되지 않는 기종입니다.</a>
   </div>
 </template>
 
@@ -319,7 +282,7 @@ export default {
       date2_2: this.$route.query.date2.substr(5,2),
       date2_3: this.$route.query.date2.substr(8,2),
 
-      isFullscreen: false,
+      isFullscreen1: false,
       isFullscreen2: false,
       capturedImageData: '',
     };
@@ -385,16 +348,49 @@ export default {
       // 생성된 URI로 Android Intent를 호출합니다.
       window.location.href = intentURI;
     },
-    toggleFullscreen() {
-      this.isFullscreen = !this.isFullscreen;
+    toggleFullscreen1() {
+      this.isFullscreen1 = !this.isFullscreen1;
+      if (this.isFullscreen1) {
+        this.zoomIn1();
+      } else {
+        this.zoomOut1();
+      }
+    },
+    zoomIn1() {
+      const imageContainer = document.querySelector('.image-container1');
+      imageContainer.style.transform = 'scale(2)'; // 예시로 확대 배율을 2배로 설정
+
+      const textContainer = document.querySelector('.text-container');
+      textContainer.style.transform = 'translate(-100%, 12%)';
+    },
+    zoomOut1() {
+      const imageContainer = document.querySelector('.image-container1');
+      imageContainer.style.transform = 'scale(1)'; // 원래 크기로 설정
+
+      const textContainer = document.querySelector('.text-container');
+      textContainer.style.transform = 'translate(0%, -107%)';
     },
     toggleFullscreen2() {
       this.isFullscreen2 = !this.isFullscreen2;
+      if (this.isFullscreen2) {
+        this.zoomIn2();
+      } else {
+        this.zoomOut2();
+      }
     },
-    async captureAndDisplayImage() {
-      const captureElement = document.getElementById('capture-element');
-      const canvas = await html2canvas(captureElement);
-      this.capturedImageData = canvas.toDataURL('image/jpeg');
+    zoomIn2() {
+      const imageContainer = document.querySelector('.image-container2');
+      imageContainer.style.transform = 'scale(2)'; // 예시로 확대 배율을 2배로 설정
+
+      const textContainer = document.querySelector('.text-container2');
+      textContainer.style.transform = 'translate(-100%, 12%)';
+    },
+    zoomOut2() {
+      const imageContainer = document.querySelector('.image-container2');
+      imageContainer.style.transform = 'scale(1)'; // 원래 크기로 설정
+
+      const textContainer = document.querySelector('.text-container2');
+      textContainer.style.transform = 'translate(0%, -100%)';
     },
   },
 };
@@ -408,10 +404,23 @@ export default {
     align-items: center;
   }
 } */
-.fullscreen {
+.fullscreen1 {
   position: fixed;
   top: 0;
-  left: 0;
+  left: 28vw;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullscreen2 {
+  position: fixed;
+  top: 0;
+  left: 20vw;
   width: 100vw;
   height: 100vh;
   z-index: 1000;
@@ -437,24 +446,30 @@ export default {
 .image-text-container {
   position: relative;
   width: 40vw;
-  height: 60vh;
+  height: 50vh;
   background-repeat: no-repeat;
   background-position: center;
   margin-right: 10%;
   /* background-color: rgb(226, 245, 100); */
 }
 
-.image-text-container1_1 {
-  display: flex;
-}
-
 .image-text-container2 {
   position: relative;
   width: 40vw;
-  height: 60vh;
+  height: 50vh;
   background-repeat: no-repeat;
   background-position: center;
   /* background-color: rgb(0, 255, 17); */
+}
+
+.image-text-container1_1 {
+  display: flex;
+  /* background-color: rgba(245, 100, 221, 0.537); */
+}
+
+.image-text-container1_2 {
+  display: flex;
+  /* background-color: rgba(100, 156, 245, 0.537); */
 }
 
 .image-container1 img {

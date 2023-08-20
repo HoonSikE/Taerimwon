@@ -141,9 +141,9 @@
           </div>
           <div>
             <!-- <input v-model="date1" type="date" placeholder="1900-01-01"/> -->
-            <input v-model="date1_1" type="text" placeholder="년도" style="width: 4em;">.
-            <input v-model="date1_2" type="text" placeholder="월" style="width: 2em;">.
-            <input v-model="date1_3" type="text" placeholder="일" style="width: 2em;">.&nbsp;
+            <input v-model="date1_1" type="text" placeholder="년도" style="width: 5em;">.
+            <input v-model="date1_2" type="text" placeholder="월" style="width: 3em;">.
+            <input v-model="date1_3" type="text" placeholder="일" style="width: 3em;">.&nbsp;
             <!-- 날짜 입력 -->
             <select name="date1Type" v-model="date1Type">
               <option value="양력" selected="selected">양력</option>
@@ -151,9 +151,9 @@
             </select>
           </div>
           <div>
-            <input v-model="date2_1" type="text" placeholder="년도" style="width: 4em;">.
-            <input v-model="date2_2" type="text" placeholder="월" style="width: 2em;">.
-            <input v-model="date2_3" type="text" placeholder="일" style="width: 2em;">.&nbsp;
+            <input v-model="date2_1" type="text" placeholder="년도" style="width: 5em;">.
+            <input v-model="date2_2" type="text" placeholder="월" style="width: 3em;">.
+            <input v-model="date2_3" type="text" placeholder="일" style="width: 3em;">.&nbsp;
             <select name="date2Type" v-model="date2Type">
               <option value="양력" selected="selected">양력</option>
               <option value="음력">음력</option>
