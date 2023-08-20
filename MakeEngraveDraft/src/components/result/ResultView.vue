@@ -448,7 +448,7 @@ export default {
 }
 
 .text-container {
-  width: 100%;
+  width: 30vw;
   height: auto;
 
   transform: translate(0%, -100%);
@@ -491,9 +491,9 @@ export default {
   font-family: "CENTURY";
   font-weight: 900;
 
-  font-size: 3.5vw;
+  font-size: 3.5vh;
   /* margin-top: 0.05em; */
-  letter-spacing:-0.95vw;
+  letter-spacing:-0.95vh;
 
   width: 100%;
   /* height: 100%; */
@@ -510,9 +510,9 @@ export default {
   color: black;
   font-weight: bold;
 
-  font-size: 3.5vw;
-  margin-top: -1.2vw;
-  letter-spacing:-1.8vw;
+  font-size: 3.5vh;
+  margin-top: -1.2vh;
+  letter-spacing:-1.8vh;
 
   width: 100%;
   /* height: 100%; */
@@ -528,8 +528,8 @@ export default {
   font-family: "HYHaeSo";
   font-weight: 900;
  
-  font-size: 5vw;
-  margin-top: 0.9vw;
+  font-size: 5vh;
+  margin-top: 0.9vh;
   /* letter-spacing:-0em; */
 
   width: 100%;
@@ -550,12 +550,12 @@ export default {
   color: black;
   font-family: "HYGungSo";
   font-weight: 500;
-  font-size: 8.4vw;
-  margin-top: -0.5vw;
-  letter-spacing:3.5vw;
+  font-size: 8.4vh;
+  margin-top: -0.5vh;
+  letter-spacing:3.5vh;
 
   height: auto;
-  width: 10vw;
+  width: 10vh;
   /* background-color: rgba(145, 108, 108, 0.662); */
 }
 
