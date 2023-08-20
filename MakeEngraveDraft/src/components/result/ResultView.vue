@@ -478,7 +478,7 @@ export default {
   justify-content: center;
   align-items: center;
 
-  margin-top: -5vw;
+  /* margin-top: -5vw; */
   /* margin-bottom: 7%; */
 
   height: auto;
@@ -511,7 +511,7 @@ export default {
   font-weight: bold;
 
   font-size: 3.5vw;
-  margin-top: -0.5vw;
+  margin-top: -1.5vw;
   letter-spacing:-1.0vw;
 
   width: 100%;
@@ -817,11 +817,11 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-weight: 900;
+  font-weight: 500;
 
   font-size: 8vw;
-  margin-top: 27%;
-  letter-spacing:0.9em;
+  /* margin-top: 27%; */
+  letter-spacing:7.0vw;
 
   height: auto;
   width: 20vw;
