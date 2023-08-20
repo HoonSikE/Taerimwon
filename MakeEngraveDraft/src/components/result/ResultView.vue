@@ -588,8 +588,9 @@ export default {
   /* font-weight: 900; */
 
   font-size: 8.4vw;
-  margin-top: -1vw;
-  letter-spacing:1.5vw;
+  /* margin-top: -1vw; */
+  padding-bottom: 7.0vw;
+  letter-spacing:1.0vw;
 
   height: 100%;
   width: 33.3333%;
@@ -605,12 +606,12 @@ export default {
   /* font-weight: 900; */
 
   font-size: 7.2vw;
-  margin-top: -1.5vw;
-  letter-spacing:0.2vw;
+  padding-bottom: 2.0vw;
+  letter-spacing:1.0vw;
 
   height: 100%;
   width: 33.3333%;
-  /* background-color: rgba(70, 79, 10, 0.475); */
+  background-color: rgba(70, 79, 10, 0.475);
 }
 /* SGI */
 .resultText2_2 {
