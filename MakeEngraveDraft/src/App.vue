@@ -19,7 +19,7 @@
     </body>
     <hr>
     <footer>
-      <div>
+      <div @click="handleFooterClick">
         ● 문의사항<br>
         ☎️ 연락처: 010-4509-7485<br>
         📨 Email: hoongrammer@gmail.com
@@ -30,7 +30,26 @@
 
 <script>
 export default {
-  name: "App",
+  name: 'App',
+  data() {
+    return {
+      clickCount: 0
+    };
+  },
+  methods: {
+    handleFooterClick() {
+      this.clickCount++;
+
+      if (this.clickCount === 3) {
+        this.goToAdmin();
+        // 리셋 클릭 횟수
+        this.clickCount = 0;
+      }
+    },
+    goToAdmin() {
+      this.$router.push('/admin'); // admin 페이지로 이동
+    }
+  }
 };
 </script>
 

@@ -1,14 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import EngraveView from '../views/EngraveView.vue'
+import AdminView from '../views/AdminView.vue'
 import AboutView from '../views/AboutView.vue'
 
+// 각인 위패
 import EngraveCreateView from '../components/engrave/EngraveCreateView.vue'
 import EngraveCreateDetail from '../components/engrave/create/EngraveCreateDetail.vue'
-
 import TabletCreateView from '../components/tablet/TabletCreateView.vue'
-
 import ResultView from '../components/result/ResultView.vue'
+
+// 관리자 페이지
+import Login from '../components/admins/LoginView.vue'
+import AdminHome from '../components/admins/AdminHomeView.vue'
+import AdminSignUp from '../components/admins/adminHome/AdminSignUpView.vue'
+import AdminOrderList from '../components/admins/adminHome/AdminOrderListView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -80,18 +86,41 @@ const router = createRouter({
       ],
     },
     {
+      path: '/admin',
+      name: 'admin',
+      component: AdminView,
+      redirect: '/admin/login',
+      children: [
+        {
+          path: 'login',
+          name: 'login',
+          component: Login,
+        },
+        {
+          path: 'adminHome',
+          name: 'adminHome',
+          component: AdminHome,
+          redirect: '/admin/adminHome/adminSignUp',
+          children: [
+            {
+              path: 'adminSignUp',
+              name: 'adminSignUp',
+              component: AdminSignUp,
+            },
+            {
+              path: 'adminOrderList',
+              name: 'adminOrderList',
+              component: AdminOrderList,
+            },
+          ]
+        },
+      ],
+    },
+    {
       path: '/about',
       name: 'about',
       component: AboutView
     },
-    // {
-    //   path: "/:catchAll(.*)",
-    //   redirect: "/404",
-    // },
-    // {
-    //   path: "/404",
-    //   redirect: '/engrave/engraveCreate/engraveDetail?type=일반&selectedType=일반&showRouterView=true',
-    // },
   ]
 })
 

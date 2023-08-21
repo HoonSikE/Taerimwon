@@ -600,7 +600,7 @@ export default {
 .resultText1_3 {
   color: black;
   font-family: "HYHaeSo";
-  font-weight: 900;
+  /* font-weight: 900; */
  
   font-size: 5vw;
   margin-top: 0.9vw;
