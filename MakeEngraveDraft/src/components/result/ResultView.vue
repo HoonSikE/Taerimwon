@@ -193,7 +193,18 @@
                   <!-- 아래 글자 -->
                   <span class="resultText4_3" v-if="type === '천주교'">
                     <span class="resultText4_3_1">{{name0}}</span>
-                    <span class="resultText4_3_2">{{name2}}</span>
+                    <span class="resultText4_3_2" v-if="name2.length === 2 || name2.length === 3">
+                      {{name2}}
+                    </span>
+                    <span class="resultText4_3_2" v-if="name2.length === 4">
+                      {{name2}}
+                    </span>
+                    <span class="resultText4_3_2" v-if="name2.length === 5">
+                      {{name2}}
+                    </span>
+                    <span class="resultText4_3_2-6" v-if="name2.length === 6">
+                      {{name2}}
+                    </span>
                   </span>
                 </div>
                 <!-- 본관 선택 x-->
@@ -698,7 +709,7 @@ export default {
 
   height: 100%;
   width: 33.3333%;
-  background-color: rgba(70, 79, 10, 0.481);
+  /* background-color: rgba(70, 79, 10, 0.481); */
 }
 
 .resultText2_2-4 {
@@ -778,7 +789,7 @@ export default {
 .resultText2_4_1-4 {
   font-size: 7.5vw;
   margin-top: 2vw;
-  /* padding-bottom: 0vw; */
+  padding-bottom: 1.5vw;
   letter-spacing:0.5vw;
 
   /* background-color: rgb(70, 79, 10); */
@@ -786,7 +797,7 @@ export default {
 /* 이름2 */
 .resultText2_4_2 {
   font-size: 4.5vw;
-  margin-top: -1vw;
+  margin-top: -3vw;
   letter-spacing:-0.5vw;
 
   writing-mode: horizontal-tb;
@@ -794,7 +805,7 @@ export default {
 }
 .resultText2_4_2-4 {
   font-size: 4.2vw;
-  margin-top: -1vw;
+  margin-top: -3vw;
   letter-spacing:-0.8vw;
 
   writing-mode: horizontal-tb;
@@ -802,15 +813,15 @@ export default {
 }
 .resultText2_4_2-5 {
   font-size: 3.8vw;
-  margin-top: -1vw;
+  margin-top: -3vw;
   letter-spacing:-0.8vw;
 
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText2_4_2-6 {
-  font-size: 3.6vw;
-  margin-top: -1vw;
+  font-size: 3.5vw;
+  margin-top: -3vw;
   letter-spacing:-1.1vw;
 
   writing-mode: horizontal-tb;
@@ -841,7 +852,7 @@ export default {
 }
 .resultText2_5_1-4 {
   font-size: 7.9vw;
-  /* margin-top: 3vw; */
+  margin-top: -1vw;
   letter-spacing:0.0vw;
 
   /* background-color: rgb(70, 79, 10); */
@@ -929,6 +940,7 @@ export default {
 .resultText3_2_1-4 {
   font-size: 7.2vw;
   margin-top: 0vw;
+  margin-bottom: 2vw;
   letter-spacing:2.5vw;
 
   /* background-color: rgba(8, 218, 127, 0.473); */
@@ -944,7 +956,7 @@ export default {
 }
 .resultText3_2_2-4 {
   font-size: 4.8vw;
-  margin-top: -3vw;
+  margin-top: 1vw;
   letter-spacing:-0.6vw;
 
   writing-mode: horizontal-tb;
@@ -1109,6 +1121,14 @@ export default {
   font-size: 4.2vw;
   margin-top: -1vw;
   letter-spacing:-0.5vw;
+
+  writing-mode: horizontal-tb;
+  /* background-color: rgb(246, 71, 2); */
+}
+.resultText4_3_2-6 {
+  font-size: 3.8vw;
+  margin-top: -1vw;
+  letter-spacing:-1.0vw;
 
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
