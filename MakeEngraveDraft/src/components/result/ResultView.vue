@@ -566,7 +566,7 @@ export default {
 
   font-size: 3.5vw;
   /* margin-top: 0.05em; */
-  letter-spacing:-0.45vw;
+  letter-spacing:-0.8vw;
 
   width: 100%;
   /* height: 100%; */
@@ -584,9 +584,9 @@ export default {
   font-weight: bold;
 
   font-size: 3.5vw;
-  margin-top: -1.5vw;
-  margin-right: 0.3vw;
-  letter-spacing:-1.0vw;
+  margin-top: -1.0vw;
+  /* margin-right: 0.3vw; */
+  letter-spacing:-1.5vw;
 
   width: 100%;
   /* height: 100%; */
