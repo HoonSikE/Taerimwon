@@ -6,227 +6,39 @@
     </router-link>
     <div class="container">
       <!-- 각인 -->
-      <div class="engrave_container">
+      <div class="image-text-container">
         <div class="title2">● 각인 예시 
           <div class="title6">&nbsp;&nbsp;- {{type}} 
             <span v-if="type !== selectedType"> [{{selectedType}}] </span>
           </div>
         </div>
         <div>
-          <img class="engrave_image" v-if="capturedImage" :src="capturedImage" alt="Captured" />
+          <h4>캡처한 이미지</h4>
+          <img v-if="capturedImage" :src="capturedImage" alt="Captured" />
         </div>
-      </div>
-      <!-- 위패 -->
-      
-    </div>
-      <!-- 각인 -->
-      <div class="image-text-container">
-        <div v-if="imageContainerVisible" class="image-container1" :class="{ 'fullscreen1': isFullscreen1 }" @click="toggleFullscreen1" ref="imageContainer">
-          <div class="text-container">
-            <span class="resultText1">
-              <span class="resultText1_1">{{date1_1}}</span>
-              <span class="resultText1_2">•</span>
-              <span class="resultText1_1">{{date1_2}}</span>
-              <span class="resultText1_2">•</span>
-              <span class="resultText1_1">{{date1_3}}</span>
-              <span v-if="date1Type==='음력'" class="resultText1_3">陰</span>
-              <span v-if="date1Type==='양력'" class="resultText1_3">陽</span>
-            </span>
-            <!-- <div v-if="selectedType === '일반'"> -->
-            <!-- 그대로 -->
-            <span class="" v-if="selectedType === '일반' || selectedType === '기독교' || selectedType === '불교'
-                                      || selectedType === '천주교'">
-              <span class="resultText2" v-if="name1.length === 2 || name1.length === 3">
-                {{encodedName1}}
-              </span>
-              <span class="resultText2-4" v-if="name1.length === 4">
-                {{encodedName1}}
-              </span>
-            </span>
-            <!-- 아래 글자 1 -->
-            <span class="" v-if="selectedType === '형제'">
-              <span class="resultText2_1" v-if="name1.length === 2 || name1.length === 3">
-                {{encodedName1}}
-              </span>
-              <span class="resultText2_1-4" v-if="name1.length === 4">
-                {{encodedName1}}
-              </span>
-            </span>
-            <!-- 위 글자 1 -->
-            <span class="" v-if="selectedType === 'SGI'">
-              <span class="resultText2_2" v-if="name1.length === 2 || name1.length === 3">
-                {{encodedName1}}
-              </span>
-              <span class="resultText2_2-4" v-if="name1.length === 4">
-                {{encodedName1}}
-              </span>
-            </span>
-            <!-- 위 아래 글자 -->
-            <span class="" v-if="selectedType === '묘법'">
-              <span class="resultText2_3" v-if="name1.length === 2 || name1.length === 3">
-                {{encodedName1}}
-              </span>
-              <span class="resultText2_3-4" v-if="name1.length === 4">
-                {{encodedName1}}
-              </span>
-            </span>
-            <!-- 아래 글자 2 -->
-            <span class="resultText2_4" v-if="selectedType === '세례명'">
-              <span class="resultText2_4_1" v-if="name1.length === 2 || name1.length === 3">
-                {{encodedName1}}
-              </span>
-              <span class="resultText2_4_1-4" v-if="name1.length === 4">
-                {{encodedName1}}
-              </span>
-              <span class="resultText2_4_2" v-if="name2.length === 2 || name2.length === 3">
-                {{name2}}
-              </span>
-              <span class="resultText2_4_2-4" v-if="name2.length === 4">
-                {{name2}}
-              </span>
-              <span class="resultText2_4_2-5" v-if="name2.length === 5">
-                {{name2}}
-              </span>
-              <span class="resultText2_4_2-6" v-if="name2.length === 6">
-                {{name2}}
-              </span>
-            </span>
-            <!-- 위 글자 2-->
-            <span class="resultText2_5" v-if="selectedType === '직분' || selectedType === '법명'">
-              <span class="resultText2_5_2" v-if="name2.length === 2 || name2.length === 3">
-                {{name2}}
-              </span>
-              <span class="resultText2_5_2-4" v-if="name2.length === 4">
-                {{name2}}
-              </span>
-
-              <span class="resultText2_5_1" v-if="name1.length === 2 || name1.length === 3">
-                {{encodedName1}}
-              </span>
-              <span class="resultText2_5_1-4" v-if="name1.length === 4">
-                {{encodedName1}}
-              </span>
-            </span>
-            <!-- </div> -->
-            <span class="resultText1">
-              <span class="resultText1_1">{{date2_1}}</span>
-              <span class="resultText1_2">•</span>
-              <span class="resultText1_1">{{date2_2}}</span>
-              <span class="resultText1_2">•</span>
-              <span class="resultText1_1">{{date2_3}}</span>
-              <span v-if="date2Type==='음력'" class="resultText1_3">陰</span>
-              <span v-if="date2Type==='양력'" class="resultText1_3">陽</span>
-            </span>
-          </div>
-        </div>
-      </div>
-      <!-- 위패 -->
-      <div class="image-text-container2" v-if="selectedType2 !== '없음'">
-        <div class="title2">● 위패 예시
-          <div class="title6">&nbsp;&nbsp;- {{type}} 
-            <span v-if="name0 !== '없음'"> [본관] </span>
-          </div>
-        </div>
-        <div class="image-text-container1_2">
-          <div class="image-container2" :class="{ 'fullscreen2': isFullscreen2 }" @click="toggleFullscreen2">
-            <div class="text-container2">
-              <!-- <span class="resultText3"> -->
-              <!-- 위패 추가 -->
-              <div v-if="selectedType2 !== '없음'">
-                <!-- 본관 선택 o -->
-                <div v-if="name0 !== '없음'">
-                  <!-- 일반 -->
-                  <span class="resultText4_1_1" v-if="type === '일반'">
-                    {{name0}}
-                  </span>
-                  <!-- 불교 -->
-                  <span class="resultText4_1_2" v-if="type === '불교'">
-                    {{name0}}
-                  </span>
-                  <!-- 위 글자 -->
-                  <span class="resultText4_2" v-if="type === '기독교'">
-                    <span class="resultText4_2_2">{{name2}}</span>
-                    <span class="resultText4_2_1">{{name0}}</span>
-                  </span>
-                  <!-- 아래 글자 -->
-                  <span class="resultText4_3" v-if="type === '천주교'">
-                    <span class="resultText4_3_1">{{name0}}</span>
-                    <span class="resultText4_3_2" v-if="name2.length === 2 || name2.length === 3">
-                      {{name2}}
-                    </span>
-                    <span class="resultText4_3_2" v-if="name2.length === 4">
-                      {{name2}}
-                    </span>
-                    <span class="resultText4_3_2" v-if="name2.length === 5">
-                      {{name2}}
-                    </span>
-                    <span class="resultText4_3_2-6" v-if="name2.length === 6">
-                      {{name2}}
-                    </span>
-                  </span>
-                </div>
-                <!-- 본관 선택 x-->
-                <div v-else>
-                  <!-- 일반 -->
-                  <span class="" v-if="type === '일반' || type === '불교'">
-                    <span class="resultText3_1" v-if="name1.length === 2 || name1.length === 3">
-                      {{encodedName1}}
-                    </span>
-                    <span class="resultText3_1-4" v-if="name1.length === 4">
-                      {{encodedName1}}
-                    </span>
-                  </span>
-                  <!-- 위 글자 -->
-                  <span class="resultText3_2" v-if="type === '기독교'">
-                    <span class="resultText3_2_2" v-if="name2.length === 2 || name2.length === 3">
-                      {{name2}}
-                    </span>
-                    <span class="resultText3_2_2-4" v-if="name2.length === 4">
-                      {{name2}}
-                    </span>
-                    <span class="resultText3_2_1" v-if="name1.length === 2 || name1.length === 3">
-                      {{encodedName1}}
-                    </span>
-                    <span class="resultText3_2_1-4" v-if="name1.length === 4">
-                      {{encodedName1}}
-                    </span>
-                  </span>
-                  <!-- 아래 글자 -->
-                  <span class="resultText3_3" v-if="type === '천주교'">
-                    <span class="resultText3_3_1" v-if="name1.length === 2 || name1.length === 3">
-                      {{encodedName1}}
-                    </span>
-                    <span class="resultText3_3_1-4" v-if="name1.length === 4">
-                      {{encodedName1}}
-                    </span>
-                    <span class="resultText3_3_2" v-if="name2.length === 2 || name2.length === 3">
-                      {{name2}}
-                    </span>
-                    <span class="resultText3_3_2-4" v-if="name2.length === 4">
-                      {{name2}}
-                    </span>
-                    <span class="resultText3_3_2-5" v-if="name2.length === 5">
-                      {{name2}}
-                    </span>
-                    <span class="resultText3_3_2-6" v-if="name2.length === 6">
-                      {{name2}}
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    <br>
-    <br>
-    <br>
-    <div class="container">
-      <!-- 각인 -->
-      <div class="image-text-container">
         <div class="image-text-container1_1">
           <div v-if="imageContainerVisible" class="image-container1" :class="{ 'fullscreen1': isFullscreen1 }" @click="toggleFullscreen1" ref="imageContainer">
+            <div v-if="type === '일반' && selectedType === '일반'">
+              <img src="../../assets/images/engrave/background/일반(공).png" height="100%" alt="일반">
+            </div>
+            <div v-if="type === '일반' && selectedType === '형제'">
+              <img src="../../assets/images/engrave/background/일반형제(공).png" height="100%" alt="형제">
+            </div>
+            <div v-if="type === '기독교'">
+              <img src="../../assets/images/engrave/background/기독교(공).png" height="100%" alt="기독교">
+            </div>
+            <div v-if="type === '불교'">
+              <img src="../../assets/images/engrave/background/불교(공).png" height="100%" alt="불교">
+            </div>
+            <div v-if="type === '천주교'">
+              <img src="../../assets/images/engrave/background/천주교(공).png" height="100%" alt="천주교">
+            </div>
+            <div v-if="type === 'SGI'">
+              <img src="../../assets/images/engrave/background/sgi(공).png" height="100%" alt="SGI">
+            </div>
+            <div v-if="type === '묘법'">
+              <img src="../../assets/images/engrave/background/묘법(공).png" height="100%" alt="묘법">
+            </div>
             <div class="text-container">
               <span class="resultText1">
                 <span class="resultText1_1">{{date1_1}}</span>
@@ -335,6 +147,34 @@
         </div>
         <div class="image-text-container1_2">
           <div class="image-container2" :class="{ 'fullscreen2': isFullscreen2 }" @click="toggleFullscreen2">
+            <div v-if="name0 !== '없음'">
+              <div v-if="type === '일반'">
+                <img src="../../assets/images/memorialTablet/background/본관출력시안/일반(본관출력시안).png" height="100%" alt="일반">
+              </div>
+              <div v-if="type === '기독교'">
+                <img src="../../assets/images/memorialTablet/background/본관출력시안/기독교(본관출력시안).png" height="100%" alt="기독교">
+              </div>
+              <div v-if="type === '불교'">
+                <img src="../../assets/images/memorialTablet/background/본관출력시안/불교(본관출력시안).png" height="100%" alt="불교">
+              </div>
+              <div v-if="type === '천주교'">
+                <img src="../../assets/images/memorialTablet/background/본관출력시안/천주교(본관출력시안).png" height="100%" alt="천주교">
+              </div>
+            </div>
+            <div v-else>
+              <div v-if="type === '일반'">
+                <img src="../../assets/images/memorialTablet/background/이름출력시안/일반(이름출력시안).png" height="100%" alt="일반">
+              </div>
+              <div v-if="type === '기독교'">
+                <img src="../../assets/images/memorialTablet/background/이름출력시안/기독교(이름출력시안).png" height="100%" alt="기독교">
+              </div>
+              <div v-if="type === '불교'">
+                <img src="../../assets/images/memorialTablet/background/이름출력시안/불교(이름출력시안).png" height="100%" alt="불교">
+              </div>
+              <div v-if="type === '천주교'">
+                <img src="../../assets/images/memorialTablet/background/이름출력시안/천주교(이름출력시안).png" height="100%" alt="천주교">
+              </div>
+            </div>
             <div class="text-container2">
               <!-- <span class="resultText3"> -->
               <!-- 위패 추가 -->
@@ -456,9 +296,16 @@
       </div>
     </div>
 
-    <!-- <a v-if="isIOS" class="title8" :href="iosSMSEntry">아이폰 SMS 보내기</a> -->
-    <!-- <a v-if="isAndroid" class="title8" :href="androidSMSEntry">안드로이드 SMS 보내기</a><br> -->
-    <!-- <a v-if="isUnknown" class="title8">문자호환되지 않는 기종입니다.</a> -->
+
+    <button @click="captureAndDisplay">캡처 및 출력</button>
+
+    
+
+
+    <a v-if="isIOS" class="title8" :href="iosSMSEntry">아이폰 SMS 보내기</a>
+    <a v-if="isAndroid" class="title8" :href="androidSMSEntry">안드로이드 SMS 보내기</a><br>
+    <!-- <a v-if="isAndroid" class="title8" :href="androidMMSEntry">안드로이드 MMS 보내기</a> -->
+    <a v-if="isUnknown" class="title8">문자호환되지 않는 기종입니다.</a>
   </div>
 </template>
 
@@ -524,7 +371,7 @@ export default {
     },
   },
   mounted() {
-    this.captureAndDisplay();
+    // this.captureAndDisplay();
   },
   methods: {
     checkMobile() {
@@ -617,7 +464,7 @@ export default {
       const capturedImageDataUrl = canvas.toDataURL("image/png");
 
       this.capturedImage = capturedImageDataUrl;
-      // this.imageContainerVisible = !this.imageContainerVisible; // 이미지 컨테이너를 숨김
+      this.imageContainerVisible = !this.imageContainerVisible; // 이미지 컨테이너를 숨김
     },
   },
 };
@@ -657,8 +504,6 @@ export default {
   align-items: center;
 }
 
-/* ======================== */
-
 .container {
   display: flex;
   /* justify-content: space-between; 가로로 나란히 정렬 */
@@ -673,43 +518,15 @@ export default {
   background-color: darkblue;
 }
 
-/*======각인 시작======*/
-/* 캡처 이미지 출력 */
-.engrave_container {
+.image-text-container {
   position: relative;
   width: 40vw;
-  /* height: 50vh; */
+  height: 50vh;
   background-repeat: no-repeat;
   background-position: center;
   margin-right: 10%;
   background-color: rgb(226, 245, 100);
 }
-.engrave_image {
-  width: 40vw;
-  height: auto;
-}
-/* 이미지 출력 */
-.image-text-container {
-  /* position: relative; */
-  width: 540px;
-  height: 580px;
-  /* background-repeat: no-repeat; */
-  /* background-position: center; */
-  /* margin-right: 10%; */
-  background-color: rgb(226, 245, 100);
-}
-.image-container1 {
-  width: 540px;
-  height: 580px;
-  background-image: url('../../assets/images/engrave/background/engrave.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: rgb(0, 255, 17);
-}
-/*======각인 끝======*/
-/*======위패 시작======*/
-
-/*======위패 끝======*/
 
 .image-text-container2 {
   position: relative;
@@ -719,6 +536,7 @@ export default {
   background-position: center;
   /* background-color: rgb(0, 255, 17); */
 }
+
 .image-text-container1_1 {
   display: flex;
   width: 400px;
@@ -730,8 +548,6 @@ export default {
   display: flex;
   /* background-color: rgba(100, 156, 245, 0.537); */
 }
-
-
 
 .image-container1 img {
   width: 400px;
@@ -748,6 +564,8 @@ export default {
   width: 400px;
   height: 675px;
 
+  transform: translate(0%, -101%);
+
   writing-mode: vertical-lr; /* 세로로 쓰기 설정 */
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
@@ -758,6 +576,8 @@ export default {
 .text-container2 {
   width: 20vw;
   height: 48vw;
+
+  transform: translate(0%, -100%);
 
   writing-mode: vertical-lr; /* 세로로 쓰기 설정 */
   text-orientation: upright; /* 텍스트 방향 유지 */
