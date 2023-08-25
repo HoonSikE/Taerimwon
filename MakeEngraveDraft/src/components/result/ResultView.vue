@@ -13,19 +13,28 @@
           </div>
         </div>
         <div class="engrave_image_container" :class="{ 'fullscreen1': isFullscreen1 }" @click="toggleFullscreen1">
-          <img class="engrave_image" v-if="capturedImage" :src="capturedImage" alt="Captured" />
+          <img class="engrave_image" v-if="engraveCapturedImage" :src="engraveCapturedImage" alt="각인 예시 사진" />
         </div>
       </div>
       <!-- 위패 -->
-      
+      <div class="tablet_container" v-if="selectedType2 !== '없음'">
+        <div class="title2">● 위패 예시
+          <div class="title6">&nbsp;&nbsp;- {{type}} 
+            <span v-if="name0 !== '없음'"> [본관] </span>
+          </div>
+        </div>
+        <div class="tablet_image_container" :class="{ 'fullscreen2': isFullscreen2 }" @click="toggleFullscreen2">
+          <img class="tablet_image" v-if="tabletCapturedImage" :src="tabletCapturedImage" alt="위패 예시 사진" />
+        </div>
+      </div>
     </div>
     <!-- 각인 -->
-    <div v-if="imageContainerVisible" class="image-text-container" ref="imageContainer">
+    <div v-if="engraveImageContainerVisible" class="image-text-container" ref="engraveImageContainer">
       <div class="text-container">
         <span class="resultText1">
-          <span v-if="type == '일반' || type == '불교' || type == '묘법' || type == 'SGI'" class="resultText1_0">生</span>
-          <span v-if="type == '기독교'" class="resultText1_0">出生</span>
-          <span v-if="type == '천주교'" class="resultText1_0">出生</span>
+          <span v-if="type == '일반' || type == '불교' || type == '묘법' || type == 'SGI'" class="resultText1_0_1">生</span>
+          <span v-if="type == '기독교'" class="resultText1_0_2">出生</span>
+          <span v-if="type == '천주교'" class="resultText1_0_2">出生</span>
 
           <span class="resultText1_1">{{date1_1.substr(0, 1)}}</span>
           <span class="resultText1_1">{{date1_1.substr(1, 1)}}</span>
@@ -40,32 +49,36 @@
           <span v-if="date1Type==='음력'" class="resultText1_3">陰</span>
           <span v-if="date1Type==='양력'" class="resultText1_3">陽</span>
         </span>
-        <!-- 그대로 -->
+        <!-- 일반, 기독교, 불교, 천주교-->
         <span class="resultText2" v-if="selectedType === '일반' || selectedType === '기독교' || selectedType === '불교'
                                   || selectedType === '천주교'">
           <div :class="getResult2Mark"></div>
-          <span class="resultText2_0_1" v-if="name1.length === 2 || name1.length === 3">
+          <span class="resultText2_0" v-if="name1.length === 2 || name1.length === 3">
             {{encodedName1}}
           </span>
-          <span class="resultText2_0_1-4" v-if="name1.length === 4">
+          <span class="resultText2_0-4" v-if="name1.length === 4">
             {{encodedName1}}
           </span>
         </span>
-        <!-- 아래 글자 1 -->
-        <span class="" v-if="selectedType === '형제'">
-                    <div :style="result2_mark"></div>
-
+        <!-- 형제(아래)) -->
+        <span class="resultText2" v-if="selectedType === '형제'">
+          <div :class="getResult2Mark"></div>
           <span class="resultText2_1" v-if="name1.length === 2 || name1.length === 3">
             {{encodedName1}}
           </span>
           <span class="resultText2_1-4" v-if="name1.length === 4">
             {{encodedName1}}
           </span>
+          <span class="resultText2_1_down">
+            형제
+          </span>
         </span>
-        <!-- 위 글자 1 -->
-        <span class="" v-if="selectedType === 'SGI'">
-                    <div :style="result2_mark"></div>
-
+        <!-- SGI(위)) -->
+        <span class="resultText2" v-if="selectedType === 'SGI'">
+          <div :class="getResult2Mark"></div>
+          <span class="resultText2_2_up">
+            SGI
+          </span>
           <span class="resultText2_2" v-if="name1.length === 2 || name1.length === 3">
             {{encodedName1}}
           </span>
@@ -73,21 +86,25 @@
             {{encodedName1}}
           </span>
         </span>
-        <!-- 위 아래 글자 -->
-        <span class="" v-if="selectedType === '묘법'">
-                    <div :style="result2_mark"></div>
-
+        <!-- 묘볍(위아래) -->
+        <span class="resultText2" v-if="selectedType === '묘법'">
+          <div :class="getResult2Mark"></div>
+          <span class="resultText2_3_up">
+            妙法
+          </span>
           <span class="resultText2_3" v-if="name1.length === 2 || name1.length === 3">
             {{encodedName1}}
           </span>
           <span class="resultText2_3-4" v-if="name1.length === 4">
             {{encodedName1}}
           </span>
+           <span class="resultText2_3_down">
+            位
+          </span>
         </span>
-        <!-- 아래 글자 2 -->
-        <span class="resultText2_4" v-if="selectedType === '세례명'">
-                    <div :style="result2_mark"></div>
-
+        <!-- 세례명(아래)) -->
+        <span class="resultText2" v-if="selectedType === '세례명'">
+          <div :class="getResult2Mark"></div>
           <span class="resultText2_4_1" v-if="name1.length === 2 || name1.length === 3">
             {{encodedName1}}
           </span>
@@ -107,17 +124,15 @@
             {{name2}}
           </span>
         </span>
-        <!-- 위 글자 2-->
-        <span class="resultText2_5" v-if="selectedType === '직분' || selectedType === '법명'">
-                    <div :style="result2_mark"></div>
-
+        <!-- 직분(위)-->
+        <span class="resultText2" v-if="selectedType === '직분' || selectedType === '법명'">
+          <div :class="getResult2Mark"></div>
           <span class="resultText2_5_2" v-if="name2.length === 2 || name2.length === 3">
             {{name2}}
           </span>
           <span class="resultText2_5_2-4" v-if="name2.length === 4">
             {{name2}}
           </span>
-
           <span class="resultText2_5_1" v-if="name1.length === 2 || name1.length === 3">
             {{encodedName1}}
           </span>
@@ -126,9 +141,9 @@
           </span>
         </span>
         <span class="resultText1">
-          <span v-if="type == '일반' || type == '불교' || type == '묘법' || type == 'SGI'" class="resultText1_0">卒</span>
-          <span v-if="type == '기독교'" class="resultText1_0">召天</span>
-          <span v-if="type == '천주교'" class="resultText1_0">終妙</span>
+          <span v-if="type == '일반' || type == '불교' || type == '묘법' || type == 'SGI'" class="resultText1_0_1">卒</span>
+          <span v-if="type == '기독교'" class="resultText1_0_2">召天</span>
+          <span v-if="type == '천주교'" class="resultText1_0_3">善終</span>
 
           <span class="resultText1_1">{{date2_1.substr(0, 1)}}</span>
           <span class="resultText1_1">{{date2_1.substr(1, 1)}}</span>
@@ -146,98 +161,90 @@
       </div>
     </div>
     <!-- 위패 -->
-    <div class="image-text-container2" v-if="selectedType2 !== '없음'">
-      <div class="title2">● 위패 예시
-        <div class="title6">&nbsp;&nbsp;- {{type}} 
-          <span v-if="name0 !== '없음'"> [본관] </span>
-        </div>
-      </div>
-      <div class="image-text-container1_2">
-        <div class="image-container2" :class="{ 'fullscreen2': isFullscreen2 }" @click="toggleFullscreen2">
-          <div class="text-container2">
-            <!-- <span class="resultText3"> -->
-            <!-- 위패 추가 -->
-            <div v-if="selectedType2 !== '없음'">
-              <!-- 본관 선택 o -->
-              <div v-if="name0 !== '없음'">
-                <!-- 일반 -->
-                <span class="resultText4_1_1" v-if="type === '일반'">
-                  {{name0}}
+    <div v-if="tabletImageContainerVisible && selectedType2 !== '없음'" class="image-text-container2" ref="tabletImageContainer">
+      <div class="image-container2" :class="{ 'fullscreen2': isFullscreen2 }" @click="toggleFullscreen2">
+        <div class="text-container2">
+          <!-- 위패 추가 -->
+          <div v-if="selectedType2 !== '없음'">
+            <!-- 본관 선택 o -->
+            <div v-if="name0 !== '없음'">
+              <!-- 일반 -->
+              <span class="resultText4_1_1" v-if="type === '일반'">
+                {{name0}}
+              </span>
+              <!-- 불교 -->
+              <span class="resultText4_1_2" v-if="type === '불교'">
+                {{name0}}
+              </span>
+              <!-- 위 글자 -->
+              <span class="resultText4_2" v-if="type === '기독교'">
+                <span class="resultText4_2_2">{{name2}}</span>
+                <span class="resultText4_2_1">{{name0}}</span>
+              </span>
+              <!-- 아래 글자 -->
+              <span class="resultText4_3" v-if="type === '천주교'">
+                <span class="resultText4_3_1">{{name0}}</span>
+                <span class="resultText4_3_2" v-if="name2.length === 2 || name2.length === 3">
+                  {{name2}}
                 </span>
-                <!-- 불교 -->
-                <span class="resultText4_1_2" v-if="type === '불교'">
-                  {{name0}}
+                <span class="resultText4_3_2" v-if="name2.length === 4">
+                  {{name2}}
                 </span>
-                <!-- 위 글자 -->
-                <span class="resultText4_2" v-if="type === '기독교'">
-                  <span class="resultText4_2_2">{{name2}}</span>
-                  <span class="resultText4_2_1">{{name0}}</span>
+                <span class="resultText4_3_2" v-if="name2.length === 5">
+                  {{name2}}
                 </span>
-                <!-- 아래 글자 -->
-                <span class="resultText4_3" v-if="type === '천주교'">
-                  <span class="resultText4_3_1">{{name0}}</span>
-                  <span class="resultText4_3_2" v-if="name2.length === 2 || name2.length === 3">
-                    {{name2}}
-                  </span>
-                  <span class="resultText4_3_2" v-if="name2.length === 4">
-                    {{name2}}
-                  </span>
-                  <span class="resultText4_3_2" v-if="name2.length === 5">
-                    {{name2}}
-                  </span>
-                  <span class="resultText4_3_2-6" v-if="name2.length === 6">
-                    {{name2}}
-                  </span>
+                <span class="resultText4_3_2-6" v-if="name2.length === 6">
+                  {{name2}}
                 </span>
-              </div>
-              <!-- 본관 선택 x-->
-              <div v-else>
-                <!-- 일반 -->
-                <span class="" v-if="type === '일반' || type === '불교'">
-                  <span class="resultText3_1" v-if="name1.length === 2 || name1.length === 3">
-                    {{encodedName1}}
-                  </span>
-                  <span class="resultText3_1-4" v-if="name1.length === 4">
-                    {{encodedName1}}
-                  </span>
+              </span>
+            </div>
+            <!-- 본관 선택 x-->
+            <div v-else>
+              <!-- 일반 -->
+              <span class="" v-if="type === '일반' || type === '불교'">
+                <span class="resultText3_1" v-if="name1.length === 2 || name1.length === 3">
+                  {{encodedName1}}
                 </span>
-                <!-- 위 글자 -->
-                <span class="resultText3_2" v-if="type === '기독교'">
-                  <span class="resultText3_2_2" v-if="name2.length === 2 || name2.length === 3">
-                    {{name2}}
-                  </span>
-                  <span class="resultText3_2_2-4" v-if="name2.length === 4">
-                    {{name2}}
-                  </span>
-                  <span class="resultText3_2_1" v-if="name1.length === 2 || name1.length === 3">
-                    {{encodedName1}}
-                  </span>
-                  <span class="resultText3_2_1-4" v-if="name1.length === 4">
-                    {{encodedName1}}
-                  </span>
+                <span class="resultText3_1-4" v-if="name1.length === 4">
+                  {{encodedName1}}
                 </span>
-                <!-- 아래 글자 -->
-                <span class="resultText3_3" v-if="type === '천주교'">
-                  <span class="resultText3_3_1" v-if="name1.length === 2 || name1.length === 3">
-                    {{encodedName1}}
-                  </span>
-                  <span class="resultText3_3_1-4" v-if="name1.length === 4">
-                    {{encodedName1}}
-                  </span>
-                  <span class="resultText3_3_2" v-if="name2.length === 2 || name2.length === 3">
-                    {{name2}}
-                  </span>
-                  <span class="resultText3_3_2-4" v-if="name2.length === 4">
-                    {{name2}}
-                  </span>
-                  <span class="resultText3_3_2-5" v-if="name2.length === 5">
-                    {{name2}}
-                  </span>
-                  <span class="resultText3_3_2-6" v-if="name2.length === 6">
-                    {{name2}}
-                  </span>
+              </span>
+              <!-- 위 글자 -->
+              <span class="resultText3_2" v-if="type === '기독교'">
+                <span class="resultText3_2_2" v-if="name2.length === 2 || name2.length === 3">
+                  {{name2}}
                 </span>
-              </div>
+                <span class="resultText3_2_2-4" v-if="name2.length === 4">
+                  {{name2}}
+                </span>
+                <span class="resultText3_2_1" v-if="name1.length === 2 || name1.length === 3">
+                  {{encodedName1}}
+                </span>
+                <span class="resultText3_2_1-4" v-if="name1.length === 4">
+                  {{encodedName1}}
+                </span>
+              </span>
+              <!-- 아래 글자 -->
+              <span class="resultText3_3" v-if="type === '천주교'">
+                <span class="resultText3_3_1" v-if="name1.length === 2 || name1.length === 3">
+                  {{encodedName1}}
+                </span>
+                <span class="resultText3_3_1-4" v-if="name1.length === 4">
+                  {{encodedName1}}
+                </span>
+                <span class="resultText3_3_2" v-if="name2.length === 2 || name2.length === 3">
+                  {{name2}}
+                </span>
+                <span class="resultText3_3_2-4" v-if="name2.length === 4">
+                  {{name2}}
+                </span>
+                <span class="resultText3_3_2-5" v-if="name2.length === 5">
+                  {{name2}}
+                </span>
+                <span class="resultText3_3_2-6" v-if="name2.length === 6">
+                  {{name2}}
+                </span>
+              </span>
             </div>
           </div>
         </div>
@@ -307,11 +314,14 @@ export default {
       isFullscreen1: false,
       isFullscreen2: false,
 
-      capturedImage: null,
-      imageContainerVisible: true,
+      engraveCapturedImage: null,
+      tabletCapturedImage: null,
+      engraveImageContainerVisible: true,
+      tabletImageContainerVisible: true,
     };
   },
   computed: {
+    // 외자 이름
     encodedName1() {
       const trimmedName1 = this.name1.trim();
 
@@ -320,6 +330,7 @@ export default {
       }
       return trimmedName1;
     },
+    // 마크 선택
     getResult2Mark() {
       let markImageUrl = '';
 
@@ -331,9 +342,9 @@ export default {
         return 'resultText2_mark3';
       } else if (this.selectedType === '천주교' || this.selectedType === '세례명') {
         return 'resultText2_mark4';
-      }  else if (this.selectedType === 'SGI') {
+      }  else if (this.selectedType === 'SGI' || this.selectedType === '묘법') {
         return 'resultText2_mark5';
-      }  else if (this.selectedType === '묘법') {
+      }  else if (this.selectedType === '금') {
         return 'resultText2_mark6';
       }
     },
@@ -385,11 +396,8 @@ export default {
       imageContainer.style.transform = 'scale(2)'; // 예시로 확대 배율을 2배로 설정
     },
     zoomOut1() {
-      const imageContainer = document.querySelector('.image-container1');
+      const imageContainer = document.querySelector('.engrave_image_container');
       imageContainer.style.transform = 'scale(1)'; // 원래 크기로 설정
-
-      const textContainer = document.querySelector('.text-container');
-      textContainer.style.transform = 'translate(0%, -107%)';
     },
     toggleFullscreen2() {
       this.isFullscreen2 = !this.isFullscreen2;
@@ -400,18 +408,12 @@ export default {
       }
     },
     zoomIn2() {
-      const imageContainer = document.querySelector('.image-container2');
+      const imageContainer = document.querySelector('.tablet_image_container');
       imageContainer.style.transform = 'scale(2)'; // 예시로 확대 배율을 2배로 설정
-
-      const textContainer = document.querySelector('.text-container2');
-      textContainer.style.transform = 'translate(-100%, 12%)';
     },
     zoomOut2() {
-      const imageContainer = document.querySelector('.image-container2');
+      const imageContainer = document.querySelector('.tablet_image_container');
       imageContainer.style.transform = 'scale(1)'; // 원래 크기로 설정
-
-      const textContainer = document.querySelector('.text-container2');
-      textContainer.style.transform = 'translate(0%, -100%)';
     },
     getMsg() {
       var msg = '[각인 주문]\n'
@@ -442,14 +444,25 @@ export default {
       return msg;
     },
     async captureAndDisplay() {
-      const imageContainer = this.$refs.imageContainer;
+      // 각인
+      const engraveImageContainer = this.$refs.engraveImageContainer;
 
       // 이미지 컨테이너 캡처
-      const canvas = await html2canvas(imageContainer);
-      const capturedImageDataUrl = canvas.toDataURL("image/png");
+      const engraveCanvas = await html2canvas(engraveImageContainer);
+      const engraveCapturedImageDataUrl = engraveCanvas.toDataURL("각인 예시/png");
 
-      this.capturedImage = capturedImageDataUrl;
-      // this.imageContainerVisible = !this.imageContainerVisible; // 이미지 컨테이너를 숨김
+      this.engraveCapturedImage = engraveCapturedImageDataUrl;
+      // this.engraveImageContainerVisible = !this.engraveImageContainerVisible; // 이미지 컨테이너를 숨김
+
+      // 위패
+      const tabletImageContainer = this.$refs.tabletImageContainer;
+
+      // 이미지 컨테이너 캡처
+      const tabletCanvas = await html2canvas(tabletImageContainer);
+      const tabletCapturedImageDataUrl = tabletCanvas.toDataURL("위패 예시/png");
+
+      this.tabletCapturedImage = tabletCapturedImageDataUrl;
+      // this.tabletImageContainerVisible = !this.tabletImageContainerVisible; // 이미지 컨테이너를 숨김
     },
   },
 };
@@ -499,7 +512,7 @@ export default {
 
   /* text-align: center; */
 
-  background-color: darkblue;
+  /* background-color: darkblue; */
 }
 /*======각인 시작======*/
 /* 캡처 이미지 출력 */
@@ -510,7 +523,7 @@ export default {
   background-repeat: no-repeat;
   background-position: center;
   margin-right: 10%;
-  background-color: rgb(226, 245, 100);
+  /* background-color: rgb(226, 245, 100); */
 }
 .engrave_image {
   width: 40vw;
@@ -551,10 +564,11 @@ export default {
   height: 100%;
   /* background-color: rgba(9, 255, 0, 0.551); */
 }
-
-.resultText1_0 {
+/* 한자 */
+.resultText1_0_1 {
   color: black;
   font-family: "HYHaeSo";
+  font-weight: 900;
  
   font-size: 28px;
   margin-top: 30px;
@@ -570,7 +584,50 @@ export default {
 
   /* background-color: rgba(17, 255, 0, 0.551); */
 }
+.resultText1_0_2 {
+  color: black;
+  font-family: "HYHaeSo";
+  font-weight: 900;
+ 
+  font-size: 28px;
+  margin-top: 30px;
+  margin-bottom: -5px;
+  writing-mode: horizontal-tb; /* 세로로 쓰기 설정 */
+  text-orientation: upright; /* 텍스트 방향 유지 */
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+  letter-spacing: -6px;
 
+  width: 100%;
+  /* height: 100%; */
+
+  /* 가운데 정렬 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* background-color: rgba(17, 255, 0, 0.551); */
+}
+.resultText1_0_3 {
+  color: black;
+  font-family: "HYHaeSo";
+  font-weight: 900;
+ 
+  font-size: 28px;
+  margin-top: 30px;
+  margin-bottom: -5px;
+  writing-mode: horizontal-tb; /* 세로로 쓰기 설정 */
+  text-orientation: upright; /* 텍스트 방향 유지 */
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+  letter-spacing: -4px;
+
+  /* 가운데 정렬 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* background-color: rgba(17, 255, 0, 0.551); */
+}
+/* 숫자 */
 .resultText1_1 {
   color: black;
   font-family: "CENTURY";
@@ -591,19 +648,19 @@ export default {
 
   /* background-color: rgba(255, 157, 0, 0.551); */
 }
-
+/* 점 */
 .resultText1_2 {
   color: black;
   font-weight: bold;
 
   font-size: 15px;
-  margin-top: -6px;
-  margin-bottom: 0px;
+  margin-top: -5px;
+  margin-bottom: -1px;
 
   width: 100%;
   /* height: 100%; */
 
-  margin-left: 35px;
+  margin-left: 39px;
 
   /* display: flex; */
   /* justify-content: center; */
@@ -611,11 +668,11 @@ export default {
 
   /* background-color: rgba(0, 30, 255, 0.551); */
 }
-
+/* 한자 */
 .resultText1_3 {
   color: black;
   font-family: "HYHaeSo";
-  /* font-weight: 900; */
+  font-weight: 900;
  
   font-size: 28px;
   margin-top: 3px;
@@ -660,6 +717,7 @@ export default {
   height: 60px;
 
   margin-top: 15px;
+  margin-left: 4px;
   background-image: url('../../assets/images/marks/Christian.png');
   background-repeat: no-repeat;
   background-size: contain;
@@ -680,324 +738,316 @@ export default {
   height: 60px;
 
   margin-top: 15px;
+  margin-left: 4px;
   background-image: url('../../assets/images/marks/Catholic.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 /* SGI, 묘법(검정)) */
 .resultText2_mark5 {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
 
   margin-top: 15px;
+  margin-left: 4px;
   background-image: url('../../assets/images/marks/묘법(검정).png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 /* 묘법, 묘법(금)*/
 .resultText2_mark6 {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
 
   margin-top: 15px;
+  margin-left: 4px;
   background-image: url('../../assets/images/marks/묘법(금).png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-/* 이름 */
-.resultText2_0_1 {
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
-
+/*==이름==*/
+/* 일반, 기독교, 불교, 천주교 */
+.resultText2_0 {
   color: black;
   font-family: "HYGungSo";
-  font-weight: 500;
   font-size: 40px;
   letter-spacing:25px;
 
   /* background-color: rgba(145, 108, 108, 0.662); */
 }
-
-.resultText2_0_1-4 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+.resultText2_0-4 {
   color: black;
   font-family: "HYGungSo";
   font-size: 40px;
   letter-spacing:5px;
-
-  height: auto;
-  width: 10px;
   /* background-color: rgba(145, 108, 108, 0.662); */
 }
-/* // 여기까지 */
-
-
-/* 형제 */
+/* 형제(아래) */
 .resultText2_1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   color: black;
   font-family: "HYGungSo";
+  font-size: 40px;
+  letter-spacing:20px;
+  margin-bottom: -20px;
 
-  font-size: 8.4px;
-  /* margin-top: -1px; */
-  padding-bottom: 7.0px;
-  letter-spacing:1.0px;
-
-  height: 100%;
-  width: 33.3333%;
   /* background-color: rgba(70, 79, 10, 0.475); */
 }
 .resultText2_1-4 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   color: black;
   font-family: "HYGungSo";
+  font-size: 38px;
+  letter-spacing:5px;
+  margin-bottom: -10px;
 
-  font-size: 7.2px;
-  padding-bottom: 8.0px;
-  letter-spacing:-0.2px;
-
-  height: 100%;
-  width: 33.3333%;
   /* background-color: rgba(70, 79, 10, 0.475); */
 }
-/* SGI */
-.resultText2_2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+.resultText2_1_down {
   color: black;
   font-family: "HYGungSo";
+  font-size: 21px;
+  /* letter-spacing: -6px; */
 
-  font-size: 8.4px;
-  padding-top: 3.0px;
-  letter-spacing:2.0px;
+  margin-bottom: 5px;
+  writing-mode: horizontal-tb; /* 세로로 쓰기 설정 */
+  text-orientation: upright; /* 텍스트 방향 유지 */
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 
-  height: 100%;
-  width: 33.3333%;
+  /* background-color: rgba(70, 79, 10, 0.475); */
+}
+/* SGI(위) */
+.resultText2_2 {
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 40px;
+  letter-spacing:20px;
+  margin-bottom: -20px;
   /* background-color: rgba(70, 79, 10, 0.481); */
 }
-
 .resultText2_2-4 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   color: black;
   font-family: "HYGungSo";
-
-  font-size: 7.9px;
-  padding-top: 4.0px;
-  letter-spacing:0.2px;
-
-  height: 100%;
-  width: 33.3333%;
+  font-size: 38px;
+  letter-spacing:5px;
+  margin-bottom: -10px;
   /* background-color: rgb(70, 79, 10); */
 }
+.resultText2_2_up {
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 21px;
+  /* letter-spacing: -6px; */
 
-/* 묘법 */
+  margin-top: -5px;
+  writing-mode: horizontal-tb; /* 세로로 쓰기 설정 */
+  text-orientation: upright; /* 텍스트 방향 유지 */
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+
+  /* background-color: rgba(70, 79, 10, 0.475); */
+}
+/* 묘법(위아래) */
 .resultText2_3 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   color: black;
   font-family: "HYGungSo";
-
-  font-size: 8.4px;
-  padding-bottom: 3.0px;
-  letter-spacing:0.7px;
-
-  height: 100%;
-  width: 33.3333%;
-  /* background-color: rgb(70, 79, 10); */
+  font-size: 40px;
+  letter-spacing: 10px;
+  margin-top: -5px;
+  margin-bottom: -15px;
+  /* background-color: rgba(70, 79, 10, 0.511); */
 }
-
 .resultText2_3-4 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   color: black;
   font-family: "HYGungSo";
-
-  font-size: 7.2px;
-  padding-bottom: 3.0px;
-  letter-spacing:-0.5px;
-
-  height: 100%;
-  width: 33.3333%;
+  font-size: 30px;
+  letter-spacing:5px;
+  margin-bottom: -10px;
   /* background-color: rgb(70, 79, 10); */
 }
-/* 아래 글자(세례명) */
-.resultText2_4 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+.resultText2_3_up {
   color: black;
-  font-family: "HYGungSo";
+  font-family: "HYHaeSo";
+  font-weight: 900;
+  font-size: 24px;
+  /* letter-spacing: -6px; */
 
-  /* margin-top: -3%; */
+  margin-top: -8px;
+  writing-mode: horizontal-tb; /* 세로로 쓰기 설정 */
+  text-orientation: upright; /* 텍스트 방향 유지 */
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 
-  height: 100%;
-  width: 33.3333%;
-  /* background-color: rgb(221, 255, 0); */
+  /* background-color: rgba(70, 79, 10, 0.475); */
 }
+.resultText2_3_down {
+  color: black;
+  font-family: "HYHaeSo";
+  font-weight: 900;
+  font-size: 30px;
+  /* letter-spacing: -6px; */
+
+  margin-bottom: -2px;
+  writing-mode: horizontal-tb; /* 세로로 쓰기 설정 */
+  text-orientation: upright; /* 텍스트 방향 유지 */
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+
+  /* background-color: rgba(70, 79, 10, 0.475); */
+}
+/* 세례명(아래) */
 /* 이름1 */
 .resultText2_4_1 {
-  font-size: 8.4px;
-  margin-top: 3px;
-  letter-spacing:2.0px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 40px;
+  letter-spacing:20px;
+  margin-top: 0px;
+  margin-bottom: -20px;
 
   /* background-color: rgb(70, 79, 10); */
 }
 .resultText2_4_1-4 {
-  font-size: 7.5px;
-  margin-top: 2px;
-  padding-bottom: 1.5px;
-  letter-spacing:0.5px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 38px;
+  letter-spacing:5px;
+  margin-bottom: -10px;
 
   /* background-color: rgb(70, 79, 10); */
 }
 /* 이름2 */
 .resultText2_4_2 {
-  font-size: 4.5px;
-  margin-top: -3px;
-  letter-spacing:-0.5px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 23px;
+  letter-spacing: -1px;
 
-  writing-mode: horizontal-tb;
+  /* margin-bottom: 0px; */
+  writing-mode: horizontal-tb; /* 세로로 쓰기 설정 */
+  text-orientation: upright; /* 텍스트 방향 유지 */
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText2_4_2-4 {
-  font-size: 4.2px;
-  margin-top: -3px;
-  letter-spacing:-0.8px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 23px;
+  letter-spacing: -4px;
 
-  writing-mode: horizontal-tb;
+  /* margin-bottom: 0px; */
+  writing-mode: horizontal-tb; /* 세로로 쓰기 설정 */
+  text-orientation: upright; /* 텍스트 방향 유지 */
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText2_4_2-5 {
-  font-size: 3.8px;
-  margin-top: -3px;
-  letter-spacing:-0.8px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 21px;
+  letter-spacing: -6px;
 
-  writing-mode: horizontal-tb;
+  /* margin-bottom: 0px; */
+  writing-mode: horizontal-tb; /* 세로로 쓰기 설정 */
+  text-orientation: upright; /* 텍스트 방향 유지 */
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText2_4_2-6 {
-  font-size: 3.5px;
-  margin-top: -3px;
-  letter-spacing:-1.1px;
-
-  writing-mode: horizontal-tb;
-  /* background-color: rgb(246, 71, 2); */
-}
-/* 위 글자 직분*/
-.resultText2_5 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   color: black;
   font-family: "HYGungSo";
+  font-size: 18px;
+  letter-spacing: -6px;
 
-  /* margin-top: -3%; */
-
-  height: 100%;
-  width: 33.3333%;
-  /* background-color: rgb(221, 255, 0); */
+  margin-top: 2px;
+  /* margin-bottom: 0px; */
+  writing-mode: horizontal-tb; /* 세로로 쓰기 설정 */
+  text-orientation: upright; /* 텍스트 방향 유지 */
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+  /* background-color: rgb(246, 71, 2); */
 }
+/* 직분(위)*/
 /* 이름1 */
 .resultText2_5_1 {
-  font-size: 8.4px;
-  /* margin-top: 3px; */
-  letter-spacing:2.0px;
-
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 40px;
+  letter-spacing:18px;
+  margin-top: 0px;
+  margin-bottom: -20px;
   /* background-color: rgb(70, 79, 10); */
 }
 .resultText2_5_1-4 {
-  font-size: 7.9px;
-  margin-top: -1px;
-  letter-spacing:0.0px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 38px;
+  letter-spacing:5px;
+  margin-bottom: -10px;
 
   /* background-color: rgb(70, 79, 10); */
 }
 /* 이름2 */
 .resultText2_5_2 {
-  font-size: 4.5px;
-  margin-top: -1px;
-  letter-spacing:-0.5px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 21px;
+  /* letter-spacing: -6px; */
 
-  writing-mode: horizontal-tb;
+  margin-top: -10px;
+  writing-mode: horizontal-tb; /* 세로로 쓰기 설정 */
+  text-orientation: upright; /* 텍스트 방향 유지 */
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
   /* background-color: rgb(246, 71, 2); */
 }
-/* 이름2 */
 .resultText2_5_2-4 {
-  font-size: 4.2px;
-  margin-top: -1px;
-  letter-spacing:-0.5px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 21px;
+  letter-spacing: -5px;
 
-  writing-mode: horizontal-tb;
+  margin-top: -10px;
+  writing-mode: horizontal-tb; /* 세로로 쓰기 설정 */
+  text-orientation: upright; /* 텍스트 방향 유지 */
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
   /* background-color: rgb(246, 71, 2); */
 }
 /*======각인 끝======*/
 /*======위패 시작======*/
-
-/*======위패 끝======*/
-
-.image-text-container2 {
+/* 캡처 이미지 출력 */
+.tablet_container {
   position: relative;
-  width: 40vw;
-  height: 50vh;
+  width: 20vw;
+  /* height: 50vh; */
   background-repeat: no-repeat;
   background-position: center;
-  /* background-color: rgb(0, 255, 17); */
+  margin-right: 10%;
+  /* background-color: rgb(226, 245, 100); */
 }
-.image-text-container1_1 {
-  display: flex;
-  width: 400px;
-  height: 675px;
-  /* background-color: rgba(245, 100, 221, 0.537); */
-}
-
-.image-text-container1_2 {
-  display: flex;
-  /* background-color: rgba(100, 156, 245, 0.537); */
-}
-
-
-.image-container2 img {
+.tablet_image {
   width: 20vw;
   height: auto;
 }
-
-
-
+/* 이미지 출력 */
+.image-text-container2 {
+  /* position: relative; */
+  width: 200px;
+  height: 480px;
+  background-image: url('../../assets/images/tablet/background/tablet.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgb(226, 245, 100);
+}
+/* 텍스트 출력 */
 .text-container2 {
-  width: 20vw;
-  height: 48vw;
+  width: 150px;
+  height: 420px;
+
+  /* 중심 포지션 270 240 */
+  transform: translate(27px, 45px);
 
   writing-mode: vertical-lr; /* 세로로 쓰기 설정 */
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 
-  /* background-color: rgba(255, 0, 157, 0.461); */
+  background-color: rgba(255, 0, 157, 0.461);
 }
-
-
-
+/*======위패 끝======*/
 /* 위패 */
 /* 일반 */
 .resultText3_1 {
@@ -1255,12 +1305,10 @@ export default {
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
-
 .title6 {
   font-size: 15px;
   font-family: "BMEULJIROTTF";
 }
-
 .title7 {
   font-size: 13px;
   font-weight: bold;
@@ -1268,7 +1316,6 @@ export default {
   font-family: "BMEULJIROTTF";
   cursor: pointer;
 }
-
 .title8 {
   font-size: 20px;
   font-family: "BMEULJIROTTF";
