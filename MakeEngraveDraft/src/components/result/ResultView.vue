@@ -27,12 +27,16 @@
           <span v-if="type == '기독교'" class="resultText1_0">出生</span>
           <span v-if="type == '천주교'" class="resultText1_0">出生</span>
 
-
-          <span class="resultText1_1">{{date1_1}}</span>
+          <span class="resultText1_1">{{date1_1.substr(0, 1)}}</span>
+          <span class="resultText1_1">{{date1_1.substr(1, 1)}}</span>
+          <span class="resultText1_1">{{date1_1.substr(2, 1)}}</span>
+          <span class="resultText1_1">{{date1_1.substr(3, 1)}}</span>
           <span class="resultText1_2">•</span>
-          <span class="resultText1_1">{{date1_2}}</span>
+          <span class="resultText1_1">{{date1_2.substr(0, 1)}}</span>
+          <span class="resultText1_1">{{date1_2.substr(1, 1)}}</span>
           <span class="resultText1_2">•</span>
-          <span class="resultText1_1">{{date1_3}}</span>
+          <span class="resultText1_1">{{date1_3.substr(0, 1)}}</span>
+          <span class="resultText1_1">{{date1_3.substr(1, 1)}}</span>
           <span v-if="date1Type==='음력'" class="resultText1_3">陰</span>
           <span v-if="date1Type==='양력'" class="resultText1_3">陽</span>
         </span>
@@ -116,11 +120,16 @@
           <span v-if="type == '기독교'" class="resultText1_0">召天</span>
           <span v-if="type == '천주교'" class="resultText1_0">終妙</span>
 
-          <span class="resultText1_1">{{date2_1}}</span>
+          <span class="resultText1_1">{{date2_1.substr(0, 1)}}</span>
+          <span class="resultText1_1">{{date2_1.substr(1, 1)}}</span>
+          <span class="resultText1_1">{{date2_1.substr(2, 1)}}</span>
+          <span class="resultText1_1">{{date2_1.substr(3, 1)}}</span>
           <span class="resultText1_2">•</span>
-          <span class="resultText1_1">{{date2_2}}</span>
+          <span class="resultText1_1">{{date2_2.substr(0, 1)}}</span>
+          <span class="resultText1_1">{{date2_2.substr(1, 1)}}</span>
           <span class="resultText1_2">•</span>
-          <span class="resultText1_1">{{date2_3}}</span>
+          <span class="resultText1_1">{{date2_3.substr(0, 1)}}</span>
+          <span class="resultText1_1">{{date2_3.substr(1, 1)}}</span>
           <span v-if="date2Type==='음력'" class="resultText1_3">陰</span>
           <span v-if="date2Type==='양력'" class="resultText1_3">陽</span>
         </span>
@@ -506,6 +515,8 @@ export default {
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 
+  
+
   /* background-color: rgba(255, 0, 157, 0.461); */
 }
 
@@ -543,7 +554,7 @@ export default {
   font-weight: 900;
 
   font-size: 18px;
-  letter-spacing:-5px;
+  margin-top: -4px;
 
   width: 100%;
   /* height: 100%; */
@@ -561,9 +572,8 @@ export default {
   font-weight: bold;
 
   font-size: 15px;
-  margin-top: -1px;
-  /* margin-right: 0.3px; */
-  letter-spacing:-7px;
+  margin-top: -6px;
+  margin-bottom: 0px;
 
   width: 100%;
   /* height: 100%; */
