@@ -41,9 +41,9 @@
           <span v-if="date1Type==='양력'" class="resultText1_3">陽</span>
         </span>
         <!-- 그대로 -->
-        <span class="resultText2_0" v-if="selectedType === '일반' || selectedType === '기독교' || selectedType === '불교'
+        <span class="resultText2" v-if="selectedType === '일반' || selectedType === '기독교' || selectedType === '불교'
                                   || selectedType === '천주교'">
-          <div :style="result2_mark"></div>
+          <div :class="getResult2Mark"></div>
           <span class="resultText2_0_1" v-if="name1.length === 2 || name1.length === 3">
             {{encodedName1}}
           </span>
@@ -320,34 +320,22 @@ export default {
       }
       return trimmedName1;
     },
-    result2_mark() {
+    getResult2Mark() {
       let markImageUrl = '';
 
       if (this.selectedType === '일반' || this.selectedType === '형제') {
-        markImageUrl = `url('../../assets/images/marks/일반.png')`;
+        return 'resultText2_mark1';
       } else if (this.selectedType === '기독교' || this.selectedType === '직분') {
-        markImageUrl = `url('../../assets/images/marks/Christian.png')`;
+        return 'resultText2_mark2';
       } else if (this.selectedType === '불교' || this.selectedType === '법명') {
-        markImageUrl = `url('../../assets/images/marks/Buddhism.png')`;
+        return 'resultText2_mark3';
       } else if (this.selectedType === '천주교' || this.selectedType === '세례명') {
-        markImageUrl = `url('../../assets/images/marks/Catholic.png')`;
+        return 'resultText2_mark4';
       }  else if (this.selectedType === 'SGI') {
-        markImageUrl = `url('../../assets/images/marks/묘법(검정).png')`;
+        return 'resultText2_mark5';
       }  else if (this.selectedType === '묘법') {
-        markImageUrl = `url('../../assets/images/marks/묘법(검정).png')`;
+        return 'resultText2_mark6';
       }
-
-      return {
-        backgroundImage: markImageUrl,
-        /* 다른 스타일 속성도 여기에 추가 가능 */
-        width: '60px',
-        height: '60px',
-        marginTop: '15px',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'contain',
-
-        backgroundColor: 'rgba(70, 79, 10, 0.475)',
-      };
     },
     isIOS() {
       return this.checkMobile() === 'ios';
@@ -487,7 +475,6 @@ export default {
   justify-content: center;
   align-items: center;
 }
-
 .fullscreen2 {
   position: fixed;
   top: 0;
@@ -500,9 +487,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
-
 /* ======================== */
-
 .container {
   display: flex;
   /* justify-content: space-between; 가로로 나란히 정렬 */
@@ -516,7 +501,6 @@ export default {
 
   background-color: darkblue;
 }
-
 /*======각인 시작======*/
 /* 캡처 이미지 출력 */
 .engrave_container {
@@ -557,6 +541,7 @@ export default {
   /* background-color: rgba(255, 0, 157, 0.461); */
 }
 
+/*===좌우 글씨===*/
 .resultText1 {
   display: flex;
   justify-content: center;
@@ -596,11 +581,13 @@ export default {
 
   width: 100%;
   /* height: 100%; */
+
+  margin-left: 35px;
   
   /* 가운데 정렬 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
 
   /* background-color: rgba(255, 157, 0, 0.551); */
 }
@@ -616,9 +603,11 @@ export default {
   width: 100%;
   /* height: 100%; */
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin-left: 35px;
+
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
 
   /* background-color: rgba(0, 30, 255, 0.551); */
 }
@@ -641,8 +630,8 @@ export default {
   /* background-color: rgba(17, 255, 0, 0.551); */
 }
 
-/* 이름 */
-.resultText2_0 {
+/*===이름 + 마크===*/
+.resultText2 {
   display: flex;
   /* justify-content: center; */
   align-items: center;
@@ -652,7 +641,9 @@ export default {
   /* background-color: rgba(226, 74, 74, 0.662); */
 }
 
-.resultText2_0_0 {
+/*==마크==*/
+/* 일반 */
+.resultText2_mark1 {
   width: 60px;
   height: 60px;
 
@@ -663,7 +654,58 @@ export default {
 
   /* background-color: rgba(226, 74, 74, 0.662); */
 }
+/* 기독교 */
+.resultText2_mark2 {
+  width: 60px;
+  height: 60px;
 
+  margin-top: 15px;
+  background-image: url('../../assets/images/marks/Christian.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+/* 불교 */
+.resultText2_mark3 {
+  width: 60px;
+  height: 60px;
+
+  margin-top: 15px;
+  background-image: url('../../assets/images/marks/Buddhism.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+/* 천주교 */
+.resultText2_mark4 {
+  width: 60px;
+  height: 60px;
+
+  margin-top: 15px;
+  background-image: url('../../assets/images/marks/Catholic.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+/* SGI, 묘법(검정)) */
+.resultText2_mark5 {
+  width: 60px;
+  height: 60px;
+
+  margin-top: 15px;
+  background-image: url('../../assets/images/marks/묘법(검정).png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+/* 묘법, 묘법(금)*/
+.resultText2_mark6 {
+  width: 60px;
+  height: 60px;
+
+  margin-top: 15px;
+  background-image: url('../../assets/images/marks/묘법(금).png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* 이름 */
 .resultText2_0_1 {
   /* display: flex; */
   /* justify-content: center; */
