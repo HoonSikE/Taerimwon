@@ -43,7 +43,7 @@
         <!-- 그대로 -->
         <span class="resultText2_0" v-if="selectedType === '일반' || selectedType === '기독교' || selectedType === '불교'
                                   || selectedType === '천주교'">
-          <div class="resultText2_0_0"></div>
+          <div :style="result2_mark"></div>
           <span class="resultText2_0_1" v-if="name1.length === 2 || name1.length === 3">
             {{encodedName1}}
           </span>
@@ -53,6 +53,8 @@
         </span>
         <!-- 아래 글자 1 -->
         <span class="" v-if="selectedType === '형제'">
+                    <div :style="result2_mark"></div>
+
           <span class="resultText2_1" v-if="name1.length === 2 || name1.length === 3">
             {{encodedName1}}
           </span>
@@ -62,6 +64,8 @@
         </span>
         <!-- 위 글자 1 -->
         <span class="" v-if="selectedType === 'SGI'">
+                    <div :style="result2_mark"></div>
+
           <span class="resultText2_2" v-if="name1.length === 2 || name1.length === 3">
             {{encodedName1}}
           </span>
@@ -71,6 +75,8 @@
         </span>
         <!-- 위 아래 글자 -->
         <span class="" v-if="selectedType === '묘법'">
+                    <div :style="result2_mark"></div>
+
           <span class="resultText2_3" v-if="name1.length === 2 || name1.length === 3">
             {{encodedName1}}
           </span>
@@ -80,6 +86,8 @@
         </span>
         <!-- 아래 글자 2 -->
         <span class="resultText2_4" v-if="selectedType === '세례명'">
+                    <div :style="result2_mark"></div>
+
           <span class="resultText2_4_1" v-if="name1.length === 2 || name1.length === 3">
             {{encodedName1}}
           </span>
@@ -101,6 +109,8 @@
         </span>
         <!-- 위 글자 2-->
         <span class="resultText2_5" v-if="selectedType === '직분' || selectedType === '법명'">
+                    <div :style="result2_mark"></div>
+
           <span class="resultText2_5_2" v-if="name2.length === 2 || name2.length === 3">
             {{name2}}
           </span>
@@ -310,6 +320,35 @@ export default {
       }
       return trimmedName1;
     },
+    result2_mark() {
+      let markImageUrl = '';
+
+      if (this.selectedType === '일반' || this.selectedType === '형제') {
+        markImageUrl = `url('../../assets/images/mark/일반.png')`;
+      } else if (this.selectedType === '기독교' || this.selectedType === '직분') {
+        markImageUrl = `url('../../assets/images/mark/Christian.png')`;
+      } else if (this.selectedType === '불교' || this.selectedType === '법명') {
+        markImageUrl = `url('../../assets/images/mark/Buddhism.png')`;
+      } else if (this.selectedType === '천주교' || this.selectedType === '세례명') {
+        markImageUrl = `url('../../assets/images/mark/Catholic.png')`;
+      }  else if (this.selectedType === 'SGI') {
+        markImageUrl = `url('../../assets/images/mark/묘법(검정).png')`;
+      }  else if (this.selectedType === '묘법') {
+        markImageUrl = `url('../../assets/images/mark/묘법(검정).png')`;
+      }
+
+      return {
+        backgroundImage: markImageUrl,
+        /* 다른 스타일 속성도 여기에 추가 가능 */
+        width: '60px',
+        height: '60px',
+        marginTop: '15px',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'contain',
+
+        backgroundColor: 'rgba(70, 79, 10, 0.475)',
+      };
+    },
     isIOS() {
       return this.checkMobile() === 'ios';
     },
@@ -515,8 +554,6 @@ export default {
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 
-  
-
   /* background-color: rgba(255, 0, 157, 0.461); */
 }
 
@@ -535,7 +572,8 @@ export default {
   font-family: "HYHaeSo";
  
   font-size: 28px;
-  padding-top: 30px;
+  margin-top: 30px;
+  margin-bottom: 3px;
 
   width: 100%;
   /* height: 100%; */
@@ -591,7 +629,7 @@ export default {
   /* font-weight: 900; */
  
   font-size: 28px;
-  margin-top: 5px;
+  margin-top: 3px;
   /* letter-spacing:-0em; */
 
   width: 100%;
@@ -622,6 +660,8 @@ export default {
   background-image: url('../../assets/images/mark/일반.png');
   background-repeat: no-repeat;
   background-size: contain;
+
+  /* background-color: rgba(226, 74, 74, 0.662); */
 }
 
 .resultText2_0_1 {
@@ -633,7 +673,6 @@ export default {
   font-family: "HYGungSo";
   font-weight: 500;
   font-size: 40px;
-  margin-top: 0.0px;
   letter-spacing:25px;
 
   /* background-color: rgba(145, 108, 108, 0.662); */
@@ -646,14 +685,15 @@ export default {
 
   color: black;
   font-family: "HYGungSo";
-  font-size: 7.9px;
-  /* margin-top: 16%; */
-  letter-spacing:1.2px;
+  font-size: 40px;
+  letter-spacing:5px;
 
   height: auto;
   width: 10px;
   /* background-color: rgba(145, 108, 108, 0.662); */
 }
+/* // 여기까지 */
+
 
 /* 형제 */
 .resultText2_1 {
