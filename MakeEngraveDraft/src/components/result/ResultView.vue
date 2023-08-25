@@ -324,17 +324,17 @@ export default {
       let markImageUrl = '';
 
       if (this.selectedType === '일반' || this.selectedType === '형제') {
-        markImageUrl = `url('../../assets/images/mark/일반.png')`;
+        markImageUrl = `url('../../assets/images/marks/일반.png')`;
       } else if (this.selectedType === '기독교' || this.selectedType === '직분') {
-        markImageUrl = `url('../../assets/images/mark/Christian.png')`;
+        markImageUrl = `url('../../assets/images/marks/Christian.png')`;
       } else if (this.selectedType === '불교' || this.selectedType === '법명') {
-        markImageUrl = `url('../../assets/images/mark/Buddhism.png')`;
+        markImageUrl = `url('../../assets/images/marks/Buddhism.png')`;
       } else if (this.selectedType === '천주교' || this.selectedType === '세례명') {
-        markImageUrl = `url('../../assets/images/mark/Catholic.png')`;
+        markImageUrl = `url('../../assets/images/marks/Catholic.png')`;
       }  else if (this.selectedType === 'SGI') {
-        markImageUrl = `url('../../assets/images/mark/묘법(검정).png')`;
+        markImageUrl = `url('../../assets/images/marks/묘법(검정).png')`;
       }  else if (this.selectedType === '묘법') {
-        markImageUrl = `url('../../assets/images/mark/묘법(검정).png')`;
+        markImageUrl = `url('../../assets/images/marks/묘법(검정).png')`;
       }
 
       return {
@@ -657,7 +657,7 @@ export default {
   height: 60px;
 
   margin-top: 15px;
-  background-image: url('../../assets/images/mark/일반.png');
+  background-image: url('../../assets/images/marks/일반.png');
   background-repeat: no-repeat;
   background-size: contain;
 
