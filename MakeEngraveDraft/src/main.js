@@ -3,6 +3,7 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+// import store from './store'
 import { initializeApp } from "firebase/app"
 // import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth"
@@ -25,6 +26,8 @@ const auth = getAuth(firebaseApp)
 
 const app = createApp(App)
 
-app.use(router)
-
-app.mount('#app')
+new Vue({
+    router,
+    // store,
+    render: (h) => h(App),
+}).$mount("#app");
