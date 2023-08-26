@@ -162,91 +162,87 @@
     </div>
     <!-- 위패 -->
     <div v-if="tabletImageContainerVisible && selectedType2 !== '없음'" class="image-text-container2" ref="tabletImageContainer">
-      <div class="image-container2" :class="{ 'fullscreen2': isFullscreen2 }" @click="toggleFullscreen2">
-        <div class="text-container2">
-          <!-- 위패 추가 -->
-          <div v-if="selectedType2 !== '없음'">
-            <!-- 본관 선택 o -->
-            <div v-if="name0 !== '없음'">
-              <!-- 일반 -->
-              <span class="resultText4_1_1" v-if="type === '일반'">
-                {{name0}}
-              </span>
-              <!-- 불교 -->
-              <span class="resultText4_1_2" v-if="type === '불교'">
-                {{name0}}
-              </span>
-              <!-- 위 글자 -->
-              <span class="resultText4_2" v-if="type === '기독교'">
-                <span class="resultText4_2_2">{{name2}}</span>
-                <span class="resultText4_2_1">{{name0}}</span>
-              </span>
-              <!-- 아래 글자 -->
-              <span class="resultText4_3" v-if="type === '천주교'">
-                <span class="resultText4_3_1">{{name0}}</span>
-                <span class="resultText4_3_2" v-if="name2.length === 2 || name2.length === 3">
-                  {{name2}}
-                </span>
-                <span class="resultText4_3_2" v-if="name2.length === 4">
-                  {{name2}}
-                </span>
-                <span class="resultText4_3_2" v-if="name2.length === 5">
-                  {{name2}}
-                </span>
-                <span class="resultText4_3_2-6" v-if="name2.length === 6">
-                  {{name2}}
-                </span>
-              </span>
-            </div>
-            <!-- 본관 선택 x-->
-            <div v-else>
-              <!-- 일반 -->
-              <span class="" v-if="type === '일반' || type === '불교'">
-                <span class="resultText3_1" v-if="name1.length === 2 || name1.length === 3">
-                  {{encodedName1}}
-                </span>
-                <span class="resultText3_1-4" v-if="name1.length === 4">
-                  {{encodedName1}}
-                </span>
-              </span>
-              <!-- 위 글자 -->
-              <span class="resultText3_2" v-if="type === '기독교'">
-                <span class="resultText3_2_2" v-if="name2.length === 2 || name2.length === 3">
-                  {{name2}}
-                </span>
-                <span class="resultText3_2_2-4" v-if="name2.length === 4">
-                  {{name2}}
-                </span>
-                <span class="resultText3_2_1" v-if="name1.length === 2 || name1.length === 3">
-                  {{encodedName1}}
-                </span>
-                <span class="resultText3_2_1-4" v-if="name1.length === 4">
-                  {{encodedName1}}
-                </span>
-              </span>
-              <!-- 아래 글자 -->
-              <span class="resultText3_3" v-if="type === '천주교'">
-                <span class="resultText3_3_1" v-if="name1.length === 2 || name1.length === 3">
-                  {{encodedName1}}
-                </span>
-                <span class="resultText3_3_1-4" v-if="name1.length === 4">
-                  {{encodedName1}}
-                </span>
-                <span class="resultText3_3_2" v-if="name2.length === 2 || name2.length === 3">
-                  {{name2}}
-                </span>
-                <span class="resultText3_3_2-4" v-if="name2.length === 4">
-                  {{name2}}
-                </span>
-                <span class="resultText3_3_2-5" v-if="name2.length === 5">
-                  {{name2}}
-                </span>
-                <span class="resultText3_3_2-6" v-if="name2.length === 6">
-                  {{name2}}
-                </span>
-              </span>
-            </div>
-          </div>
+      <div class="text-container2" :class="{ 'fullscreen2': isFullscreen2 }" @click="toggleFullscreen2">
+        <!-- 본관 선택 o-->
+        <div v-if="name0 === '없음'" class="resultText3">
+          <div :class="getResult3Mark"></div>
+          <!-- 일반 -->
+          <span class="" v-if="type === '일반' || type === '불교'">
+            <span class="resultText3_1" v-if="name1.length === 2 || name1.length === 3">
+              {{encodedName1}}
+            </span>
+            <span class="resultText3_1-4" v-if="name1.length === 4">
+              {{encodedName1}}
+            </span>
+          </span>
+          <!-- 위 글자 -->
+          <span class="resultText3_2" v-if="type === '기독교'">
+            <span class="resultText3_2_2" v-if="name2.length === 2 || name2.length === 3">
+              {{name2}}
+            </span>
+            <span class="resultText3_2_2-4" v-if="name2.length === 4">
+              {{name2}}
+            </span>
+            <span class="resultText3_2_1" v-if="name1.length === 2 || name1.length === 3">
+              {{encodedName1}}
+            </span>
+            <span class="resultText3_2_1-4" v-if="name1.length === 4">
+              {{encodedName1}}
+            </span>
+          </span>
+          <!-- 아래 글자 -->
+          <span class="resultText3_3" v-if="type === '천주교'">
+            <span class="resultText3_3_1" v-if="name1.length === 2 || name1.length === 3">
+              {{encodedName1}}
+            </span>
+            <span class="resultText3_3_1-4" v-if="name1.length === 4">
+              {{encodedName1}}
+            </span>
+            <span class="resultText3_3_2" v-if="name2.length === 2 || name2.length === 3">
+              {{name2}}
+            </span>
+            <span class="resultText3_3_2-4" v-if="name2.length === 4">
+              {{name2}}
+            </span>
+            <span class="resultText3_3_2-5" v-if="name2.length === 5">
+              {{name2}}
+            </span>
+            <span class="resultText3_3_2-6" v-if="name2.length === 6">
+              {{name2}}
+            </span>
+          </span>
+        </div>
+        <!-- 본관 선택 x -->
+        <div v-else class="resultText3">
+          <!-- 일반 -->
+          <span class="resultText4_1_1" v-if="type === '일반'">
+            {{name0}}
+          </span>
+          <!-- 불교 -->
+          <span class="resultText4_1_2" v-if="type === '불교'">
+            {{name0}}
+          </span>
+          <!-- 위 글자 -->
+          <span class="resultText4_2" v-if="type === '기독교'">
+            <span class="resultText4_2_2">{{name2}}</span>
+            <span class="resultText4_2_1">{{name0}}</span>
+          </span>
+          <!-- 아래 글자 -->
+          <span class="resultText4_3" v-if="type === '천주교'">
+            <span class="resultText4_3_1">{{name0}}</span>
+            <span class="resultText4_3_2" v-if="name2.length === 2 || name2.length === 3">
+              {{name2}}
+            </span>
+            <span class="resultText4_3_2" v-if="name2.length === 4">
+              {{name2}}
+            </span>
+            <span class="resultText4_3_2" v-if="name2.length === 5">
+              {{name2}}
+            </span>
+            <span class="resultText4_3_2-6" v-if="name2.length === 6">
+              {{name2}}
+            </span>
+          </span>
         </div>
       </div>
     </div>
@@ -334,18 +330,31 @@ export default {
     getResult2Mark() {
       let markImageUrl = '';
 
-      if (this.selectedType === '일반' || this.selectedType === '형제') {
+      if (this.type === '일반') {
         return 'resultText2_mark1';
-      } else if (this.selectedType === '기독교' || this.selectedType === '직분') {
+      } else if (this.type === '기독교') {
         return 'resultText2_mark2';
-      } else if (this.selectedType === '불교' || this.selectedType === '법명') {
+      } else if (this.type === '불교') {
         return 'resultText2_mark3';
-      } else if (this.selectedType === '천주교' || this.selectedType === '세례명') {
+      } else if (this.type === '천주교') {
         return 'resultText2_mark4';
       }  else if (this.selectedType === 'SGI' || this.selectedType === '묘법') {
         return 'resultText2_mark5';
       }  else if (this.selectedType === '금') {
         return 'resultText2_mark6';
+      }
+    },
+    getResult3Mark() {
+      let markImageUrl = '';
+
+      if (this.type === '일반') {
+        return 'resultText3_mark1';
+      } else if (this.type === '기독교') {
+        return 'resultText3_mark2';
+      } else if (this.type === '불교') {
+        return 'resultText3_mark3';
+      } else if (this.type === '천주교') {
+        return 'resultText3_mark4';
       }
     },
     isIOS() {
@@ -1047,25 +1056,69 @@ export default {
 
   background-color: rgba(255, 0, 157, 0.461);
 }
+
+/*===이름 + 마크===*/
+.resultText3 {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  background-color: rgba(93, 184, 249, 0.56);
+}
+
+/*==마크==*/
+/* 일반 */
+.resultText3_mark1 {
+  width: 70px;
+  height: 70px;
+
+  background-image: url('../../assets/images/marks/일반.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  /* background-color: rgba(226, 74, 74, 0.662); */
+}
+/* 기독교 */
+.resultText3_mark2 {
+  width: 80px;
+  height: 80px;
+
+  margin-left: 2px;
+  background-image: url('../../assets/images/marks/Christian.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+/* 불교 */
+.resultText3_mark3 {
+  width: 80px;
+  height: 80px;
+
+  background-image: url('../../assets/images/marks/Buddhism.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+/* 천주교 */
+.resultText3_mark4 {
+  width: 100px;
+  height: 100px;
+
+  margin-left: 2px;
+  background-image: url('../../assets/images/marks/Catholic.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 /*======위패 끝======*/
 /* 위패 */
 /* 일반 */
 .resultText3_1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   color: black;
   font-family: "HYGungSo";
+  font-size: 60px;
+  letter-spacing:25px;
 
-  font-size: 8vw;
-  padding-top: 3vw;
-  letter-spacing:7.0vw;
-
-  height: auto;
-  width: 20vw;
-
-  /* background-color: rgba(251, 0, 0, 0.384); */
+  background-color: rgba(251, 0, 0, 0.384);
 }
 
 .resultText3_1-4 {
@@ -1077,12 +1130,12 @@ export default {
   font-family: "HYGungSo";
   /* font-weight: 900; */
 
-  font-size: 8vw;
-  padding-top: 1vw;
-  letter-spacing:3.5vw;
+  font-size: 8px;
+  padding-top: 1px;
+  letter-spacing:3.5px;
 
   height: auto;
-  width: 20vw;
+  width: 20px;
 
   /* background-color: rgba(251, 0, 0, 0.384); */
 }
@@ -1098,38 +1151,38 @@ export default {
   /* margin-top: 19%; */
 
   height: auto;
-  width: 20vw;
+  width: 20px;
   /* background-color: rgba(221, 255, 0, 0.443); */
 }
 /* 이름1 */
 .resultText3_2_1 {
-  font-size: 7.2vw;
-  margin-top: 2vw;
-  letter-spacing:6.0vw;
+  font-size: 7.2px;
+  margin-top: 2px;
+  letter-spacing:6.0px;
 
   /* background-color: rgba(8, 218, 127, 0.473); */
 }
 .resultText3_2_1-4 {
-  font-size: 7.2vw;
-  margin-top: 0vw;
-  margin-bottom: 2vw;
-  letter-spacing:2.5vw;
+  font-size: 7.2px;
+  margin-top: 0px;
+  margin-bottom: 2px;
+  letter-spacing:2.5px;
 
   /* background-color: rgba(8, 218, 127, 0.473); */
 }
 /* 이름2 */
 .resultText3_2_2 {
-  font-size: 4.8vw;
-  margin-top: 1vw;
-  letter-spacing:-0.6vw;
+  font-size: 4.8px;
+  margin-top: 1px;
+  letter-spacing:-0.6px;
 
   writing-mode: horizontal-tb;
   /* background-color: rgba(246, 71, 2, 0.414); */
 }
 .resultText3_2_2-4 {
-  font-size: 4.8vw;
-  margin-top: 1vw;
-  letter-spacing:-0.6vw;
+  font-size: 4.8px;
+  margin-top: 1px;
+  letter-spacing:-0.6px;
 
   writing-mode: horizontal-tb;
   /* background-color: rgba(246, 71, 2, 0.414); */
@@ -1146,53 +1199,53 @@ export default {
   /* margin-top: 19%; */
 
   height: auto;
-  width: 20vw;
+  width: 20px;
   /* background-color: rgb(221, 255, 0); */
 }
 /* 이름1 */
 .resultText3_3_1 {
-  font-size: 7.6vw;
-  margin-top: 0vw;
-  letter-spacing:6.0vw;
+  font-size: 7.6px;
+  margin-top: 0px;
+  letter-spacing:6.0px;
 
   /* background-color: rgb(70, 79, 10); */
 }
 .resultText3_3_1-4 {
-  font-size: 7.6vw;
-  margin-bottom: 3vw;
-  letter-spacing:2.0vw;
+  font-size: 7.6px;
+  margin-bottom: 3px;
+  letter-spacing:2.0px;
 
   /* background-color: rgb(70, 79, 10); */
 }
 /* 이름2 */
 .resultText3_3_2 {
-  font-size: 5.2vw;
-  margin-top: -6vw;
-  letter-spacing:-0.6vw;
+  font-size: 5.2px;
+  margin-top: -6px;
+  letter-spacing:-0.6px;
 
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText3_3_2-4 {
-  font-size: 5.2vw;
-  margin-top: -3.5vw;
-  letter-spacing:-1.0vw;
+  font-size: 5.2px;
+  margin-top: -3.5px;
+  letter-spacing:-1.0px;
 
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText3_3_2-5 {
-  font-size: 4.5vw;
-  margin-top: -3.5vw;
-  letter-spacing:-1.0vw;
+  font-size: 4.5px;
+  margin-top: -3.5px;
+  letter-spacing:-1.0px;
 
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText3_3_2-6 {
-  font-size: 4.0vw;
-  margin-top: -3.0vw;
-  letter-spacing:-1.2vw;
+  font-size: 4.0px;
+  margin-top: -3.0px;
+  letter-spacing:-1.2px;
 
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
@@ -1208,12 +1261,12 @@ export default {
   color: black;
   font-family: "HYGungSo";
 
-  font-size: 6.6vw;
-  padding-bottom: 11vw;
-  letter-spacing:0.2vw;
+  font-size: 6.6px;
+  padding-bottom: 11px;
+  letter-spacing:0.2px;
   
   height: auto;
-  width: 20vw;
+  width: 20px;
   /* background-color: rgb(251, 0, 0); */
 }
 /* 불교 */
@@ -1225,12 +1278,12 @@ export default {
   color: black;
   font-family: "HYGungSo";
 
-  font-size: 6.6vw;
-  margin-top: -5vw;
-  letter-spacing:-0.8vw;
+  font-size: 6.6px;
+  margin-top: -5px;
+  letter-spacing:-0.8px;
   
   height: auto;
-  width: 20vw;
+  width: 20px;
   /* background-color: rgb(251, 0, 0); */
 }
 /* 위 글자 (직분)*/
@@ -1245,22 +1298,22 @@ export default {
   margin-top: -18%;
 
   height: auto;
-  width: 20vw;
+  width: 20px;
   /* background-color: rgb(221, 255, 0); */
 }
 /* 이름1 */
 .resultText4_2_1 {
-  font-size: 5.8vw;
-  margin-top: -1.0vw;
-  letter-spacing:0.1vw;
+  font-size: 5.8px;
+  margin-top: -1.0px;
+  letter-spacing:0.1px;
 
   /* background-color: rgb(70, 79, 10); */
 }
 /* 이름2 */
 .resultText4_2_2 {
-  font-size: 4.2vw;
-  margin-top: -1vw;
-  letter-spacing:-0.05vw;
+  font-size: 4.2px;
+  margin-top: -1px;
+  letter-spacing:-0.05px;
 
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
@@ -1277,30 +1330,30 @@ export default {
   /* margin-top: 0%; */
 
   height: auto;
-  width: 20vw;
+  width: 20px;
   /* background-color: rgb(221, 255, 0); */
 }
 /* 이름1 */
 .resultText4_3_1 {
-  font-size: 5.8vw;
-  margin-top: 0vw;
-  letter-spacing:0.8vw;
+  font-size: 5.8px;
+  margin-top: 0px;
+  letter-spacing:0.8px;
 
   /* background-color: rgb(70, 79, 10); */
 }
 /* 이름2 */
 .resultText4_3_2 {
-  font-size: 4.2vw;
-  margin-top: -1vw;
-  letter-spacing:-0.5vw;
+  font-size: 4.2px;
+  margin-top: -1px;
+  letter-spacing:-0.5px;
 
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText4_3_2-6 {
-  font-size: 3.8vw;
-  margin-top: -1vw;
-  letter-spacing:-1.0vw;
+  font-size: 3.8px;
+  margin-top: -1px;
+  letter-spacing:-1.0px;
 
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
