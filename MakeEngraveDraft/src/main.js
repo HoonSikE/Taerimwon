@@ -26,8 +26,7 @@ const auth = getAuth(firebaseApp)
 
 const app = createApp(App)
 
-new Vue({
-    router,
-    // store,
-    render: (h) => h(App),
-}).$mount("#app");
+app.use(router);
+// app.use(store);
+
+app.mount('#app');
