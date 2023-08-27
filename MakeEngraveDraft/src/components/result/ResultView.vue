@@ -1,9 +1,12 @@
 <template>
   <div class="">
-    <router-link :to="'/engrave/engraveCreate/engraveDetail?type='
-           + type + '&selectedType=' + selectedType + '&showRouterView=true'" class="title4">
+    <router-link v-if="showRouterView" :to="{name: 'engraveDetail'}" class="title4">
           👉 [이전 페이지]
     </router-link>
+    <router-link v-if="!showRouterView" :to="{name: 'tabletCreateView'}" @click.native="updateRouteData()" class="title4">
+          👉 [이전 페이지]
+    </router-link>
+
     <div class="container">
       <!-- 각인 -->
       <div class="engrave_container">
@@ -36,16 +39,16 @@
           <span v-if="type == '기독교'" class="resultText1_0_2">出生</span>
           <span v-if="type == '천주교'" class="resultText1_0_2">出生</span>
 
-          <span class="resultText1_1">{{date1_1.substr(0, 1)}}</span>
-          <span class="resultText1_1">{{date1_1.substr(1, 1)}}</span>
-          <span class="resultText1_1">{{date1_1.substr(2, 1)}}</span>
-          <span class="resultText1_1">{{date1_1.substr(3, 1)}}</span>
+          <span class="resultText1_1">{{date1.substr(0, 1)}}</span>
+          <span class="resultText1_1">{{date1.substr(1, 1)}}</span>
+          <span class="resultText1_1">{{date1.substr(2, 1)}}</span>
+          <span class="resultText1_1">{{date1.substr(3, 1)}}</span>
           <span class="resultText1_2">•</span>
-          <span class="resultText1_1">{{date1_2.substr(0, 1)}}</span>
-          <span class="resultText1_1">{{date1_2.substr(1, 1)}}</span>
+          <span class="resultText1_1">{{date1.substr(5, 1)}}</span>
+          <span class="resultText1_1">{{date1.substr(6, 1)}}</span>
           <span class="resultText1_2">•</span>
-          <span class="resultText1_1">{{date1_3.substr(0, 1)}}</span>
-          <span class="resultText1_1">{{date1_3.substr(1, 1)}}</span>
+          <span class="resultText1_1">{{date1.substr(8, 1)}}</span>
+          <span class="resultText1_1">{{date1.substr(9, 1)}}</span>
           <span v-if="date1Type==='음력'" class="resultText1_3">陰</span>
           <span v-if="date1Type==='양력'" class="resultText1_3">陽</span>
         </span>
@@ -145,16 +148,16 @@
           <span v-if="type == '기독교'" class="resultText1_0_2">召天</span>
           <span v-if="type == '천주교'" class="resultText1_0_3">善終</span>
 
-          <span class="resultText1_1">{{date2_1.substr(0, 1)}}</span>
-          <span class="resultText1_1">{{date2_1.substr(1, 1)}}</span>
-          <span class="resultText1_1">{{date2_1.substr(2, 1)}}</span>
-          <span class="resultText1_1">{{date2_1.substr(3, 1)}}</span>
+          <span class="resultText1_1">{{date2.substr(0, 1)}}</span>
+          <span class="resultText1_1">{{date2.substr(1, 1)}}</span>
+          <span class="resultText1_1">{{date2.substr(2, 1)}}</span>
+          <span class="resultText1_1">{{date2.substr(3, 1)}}</span>
           <span class="resultText1_2">•</span>
-          <span class="resultText1_1">{{date2_2.substr(0, 1)}}</span>
-          <span class="resultText1_1">{{date2_2.substr(1, 1)}}</span>
+          <span class="resultText1_1">{{date2.substr(5, 1)}}</span>
+          <span class="resultText1_1">{{date2.substr(6, 1)}}</span>
           <span class="resultText1_2">•</span>
-          <span class="resultText1_1">{{date2_3.substr(0, 1)}}</span>
-          <span class="resultText1_1">{{date2_3.substr(1, 1)}}</span>
+          <span class="resultText1_1">{{date2.substr(8, 1)}}</span>
+          <span class="resultText1_1">{{date2.substr(9, 1)}}</span>
           <span v-if="date2Type==='음력'" class="resultText1_3">陰</span>
           <span v-if="date2Type==='양력'" class="resultText1_3">陽</span>
         </span>
@@ -284,29 +287,12 @@
 </template>
 
 <script>
+import { mapMutations, mapGetters } from 'vuex';
 import html2canvas from 'html2canvas';
 
 export default {
   data() {
     return {
-      type: this.$route.query.type,
-      name0: this.$route.query.name0,
-      name1: this.$route.query.name1,
-      name2: this.$route.query.name2,
-      date1: this.$route.query.date1,
-      date1Type: this.$route.query.date1Type,
-      date2: this.$route.query.date2,
-      date2Type: this.$route.query.date2Type,
-      selectedType: this.$route.query.selectedType, // 초기 선택 타입 설정
-      selectedType2: this.$route.query.selectedType2, // 초기 선택 타입 설정
-
-      date1_1: this.$route.query.date1.substr(0,4),
-      date1_2: this.$route.query.date1.substr(5,2),
-      date1_3: this.$route.query.date1.substr(8,2),
-      date2_1: this.$route.query.date2.substr(0,4),
-      date2_2: this.$route.query.date2.substr(5,2),
-      date2_3: this.$route.query.date2.substr(8,2),
-
       isFullscreen1: false,
       isFullscreen2: false,
 
@@ -317,6 +303,79 @@ export default {
     };
   },
   computed: {
+    ...mapGetters([
+      'getType',
+      'getSelectedType',
+      'getShowRouterView',
+
+      'getName0',
+      'getName1',
+      'getName2',
+      'getDate1',
+      'getDate1Type',
+      'getDate2',
+      'getDate2Type',
+      'getSelectedType2',
+    ]),
+    type: {
+      get() {
+        return this.$store.getters.getType;
+      },
+    },
+    selectedType: {
+      get() {
+        return this.$store.getters.getSelectedType;
+      },
+    },
+    showRouterView: {
+      get() {
+        return this.$store.getters.getShowRouterView;
+      },
+    },
+    name0: {
+      get() {
+        return this.$store.getters.getName0;
+      },
+      set(value) {
+        this.$store.commit('updateName0', value);
+      }
+    },
+    name1: {
+      get() {
+        return this.$store.getters.getName1;
+      },
+    },
+    name2: {
+      get() {
+        return this.$store.getters.getName2;
+      },
+    },
+    date1: {
+      get() {
+        return this.$store.getters.getDate1;
+      },
+    },
+    date1Type: {
+      get() {
+        return this.$store.getters.getDate1Type;
+      },
+    },
+    date2: {
+      get() {
+        return this.$store.getters.getDate2;
+      },
+    },
+    date2Type: {
+      get() {
+        return this.$store.getters.getDate2Type;
+      },
+    },
+    selectedType2: {
+      get() {
+        return this.$store.getters.getSelectedType2;
+      },
+    },
+
     // 외자 이름
     encodedName1() {
       const trimmedName1 = this.name1.trim();
@@ -473,18 +532,15 @@ export default {
       this.tabletCapturedImage = tabletCapturedImageDataUrl;
       // this.tabletImageContainerVisible = !this.tabletImageContainerVisible; // 이미지 컨테이너를 숨김
     },
+    updateRouteData(){
+      if(this.name0 === '없음')
+        this.name0 = '';
+    },
   },
 };
 </script>
 
 <style>
-/* @media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-} */
 .fullscreen1 {
   position: fixed;
   top: 0;

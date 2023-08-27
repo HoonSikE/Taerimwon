@@ -2,9 +2,9 @@
   <div id="app">
     <header>
       <div class="text-align-center" >
-        <RouterLink to="/">
-        <img alt="logo" class="logo" src="@/assets/images/logo.png" width="160" height="160" />
-        </RouterLink>
+        <router-link :to="{name: 'main'}" @click.native="updateRouteData()">
+          <img alt="logo" class="logo" src="@/assets/images/logo.png" width="160" height="160" />
+        </router-link>
       </div>
       <div class="router-view-wrapper">
         <nav>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
   name: 'App',
   data() {
@@ -37,6 +38,10 @@ export default {
     };
   },
   methods: {
+    ...mapMutations(['resetState']),
+    updateRouteData() {
+      this.resetState();
+    },
     handleFooterClick() {
       this.clickCount++;
 

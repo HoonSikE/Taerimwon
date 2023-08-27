@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import HomeView from '../views/HomeView.vue'
 import EngraveView from '../views/EngraveView.vue'
 import AdminView from '../views/AdminView.vue'
@@ -35,32 +36,17 @@ const router = createRouter({
           path: 'engraveCreate',
           name: 'engraveCreate',
           component: EngraveCreateView,
-          redirect: '/engrave/engraveCreate/engraveDetail?type=일반&selectedType=일반&showRouterView=true',
+          redirect: '/engrave/engraveCreate/engraveDetail',
           children: [
             {
               path: 'engraveDetail',
               name: 'engraveDetail',
               component: EngraveCreateDetail,
-              props: (route) => ({
-                type: route.query.type,
-                selectedType: route.query.selectedType,
-                showRouterView: route.query.showRouterView,
-              }),
               children: [
                 {
                   path: 'tabletCreate',
-                  name: 'TabletCreateView',
+                  name: 'tabletCreateView',
                   component: TabletCreateView,
-                  props: (route) => ({
-                    type: route.query.type,
-                    name1: route.query.name1,
-                    name2: route.query.name2,
-                    date1: route.query.date1,
-                    date1Type: route.query.date1Type,
-                    date2: route.query.date2,
-                    date2Type: route.query.date2Type,
-                    selectedType: route.query.selectedType,
-                  }),
                 },
               ],
             },
@@ -70,18 +56,6 @@ const router = createRouter({
           path: 'result',
           name: 'result',
           component: ResultView,
-          props: (route) => ({
-            type: route.query.type,
-            name0: route.query.name0,
-            name1: route.query.name1,
-            name2: route.query.name2,
-            date1: route.query.date1,
-            date1Type: route.query.date1Type,
-            date2: route.query.date2,
-            date2Type: route.query.date2Type,
-            selectedType: route.query.selectedType,
-            selectedType2: route.query.selectedType2,
-          }),
         },
       ],
     },

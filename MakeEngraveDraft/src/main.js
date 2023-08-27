@@ -3,7 +3,7 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-// import store from './store'
+import { store } from './store'
 import { initializeApp } from "firebase/app"
 // import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth"
@@ -27,6 +27,6 @@ const auth = getAuth(firebaseApp)
 const app = createApp(App)
 
 app.use(router);
-// app.use(store);
+app.use(store);
 
 app.mount('#app');

@@ -14,14 +14,14 @@
           <button
               class="link-item"
               :class="{ selected: selectedType2 === '일반' }"
-              @click="selectedType2 = '일반', showRouterView = false">
+              @click="selectedType2 = '일반'">
             <img src="../../assets/images/tablet/example/이름시안/일반.png" width="80" height="240" alt="일반">
             <span class="selectText">[일반]</span>
           </button>
           <button
               class="link-item"
               :class="{ selected: selectedType2 === '일반(본관)' }"
-              @click="selectedType2 = '일반(본관)', showRouterView = false">
+              @click="selectedType2 = '일반(본관)'">
             <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" width="80" height="240" alt="일반(본관)">
             <span class="selectText">[일반(본관)]</span>
           </button>
@@ -31,14 +31,14 @@
           <button
               class="link-item"
               :class="{ selected: selectedType2 === '기독교' }"
-              @click="selectedType2 = '기독교', showRouterView = false">
+              @click="selectedType2 = '기독교'">
             <img src="../../assets/images/tablet/example/이름시안/기독교.png" width="80" height="240" alt="기독교">
             <span class="selectText">[기독교]</span>
           </button>
           <button
               class="link-item"
               :class="{ selected: selectedType2 === '기독교(본관)' }"
-              @click="selectedType2 = '기독교(본관)', showRouterView = false">
+              @click="selectedType2 = '기독교(본관)'">
             <img src="../../assets/images/tablet/example/본관시안/기독교(본관).png" width="80" height="240" alt="기독교(본관)">
             <span class="selectText">[기독교(본관)]</span>
           </button>
@@ -48,14 +48,14 @@
           <button
               class="link-item"
               :class="{ selected: selectedType2 === '불교' }"
-              @click="selectedType2 = '불교', showRouterView = false">
+              @click="selectedType2 = '불교'">
             <img src="../../assets/images/tablet/example/이름시안/불교.png" width="80" height="240" alt="불교">
             <span class="selectText">[불교]</span>
           </button>
           <button
               class="link-item"
               :class="{ selected: selectedType2 === '불교(본관)' }"
-              @click="selectedType2 = '불교(본관)', showRouterView = false">
+              @click="selectedType2 = '불교(본관)'">
             <img src="../../assets/images/tablet/example/본관시안/불교(본관).png" width="80" height="240" alt="불교(본관)">
             <span class="selectText">[불교(본관)]</span>
           </button>
@@ -65,14 +65,14 @@
           <button
               class="link-item"
               :class="{ selected: selectedType2 === '천주교' }"
-              @click="selectedType2 = '천주교', showRouterView = false">
+              @click="selectedType2 = '천주교'">
             <img src="../../assets/images/tablet/example/이름시안/천주교.png" width="80" height="240" alt="천주교">
             <span class="selectText">[천주교]</span>
           </button>
           <button
               class="link-item"
               :class="{ selected: selectedType2 === '천주교(본관)' }"
-              @click="selectedType2 = '천주교(본관)', showRouterView = false">
+              @click="selectedType2 = '천주교(본관)'">
             <img src="../../assets/images/tablet/example/본관시안/천주교(본관).png" width="80" height="240" alt="천주교(본관)">
             <span class="selectText">[천주교(본관)]</span>
           </button>
@@ -82,20 +82,17 @@
     <!-- 정보입력 -->
     <div class="text-align-center">
       <span class="info-text-align-center">
-        <div class="title3">
-          정보 입력
-        </div>
         <span class="input-info1">
          <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
             본관 내용&nbsp;
           </div>
-          <span v-if="type === '기독교'">
+          <span v-if="selectedType === '기독교'">
             직분&nbsp;
           </span>
           <!-- <span v-if="selectedType === '법명'">
             법명 입력<br/>
           </span> -->
-          <span v-if="type === '천주교'">
+          <span v-if="selectedType === '천주교'">
             세례명&nbsp;
           </span>
         </span>
@@ -103,13 +100,13 @@
           <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
             <input v-model="name0" type="text" :placeholder="defaultName0Placeholder"/>
           </div>
-          <span v-if="type === '기독교'">
+          <span v-if="selectedType === '기독교'">
             <input v-model="name2" type="text" :placeholder="name2"/>
           </span>
           <!-- <span v-if="selectedType === '법명'">
             <input v-model="name2" type="text" :placeholder="name2"/>
           </span> -->
-          <span v-if="type === '천주교'">
+          <span v-if="selectedType === '천주교'">
             <input v-model="name2" type="text" :placeholder="name2"/>
           </span>
         </span>
@@ -126,40 +123,99 @@
     <div v-else>
       <!-- 본관에 따른 데이터 전송값 변경 -->
       <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
-        <router-link :to="'/engrave/result?' + 'type=' + type 
-                    + '&name0=' + encodedName0 + '&name1=' + name1 + '&name2='+ name2 
-                    + '&date1=' + date1 + '&date1Type=' + date1Type 
-                    + '&date2=' + date2 + '&date2Type=' + date2Type
-                    + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title4">👉 예시 보기 (각인/위패)</router-link>
+        <router-link :to="{name: 'result'}" @click.native="updateRouteData()" class="title4">👉 예시 보기 (각인/위패)</router-link>
       </div>
       <div v-else>
-        <router-link :to="'/engrave/result?' + 'type=' + type 
-                    + '&name0=' + '없음' + '&name1=' + name1 + '&name2='+ name2 
-                    + '&date1=' + date1 + '&date1Type=' + date1Type 
-                    + '&date2=' + date2 + '&date2Type=' + date2Type
-                    + '&selectedType=' + selectedType + '&selectedType2=' + selectedType2" class="title4">👉 예시 보기 (각인/위패)</router-link>
+        <router-link :to="{name: 'result'}" @click.native="updateRouteData2()" class="title4">👉 예시 보기 (각인/위패)</router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations, mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
-      type: this.$route.query.type,
-      name0: '',
-      name1: this.$route.query.name1,
-      name2: this.$route.query.name2,
-      date1: this.$route.query.date1,
-      date1Type: this.$route.query.date1Type,
-      date2: this.$route.query.date2,
-      date2Type: this.$route.query.date2Type,
-      selectedType: this.$route.query.selectedType, // 초기 선택 타입 설정
-      selectedType2: this.$route.query.type, // 초기 선택 타입 설정
     };
   },
   computed: {
+    ...mapGetters([
+      'getType',
+      'getSelectedType',
+      'getShowRouterView',
+
+      'getName0',
+      'getName1',
+      'getName2',
+      'getDate1',
+      'getDate1Type',
+      'getDate2',
+      'getDate2Type',
+      'getSelectedType2',
+    ]),
+    type: {
+      get() {
+        return this.$store.getters.getType;
+      },
+    },
+    selectedType: {
+      get() {
+        return this.$store.getters.getSelectedType;
+      },
+    },
+    showRouterView: {
+      get() {
+        return this.$store.getters.getShowRouterView;
+      },
+    },
+    name0: {
+      get() {
+        return this.$store.getters.getName0;
+      },
+      set(value) {
+        this.$store.commit('updateName0', value);
+      }
+    },
+    name1: {
+      get() {
+        return this.$store.getters.getName1;
+      },
+    },
+    name2: {
+      get() {
+        return this.$store.getters.getName2;
+      },
+    },
+    date1: {
+      get() {
+        return this.$store.getters.getDate1;
+      },
+    },
+    date1Type: {
+      get() {
+        return this.$store.getters.getDate1Type;
+      },
+    },
+    date2: {
+      get() {
+        return this.$store.getters.getDate2;
+      },
+    },
+    date2Type: {
+      get() {
+        return this.$store.getters.getDate2Type;
+      },
+    },
+    selectedType2: {
+      get() {
+        return this.$store.getters.getSelectedType2;
+      },
+      set(value) {
+        this.$store.commit('updateSelectedType2', value);
+      }
+    },
     encodedName0() {
       const trimmedName0 = this.name0.trim();
 
@@ -201,36 +257,12 @@ export default {
       // return !koreanRegex.test(this.name0);
       return !(koreanRegex.test(this.name0) && !koreanConsonantVowelRegex.test(this.name0));
     },
-  },
-  // 매개변수의 변경 사항을 감지
-  watch: {
-    '$route.query.type': function(newType) {
-      this.type = newType;
+    updateRouteData(){
+      this.name0 = decodeURIComponent(this.encodedName0());
     },
-    '$route.query.name0': function(newName0) {
-      this.name0 = newName0;
-    },
-    '$route.query.name1': function(newName1) {
-      this.name1 = newName1;
-    },
-    '$route.query.name2': function(newName2) {
-      this.name2 = newName2;
-    },
-    '$route.query.date1': function(newDate1) {
-      this.date1 = newDate1;
-    },
-    '$route.query.date1Type': function(newDate1Type) {
-      this.date1Type = newDate1Type;
-    },
-    '$route.query.date2': function(newDate2) {
-      this.date2 = newDate2;
-    },
-     '$route.query.date2Type': function(newDate2Type) {
-      this.date2Type = newDate2Type;
-    },
-    '$route.query.selectedType': function(newSelectedType) {
-      this.selectedType = newSelectedType;
-    },
+    updateRouteData2(){
+      this.name0 = '없음';
+    }
   },
 };
 </script>

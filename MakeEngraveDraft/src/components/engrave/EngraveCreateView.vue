@@ -11,42 +11,42 @@
     <div class="text-align-center">
       <div class="scroll-container">
         <div class="link-container">
-          <RouterLink to="/engrave/engraveCreate/engraveDetail?type=일반&selectedType=일반&showRouterView=true" class="link-item"
+          <router-link :to="{name: 'engraveDetail'}" @click.native="updateRouteData('일반', '일반')" class="link-item"
               :class="{ selected: selectedType === '일반' }"
-              @click="selectedType = '일반'">
+              >
             <img src="../../assets/images/engrave/example/일반.png" width="80" height="130" alt="일반">
             <span class="selectText">[일반]</span>
-          </RouterLink>
-          <RouterLink to="/engrave/engraveCreate/engraveDetail?type=기독교&selectedType=직분&showRouterView=true" class="link-item"
-              :class="{ selected: selectedType === '기독교' }"
-              @click="selectedType = '기독교'">
+          </router-link>
+          <router-link :to="{name: 'engraveDetail'}" @click.native="updateRouteData('기독교', '직분')" class="link-item"
+              :class="{ selected: selectedType === '직분' }"
+              @click="selectedType = '직분'">
             <img src="../../assets/images/engrave/example/기독교.png" width="80" height="130" alt="기독교">
             <span class="selectText">[기독교]</span>
-          </RouterLink>
-          <RouterLink to="/engrave/engraveCreate/engraveDetail?type=불교&selectedType=불교&showRouterView=true" class="link-item"
+          </router-link>
+          <router-link :to="{name: 'engraveDetail'}" @click.native="updateRouteData('불교', '불교')" class="link-item"
               :class="{ selected: selectedType === '불교' }"
               @click="selectedType = '불교'">
             <img src="../../assets/images/engrave/example/불교.png" width="80" height="130" alt="불교">
             <span class="selectText">[불교]</span>
-          </RouterLink>
-          <RouterLink to="/engrave/engraveCreate/engraveDetail?type=천주교&selectedType=세례명&showRouterView=true" class="link-item"
-              :class="{ selected: selectedType === '천주교' }"
-              @click="selectedType = '천주교'">
+          </router-link>
+          <router-link :to="{name: 'engraveDetail'}" @click.native="updateRouteData('천주교', '세례명')" class="link-item"
+              :class="{ selected: selectedType === '세례명' }"
+              @click="selectedType = '세례명'">
             <img src="../../assets/images/engrave/example/천주교.png" width="80" height="130" alt="천주교">
             <span class="selectText">[천주교]</span>
-          </RouterLink>
-          <RouterLink to="/engrave/engraveCreate/engraveDetail?type=SGI&selectedType=SGI&showRouterView=true" class="link-item"
+          </router-link>
+          <router-link :to="{name: 'engraveDetail'}" @click.native="updateRouteData('SGI', 'SGI')" class="link-item"
               :class="{ selected: selectedType === 'SGI' }"
               @click="selectedType = 'SGI'">
             <img src="../../assets/images/engrave/example/sgi.png" width="80" height="130" alt="SGI">
             <span class="selectText">[SGI]</span>
-          </RouterLink>
-          <RouterLink to="/engrave/engraveCreate/engraveDetail?type=묘법&selectedType=묘법&showRouterView=true" class="link-item"
+          </router-link>
+          <router-link :to="{name: 'engraveDetail'}" @click.native="updateRouteData('묘법', '묘법')" class="link-item"
               :class="{ selected: selectedType === '묘법' }"
               @click="selectedType = '묘법'">
             <img src="../../assets/images/engrave/example/묘법.png" width="80" height="130" alt="묘법">
             <span class="selectText">[묘법]</span>
-          </RouterLink>
+          </router-link>
         </div>
       </div>
     </div>
@@ -58,24 +58,46 @@
 </template>
 
 <script>
+import { mapMutations, mapGetters } from 'vuex';
+
 export default {
   data() {
     return {
-      selectedType: '일반', // 초기 선택 타입 설정
     };
   },
+  computed: {
+    ...mapGetters([
+      'getType',
+      'getSelectedType',
+    ]),
+    type: {
+      get() {
+        return this.$store.getters.getType;
+      },
+      set(value) {
+        this.$store.commit('updateType', value);
+      }
+    },
+    selectedType: {
+      get() {
+        return this.$store.getters.getSelectedType;
+      },
+      set(value) {
+        this.$store.commit('updateSelectedType', value);
+      }
+    },
+  },
+  methods: {
+    // ...mapActions(['setRouteData']),
+    updateRouteData(type, selectedType){
+      this.type = type;
+      this.selectedType = selectedType;
+    }
+  }
 };
 </script>
 
 <style>
-/* @media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-} */
-
 .text-align-center {
   text-align: center;
   font-family: "BMEULJIROTTF";
@@ -116,11 +138,6 @@ export default {
   margin-top: 2px;
   margin-bottom: 6px;
 }
-
-/* .link-container { */
-  /* display: inline-block; */
-  /* display: flex; */
-/* } */
 
 .link-item {
   display: inline-block;
