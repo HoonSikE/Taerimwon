@@ -21,7 +21,7 @@
           <button
               class="link-item"
               :class="{ selected: selectedType2 === '일반(본관)' }"
-              @click="selectedType2 = '일반(본관)'">
+              @click="selectedType2 = '일반(본관)', name0 = ''">
             <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" width="80" height="240" alt="일반(본관)">
             <span class="selectText">[일반(본관)]</span>
           </button>
@@ -38,7 +38,7 @@
           <button
               class="link-item"
               :class="{ selected: selectedType2 === '기독교(본관)' }"
-              @click="selectedType2 = '기독교(본관)'">
+              @click="selectedType2 = '기독교(본관)', name0 = ''">
             <img src="../../assets/images/tablet/example/본관시안/기독교(본관).png" width="80" height="240" alt="기독교(본관)">
             <span class="selectText">[기독교(본관)]</span>
           </button>
@@ -55,7 +55,7 @@
           <button
               class="link-item"
               :class="{ selected: selectedType2 === '불교(본관)' }"
-              @click="selectedType2 = '불교(본관)'">
+              @click="selectedType2 = '불교(본관)', name0 = ''">
             <img src="../../assets/images/tablet/example/본관시안/불교(본관).png" width="80" height="240" alt="불교(본관)">
             <span class="selectText">[불교(본관)]</span>
           </button>
@@ -72,7 +72,7 @@
           <button
               class="link-item"
               :class="{ selected: selectedType2 === '천주교(본관)' }"
-              @click="selectedType2 = '천주교(본관)'">
+              @click="selectedType2 = '천주교(본관)', name0 = ''">
             <img src="../../assets/images/tablet/example/본관시안/천주교(본관).png" width="80" height="240" alt="천주교(본관)">
             <span class="selectText">[천주교(본관)]</span>
           </button>
@@ -113,12 +113,11 @@
       </span>
     </div>
 
-    
     <div v-if="showName0KoreanWarning" class="warning_text">
         - 본관을 한국어로 올바르게 입력해주세요.
     </div>
     <div v-else-if="showName0Warning" class="warning_text">
-        - 본관을 5~8글자로 입력해주세요.
+        - 본관을 5~9글자로 입력해주세요.
     </div>
     <div v-else>
       <!-- 본관에 따른 데이터 전송값 변경 -->
@@ -243,10 +242,14 @@ export default {
       return '본관';
     },
     showName0Warning() {
+      if(this.selectedType2 === '일반' || this.selectedType2 === '기독교' || this.selectedType2 === '불교' || this.selectedType2 === '천주교')
+        return false;
       const name0Length = this.name0.trim().length;
-      return (name0Length < 5 || name0Length > 8) && name0Length !== 0;
+      return (name0Length < 5 || name0Length > 9) && name0Length !== 0;
     },
     showName0KoreanWarning() {
+      if(this.selectedType2 === '일반' || this.selectedType2 === '기독교' || this.selectedType2 === '불교' || this.selectedType2 === '천주교')
+        return false;
       // 한글 문자에 대한 정규식
       const koreanRegex= /^[가-힣]*$/;
       const koreanConsonantVowelRegex = /^[가-힣&&[^ㅏ-ㅣㅑ-ㅣㅓ-ㅣㅕ-ㅣㅗ-ㅣㅛ-ㅣㅜ-ㅣㅠ-ㅣㅡ-ㅣ]]*$/;
@@ -257,12 +260,14 @@ export default {
       // return !koreanRegex.test(this.name0);
       return !(koreanRegex.test(this.name0) && !koreanConsonantVowelRegex.test(this.name0));
     },
+  },
+  methods: {
     updateRouteData(){
-      this.name0 = decodeURIComponent(this.encodedName0());
+      this.name0 = decodeURIComponent(this.encodedName0);
     },
     updateRouteData2(){
       this.name0 = '없음';
     }
-  },
+  }
 };
 </script>

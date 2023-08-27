@@ -24,7 +24,7 @@ const router = createRouter({
       path: '/',
       name: 'main',
       component: HomeView,
-      redirect: '/engrave/engraveCreate',
+      // redirect: '/engrave/engraveCreate',
     },
     {
       path: '/engrave',

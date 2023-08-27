@@ -10,7 +10,7 @@ const initialDate1Type = '양력';
 const initialDate2 = '';
 const initialDate2Type = '양력';
 const initialSelectedType = '일반';
-const initialSelectedType2 = '';
+const initialSelectedType2 = '없음';
 const initialShowRouterView = true;
 
 export const store = createStore({
@@ -36,6 +36,7 @@ export const store = createStore({
     },
     updateName0(state, newName0) {
       state.name0 = newName0;
+      localStorage.setItem('vuexState', JSON.stringify(state));
     },
     updateName1(state, newName1) {
       state.name1 = newName1;
@@ -63,9 +64,11 @@ export const store = createStore({
     },
     updateShowRouterView(state, newShowRouterView) {
       state.showRouterView = newShowRouterView;
+      localStorage.setItem('vuexState', JSON.stringify(state));
     },
     toggleRouterView(state) {
       state.showRouterView = !state.showRouterView;
+      localStorage.setItem('vuexState', JSON.stringify(state));
     },
     // 홈으로 돌아가기 동작에 대한 mutation
     resetState(state) {
@@ -80,6 +83,13 @@ export const store = createStore({
       state.selectedType = initialSelectedType;
       state.selectedType2 = initialSelectedType2;
       state.showRouterView = initialShowRouterView;
+      localStorage.setItem('vuexState', JSON.stringify(state));
+    },
+    resetState2(state) {
+      state.name0 = initialName0;
+      state.selectedType2 = initialSelectedType2;
+      state.showRouterView = initialShowRouterView;
+      localStorage.removeItem('vuexState'); // LocalStorage에서 상태 제거
     },
   },
   // 상태 변이 (복잡한 연산)

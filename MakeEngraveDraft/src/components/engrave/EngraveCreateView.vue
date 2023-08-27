@@ -69,6 +69,8 @@ export default {
     ...mapGetters([
       'getType',
       'getSelectedType',
+      'getName2',
+      'getShowRouterView'
     ]),
     type: {
       get() {
@@ -86,12 +88,30 @@ export default {
         this.$store.commit('updateSelectedType', value);
       }
     },
+    name2: {
+      get() {
+        return this.$store.getters.getName2;
+      },
+      set(value) {
+        this.$store.commit('updateName2', value);
+      }
+    },
+    showRouterView: {
+      get() {
+        return this.$store.getters.getShowRouterView;
+      },
+      set(value) {
+        this.$store.commit('updateShowRouterView', value);
+      }
+    }
   },
   methods: {
     // ...mapActions(['setRouteData']),
     updateRouteData(type, selectedType){
       this.type = type;
       this.selectedType = selectedType;
+      this.name2 = '';
+      this.showRouterView = true;
     }
   }
 };

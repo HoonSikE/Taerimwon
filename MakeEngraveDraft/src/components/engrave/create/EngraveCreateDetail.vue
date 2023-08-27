@@ -158,45 +158,43 @@
       </span>
     </div>
     <hr>
-    <div v-if="showRouterView">
-      <div v-if="showName1KoreanWarning" class="warning_text">
-        - 성함을 한국어로 올바르게 입력해주세요.
-      </div>
-      <div v-else-if="showName1Warning" class="warning_text">
-        - 성함을 2~4글자로 입력해주세요.
-      </div>
-      <div v-else-if="showName2KoreanWarning && (selectedType === '직분' || selectedType === '법명' || selectedType === '세례명')" class="warning_text">
-        - {{selectedType}}을 한국어로 올바르게 입력해주세요.
-      </div>
-      <div v-else-if="showName2Warning && (selectedType === '직분' || selectedType === '법명')" class="warning_text">
-        - {{selectedType}}을 2~4글자로 입력해주세요.
-      </div>
-      <div v-else-if="showName3Warning && (selectedType === '세례명')" class="warning_text">
-        - {{selectedType}}을 2~6글자로 입력해주세요.
-      </div>
-      <div v-else-if="showDate1Warning" class="warning_text">
-        - 출생일을 {{ getDateWarningMessage(date1) }}
-      </div>
-      <div v-else-if="showDate2Warning" class="warning_text">
-        - 사망일을 {{ getDateWarningMessage(date2) }}
-      </div>
-      <div v-else>
-        <div v-if="type !== 'SGI' && type !== '묘법'">
-          <router-link :to="{name: 'tabletCreateView'}" @click.native="updateRouteData()">
-            <div class="title4">
-              👉 위패 주문하기
-              <span class="title4_1">
-                (Click!!)
-              </span>
-            </div>
-          </router-link>
-        </div>
-        <router-link :to="{name: 'result'}" @click.native="updateRouteData2()" class="title4">
-          👉 예시 보기 (각인)
+    <div v-if="showName1KoreanWarning" class="warning_text">
+      - 성함을 한국어로 올바르게 입력해주세요.
+    </div>
+    <div v-else-if="showName1Warning" class="warning_text">
+      - 성함을 2~4글자로 입력해주세요.
+    </div>
+    <div v-else-if="showName2KoreanWarning && (selectedType === '직분' || selectedType === '법명' || selectedType === '세례명')" class="warning_text">
+      - {{selectedType}}을 한국어로 올바르게 입력해주세요.
+    </div>
+    <div v-else-if="showName2Warning && (selectedType === '직분' || selectedType === '법명')" class="warning_text">
+      - {{selectedType}}을 2~4글자로 입력해주세요.
+    </div>
+    <div v-else-if="showName3Warning && (selectedType === '세례명')" class="warning_text">
+      - {{selectedType}}을 2~6글자로 입력해주세요.
+    </div>
+    <div v-else-if="showDate1Warning" class="warning_text">
+      - 출생일을 {{ getDateWarningMessage(date1) }}
+    </div>
+    <div v-else-if="showDate2Warning" class="warning_text">
+      - 사망일을 {{ getDateWarningMessage(date2) }}
+    </div>
+    <div v-else-if="showRouterView">
+      <div v-if="type !== 'SGI' && type !== '묘법'">
+        <router-link :to="{name: 'tabletCreateView'}" @click.native="updateRouteData()">
+          <div class="title4">
+            👉 위패 주문하기
+            <span class="title4_1">
+              (Click!!)
+            </span>
+          </div>
         </router-link>
       </div>
+      <router-link :to="{name: 'result'}" @click.native="updateRouteData2()" class="title4">
+        👉 예시 보기 (각인)
+      </router-link>
     </div>
-    <div v-if="!showRouterView">
+    <div v-else-if="!showRouterView">
       <div class="title5" @click="toggleRouterView">👉 위패 주문하지 않기!!</div>
       <router-view></router-view>
     </div>
@@ -465,7 +463,6 @@ export default {
       this.showRouterView = false;
     },
     updateRouteData2(){
-      this.$store.commit('updateName0', '없음')
       this.name1 = decodeURIComponent(this.encodedName1());
       this.name2 = decodeURIComponent(this.encodedName2());
       this.date1 = decodeURIComponent(this.encodedDate1());
@@ -473,6 +470,8 @@ export default {
       this.date2 = decodeURIComponent(this.encodedDate2());
       this.date2Type ='양력';
       this.$store.commit('updateSelectedType2', '없음');
+      // 로컬스토리지 저장
+      this.$store.commit('updateName0', '없음')
     }
   },
 };

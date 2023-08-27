@@ -1,12 +1,11 @@
-import './assets/main.css'
+import './assets/main.css';
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import { store } from './store';
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import { store } from './store'
-import { initializeApp } from "firebase/app"
-// import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth"
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -19,14 +18,20 @@ const firebaseConfig = {
     measurementId: "G-01VD34GRQ9"
   };
 
-// Initialize Firebase
-const firebaseApp = initializeApp(firebaseConfig)
-// const analytics = getAnalytics(firebaseApp);
-const auth = getAuth(firebaseApp)
+// Firebase 초기화
+const firebaseApp = initializeApp(firebaseConfig);
+const auth = getAuth(firebaseApp);
 
-const app = createApp(App)
+// Vue 애플리케이션 생성
+const app = createApp(App);
 
+// Vuex 상태 복원
+const savedState = JSON.parse(localStorage.getItem('vuexState'));
+if (savedState) {
+  store.replaceState(savedState);
+}
+
+// Vue 플러그인 등록 및 마운트
 app.use(router);
 app.use(store);
-
 app.mount('#app');

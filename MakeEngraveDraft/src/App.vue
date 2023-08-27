@@ -8,9 +8,9 @@
       </div>
       <div class="router-view-wrapper">
         <nav>
-          <!-- <RouterLink to="/">Home</RouterLink> -->
-          <!-- <RouterLink to="/engrave">Engrave</RouterLink> -->
-          <!-- <RouterLink to="/about">About</RouterLink> -->
+          <RouterLink to="/">Home</RouterLink> |
+          <RouterLink to="/engrave">Engrave</RouterLink> |
+          <RouterLink to="/about">About</RouterLink>
         </nav>
       </div>
     </header>
@@ -20,8 +20,8 @@
     <hr>
     <footer>
       <div @click="handleFooterClick">
-        ● 문의사항<br>
-        ☎️ 연락처: 010-4509-7485<br>
+        ● 오류 신고<br>
+        <!-- ☎️ 연락처: 010-4509-7485<br> -->
         📨 Email: hoongrammer@gmail.com
       </div>
     </footer>

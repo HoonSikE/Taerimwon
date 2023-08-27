@@ -165,8 +165,8 @@
     </div>
     <!-- 위패 -->
     <div v-if="tabletImageContainerVisible && selectedType2 !== '없음'" class="image-text-container2" ref="tabletImageContainer">
-      <div class="text-container2" :class="{ 'fullscreen2': isFullscreen2 }" @click="toggleFullscreen2">
-        <!-- 본관 선택 o-->
+      <div class="text-container2">
+        <!-- 본관 선택 x-->
         <div v-if="name0 === '없음'" class="resultText3">
           <div :class="getResult3Mark"></div>
           <!-- 일반 -->
@@ -179,7 +179,7 @@
             </span>
           </span>
           <!-- 위 글자 -->
-          <span class="resultText3_2" v-if="type === '기독교'">
+          <span class="" v-if="type === '기독교'">
             <span class="resultText3_2_2" v-if="name2.length === 2 || name2.length === 3">
               {{name2}}
             </span>
@@ -194,7 +194,7 @@
             </span>
           </span>
           <!-- 아래 글자 -->
-          <span class="resultText3_3" v-if="type === '천주교'">
+          <span class="" v-if="type === '천주교'">
             <span class="resultText3_3_1" v-if="name1.length === 2 || name1.length === 3">
               {{encodedName1}}
             </span>
@@ -215,24 +215,85 @@
             </span>
           </span>
         </div>
-        <!-- 본관 선택 x -->
+        <!-- 본관 선택 o -->
         <div v-else class="resultText3">
+          <div :class="getResult4Mark"></div>
           <!-- 일반 -->
-          <span class="resultText4_1_1" v-if="type === '일반'">
+          <span class="resultText4_1_1" data-letter-count="5" v-if="type === '일반' && name0.length=== 5">
+            {{name0}}
+          </span>
+          <span class="resultText4_1_1" data-letter-count="6" v-if="type === '일반' && name0.length=== 6">
+            {{name0}}
+          </span>
+          <span class="resultText4_1_1" data-letter-count="7" v-if="type === '일반' && name0.length=== 7">
+            {{name0}}
+          </span>
+          <span class="resultText4_1_1" data-letter-count="8" v-if="type === '일반' && name0.length=== 8">
+            {{name0}}
+          </span>
+          <span class="resultText4_1_1" data-letter-count="9" v-if="type === '일반' && name0.length=== 9">
             {{name0}}
           </span>
           <!-- 불교 -->
-          <span class="resultText4_1_2" v-if="type === '불교'">
+          <span class="resultText4_1_2" data-letter-count="5" v-if="type === '불교' && name0.length=== 5">
             {{name0}}
           </span>
-          <!-- 위 글자 -->
-          <span class="resultText4_2" v-if="type === '기독교'">
-            <span class="resultText4_2_2">{{name2}}</span>
-            <span class="resultText4_2_1">{{name0}}</span>
+          <span class="resultText4_1_2" data-letter-count="6" v-if="type === '불교' && name0.length=== 6">
+            {{name0}}
           </span>
-          <!-- 아래 글자 -->
+          <span class="resultText4_1_2" data-letter-count="7" v-if="type === '불교' && name0.length=== 7">
+            {{name0}}
+          </span>
+          <span class="resultText4_1_2" data-letter-count="8" v-if="type === '불교' && name0.length=== 8">
+            {{name0}}
+          </span>
+          <span class="resultText4_1_2" data-letter-count="9" v-if="type === '불교' && name0.length=== 9">
+            {{name0}}
+          </span>
+          <!-- 기독교 직분 위 글자 -->
+          <span class="resultText4_2" v-if="type === '기독교'">
+            <!-- 직분 -->
+            <span class="resultText4_2_2">{{name2}}</span>
+            <!-- 이름 -->
+            <span class="resultText4_2_1" data-letter-count="5" v-if="name0.length=== 5">
+              {{name0}}
+            </span>
+            <span class="resultText4_2_1" data-letter-count="6" v-if="name0.length=== 6">
+              {{name0}}
+            </span>
+            <span class="resultText4_2_1" data-letter-count="7" v-if="name0.length=== 7">
+              {{name0}}
+            </span>
+            <span class="resultText4_2_1" data-letter-count="8" v-if="name0.length=== 8">
+              {{name0}}
+            </span>
+            <span class="resultText4_2_1" data-letter-count="9" v-if="name0.length=== 9">
+              {{name0}}
+            </span>
+            <!-- 아래 -->
+            <span class="resultText4_2_3">
+              召天
+            </span>
+          </span>
+          <!-- 천주교 세례명 아래 글자 -->
           <span class="resultText4_3" v-if="type === '천주교'">
-            <span class="resultText4_3_1">{{name0}}</span>
+            <!-- 이름 -->
+            <span class="resultText4_3_1" data-letter-count="5" v-if="name0.length=== 5">
+              {{name0}}
+            </span>
+            <span class="resultText4_3_1" data-letter-count="6" v-if="name0.length=== 6">
+              {{name0}}
+            </span>
+            <span class="resultText4_3_1" data-letter-count="7" v-if="name0.length=== 7">
+              {{name0}}
+            </span>
+            <span class="resultText4_3_1" data-letter-count="8" v-if="name0.length=== 8">
+              {{name0}}
+            </span>
+            <span class="resultText4_3_1" data-letter-count="9" v-if="name0.length=== 9">
+              {{name0}}
+            </span>
+            <!-- 세례명 -->
             <span class="resultText4_3_2" v-if="name2.length === 2 || name2.length === 3">
               {{name2}}
             </span>
@@ -414,6 +475,17 @@ export default {
         return 'resultText3_mark3';
       } else if (this.type === '천주교') {
         return 'resultText3_mark4';
+      }
+    },
+    getResult4Mark() {
+      let markImageUrl = '';
+
+      if (this.type === '기독교') {
+        return 'resultText4_mark2';
+      } else if (this.type === '불교') {
+        return 'resultText4_mark3';
+      } else if (this.type === '천주교') {
+        return 'resultText4_mark4';
       }
     },
     isIOS() {
@@ -704,12 +776,12 @@ export default {
   width: 100%;
   /* height: 100%; */
 
-  margin-left: 35px;
+  margin-left: 13px;
   
   /* 가운데 정렬 */
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   /* background-color: rgba(255, 157, 0, 0.551); */
 }
@@ -725,11 +797,11 @@ export default {
   width: 100%;
   /* height: 100%; */
 
-  margin-left: 39px;
+  margin-left: 13px;
 
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   /* background-color: rgba(0, 30, 255, 0.551); */
 }
@@ -984,7 +1056,8 @@ export default {
   font-size: 23px;
   letter-spacing: -1px;
 
-  /* margin-bottom: 0px; */
+  margin-top: 3px;
+  margin-bottom: -5px;
   writing-mode: horizontal-tb; /* 세로로 쓰기 설정 */
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
@@ -996,7 +1069,8 @@ export default {
   font-size: 23px;
   letter-spacing: -4px;
 
-  /* margin-bottom: 0px; */
+  margin-top: 3px;
+  margin-bottom: -5px;
   writing-mode: horizontal-tb; /* 세로로 쓰기 설정 */
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
@@ -1008,7 +1082,8 @@ export default {
   font-size: 21px;
   letter-spacing: -6px;
 
-  /* margin-bottom: 0px; */
+  margin-top: 3px;
+  margin-bottom: -5px;
   writing-mode: horizontal-tb; /* 세로로 쓰기 설정 */
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
@@ -1017,11 +1092,11 @@ export default {
 .resultText2_4_2-6 {
   color: black;
   font-family: "HYGungSo";
-  font-size: 18px;
+  font-size: 18.5px;
   letter-spacing: -6px;
 
-  margin-top: 2px;
-  /* margin-bottom: 0px; */
+  margin-top: 5px;
+  margin-bottom: -5px;
   writing-mode: horizontal-tb; /* 세로로 쓰기 설정 */
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
@@ -1096,7 +1171,7 @@ export default {
   background-image: url('../../assets/images/tablet/background/tablet.png');
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: rgb(226, 245, 100);
+  /* background-color: rgb(226, 245, 100); */
 }
 /* 텍스트 출력 */
 .text-container2 {
@@ -1110,7 +1185,7 @@ export default {
   text-orientation: upright; /* 텍스트 방향 유지 */
   white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 
-  background-color: rgba(255, 0, 157, 0.461);
+  /* background-color: rgba(255, 0, 157, 0.461); */
 }
 
 /*===이름 + 마크===*/
@@ -1121,7 +1196,7 @@ export default {
 
   width: 100%;
   height: 100%;
-  background-color: rgba(93, 184, 249, 0.56);
+  /* background-color: rgba(93, 184, 249, 0.56); */
 }
 
 /*==마크==*/
@@ -1165,255 +1240,382 @@ export default {
   background-repeat: no-repeat;
   background-size: contain;
 }
-/*======위패 끝======*/
-/* 위패 */
-/* 일반 */
+
+/*===위패 본관x===*/
+/* 일반, 법명 */
 .resultText3_1 {
   color: black;
   font-family: "HYGungSo";
   font-size: 60px;
-  letter-spacing:25px;
-
-  background-color: rgba(251, 0, 0, 0.384);
-}
-
-.resultText3_1-4 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: black;
-  font-family: "HYGungSo";
-  /* font-weight: 900; */
-
-  font-size: 8px;
-  padding-top: 1px;
-  letter-spacing:3.5px;
-
-  height: auto;
-  width: 20px;
+  margin-top: 20px;
+  letter-spacing:50px;
 
   /* background-color: rgba(251, 0, 0, 0.384); */
 }
-/* 위 글자 (직분)*/
-.resultText3_2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
+.resultText3_1-4 {
   color: black;
   font-family: "HYGungSo";
+  font-size: 60px;
+  margin-top: 5px;
+  letter-spacing:25px;
 
-  /* margin-top: 19%; */
-
-  height: auto;
-  width: 20px;
-  /* background-color: rgba(221, 255, 0, 0.443); */
+  /* background-color: rgba(251, 0, 0, 0.384); */
 }
+
+/* 위 글자 (직분)*/
 /* 이름1 */
 .resultText3_2_1 {
-  font-size: 7.2px;
-  margin-top: 2px;
-  letter-spacing:6.0px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 50px;
+  margin-top: 20px;
+  letter-spacing:40px;
 
   /* background-color: rgba(8, 218, 127, 0.473); */
 }
 .resultText3_2_1-4 {
-  font-size: 7.2px;
-  margin-top: 0px;
-  margin-bottom: 2px;
-  letter-spacing:2.5px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 50px;
+  margin-top: 8px;
+  letter-spacing:20px;
 
   /* background-color: rgba(8, 218, 127, 0.473); */
 }
 /* 이름2 */
 .resultText3_2_2 {
-  font-size: 4.8px;
-  margin-top: 1px;
-  letter-spacing:-0.6px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 35px;
+  margin-top: -8px;
+  letter-spacing:-3px;
 
   writing-mode: horizontal-tb;
   /* background-color: rgba(246, 71, 2, 0.414); */
 }
 .resultText3_2_2-4 {
-  font-size: 4.8px;
-  margin-top: 1px;
-  letter-spacing:-0.6px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 35px;
+  margin-top: -8px;
+  letter-spacing:-3px;
 
   writing-mode: horizontal-tb;
   /* background-color: rgba(246, 71, 2, 0.414); */
 }
+
 /* 아래 글자(세례명) */
-.resultText3_3 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: black;
-  font-family: "HYGungSo";
-
-  /* margin-top: 19%; */
-
-  height: auto;
-  width: 20px;
-  /* background-color: rgb(221, 255, 0); */
-}
 /* 이름1 */
 .resultText3_3_1 {
-  font-size: 7.6px;
-  margin-top: 0px;
-  letter-spacing:6.0px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 50px;
+  margin-top: 10px;
+  margin-bottom: -25px;
+  letter-spacing:40px;
 
   /* background-color: rgb(70, 79, 10); */
 }
 .resultText3_3_1-4 {
-  font-size: 7.6px;
-  margin-bottom: 3px;
-  letter-spacing:2.0px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 50px;
+  margin-top: 10px;
+  margin-bottom: -10px;
+  letter-spacing:15.5px;
 
   /* background-color: rgb(70, 79, 10); */
 }
 /* 이름2 */
 .resultText3_3_2 {
-  font-size: 5.2px;
-  margin-top: -6px;
-  letter-spacing:-0.6px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 35px;
+  margin-bottom: 10px;
+  letter-spacing:-3px;
 
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText3_3_2-4 {
-  font-size: 5.2px;
-  margin-top: -3.5px;
-  letter-spacing:-1.0px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 35px;
+  margin-bottom: 10px;
+  letter-spacing:-3px;
 
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText3_3_2-5 {
-  font-size: 4.5px;
-  margin-top: -3.5px;
-  letter-spacing:-1.0px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 33px;
+  margin-bottom: 10px;
+  letter-spacing:-7px;
 
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText3_3_2-6 {
-  font-size: 4.0px;
-  margin-top: -3.0px;
-  letter-spacing:-1.2px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 30px;
+  margin-bottom: 10px;
+  letter-spacing:-9px;
 
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
-/* 위패 */
-/* 본관 */
-/* 일반 */
-.resultText4_1_1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
-  color: black;
-  font-family: "HYGungSo";
+/*===위패 본관===*/
+/*==마크==*/
+/* 기독교 */
+.resultText4_mark2 {
+  width: 75px;
+  height: 75px;
 
-  font-size: 6.6px;
-  padding-bottom: 11px;
-  letter-spacing:0.2px;
-  
-  height: auto;
-  width: 20px;
-  /* background-color: rgb(251, 0, 0); */
+  margin-left: 2px;
+  background-image: url('../../assets/images/marks/Christian.png');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 /* 불교 */
-.resultText4_1_2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.resultText4_mark3 {
+  width: 60px;
+  height: 60px;
 
+  background-image: url('../../assets/images/marks/Buddhism.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+/* 천주교 */
+.resultText4_mark4 {
+  width: 95px;
+  height: 95px;
+
+  margin-left: 2px;
+  background-image: url('../../assets/images/marks/Catholic.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+/* 일반 */
+/* 본관 (5-9 글자) */
+.resultText4_1_1 {
   color: black;
   font-family: "HYGungSo";
-
-  font-size: 6.6px;
-  margin-top: -5px;
-  letter-spacing:-0.8px;
-  
-  height: auto;
-  width: 20px;
+  font-size: 40px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* 세로로 정렬하기 위해 열 방향으로 설정 */
+  align-items: center; /* 텍스트를 수직 가운데 정렬 */
+  justify-content: center; /* 텍스트를 수평 가운데 정렬 */
+  height: 100%; /* 부모 컨테이너의 높이에 맞추기 위해 */
   /* background-color: rgb(251, 0, 0); */
 }
+/* 글자 수에 따른 letter-spacing 설정 */
+.resultText4_1_1[data-letter-count="5"] {
+  letter-spacing: 35px; /* 5글자일 때의 설정 */
+}
+.resultText4_1_1[data-letter-count="6"] {
+  letter-spacing: 28px; /* 6글자일 때의 설정 */
+}
+.resultText4_1_1[data-letter-count="7"] {
+  letter-spacing: 17px; /* 7글자일 때의 설정 */
+}
+.resultText4_1_1[data-letter-count="8"] {
+  margin-top: 10px;
+  letter-spacing: 9px; /* 8글자일 때의 설정 */
+}
+.resultText4_1_1[data-letter-count="9"] {
+  margin-top: 10px;
+  letter-spacing: 4px; /* 9글자일 때의 설정 */
+}
+
+/* 불교 */
+.resultText4_1_2 {
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 40px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column; /* 세로로 정렬하기 위해 열 방향으로 설정 */
+  align-items: center; /* 텍스트를 수직 가운데 정렬 */
+  justify-content: center; /* 텍스트를 수평 가운데 정렬 */
+  height: 100%; /* 부모 컨테이너의 높이에 맞추기 위해 */
+  /* background-color: rgb(251, 0, 0); */
+}
+/* 글자 수에 따른 letter-spacing 설정 */
+.resultText4_1_2[data-letter-count="5"] {
+  letter-spacing: 30px; /* 5글자일 때의 설정 */
+}
+.resultText4_1_2[data-letter-count="6"] {
+  letter-spacing: 18px; /* 6글자일 때의 설정 */
+}
+.resultText4_1_2[data-letter-count="7"] {
+  margin-top: 5px;
+  letter-spacing: 9px; /* 7글자일 때의 설정 */
+}
+.resultText4_1_2[data-letter-count="8"] {
+  margin-top: 0px;
+  letter-spacing: 4px; /* 8글자일 때의 설정 */
+}
+.resultText4_1_2[data-letter-count="9"] {
+  margin-top: -5px;
+  letter-spacing: -1px; /* 9글자일 때의 설정 */
+}
+
 /* 위 글자 (직분)*/
 .resultText4_2 {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  color: black;
-  font-family: "HYGungSo";
-
-  margin-top: -18%;
-
-  height: auto;
-  width: 20px;
-  /* background-color: rgb(221, 255, 0); */
+  height: 100%;
+  width: 100%;
+  /* background-color: rgba(0, 225, 255, 0.408); */
 }
 /* 이름1 */
 .resultText4_2_1 {
-  font-size: 5.8px;
-  margin-top: -1.0px;
-  letter-spacing:0.1px;
-
-  /* background-color: rgb(70, 79, 10); */
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 35px;
+  margin-top: 5px;
+  margin-bottom: -5px;
+  display: flex;
+  flex-direction: column; /* 세로로 정렬하기 위해 열 방향으로 설정 */
+  align-items: center; /* 텍스트를 수직 가운데 정렬 */
+  justify-content: center; /* 텍스트를 수평 가운데 정렬 */
+  height: 100%; /* 부모 컨테이너의 높이에 맞추기 위해 */
+  /* background-color: rgb(251, 0, 0); */
+}
+/* 글자 수에 따른 letter-spacing 설정 */
+.resultText4_2_1[data-letter-count="5"] {
+  letter-spacing: 15px; /* 5글자일 때의 설정 */
+}
+.resultText4_2_1[data-letter-count="6"] {
+  letter-spacing: 7px; /* 6글자일 때의 설정 */
+}
+.resultText4_2_1[data-letter-count="7"] {
+  margin-top: -5px;
+  letter-spacing: 2px; /* 7글자일 때의 설정 */
+}
+.resultText4_2_1[data-letter-count="8"] {
+  margin-top: -5px;
+  letter-spacing: -2px; /* 8글자일 때의 설정 */
+}
+.resultText4_2_1[data-letter-count="9"] {
+  font-size: 30px;
+  margin-top: -5px;
+  letter-spacing: -1px; /* 9글자일 때의 설정 */
 }
 /* 이름2 */
 .resultText4_2_2 {
-  font-size: 4.2px;
-  margin-top: -1px;
-  letter-spacing:-0.05px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 28px;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column; /* 세로로 정렬하기 위해 열 방향으로 설정 */
+  align-items: center; /* 텍스트를 수직 가운데 정렬 */
+  justify-content: center; /* 텍스트를 수평 가운데 정렬 */
 
   writing-mode: horizontal-tb;
-  /* background-color: rgb(246, 71, 2); */
+  /* background-color: rgba(255, 0, 238, 0.408); */
 }
+/* 아래 */
+.resultText4_2_3 {
+  color: black;
+  font-family: "HYHaeSO";
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column; /* 세로로 정렬하기 위해 열 방향으로 설정 */
+  align-items: center; /* 텍스트를 수직 가운데 정렬 */
+  justify-content: center; /* 텍스트를 수평 가운데 정렬 */
+
+  writing-mode: horizontal-tb;
+  /* background-color: rgba(255, 0, 238, 0.408); */
+}
+
 /* 아래 글자(세례명) */
 .resultText4_3 {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  color: black;
-  font-family: "HYGungSo";
-
-  /* margin-top: 0%; */
-
-  height: auto;
-  width: 20px;
+  height: 100%;
+  width: 100%;
   /* background-color: rgb(221, 255, 0); */
 }
 /* 이름1 */
 .resultText4_3_1 {
-  font-size: 5.8px;
-  margin-top: 0px;
-  letter-spacing:0.8px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 40px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column; /* 세로로 정렬하기 위해 열 방향으로 설정 */
+  align-items: center; /* 텍스트를 수직 가운데 정렬 */
+  justify-content: center; /* 텍스트를 수평 가운데 정렬 */
+  height: 100%; /* 부모 컨테이너의 높이에 맞추기 위해 */
 
   /* background-color: rgb(70, 79, 10); */
 }
+/* 글자 수에 따른 letter-spacing 설정 */
+.resultText4_3_1[data-letter-count="5"] {
+  margin-top: 15px;
+  letter-spacing: 15px; /* 5글자일 때의 설정 */
+}
+.resultText4_3_1[data-letter-count="6"] {
+  letter-spacing: 7px; /* 6글자일 때의 설정 */
+}
+.resultText4_3_1[data-letter-count="7"] {
+  letter-spacing: 0px; /* 7글자일 때의 설정 */
+}
+.resultText4_3_1[data-letter-count="8"] {
+  font-size: 35px;
+  margin-top: 5px;
+  letter-spacing: 0.5px; /* 8글자일 때의 설정 */
+}
+.resultText4_3_1[data-letter-count="9"] {
+  font-size: 33px;
+  margin-top: 3px;
+  letter-spacing: -1px; /* 9글자일 때의 설정 */
+}
 /* 이름2 */
 .resultText4_3_2 {
-  font-size: 4.2px;
-  margin-top: -1px;
-  letter-spacing:-0.5px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 28px;
+  margin-bottom: 7px;
+  display: flex;
+  flex-direction: column; /* 세로로 정렬하기 위해 열 방향으로 설정 */
+  align-items: center; /* 텍스트를 수직 가운데 정렬 */
+  justify-content: center; /* 텍스트를 수평 가운데 정렬 */
 
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
 .resultText4_3_2-6 {
-  font-size: 3.8px;
-  margin-top: -1px;
-  letter-spacing:-1.0px;
+  color: black;
+  font-family: "HYGungSo";
+  font-size: 28px;
+  margin-bottom: 3px;
+  letter-spacing: -6px; /* 9글자일 때의 설정 */
+
+  display: flex;
+  flex-direction: column; /* 세로로 정렬하기 위해 열 방향으로 설정 */
+  align-items: center; /* 텍스트를 수직 가운데 정렬 */
+  justify-content: center; /* 텍스트를 수평 가운데 정렬 */
 
   writing-mode: horizontal-tb;
   /* background-color: rgb(246, 71, 2); */
 }
+/*======위패 끝======*/
+
 .title6 {
   font-size: 15px;
   font-family: "BMEULJIROTTF";
