@@ -1,163 +1,171 @@
 <template>
-  <div class="app">
-    <div class="title2">
-      ● {{type}} 각인 종류 <br>
+  <div class="">
+    <div class="app">
+      <div class="title2">
+        ● [{{type}}] 각인 종류 <br>
+      </div>
+      <div class="text-align-center">
+        <div class="scroll-container">
+          <span class="link-container">
+            <!-- 일반 -->
+            <div v-if="type === '일반'">
+              <div
+                class="link-item"
+                :class="{ selected: selectedType === '일반' }"
+                @click="updateSelectType('일반')"
+              >
+                <img src="../../../assets/images/engrave/example/일반.png" width="80" height="130" alt="일반">
+                <span class="selectText">[기본]</span>
+              </div>
+              <div
+                class="link-item"
+                :class="{ selected: selectedType === '형제' }"
+                @click="updateSelectType('형제')"
+              >
+                <img src="../../../assets/images/engrave/example/일반(형제).png" width="80" height="130" alt="형제">
+                <span class="selectText">[형제]</span>
+              </div>
+            </div>
+            <!-- 기독교 -->
+            <div v-if="type === '기독교'">
+              <div
+                class="link-item"
+                :class="{ selected: selectedType === '직분' }"
+                @click="updateSelectType('직분')"
+              >
+                <img src="../../../assets/images/engrave/example/기독교.png" width="80" height="130" alt="기독교(직분)">
+                <span class="selectText">[기본]</span>
+              </div>
+              <div
+                class="link-item"
+                :class="{ selected: selectedType === '기독교' }"
+                @click="updateSelectType('기독교')"
+              >
+                <img src="../../../assets/images/engrave/example/기독교(직분x).png" width="80" height="130" alt="기독교(직분x)">
+                <span class="selectText">[직분X]</span>
+              </div>
+            </div>
+            <!-- 불교 -->
+            <div v-if="type === '불교'">
+              <div
+                class="link-item"
+                :class="{ selected: selectedType === '불교' }"
+                @click="updateSelectType('불교')"
+              >
+                <img src="../../../assets/images/engrave/example/불교.png" width="80" height="130" alt="불교">
+                <span class="selectText">[기본]</span>
+              </div>
+              <div
+                class="link-item"
+                :class="{ selected: selectedType === '법명' }"
+                @click="updateSelectType('법명')"
+              >
+                <img src="../../../assets/images/engrave/example/불교(법명).png" width="80" height="130" alt="불교(법명)">
+                <span class="selectText">[법명]</span>
+              </div> 
+            </div>
+            <!-- 천주교 -->
+            <div v-if="type === '천주교'">
+              <div
+                class="link-item"
+                :class="{ selected: selectedType === '세례명' }"
+                @click="updateSelectType('세례명')"
+              >
+                <img src="../../../assets/images/engrave/example/천주교.png" width="80" height="130" alt="천주교(세례명)">
+                <span class="selectText">[기본]</span>
+              </div>
+              <div
+                class="link-item"
+                :class="{ selected: selectedType === '천주교' }"
+                @click="updateSelectType('천주교')"
+              >
+                <img src="../../../assets/images/engrave/example/천주교(세례명x).png" width="80" height="130" alt="천주교)">
+                <span class="selectText">[세례명X]</span>
+              </div>
+            </div>
+            <!-- SGI -->
+            <div v-if="type === 'SGI'">
+              <div
+                class="link-item"
+                :class="{ selected: selectedType === 'SGI' }"
+                @click="updateSelectType('SGI')"
+              >
+                <img src="../../../assets/images/engrave/example/sgi.png" width="80" height="130" alt="SGI">
+                <span class="selectText">[기본]</span>
+              </div>
+            </div>
+            <!-- 묘법 -->
+            <div v-if="getType === '묘법'">
+              <div
+                class="link-item"
+                :class="{ selected: selectedType === '묘법' }"
+                @click="updateSelectType('묘법')"
+              >
+                <img src="../../../assets/images/engrave/example/묘법.png" width="80" height="130" alt="묘법">
+                <span class="selectText">[기본]</span>
+              </div>
+            </div>
+          </span>
+        </div>
+      </div>
     </div>
-    <div class="text-align-center">
-      <span class="link-item-color">
-        <!-- 일반 -->
-        <div v-if="type === '일반'">
-          <button
-            class="link-item"
-            :class="{ selected: selectedType === '일반' }"
-            @click="updateSelectType('일반')"
-          >
-            <img src="../../../assets/images/engrave/example/일반.png" width="80" height="130" alt="일반">
-            <span class="selectText">[기본]</span>
-          </button>
-          <button
-            class="link-item"
-            :class="{ selected: selectedType === '형제' }"
-            @click="updateSelectType('형제')"
-          >
-            <img src="../../../assets/images/engrave/example/일반(형제).png" width="80" height="130" alt="형제">
-            <span class="selectText">[형제]</span>
-          </button>
-        </div>
-        <!-- 기독교 -->
-        <div v-if="type === '기독교'">
-          <button
-            class="link-item"
-            :class="{ selected: selectedType === '직분' }"
-            @click="updateSelectType('직분')"
-          >
-            <img src="../../../assets/images/engrave/example/기독교.png" width="80" height="130" alt="기독교(직분)">
-            <span class="selectText">[기본]</span>
-          </button>
-          <button
-            class="link-item"
-            :class="{ selected: selectedType === '기독교' }"
-            @click="updateSelectType('기독교')"
-          >
-            <img src="../../../assets/images/engrave/example/기독교(직분x).png" width="80" height="130" alt="기독교(직분x)">
-            <span class="selectText">[직분X]</span>
-          </button>
-        </div>
-        <!-- 불교 -->
-        <div v-if="type === '불교'">
-          <button
-            class="link-item"
-            :class="{ selected: selectedType === '불교' }"
-            @click="updateSelectType('불교')"
-          >
-            <img src="../../../assets/images/engrave/example/불교.png" width="80" height="130" alt="불교">
-            <span class="selectText">[기본]</span>
-          </button>
-          <button
-            class="link-item"
-            :class="{ selected: selectedType === '법명' }"
-            @click="updateSelectType('법명')"
-          >
-            <img src="../../../assets/images/engrave/example/불교(법명).png" width="80" height="130" alt="불교(법명)">
-            <span class="selectText">[법명]</span>
-          </button> 
-        </div>
-        <!-- 천주교 -->
-        <div v-if="type === '천주교'">
-          <button
-            class="link-item"
-            :class="{ selected: selectedType === '세례명' }"
-            @click="updateSelectType('세례명')"
-          >
-            <img src="../../../assets/images/engrave/example/천주교.png" width="80" height="130" alt="천주교(세례명)">
-            <span class="selectText">[기본]</span>
-          </button>
-          <button
-            class="link-item"
-            :class="{ selected: selectedType === '천주교' }"
-            @click="updateSelectType('천주교')"
-          >
-            <img src="../../../assets/images/engrave/example/천주교(세례명x).png" width="80" height="130" alt="천주교)">
-            <span class="selectText">[세례명X]</span>
-          </button>
-        </div>
-        <!-- SGI -->
-        <div v-if="type === 'SGI'">
-          <button
-            class="link-item"
-            :class="{ selected: selectedType === 'SGI' }"
-            @click="updateSelectType('SGI')"
-          >
-            <img src="../../../assets/images/engrave/example/sgi.png" width="80" height="130" alt="SGI">
-            <span class="selectText">[기본]</span>
-          </button>
-        </div>
-        <!-- 묘법 -->
-        <div v-if="getType === '묘법'">
-          <button
-            class="link-item"
-            :class="{ selected: selectedType === '묘법' }"
-            @click="updateSelectType('묘법')"
-          >
-            <img src="../../../assets/images/engrave/example/묘법.png" width="80" height="130" alt="묘법">
-            <span class="selectText">[기본]</span>
-          </button>
-        </div>
-      </span>
-    </div>
+    <br>
     <!-- 정보입력 -->
-    <div class="text-align-center">
-      <span class="info-text-align-center">
-        <div class="title3">
-          정보 입력
-        </div>
-        <span class="input-info1">
-          <div>
-            고인성함&nbsp;
+    <div class="app">
+      <div class="text-align-center">
+        <span class="info-text-align-center">
+          <div class="title3">
+            정보 입력
           </div>
-          <div v-if="selectedType === '직분'">
-            직분&nbsp;
-          </div>
-          <div v-if="selectedType === '법명'">
-            법명&nbsp;
-          </div>
-          <div v-if="selectedType === '세례명'">
-            세례명&nbsp;
-          </div>
-          <!-- 날짜 입력 -->
-          <div>
-            출생일&nbsp;
-          </div>
-          <div>
-            사망일&nbsp;
-          </div>
-        </span>
-        <span class="input-info2">
-          <div>
-            <input v-model="name1" type="text" placeholder="홍길동" style="width: 7em;"/>
-          </div>
-          <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
-            <input v-model="name2" type="text" :placeholder="defaultName2Placeholder" style="width: 7em;"/>
-          </div>
-          <div>
-            <input v-model="date1" type="text" :placeholder="Date1Placeholder" @input="handleDateInput($event, 'date1')" style="width: 7em;">&nbsp;
+          <span class="input-info1">
+            <div>
+              고인성함&nbsp;
+            </div>
+            <div v-if="selectedType === '직분'">
+              직분&nbsp;
+            </div>
+            <div v-if="selectedType === '법명'">
+              법명&nbsp;
+            </div>
+            <div v-if="selectedType === '세례명'">
+              세례명&nbsp;
+            </div>
             <!-- 날짜 입력 -->
-            <select name="date1Type" v-model="date1Type">
-              <option value="양력" selected="selected">양력</option>
-              <option value="음력">음력</option>
-            </select>
-          </div>
-          <div>
-            <input v-model="date2" type="text" :placeholder="todayDate2Placeholder" @input="handleDateInput($event, 'date2')" style="width: 7em;">&nbsp;
-            <select name="date2Type" v-model="date2Type">
-              <option value="양력" selected="selected">양력</option>
-              <option value="음력">음력</option>
-            </select>
-          </div>
+            <div>
+              출생일&nbsp;
+            </div>
+            <div>
+              사망일&nbsp;
+            </div>
+          </span>
+          <span class="input-info2">
+            <div>
+              <input v-model="name1" type="text" placeholder="홍길동" style="height: 20px; width: 7em;"/>
+            </div>
+            <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
+              <input v-model="name2" type="text" :placeholder="defaultName2Placeholder" style="height: 20px; width: 7em;"/>
+            </div>
+            <div>
+              <input v-model="date1" type="text" :placeholder="Date1Placeholder" @input="handleDateInput($event, 'date1')" style="height: 20px; width: 7em;">&nbsp;
+              <!-- 날짜 입력 -->
+              <select name="date1Type" v-model="date1Type" style="height: 20px;">
+                <option value="양력" selected="selected">양력</option>
+                <option value="음력">음력</option>
+              </select>
+            </div>
+            <div>
+              <input v-model="date2" type="text" :placeholder="todayDate2Placeholder" @input="handleDateInput($event, 'date2')" style="height: 20px; width: 7em;">&nbsp;
+              <select name="date2Type" v-model="date2Type" style="height: 20px;">
+                <option value="양력" selected="selected">양력</option>
+                <option value="음력">음력</option>
+              </select>
+            </div>
+          </span>
         </span>
-      </span>
+      </div>
     </div>
-    <hr>
+    <br>
+    
     <div v-if="showName1KoreanWarning" class="warning_text">
       - 성함을 한국어로 올바르게 입력해주세요.
     </div>
@@ -179,7 +187,7 @@
     <div v-else-if="showDate2Warning" class="warning_text">
       - 사망일을 {{ getDateWarningMessage(date2) }}
     </div>
-    <div v-else-if="showRouterView">
+    <div v-else-if="showRouterView" class="app">
       <div v-if="type !== 'SGI' && type !== '묘법'">
         <router-link :to="{name: 'tabletCreateView'}" @click.native="updateRouteData()" class="title4">
           👉 위패 주문하기
@@ -479,31 +487,5 @@ export default {
 .info-text-align-center {
   display: inline-block;
   text-align: left;
-}
-
-.link-item-color {
-  display: inline-block;
-  justify-content: center;
-  align-items: center;
-  background-color: #cfcfcf; /* 배경색을 설정합니다 */
-  padding: 3px;
-  margin-top: 2px;
-  margin-bottom: 6px;
-  border-radius: 5px;
-}
-
-.input-info1 {
-  display: inline-block;
-  justify-content: center;
-  text-align: center;
-  font-weight: bold;
-  padding: 3px;
-  /* background-color: rgb(81, 59, 59); */
-}
-
-.input-info2 {
-  display: inline-block;
-  justify-content: center;
-  /* background-color: rgb(63, 103, 103); */
 }
 </style>

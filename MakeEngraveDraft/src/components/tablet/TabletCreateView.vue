@@ -1,118 +1,126 @@
 <template>
-  <div class="app">
-    <div class="title">
-      위패 생성하기
+  <div class="">
+    <div class="app">
+      <div class="title">
+        위패 생성하기
+      </div>
     </div>
-    <div class="title2">
-      ● 위패 종류
-    </div>
-    <!-- 가로 스크롤 가능한 컨테이너 -->
-    <div class="text-align-center">
-      <span class="link-item-color">
-        <!-- 일반 -->
-        <div v-if="type === '일반'">
-          <button
-              class="link-item"
-              :class="{ selected: selectedType2 === '일반' }"
-              @click="selectedType2 = '일반'">
-            <img src="../../assets/images/tablet/example/이름시안/일반.png" width="80" height="240" alt="일반">
-            <span class="selectText">[일반]</span>
-          </button>
-          <button
-              class="link-item"
-              :class="{ selected: selectedType2 === '일반(본관)' }"
-              @click="selectedType2 = '일반(본관)', name0 = ''">
-            <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" width="80" height="240" alt="일반(본관)">
-            <span class="selectText">[일반(본관)]</span>
-          </button>
-        </div>
-        <div v-if="type === '기독교'">
-          <!-- 기독교 -->
-          <button
-              class="link-item"
-              :class="{ selected: selectedType2 === '기독교' }"
-              @click="selectedType2 = '기독교'">
-            <img src="../../assets/images/tablet/example/이름시안/기독교.png" width="80" height="240" alt="기독교">
-            <span class="selectText">[기독교]</span>
-          </button>
-          <button
-              class="link-item"
-              :class="{ selected: selectedType2 === '기독교(본관)' }"
-              @click="selectedType2 = '기독교(본관)', name0 = ''">
-            <img src="../../assets/images/tablet/example/본관시안/기독교(본관).png" width="80" height="240" alt="기독교(본관)">
-            <span class="selectText">[기독교(본관)]</span>
-          </button>
-        </div>
-        <div v-if="type === '불교'">
-          <!-- 불교 -->
-          <button
-              class="link-item"
-              :class="{ selected: selectedType2 === '불교' }"
-              @click="selectedType2 = '불교'">
-            <img src="../../assets/images/tablet/example/이름시안/불교.png" width="80" height="240" alt="불교">
-            <span class="selectText">[불교]</span>
-          </button>
-          <button
-              class="link-item"
-              :class="{ selected: selectedType2 === '불교(본관)' }"
-              @click="selectedType2 = '불교(본관)', name0 = ''">
-            <img src="../../assets/images/tablet/example/본관시안/불교(본관).png" width="80" height="240" alt="불교(본관)">
-            <span class="selectText">[불교(본관)]</span>
-          </button>
-        </div>
-        <!-- 천주교 -->
-        <div v-if="type === '천주교'">
-          <button
-              class="link-item"
-              :class="{ selected: selectedType2 === '천주교' }"
-              @click="selectedType2 = '천주교'">
-            <img src="../../assets/images/tablet/example/이름시안/천주교.png" width="80" height="240" alt="천주교">
-            <span class="selectText">[천주교]</span>
-          </button>
-          <button
-              class="link-item"
-              :class="{ selected: selectedType2 === '천주교(본관)' }"
-              @click="selectedType2 = '천주교(본관)', name0 = ''">
-            <img src="../../assets/images/tablet/example/본관시안/천주교(본관).png" width="80" height="240" alt="천주교(본관)">
-            <span class="selectText">[천주교(본관)]</span>
-          </button>
-        </div>
-      </span>
-    </div>
-    <!-- 정보입력 -->
-    <div class="text-align-center">
-      <span class="info-text-align-center">
-        <span class="input-info1">
-         <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
-            본관 내용&nbsp;
+    <br>
+    <div class="app">
+      <div class="title2">
+        ● 위패 종류
+      </div>
+      <!-- 가로 스크롤 가능한 컨테이너 -->
+      <div class="text-align-center">
+        <span class="link-item-color">
+          <!-- 일반 -->
+          <div v-if="type === '일반'">
+            <div
+                class="link-item"
+                :class="{ selected: selectedType2 === '일반' }"
+                @click="selectedType2 = '일반'">
+              <img src="../../assets/images/tablet/example/이름시안/일반.png" width="80" height="240" alt="일반">
+              <span class="selectText">[일반]</span>
+            </div>
+            <div
+                class="link-item"
+                :class="{ selected: selectedType2 === '일반(본관)' }"
+                @click="selectedType2 = '일반(본관)', name0 = ''">
+              <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" width="80" height="240" alt="일반(본관)">
+              <span class="selectText">[일반(본관)]</span>
+            </div>
           </div>
-          <span v-if="selectedType === '기독교'">
-            직분&nbsp;
-          </span>
-          <!-- <span v-if="selectedType === '법명'">
-            법명 입력<br/>
-          </span> -->
-          <span v-if="selectedType === '천주교'">
-            세례명&nbsp;
-          </span>
+          <div v-if="type === '기독교'">
+            <!-- 기독교 -->
+            <div
+                class="link-item"
+                :class="{ selected: selectedType2 === '기독교' }"
+                @click="selectedType2 = '기독교'">
+              <img src="../../assets/images/tablet/example/이름시안/기독교.png" width="80" height="240" alt="기독교">
+              <span class="selectText">[기독교]</span>
+            </div>
+            <div
+                class="link-item"
+                :class="{ selected: selectedType2 === '기독교(본관)' }"
+                @click="selectedType2 = '기독교(본관)', name0 = ''">
+              <img src="../../assets/images/tablet/example/본관시안/기독교(본관).png" width="80" height="240" alt="기독교(본관)">
+              <span class="selectText">[기독교(본관)]</span>
+            </div>
+          </div>
+          <div v-if="type === '불교'">
+            <!-- 불교 -->
+            <div
+                class="link-item"
+                :class="{ selected: selectedType2 === '불교' }"
+                @click="selectedType2 = '불교'">
+              <img src="../../assets/images/tablet/example/이름시안/불교.png" width="80" height="240" alt="불교">
+              <span class="selectText">[불교]</span>
+            </div>
+            <div
+                class="link-item"
+                :class="{ selected: selectedType2 === '불교(본관)' }"
+                @click="selectedType2 = '불교(본관)', name0 = ''">
+              <img src="../../assets/images/tablet/example/본관시안/불교(본관).png" width="80" height="240" alt="불교(본관)">
+              <span class="selectText">[불교(본관)]</span>
+            </div>
+          </div>
+          <!-- 천주교 -->
+          <div v-if="type === '천주교'">
+            <div
+                class="link-item"
+                :class="{ selected: selectedType2 === '천주교' }"
+                @click="selectedType2 = '천주교'">
+              <img src="../../assets/images/tablet/example/이름시안/천주교.png" width="80" height="240" alt="천주교">
+              <span class="selectText">[천주교]</span>
+            </div>
+            <div
+                class="link-item"
+                :class="{ selected: selectedType2 === '천주교(본관)' }"
+                @click="selectedType2 = '천주교(본관)', name0 = ''">
+              <img src="../../assets/images/tablet/example/본관시안/천주교(본관).png" width="80" height="240" alt="천주교(본관)">
+              <span class="selectText">[천주교(본관)]</span>
+            </div>
+          </div>
         </span>
-        <span class="input-info2">
+      </div>
+    </div>
+    <br>
+    <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)' || selectedType === '기독교' || selectedType === '천주교'" class="app">
+      <!-- 정보입력 -->
+      <div class="text-align-center">
+        <span class="info-text-align-center">
+          <span class="input-info1">
           <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
-            <input v-model="name0" type="text" :placeholder="defaultName0Placeholder"/>
-          </div>
-          <span v-if="selectedType === '기독교'">
-            <input v-model="name2" type="text" :placeholder="name2"/>
+              본관 내용&nbsp;
+            </div>
+            <span v-if="selectedType === '기독교'">
+              직분&nbsp;
+            </span>
+            <!-- <span v-if="selectedType === '법명'">
+              법명 입력<br/>
+            </span> -->
+            <span v-if="selectedType === '천주교'">
+              세례명&nbsp;
+            </span>
           </span>
-          <!-- <span v-if="selectedType === '법명'">
-            <input v-model="name2" type="text" :placeholder="name2"/>
-          </span> -->
-          <span v-if="selectedType === '천주교'">
-            <input v-model="name2" type="text" :placeholder="name2"/>
+          <span class="input-info2">
+            <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
+              <input v-model="name0" type="text" :placeholder="defaultName0Placeholder"/>
+            </div>
+            <span v-if="selectedType === '기독교'">
+              <input v-model="name2" type="text" :placeholder="name2"/>
+            </span>
+            <!-- <span v-if="selectedType === '법명'">
+              <input v-model="name2" type="text" :placeholder="name2"/>
+            </span> -->
+            <span v-if="selectedType === '천주교'">
+              <input v-model="name2" type="text" :placeholder="name2"/>
+            </span>
           </span>
         </span>
-      </span>
+      </div>
     </div>
-
+    <br>
     <div v-if="showName0KoreanWarning" class="warning_text">
         - 본관을 한국어로 올바르게 입력해주세요.
     </div>
@@ -121,7 +129,7 @@
     </div>
     <div v-else>
       <!-- 본관에 따른 데이터 전송값 변경 -->
-      <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
+      <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'" class="app">
         <router-link :to="{name: 'result'}" @click.native="updateRouteData()" class="title4">👉 예시 보기 (각인/위패)</router-link>
       </div>
       <div v-else>

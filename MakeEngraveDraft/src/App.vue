@@ -1,6 +1,6 @@
 <template>
-  <div class="app">
-    <header>
+  <div>
+    <header class="app">
       <div class="text-align-center" >
         <router-link :to="{name: 'main'}" @click.native="updateRouteData()" class="logo">
           <img alt="logo1" src="@/assets/images/logo.png"/>
@@ -15,11 +15,11 @@
         </nav>
       </div>
     </header>
-    <body>
+    <div>
       <router-view></router-view>
-    </body>
+    </div>
     <hr>
-    <footer @click="handleFooterClick">
+    <footer class="app" @click="handleFooterClick">
       copyright @태림원. All Rights Reserved.
     </footer>
   </div>

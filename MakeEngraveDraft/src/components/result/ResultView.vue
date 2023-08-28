@@ -7,25 +7,30 @@
           👉 [이전 페이지]
     </router-link>
 
+    <div class="title2">
+      <span>● 각인</span>
+      <span class="title6">({{type}} 
+        <span v-if="type !== selectedType"> [{{selectedType}}] </span>
+        )
+      </span>
+      <span v-if="selectedType2 !== '없음'">
+        / 위패
+        <span class="title6">({{type}} 
+          <span v-if="name0 !== '없음'"> [본관] </span>
+          )
+        </span>
+      </span>
+        예시
+    </div>
     <div class="container">
       <!-- 각인 -->
       <div class="engrave_container">
-        <div class="title2">● 각인 예시 
-          <div class="title6">&nbsp;&nbsp;- {{type}} 
-            <span v-if="type !== selectedType"> [{{selectedType}}] </span>
-          </div>
-        </div>
         <div class="engrave_image_container" :class="{ 'fullscreen1': isFullscreen1 }" @click="toggleFullscreen1">
           <img class="engrave_image" v-if="engraveCapturedImage" :src="engraveCapturedImage" alt="각인 예시 사진" />
         </div>
       </div>
       <!-- 위패 -->
       <div class="tablet_container" v-if="selectedType2 !== '없음'">
-        <div class="title2">● 위패 예시
-          <div class="title6">&nbsp;&nbsp;- {{type}} 
-            <span v-if="name0 !== '없음'"> [본관] </span>
-          </div>
-        </div>
         <div class="tablet_image_container" :class="{ 'fullscreen2': isFullscreen2 }" @click="toggleFullscreen2">
           <img class="tablet_image" v-if="tabletCapturedImage" :src="tabletCapturedImage" alt="위패 예시 사진" />
         </div>
@@ -642,30 +647,44 @@ export default {
   display: flex;
   /* justify-content: space-between; 가로로 나란히 정렬 */
   justify-content: center; /* 가운데 정렬 추가 */
-  align-items: center;
+  align-items: flex-end;
 
   margin: 0 auto;
   max-width: 1200px; /* 원하는 최대 너비 설정 */
 
   /* text-align: center; */
 
-  background-color: rgb(142, 142, 142);
+  /* background-color: rgb(243, 243, 243); */
 }
-/*======각인 시작======*/
 /* 캡처 이미지 출력 */
 .engrave_container {
   position: relative;
-  width: 40vw;
+  width: 30vw;
   /* height: 50vh; */
+  margin-bottom: -10px;
   background-repeat: no-repeat;
   background-position: center;
-  margin-right: 10%;
   /* background-color: rgb(226, 245, 100); */
 }
 .engrave_image {
   max-width: 30vw;
   max-height: 60vh;
 }
+.tablet_container {
+  position: relative;
+  width: 10vw;
+  /* height: 50vh; */
+  margin-bottom: -10px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-color: rgb(226, 245, 100); */
+}
+.tablet_image {
+  max-width: 10vw;
+  max-height: 30vh;
+}
+/*======각인 시작======*/
 /* 이미지 출력 */
 .image-text-container {
   /* position: relative; */
@@ -1149,20 +1168,6 @@ export default {
 }
 /*======각인 끝======*/
 /*======위패 시작======*/
-/* 캡처 이미지 출력 */
-.tablet_container {
-  position: relative;
-  width: 20vw;
-  /* height: 50vh; */
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-right: 10%;
-  /* background-color: rgb(226, 245, 100); */
-}
-.tablet_image {
-  max-width: 20vw;
-  max-height: 30vh;
-}
 /* 이미지 출력 */
 .image-text-container2 {
   /* position: relative; */
@@ -1618,7 +1623,7 @@ export default {
 
 /* 예시 밑에 - type */
 .title6 {
-  font-size: 15px;
+  font-size: 20px;
   font-family: "BMEULJIROTTF";
 }
 </style>
