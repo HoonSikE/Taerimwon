@@ -12,14 +12,14 @@
         <span class="title-gray">1-2-</span>3
       </div>
       <span>● 각인</span>
-      <span class="title6">({{type}} 
-        <span v-if="type !== selectedType"> [{{selectedType}}] </span>
+      <span class="title6">({{engraveType}} 
+        <span v-if="engraveType !== selectedType"> [{{selectedType}}] </span>
         )
       </span>
       <span v-if="selectedType2 !== '없음'">
         / 위패
-        <span class="title6">({{type}} 
-          <span v-if="name0 !== '없음'"> [본관] </span>
+        <span class="title6">({{engraveType}} 
+          <span v-if="name3 !== '없음'"> [본관] </span>
           )
         </span>
       </span>
@@ -50,9 +50,9 @@
     <div v-if="engraveImageContainerVisible" class="image-text-container" ref="engraveImageContainer">
       <div class="text-container">
         <span class="resultText1">
-          <span v-if="type == '일반' || type == '불교' || type == '묘법' || type == 'SGI'" class="resultText1_0_1">生</span>
-          <span v-if="type == '기독교'" class="resultText1_0_2">出生</span>
-          <span v-if="type == '천주교'" class="resultText1_0_2">出生</span>
+          <span v-if="engraveType == '일반' || engraveType == '불교' || engraveType == '묘법' || engraveType == 'SGI'" class="resultText1_0_1">生</span>
+          <span v-if="engraveType == '기독교'" class="resultText1_0_2">出生</span>
+          <span v-if="engraveType == '천주교'" class="resultText1_0_2">出生</span>
 
           <span class="resultText1_1">{{date1.substr(0, 1)}}</span>
           <span class="resultText1_1">{{date1.substr(1, 1)}}</span>
@@ -159,9 +159,9 @@
           </span>
         </span>
         <span class="resultText1">
-          <span v-if="type == '일반' || type == '불교' || type == '묘법' || type == 'SGI'" class="resultText1_0_1">卒</span>
-          <span v-if="type == '기독교'" class="resultText1_0_2">召天</span>
-          <span v-if="type == '천주교'" class="resultText1_0_3">善終</span>
+          <span v-if="engraveType == '일반' || engraveType == '불교' || engraveType == '묘법' || engraveType == 'SGI'" class="resultText1_0_1">卒</span>
+          <span v-if="engraveType == '기독교'" class="resultText1_0_2">召天</span>
+          <span v-if="engraveType == '천주교'" class="resultText1_0_3">善終</span>
 
           <span class="resultText1_1">{{date2.substr(0, 1)}}</span>
           <span class="resultText1_1">{{date2.substr(1, 1)}}</span>
@@ -182,10 +182,10 @@
     <div v-if="tabletImageContainerVisible && selectedType2 !== '없음'" class="image-text-container2" ref="tabletImageContainer">
       <div class="text-container2">
         <!-- 본관 선택 x-->
-        <div v-if="name0 === '없음'" class="resultText3">
+        <div v-if="name3 === '없음'" class="resultText3">
           <div :class="getResult3Mark"></div>
           <!-- 일반 -->
-          <span class="" v-if="type === '일반' || type === '불교'">
+          <span class="" v-if="engraveType === '일반' || engraveType === '불교'">
             <span class="resultText3_1" v-if="name1.length === 2 || name1.length === 3">
               {{encodedName1}}
             </span>
@@ -194,7 +194,7 @@
             </span>
           </span>
           <!-- 위 글자 -->
-          <span class="" v-if="type === '기독교'">
+          <span class="" v-if="engraveType === '기독교'">
             <span class="resultText3_2_2" v-if="name2.length === 2 || name2.length === 3">
               {{name2}}
             </span>
@@ -209,7 +209,7 @@
             </span>
           </span>
           <!-- 아래 글자 -->
-          <span class="" v-if="type === '천주교'">
+          <span class="" v-if="engraveType === '천주교'">
             <span class="resultText3_3_1" v-if="name1.length === 2 || name1.length === 3">
               {{encodedName1}}
             </span>
@@ -234,56 +234,56 @@
         <div v-else class="resultText3">
           <div :class="getResult4Mark"></div>
           <!-- 일반 -->
-          <span class="resultText4_1_1" data-letter-count="5" v-if="type === '일반' && name0.length=== 5">
-            {{name0}}
+          <span class="resultText4_1_1" data-letter-count="5" v-if="engraveType === '일반' && name3.length=== 5">
+            {{name3}}
           </span>
-          <span class="resultText4_1_1" data-letter-count="6" v-if="type === '일반' && name0.length=== 6">
-            {{name0}}
+          <span class="resultText4_1_1" data-letter-count="6" v-if="engraveType === '일반' && name3.length=== 6">
+            {{name3}}
           </span>
-          <span class="resultText4_1_1" data-letter-count="7" v-if="type === '일반' && name0.length=== 7">
-            {{name0}}
+          <span class="resultText4_1_1" data-letter-count="7" v-if="engraveType === '일반' && name3.length=== 7">
+            {{name3}}
           </span>
-          <span class="resultText4_1_1" data-letter-count="8" v-if="type === '일반' && name0.length=== 8">
-            {{name0}}
+          <span class="resultText4_1_1" data-letter-count="8" v-if="engraveType === '일반' && name3.length=== 8">
+            {{name3}}
           </span>
-          <span class="resultText4_1_1" data-letter-count="9" v-if="type === '일반' && name0.length=== 9">
-            {{name0}}
+          <span class="resultText4_1_1" data-letter-count="9" v-if="engraveType === '일반' && name3.length=== 9">
+            {{name3}}
           </span>
           <!-- 불교 -->
-          <span class="resultText4_1_2" data-letter-count="5" v-if="type === '불교' && name0.length=== 5">
-            {{name0}}
+          <span class="resultText4_1_2" data-letter-count="5" v-if="engraveType === '불교' && name3.length=== 5">
+            {{name3}}
           </span>
-          <span class="resultText4_1_2" data-letter-count="6" v-if="type === '불교' && name0.length=== 6">
-            {{name0}}
+          <span class="resultText4_1_2" data-letter-count="6" v-if="engraveType === '불교' && name3.length=== 6">
+            {{name3}}
           </span>
-          <span class="resultText4_1_2" data-letter-count="7" v-if="type === '불교' && name0.length=== 7">
-            {{name0}}
+          <span class="resultText4_1_2" data-letter-count="7" v-if="engraveType === '불교' && name3.length=== 7">
+            {{name3}}
           </span>
-          <span class="resultText4_1_2" data-letter-count="8" v-if="type === '불교' && name0.length=== 8">
-            {{name0}}
+          <span class="resultText4_1_2" data-letter-count="8" v-if="engraveType === '불교' && name3.length=== 8">
+            {{name3}}
           </span>
-          <span class="resultText4_1_2" data-letter-count="9" v-if="type === '불교' && name0.length=== 9">
-            {{name0}}
+          <span class="resultText4_1_2" data-letter-count="9" v-if="engraveType === '불교' && name3.length=== 9">
+            {{name3}}
           </span>
           <!-- 기독교 직분 위 글자 -->
-          <span class="resultText4_2" v-if="type === '기독교'">
+          <span class="resultText4_2" v-if="engraveType === '기독교'">
             <!-- 직분 -->
             <span class="resultText4_2_2">{{name2}}</span>
             <!-- 이름 -->
-            <span class="resultText4_2_1" data-letter-count="5" v-if="name0.length=== 5">
-              {{name0}}
+            <span class="resultText4_2_1" data-letter-count="5" v-if="name3.length=== 5">
+              {{name3}}
             </span>
-            <span class="resultText4_2_1" data-letter-count="6" v-if="name0.length=== 6">
-              {{name0}}
+            <span class="resultText4_2_1" data-letter-count="6" v-if="name3.length=== 6">
+              {{name3}}
             </span>
-            <span class="resultText4_2_1" data-letter-count="7" v-if="name0.length=== 7">
-              {{name0}}
+            <span class="resultText4_2_1" data-letter-count="7" v-if="name3.length=== 7">
+              {{name3}}
             </span>
-            <span class="resultText4_2_1" data-letter-count="8" v-if="name0.length=== 8">
-              {{name0}}
+            <span class="resultText4_2_1" data-letter-count="8" v-if="name3.length=== 8">
+              {{name3}}
             </span>
-            <span class="resultText4_2_1" data-letter-count="9" v-if="name0.length=== 9">
-              {{name0}}
+            <span class="resultText4_2_1" data-letter-count="9" v-if="name3.length=== 9">
+              {{name3}}
             </span>
             <!-- 아래 -->
             <span class="resultText4_2_3">
@@ -291,22 +291,22 @@
             </span>
           </span>
           <!-- 천주교 세례명 아래 글자 -->
-          <span class="resultText4_3" v-if="type === '천주교'">
+          <span class="resultText4_3" v-if="engraveType === '천주교'">
             <!-- 이름 -->
-            <span class="resultText4_3_1" data-letter-count="5" v-if="name0.length=== 5">
-              {{name0}}
+            <span class="resultText4_3_1" data-letter-count="5" v-if="name3.length=== 5">
+              {{name3}}
             </span>
-            <span class="resultText4_3_1" data-letter-count="6" v-if="name0.length=== 6">
-              {{name0}}
+            <span class="resultText4_3_1" data-letter-count="6" v-if="name3.length=== 6">
+              {{name3}}
             </span>
-            <span class="resultText4_3_1" data-letter-count="7" v-if="name0.length=== 7">
-              {{name0}}
+            <span class="resultText4_3_1" data-letter-count="7" v-if="name3.length=== 7">
+              {{name3}}
             </span>
-            <span class="resultText4_3_1" data-letter-count="8" v-if="name0.length=== 8">
-              {{name0}}
+            <span class="resultText4_3_1" data-letter-count="8" v-if="name3.length=== 8">
+              {{name3}}
             </span>
-            <span class="resultText4_3_1" data-letter-count="9" v-if="name0.length=== 9">
-              {{name0}}
+            <span class="resultText4_3_1" data-letter-count="9" v-if="name3.length=== 9">
+              {{name3}}
             </span>
             <!-- 세례명 -->
             <span class="resultText4_3_2" v-if="name2.length === 2 || name2.length === 3">
@@ -327,38 +327,52 @@
     </div>
       
     <div>
-      각인 종류: {{this.type}}<br>
-      상세 종류: {{this.selectedType}}<br>
+      화장날짜:<br>
+      화장시간:<br>
+      화장장:<br>
+      <hr>
+      고인명: {{name1}}<br>
+      생년월일: {{date1}} {{date1Type}}<br>
+      사망월일: {{date2}} {{date2Type}}<br>
+      종교구분: {{religion }}
       <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
-        {{this.selectedType}}명: {{this.name2}}<br>
+        {{selectedType}}명: {{name2}}<br>
       </div>
       <hr>
-      고인 성함: {{this.name1}}<br>
-      출생일: {{this.date1}} {{this.date1Type}}<br>
-      사망일: {{this.date2}} {{this.date2Type}}<br>
+      유골함 각인 종류: {{engraveType}} [{{selectedType}}]<br>
+      유골함 종류: {{ selectedUrnType }}<br>
       <hr>
+      
       <div v-if="selectedType2 === '없음'">
-        위패 유무: X<br>
+        위패 종류: 없음<br>
       </div>
       <div v-else>
-        위패 유무: O<br>
-        <div v-if="name0 !== '없음'">
-          위패 종류: 본관<br>
-          본관 내용: {{this.name0}}<br>
+        위패 각인 종류: {{selectedType2}}<br>
+        위패 종류: {{ selectedTabletType }}<br>
+        <div v-if="name3 !== '없음' && selectedType2 != '문구'">
+          위패 내용: {{this.name3}}<br>
         </div>
-        <div v-else>
-          위패 종류: 일반<br>
+        <div v-if="selectedType2 != '문구'">
           <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
-            {{this.selectedType}}명: {{this.name2}}<br>
+            {{this.selectedType}}: {{this.name2}}<br>
           </div>
           고인 성함: {{this.name1}}<br>
         </div>
+        <div v-if="selectedType2 === '문구'">
+          문구 내용: {{this.name3}}<br>
+        </div>
       </div>
+      <hr>
+      팀장명: <br>
+      전화번호: <br>
+      소속: <br>
+      <hr>
+      특이사항: <br>
     </div>
 
-    <!-- <a v-if="isIOS" class="title8" :href="iosSMSEntry">아이폰 SMS 보내기</a> -->
-    <!-- <a v-if="isAndroid" class="title8" :href="androidSMSEntry">안드로이드 SMS 보내기</a><br> -->
-    <!-- <a v-if="isUnknown" class="title8">문자호환되지 않는 기종입니다.</a> -->
+    <a v-if="isIOS" class="title8" :href="iosSMSEntry">아이폰 SMS 보내기</a>
+    <a v-if="isAndroid" class="title8" :href="androidSMSEntry">안드로이드 SMS 보내기</a><br>
+    <a v-if="isUnknown" class="title8">문자호환되지 않는 기종입니다.</a>
   </div>
 </template>
 
@@ -379,22 +393,27 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getType',
+      'getEngraveType',
       'getSelectedType',
       'getShowRouterView',
 
-      'getName0',
       'getName1',
       'getName2',
+      'getName3',
+
       'getDate1',
       'getDate1Type',
       'getDate2',
       'getDate2Type',
+      'getReligion',
+      'getSelectedUrnType',
+      'getSelectedTabletType',
+
       'getSelectedType2',
     ]),
-    type: {
+    engraveType: {
       get() {
-        return this.$store.getters.getType;
+        return this.$store.getters.getEngraveType;
       },
     },
     selectedType: {
@@ -407,12 +426,12 @@ export default {
         return this.$store.getters.getShowRouterView;
       },
     },
-    name0: {
+    name3: {
       get() {
-        return this.$store.getters.getName0;
+        return this.$store.getters.getName3;
       },
       set(value) {
-        this.$store.commit('updateName0', value);
+        this.$store.commit('updateName3', value);
       }
     },
     name1: {
@@ -445,6 +464,21 @@ export default {
         return this.$store.getters.getDate2Type;
       },
     },
+    religion: {
+      get() {
+        return this.$store.getters.getReligion;
+      },
+    },
+    selectedUrnType: {
+      get() {
+        return this.$store.getters.getSelectedUrnType;
+      },
+    },
+    selectedTabletType: {
+      get() {
+        return this.$store.getters.getSelectedTabletType;
+      },
+    },
     selectedType2: {
       get() {
         return this.$store.getters.getSelectedType2;
@@ -464,13 +498,13 @@ export default {
     getResult2Mark() {
       let markImageUrl = '';
 
-      if (this.type === '일반') {
+      if (this.engraveType === '일반') {
         return 'resultText2_mark1';
-      } else if (this.type === '기독교') {
+      } else if (this.engraveType === '기독교') {
         return 'resultText2_mark2';
-      } else if (this.type === '불교') {
+      } else if (this.engraveType === '불교') {
         return 'resultText2_mark3';
-      } else if (this.type === '천주교') {
+      } else if (this.engraveType === '천주교') {
         return 'resultText2_mark4';
       }  else if (this.selectedType === 'SGI' || this.selectedType === '묘법') {
         return 'resultText2_mark5';
@@ -481,24 +515,24 @@ export default {
     getResult3Mark() {
       let markImageUrl = '';
 
-      if (this.type === '일반') {
+      if (this.engraveType === '일반') {
         return 'resultText3_mark1';
-      } else if (this.type === '기독교') {
+      } else if (this.engraveType === '기독교') {
         return 'resultText3_mark2';
-      } else if (this.type === '불교') {
+      } else if (this.engraveType === '불교') {
         return 'resultText3_mark3';
-      } else if (this.type === '천주교') {
+      } else if (this.engraveType === '천주교') {
         return 'resultText3_mark4';
       }
     },
     getResult4Mark() {
       let markImageUrl = '';
 
-      if (this.type === '기독교') {
+      if (this.engraveType === '기독교') {
         return 'resultText4_mark2';
-      } else if (this.type === '불교') {
+      } else if (this.engraveType === '불교') {
         return 'resultText4_mark3';
-      } else if (this.type === '천주교') {
+      } else if (this.engraveType === '천주교') {
         return 'resultText4_mark4';
       }
     },
@@ -554,29 +588,42 @@ export default {
       imageContainer.style.transform = 'scale(1)'; // 원래 크기로 설정
     },
     getMsg() {
-      var msg = '[각인 주문]\n'
-        + '각인 종류: ' + this.type + '\n상세 종류: ' + this.selectedType;
+      var msg = '[명지사]\n'
+        + '화장 날짜: ' + '.' + ' / 화장시간: ' + '.' + ' / 화장장: ' + '.';
+
+      msg += '\n\n고인명: ' + this.name1
+        + '\n생년월일: ' + this.date1 + ' ' + this.date1Type 
+        + '\n사망월일: ' + this.date2 + ' ' + this.date2Type
+        + '\n종교구분: ' + this.religion;
         
       if(this.selectedType === '직분' || this.selectedType === '법명' || this.selectedType === '세례명')
         msg += '\n' + this.selectedType + '명: ' + this.name2;
 
-      msg += '\n\n고인 성함: ' + this.name1
-        + '\n출생일: ' + this.date1 + ' ' + this.date1Type 
-        + '\n사망일: ' + this.date2 + ' ' + this.date2Type;
+      msg += '\n\n유골함 각인 종류: ' + this.engraveType + ' [' + this.selectedType + ']'
+        + '\n유골함 종류: ' + this.selectedUrnType;
 
       if(this.selectedType2 == '없음')
-        msg += '\n위패 유무: X';
+        msg += '\n위패 종류: 없음';
       else {
-        msg += '\n위패 유무: O';
-        if(this.name0 !== '없음'){
-          msg += '\n위패 종류: 본관' + '\n본관 내용: ' + this.name0;
-        }else{
-          msg += '\n위패 종류: 일반';
+        msg += '\n위패 각인 종류: ' + this.selectedType2
+            + '\n위패 종류: ' + this.selectedTabletType;
+        if(this.name3 !== '없음' && this.selectedType2 != '문구'){
+          msg += '\n위패 내용: ' + this.name3;
+        }
+        if(this.selectedType2 != '문구') {
           if(this.selectedType === '직분' || this.selectedType === '법명' || this.selectedType === '세례명')
-            msg += '\n' + this.selectedType + '명: ' + this.name2;
+            msg += '\n' + this.selectedType + ': ' + this.name2;
           msg += '\n고인 성함: ' + this.name1;
+        }else {
+          msg += '\n문구 내용: ' + this.name3;
         }
       }
+
+      msg += '\n\n팀장명: ' + '.'
+        + '\n전화번호: ' + '.' 
+        + '\n소속: ' + '.'
+        + '\n\n특이사항: ' + '.';
+
       console.log(msg);
 
       return msg;
@@ -617,8 +664,8 @@ export default {
       link.click(); // 클릭 이벤트 실행
     },
     updateRouteData(){
-      if(this.name0 === '없음')
-        this.name0 = '';
+      if(this.name3 === '없음')
+        this.name3 = '';
     },
   },
 };

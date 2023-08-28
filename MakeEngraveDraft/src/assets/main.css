@@ -16,6 +16,11 @@ input::placeholder {
   text-align: center;
 }
 
+select, 
+select::placeholder {
+  text-align: center;
+}
+
 .text-align-center {
   text-align: center;
   font-family: "BMEULJIROTTF";

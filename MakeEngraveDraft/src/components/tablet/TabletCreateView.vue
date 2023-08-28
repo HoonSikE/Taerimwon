@@ -9,14 +9,14 @@
     <hr>
     <div class="app">
       <div class="title2">
-        ● 위패 종류
+        ● 위패 각인 종류
       </div>
       <!-- 가로 스크롤 가능한 컨테이너 -->
       <div class="text-align-center">
         <div class="scroll-container">
           <span class="link-item-color">
             <!-- 일반 -->
-            <div v-if="type === '일반'">
+            <div v-if="engraveType === '일반'">
               <div
                   class="link-item"
                   :class="{ selected: selectedType2 === '일반' }"
@@ -27,19 +27,19 @@
               <div
                   class="link-item"
                   :class="{ selected: selectedType2 === '일반(본관)' }"
-                  @click="selectedType2 = '일반(본관)', name0 = ''">
+                  @click="selectedType2 = '일반(본관)', name3 = ''">
                 <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" alt="일반(본관)">
                 <span class="selectText">[일반(본관)]</span>
               </div>
               <div
                   class="link-item"
                   :class="{ selected: selectedType2 === '문구' }"
-                  @click="selectedType2 = '문구', name3_1 = '', name3_2 = ''">
+                  @click="selectedType2 = '문구', name3 = ''">
                 <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" alt="문구">
                 <span class="selectText">[문구 넣기]</span>
               </div>
             </div>
-            <div v-if="type === '기독교'">
+            <div v-if="engraveType === '기독교'">
               <!-- 기독교 -->
               <div
                   class="link-item"
@@ -51,19 +51,19 @@
               <div
                   class="link-item"
                   :class="{ selected: selectedType2 === '기독교(본관)' }"
-                  @click="selectedType2 = '기독교(본관)', name0 = ''">
+                  @click="selectedType2 = '기독교(본관)', name3 = ''">
                 <img src="../../assets/images/tablet/example/본관시안/기독교(본관).png" alt="기독교(본관)">
                 <span class="selectText">[기독교(본관)]</span>
               </div>
               <div
                   class="link-item"
                   :class="{ selected: selectedType2 === '문구' }"
-                  @click="selectedType2 = '문구', name3_1 = '', name3_2 = ''">
+                  @click="selectedType2 = '문구', name3 = ''">
                 <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" alt="문구">
                 <span class="selectText">[문구 넣기]</span>
               </div>
             </div>
-            <div v-if="type === '불교'">
+            <div v-if="engraveType === '불교'">
               <!-- 불교 -->
               <div
                   class="link-item"
@@ -75,20 +75,20 @@
               <div
                   class="link-item"
                   :class="{ selected: selectedType2 === '불교(본관)' }"
-                  @click="selectedType2 = '불교(본관)', name0 = ''">
+                  @click="selectedType2 = '불교(본관)', name3 = ''">
                 <img src="../../assets/images/tablet/example/본관시안/불교(본관).png" alt="불교(본관)">
                 <span class="selectText">[불교(본관)]</span>
               </div>
               <div
                   class="link-item"
                   :class="{ selected: selectedType2 === '문구' }"
-                  @click="selectedType2 = '문구', name3_1 = '', name3_2 = ''">
+                  @click="selectedType2 = '문구', name3 = ''">
                 <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" alt="문구">
                 <span class="selectText">[문구 넣기]</span>
               </div>
             </div>
             <!-- 천주교 -->
-            <div v-if="type === '천주교'">
+            <div v-if="engraveType === '천주교'">
               <div
                   class="link-item"
                   :class="{ selected: selectedType2 === '천주교' }"
@@ -99,14 +99,14 @@
               <div
                   class="link-item"
                   :class="{ selected: selectedType2 === '천주교(본관)' }"
-                  @click="selectedType2 = '천주교(본관)', name0 = ''">
+                  @click="selectedType2 = '천주교(본관)', name3 = ''">
                 <img src="../../assets/images/tablet/example/본관시안/천주교(본관).png" alt="천주교(본관)">
                 <span class="selectText">[천주교(본관)]</span>
               </div>
               <div
                   class="link-item"
                   :class="{ selected: selectedType2 === '문구' }"
-                  @click="selectedType2 = '문구', name3_1 = '', name3_2 = ''">
+                  @click="selectedType2 = '문구', name3 = ''">
                 <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" alt="문구">
                 <span class="selectText">[문구 넣기]</span>
               </div>
@@ -120,63 +120,72 @@
       <!-- 정보입력 -->
       <div class="text-align-center">
         <span class="info-text-align-center">
-          <span class="input-info1">
           <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
-              본관 내용&nbsp;
-            </div>
-            <span v-if="selectedType === '기독교' && selectedType2 !== '문구'">
-              직분&nbsp;
-            </span>
-            <!-- <span v-if="selectedType === '법명'">
-              법명 입력<br/>
-            </span> -->
-            <span v-if="selectedType === '천주교' && selectedType2 !== '문구'">
-              세례명&nbsp;
-            </span>
-            <span v-if="selectedType2 === '문구'">
-              &nbsp;<br>문구<br>&nbsp;
-            </span>
-          </span>
-          <span class="input-info2">
+            본관 내용
             <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
-              <input v-model="name0" type="text" :placeholder="defaultName0Placeholder"/>
+              <input v-model="name3" type="text" :placeholder="defaultName3Placeholder" style="height: 20px; width: 100%;"/>
             </div>
-            <span v-if="selectedType === '기독교' && selectedType2 !== '문구'">
-              <input v-model="name2" type="text" placeholder="직분"/>
-            </span>
-            <!-- <span v-if="selectedType === '법명'">
-              <input v-model="name2" type="text" :placeholder="name2"/>
-            </span> -->
-            <span v-if="selectedType === '천주교' && selectedType2 !== '문구'">
-              <input v-model="name2" type="text" placeholder="세례명"/>
-            </span>
-            <span v-if="selectedType2 === '문구'">
-              <input v-model="name3_1" type="text" placeholder="문구1"/>
-              <br>
-            </span>
-            <span v-if="selectedType2 === '문구'">
-              <input v-model="name3_2" type="text" placeholder="문구2"/>
-              <br>
-              <span>
-                1줄: 문구 1 입력, 2줄: 문구1, 2 입력
-              </span>
-            </span>
-          </span>
+            <div v-if="showName3KoreanWarning" class="warning_text">
+                - 본관을 한국어로 올바르게 입력해주세요.
+            </div>
+            <div v-else-if="showName3Warning" class="warning_text">
+                - 본관을 5~9글자로 입력해주세요.
+            </div>
+          </div>
+          <div v-if="selectedType === '기독교' && selectedType2 !== '문구'">
+            직분
+          </div>
+          <!-- <span v-if="selectedType === '법명'">
+            법명 입력<br/>
+          </span> -->
+          <div v-if="selectedType === '천주교' && selectedType2 !== '문구'">
+            세례명
+          </div>
+          <div v-if="selectedType === '기독교' && selectedType2 !== '문구'">
+            <input v-model="name2" type="text" placeholder="직분" style="height: 20px; width: 100%;"/>
+            <div v-if="showName2KoreanWarning" class="warning_text">
+              - 직분을 한국어로 올바르게 입력해주세요.
+            </div>
+            <div v-else-if="showName2Warning" class="warning_text">
+              - 직분을 2~4글자로 입력해주세요.
+            </div>
+          </div>
+          <!-- <span v-if="selectedType === '법명'">
+            <input v-model="name2" type="text" :placeholder="name2"/>
+          </span> -->
+          <div v-if="selectedType === '천주교' && selectedType2 !== '문구'">
+            <input v-model="name2" type="text" placeholder="세례명" style="height: 20px; width: 100%;"/>
+            <div v-if="showName2KoreanWarning" class="warning_text">
+              - 세례명을 한국어로 올바르게 입력해주세요.
+            </div>
+            <div v-else-if="showName2Warning2" class="warning_text">
+              - 세례명을 2~6글자로 입력해주세요.
+            </div>
+          </div>
+          <div v-if="selectedType2 === '문구'">
+            문구
+            <input v-model="name3" type="text" placeholder="예) 아버지 사랑합니다." style="height: 20px; width: 100%;"/>
+            최대 28자(공백포함)까지 입력가능합니다.
+            <div v-if="showName3Warning2" class="warning_text">
+              - 문구를 28글자 이하로 입력해주세요.
+            </div>
+          </div>
+          <div>
+            위패 종류<br>
+            <select :value="selectedTabletType" @change="updateSelectedTabletType" style="height: 20px; width: 100%;">
+              <option value="" disabled>위패 선택</option>
+              <option v-for="tablet in tabletTypes" :value="tablet" :key="tablet">{{ tablet }}</option>
+            </select>
+          </div>
         </span>
       </div>
     </div>
     <div class="appbr">
       <br>
     </div>
-    <div v-if="showName0KoreanWarning" class="warning_text">
-        - 본관을 한국어로 올바르게 입력해주세요.
-    </div>
-    <div v-else-if="showName0Warning" class="warning_text">
-        - 본관을 5~9글자로 입력해주세요.
-    </div>
-    <div v-else class="app">
+    <div class="app">
       <!-- 본관에 따른 데이터 전송값 변경 -->
-      <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
+      <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)' || selectedType2 === '문구'">
         <router-link :to="{name: 'result'}" @click.native="updateRouteData()" class="title4">👉 예시 보기 (각인/위패)</router-link>
       </div>
       <div v-else>
@@ -196,24 +205,23 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getType',
+      'getEngraveType',
       'getSelectedType',
       'getShowRouterView',
 
-      'getName0',
       'getName1',
       'getName2',
-      'getName3_1',
-      'getName3_2',
+      'getName3',
       'getDate1',
       'getDate1Type',
       'getDate2',
       'getDate2Type',
       'getSelectedType2',
+      'getSelectedTabletType',
     ]),
-    type: {
+    engraveType: {
       get() {
-        return this.$store.getters.getType;
+        return this.$store.getters.getEngraveType;
       },
     },
     selectedType: {
@@ -225,14 +233,6 @@ export default {
       get() {
         return this.$store.getters.getShowRouterView;
       },
-    },
-    name0: {
-      get() {
-        return this.$store.getters.getName0;
-      },
-      set(value) {
-        this.$store.commit('updateName0', value);
-      }
     },
     name1: {
       get() {
@@ -247,20 +247,12 @@ export default {
         this.$store.commit('updateName2', value);
       }
     },
-    name3_1: {
+    name3: {
       get() {
-        return this.$store.getters.getName3_1;
+        return this.$store.getters.getName3;
       },
       set(value) {
-        this.$store.commit('updateName3_1', value);
-      }
-    },
-    name3_2: {
-      get() {
-        return this.$store.getters.getName3_2;
-      },
-      set(value) {
-        this.$store.commit('updateName3_2', value);
+        this.$store.commit('updateName3', value);
       }
     },
     date1: {
@@ -291,21 +283,32 @@ export default {
         this.$store.commit('updateSelectedType2', value);
       }
     },
-    encodedName0() {
-      const trimmedName0 = this.name0.trim();
+    tabletTypes() {
+      return ['흰색', '검정', '투명'];
+    },
+    selectedTabletType: {
+      get() {
+        return this.$store.getters.getSelectedTabletType;
+      },
+      set(value) {
+        this.$store.commit('updateSelectedTabletType', value);
+      }
+    },
+    encodedName3() {
+      const trimmedName3 = this.name3.trim();
 
       if(this.selectedType2 === "일반(본관)")
-        return trimmedName0 === '' ? '희빈홍씨길동신위' : encodeURIComponent(trimmedName0);
+        return trimmedName3 === '' ? '희빈홍씨길동신위' : encodeURIComponent(trimmedName3);
       else if(this.selectedType2 === "기독교(본관)")
-        return trimmedName0 === '' ? '희빈홍씨길동' : encodeURIComponent(trimmedName0);
+        return trimmedName3 === '' ? '희빈홍씨길동' : encodeURIComponent(trimmedName3);
       else if(this.selectedType2 === "불교(본관)")
-        return trimmedName0 === '' ? '희빈홍씨길동영가' : encodeURIComponent(trimmedName0);
+        return trimmedName3 === '' ? '희빈홍씨길동영가' : encodeURIComponent(trimmedName3);
       else if(this.selectedType2 === "천주교(본관)")
-        return trimmedName0 === '' ? '희빈홍씨길동' : encodeURIComponent(trimmedName0);
+        return trimmedName3 === '' ? '희빈홍씨길동' : encodeURIComponent(trimmedName3);
 
-      return trimmedName0 === '' ? '본관' : encodeURIComponent(trimmedName0);
+      return trimmedName3 === '' ? '본관' : encodeURIComponent(trimmedName3);
     },
-    defaultName0Placeholder() {
+    defaultName3Placeholder() {
       // 여기서 기본 placeholder 값을 설정합니다
       if(this.selectedType2 === "일반(본관)")
         return '희빈홍씨길동신위';
@@ -317,33 +320,60 @@ export default {
         return '희빈홍씨길동';
       return '본관';
     },
-    showName0Warning() {
+    showName2Warning() {
+      const name2Length = this.name2.trim().length;
+      return (name2Length < 2 || name2Length > 4) && name2Length !== 0;
+    },
+    showName2Warning2() {
+      const name2Length = this.name2.trim().length;
+      return (name2Length < 2 || name2Length > 6) && name2Length !== 0;
+    },
+    showName2KoreanWarning() {
+      // 한글 문자에 대한 정규식
+      const koreanRegex= /^[가-힣]*$/;
+      const koreanConsonantVowelRegex = /^[가-힣&&[^ㅏ-ㅣㅑ-ㅣㅓ-ㅣㅕ-ㅣㅗ-ㅣㅛ-ㅣㅜ-ㅣㅠ-ㅣㅡ-ㅣ]]*$/;
+
+      if(this.name2.length === 0)
+        return false;
+
+      return !(koreanRegex.test(this.name2) && !koreanConsonantVowelRegex.test(this.name2));
+    },
+    showName3Warning() {
       if(this.selectedType2 === '일반' || this.selectedType2 === '기독교' || this.selectedType2 === '불교' || this.selectedType2 === '천주교')
         return false;
-      const name0Length = this.name0.trim().length;
-      return (name0Length < 5 || name0Length > 9) && name0Length !== 0;
+      const name3Length = this.name3.trim().length;
+      return (name3Length < 5 || name3Length > 9) && name3Length !== 0;
     },
-    showName0KoreanWarning() {
+    showName3Warning2() {
+      if(this.selectedType2 !== '문구')
+        return false;
+      const name3Length = this.name3.trim().length;
+      return (name3Length < 1 || name3Length > 28) && name3Length !== 0;
+    },
+    showName3KoreanWarning() {
       if(this.selectedType2 === '일반' || this.selectedType2 === '기독교' || this.selectedType2 === '불교' || this.selectedType2 === '천주교')
         return false;
       // 한글 문자에 대한 정규식
       const koreanRegex= /^[가-힣]*$/;
       const koreanConsonantVowelRegex = /^[가-힣&&[^ㅏ-ㅣㅑ-ㅣㅓ-ㅣㅕ-ㅣㅗ-ㅣㅛ-ㅣㅜ-ㅣㅠ-ㅣㅡ-ㅣ]]*$/;
 
-      if(this.name0.length === 0)
+      if(this.name3.length === 0)
         return false;
 
-      // return !koreanRegex.test(this.name0);
-      return !(koreanRegex.test(this.name0) && !koreanConsonantVowelRegex.test(this.name0));
+      // return !koreanRegex.test(this.name3);
+      return !(koreanRegex.test(this.name3) && !koreanConsonantVowelRegex.test(this.name3));
     },
   },
   methods: {
     updateRouteData(){
-      this.name0 = decodeURIComponent(this.encodedName0);
+      this.name3 = decodeURIComponent(this.encodedName3);
     },
     updateRouteData2(){
-      this.name0 = '없음';
-    }
+      this.name3 = '없음';
+    },
+    updateSelectedTabletType(event) {
+      this.selectedTabletType = event.target.value;
+    },
   }
 };
 </script>

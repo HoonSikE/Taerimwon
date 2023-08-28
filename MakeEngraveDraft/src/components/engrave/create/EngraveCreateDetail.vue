@@ -2,13 +2,13 @@
   <div class="">
     <div class="app">
       <div class="title2">
-        ● [{{type}}] 각인 종류 <br>
+        ● [{{engraveType}}] 각인 종류 <br>
       </div>
       <div class="text-align-center">
         <div class="scroll-container">
           <span class="link-container">
             <!-- 일반 -->
-            <div v-if="type === '일반'">
+            <div v-if="engraveType === '일반'">
               <div
                 class="link-item"
                 :class="{ selected: selectedType === '일반' }"
@@ -27,7 +27,7 @@
               </div>
             </div>
             <!-- 기독교 -->
-            <div v-if="type === '기독교'">
+            <div v-if="engraveType === '기독교'">
               <div
                 class="link-item"
                 :class="{ selected: selectedType === '직분' }"
@@ -46,7 +46,7 @@
               </div>
             </div>
             <!-- 불교 -->
-            <div v-if="type === '불교'">
+            <div v-if="engraveType === '불교'">
               <div
                 class="link-item"
                 :class="{ selected: selectedType === '불교' }"
@@ -65,7 +65,7 @@
               </div> 
             </div>
             <!-- 천주교 -->
-            <div v-if="type === '천주교'">
+            <div v-if="engraveType === '천주교'">
               <div
                 class="link-item"
                 :class="{ selected: selectedType === '세례명' }"
@@ -84,7 +84,7 @@
               </div>
             </div>
             <!-- SGI -->
-            <div v-if="type === 'SGI'">
+            <div v-if="engraveType === 'SGI'">
               <div
                 class="link-item"
                 :class="{ selected: selectedType === 'SGI' }"
@@ -95,7 +95,7 @@
               </div>
             </div>
             <!-- 묘법 -->
-            <div v-if="getType === '묘법'">
+            <div v-if="engraveType === '묘법'">
               <div
                 class="link-item"
                 :class="{ selected: selectedType === '묘법' }"
@@ -118,8 +118,38 @@
             정보 입력
           </div>
           <div>
-            고인성함<br>
+            고인명<br>
             <input v-model="name1" type="text" placeholder="홍길동" style="height: 20px; width: 100%;"/>
+            <div v-if="showName1KoreanWarning" class="warning_text">
+              - 고인명을 한국어로 올바르게 입력해주세요.
+            </div>
+            <div v-else-if="showName1Warning" class="warning_text">
+              - 고인명을 2~4글자로 입력해주세요.
+            </div>
+          </div>
+          <!-- 날짜 입력 -->
+          <div>
+            생년월일 (숫자만 입력)<br>
+            <input v-model="date1" type="text" :placeholder="Date1Placeholder" @input="handleDateInput($event, 'date1')" style="height: 20px; width: 79%; margin-right: 1%;">
+            <!-- 날짜 입력 -->
+            <select name="date1Type" v-model="date1Type" style="height: 20px; width: 20%;">
+              <option value="양력" selected="selected">양력</option>
+              <option value="음력">음력</option>
+            </select>
+            <div v-if="showDate1Warning" class="warning_text">
+              - 생년월일을 {{ getDateWarningMessage(date1) }}
+            </div>
+          </div>
+          <div>
+            사망월일 (숫자만 입력)<br>
+            <input v-model="date2" type="text" :placeholder="todayDate2Placeholder" @input="handleDateInput($event, 'date2')" style="height: 20px; width: 79%; margin-right: 1%">
+            <select name="date2Type" v-model="date2Type" style="height: 20px; width: 20%;">
+              <option value="양력" selected="selected">양력</option>
+              <option value="음력">음력</option>
+            </select>
+            <div v-if="showDate2Warning" class="warning_text">
+              - 사망월일을 {{ getDateWarningMessage(date2) }}
+            </div>
           </div>
           <div v-if="selectedType === '직분'">
             직분
@@ -130,66 +160,40 @@
           <div v-if="selectedType === '세례명'">
             세례명
           </div>
-          <!-- 날짜 입력 -->
-          <div>
-            출생일
+          <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
+            <input v-model="name2" type="text" :placeholder="defaultName2Placeholder" style="height: 20px; width: 100%;"/>
+            <div v-if="showName2KoreanWarning" class="warning_text">
+              - {{selectedType}}을 한국어로 올바르게 입력해주세요.
+            </div>
+            <div v-else-if="showName2Warning && (selectedType === '직분' || selectedType === '법명')" class="warning_text">
+              - {{selectedType}}을 2~4글자로 입력해주세요.
+            </div>
+            <div v-else-if="showName2Warning2 && (selectedType === '세례명')" class="warning_text">
+              - {{selectedType}}을 2~6글자로 입력해주세요.
+            </div>
           </div>
           <div>
-            사망일
+            종교
+            <input v-model="religion" type="text" :placeholder="defaultReligionPlaceholder" style="height: 20px; width: 100%;"/>
+            <div v-if="showReligionKoreanWarning"  class="warning_text">
+              - 종교를 한국어로 올바르게 입력해주세요.
+            </div>
           </div>
-          <span class="input-info2">
-            <div>
-              
-            </div>
-            <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
-              <input v-model="name2" type="text" :placeholder="defaultName2Placeholder" style="height: 20px; width: 7em;"/>
-            </div>
-            <div>
-              <input v-model="date1" type="text" :placeholder="Date1Placeholder" @input="handleDateInput($event, 'date1')" style="height: 20px; width: 7em;">&nbsp;
-              <!-- 날짜 입력 -->
-              <select name="date1Type" v-model="date1Type" style="height: 20px;">
-                <option value="양력" selected="selected">양력</option>
-                <option value="음력">음력</option>
-              </select>
-            </div>
-            <div>
-              <input v-model="date2" type="text" :placeholder="todayDate2Placeholder" @input="handleDateInput($event, 'date2')" style="height: 20px; width: 7em;">&nbsp;
-              <select name="date2Type" v-model="date2Type" style="height: 20px;">
-                <option value="양력" selected="selected">양력</option>
-                <option value="음력">음력</option>
-              </select>
-            </div>
-          </span>
+          <div>
+            유골함 종류<br>
+            <select :value="selectedUrnType" @change="updateSelectedUrnType" style="height: 20px; width: 100%;">
+              <option value="" disabled>유골함 선택</option>
+              <option v-for="urn in urnTypes" :value="urn" :key="urn">{{ urn }}</option>
+            </select>
+          </div>
         </span>
       </div>
     </div>
     <div class="appbr">
       <br>
     </div>
-    
-    <div v-if="showName1KoreanWarning" class="warning_text">
-      - 성함을 한국어로 올바르게 입력해주세요.
-    </div>
-    <div v-else-if="showName1Warning" class="warning_text">
-      - 성함을 2~4글자로 입력해주세요.
-    </div>
-    <div v-else-if="showName2KoreanWarning && (selectedType === '직분' || selectedType === '법명' || selectedType === '세례명')" class="warning_text">
-      - {{selectedType}}을 한국어로 올바르게 입력해주세요.
-    </div>
-    <div v-else-if="showName2Warning && (selectedType === '직분' || selectedType === '법명')" class="warning_text">
-      - {{selectedType}}을 2~4글자로 입력해주세요.
-    </div>
-    <div v-else-if="showName3Warning && (selectedType === '세례명')" class="warning_text">
-      - {{selectedType}}을 2~6글자로 입력해주세요.
-    </div>
-    <div v-else-if="showDate1Warning" class="warning_text">
-      - 출생일을 {{ getDateWarningMessage(date1) }}
-    </div>
-    <div v-else-if="showDate2Warning" class="warning_text">
-      - 사망일을 {{ getDateWarningMessage(date2) }}
-    </div>
-    <div v-else-if="showRouterView" class="app">
-      <div v-if="type !== 'SGI' && type !== '묘법'">
+    <div v-if="showRouterView" class="app">
+      <div v-if="engraveType !== 'SGI' && engraveType !== '묘법'">
         <router-link :to="{name: 'tabletCreateView'}" @click.native="updateRouteData()" class="title4">
           👉 위패 주문하기
           <span class="title4_1">
@@ -220,7 +224,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getType',
+      'getEngraveType',
       'getSelectedType',
       'getShowRouterView',
 
@@ -230,10 +234,12 @@ export default {
       'getDate1Type',
       'getDate2',
       'getDate2Type',
+      'getReligion',
+      'getSelectedUrnType',
     ]),
-    type: {
+    engraveType: {
       get() {
-        return this.$store.getters.getType;
+        return this.$store.getters.getEngraveType;
       },
     },
     selectedType: {
@@ -297,9 +303,38 @@ export default {
         this.$store.commit('updateDate2Type', value);
       }
     },
+    religion: {
+      get() {
+        return this.$store.getters.getReligion;
+      },
+      set(value) {
+        this.$store.commit('updateReligion', value);
+      }
+    },
+    urnTypes() {
+      return ['유골함1', '유골함2', '유골함3', '합골1', '합골2'];
+    },
+    selectedUrnType: {
+      get() {
+        return this.$store.getters.getSelectedUrnType;
+      },
+      set(value) {
+        this.$store.commit('updateSelectedUrnType', value);
+      }
+    },
     defaultName2Placeholder() {
       // 여기서 기본 placeholder 값을 설정합니다
       return this.selectedType;
+    },
+    defaultReligionPlaceholder(){
+      if(this.engraveType == '기독교' || this.engraveType == '불교' || this.engraveType == '천주교'){
+        this.religion = this.engraveType;
+        return this.engraveType;
+      }
+      else{
+        this.religion = '';
+        return '종교 입력';
+      }
     },
     showName1Warning() {
       const name1Length = this.name1.trim().length;
@@ -319,7 +354,7 @@ export default {
       const name2Length = this.name2.trim().length;
       return (name2Length < 2 || name2Length > 4) && name2Length !== 0;
     },
-    showName3Warning() {
+    showName2Warning2() {
       const name2Length = this.name2.trim().length;
       return (name2Length < 2 || name2Length > 6) && name2Length !== 0;
     },
@@ -339,6 +374,16 @@ export default {
     showDate2Warning() {
       return this.showDateWarning(this.date2);
     },
+    showReligionKoreanWarning() {
+      // 한글 문자에 대한 정규식
+      const koreanRegex= /^[가-힣]*$/;
+      const koreanConsonantVowelRegex = /^[가-힣&&[^ㅏ-ㅣㅑ-ㅣㅓ-ㅣㅕ-ㅣㅗ-ㅣㅛ-ㅣㅜ-ㅣㅠ-ㅣㅡ-ㅣ]]*$/;
+
+      if(this.religion.length === 0)
+        return false;
+
+      return !(koreanRegex.test(this.religion) && !koreanConsonantVowelRegex.test(this.religion));
+    },
   },
   methods: {
     ...mapMutations(['toggleRouterView']),
@@ -356,11 +401,11 @@ export default {
     encodedName2() {
       const trimmedName2 = this.name2.trim();
 
-      if(this.type === '기독교')
+      if(this.engraveType === '기독교')
         return trimmedName2 === '' ? '직분' : encodeURIComponent(trimmedName2);
-      else if(this.type === '불교')
+      else if(this.engraveType === '불교')
         return trimmedName2 === '' ? '법명' : encodeURIComponent(trimmedName2);
-      else if(this.type === '천주교')
+      else if(this.engraveType === '천주교')
         return trimmedName2 === '' ? '세례명' : encodeURIComponent(trimmedName2);
 
       return trimmedName2 === '' ? this.selectedType : encodeURIComponent(trimmedName2);
@@ -459,14 +504,14 @@ export default {
       return "";
     },
     updateRouteData(){
-      this.$store.commit('updateName0', '')
+      this.$store.commit('updateName3', '')
       this.name1 = decodeURIComponent(this.encodedName1());
       this.name2 = decodeURIComponent(this.encodedName2());
       this.date1 = decodeURIComponent(this.encodedDate1());
       this.date1Type ='양력';
       this.date2 = decodeURIComponent(this.encodedDate2());
       this.date2Type ='양력';
-      this.$store.commit('updateSelectedType2', this.type);
+      this.$store.commit('updateSelectedType2', this.engraveType);
       this.showRouterView = false;
     },
     updateRouteData2(){
@@ -478,8 +523,11 @@ export default {
       this.date2Type ='양력';
       this.$store.commit('updateSelectedType2', '없음');
       // 로컬스토리지 저장
-      this.$store.commit('updateName0', '없음')
-    }
+      this.$store.commit('updateName3', '없음')
+    },
+    updateSelectedUrnType(event) {
+      this.selectedUrnType = event.target.value;
+    },
   },
 };
 </script>

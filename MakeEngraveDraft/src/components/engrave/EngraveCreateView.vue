@@ -4,7 +4,7 @@
     <div class="app">
       <div class="title">
         1<span class="title-gray">-2-3</span><br>
-        각인 주문하기
+        유골함 주문하기
       </div>
     </div>
     <div class="appbr">
@@ -12,7 +12,7 @@
     </div>
     <div class="app">
       <div class="title2">
-        ● 각인 종류
+        ● 유골함 각인 종류
       </div>
       <!-- 가로 스크롤 가능한 컨테이너 -->
       <div class="text-align-center">
@@ -77,17 +77,18 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getType',
+      'getEngraveType',
+      'getReligion',
       'getSelectedType',
       'getName2',
       'getShowRouterView'
     ]),
-    type: {
+    engraveType: {
       get() {
-        return this.$store.getters.getType;
+        return this.$store.getters.getEngraveType;
       },
       set(value) {
-        this.$store.commit('updateType', value);
+        this.$store.commit('updateEngraveType', value);
       }
     },
     selectedType: {
@@ -117,8 +118,8 @@ export default {
   },
   methods: {
     // ...mapActions(['setRouteData']),
-    updateRouteData(type, selectedType){
-      this.type = type;
+    updateRouteData(engraveType, selectedType){
+      this.engraveType = engraveType;
       this.selectedType = selectedType;
       this.name2 = '';
       this.showRouterView = true;
