@@ -590,7 +590,7 @@ export default {
       const engraveCapturedImageDataUrl = engraveCanvas.toDataURL("각인 예시/png");
 
       this.engraveCapturedImage = engraveCapturedImageDataUrl;
-      this.engraveImageContainerVisible = !this.engraveImageContainerVisible; // 이미지 컨테이너를 숨김
+      // this.engraveImageContainerVisible = !this.engraveImageContainerVisible; // 이미지 컨테이너를 숨김
 
       // 위패
       const tabletImageContainer = this.$refs.tabletImageContainer;
@@ -798,14 +798,14 @@ export default {
   font-weight: bold;
   font-family: "CENTURY";
 
-  font-size: 15px;
+  font-size: 18px;
   margin-top: -5px;
   margin-bottom: -1px;
 
-  width: 50%;
+  width: 100%;
   /* height: 100%; */
 
-  margin-left: 8px;
+  margin-left: 13px;
 
   display: flex;
   justify-content: center;
