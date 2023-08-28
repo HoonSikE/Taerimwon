@@ -684,39 +684,40 @@ export default {
   align-items: flex-end;
 
   margin: 0 auto;
-  width: 40vw;
+  width: 60vw;
   /* max-width: 1200px; */
 
   /* text-align: center; */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* 그림자 효과 설정 */
 
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(239, 239, 239);
 }
 /* 캡처 이미지 출력 */
 .engrave_container {
   position: relative;
-  width: 30vw;
+  width: 40vw;
   /* height: 50vh; */
   margin-bottom: -10px;
   background-repeat: no-repeat;
   background-position: center;
-  /* background-color: rgb(226, 245, 100); */
+  /* background-color: rgb(239, 239, 239); */
 }
 .engrave_image {
-  max-width: 30vw;
+  max-width: 40vw;
   max-height: 60vh;
 }
 .tablet_container {
   position: relative;
-  width: 10vw;
+  width: 20vw;
   /* height: 50vh; */
   margin-bottom: -10px;
 
   background-repeat: no-repeat;
   background-position: center;
-  /* background-color: rgb(226, 245, 100); */
+  /* background-color: rgb(239, 239, 239); */
 }
 .tablet_image {
-  max-width: 10vw;
+  max-width: 20vw;
   max-height: 30vh;
 }
 /*======각인 시작======*/
@@ -728,7 +729,7 @@ export default {
   background-image: url('../../assets/images/engrave/background/engrave.png');
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-color: rgb(226, 245, 100); */
+  background-color: rgb(239, 239, 239);
 }
 /* 텍스트 출력 */
 .text-container {
@@ -1212,7 +1213,7 @@ export default {
   background-image: url('../../assets/images/tablet/background/tablet.png');
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-color: rgb(226, 245, 100); */
+  background-color: rgb(239, 239, 239);
 }
 /* 텍스트 출력 */
 .text-container2 {

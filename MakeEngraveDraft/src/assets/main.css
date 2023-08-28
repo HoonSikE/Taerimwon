@@ -151,6 +151,14 @@ select::placeholder {
   background-color: white;
 }
 
+.title7 {
+  font-size: 15px;
+  font-family: "BMEULJIROTTF";
+  color: blue;
+  cursor: pointer;
+  background-color: white;
+}
+
 /* 경고문 */
 .warning_text{
   font-size: 18px;

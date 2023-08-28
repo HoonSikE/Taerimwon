@@ -114,70 +114,65 @@
           </span>
         </div>
       </div>
-      <div>
-        위패 종류<br>
-        <select :value="selectedTabletType" @change="updateSelectedTabletType" style="height: 30px; width: 100%;">
-          <option value="" disabled>위패 선택</option>
-          <option v-for="tablet in tabletTypes" :value="tablet" :key="tablet">{{ tablet }}</option>
-        </select>
-      </div>
-    </div>
-    <hr>
-    <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)' || selectedType === '기독교' || selectedType === '천주교' || selectedType2 === '문구'" class="app">
-      <!-- 정보입력 -->
-      <div class="text-align-center">
-        <span class="info-text-align-center">
-          <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
-            본관 내용
+      <hr>
+      <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)' || selectedType === '기독교' || selectedType === '천주교' || selectedType2 === '문구'">
+        <!-- 정보입력 -->
+        <div class="text-align-center">
+          <span class="info-text-align-center">
             <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
-              <input v-model="name3" type="text" :placeholder="defaultName3Placeholder" style="height: 30px; width: 100%;"/>
+              본관 내용
+              <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)'">
+                <input v-model="name3" type="text" :placeholder="defaultName3Placeholder" style="height: 30px; width: 100%;"/>
+              </div>
+              <div v-if="showName3KoreanWarning" class="warning_text">
+                  - 본관을 한국어로 올바르게 입력해주세요.
+              </div>
+              <div v-else-if="showName3Warning" class="warning_text">
+                  - 본관을 5~9글자로 입력해주세요.
+              </div>
             </div>
-            <div v-if="showName3KoreanWarning" class="warning_text">
-                - 본관을 한국어로 올바르게 입력해주세요.
+            <div v-if="selectedType === '기독교' && selectedType2 !== '문구'">
+              직분
             </div>
-            <div v-else-if="showName3Warning" class="warning_text">
-                - 본관을 5~9글자로 입력해주세요.
+            <!-- <span v-if="selectedType === '법명'">
+              법명 입력<br/>
+            </span> -->
+            <div v-if="selectedType === '천주교' && selectedType2 !== '문구'">
+              세례명
             </div>
-          </div>
-          <div v-if="selectedType === '기독교' && selectedType2 !== '문구'">
-            직분
-          </div>
-          <!-- <span v-if="selectedType === '법명'">
-            법명 입력<br/>
-          </span> -->
-          <div v-if="selectedType === '천주교' && selectedType2 !== '문구'">
-            세례명
-          </div>
-          <div v-if="selectedType === '기독교' && selectedType2 !== '문구'">
-            <input v-model="name2" type="text" placeholder="직분" style="height: 30px; width: 100%;"/>
-            <div v-if="showName2KoreanWarning" class="warning_text">
-              - 직분을 한국어로 올바르게 입력해주세요.
+            <div v-if="selectedType === '기독교' && selectedType2 !== '문구'">
+              <input v-model="name2" type="text" placeholder="직분" style="height: 30px; width: 100%;"/>
+              <div v-if="showName2KoreanWarning" class="warning_text">
+                - 직분을 한국어로 올바르게 입력해주세요.
+              </div>
+              <div v-else-if="showName2Warning" class="warning_text">
+                - 직분을 2~4글자로 입력해주세요.
+              </div>
             </div>
-            <div v-else-if="showName2Warning" class="warning_text">
-              - 직분을 2~4글자로 입력해주세요.
+            <!-- <span v-if="selectedType === '법명'">
+              <input v-model="name2" type="text" :placeholder="name2"/>
+            </span> -->
+            <div v-if="selectedType === '천주교' && selectedType2 !== '문구'">
+              <input v-model="name2" type="text" placeholder="세례명" style="height: 30px; width: 100%;"/>
+              <div v-if="showName2KoreanWarning" class="warning_text">
+                - 세례명을 한국어로 올바르게 입력해주세요.
+              </div>
+              <div v-else-if="showName2Warning2" class="warning_text">
+                - 세례명을 2~6글자로 입력해주세요.
+              </div>
             </div>
-          </div>
-          <!-- <span v-if="selectedType === '법명'">
-            <input v-model="name2" type="text" :placeholder="name2"/>
-          </span> -->
-          <div v-if="selectedType === '천주교' && selectedType2 !== '문구'">
-            <input v-model="name2" type="text" placeholder="세례명" style="height: 30px; width: 100%;"/>
-            <div v-if="showName2KoreanWarning" class="warning_text">
-              - 세례명을 한국어로 올바르게 입력해주세요.
+            <div v-if="selectedType2 === '문구'">
+              문구
+              <input v-model="name3" type="text" placeholder="예) 아버지 사랑합니다." style="height: 30px; width: 100%;"/>
+              <div class="title7">
+                &nbsp;* 최대 28자(공백포함)까지 입력가능합니다.
+              </div>
+              <div v-if="showName3Warning2" class="warning_text">
+                - 문구를 28글자 이하로 입력해주세요.
+              </div>
             </div>
-            <div v-else-if="showName2Warning2" class="warning_text">
-              - 세례명을 2~6글자로 입력해주세요.
-            </div>
-          </div>
-          <div v-if="selectedType2 === '문구'">
-            문구
-            <input v-model="name3" type="text" placeholder="예) 아버지 사랑합니다." style="height: 30px; width: 100%;"/>
-            최대 28자(공백포함)까지 입력가능합니다.
-            <div v-if="showName3Warning2" class="warning_text">
-              - 문구를 28글자 이하로 입력해주세요.
-            </div>
-          </div>
-        </span>
+          </span>
+        </div>
       </div>
       <div>
         위패 종류<br>
