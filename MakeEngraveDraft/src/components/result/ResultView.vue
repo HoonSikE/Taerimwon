@@ -590,7 +590,7 @@ export default {
       const engraveCapturedImageDataUrl = engraveCanvas.toDataURL("각인 예시/png");
 
       this.engraveCapturedImage = engraveCapturedImageDataUrl;
-      // this.engraveImageContainerVisible = !this.engraveImageContainerVisible; // 이미지 컨테이너를 숨김
+      this.engraveImageContainerVisible = !this.engraveImageContainerVisible; // 이미지 컨테이너를 숨김
 
       // 위패
       const tabletImageContainer = this.$refs.tabletImageContainer;
