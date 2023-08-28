@@ -19,6 +19,8 @@ input::placeholder {
 .text-align-center {
   text-align: center;
   font-family: "BMEULJIROTTF";
+
+  /* background-color: #bf0023; */
 }
 
 /* 스크롤 */

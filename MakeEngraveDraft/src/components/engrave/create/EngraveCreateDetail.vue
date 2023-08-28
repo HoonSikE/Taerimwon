@@ -117,30 +117,29 @@
           <div class="title3">
             정보 입력
           </div>
-          <span class="input-info1">
-            <div>
-              고인성함&nbsp;
-            </div>
-            <div v-if="selectedType === '직분'">
-              직분&nbsp;
-            </div>
-            <div v-if="selectedType === '법명'">
-              법명&nbsp;
-            </div>
-            <div v-if="selectedType === '세례명'">
-              세례명&nbsp;
-            </div>
-            <!-- 날짜 입력 -->
-            <div>
-              출생일&nbsp;
-            </div>
-            <div>
-              사망일&nbsp;
-            </div>
-          </span>
+          <div>
+            고인성함<br>
+            <input v-model="name1" type="text" placeholder="홍길동" style="height: 20px; width: 100%;"/>
+          </div>
+          <div v-if="selectedType === '직분'">
+            직분
+          </div>
+          <div v-if="selectedType === '법명'">
+            법명
+          </div>
+          <div v-if="selectedType === '세례명'">
+            세례명
+          </div>
+          <!-- 날짜 입력 -->
+          <div>
+            출생일
+          </div>
+          <div>
+            사망일
+          </div>
           <span class="input-info2">
             <div>
-              <input v-model="name1" type="text" placeholder="홍길동" style="height: 20px; width: 7em;"/>
+              
             </div>
             <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
               <input v-model="name2" type="text" :placeholder="defaultName2Placeholder" style="height: 20px; width: 7em;"/>
@@ -487,7 +486,9 @@ export default {
 
 <style>
 .info-text-align-center {
+  width: 100%;
   display: inline-block;
   text-align: left;
+  /* background-color: blue; */
 }
 </style>
