@@ -1,12 +1,15 @@
 <template>
   <div class="">
-    <br>
+    <hr>
     <div class="app">
       <div class="title">
+        1<span class="title-gray">-2-3</span><br>
         각인 주문하기
       </div>
     </div>
-    <br>
+    <div class="appbr">
+      <br>
+    </div>
     <div class="app">
       <div class="title2">
         ● 각인 종류
@@ -55,7 +58,9 @@
         </div>
       </div>
     </div>
-    <br>
+    <div class="appbr">
+      <br>
+    </div>
     <div>
       <router-view></router-view>
     </div>

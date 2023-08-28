@@ -76,11 +76,21 @@ input::placeholder {
   background-color: #ffffffa6; /* 선택 시 배경색을 변경 */
 }
 
+.appbr {
+  font-size: 1px;
+}
+
 /* 상단 제목 */
 .title {
   text-align: left;
   font-size: 40px;
   font-family: "BMEULJIROTTF";
+}
+.title-gray {
+  text-align: left;
+  font-size: 40px;
+  font-family: "BMEULJIROTTF";
+  color: rgb(193, 191, 191);
 }
 /* 부 제목 */
 .title2 {

@@ -109,7 +109,7 @@
         </div>
       </div>
     </div>
-    <br>
+    <hr>
     <!-- 정보입력 -->
     <div class="app">
       <div class="text-align-center">
@@ -164,7 +164,9 @@
         </span>
       </div>
     </div>
-    <br>
+    <div class="appbr">
+      <br>
+    </div>
     
     <div v-if="showName1KoreanWarning" class="warning_text">
       - 성함을 한국어로 올바르게 입력해주세요.

@@ -15,9 +15,9 @@
         </nav>
       </div>
     </header>
-    <div>
+    <body>
       <router-view></router-view>
-    </div>
+    </body>
     <hr>
     <footer class="app" @click="handleFooterClick">
       copyright @태림원. All Rights Reserved.

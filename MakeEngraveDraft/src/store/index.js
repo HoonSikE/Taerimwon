@@ -5,6 +5,8 @@ const initialType = '일반';
 const initialName0 = '';
 const initialName1 = '';
 const initialName2 = '';
+const initialName3_1 = '';
+const initialName3_2 = '';
 const initialDate1 = '';
 const initialDate1Type = '양력';
 const initialDate2 = '';
@@ -20,6 +22,8 @@ export const store = createStore({
     name0: initialName0,
     name1: initialName1,
     name2: initialName2,
+    name3_1: initialName3_1,
+    name3_2: initialName3_2,
     date1: initialDate1,
     date1Type: initialDate1Type,
     date2: initialDate2,
@@ -43,6 +47,12 @@ export const store = createStore({
     },
     updateName2(state, newName2) {
       state.name2 = newName2;
+    },
+    updateName3_1(state, newName3_1) {
+      state.name3_1 = newName3_1;
+    },
+    updateName3_2(state, newName3_2) {
+      state.name3_2 = newName3_2;
     },
     updateDate1(state, newDate1) {
       state.date1 = newDate1;
@@ -76,6 +86,8 @@ export const store = createStore({
       state.name0 = initialName0;
       state.name1 = initialName1;
       state.name2 = initialName2;
+      state.name3_1 = initialName3_1;
+      state.name3_2 = initialName3_2;
       state.date1 = initialDate1;
       state.date1Type = initialDate1Type;
       state.date2 = initialDate2;
@@ -87,6 +99,8 @@ export const store = createStore({
     },
     resetState2(state) {
       state.name0 = initialName0;
+      state.name3_1 = initialName3_1;
+      state.name3_2 = initialName3_2;
       state.selectedType2 = initialSelectedType2;
       state.showRouterView = initialShowRouterView;
       localStorage.removeItem('vuexState'); // LocalStorage에서 상태 제거
@@ -106,6 +120,12 @@ export const store = createStore({
     },
     updateName2({ commit }, newName2) {
       commit('updateName2', newName2);
+    },
+    updateName3_1({ commit }, newName3_1) {
+      commit('updateName3_1', newName3_1);
+    },
+    updateName3_2({ commit }, newName3_2) {
+      commit('updateName3_2', newName3_2);
     },
     updateDate1({ commit }, newDate1) {
       commit('updateDate1', newDate1);
@@ -143,6 +163,12 @@ export const store = createStore({
     },
     getName2(state) {
       return state.name2;
+    },
+    getName3_1(state) {
+      return state.name3_2;
+    },
+    getName3_2(state) {
+      return state.name3_2;
     },
     getDate1(state) {
       return state.date1;

@@ -8,6 +8,9 @@
     </router-link>
 
     <div class="title2">
+      <div class="title">
+        <span class="title-gray">1-2-</span>3
+      </div>
       <span>● 각인</span>
       <span class="title6">({{type}} 
         <span v-if="type !== selectedType"> [{{selectedType}}] </span>
@@ -22,19 +25,26 @@
       </span>
         예시
     </div>
-    <div class="container">
+    <div class="container" :class="{ 'fullscreen': isFullscreen }" @click="toggleFullscreen">
       <!-- 각인 -->
       <div class="engrave_container">
-        <div class="engrave_image_container" :class="{ 'fullscreen1': isFullscreen1 }" @click="toggleFullscreen1">
+        <div class="engrave_image_container">
           <img class="engrave_image" v-if="engraveCapturedImage" :src="engraveCapturedImage" alt="각인 예시 사진" />
         </div>
       </div>
       <!-- 위패 -->
       <div class="tablet_container" v-if="selectedType2 !== '없음'">
-        <div class="tablet_image_container" :class="{ 'fullscreen2': isFullscreen2 }" @click="toggleFullscreen2">
+        <div class="tablet_image_container">
           <img class="tablet_image" v-if="tabletCapturedImage" :src="tabletCapturedImage" alt="위패 예시 사진" />
         </div>
       </div>
+    </div>
+    <div class="appbr">
+      <br>
+    </div>
+    <div class="text-align-center">
+      <!-- 사진 다운로드 버튼 -->
+      <button class="download-button" @click="downloadContainer">사진 다운로드</button>
     </div>
     <!-- 각인 -->
     <div v-if="engraveImageContainerVisible" class="image-text-container" ref="engraveImageContainer">
@@ -359,8 +369,7 @@ import html2canvas from 'html2canvas';
 export default {
   data() {
     return {
-      isFullscreen1: false,
-      isFullscreen2: false,
+      isFullscreen: false,
 
       engraveCapturedImage: null,
       tabletCapturedImage: null,
@@ -528,36 +537,20 @@ export default {
       }
       return "unknown";
     },
-    toggleFullscreen1() {
-      this.isFullscreen1 = !this.isFullscreen1;
-      if (this.isFullscreen1) {
-        this.zoomIn1();
+    toggleFullscreen() {
+      this.isFullscreen = !this.isFullscreen;
+      if (this.isFullscreen) {
+        this.zoomIn();
       } else {
-        this.zoomOut1();
+        this.zoomOut();
       }
     },
-    zoomIn1() {
-      const imageContainer = document.querySelector('.engrave_image_container');
+    zoomIn() {
+      const imageContainer = document.querySelector('.container');
       imageContainer.style.transform = 'scale(2)'; // 예시로 확대 배율을 2배로 설정
     },
-    zoomOut1() {
-      const imageContainer = document.querySelector('.engrave_image_container');
-      imageContainer.style.transform = 'scale(1)'; // 원래 크기로 설정
-    },
-    toggleFullscreen2() {
-      this.isFullscreen2 = !this.isFullscreen2;
-      if (this.isFullscreen2) {
-        this.zoomIn2();
-      } else {
-        this.zoomOut2();
-      }
-    },
-    zoomIn2() {
-      const imageContainer = document.querySelector('.tablet_image_container');
-      imageContainer.style.transform = 'scale(2)'; // 예시로 확대 배율을 2배로 설정
-    },
-    zoomOut2() {
-      const imageContainer = document.querySelector('.tablet_image_container');
+    zoomOut() {
+      const imageContainer = document.querySelector('.container');
       imageContainer.style.transform = 'scale(1)'; // 원래 크기로 설정
     },
     getMsg() {
@@ -609,6 +602,20 @@ export default {
       this.tabletCapturedImage = tabletCapturedImageDataUrl;
       this.tabletImageContainerVisible = !this.tabletImageContainerVisible; // 이미지 컨테이너를 숨김
     },
+    async downloadContainer() {
+      const container = document.querySelector('.container'); // 캡처할 요소 선택
+      const canvas = await html2canvas(container); // HTML2Canvas를 사용하여 캡처
+
+      // 이미지 데이터를 URL로 변환
+      const imageDataURL = canvas.toDataURL('image/png');
+
+      // 이미지 다운로드 링크 생성
+      const link = document.createElement('a');
+      link.href = imageDataURL;
+      link.download = '태림원 예시.png'; // 다운로드될 이미지 파일의 이름 설정
+      link.target = '_blank'; // 새 창에서 열리도록 설정
+      link.click(); // 클릭 이벤트 실행
+    },
     updateRouteData(){
       if(this.name0 === '없음')
         this.name0 = '';
@@ -618,29 +625,9 @@ export default {
 </script>
 
 <style>
-.fullscreen1 {
-  position: fixed;
-  top: 0;
-  left: 28vw;
-  width: 100vw;
-  height: 100vh;
+.fullscreen {
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.fullscreen2 {
-  position: fixed;
-  top: 0;
-  left: 20vw;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 /* ======================== */
 .container {
@@ -650,11 +637,12 @@ export default {
   align-items: flex-end;
 
   margin: 0 auto;
-  max-width: 1200px; /* 원하는 최대 너비 설정 */
+  width: 40vw;
+  /* max-width: 1200px; */
 
   /* text-align: center; */
 
-  /* background-color: rgb(243, 243, 243); */
+  background-color: rgb(255, 255, 255);
 }
 /* 캡처 이미지 출력 */
 .engrave_container {
@@ -808,15 +796,16 @@ export default {
 .resultText1_2 {
   color: black;
   font-weight: bold;
+  font-family: "CENTURY";
 
   font-size: 15px;
   margin-top: -5px;
   margin-bottom: -1px;
 
-  width: 100%;
+  width: 50%;
   /* height: 100%; */
 
-  margin-left: 13px;
+  margin-left: 8px;
 
   display: flex;
   justify-content: center;
