@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="app">
     <div class="title2">
       ● {{type}} 각인 종류 <br>
     </div>
@@ -181,13 +181,11 @@
     </div>
     <div v-else-if="showRouterView">
       <div v-if="type !== 'SGI' && type !== '묘법'">
-        <router-link :to="{name: 'tabletCreateView'}" @click.native="updateRouteData()">
-          <div class="title4">
-            👉 위패 주문하기
-            <span class="title4_1">
-              (Click!!)
-            </span>
-          </div>
+        <router-link :to="{name: 'tabletCreateView'}" @click.native="updateRouteData()" class="title4">
+          👉 위패 주문하기
+          <span class="title4_1">
+            (Click!!)
+          </span>
         </router-link>
       </div>
       <router-link :to="{name: 'result'}" @click.native="updateRouteData2()" class="title4">
@@ -494,29 +492,6 @@ export default {
   border-radius: 5px;
 }
 
-.title3 {
-  text-align: center;
-  color: #baca11;
-}
-
-.title4 {
-  font-size: 20px;
-  font-family: "BMEULJIROTTF";
-  color: red;
-  cursor: pointer;
-}
-
-.title4_1 {
-  color: pink;
-}
-
-.title5 {
-  font-size: 20px;
-  font-family: "BMEULJIROTTF";
-  color: green;
-  cursor: pointer;
-}
-
 .input-info1 {
   display: inline-block;
   justify-content: center;
@@ -530,15 +505,5 @@ export default {
   display: inline-block;
   justify-content: center;
   /* background-color: rgb(63, 103, 103); */
-}
-
-input::placeholder {
-  text-align: center;
-}
-
-.warning_text{
-  font-size: 18px;
-  font-family: "BMEULJIROTTF";
-  color: rgb(246, 63, 63);
 }
 </style>

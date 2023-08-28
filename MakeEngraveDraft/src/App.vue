@@ -1,16 +1,17 @@
 <template>
-  <div id="app">
+  <div class="app">
     <header>
       <div class="text-align-center" >
-        <router-link :to="{name: 'main'}" @click.native="updateRouteData()">
-          <img alt="logo" class="logo" src="@/assets/images/logo.png" width="160" height="160" />
+        <router-link :to="{name: 'main'}" @click.native="updateRouteData()" class="logo">
+          <img alt="logo1" src="@/assets/images/logo.png"/>
+          <img alt="logo2" src="@/assets/images/homeLogo.png"/>
         </router-link>
       </div>
       <div class="router-view-wrapper">
         <nav>
-          <RouterLink to="/">Home</RouterLink> |
-          <RouterLink to="/engrave">Engrave</RouterLink> |
-          <RouterLink to="/about">About</RouterLink>
+          <RouterLink to="/" @click.native="updateRouteData()">Home</RouterLink> |
+          <RouterLink to="/engrave" @click.native="updateRouteData()">Engrave</RouterLink> |
+          <RouterLink to="/about" @click.native="updateRouteData()">About</RouterLink>
         </nav>
       </div>
     </header>
@@ -18,12 +19,8 @@
       <router-view></router-view>
     </body>
     <hr>
-    <footer>
-      <div @click="handleFooterClick">
-        ● 오류 신고<br>
-        <!-- ☎️ 연락처: 010-4509-7485<br> -->
-        📨 Email: hoongrammer@gmail.com
-      </div>
+    <footer @click="handleFooterClick">
+      copyright @태림원. All Rights Reserved.
     </footer>
   </div>
 </template>
@@ -46,7 +43,8 @@ export default {
       this.clickCount++;
 
       if (this.clickCount === 3) {
-        this.goToAdmin();
+        if(this.$store.getters.getName1 === '양청우')
+          this.goToAdmin();
         // 리셋 클릭 횟수
         this.clickCount = 0;
       }
@@ -60,78 +58,50 @@ export default {
 
 
 <style scoped>
-/* header {
+header {
   line-height: 1.5;
   max-height: 100vh;
-} */
+  /* background-color: rgb(242, 240, 240); */
+}
 
-/* .logo { */
-  /* display: block; */
-  /* margin: 0 auto 2rem; */
-/* } */
+.logo {
+  display: inline-block;
+}
 
-.text-align-center {
-  text-align: center;
+.logo img {
+  height: 8vh;
+  margin-right: -15px;
 }
 
 .router-view-wrapper {
   margin-top: 1rem; /* 원하는 간격 크기 설정 */
 }
 
-footer {
-  font-size: 14px;
-  font-family: "BMEULJIROTTF";
-}
-
-/* nav {
+nav {
   width: 100%;
-  font-size: 12px;
+  font-size: 16px;
   text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+  /* margin-top: 2rem; */
 }
 
 nav a {
   display: inline-block;
   padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
+  
+  text-decoration: none; /* 밑줄 제거 */
+  color: rgb(47, 47, 47);
 }
 
-nav a:first-of-type {
-  border: 0;
-} */
+nav a.router-link-exact-active {
+  color: rgb(47, 47, 47);
+  border-bottom: 4px solid rgb(47, 47, 47);
+}
 
-/* @media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-} */
+footer {
+  padding: 20px 0; /* 위아래 여백 설정 */
+  font-size: 14px;
+  text-align: center;
+  font-family: "BMEULJIROTTF";
+  /* background-color: aqua; */
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="app">
     <div class="title">
       위패 생성하기
     </div>

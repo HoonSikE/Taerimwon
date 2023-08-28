@@ -130,7 +130,7 @@ export const store = createStore({
     },
   },
   // state를 기반으로 계산
-  // this.$store.getters(이름, 변수);
+  // this.$store.getters.이름;
   getters: {
     getType(state) {
       return state.type;

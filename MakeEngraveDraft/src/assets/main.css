@@ -1,36 +1,68 @@
 @import './base.css';
 @import './font.css';
 
-#app {
+.app {
   max-width: 1280px;
   margin: 0 auto;
   padding: 1rem;
 
+  font-family: "BMEULJIROTTF";
   font-weight: normal;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
+/* input 태그 가운데 정렬 */
+input, 
+input::placeholder {
+  text-align: center;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.text-align-center {
+  text-align: center;
+  font-family: "BMEULJIROTTF";
 }
 
-/* @media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+/* 상단 제목 */
+.title {
+  padding-top: 10px;
+  /* text-align: center; */
+  font-size: 25px;
+  font-family: "BMEULJIROTTF";
+}
+/* 부 제목 */
+.title2 {
+  text-align: left;
+  font-size: 20px;
+  font-family: "BMEULJIROTTF";
+}
+/* 정보입력 */
+.title3 {
+  text-align: center;
+}
+/* 위패 주문하기, 예시보기 */
+.title4 {
+  color: black;
+  font-size: 20px;
+  font-family: "BMEULJIROTTF";
+  text-decoration: none; /* 밑줄 제거 */
+  cursor: pointer;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-} */
+.title4_1 {
+  color: pink;
+  text-decoration: none; /* 밑줄 제거 */
+}
+
+/* 위패 주문하지 않기 */
+.title5 {
+  font-size: 20px;
+  font-family: "BMEULJIROTTF";
+  color: green;
+  cursor: pointer;
+}
+
+/* 경고문 */
+.warning_text{
+  font-size: 18px;
+  font-family: "BMEULJIROTTF";
+  color: rgb(246, 63, 63);
+}

@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="app">
     <router-link v-if="showRouterView" :to="{name: 'engraveDetail'}" class="title4">
           👉 [이전 페이지]
     </router-link>
@@ -592,7 +592,7 @@ export default {
       const engraveCapturedImageDataUrl = engraveCanvas.toDataURL("각인 예시/png");
 
       this.engraveCapturedImage = engraveCapturedImageDataUrl;
-      // this.engraveImageContainerVisible = !this.engraveImageContainerVisible; // 이미지 컨테이너를 숨김
+      this.engraveImageContainerVisible = !this.engraveImageContainerVisible; // 이미지 컨테이너를 숨김
 
       // 위패
       const tabletImageContainer = this.$refs.tabletImageContainer;
@@ -602,7 +602,7 @@ export default {
       const tabletCapturedImageDataUrl = tabletCanvas.toDataURL("위패 예시/png");
 
       this.tabletCapturedImage = tabletCapturedImageDataUrl;
-      // this.tabletImageContainerVisible = !this.tabletImageContainerVisible; // 이미지 컨테이너를 숨김
+      this.tabletImageContainerVisible = !this.tabletImageContainerVisible; // 이미지 컨테이너를 숨김
     },
     updateRouteData(){
       if(this.name0 === '없음')
@@ -649,7 +649,7 @@ export default {
 
   /* text-align: center; */
 
-  /* background-color: darkblue; */
+  background-color: rgb(142, 142, 142);
 }
 /*======각인 시작======*/
 /* 캡처 이미지 출력 */
@@ -663,8 +663,8 @@ export default {
   /* background-color: rgb(226, 245, 100); */
 }
 .engrave_image {
-  width: 40vw;
-  height: auto;
+  max-width: 30vw;
+  max-height: 60vh;
 }
 /* 이미지 출력 */
 .image-text-container {
@@ -1160,8 +1160,8 @@ export default {
   /* background-color: rgb(226, 245, 100); */
 }
 .tablet_image {
-  width: 20vw;
-  height: auto;
+  max-width: 20vw;
+  max-height: 30vh;
 }
 /* 이미지 출력 */
 .image-text-container2 {
@@ -1616,22 +1616,9 @@ export default {
 }
 /*======위패 끝======*/
 
+/* 예시 밑에 - type */
 .title6 {
   font-size: 15px;
   font-family: "BMEULJIROTTF";
-}
-.title7 {
-  font-size: 13px;
-  font-weight: bold;
-  color: rgb(111, 103, 255);
-  font-family: "BMEULJIROTTF";
-  cursor: pointer;
-}
-.title8 {
-  font-size: 20px;
-  font-family: "BMEULJIROTTF";
-  color: rgb(255, 149, 0);
-
-  text-align: center;
 }
 </style>
