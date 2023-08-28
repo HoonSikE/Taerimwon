@@ -119,7 +119,7 @@
           </div>
           <div>
             고인명<br>
-            <input v-model="name1" type="text" placeholder="홍길동" style="height: 20px; width: 100%;"/>
+            <input v-model="name1" type="text" placeholder="홍길동" style="height: 30px; width: 100%;"/>
             <div v-if="showName1KoreanWarning" class="warning_text">
               - 고인명을 한국어로 올바르게 입력해주세요.
             </div>
@@ -130,9 +130,9 @@
           <!-- 날짜 입력 -->
           <div>
             생년월일 (숫자만 입력)<br>
-            <input v-model="date1" type="text" :placeholder="Date1Placeholder" @input="handleDateInput($event, 'date1')" style="height: 20px; width: 79%; margin-right: 1%;">
+            <input v-model="date1" type="text" :placeholder="Date1Placeholder" @input="handleDateInput($event, 'date1')" style="height: 30px; width: 79%; margin-right: 1%;">
             <!-- 날짜 입력 -->
-            <select name="date1Type" v-model="date1Type" style="height: 20px; width: 20%;">
+            <select name="date1Type" v-model="date1Type" style="height: 30px; width: 20%;">
               <option value="양력" selected="selected">양력</option>
               <option value="음력">음력</option>
             </select>
@@ -142,8 +142,8 @@
           </div>
           <div>
             사망월일 (숫자만 입력)<br>
-            <input v-model="date2" type="text" :placeholder="todayDate2Placeholder" @input="handleDateInput($event, 'date2')" style="height: 20px; width: 79%; margin-right: 1%">
-            <select name="date2Type" v-model="date2Type" style="height: 20px; width: 20%;">
+            <input v-model="date2" type="text" :placeholder="todayDate2Placeholder" @input="handleDateInput($event, 'date2')" style="height: 30px; width: 79%; margin-right: 1%">
+            <select name="date2Type" v-model="date2Type" style="height: 30px; width: 20%;">
               <option value="양력" selected="selected">양력</option>
               <option value="음력">음력</option>
             </select>
@@ -161,7 +161,7 @@
             세례명
           </div>
           <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
-            <input v-model="name2" type="text" :placeholder="defaultName2Placeholder" style="height: 20px; width: 100%;"/>
+            <input v-model="name2" type="text" :placeholder="defaultName2Placeholder" style="height: 30px; width: 100%;"/>
             <div v-if="showName2KoreanWarning" class="warning_text">
               - {{selectedType}}을 한국어로 올바르게 입력해주세요.
             </div>
@@ -174,14 +174,14 @@
           </div>
           <div>
             종교
-            <input v-model="religion" type="text" :placeholder="defaultReligionPlaceholder" style="height: 20px; width: 100%;"/>
+            <input v-model="religion" type="text" :placeholder="defaultReligionPlaceholder" style="height: 30px; width: 100%;"/>
             <div v-if="showReligionKoreanWarning"  class="warning_text">
               - 종교를 한국어로 올바르게 입력해주세요.
             </div>
           </div>
           <div>
             유골함 종류<br>
-            <select :value="selectedUrnType" @change="updateSelectedUrnType" style="height: 20px; width: 100%;">
+            <select :value="selectedUrnType" @change="updateSelectedUrnType" style="height: 30px; width: 100%;">
               <option value="" disabled>유골함 선택</option>
               <option v-for="urn in urnTypes" :value="urn" :key="urn">{{ urn }}</option>
             </select>
