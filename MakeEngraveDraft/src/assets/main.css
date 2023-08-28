@@ -3,7 +3,7 @@
 
 .app {
   max-width: 1280px;
-  padding: 1vw;
+  padding: 2em;
 
   font-family: "BMEULJIROTTF";
   font-weight: normal;
@@ -83,31 +83,31 @@ input::placeholder {
 /* 상단 제목 */
 .title {
   text-align: left;
-  font-size: 40px;
+  font-size: 30px;
   font-family: "BMEULJIROTTF";
 }
 .title-gray {
   text-align: left;
-  font-size: 40px;
+  font-size: 30px;
   font-family: "BMEULJIROTTF";
   color: rgb(193, 191, 191);
 }
 /* 부 제목 */
 .title2 {
   text-align: left;
-  font-size: 30px;
+  font-size: 20px;
   font-family: "BMEULJIROTTF";
 }
 /* 정보입력 */
 .title3 {
   text-align: left;
-  font-size: 20px;
+  font-size: 18px;
 }
 .input-info1 {
   display: inline-block;
   justify-content: center;
   text-align: center;
-  font-size: 20px;
+  font-size: 15px;
 
   font-weight: bold;
   padding: 3px;
@@ -116,7 +116,7 @@ input::placeholder {
 
 .input-info2 {
   display: inline-block;
-  font-size: 20px;
+  font-size: 15px;
   justify-content: center;
   /* background-color: rgb(63, 103, 103); */
 }
