@@ -704,9 +704,7 @@ export default {
       this.name1 = decodeURIComponent(this.encodedName1());
       this.name2 = decodeURIComponent(this.encodedName2());
       this.date1 = decodeURIComponent(this.encodedDate1());
-      this.date1Type ='양력';
       this.date2 = decodeURIComponent(this.encodedDate2());
-      this.date2Type ='양력';
       this.$store.commit('updateSelectedType2', this.engraveType);
       this.showRouterView = false;
     },
@@ -714,9 +712,7 @@ export default {
       this.name1 = decodeURIComponent(this.encodedName1());
       this.name2 = decodeURIComponent(this.encodedName2());
       this.date1 = decodeURIComponent(this.encodedDate1());
-      this.date1Type ='양력';
       this.date2 = decodeURIComponent(this.encodedDate2());
-      this.date2Type ='양력';
       this.$store.commit('updateSelectedType2', '없음');
       // 로컬스토리지 저장
       this.$store.commit('updateName3', '없음')
