@@ -163,14 +163,20 @@
             </div>
             <div v-if="selectedType2 === '문구'">
               문구<br>
-              <span>
+              <select v-model="boneSex" style="height: 30px; width: 100%;">
+                <option value="" selected disabled>줄 선택</option>
+                <option value="one">1줄</option>
+                <option value="two">2줄</option>
+                <option value="three">3줄</option>
+              </select>
+              <div>
                 <input v-model="name3" type="text" placeholder="예) 아버지 사랑합니다." style="height: 30px; width: 100%;"/>
-                <span @click="addHeart" style="width: 5px; margin-left: -3vw">
+                <span @click="addHeart" style="font-size: 15px; width: 15px; margin-left: -30px; cursor: pointer;">
                   ❤️
                 </span>
-              </span>
+              </div>
               <div class="title7">
-                &nbsp;* 최대 28자(공백포함)까지 입력가능합니다.
+                &nbsp;* 1줄 최대 10자(공백포함)까지 입력가능합니다.
               </div>
               <div v-if="showName3Warning2" class="warning_text">
                 - 문구를 28글자 이하로 입력해주세요.
