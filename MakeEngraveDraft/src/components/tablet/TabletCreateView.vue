@@ -162,8 +162,13 @@
               </div>
             </div>
             <div v-if="selectedType2 === '문구'">
-              문구
-              <input v-model="name3" type="text" placeholder="예) 아버지 사랑합니다." style="height: 30px; width: 100%;"/>
+              문구<br>
+              <span>
+                <input v-model="name3" type="text" placeholder="예) 아버지 사랑합니다." style="height: 30px; width: 100%;"/>
+                <span @click="addHeart" style="width: 5px; margin-left: -3vw">
+                  ❤️
+                </span>
+              </span>
               <div class="title7">
                 &nbsp;* 최대 28자(공백포함)까지 입력가능합니다.
               </div>
@@ -399,6 +404,11 @@ export default {
     updateSelectedTabletType(event) {
       this.selectedTabletType = event.target.value;
     },
+    addHeart() {
+      if (this.name3.length < 28) {
+        this.name3 += '❤️'; // 하트 아이콘 추가
+      }
+    }
   }
 };
 </script>
