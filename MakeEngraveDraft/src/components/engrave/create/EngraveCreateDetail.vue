@@ -172,7 +172,7 @@
               - {{selectedType}}을 2~6글자로 입력해주세요.
             </div>
           </div>
-          <div>
+          <div v-if="engraveType !== '일반' && engraveType !== 'SGI' && engraveType !== '묘법'">
             종교
             <input v-model="religion" type="text" :placeholder="defaultReligionPlaceholder" style="height: 30px; width: 100%;"/>
             <div v-if="showReligionKoreanWarning"  class="warning_text">
@@ -182,9 +182,95 @@
           <div>
             유골함 종류<br>
             <select :value="selectedUrnType" @change="updateSelectedUrnType" style="height: 30px; width: 100%;">
-              <option value="" disabled>유골함 선택</option>
-              <option v-for="urn in urnTypes" :value="urn" :key="urn">{{ urn }}</option>
+              <option value="">유골함 선택</option>
+              <!-- <option value="" disabled>유골함 선택</option> -->
+              <optgroup label="유골함">
+                <option v-for="urn in urnTypes" :value="urn" :key="urn">
+                  {{ urn }}
+                </option>
+              </optgroup>
+              <optgroup label="합골함">
+                <option v-for="bone in boneTypes" :value="bone" :key="bone">
+                  {{ bone }}
+                </option>
+              </optgroup>
             </select>
+            <!-- 합골 추가 내용 -->
+            <div v-if="selectedUrnType.startsWith('합골')">
+              <br>
+              <hr>
+              <div class="title3">
+                합골 추가 내용 입력
+              </div>
+              <!-- 남성 -->
+              <select v-model="boneSex" style="height: 30px; width: 100%;">
+                <option value="" selected disabled>성별 선택</option>
+                <option value="남성">남성</option>
+                <option value="여성">여성</option>
+              </select>
+              <div>
+                고인명<br>
+                <input v-model="boneName1" type="text" placeholder="홍길동" style="height: 30px; width: 100%;"/>
+                <div v-if="showBoneName1KoreanWarning" class="warning_text">
+                  - 고인명을 한국어로 올바르게 입력해주세요.
+                </div>
+                <div v-else-if="showBoneName1Warning" class="warning_text">
+                  - 고인명을 2~4글자로 입력해주세요.
+                </div>
+              </div>
+              <!-- 날짜 입력 -->
+              <div>
+                생년월일 (숫자만 입력)<br>
+                <input v-model="boneDate1" type="text" :placeholder="Date1Placeholder" @input="handleDateInput($event, 'boneDate1')" style="height: 30px; width: 79%; margin-right: 1%;">
+                <!-- 날짜 입력 -->
+                <select name="boneDate1Type" v-model="boneDate1Type" style="height: 30px; width: 20%;">
+                  <option value="양력" selected="selected">양력</option>
+                  <option value="음력">음력</option>
+                </select>
+                <div v-if="showBoneDate1Warning" class="warning_text">
+                  - 생년월일을 {{ getDateWarningMessage(boneDate1) }}
+                </div>
+              </div>
+              <div>
+                사망월일 (숫자만 입력)<br>
+                <input v-model="boneDate2" type="text" :placeholder="todayDate2Placeholder" @input="handleDateInput($event, 'boneDate2')" style="height: 30px; width: 79%; margin-right: 1%">
+                <select name="boneDate2Type" v-model="boneDate2Type" style="height: 30px; width: 20%;">
+                  <option value="양력" selected="selected">양력</option>
+                  <option value="음력">음력</option>
+                </select>
+                <div v-if="showBoneDate2Warning" class="warning_text">
+                  - 사망월일을 {{ getDateWarningMessage(boneDate2) }}
+                </div>
+              </div>
+              <div v-if="selectedType === '직분'">
+                직분
+              </div>
+              <div v-if="selectedType === '법명'">
+                법명
+              </div>
+              <div v-if="selectedType === '세례명'">
+                세례명
+              </div>
+              <div v-if="engraveType !== '일반' && engraveType !== 'SGI' && engraveType !== '묘법'">
+                종교
+                <input v-model="religion" type="text" :placeholder="defaultReligionPlaceholder" style="height: 30px; width: 100%;"/>
+                <div v-if="showReligionKoreanWarning"  class="warning_text">
+                  - 종교를 한국어로 올바르게 입력해주세요.
+                </div>
+              </div>
+              <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
+                <input v-model="name2" type="text" :placeholder="defaultName2Placeholder" style="height: 30px; width: 100%;"/>
+                <div v-if="showName2KoreanWarning" class="warning_text">
+                  - {{selectedType}}을 한국어로 올바르게 입력해주세요.
+                </div>
+                <div v-else-if="showName2Warning && (selectedType === '직분' || selectedType === '법명')" class="warning_text">
+                  - {{selectedType}}을 2~4글자로 입력해주세요.
+                </div>
+                <div v-else-if="showName2Warning2 && (selectedType === '세례명')" class="warning_text">
+                  - {{selectedType}}을 2~6글자로 입력해주세요.
+                </div>
+              </div>
+            </div>
           </div>
         </span>
       </div>
@@ -201,6 +287,15 @@
           </span>
         </router-link>
       </div>
+      <br>
+      <div>
+        특이사항 (40자 이내)<br>
+        <input v-model="note" type="text" placeholder="특이사항을 적어주세요." style="height: 30px; width: 100%;"/>
+        <div v-if="showNoteWarning" class="warning_text">
+          - 특이사항을 40글자 이하로 입력해주세요.
+        </div>
+      </div>
+      <br>
       <router-link :to="{name: 'result'}" @click.native="updateRouteData2()" class="title4">
         👉 예시 보기 (각인)
       </router-link>
@@ -236,6 +331,16 @@ export default {
       'getDate2Type',
       'getReligion',
       'getSelectedUrnType',
+
+      'getBoneSex',
+      'getBoneName1',
+      'getBoneName2',
+      'getBoneDate1',
+      'getBoneDate1Type',
+      'getBoneDate2',
+      'getBoneDate2Type',
+      'getBoneReligion',
+      'getNote',
     ]),
     engraveType: {
       get() {
@@ -312,7 +417,10 @@ export default {
       }
     },
     urnTypes() {
-      return ['유골함1', '유골함2', '유골함3', '합골1', '합골2'];
+      return ['유골함1', '유골함2', '유골함3'];
+    },
+    boneTypes() {
+      return ['합골함1', '합골함2', '합골함3'];
     },
     selectedUrnType: {
       get() {
@@ -320,6 +428,78 @@ export default {
       },
       set(value) {
         this.$store.commit('updateSelectedUrnType', value);
+      }
+    },
+    boneSex: {
+      get() {
+        return this.$store.getters.getBoneSex;
+      },
+      set(value) {
+        this.$store.commit('updateBoneSex', value);
+      }
+    },
+    boneName1: {
+      get() {
+        return this.$store.getters.getBoneName1;
+      },
+      set(value) {
+        this.$store.commit('updateBoneName1', value);
+      }
+    },
+    boneName2: {
+      get() {
+        return this.$store.getters.getBoneName2;
+      },
+      set(value) {
+        this.$store.commit('updateBoneName2', value);
+      }
+    },
+    boneDate1: {
+      get() {
+        return this.$store.getters.getBoneDate1;
+      },
+      set(value) {
+        this.$store.commit('updateBoneDate1', value);
+      },
+    },
+    boneDate1Type: {
+      get() {
+        return this.$store.getters.getBoneDate1Type;
+      },
+      set(value) {
+        this.$store.commit('updateBoneDate1Type', value);
+      }
+    },
+    boneDate2: {
+      get() {
+        return this.$store.getters.getBoneDate2;
+      },
+      set(value) {
+        return this.$store.commit('updateBoneDate2', value);
+      },
+    },
+    boneDate2Type: {
+      get() {
+        return this.$store.getters.getBoneDate2Type;
+      },
+      set(value) {
+        this.$store.commit('updateBoneDate2Type', value);
+      }
+    },
+    boneReligion: {
+      get() {
+        return this.$store.getters.getBoneReligion;
+      },
+      set(value) {
+        this.$store.commit('updateBoneReligion', value);
+      }
+    },
+    note: {
+      get() {
+        return this.$store.getters.getNote;
+      },
+      set(value) {
+        this.$store.commit('updateNote', value);
       }
     },
     defaultName2Placeholder() {
@@ -374,6 +554,12 @@ export default {
     showDate2Warning() {
       return this.showDateWarning(this.date2);
     },
+    showBoneDate1Warning() {
+      return this.showDateWarning(this.boneDate1);
+    },
+    showBoneDate2Warning() {
+      return this.showDateWarning(this.boneDate2);
+    },
     showReligionKoreanWarning() {
       // 한글 문자에 대한 정규식
       const koreanRegex= /^[가-힣]*$/;
@@ -383,6 +569,12 @@ export default {
         return false;
 
       return !(koreanRegex.test(this.religion) && !koreanConsonantVowelRegex.test(this.religion));
+    },
+    showNoteWarning() {
+      if(this.note.length === 0)
+        return false;
+      const noteLength = this.note.trim().length;
+      return (noteLength < 1 || noteLength > 40) && noteLength !== 0;
     },
   },
   methods: {
@@ -457,6 +649,10 @@ export default {
         this.date1 = formattedDate;
       } else if (targetDate === 'date2') {
         this.date2 = formattedDate;
+      } else if (targetDate === 'boneDate1') {
+        this.boneDate1 = formattedDate;
+      } else if (targetDate === 'boneDate2') {
+        this.boneDate2 = formattedDate;
       }
     },
     showDateWarning(date) {

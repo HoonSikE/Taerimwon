@@ -1,378 +1,411 @@
 <template>
-  <div class="app">
-    <router-link v-if="showRouterView" :to="{name: 'engraveDetail'}" class="title4">
-          👉 [이전 페이지]
-    </router-link>
-    <router-link v-if="!showRouterView" :to="{name: 'tabletCreateView'}" @click.native="updateRouteData()" class="title4">
-          👉 [이전 페이지]
-    </router-link>
+  <div class="">
+    <div class="app">
+      <router-link v-if="showRouterView" :to="{name: 'engraveDetail'}" class="title4">
+            👉 [이전 페이지]
+      </router-link>
+      <router-link v-if="!showRouterView" :to="{name: 'tabletCreateView'}" @click.native="updateRouteData()" class="title4">
+            👉 [이전 페이지]
+      </router-link>
 
-    <div class="title2">
       <div class="title">
-        <span class="title-gray">1-2-</span>3
-      </div>
-      <span>● 각인</span>
-      <span class="title6">({{engraveType}} 
-        <span v-if="engraveType !== selectedType"> [{{selectedType}}] </span>
-        )
-      </span>
-      <span v-if="selectedType2 !== '없음'">
-        / 위패
-        <span class="title6">({{engraveType}} 
-          <span v-if="name3 !== '없음'"> [본관] </span>
-          )
-        </span>
-      </span>
-        예시
-    </div>
-    <div class="container" :class="{ 'fullscreen': isFullscreen }" @click="toggleFullscreen">
-      <!-- 각인 -->
-      <div class="engrave_container">
-        <div class="engrave_image_container">
-          <img class="engrave_image" v-if="engraveCapturedImage" :src="engraveCapturedImage" alt="각인 예시 사진" />
-        </div>
-      </div>
-      <!-- 위패 -->
-      <div class="tablet_container" v-if="selectedType2 !== '없음'">
-        <div class="tablet_image_container">
-          <img class="tablet_image" v-if="tabletCapturedImage" :src="tabletCapturedImage" alt="위패 예시 사진" />
-        </div>
+        <span class="title-gray">1-2-3-</span>4<br>
+        결과
       </div>
     </div>
     <div class="appbr">
       <br>
     </div>
-    <div class="text-align-center">
-      <!-- 사진 다운로드 버튼 -->
-      <button class="download-button" @click="downloadContainer">사진 다운로드</button>
-    </div>
-    <!-- 각인 -->
-    <div v-if="engraveImageContainerVisible" class="image-text-container" ref="engraveImageContainer">
-      <div class="text-container">
-        <span class="resultText1">
-          <span v-if="engraveType == '일반' || engraveType == '불교' || engraveType == '묘법' || engraveType == 'SGI'" class="resultText1_0_1">生</span>
-          <span v-if="engraveType == '기독교'" class="resultText1_0_2">出生</span>
-          <span v-if="engraveType == '천주교'" class="resultText1_0_2">出生</span>
-
-          <span class="resultText1_1">{{date1.substr(0, 1)}}</span>
-          <span class="resultText1_1">{{date1.substr(1, 1)}}</span>
-          <span class="resultText1_1">{{date1.substr(2, 1)}}</span>
-          <span class="resultText1_1">{{date1.substr(3, 1)}}</span>
-          <span class="resultText1_2">•</span>
-          <span class="resultText1_1">{{date1.substr(5, 1)}}</span>
-          <span class="resultText1_1">{{date1.substr(6, 1)}}</span>
-          <span class="resultText1_2">•</span>
-          <span class="resultText1_1">{{date1.substr(8, 1)}}</span>
-          <span class="resultText1_1">{{date1.substr(9, 1)}}</span>
-          <span v-if="date1Type==='음력'" class="resultText1_3">陰</span>
-          <span v-if="date1Type==='양력'" class="resultText1_3">陽</span>
+    <div class="app">
+      <div class="title2">
+        <span>● 각인</span>
+        <span class="title6">({{engraveType}} 
+          <span v-if="engraveType !== selectedType"> [{{selectedType}}] </span>
+          )
         </span>
-        <!-- 일반, 기독교, 불교, 천주교-->
-        <span class="resultText2" v-if="selectedType === '일반' || selectedType === '기독교' || selectedType === '불교'
-                                  || selectedType === '천주교'">
-          <div :class="getResult2Mark"></div>
-          <span class="resultText2_0" v-if="name1.length === 2 || name1.length === 3">
-            {{encodedName1}}
-          </span>
-          <span class="resultText2_0-4" v-if="name1.length === 4">
-            {{encodedName1}}
+        <span v-if="selectedType2 !== '없음'">
+          / 위패
+          <span class="title6">({{engraveType}} 
+            <span v-if="name3 !== '없음'"> [본관] </span>
+            )
           </span>
         </span>
-        <!-- 형제(아래)) -->
-        <span class="resultText2" v-if="selectedType === '형제'">
-          <div :class="getResult2Mark"></div>
-          <span class="resultText2_1" v-if="name1.length === 2 || name1.length === 3">
-            {{encodedName1}}
-          </span>
-          <span class="resultText2_1-4" v-if="name1.length === 4">
-            {{encodedName1}}
-          </span>
-          <span class="resultText2_1_down">
-            형제
-          </span>
-        </span>
-        <!-- SGI(위)) -->
-        <span class="resultText2" v-if="selectedType === 'SGI'">
-          <div :class="getResult2Mark"></div>
-          <span class="resultText2_2_up">
-            SGI
-          </span>
-          <span class="resultText2_2" v-if="name1.length === 2 || name1.length === 3">
-            {{encodedName1}}
-          </span>
-          <span class="resultText2_2-4" v-if="name1.length === 4">
-            {{encodedName1}}
-          </span>
-        </span>
-        <!-- 묘볍(위아래) -->
-        <span class="resultText2" v-if="selectedType === '묘법'">
-          <div :class="getResult2Mark"></div>
-          <span class="resultText2_3_up">
-            妙法
-          </span>
-          <span class="resultText2_3" v-if="name1.length === 2 || name1.length === 3">
-            {{encodedName1}}
-          </span>
-          <span class="resultText2_3-4" v-if="name1.length === 4">
-            {{encodedName1}}
-          </span>
-           <span class="resultText2_3_down">
-            位
-          </span>
-        </span>
-        <!-- 세례명(아래)) -->
-        <span class="resultText2" v-if="selectedType === '세례명'">
-          <div :class="getResult2Mark"></div>
-          <span class="resultText2_4_1" v-if="name1.length === 2 || name1.length === 3">
-            {{encodedName1}}
-          </span>
-          <span class="resultText2_4_1-4" v-if="name1.length === 4">
-            {{encodedName1}}
-          </span>
-          <span class="resultText2_4_2" v-if="name2.length === 2 || name2.length === 3">
-            {{name2}}
-          </span>
-          <span class="resultText2_4_2-4" v-if="name2.length === 4">
-            {{name2}}
-          </span>
-          <span class="resultText2_4_2-5" v-if="name2.length === 5">
-            {{name2}}
-          </span>
-          <span class="resultText2_4_2-6" v-if="name2.length === 6">
-            {{name2}}
-          </span>
-        </span>
-        <!-- 직분(위)-->
-        <span class="resultText2" v-if="selectedType === '직분' || selectedType === '법명'">
-          <div :class="getResult2Mark"></div>
-          <span class="resultText2_5_2" v-if="name2.length === 2 || name2.length === 3">
-            {{name2}}
-          </span>
-          <span class="resultText2_5_2-4" v-if="name2.length === 4">
-            {{name2}}
-          </span>
-          <span class="resultText2_5_1" v-if="name1.length === 2 || name1.length === 3">
-            {{encodedName1}}
-          </span>
-          <span class="resultText2_5_1-4" v-if="name1.length === 4">
-            {{encodedName1}}
-          </span>
-        </span>
-        <span class="resultText1">
-          <span v-if="engraveType == '일반' || engraveType == '불교' || engraveType == '묘법' || engraveType == 'SGI'" class="resultText1_0_1">卒</span>
-          <span v-if="engraveType == '기독교'" class="resultText1_0_2">召天</span>
-          <span v-if="engraveType == '천주교'" class="resultText1_0_3">善終</span>
-
-          <span class="resultText1_1">{{date2.substr(0, 1)}}</span>
-          <span class="resultText1_1">{{date2.substr(1, 1)}}</span>
-          <span class="resultText1_1">{{date2.substr(2, 1)}}</span>
-          <span class="resultText1_1">{{date2.substr(3, 1)}}</span>
-          <span class="resultText1_2">•</span>
-          <span class="resultText1_1">{{date2.substr(5, 1)}}</span>
-          <span class="resultText1_1">{{date2.substr(6, 1)}}</span>
-          <span class="resultText1_2">•</span>
-          <span class="resultText1_1">{{date2.substr(8, 1)}}</span>
-          <span class="resultText1_1">{{date2.substr(9, 1)}}</span>
-          <span v-if="date2Type==='음력'" class="resultText1_3">陰</span>
-          <span v-if="date2Type==='양력'" class="resultText1_3">陽</span>
-        </span>
+          예시
       </div>
-    </div>
-    <!-- 위패 -->
-    <div v-if="tabletImageContainerVisible && selectedType2 !== '없음'" class="image-text-container2" ref="tabletImageContainer">
-      <div class="text-container2">
-        <!-- 본관 선택 x-->
-        <div v-if="name3 === '없음'" class="resultText3">
-          <div :class="getResult3Mark"></div>
-          <!-- 일반 -->
-          <span class="" v-if="engraveType === '일반' || engraveType === '불교'">
-            <span class="resultText3_1" v-if="name1.length === 2 || name1.length === 3">
-              {{encodedName1}}
-            </span>
-            <span class="resultText3_1-4" v-if="name1.length === 4">
-              {{encodedName1}}
-            </span>
-          </span>
-          <!-- 위 글자 -->
-          <span class="" v-if="engraveType === '기독교'">
-            <span class="resultText3_2_2" v-if="name2.length === 2 || name2.length === 3">
-              {{name2}}
-            </span>
-            <span class="resultText3_2_2-4" v-if="name2.length === 4">
-              {{name2}}
-            </span>
-            <span class="resultText3_2_1" v-if="name1.length === 2 || name1.length === 3">
-              {{encodedName1}}
-            </span>
-            <span class="resultText3_2_1-4" v-if="name1.length === 4">
-              {{encodedName1}}
-            </span>
-          </span>
-          <!-- 아래 글자 -->
-          <span class="" v-if="engraveType === '천주교'">
-            <span class="resultText3_3_1" v-if="name1.length === 2 || name1.length === 3">
-              {{encodedName1}}
-            </span>
-            <span class="resultText3_3_1-4" v-if="name1.length === 4">
-              {{encodedName1}}
-            </span>
-            <span class="resultText3_3_2" v-if="name2.length === 2 || name2.length === 3">
-              {{name2}}
-            </span>
-            <span class="resultText3_3_2-4" v-if="name2.length === 4">
-              {{name2}}
-            </span>
-            <span class="resultText3_3_2-5" v-if="name2.length === 5">
-              {{name2}}
-            </span>
-            <span class="resultText3_3_2-6" v-if="name2.length === 6">
-              {{name2}}
-            </span>
-          </span>
-        </div>
-        <!-- 본관 선택 o -->
-        <div v-else class="resultText3">
-          <div :class="getResult4Mark"></div>
-          <!-- 일반 -->
-          <span class="resultText4_1_1" data-letter-count="5" v-if="engraveType === '일반' && name3.length=== 5">
-            {{name3}}
-          </span>
-          <span class="resultText4_1_1" data-letter-count="6" v-if="engraveType === '일반' && name3.length=== 6">
-            {{name3}}
-          </span>
-          <span class="resultText4_1_1" data-letter-count="7" v-if="engraveType === '일반' && name3.length=== 7">
-            {{name3}}
-          </span>
-          <span class="resultText4_1_1" data-letter-count="8" v-if="engraveType === '일반' && name3.length=== 8">
-            {{name3}}
-          </span>
-          <span class="resultText4_1_1" data-letter-count="9" v-if="engraveType === '일반' && name3.length=== 9">
-            {{name3}}
-          </span>
-          <!-- 불교 -->
-          <span class="resultText4_1_2" data-letter-count="5" v-if="engraveType === '불교' && name3.length=== 5">
-            {{name3}}
-          </span>
-          <span class="resultText4_1_2" data-letter-count="6" v-if="engraveType === '불교' && name3.length=== 6">
-            {{name3}}
-          </span>
-          <span class="resultText4_1_2" data-letter-count="7" v-if="engraveType === '불교' && name3.length=== 7">
-            {{name3}}
-          </span>
-          <span class="resultText4_1_2" data-letter-count="8" v-if="engraveType === '불교' && name3.length=== 8">
-            {{name3}}
-          </span>
-          <span class="resultText4_1_2" data-letter-count="9" v-if="engraveType === '불교' && name3.length=== 9">
-            {{name3}}
-          </span>
-          <!-- 기독교 직분 위 글자 -->
-          <span class="resultText4_2" v-if="engraveType === '기독교'">
-            <!-- 직분 -->
-            <span class="resultText4_2_2">{{name2}}</span>
-            <!-- 이름 -->
-            <span class="resultText4_2_1" data-letter-count="5" v-if="name3.length=== 5">
-              {{name3}}
-            </span>
-            <span class="resultText4_2_1" data-letter-count="6" v-if="name3.length=== 6">
-              {{name3}}
-            </span>
-            <span class="resultText4_2_1" data-letter-count="7" v-if="name3.length=== 7">
-              {{name3}}
-            </span>
-            <span class="resultText4_2_1" data-letter-count="8" v-if="name3.length=== 8">
-              {{name3}}
-            </span>
-            <span class="resultText4_2_1" data-letter-count="9" v-if="name3.length=== 9">
-              {{name3}}
-            </span>
-            <!-- 아래 -->
-            <span class="resultText4_2_3">
-              召天
-            </span>
-          </span>
-          <!-- 천주교 세례명 아래 글자 -->
-          <span class="resultText4_3" v-if="engraveType === '천주교'">
-            <!-- 이름 -->
-            <span class="resultText4_3_1" data-letter-count="5" v-if="name3.length=== 5">
-              {{name3}}
-            </span>
-            <span class="resultText4_3_1" data-letter-count="6" v-if="name3.length=== 6">
-              {{name3}}
-            </span>
-            <span class="resultText4_3_1" data-letter-count="7" v-if="name3.length=== 7">
-              {{name3}}
-            </span>
-            <span class="resultText4_3_1" data-letter-count="8" v-if="name3.length=== 8">
-              {{name3}}
-            </span>
-            <span class="resultText4_3_1" data-letter-count="9" v-if="name3.length=== 9">
-              {{name3}}
-            </span>
-            <!-- 세례명 -->
-            <span class="resultText4_3_2" v-if="name2.length === 2 || name2.length === 3">
-              {{name2}}
-            </span>
-            <span class="resultText4_3_2" v-if="name2.length === 4">
-              {{name2}}
-            </span>
-            <span class="resultText4_3_2" v-if="name2.length === 5">
-              {{name2}}
-            </span>
-            <span class="resultText4_3_2-6" v-if="name2.length === 6">
-              {{name2}}
-            </span>
-          </span>
-        </div>
-      </div>
-    </div>
-      
-    <div>
-      화장날짜:<br>
-      화장시간:<br>
-      화장장:<br>
-      <hr>
-      고인명: {{name1}}<br>
-      생년월일: {{date1}} {{date1Type}}<br>
-      사망월일: {{date2}} {{date2Type}}<br>
-      종교구분: {{religion }}
-      <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
-        {{selectedType}}명: {{name2}}<br>
-      </div>
-      <hr>
-      유골함 각인 종류: {{engraveType}} [{{selectedType}}]<br>
-      유골함 종류: {{ selectedUrnType }}<br>
-      <hr>
-      
-      <div v-if="selectedType2 === '없음'">
-        위패 종류: 없음<br>
-      </div>
-      <div v-else>
-        위패 각인 종류: {{selectedType2}}<br>
-        위패 종류: {{ selectedTabletType }}<br>
-        <div v-if="name3 !== '없음' && selectedType2 != '문구'">
-          위패 내용: {{this.name3}}<br>
-        </div>
-        <div v-if="selectedType2 != '문구'">
-          <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
-            {{this.selectedType}}: {{this.name2}}<br>
+      <div class="container" :class="{ 'fullscreen': isFullscreen }" @click="toggleFullscreen">
+        <!-- 각인 -->
+        <div class="engrave_container">
+          <div class="engrave_image_container">
+            <img class="engrave_image" v-if="engraveCapturedImage" :src="engraveCapturedImage" alt="각인 예시 사진" />
           </div>
-          고인 성함: {{this.name1}}<br>
         </div>
-        <div v-if="selectedType2 === '문구'">
-          문구 내용: {{this.name3}}<br>
+        <!-- 위패 -->
+        <div class="tablet_container" v-if="selectedType2 !== '없음'">
+          <div class="tablet_image_container">
+            <img class="tablet_image" v-if="tabletCapturedImage" :src="tabletCapturedImage" alt="위패 예시 사진" />
+          </div>
         </div>
       </div>
-      <hr>
-      팀장명: <br>
-      전화번호: <br>
-      소속: <br>
-      <hr>
-      특이사항: <br>
-    </div>
+      <div class="appbr">
+        <br>
+      </div>
+      <div class="text-align-center">
+        <!-- 사진 다운로드 버튼 -->
+        <button class="download-button" @click="downloadContainer">사진 다운로드</button>
+      </div>
+      <!-- 각인 -->
+      <div v-if="engraveImageContainerVisible" class="image-text-container" ref="engraveImageContainer">
+        <div class="text-container">
+          <span class="resultText1">
+            <span v-if="engraveType == '일반' || engraveType == '불교' || engraveType == '묘법' || engraveType == 'SGI'" class="resultText1_0_1">生</span>
+            <span v-if="engraveType == '기독교'" class="resultText1_0_2">出生</span>
+            <span v-if="engraveType == '천주교'" class="resultText1_0_2">出生</span>
 
-    <a v-if="isIOS" class="title8" :href="iosSMSEntry">아이폰 SMS 보내기</a>
-    <a v-if="isAndroid" class="title8" :href="androidSMSEntry">안드로이드 SMS 보내기</a><br>
-    <a v-if="isUnknown" class="title8">문자호환되지 않는 기종입니다.</a>
+            <span class="resultText1_1">{{date1.substr(0, 1)}}</span>
+            <span class="resultText1_1">{{date1.substr(1, 1)}}</span>
+            <span class="resultText1_1">{{date1.substr(2, 1)}}</span>
+            <span class="resultText1_1">{{date1.substr(3, 1)}}</span>
+            <span class="resultText1_2">•</span>
+            <span class="resultText1_1">{{date1.substr(5, 1)}}</span>
+            <span class="resultText1_1">{{date1.substr(6, 1)}}</span>
+            <span class="resultText1_2">•</span>
+            <span class="resultText1_1">{{date1.substr(8, 1)}}</span>
+            <span class="resultText1_1">{{date1.substr(9, 1)}}</span>
+            <span v-if="date1Type==='음력'" class="resultText1_3">陰</span>
+            <span v-if="date1Type==='양력'" class="resultText1_3">陽</span>
+          </span>
+          <!-- 일반, 기독교, 불교, 천주교-->
+          <span class="resultText2" v-if="selectedType === '일반' || selectedType === '기독교' || selectedType === '불교'
+                                    || selectedType === '천주교'">
+            <div :class="getResult2Mark"></div>
+            <span class="resultText2_0" v-if="name1.length === 2 || name1.length === 3">
+              {{encodedName1}}
+            </span>
+            <span class="resultText2_0-4" v-if="name1.length === 4">
+              {{encodedName1}}
+            </span>
+          </span>
+          <!-- 형제(아래)) -->
+          <span class="resultText2" v-if="selectedType === '형제'">
+            <div :class="getResult2Mark"></div>
+            <span class="resultText2_1" v-if="name1.length === 2 || name1.length === 3">
+              {{encodedName1}}
+            </span>
+            <span class="resultText2_1-4" v-if="name1.length === 4">
+              {{encodedName1}}
+            </span>
+            <span class="resultText2_1_down">
+              형제
+            </span>
+          </span>
+          <!-- SGI(위)) -->
+          <span class="resultText2" v-if="selectedType === 'SGI'">
+            <div :class="getResult2Mark"></div>
+            <span class="resultText2_2_up">
+              SGI
+            </span>
+            <span class="resultText2_2" v-if="name1.length === 2 || name1.length === 3">
+              {{encodedName1}}
+            </span>
+            <span class="resultText2_2-4" v-if="name1.length === 4">
+              {{encodedName1}}
+            </span>
+          </span>
+          <!-- 묘볍(위아래) -->
+          <span class="resultText2" v-if="selectedType === '묘법'">
+            <div :class="getResult2Mark"></div>
+            <span class="resultText2_3_up">
+              妙法
+            </span>
+            <span class="resultText2_3" v-if="name1.length === 2 || name1.length === 3">
+              {{encodedName1}}
+            </span>
+            <span class="resultText2_3-4" v-if="name1.length === 4">
+              {{encodedName1}}
+            </span>
+            <span class="resultText2_3_down">
+              位
+            </span>
+          </span>
+          <!-- 세례명(아래)) -->
+          <span class="resultText2" v-if="selectedType === '세례명'">
+            <div :class="getResult2Mark"></div>
+            <span class="resultText2_4_1" v-if="name1.length === 2 || name1.length === 3">
+              {{encodedName1}}
+            </span>
+            <span class="resultText2_4_1-4" v-if="name1.length === 4">
+              {{encodedName1}}
+            </span>
+            <span class="resultText2_4_2" v-if="name2.length === 2 || name2.length === 3">
+              {{name2}}
+            </span>
+            <span class="resultText2_4_2-4" v-if="name2.length === 4">
+              {{name2}}
+            </span>
+            <span class="resultText2_4_2-5" v-if="name2.length === 5">
+              {{name2}}
+            </span>
+            <span class="resultText2_4_2-6" v-if="name2.length === 6">
+              {{name2}}
+            </span>
+          </span>
+          <!-- 직분(위)-->
+          <span class="resultText2" v-if="selectedType === '직분' || selectedType === '법명'">
+            <div :class="getResult2Mark"></div>
+            <span class="resultText2_5_2" v-if="name2.length === 2 || name2.length === 3">
+              {{name2}}
+            </span>
+            <span class="resultText2_5_2-4" v-if="name2.length === 4">
+              {{name2}}
+            </span>
+            <span class="resultText2_5_1" v-if="name1.length === 2 || name1.length === 3">
+              {{encodedName1}}
+            </span>
+            <span class="resultText2_5_1-4" v-if="name1.length === 4">
+              {{encodedName1}}
+            </span>
+          </span>
+          <span class="resultText1">
+            <span v-if="engraveType == '일반' || engraveType == '불교' || engraveType == '묘법' || engraveType == 'SGI'" class="resultText1_0_1">卒</span>
+            <span v-if="engraveType == '기독교'" class="resultText1_0_2">召天</span>
+            <span v-if="engraveType == '천주교'" class="resultText1_0_3">善終</span>
+
+            <span class="resultText1_1">{{date2.substr(0, 1)}}</span>
+            <span class="resultText1_1">{{date2.substr(1, 1)}}</span>
+            <span class="resultText1_1">{{date2.substr(2, 1)}}</span>
+            <span class="resultText1_1">{{date2.substr(3, 1)}}</span>
+            <span class="resultText1_2">•</span>
+            <span class="resultText1_1">{{date2.substr(5, 1)}}</span>
+            <span class="resultText1_1">{{date2.substr(6, 1)}}</span>
+            <span class="resultText1_2">•</span>
+            <span class="resultText1_1">{{date2.substr(8, 1)}}</span>
+            <span class="resultText1_1">{{date2.substr(9, 1)}}</span>
+            <span v-if="date2Type==='음력'" class="resultText1_3">陰</span>
+            <span v-if="date2Type==='양력'" class="resultText1_3">陽</span>
+          </span>
+        </div>
+      </div>
+      <!-- 위패 -->
+      <div v-if="tabletImageContainerVisible && selectedType2 !== '없음'" class="image-text-container2" ref="tabletImageContainer">
+        <div class="text-container2">
+          <!-- 본관 선택 x-->
+          <div v-if="name3 === '없음'" class="resultText3">
+            <div :class="getResult3Mark"></div>
+            <!-- 일반 -->
+            <span class="" v-if="engraveType === '일반' || engraveType === '불교'">
+              <span class="resultText3_1" v-if="name1.length === 2 || name1.length === 3">
+                {{encodedName1}}
+              </span>
+              <span class="resultText3_1-4" v-if="name1.length === 4">
+                {{encodedName1}}
+              </span>
+            </span>
+            <!-- 위 글자 -->
+            <span class="" v-if="engraveType === '기독교'">
+              <span class="resultText3_2_2" v-if="name2.length === 2 || name2.length === 3">
+                {{name2}}
+              </span>
+              <span class="resultText3_2_2-4" v-if="name2.length === 4">
+                {{name2}}
+              </span>
+              <span class="resultText3_2_1" v-if="name1.length === 2 || name1.length === 3">
+                {{encodedName1}}
+              </span>
+              <span class="resultText3_2_1-4" v-if="name1.length === 4">
+                {{encodedName1}}
+              </span>
+            </span>
+            <!-- 아래 글자 -->
+            <span class="" v-if="engraveType === '천주교'">
+              <span class="resultText3_3_1" v-if="name1.length === 2 || name1.length === 3">
+                {{encodedName1}}
+              </span>
+              <span class="resultText3_3_1-4" v-if="name1.length === 4">
+                {{encodedName1}}
+              </span>
+              <span class="resultText3_3_2" v-if="name2.length === 2 || name2.length === 3">
+                {{name2}}
+              </span>
+              <span class="resultText3_3_2-4" v-if="name2.length === 4">
+                {{name2}}
+              </span>
+              <span class="resultText3_3_2-5" v-if="name2.length === 5">
+                {{name2}}
+              </span>
+              <span class="resultText3_3_2-6" v-if="name2.length === 6">
+                {{name2}}
+              </span>
+            </span>
+          </div>
+          <!-- 본관 선택 o -->
+          <div v-else class="resultText3">
+            <div :class="getResult4Mark"></div>
+            <!-- 일반 -->
+            <span class="resultText4_1_1" data-letter-count="5" v-if="engraveType === '일반' && name3.length=== 5">
+              {{name3}}
+            </span>
+            <span class="resultText4_1_1" data-letter-count="6" v-if="engraveType === '일반' && name3.length=== 6">
+              {{name3}}
+            </span>
+            <span class="resultText4_1_1" data-letter-count="7" v-if="engraveType === '일반' && name3.length=== 7">
+              {{name3}}
+            </span>
+            <span class="resultText4_1_1" data-letter-count="8" v-if="engraveType === '일반' && name3.length=== 8">
+              {{name3}}
+            </span>
+            <span class="resultText4_1_1" data-letter-count="9" v-if="engraveType === '일반' && name3.length=== 9">
+              {{name3}}
+            </span>
+            <!-- 불교 -->
+            <span class="resultText4_1_2" data-letter-count="5" v-if="engraveType === '불교' && name3.length=== 5">
+              {{name3}}
+            </span>
+            <span class="resultText4_1_2" data-letter-count="6" v-if="engraveType === '불교' && name3.length=== 6">
+              {{name3}}
+            </span>
+            <span class="resultText4_1_2" data-letter-count="7" v-if="engraveType === '불교' && name3.length=== 7">
+              {{name3}}
+            </span>
+            <span class="resultText4_1_2" data-letter-count="8" v-if="engraveType === '불교' && name3.length=== 8">
+              {{name3}}
+            </span>
+            <span class="resultText4_1_2" data-letter-count="9" v-if="engraveType === '불교' && name3.length=== 9">
+              {{name3}}
+            </span>
+            <!-- 기독교 직분 위 글자 -->
+            <span class="resultText4_2" v-if="engraveType === '기독교'">
+              <!-- 직분 -->
+              <span class="resultText4_2_2">{{name2}}</span>
+              <!-- 이름 -->
+              <span class="resultText4_2_1" data-letter-count="5" v-if="name3.length=== 5">
+                {{name3}}
+              </span>
+              <span class="resultText4_2_1" data-letter-count="6" v-if="name3.length=== 6">
+                {{name3}}
+              </span>
+              <span class="resultText4_2_1" data-letter-count="7" v-if="name3.length=== 7">
+                {{name3}}
+              </span>
+              <span class="resultText4_2_1" data-letter-count="8" v-if="name3.length=== 8">
+                {{name3}}
+              </span>
+              <span class="resultText4_2_1" data-letter-count="9" v-if="name3.length=== 9">
+                {{name3}}
+              </span>
+              <!-- 아래 -->
+              <span class="resultText4_2_3">
+                召天
+              </span>
+            </span>
+            <!-- 천주교 세례명 아래 글자 -->
+            <span class="resultText4_3" v-if="engraveType === '천주교'">
+              <!-- 이름 -->
+              <span class="resultText4_3_1" data-letter-count="5" v-if="name3.length=== 5">
+                {{name3}}
+              </span>
+              <span class="resultText4_3_1" data-letter-count="6" v-if="name3.length=== 6">
+                {{name3}}
+              </span>
+              <span class="resultText4_3_1" data-letter-count="7" v-if="name3.length=== 7">
+                {{name3}}
+              </span>
+              <span class="resultText4_3_1" data-letter-count="8" v-if="name3.length=== 8">
+                {{name3}}
+              </span>
+              <span class="resultText4_3_1" data-letter-count="9" v-if="name3.length=== 9">
+                {{name3}}
+              </span>
+              <!-- 세례명 -->
+              <span class="resultText4_3_2" v-if="name2.length === 2 || name2.length === 3">
+                {{name2}}
+              </span>
+              <span class="resultText4_3_2" v-if="name2.length === 4">
+                {{name2}}
+              </span>
+              <span class="resultText4_3_2" v-if="name2.length === 5">
+                {{name2}}
+              </span>
+              <span class="resultText4_3_2-6" v-if="name2.length === 6">
+                {{name2}}
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <br>
+      <hr>
+      <div>
+        <div v-if="selectedLocation == '화장장'">
+          화장장: {{ cremationArea }}<br>
+          화장시간: {{ cremationTime }}<br>
+        </div>
+        <div v-else-if="selectedLocation == '장례식장'">
+          장례식장 명: {{ cremationArea }}<br>
+          호수: {{ funeralNumber }}<br>
+          함 도착시간: {{ funeralTime }}<br>
+        </div>
+        <div v-else-if="selectedLocation == '장지'">
+          장지명: {{ burialName }}<br>
+          함 도착시간: {{ burialTime }}<br>
+        </div>
+        <hr>
+        상주명: {{ clientName }}<br>
+        상주번호: {{ clientPhone }}<br>
+        <hr>
+        고인명: {{name1}}<br>
+        생년월일: {{date1}} {{date1Type}}<br>
+        사망월일: {{date2}} {{date2Type}}<br>
+        <div v-if="engraveType != '일반' && engraveType != 'SGI' && engraveType != '묘법'">
+          종교구분: {{religion }}
+        </div>
+        <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
+          {{selectedType}}명: {{name2}}<br>
+        </div>
+        <hr>
+        유골함 각인 종류: {{engraveType}} [{{selectedType}}]<br>
+        유골함 종류: {{ selectedUrnType }}<br>
+        <hr>
+        
+        <div v-if="selectedType2 === '없음'">
+          위패 종류: 없음<br>
+        </div>
+        <div v-else>
+          위패 각인 종류: {{selectedType2}}<br>
+          위패 종류: {{ selectedTabletType }}<br>
+          <div v-if="name3 !== '없음' && selectedType2 != '문구'">
+            위패 내용: {{this.name3}}<br>
+          </div>
+          <div v-if="selectedType2 != '문구'">
+            <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
+              {{this.selectedType}}: {{this.name2}}<br>
+            </div>
+            고인 성함: {{this.name1}}<br>
+          </div>
+          <div v-if="selectedType2 === '문구'">
+            문구 내용: {{this.name3}}<br>
+          </div>
+        </div>
+        <hr>
+        팀장명: {{ leaderName }}<br>
+        전화번호: {{ leaderPhone }}<br>
+        소속: {{ leaderDepartment }}<br>
+        <hr>
+        특이사항: {{ note }}<br>
+        <hr>
+      </div>
+    </div>
+    <div class="appbr">
+      <br>
+    </div>
+    <div class="app">
+      <a v-if="isIOS" class="title8" :href="iosSMSEntry">아이폰 SMS 보내기</a>
+      <a v-if="isAndroid" class="title8" :href="androidSMSEntry">안드로이드 SMS 보내기</a><br>
+      <a v-if="isUnknown" class="title8">문자호환되지 않는 기종입니다.</a>
+      <!-- <a v-if="isUnknown" class="title8" :href="iosSMSEntry">맥북 테스트</a> -->
+    </div>
+    <div class="appbr">
+      <br>
+    </div>
   </div>
 </template>
 
@@ -393,6 +426,15 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'getLeaderName',
+      'getLeaderPhone',
+      'getLeaderDepartment',
+
+      'getClientName',
+      'getClientPhone',
+
+      'getSelectedLocation',
+
       'getEngraveType',
       'getSelectedType',
       'getShowRouterView',
@@ -410,7 +452,78 @@ export default {
       'getSelectedTabletType',
 
       'getSelectedType2',
+      'getNote',
     ]),
+    leaderName: {
+      get() {
+        return this.$store.getters.getLeaderName;
+      },
+    },
+    leaderPhone: {
+      get() {
+        return this.$store.getters.getLeaderPhone;
+      },
+    },
+    leaderDepartment: {
+      get() {
+        return this.$store.getters.getLeaderDepartment;
+      },
+    },
+    clientName: {
+      get() {
+        return this.$store.getters.getClientName;
+      },
+    },
+    clientPhone: {
+      get() {
+        return this.$store.getters.getClientPhone;
+      },
+    },
+    selectedLocation: {
+      get() {
+        return this.$store.getters.getSelectedLocation;
+      },
+    },
+    cremationArea: {
+      get() {
+        return this.$store.getters.getCremationArea;
+      },
+    },
+    cremationTime: {
+      get() {
+        return this.$store.getters.getCremationTime;
+      },
+    },
+    selectedUrnType: {
+      get() {
+        return this.$store.getters.getSelectedUrnType;
+      },
+    },
+    funeralName: {
+      get() {
+        return this.$store.getters.getFuneralName;
+      },
+    },
+    funeralNumber: {
+      get() {
+        return this.$store.getters.getFuneralNumber;
+      },
+    },
+    funeralTime: {
+      get() {
+        return this.$store.getters.getFuneralTime;
+      },
+    },
+    burialName: {
+      get() {
+        return this.$store.getters.getBurialName;
+      },
+    },
+    burialTime: {
+      get() {
+        return this.$store.getters.getBurialTime;
+      },
+    },
     engraveType: {
       get() {
         return this.$store.getters.getEngraveType;
@@ -484,6 +597,11 @@ export default {
         return this.$store.getters.getSelectedType2;
       },
     },
+    note: {
+      get() {
+        return this.$store.getters.getNote;
+      },
+    },
 
     // 외자 이름
     encodedName1() {
@@ -540,7 +658,7 @@ export default {
       return this.checkMobile() === 'ios';
     },
     iosSMSEntry() {
-      const phoneNumber = '01045097485';
+      const phoneNumber = this.leaderPhone;
 
       const message = encodeURIComponent(this.getMsg());
       return `sms:${phoneNumber}&body=${message}`;
@@ -549,7 +667,7 @@ export default {
       return this.checkMobile() === 'android';
     },
     androidSMSEntry() {
-      const phoneNumber = '01045097485';
+      const phoneNumber = this.leaderPhone;
       const message = encodeURIComponent(this.getMsg());
       return `sms:${phoneNumber}?body=${message}`;
     },
@@ -588,13 +706,28 @@ export default {
       imageContainer.style.transform = 'scale(1)'; // 원래 크기로 설정
     },
     getMsg() {
-      var msg = '[명지사]\n'
-        + '화장 날짜: ' + '.' + ' / 화장시간: ' + '.' + ' / 화장장: ' + '.';
+      var msg = '[명지사]';
+
+      if(this.selectedLocation == '화장장')
+        msg += '\n화장장: ' + this.cremationArea
+            + '\n화장시간: ' + this.cremationTime; 
+      else if(this.selectedLocation == '장례식장')
+        msg += '\n장례식장 명: ' + this.cremationArea
+            + '\n호수: ' + this.funeralNumber
+            + '\n함 도착시간: ' + this.funeralTime; 
+      else if(this.selectedLocation == '장지')
+        msg += '\n장지명: ' + this.burialName
+              + '\n함 도착시간: ' + this.burialTime; 
+
+      msg += '\n\상주명: ' + this.clientName
+      + '\n상주번호: ' + this.clientPhone; 
 
       msg += '\n\n고인명: ' + this.name1
         + '\n생년월일: ' + this.date1 + ' ' + this.date1Type 
-        + '\n사망월일: ' + this.date2 + ' ' + this.date2Type
-        + '\n종교구분: ' + this.religion;
+        + '\n사망월일: ' + this.date2 + ' ' + this.date2Type;
+
+      if(this.engraveType != '일반' && this.engraveType != 'SGI' && this.engraveType != '묘법')
+        msg += '\n종교구분: ' + this.religion;
         
       if(this.selectedType === '직분' || this.selectedType === '법명' || this.selectedType === '세례명')
         msg += '\n' + this.selectedType + '명: ' + this.name2;
@@ -619,10 +752,10 @@ export default {
         }
       }
 
-      msg += '\n\n팀장명: ' + '.'
-        + '\n전화번호: ' + '.' 
-        + '\n소속: ' + '.'
-        + '\n\n특이사항: ' + '.';
+      msg += '\n\n팀장명: ' + this.leaderName
+        + '\n전화번호: ' + this.leaderPhone
+        + '\n소속: ' + this.leaderDepartment
+        + '\n\n특이사항: ' + this.note;
 
       console.log(msg);
 

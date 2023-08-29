@@ -2,8 +2,8 @@
   <div class="">
     <div class="app">
       <div class="title">
-        <span class="title-gray">1-</span>2<span class="title-gray">-3</span><br>
-        위패 주문하기
+        <span class="title-gray">1-2-</span>3<span class="title-gray">-4</span><br>
+        위패 주문
       </div>
     </div>
     <hr>
@@ -186,6 +186,14 @@
       <br>
     </div>
     <div class="app">
+      <div>
+        특이사항 (40자 이내)<br>
+        <input v-model="note" type="text" placeholder="특이사항을 적어주세요." style="height: 30px; width: 100%;"/>
+        <div v-if="showNoteWarning" class="warning_text">
+          - 특이사항을 40글자 이하로 입력해주세요.
+        </div>
+      </div>
+      <br>
       <!-- 본관에 따른 데이터 전송값 변경 -->
       <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)' || selectedType2 === '문구'">
         <router-link :to="{name: 'result'}" @click.native="updateRouteData()" class="title4">👉 예시 보기 (각인/위패)</router-link>
@@ -220,6 +228,7 @@ export default {
       'getDate2Type',
       'getSelectedType2',
       'getSelectedTabletType',
+      'getNote',
     ]),
     engraveType: {
       get() {
@@ -296,6 +305,14 @@ export default {
         this.$store.commit('updateSelectedTabletType', value);
       }
     },
+    note: {
+      get() {
+        return this.$store.getters.getNote;
+      },
+      set(value) {
+        this.$store.commit('updateNote', value);
+      }
+    },
     encodedName3() {
       const trimmedName3 = this.name3.trim();
 
@@ -364,6 +381,12 @@ export default {
 
       // return !koreanRegex.test(this.name3);
       return !(koreanRegex.test(this.name3) && !koreanConsonantVowelRegex.test(this.name3));
+    },
+    showNoteWarning() {
+      if(this.note.length === 0)
+        return false;
+      const noteLength = this.note.trim().length;
+      return (noteLength < 1 || noteLength > 40) && noteLength !== 0;
     },
   },
   methods: {
