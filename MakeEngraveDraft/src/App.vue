@@ -34,6 +34,24 @@ export default {
       clickCount: 0
     };
   },
+  mounted() {
+    // 마우스 우클릭 막기
+    document.addEventListener("contextmenu", function(e) {
+      e.preventDefault();
+    });
+
+    // 텍스트 선택 막기 (위의 CSS 스타일과 중복됩니다)
+    document.addEventListener("selectstart", function(e) {
+      e.preventDefault();
+    });
+
+    // 캡처 막기 (일부 브라우저에서만 동작합니다)
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "PrintScreen" || e.key === "F12") {
+        e.preventDefault();
+      }
+    });
+  },
   methods: {
     ...mapMutations(['resetState']),
     updateRouteData() {

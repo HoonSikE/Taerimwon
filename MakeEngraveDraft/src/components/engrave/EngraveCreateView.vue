@@ -14,17 +14,17 @@
       <div class="text-align-center">
         <span class="info-text-align-center">
           <div class="title3">
-            팀장 정보 입력 (필수)
+            발주자 정보 입력 (필수)
           </div>
           <!-- 팀장명 입력 -->
           <div>
-            팀장명<br>
+            발주자명<br>
             <input v-model="leaderName" type="text" placeholder="홍길동" style="height: 30px; width: 100%;"/>
             <div v-if="showLeaderNameKoreanWarning" class="warning_text">
-              - 팀장명을 한국어로 올바르게 입력해주세요.
+              - 발주자명을 한국어로 올바르게 입력해주세요.
             </div>
             <div v-else-if="showLeaderNameWarning" class="warning_text">
-              - 팀장명을 2~4글자로 입력해주세요.
+              - 발주자명을 2~4글자로 입력해주세요.
             </div>
           </div>
           <!-- 전화번호 입력 -->
@@ -52,7 +52,7 @@
       <div class="text-align-center">
         <span class="info-text-align-center">
           <div class="title3">
-            상주 정보 입력(필수)
+            상주 정보 입력(선택)
           </div>
           <!-- 상주 정보 입력 -->
           <div>

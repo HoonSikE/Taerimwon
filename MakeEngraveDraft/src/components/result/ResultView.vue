@@ -77,7 +77,10 @@
           <!-- 일반, 기독교, 불교, 천주교-->
           <span class="resultText2" v-if="selectedType === '일반' || selectedType === '기독교' || selectedType === '불교'
                                     || selectedType === '천주교'">
-            <div :class="getResult2Mark"></div>
+            <div v-if="engraveType ==='일반'" class="getResult2Mark_0">
+              故
+            </div>
+            <div v-else :class="getResult2Mark"></div>
             <span class="resultText2_0" v-if="name1.length === 2 || name1.length === 3">
               {{encodedName1}}
             </span>
@@ -87,7 +90,10 @@
           </span>
           <!-- 형제(아래)) -->
           <span class="resultText2" v-if="selectedType === '형제'">
-            <div :class="getResult2Mark"></div>
+            <div v-if="engraveType ==='일반'" class="getResult2Mark_0">
+              故
+            </div>
+            <div v-else :class="getResult2Mark"></div>
             <span class="resultText2_1" v-if="name1.length === 2 || name1.length === 3">
               {{encodedName1}}
             </span>
@@ -190,7 +196,10 @@
         <div class="text-container2">
           <!-- 본관 선택 x-->
           <div v-if="name3 === '없음'" class="resultText3">
-            <div :class="getResult3Mark"></div>
+            <div v-if="engraveType ==='일반'" class="getResult3Mark_0">
+              故
+            </div>
+            <div v-else :class="getResult3Mark"></div>
             <!-- 일반 -->
             <span class="" v-if="engraveType === '일반' || engraveType === '불교'">
               <span class="resultText3_1" v-if="name1.length === 2 || name1.length === 3">
@@ -386,7 +395,7 @@
           </div>
         </div>
         <hr>
-        팀장명: {{ leaderName }}<br>
+        발주자명: {{ leaderName }}<br>
         전화번호: {{ leaderPhone }}<br>
         소속: {{ leaderDepartment }}<br>
         <hr>
@@ -398,10 +407,10 @@
       <br>
     </div>
     <div class="app">
-      <a v-if="isIOS" class="title8" :href="iosSMSEntry">아이폰 SMS 보내기</a>
-      <a v-if="isAndroid" class="title8" :href="androidSMSEntry">안드로이드 SMS 보내기</a><br>
-      <a v-if="isUnknown" class="title8">문자호환되지 않는 기종입니다.</a>
-      <!-- <a v-if="isUnknown" class="title8" :href="iosSMSEntry">맥북 테스트</a> -->
+        <button v-if="isIOS" class="order_button" :onclick="iosSMSEntry">태림원(인천지점) 발주</button>
+        <button v-if="isAndroid" class="order_button" :onclick="androidSMSEntry">태림원(인천지점) 발주</button><br>
+        <button v-if="isUnknown" class="order_button">문자 호환되지 않는 기종입니다.</button>
+        <!-- <button v-if="isUnknown" class="order_button" :onclick="iosSMSEntry">태림원(인천지점) 발주</button> -->
     </div>
     <div class="appbr">
       <br>
@@ -752,7 +761,7 @@ export default {
         }
       }
 
-      msg += '\n\n팀장명: ' + this.leaderName
+      msg += '\n\n발주자명: ' + this.leaderName
         + '\n전화번호: ' + this.leaderPhone
         + '\n소속: ' + this.leaderDepartment
         + '\n\n특이사항: ' + this.note;
@@ -870,7 +879,7 @@ export default {
   height: 270px;
 
   /* 중심 포지션 270 240 */
-  transform: translate(190px, 270px);
+  transform: translate(197px, 260px);
 
   writing-mode: vertical-lr; /* 세로로 쓰기 설정 */
   text-orientation: upright; /* 텍스트 방향 유지 */
@@ -1026,6 +1035,21 @@ export default {
 
 /*==마크==*/
 /* 일반 */
+.getResult2Mark_0 {
+  width: auto;
+  height: 60px;
+
+  font-family: "HYHaeso";
+  font-size: 55px;
+  font-weight: 900;
+  color: black;
+
+  margin-left: 5px;
+  margin-top: 15px;
+
+  /* background-color: antiquewhite; */
+}
+/* 일반 */
 .resultText2_mark1 {
   width: 60px;
   height: 60px;
@@ -1044,7 +1068,8 @@ export default {
 
   margin-top: 15px;
   margin-left: 4px;
-  background-image: url('../../assets/images/marks/Christian.png');
+  /* background-image: url('../../assets/images/marks/Christian.png'); */
+  background-image: url('../../assets/images/marks/기독교.gif');
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -1065,7 +1090,8 @@ export default {
 
   margin-top: 15px;
   margin-left: 4px;
-  background-image: url('../../assets/images/marks/Catholic.png');
+  /* background-image: url('../../assets/images/marks/Catholic.png'); */
+  background-image: url('../../assets/images/marks/천주교.gif');
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -1375,6 +1401,21 @@ export default {
 }
 
 /*==마크==*/
+/* 일반 */
+.getResult3Mark_0 {
+  width: auto;
+  height: 60px;
+
+  font-family: "HYHaeso";
+  font-size: 60px;
+  font-weight: 900;
+  color: black;
+
+  margin-left: 5px;
+  margin-top: px;
+
+  /* background-color: antiquewhite; */
+}
 /* 일반 */
 .resultText3_mark1 {
   width: 70px;
