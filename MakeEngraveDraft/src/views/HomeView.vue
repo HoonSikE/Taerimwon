@@ -35,6 +35,7 @@ export default {
     return {
       phoneNumber: '',
       verificationCode: '',
+      recaptchaVerifier: null,
       confirmationResult: null,
       authenticated: false,
       user: null,
@@ -62,7 +63,7 @@ export default {
       const auth = getAuth();
       auth.languageCode = 'ko';
 
-      window.recaptchaVerifier = new RecaptchaVerifier(auth, 'sign-in-button', {
+      this.recaptchaVerifier = new RecaptchaVerifier(auth, 'sign-in-button', {
         'size': 'invisible',
         'callback': (response) => {
           onSignInSubmit();
@@ -72,7 +73,7 @@ export default {
       });
 
       // window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {});
-      const appVerifier = window.recaptchaVerifier;
+      const appVerifier = this.recaptchaVerifier;
 
       // 블랙리스트 관리
       const firestore = getFirestore();
