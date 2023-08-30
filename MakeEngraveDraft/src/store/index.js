@@ -2,9 +2,9 @@ import { createStore } from 'vuex'
 
 // 초기 상태 정의
 // const initial = '';
-const initialLeaderName = '';
-const initialLeaderPhone = '010-';
-const initialLeaderDepartment = '';
+// const initialLeaderName = '';
+// const initialLeaderPhone = '010-';
+// const initialLeaderDepartment = '';
 const initialClientName = '';
 const initialClientPhone = '010-';
 const initialSelectedLocation = '화장장';
@@ -35,9 +35,9 @@ export const store = createStore({
   // 저장소
   state: {
     // 팀장 정보
-    leaderName: initialLeaderName,
-    leaderPhone: initialLeaderPhone,
-    leaderDepartment: initialLeaderDepartment,
+    // leaderName: initialLeaderName,
+    // leaderPhone: initialLeaderPhone,
+    // leaderDepartment: initialLeaderDepartment,
     // 상주 정보
     clientName: initialClientName,
     clientPhone: initialClientPhone,
@@ -97,15 +97,15 @@ export const store = createStore({
     // update(state, new) {
     //   state. = new;
     // },
-    updateLeaderName(state, newLeaderName) {
-      state.leaderName = newLeaderName;
-    },
-    updateLeaderPhone(state, newLeaderPhone) {
-      state.leaderPhone = newLeaderPhone;
-    },
-    updateLeaderDepartment(state, newLeaderDepartment) {
-      state.leaderDepartment = newLeaderDepartment;
-    },
+    // updateLeaderName(state, newLeaderName) {
+    //   state.leaderName = newLeaderName;
+    // },
+    // updateLeaderPhone(state, newLeaderPhone) {
+    //   state.leaderPhone = newLeaderPhone;
+    // },
+    // updateLeaderDepartment(state, newLeaderDepartment) {
+    //   state.leaderDepartment = newLeaderDepartment;
+    // },
     updateClientName(state, newClientName) {
       state.clientName = newClientName;
     },
@@ -213,9 +213,9 @@ export const store = createStore({
     },
     // 홈으로 돌아가기 동작에 대한 mutation
     resetState(state) {
-      state.leaderName = initialLeaderName,
-      state.leaderPhone = initialLeaderPhone,
-      state.leaderDepartment = initialLeaderDepartment,
+      // state.leaderName = initialLeaderName,
+      // state.leaderPhone = initialLeaderPhone,
+      // state.leaderDepartment = initialLeaderDepartment,
       state.clientName = initialClientName,
       state.clientPhone = initialClientPhone,
       state.selectedLocation = initialSelectedLocation,
@@ -334,15 +334,15 @@ export const store = createStore({
     // get(state) {
     //   return state.;
     // },
-    getLeaderName(state) {
-      return state.leaderName;
-    },
-    getLeaderPhone(state) {
-      return state.leaderPhone;
-    },
-    getLeaderDepartment(state) {
-      return state.leaderDepartment;
-    },
+    // getLeaderName(state) {
+    //   return state.leaderName;
+    // },
+    // getLeaderPhone(state) {
+    //   return state.leaderPhone;
+    // },
+    // getLeaderDepartment(state) {
+    //   return state.leaderDepartment;
+    // },
     getClientName(state) {
       return state.clientName;
     },

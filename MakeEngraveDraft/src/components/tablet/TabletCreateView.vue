@@ -2,7 +2,7 @@
   <div class="">
     <div class="app">
       <div class="title">
-        <span class="title-gray">1-2-</span>3<span class="title-gray">-4</span><br>
+        <span class="title-gray">1-2-</span>3<br>
         위패 주문
       </div>
     </div>

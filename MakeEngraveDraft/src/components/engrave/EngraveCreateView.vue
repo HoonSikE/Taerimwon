@@ -3,18 +3,22 @@
     <hr>
     <div class="app">
       <div class="title">
-        1<span class="title-gray">-2-3-4</span><br>
+        1<span class="title-gray">-2-3</span><br>
         기본 정보 입력
       </div>
     </div>
     <div class="appbr">
       <br>
     </div>
+    <!-- 발주자 정보 -->
     <div class="app">
       <div class="text-align-center">
         <span class="info-text-align-center">
-          <div class="title3">
+          <div class="flex-container">
             발주자 정보 입력 (필수)
+            <div class="checkbox-container">
+              <input type="checkbox" v-model="saveInfo" @change="handleSaveInfoChange">&nbsp정보 저장
+            </div>
           </div>
           <!-- 팀장명 입력 -->
           <div>
@@ -48,6 +52,7 @@
     <div class="appbr">
       <br>
     </div>
+    <!-- 상주 정보 -->
     <div class="app">
       <div class="text-align-center">
         <span class="info-text-align-center">
@@ -162,7 +167,7 @@
     </div>
     <div class="app">
       <div class="title">
-        <span class="title-gray">1-</span>2<span class="title-gray">-3-4</span><br>
+        <span class="title-gray">1-</span>2<span class="title-gray">-3</span><br>
         유골함 주문
       </div>
     </div>
@@ -232,13 +237,17 @@ import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
+      leaderName: '',
+      leaderPhone: '010-',
+      leaderDepartment: '',
+      saveInfo: false, // 정보 저장 체크 박스 상태
     };
   },
   computed: {
     ...mapGetters([
-      'getLeaderName',
-      'getLeaderPhone',
-      'getLeaderDepartment',
+      // 'getLeaderName',
+      // 'getLeaderPhone',
+      // 'getLeaderDepartment',
       'getClientName',
       'getClientPhone',
 
@@ -257,30 +266,30 @@ export default {
       'getName2',
       'getShowRouterView'
     ]),
-    leaderName: {
-      get() {
-        return this.$store.getters.getLeaderName;
-      },
-      set(value) {
-        this.$store.commit('updateLeaderName', value);
-      }
-    },
-    leaderPhone: {
-      get() {
-        return this.$store.getters.getLeaderPhone;
-      },
-      set(value) {
-        this.$store.commit('updateLeaderPhone', value);
-      }
-    },
-    leaderDepartment: {
-      get() {
-        return this.$store.getters.getLeaderDepartment;
-      },
-      set(value) {
-        this.$store.commit('updateLeaderDepartment', value);
-      }
-    },
+    // leaderName: {
+    //   get() {
+    //     return this.$store.getters.getLeaderName;
+    //   },
+    //   set(value) {
+    //     this.$store.commit('updateLeaderName', value);
+    //   }
+    // },
+    // leaderPhone: {
+    //   get() {
+    //     return this.$store.getters.getLeaderPhone;
+    //   },
+    //   set(value) {
+    //     this.$store.commit('updateLeaderPhone', value);
+    //   }
+    // },
+    // leaderDepartment: {
+    //   get() {
+    //     return this.$store.getters.getLeaderDepartment;
+    //   },
+    //   set(value) {
+    //     this.$store.commit('updateLeaderDepartment', value);
+    //   }
+    // },
     clientName: {
       get() {
         return this.$store.getters.getClientName;
@@ -452,6 +461,17 @@ export default {
     showDateTimeWarning3() {
       return this.showDateTimeWarning(this.burialTime);
     },
+  },
+  mounted() {
+    // 로컬 스토리지에서 정보 가져오기
+    const savedInfo = localStorage.getItem('savedInfo');
+    if (savedInfo) {
+      const info = JSON.parse(savedInfo);
+      this.leaderName = info.leaderName;
+      this.leaderPhone = info.leaderPhone;
+      this.leaderDepartment = info.leaderDepartment;
+      this.saveInfo = true;
+    }
   },
   methods: {
     updateRouteData(engraveType, selectedType){
@@ -633,6 +653,32 @@ export default {
 
       return "";
     },
-  }
+    // 내 정보 저장
+    handleSaveInfoChange() {
+      if (this.saveInfo) {
+        // 정보 저장
+        const info = {
+          leaderName: this.leaderName,
+          leaderPhone: this.leaderPhone,
+          leaderDepartment: this.leaderDepartment,
+        };
+        localStorage.setItem('savedInfo', JSON.stringify(info));
+      } else {
+        // 정보 삭제
+        localStorage.removeItem('savedInfo');
+      }
+    },
+  },
+  watch: {
+    leaderName(newValue) {
+      this.handleSaveInfoChange();
+    },
+    leaderPhone(newValue) {
+      this.handleSaveInfoChange();
+    },
+    leaderDepartment(newValue) {
+      this.handleSaveInfoChange();
+    },
+  },
 };
 </script>

@@ -9,16 +9,10 @@
       </router-link>
 
       <div class="title">
-        <span class="title-gray">1-2-3-</span>4<br>
-        결과
-      </div>
-    </div>
-    <div class="appbr">
-      <br>
-    </div>
-    <div class="app">
-      <div class="title2">
-        <span>● 각인</span>
+        <!-- <span class="title-gray">1-2-3-</span>4<br>
+        결과 -->
+        <!-- <div class="title2"> -->
+        <span>각인</span>
         <span class="title6">({{engraveType}} 
           <span v-if="engraveType !== selectedType"> [{{selectedType}}] </span>
           )
@@ -31,7 +25,13 @@
           </span>
         </span>
           예시
+      <!-- </div> -->
       </div>
+    </div>
+    <div class="appbr">
+      <br>
+    </div>
+    <div class="app">
       <div class="container" :class="{ 'fullscreen': isFullscreen }" @click="toggleFullscreen">
         <!-- 각인 -->
         <div class="engrave_container">
@@ -425,6 +425,10 @@ import html2canvas from 'html2canvas';
 export default {
   data() {
     return {
+      leaderName: '',
+      leaderPhone: '',
+      leaderDepartment: '',
+
       isFullscreen: false,
 
       engraveCapturedImage: null,
@@ -435,9 +439,9 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getLeaderName',
-      'getLeaderPhone',
-      'getLeaderDepartment',
+      // 'getLeaderName',
+      // 'getLeaderPhone',
+      // 'getLeaderDepartment',
 
       'getClientName',
       'getClientPhone',
@@ -463,21 +467,21 @@ export default {
       'getSelectedType2',
       'getNote',
     ]),
-    leaderName: {
-      get() {
-        return this.$store.getters.getLeaderName;
-      },
-    },
-    leaderPhone: {
-      get() {
-        return this.$store.getters.getLeaderPhone;
-      },
-    },
-    leaderDepartment: {
-      get() {
-        return this.$store.getters.getLeaderDepartment;
-      },
-    },
+    // leaderName: {
+    //   get() {
+    //     return this.$store.getters.getLeaderName;
+    //   },
+    // },
+    // leaderPhone: {
+    //   get() {
+    //     return this.$store.getters.getLeaderPhone;
+    //   },
+    // },
+    // leaderDepartment: {
+    //   get() {
+    //     return this.$store.getters.getLeaderDepartment;
+    //   },
+    // },
     clientName: {
       get() {
         return this.$store.getters.getClientName;
@@ -686,6 +690,16 @@ export default {
   },
   mounted() {
     this.captureAndDisplay();
+
+    // 로컬 스토리지에서 정보 가져오기
+    const savedInfo = localStorage.getItem('savedInfo');
+    if (savedInfo) {
+      const info = JSON.parse(savedInfo);
+      this.leaderName = info.leaderName;
+      this.leaderPhone = info.leaderPhone;
+      this.leaderDepartment = info.leaderDepartment;
+      this.saveInfo = true;
+    }
   },
   methods: {
     checkMobile() {
