@@ -202,12 +202,16 @@
               <div class="title3">
                 합골 추가 내용 입력
               </div>
-              <!-- 남성 -->
-              <select v-model="boneSex" style="height: 30px; width: 100%;">
-                <option value="" selected disabled>성별 선택</option>
-                <option value="남성">남성</option>
-                <option value="여성">여성</option>
-              </select>
+              <!-- 성별 -->
+              <div>
+                성별
+                <select v-model="boneSex" style="height: 30px; width: 100%;">
+                  <option value="" selected disabled>성별 선택</option>
+                  <option value="남성">남성</option>
+                  <option value="여성">여성</option>
+                </select>
+              </div>
+              <!-- 이름 -->
               <div>
                 고인명<br>
                 <input v-model="boneName1" type="text" placeholder="홍길동" style="height: 30px; width: 100%;"/>
@@ -242,6 +246,13 @@
                   - 사망월일을 {{ getDateWarningMessage(boneDate2) }}
                 </div>
               </div>
+              <div v-if="engraveType !== '일반' && engraveType !== 'SGI' && engraveType !== '묘법'">
+                종교
+                <input v-model="boneReligion" type="text" :placeholder="defaultReligionPlaceholder" style="height: 30px; width: 100%;"/>
+                <div v-if="showBoneReligionKoreanWarning"  class="warning_text">
+                  - 종교를 한국어로 올바르게 입력해주세요.
+                </div>
+              </div>
               <div v-if="selectedType === '직분'">
                 직분
               </div>
@@ -251,22 +262,15 @@
               <div v-if="selectedType === '세례명'">
                 세례명
               </div>
-              <div v-if="engraveType !== '일반' && engraveType !== 'SGI' && engraveType !== '묘법'">
-                종교
-                <input v-model="religion" type="text" :placeholder="defaultReligionPlaceholder" style="height: 30px; width: 100%;"/>
-                <div v-if="showReligionKoreanWarning"  class="warning_text">
-                  - 종교를 한국어로 올바르게 입력해주세요.
-                </div>
-              </div>
               <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
-                <input v-model="name2" type="text" :placeholder="defaultName2Placeholder" style="height: 30px; width: 100%;"/>
-                <div v-if="showName2KoreanWarning" class="warning_text">
+                <input v-model="boneName2" type="text" :placeholder="defaultName2Placeholder" style="height: 30px; width: 100%;"/>
+                <div v-if="showBoneName2KoreanWarning" class="warning_text">
                   - {{selectedType}}을 한국어로 올바르게 입력해주세요.
                 </div>
-                <div v-else-if="showName2Warning && (selectedType === '직분' || selectedType === '법명')" class="warning_text">
+                <div v-else-if="showBoneName2Warning && (selectedType === '직분' || selectedType === '법명')" class="warning_text">
                   - {{selectedType}}을 2~4글자로 입력해주세요.
                 </div>
-                <div v-else-if="showName2Warning2 && (selectedType === '세례명')" class="warning_text">
+                <div v-else-if="showBoneName2Warning2 && (selectedType === '세례명')" class="warning_text">
                   - {{selectedType}}을 2~6글자로 입력해주세요.
                 </div>
               </div>
@@ -279,14 +283,12 @@
       <br>
     </div>
     <div v-if="showRouterView" class="app">
-      <div v-if="engraveType !== 'SGI' && engraveType !== '묘법'">
-        <router-link :to="{name: 'tabletCreateView'}" @click.native="updateRouteData()" class="title4">
-          👉 위패 주문하기
-          <span class="title4_1">
-            (Click!!)
-          </span>
-        </router-link>
-      </div>
+      <router-link :to="{name: 'tabletCreateView'}" @click.native="updateRouteData()" class="title4">
+        👉 위패 주문하기
+        <span class="title4_1">
+          (Click!!)
+        </span>
+      </router-link>
       <br>
       <div>
         특이사항 (40자 이내)<br>
@@ -548,6 +550,38 @@ export default {
 
       return !(koreanRegex.test(this.name2) && !koreanConsonantVowelRegex.test(this.name2));
     },
+    showBoneName1Warning() {
+      const boneName1Length = this.boneName1.trim().length;
+      return (boneName1Length < 2 || boneName1Length > 4) && boneName1Length !== 0;
+    },
+    showBoneName1KoreanWarning() {
+      // 한글 문자에 대한 정규식
+      const koreanRegex= /^[가-힣]*$/;
+      const koreanConsonantVowelRegex = /^[가-힣&&[^ㅏ-ㅣㅑ-ㅣㅓ-ㅣㅕ-ㅣㅗ-ㅣㅛ-ㅣㅜ-ㅣㅠ-ㅣㅡ-ㅣ]]*$/;
+
+      if(this.boneName1.length === 0)
+        return false;
+
+      return !(koreanRegex.test(this.boneName1) && !koreanConsonantVowelRegex.test(this.boneName1));
+    },
+    showBoneName2Warning() {
+      const name2Length = this.name2.trim().length;
+      return (name2Length < 2 || name2Length > 4) && name2Length !== 0;
+    },
+    showBoneName2Warning2() {
+      const name2Length = this.name2.trim().length;
+      return (name2Length < 2 || name2Length > 6) && name2Length !== 0;
+    },
+    showBoneName2KoreanWarning() {
+      // 한글 문자에 대한 정규식
+      const koreanRegex= /^[가-힣]*$/;
+      const koreanConsonantVowelRegex = /^[가-힣&&[^ㅏ-ㅣㅑ-ㅣㅓ-ㅣㅕ-ㅣㅗ-ㅣㅛ-ㅣㅜ-ㅣㅠ-ㅣㅡ-ㅣ]]*$/;
+
+      if(this.name2.length === 0)
+        return false;
+
+      return !(koreanRegex.test(this.name2) && !koreanConsonantVowelRegex.test(this.name2));
+    },
     showDate1Warning() {
       return this.showDateWarning(this.date1);
     },
@@ -570,12 +604,26 @@ export default {
 
       return !(koreanRegex.test(this.religion) && !koreanConsonantVowelRegex.test(this.religion));
     },
+    showBoneReligionKoreanWarning() {
+      // 한글 문자에 대한 정규식
+      const koreanRegex= /^[가-힣]*$/;
+      const koreanConsonantVowelRegex = /^[가-힣&&[^ㅏ-ㅣㅑ-ㅣㅓ-ㅣㅕ-ㅣㅗ-ㅣㅛ-ㅣㅜ-ㅣㅠ-ㅣㅡ-ㅣ]]*$/;
+
+      if(this.boneReligion.length === 0)
+        return false;
+
+      return !(koreanRegex.test(this.boneReligion) && !koreanConsonantVowelRegex.test(this.boneReligion));
+    },
     showNoteWarning() {
       if(this.note.length === 0)
         return false;
       const noteLength = this.note.trim().length;
       return (noteLength < 1 || noteLength > 40) && noteLength !== 0;
     },
+  },
+  mounted() {
+    // 처음 화면이 바뀌었을 때 최상단으로 스크롤
+    window.scrollTo(0, 0);
   },
   methods: {
     ...mapMutations(['toggleRouterView']),
@@ -640,7 +688,7 @@ export default {
       }
 
       // 마지막 글자가 하이폰인 경우 제거
-      if (formattedDate.endsWith('-')) {
+      if (formattedDate.endsWith('-') || isNaN(formattedDate.slice(-1))) {
         formattedDate = formattedDate.slice(0, -1);
       }
 
@@ -700,13 +748,16 @@ export default {
       return "";
     },
     updateRouteData(){
-      this.$store.commit('updateName3', '')
       this.name1 = decodeURIComponent(this.encodedName1());
       this.name2 = decodeURIComponent(this.encodedName2());
       this.date1 = decodeURIComponent(this.encodedDate1());
       this.date2 = decodeURIComponent(this.encodedDate2());
-      this.$store.commit('updateSelectedType2', this.engraveType);
+      if(this.engraveType == 'SGI' || this.engraveType == '묘법')
+        this.$store.commit('updateSelectedType2', '문구');
+      else
+        this.$store.commit('updateSelectedType2', this.engraveType);
       this.showRouterView = false;
+      this.$store.commit('updateName3', '')
     },
     updateRouteData2(){
       this.name1 = decodeURIComponent(this.encodedName1());

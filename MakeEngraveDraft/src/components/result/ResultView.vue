@@ -40,9 +40,14 @@
           </div>
         </div>
         <!-- 위패 -->
-        <div class="tablet_container" v-if="selectedType2 !== '없음'">
+        <div class="tablet_container" v-if="selectedType2 !== '없음' && selectedType2 !== '문구'">
           <div class="tablet_image_container">
             <img class="tablet_image" v-if="tabletCapturedImage" :src="tabletCapturedImage" alt="위패 예시 사진" />
+          </div>
+        </div>
+        <div class="tablet_container2" v-if="selectedType2 === '문구'">
+          <div class="tablet_image_container2">
+            <img class="tablet_image2" v-if="tabletCapturedImage2" :src="tabletCapturedImage2" alt="문구 예시 사진" />
           </div>
         </div>
       </div>
@@ -192,7 +197,7 @@
         </div>
       </div>
       <!-- 위패 -->
-      <div v-if="tabletImageContainerVisible && selectedType2 !== '없음'" class="image-text-container2" ref="tabletImageContainer">
+      <div v-if="tabletImageContainerVisible && selectedType2 !== '없음' && selectedType2 !== '문구'" class="image-text-container2" ref="tabletImageContainer">
         <div class="text-container2">
           <!-- 본관 선택 x-->
           <div v-if="name3 === '없음'" class="resultText3">
@@ -341,6 +346,34 @@
           </div>
         </div>
       </div>
+      <div v-if="tabletImageContainerVisible2 && selectedType2 === '문구'" class="image-text-container2" ref="tabletImageContainer2">
+        <div class="text-container2">
+          <div v-if="name3Type === 'one'" class="resultText5">
+            <div class="resultText5_1">
+              {{ name3_1 }}
+            </div>
+          </div>
+          <div v-if="name3Type === 'two'" class="resultText5">
+            <div class="resultText5_2_1">
+              {{ name3_2 }}
+            </div>
+            <div class="resultText5_2_2">
+              {{ name3_1 }}
+            </div>
+          </div>
+          <div v-if="name3Type === 'three'" class="resultText5">
+            <div class="resultText5_3_1">
+              {{ name3_3 }}
+            </div>
+            <div class="resultText5_3_2">
+              {{ name3_2 }}
+            </div>
+            <div class="resultText5_3_3">
+              {{ name3_1 }}
+            </div>     
+          </div> 
+        </div>
+      </div>
       <br>
       <hr>
       <div>
@@ -374,7 +407,21 @@
         유골함 각인 종류: {{engraveType}} [{{selectedType}}]<br>
         유골함 종류: {{ selectedUrnType }}<br>
         <hr>
-        
+        <div v-if="selectedUrnType.startsWith('합골')">
+          합골 추가 정보<br>
+           - 성별: {{ boneSex }}<br>
+           - 고인명: {{ boneName1 }}<br>
+
+           <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명'">
+            - {{ selectedType }}: {{ boneName2 }}<br>
+          </div>
+           - 생년월일: {{ boneDate1 }} {{ boneDate1Type }}<br>
+           - 사망월일: {{ boneDate2 }} {{ boneDate2Type }}<br>
+          <div v-if="engraveType !== '일반' && engraveType !== 'SGI' && engraveType !== '묘법'">
+            - 종교: {{ boneReligion }}<br>
+          </div>
+          <hr>
+        </div>
         <div v-if="selectedType2 === '없음'">
           위패 종류: 없음<br>
         </div>
@@ -391,7 +438,16 @@
             고인 성함: {{this.name1}}<br>
           </div>
           <div v-if="selectedType2 === '문구'">
-            문구 내용: {{this.name3}}<br>
+            문구 내용<br>
+            <div v-if="name3Type === 'one' || name3Type === 'two' || name3Type === 'three'">
+              - 문구1: {{ name3_1 }}
+            </div>
+            <div v-if="name3Type === 'two' || name3Type === 'three'">
+              - 문구2: {{ name3_2 }}
+            </div>
+            <div v-if="name3Type === 'three'">
+              - 문구3: {{ name3_3 }}
+            </div>
           </div>
         </div>
         <hr>
@@ -433,8 +489,10 @@ export default {
 
       engraveCapturedImage: null,
       tabletCapturedImage: null,
+      tabletCapturedImage2: null,
       engraveImageContainerVisible: true,
       tabletImageContainerVisible: true,
+      tabletImageContainerVisible2: true,
     };
   },
   computed: {
@@ -456,12 +514,26 @@ export default {
       'getName2',
       'getName3',
 
+      'getName3Type',
+      'getName3_1',
+      'getName3_2',
+      'getName3_3',
+
       'getDate1',
       'getDate1Type',
       'getDate2',
       'getDate2Type',
       'getReligion',
       'getSelectedUrnType',
+      'getBoneSex',
+      'getBoneName1',
+      'getBoneName2',
+      'getBoneDate1',
+      'getBoneDate1Type',
+      'getBoneDate2',
+      'getBoneDate2Type',
+      'getBoneReligion',
+
       'getSelectedTabletType',
 
       'getSelectedType2',
@@ -552,14 +624,6 @@ export default {
         return this.$store.getters.getShowRouterView;
       },
     },
-    name3: {
-      get() {
-        return this.$store.getters.getName3;
-      },
-      set(value) {
-        this.$store.commit('updateName3', value);
-      }
-    },
     name1: {
       get() {
         return this.$store.getters.getName1;
@@ -568,6 +632,34 @@ export default {
     name2: {
       get() {
         return this.$store.getters.getName2;
+      },
+    },
+    name3: {
+      get() {
+        return this.$store.getters.getName3;
+      },
+      set(value) {
+        this.$store.commit('updateName3', value);
+      }
+    },
+    name3Type: {
+      get() {
+        return this.$store.getters.getName3Type;
+      },
+    },
+    name3_1: {
+      get() {
+        return this.$store.getters.getName3_1;
+      },
+    },
+    name3_2: {
+      get() {
+        return this.$store.getters.getName3_2;
+      },
+    },
+    name3_3: {
+      get() {
+        return this.$store.getters.getName3_3;
       },
     },
     date1: {
@@ -598,6 +690,46 @@ export default {
     selectedUrnType: {
       get() {
         return this.$store.getters.getSelectedUrnType;
+      },
+    },
+    boneSex: {
+      get() {
+        return this.$store.getters.getBoneSex;
+      },
+    },
+    boneName1: {
+      get() {
+        return this.$store.getters.getBoneName1;
+      },
+    },
+    boneName2: {
+      get() {
+        return this.$store.getters.getBoneName2;
+      },
+    },
+    boneDate1: {
+      get() {
+        return this.$store.getters.getBoneDate1;
+      },
+    },
+    boneDate1Type: {
+      get() {
+        return this.$store.getters.getBoneDate1Type;
+      },
+    },
+    boneDate2: {
+      get() {
+        return this.$store.getters.getBoneDate2;
+      },
+    },
+    boneDate2Type: {
+      get() {
+        return this.$store.getters.getBoneDate2Type;
+      },
+    },
+    boneReligion: {
+      get() {
+        return this.$store.getters.getBoneReligion;
       },
     },
     selectedTabletType: {
@@ -691,6 +823,9 @@ export default {
   mounted() {
     this.captureAndDisplay();
 
+    // 처음 화면이 바뀌었을 때 최상단으로 스크롤
+    window.scrollTo(0, 0);
+
     // 로컬 스토리지에서 정보 가져오기
     const savedInfo = localStorage.getItem('savedInfo');
     if (savedInfo) {
@@ -758,6 +893,21 @@ export default {
       msg += '\n\n유골함 각인 종류: ' + this.engraveType + ' [' + this.selectedType + ']'
         + '\n유골함 종류: ' + this.selectedUrnType;
 
+      if(this.selectedUrnType.startsWith('합골')) {
+        msg += '\n\n합골 추가 정보'
+          + '\n - 성별' + this.boneSex
+          + '\n - 고인명' + this.boneName1;
+
+        if(this.selectedType === '직분' || this.selectedType === '법명' || this.selectedType === '세례명')
+          msg += '\n - ' + this.selectedType + ": "+ this.boneName2;
+        
+          msg += '\n - 생년월일' + this.boneDate1 + " " + this.boneDate1Type
+              + '\n - 사망월일' + this.boneDate2 + " " + this.boneDate2Type;
+
+          if(this.engraveType !== '일반' && this.engraveType !== 'SGI' && this.engraveType !== '묘법')
+            msg += '\n - 종교: ' + this.boneReligion;
+      }
+
       if(this.selectedType2 == '없음')
         msg += '\n위패 종류: 없음';
       else {
@@ -772,6 +922,12 @@ export default {
           msg += '\n고인 성함: ' + this.name1;
         }else {
           msg += '\n문구 내용: ' + this.name3;
+          if(this.name3Type === 'one' || this.name3Type === 'two' || this.name3Type === 'three')
+            msg += '\n- 문구1: ' + this.name3_1;
+          if(this.name3Type === 'one' || this.name3Type === 'two' || this.name3Type === 'three')
+            msg += '\n- 문구2: ' + this.name3_2;
+          if(this.name3Type === 'one' || this.name3Type === 'two' || this.name3Type === 'three')
+            msg += '\n- 문구3: ' + this.name3_3;
         }
       }
 
@@ -795,15 +951,28 @@ export default {
       this.engraveCapturedImage = engraveCapturedImageDataUrl;
       this.engraveImageContainerVisible = !this.engraveImageContainerVisible; // 이미지 컨테이너를 숨김
 
-      // 위패
-      const tabletImageContainer = this.$refs.tabletImageContainer;
+      if(this.selectedType2 !== '없음' && this.selectedType2 !== '문구'){
+        // 위패
+        const tabletImageContainer = this.$refs.tabletImageContainer;
 
-      // 이미지 컨테이너 캡처
-      const tabletCanvas = await html2canvas(tabletImageContainer);
-      const tabletCapturedImageDataUrl = tabletCanvas.toDataURL("위패 예시/png");
+        // 이미지 컨테이너 캡처
+        const tabletCanvas = await html2canvas(tabletImageContainer);
+        const tabletCapturedImageDataUrl = tabletCanvas.toDataURL("위패 예시/png");
 
-      this.tabletCapturedImage = tabletCapturedImageDataUrl;
-      this.tabletImageContainerVisible = !this.tabletImageContainerVisible; // 이미지 컨테이너를 숨김
+        this.tabletCapturedImage = tabletCapturedImageDataUrl;
+        this.tabletImageContainerVisible = !this.tabletImageContainerVisible; // 이미지 컨테이너를 숨김
+      }
+      if(this.selectedType2 === '문구'){
+        // 위패
+        const tabletImageContainer2 = this.$refs.tabletImageContainer2;
+
+        // 이미지 컨테이너 캡처
+        const tabletCanvas = await html2canvas(tabletImageContainer2);
+        const tabletCapturedImage2DataUrl = tabletCanvas.toDataURL("문구 예시/png");
+
+        this.tabletCapturedImage2 = tabletCapturedImage2DataUrl;
+        this.tabletImageContainerVisible2 = !this.tabletImageContainerVisible2; // 이미지 컨테이너를 숨김
+      }
     },
     async downloadContainer() {
       const container = document.querySelector('.container'); // 캡처할 요소 선택
@@ -873,6 +1042,20 @@ export default {
   /* background-color: rgb(239, 239, 239); */
 }
 .tablet_image {
+  max-width: 20vw;
+  max-height: 30vh;
+}
+.tablet_container2 {
+  position: relative;
+  width: 20vw;
+  /* height: 50vh; */
+  margin-bottom: -10px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-color: rgb(239, 239, 239); */
+}
+.tablet_image2 {
   max-width: 20vw;
   max-height: 30vh;
 }
@@ -1082,8 +1265,8 @@ export default {
 
   margin-top: 15px;
   margin-left: 4px;
-  /* background-image: url('../../assets/images/marks/Christian.png'); */
-  background-image: url('../../assets/images/marks/기독교.gif');
+  background-image: url('../../assets/images/marks/Christian.png');
+  /* background-image: url('../../assets/images/marks/기독교.gif'); */
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -1104,8 +1287,8 @@ export default {
 
   margin-top: 15px;
   margin-left: 4px;
-  /* background-image: url('../../assets/images/marks/Catholic.png'); */
-  background-image: url('../../assets/images/marks/천주교.gif');
+  background-image: url('../../assets/images/marks/Catholic.png');
+  /* background-image: url('../../assets/images/marks/천주교.gif'); */
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -1845,6 +2028,112 @@ export default {
   /* background-color: rgb(246, 71, 2); */
 }
 /*======위패 끝======*/
+
+/*======문구 시작======*/
+.resultText5 {
+  display: inline-block;
+  /* justify-content: center; */
+  align-items: center;
+
+  color: black;
+  font-family: "HYGungSo";
+
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(93, 184, 249, 0.56); */
+}
+/* 1줄 */
+.resultText5_1{
+  font-size: 36px;
+  margin-top: 10px;
+  letter-spacing:4px;
+
+  /* 가운데 정렬 */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(93, 184, 249, 0.56); */
+}
+/* 2줄 */
+.resultText5_2_1{
+  font-size: 36px;
+  margin-top: 10px;
+  letter-spacing:3px;
+
+  /* 가운데 정렬 */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+
+  width: 50%;
+  height: 100%;
+  /* background-color: rgba(93, 184, 249, 0.56); */
+}
+.resultText5_2_2{
+  font-size: 36px;
+  margin-top: 10px;
+  letter-spacing:3px;
+  
+  /* 가운데 정렬 */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+
+  width: 50%;
+  height: 100%;
+  /* background-color: rgba(249, 93, 171, 0.56); */
+}
+/* 3줄 */
+.resultText5_3_1{
+  font-size: 31px;
+  margin-top: 10px;
+  letter-spacing:5px;
+
+  margin-left: 5px;
+
+  /* 가운데 정렬 */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+
+  width: 33.33%;
+  height: 100%;
+  /* background-color: rgba(186, 249, 93, 0.56); */
+}
+.resultText5_3_2{
+  font-size: 31px;
+  margin-top: 10px;
+  letter-spacing:5px;
+
+  /* 가운데 정렬 */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+
+  width: 33.33%;
+  height: 100%;
+  /* background-color: rgba(93, 249, 119, 0.56); */
+}
+.resultText5_3_3{
+  font-size: 31px;
+  margin-top: 10px;
+  letter-spacing:5px;
+
+  margin-left: -5px;
+
+  /* 가운데 정렬 */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+
+  width: 33.33%;
+  height: 100%;
+  /* background-color: rgba(93, 184, 249, 0.56); */
+}
+/*======문구 끝======*/
 
 /* 예시 밑에 - type */
 .title6 {

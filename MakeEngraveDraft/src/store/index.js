@@ -19,6 +19,10 @@ const initialEngraveType = '일반';
 const initialName1 = '';
 const initialName2 = '';
 const initialName3 = '';
+const initialName3Type = '';
+const initialName3_1 = '';
+const initialName3_2 = '';
+const initialName3_3 = '';
 const initialDate1 = '';
 const initialDate1Type = '양력';
 const initialDate2 = '';
@@ -34,10 +38,6 @@ const initialNote = '';
 export const store = createStore({
   // 저장소
   state: {
-    // 팀장 정보
-    // leaderName: initialLeaderName,
-    // leaderPhone: initialLeaderPhone,
-    // leaderDepartment: initialLeaderDepartment,
     // 상주 정보
     clientName: initialClientName,
     clientPhone: initialClientPhone,
@@ -86,6 +86,11 @@ export const store = createStore({
     selectedType2: initialSelectedType2,
     // 위패 내용
     name3: initialName3,
+    // 문구
+    name3Type: initialName3Type,
+    name3_1: initialName3_1,
+    name3_2: initialName3_2,
+    name3_3: initialName3_3,
     // 선택된 위패 종류
     selectedTabletType: initialSelectedTabletType,
     // 특이사항
@@ -96,15 +101,6 @@ export const store = createStore({
   mutations: {
     // update(state, new) {
     //   state. = new;
-    // },
-    // updateLeaderName(state, newLeaderName) {
-    //   state.leaderName = newLeaderName;
-    // },
-    // updateLeaderPhone(state, newLeaderPhone) {
-    //   state.leaderPhone = newLeaderPhone;
-    // },
-    // updateLeaderDepartment(state, newLeaderDepartment) {
-    //   state.leaderDepartment = newLeaderDepartment;
     // },
     updateClientName(state, newClientName) {
       state.clientName = newClientName;
@@ -149,6 +145,18 @@ export const store = createStore({
       state.name3 = newName3;
       localStorage.setItem('vuexState', JSON.stringify(state));
     },
+    updateName3Type(state, newName3Type) {
+      state.name3Type = newName3Type;
+    },
+    updateName3_1(state, newName3_1) {
+      state.name3_1 = newName3_1;
+    },
+    updateName3_2(state, newName3_2) {
+      state.name3_2 = newName3_2;
+    },
+    updateName3_3(state, newName3_3) {
+      state.name3_3 = newName3_3;
+    },
     updateDate1(state, newDate1) {
       state.date1 = newDate1;
     },
@@ -189,7 +197,7 @@ export const store = createStore({
       state.boneDate2Type = newBoneDate2Type;
     },
     updateBoneReligion(state, newBoneReligion) {
-      state.BoneReligion = newBoneReligion;
+      state.boneReligion = newBoneReligion;
     },
     updateSelectedTabletType(state, newSelectedTabletType) {
       state.selectedTabletType = newSelectedTabletType;
@@ -238,6 +246,10 @@ export const store = createStore({
       state.name1 = initialName1;
       state.name2 = initialName2;
       state.name3 = initialName3;
+      state.name3Type = initialName3Type;
+      state.name3_1 = initialName3_1;
+      state.name3_2 = initialName3_2;
+      state.name3_3 = initialName3_3;
       state.date1 = initialDate1;
       state.date1Type = initialDate1Type;
       state.date2 = initialDate2;
@@ -331,18 +343,6 @@ export const store = createStore({
   // state를 기반으로 계산
   // this.$store.getters.이름;
   getters: {
-    // get(state) {
-    //   return state.;
-    // },
-    // getLeaderName(state) {
-    //   return state.leaderName;
-    // },
-    // getLeaderPhone(state) {
-    //   return state.leaderPhone;
-    // },
-    // getLeaderDepartment(state) {
-    //   return state.leaderDepartment;
-    // },
     getClientName(state) {
       return state.clientName;
     },
@@ -384,6 +384,18 @@ export const store = createStore({
     },
     getName3(state) {
       return state.name3;
+    },
+    getName3Type(state) {
+      return state.name3Type;
+    },
+    getName3_1(state) {
+      return state.name3_1;
+    },
+    getName3_2(state) {
+      return state.name3_2;
+    },
+    getName3_3(state) {
+      return state.name3_3;
     },
     getDate1(state) {
       return state.date1;

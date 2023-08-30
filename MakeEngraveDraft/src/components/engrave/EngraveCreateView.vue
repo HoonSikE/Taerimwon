@@ -15,7 +15,7 @@
       <div class="text-align-center">
         <span class="info-text-align-center">
           <div class="flex-container">
-            발주자 정보 입력 (필수)
+            ● 발주자 정보 입력 (필수)
             <div class="checkbox-container">
               <input type="checkbox" v-model="saveInfo" @change="handleSaveInfoChange">&nbsp정보 저장
             </div>
@@ -42,9 +42,6 @@
           <div>
             소속<br>
             <input v-model="leaderDepartment" type="text" placeholder="소속" style="height: 30px; width: 100%;"/>
-            <!-- <div v-if="showLeaderDepartmentWarning" class="warning_text"> -->
-              <!-- - 소속을 올바르게 입력해주세요. -->
-            <!-- </div> -->
           </div>
         </span>
       </div>
@@ -57,7 +54,7 @@
       <div class="text-align-center">
         <span class="info-text-align-center">
           <div class="title3">
-            상주 정보 입력(선택)
+            ● 상주 정보 입력(선택)
           </div>
           <!-- 상주 정보 입력 -->
           <div>
@@ -89,7 +86,7 @@
         <span class="info-text-align-center">
           <div>
             <div class="title3">
-              발주 장소 입력
+              ● 발주 장소 입력
             </div>
             <label>
               <input type="radio" v-model="selectedLocation" name = "selectedLocation" value="화장장"> 화장장
@@ -245,9 +242,6 @@ export default {
   },
   computed: {
     ...mapGetters([
-      // 'getLeaderName',
-      // 'getLeaderPhone',
-      // 'getLeaderDepartment',
       'getClientName',
       'getClientPhone',
 
@@ -266,30 +260,6 @@ export default {
       'getName2',
       'getShowRouterView'
     ]),
-    // leaderName: {
-    //   get() {
-    //     return this.$store.getters.getLeaderName;
-    //   },
-    //   set(value) {
-    //     this.$store.commit('updateLeaderName', value);
-    //   }
-    // },
-    // leaderPhone: {
-    //   get() {
-    //     return this.$store.getters.getLeaderPhone;
-    //   },
-    //   set(value) {
-    //     this.$store.commit('updateLeaderPhone', value);
-    //   }
-    // },
-    // leaderDepartment: {
-    //   get() {
-    //     return this.$store.getters.getLeaderDepartment;
-    //   },
-    //   set(value) {
-    //     this.$store.commit('updateLeaderDepartment', value);
-    //   }
-    // },
     clientName: {
       get() {
         return this.$store.getters.getClientName;
@@ -463,6 +433,8 @@ export default {
     },
   },
   mounted() {
+    // 처음 화면이 바뀌었을 때 최상단으로 스크롤
+    window.scrollTo(0, 0);
     // 로컬 스토리지에서 정보 가져오기
     const savedInfo = localStorage.getItem('savedInfo');
     if (savedInfo) {
@@ -503,7 +475,7 @@ export default {
       }
 
       // 마지막 글자가 하이폰인 경우 제거
-      if (formattedPhone.endsWith('-')) {
+      if (formattedPhone.endsWith('-') || isNaN(formattedPhone.slice(-1))) {
         formattedPhone = formattedPhone.slice(0, -1);
       }
 
@@ -515,7 +487,7 @@ export default {
       }
     },
     showPhoneWarning(phone) {
-      if (phone.length === 0) {
+      if (phone.length === 0 || phone.padStart('010-')) {
         return false;
       }
       const phonePattern = /^[0-9]{3}-[0-9]{3,4}-[0-9]{4}$/;
@@ -571,7 +543,7 @@ export default {
       }
 
       // 마지막 글자가 하이폰인 경우 제거
-      if (formattedDateTime.endsWith(' ') || formattedDateTime.endsWith('-') || formattedDateTime.endsWith(':')) {
+      if (formattedDateTime.endsWith(' ') || formattedDateTime.endsWith('-') || formattedDateTime.endsWith(':') || isNaN(formattedDateTime.slice(-1))) {
         formattedDateTime = formattedDateTime.slice(0, -1);
       }
 

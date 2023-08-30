@@ -31,6 +31,9 @@ export default {
   name: 'App',
   data() {
     return {
+      leaderName: '',
+      leaderPhone: '',
+      leaderDepartment: '',
       clickCount: 0
     };
   },
@@ -51,6 +54,16 @@ export default {
         e.preventDefault();
       }
     });
+
+    // 로컬 스토리지에서 정보 가져오기
+    const savedInfo = localStorage.getItem('savedInfo');
+    if (savedInfo) {
+      const info = JSON.parse(savedInfo);
+      this.leaderName = info.leaderName;
+      this.leaderPhone = info.leaderPhone;
+      this.leaderDepartment = info.leaderDepartment;
+      this.saveInfo = true;
+    };
   },
   methods: {
     ...mapMutations(['resetState']),
@@ -61,7 +74,7 @@ export default {
       this.clickCount++;
 
       if (this.clickCount === 3) {
-        if(this.$store.getters.getName1 === '양청우')
+        if(this.leaderName === '양청우')
           this.goToAdmin();
         // 리셋 클릭 횟수
         this.clickCount = 0;

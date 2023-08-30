@@ -1,5 +1,6 @@
 <template>
   <div class="">
+    <a id="scroll-anchor"></a>
     <div class="app">
       <div class="title">
         <span class="title-gray">1-2-</span>3<br>
@@ -34,12 +35,12 @@
               <div
                   class="link-item"
                   :class="{ selected: selectedType2 === '문구' }"
-                  @click="selectedType2 = '문구', name3 = ''">
+                  @click="selectedType2 = '문구', name3_1 = '', name3_2 = '', name3_3 = ''">
                 <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" alt="문구">
                 <span class="selectText">[문구 넣기]</span>
               </div>
             </div>
-            <div v-if="engraveType === '기독교'">
+            <div v-else-if="engraveType === '기독교'">
               <!-- 기독교 -->
               <div
                   class="link-item"
@@ -58,12 +59,12 @@
               <div
                   class="link-item"
                   :class="{ selected: selectedType2 === '문구' }"
-                  @click="selectedType2 = '문구', name3 = ''">
+                  @click="selectedType2 = '문구', name3_1 = '', name3_2 = '', name3_3 = ''">
                 <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" alt="문구">
                 <span class="selectText">[문구 넣기]</span>
               </div>
             </div>
-            <div v-if="engraveType === '불교'">
+            <div v-else-if="engraveType === '불교'">
               <!-- 불교 -->
               <div
                   class="link-item"
@@ -82,13 +83,13 @@
               <div
                   class="link-item"
                   :class="{ selected: selectedType2 === '문구' }"
-                  @click="selectedType2 = '문구', name3 = ''">
+                  @click="selectedType2 = '문구', name3_1 = '', name3_2 = '', name3_3 = ''">
                 <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" alt="문구">
                 <span class="selectText">[문구 넣기]</span>
               </div>
             </div>
             <!-- 천주교 -->
-            <div v-if="engraveType === '천주교'">
+            <div v-else-if="engraveType === '천주교'">
               <div
                   class="link-item"
                   :class="{ selected: selectedType2 === '천주교' }"
@@ -106,10 +107,18 @@
               <div
                   class="link-item"
                   :class="{ selected: selectedType2 === '문구' }"
-                  @click="selectedType2 = '문구', name3 = ''">
+                  @click="selectedType2 = '문구', name3_1 = '', name3_2 = '', name3_3 = ''">
                 <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" alt="문구">
                 <span class="selectText">[문구 넣기]</span>
               </div>
+            </div>
+            <!-- 나머지 -->
+            <div v-else
+                class="link-item"
+                :class="{ selected: selectedType2 === '문구' }"
+                @click="selectedType2 = '문구', name3_1 = '', name3_2 = '', name3_3 = ''">
+              <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" alt="문구">
+              <span class="selectText">[문구 넣기]</span>
             </div>
           </span>
         </div>
@@ -163,23 +172,46 @@
             </div>
             <div v-if="selectedType2 === '문구'">
               문구<br>
-              <select v-model="boneSex" style="height: 30px; width: 100%;">
+              <select v-model="name3Type" style="height: 30px; width: 100%;">
                 <option value="" selected disabled>줄 선택</option>
                 <option value="one">1줄</option>
                 <option value="two">2줄</option>
                 <option value="three">3줄</option>
               </select>
               <div>
-                <input v-model="name3" type="text" placeholder="예) 아버지 사랑합니다." style="height: 30px; width: 100%;"/>
-                <span @click="addHeart" style="font-size: 15px; width: 15px; margin-left: -30px; cursor: pointer;">
-                  ❤️
-                </span>
+                <div v-if="name3Type === 'one' || name3Type === 'two' || name3Type === 'three'">
+                  문구1<br>
+                  <input v-model="name3_1" type="text" placeholder="예) 아버지 사랑합니다." style="height: 30px; width: 100%;"/>
+                  <span @click="addHeart1" style="font-size: 15px; width: 15px; margin-left: -30px; cursor: pointer;">
+                    ❤️
+                  </span>
+                  <div v-if="showName3_1Warning" class="warning_text">
+                    - 문구1을 10글자 이하로 입력해주세요.
+                  </div>
+                </div>
+                <div v-if="name3Type === 'two' || name3Type === 'three'">
+                  문구2<br>
+                  <input v-model="name3_2" type="text" placeholder="예) 아버지 사랑합니다." style="height: 30px; width: 100%;"/>
+                  <span @click="addHeart2" style="font-size: 15px; width: 15px; margin-left: -30px; cursor: pointer;">
+                    ❤️
+                  </span>
+                  <div v-if="showName3_2Warning" class="warning_text">
+                    - 문구2를 10글자 이하로 입력해주세요.
+                  </div>
+                </div>
+                <div v-if="name3Type === 'three'">
+                  문구3<br>
+                  <input v-model="name3_3" type="text" placeholder="예) 아버지 사랑합니다." style="height: 30px; width: 100%;"/>
+                    <span @click="addHeart3" style="font-size: 15px; width: 15px; margin-left: -30px; cursor: pointer;">
+                    ❤️
+                  </span>
+                  <div v-if="showName3_3Warning" class="warning_text">
+                    - 문구3을 10글자 이하로 입력해주세요.
+                  </div>
+                </div>
               </div>
               <div class="title7">
                 &nbsp;* 1줄 최대 10자(공백포함)까지 입력가능합니다.
-              </div>
-              <div v-if="showName3Warning2" class="warning_text">
-                - 문구를 28글자 이하로 입력해주세요.
               </div>
             </div>
           </span>
@@ -233,6 +265,12 @@ export default {
       'getName1',
       'getName2',
       'getName3',
+
+      'getName3Type',
+      'getName3_1',
+      'getName3_2',
+      'getName3_3',
+
       'getDate1',
       'getDate1Type',
       'getDate2',
@@ -275,6 +313,38 @@ export default {
       },
       set(value) {
         this.$store.commit('updateName3', value);
+      }
+    },
+    name3Type: {
+      get() {
+        return this.$store.getters.getName3Type;
+      },
+      set(value) {
+        this.$store.commit('updateName3Type', value);
+      }
+    },
+    name3_1: {
+      get() {
+        return this.$store.getters.getName3_1;
+      },
+      set(value) {
+        this.$store.commit('updateName3_1', value);
+      }
+    },
+    name3_2: {
+      get() {
+        return this.$store.getters.getName3_2;
+      },
+      set(value) {
+        this.$store.commit('updateName3_2', value);
+      }
+    },
+    name3_3: {
+      get() {
+        return this.$store.getters.getName3_3;
+      },
+      set(value) {
+        this.$store.commit('updateName3_3', value);
       }
     },
     date1: {
@@ -374,11 +444,23 @@ export default {
       const name3Length = this.name3.trim().length;
       return (name3Length < 5 || name3Length > 9) && name3Length !== 0;
     },
-    showName3Warning2() {
+    showName3_1Warning() {
       if(this.selectedType2 !== '문구')
         return false;
-      const name3Length = this.name3.trim().length;
-      return (name3Length < 1 || name3Length > 28) && name3Length !== 0;
+      const name3_1Length = this.name3_1.trim().length;
+      return (name3_1Length < 1 || name3_1Length > 10) && name3_1Length !== 0;
+    },
+    showName3_2Warning() {
+      if(this.selectedType2 !== '문구')
+        return false;
+      const name3_2Length = this.name3_2.trim().length;
+      return (name3_2Length < 1 || name3_2Length > 10) && name3_2Length !== 0;
+    },
+    showName3_3Warning() {
+      if(this.selectedType2 !== '문구')
+        return false;
+      const name3_3Length = this.name3_3.trim().length;
+      return (name3_3Length < 1 || name3_3Length > 10) && name3_3Length !== 0;
     },
     showName3KoreanWarning() {
       if(this.selectedType2 === '일반' || this.selectedType2 === '기독교' || this.selectedType2 === '불교' || this.selectedType2 === '천주교')
@@ -400,6 +482,13 @@ export default {
       return (noteLength < 1 || noteLength > 40) && noteLength !== 0;
     },
   },
+  mounted() {
+    // 처음 화면이 바뀌었을 때 anchor 부분까지 스크롤
+    const anchorElement = document.getElementById('scroll-anchor');
+    if (anchorElement) {
+      anchorElement.scrollIntoView();
+    }
+  },
   methods: {
     updateRouteData(){
       this.name3 = decodeURIComponent(this.encodedName3);
@@ -410,11 +499,21 @@ export default {
     updateSelectedTabletType(event) {
       this.selectedTabletType = event.target.value;
     },
-    addHeart() {
-      if (this.name3.length < 28) {
-        this.name3 += '❤️'; // 하트 아이콘 추가
+    addHeart1() {
+      if (this.name3_1.length < 10) {
+        this.name3_1 += '❤️'; // 하트 아이콘 추가
       }
-    }
+    },
+    addHeart2() {
+      if (this.name3_2.length < 10) {
+        this.name3_2 += '❤️'; // 하트 아이콘 추가
+      }
+    },
+    addHeart3() {
+      if (this.name3_3.length < 10) {
+        this.name3_3 += '❤️'; // 하트 아이콘 추가
+      }
+    },
   }
 };
 </script>
