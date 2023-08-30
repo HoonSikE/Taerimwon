@@ -5,6 +5,7 @@ import router from './router';
 import { store } from './store';
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -35,3 +36,4 @@ if (savedState) {
 // Firebase 초기화
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
+const firestore = getFirestore(firebaseApp);

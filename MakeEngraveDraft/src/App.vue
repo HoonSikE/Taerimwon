@@ -38,6 +38,13 @@ export default {
     };
   },
   mounted() {
+    // 페이지 로드 시 로그인 상태 확인
+    const authenticated = localStorage.getItem('authenticated');
+    if (authenticated === 'true') {
+      console.log('이미 인증된 상태입니다.');
+    }else{
+      console.log('인증이 필요한 상태입니다.');
+    }
     // 마우스 우클릭 막기
     document.addEventListener("contextmenu", function(e) {
       e.preventDefault();
