@@ -11,7 +11,7 @@
           <br>
         </div>
         <button @click="sendVerificationCode" class="order_button" id="sign-in-button">인증 코드 전송</button>
-        <!-- <div id="recaptcha-container"></div> -->
+        <div id="recaptcha-container"></div>
       </div>
       <div v-else>
         ● 인증번호 입력
@@ -63,7 +63,7 @@ export default {
       const auth = getAuth();
       auth.languageCode = 'ko';
 
-      this.recaptchaVerifier = new RecaptchaVerifier(auth, 'sign-in-button', {
+      this.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
         'size': 'invisible',
         'callback': (response) => {
           onSignInSubmit();
