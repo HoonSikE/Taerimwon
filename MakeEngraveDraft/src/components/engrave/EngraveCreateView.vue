@@ -215,6 +215,18 @@
               <img src="../../assets/images/engrave/example/묘법.png" alt="묘법">
               <span class="selectText">[묘법]</span>
             </router-link>
+            <router-link :to="{name: 'engraveDetail'}" @click.native="updateRouteData('순복음', '순복음')" class="link-item"
+                :class="{ selected: selectedType === '순복음' }"
+                @click="selectedType = '순복음'">
+              <img src="../../assets/images/engrave/example/기독교.png" alt="순복음">
+              <span class="selectText">[순복음]</span>
+            </router-link>
+            <router-link :to="{name: 'engraveDetail'}" @click.native="updateRouteData('원불교', '원불교')" class="link-item"
+                :class="{ selected: selectedType === '원불교' }"
+                @click="selectedType = '원불교'">
+              <img src="../../assets/images/engrave/example/불교.png" alt="원불교">
+              <span class="selectText">[원불교]</span>
+            </router-link>
           </div>
         </div>
       </div>
@@ -438,9 +450,9 @@ export default {
     const user = JSON.parse(localStorage.getItem('user')); // 유저 정보를 JSON으로 파싱
 
     if (authenticated === 'true' && user) {
-      console.log('이미 인증된 상태입니다.');
+      // console.log('이미 인증된 상태입니다.');
     }else{
-      console.log('인증이 필요한 상태입니다.');
+      // console.log('인증이 필요한 상태입니다.');
       // 홈 페이지로 이동
       this.$router.push({ name: 'main' }); // 'home'은 홈 라우터의 이름이라 가정
     }

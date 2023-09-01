@@ -13,7 +13,7 @@
         ● 위패 각인 종류
       </div>
       <!-- 가로 스크롤 가능한 컨테이너 -->
-      <div class="text-align-center">
+      <div v-if="!selectedTabletType.endsWith('(사진)')" class="text-align-center">
         <div class="scroll-container">
           <span class="link-item-color">
             <!-- 일반 -->
@@ -124,7 +124,7 @@
         </div>
       </div>
       <hr>
-      <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)' || selectedType === '기독교' || selectedType === '천주교' || selectedType2 === '문구'">
+      <div v-if="!selectedTabletType.endsWith('(사진)') && (selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)' || selectedType === '기독교' || selectedType === '천주교' || selectedType2 === '문구')">
         <!-- 정보입력 -->
         <div class="text-align-center">
           <span class="info-text-align-center">
@@ -223,6 +223,15 @@
           <option value="" disabled>위패 선택</option>
           <option v-for="tablet in tabletTypes" :value="tablet" :key="tablet">{{ tablet }}</option>
         </select>
+        <br><br>
+        <div v-if="selectedTabletType.endsWith('(사진)')" style="text-align: center;">
+          <!-- 이미지 미리보기를 위한 엘리먼트 추가 -->
+          <img v-if="imageUrl" :src="imageUrl" alt="Uploaded Image" style="width: 50%;"/>
+          <!-- 파일 업로드를 위한 input 엘리먼트 추가 -->
+          <div>
+            <input type="file" ref="fileInput" @change="handleFileUpload" accept="image/*"/>
+          </div>
+        </div>
       </div>
     </div>
     <div class="appbr">
@@ -278,6 +287,9 @@ export default {
       'getSelectedType2',
       'getSelectedTabletType',
       'getNote',
+      
+      'getSelectedFile',
+      'getImageUrl',
     ]),
     engraveType: {
       get() {
@@ -376,7 +388,7 @@ export default {
       }
     },
     tabletTypes() {
-      return ['흰색', '검정', '투명'];
+      return ['흰색', '검정', '투명', '백색위패(사진)', '추모패(사진)'];
     },
     selectedTabletType: {
       get() {
@@ -392,6 +404,22 @@ export default {
       },
       set(value) {
         this.$store.commit('updateNote', value);
+      }
+    },
+    selectedFile: {
+      get() {
+        return this.$store.getters.getSelectedFile;
+      },
+      set(value) {
+        this.$store.commit('updateSelectedFile', value);
+      }
+    },
+    imageUrl: {
+      get() {
+        return this.$store.getters.getImageUrl;
+      },
+      set(value) {
+        this.$store.commit('updateImageUrl', value);
       }
     },
     encodedName3() {
@@ -488,9 +516,9 @@ export default {
     const user = JSON.parse(localStorage.getItem('user')); // 유저 정보를 JSON으로 파싱
 
     if (authenticated === 'true' && user) {
-      console.log('이미 인증된 상태입니다.');
+      // console.log('이미 인증된 상태입니다.');
     }else{
-      console.log('인증이 필요한 상태입니다.');
+      // console.log('인증이 필요한 상태입니다.');
       // 홈 페이지로 이동
       this.$router.push({ name: 'main' }); // 'home'은 홈 라우터의 이름이라 가정
     }
@@ -504,6 +532,10 @@ export default {
   methods: {
     updateRouteData(){
       this.name3 = decodeURIComponent(this.encodedName3);
+      // (사진)으로 끝나면 selectedType2를 ''로 설정
+      if (this.selectedTabletType.endsWith('(사진)')) {
+        this.selectedType2 = '';
+      }
     },
     updateRouteData2(){
       this.name3 = '없음';
@@ -525,6 +557,17 @@ export default {
       if (this.name3_3.length < 10) {
         this.name3_3 += '❤️'; // 하트 아이콘 추가
       }
+    },
+    handleFileUpload(event) {
+      // 파일 선택 시 호출되는 메서드
+      this.selectedFile = event.target.files[0];
+      
+      // 선택된 파일의 미리보기를 생성
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        this.imageUrl = e.target.result;
+      };
+      reader.readAsDataURL(this.selectedFile);
     },
   }
 };

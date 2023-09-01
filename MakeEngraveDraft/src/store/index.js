@@ -34,6 +34,8 @@ const initialSelectedUrnType = '';
 const initialSelectedTabletType = '';
 const initialShowRouterView = true;
 const initialNote = '';
+const initialSelectedFile = null;
+const initialImageUrl = null;
 
 export const store = createStore({
   // 저장소
@@ -72,6 +74,10 @@ export const store = createStore({
     // 선택된 유골 종류
     selectedUrnType: initialSelectedUrnType,
     // 합골 추가 정보
+    // 각인종류 (일반, 기독교, 천주교, ...)
+    boneEngraveType: initialEngraveType,
+    // 각인 상세 종류 (일반, 형제, 직분, 기독, ...)
+    boneSelectedType: initialSelectedType,
     boneSex: '',
     boneName1: initialName1,
     boneName2: initialName2,
@@ -95,6 +101,11 @@ export const store = createStore({
     selectedTabletType: initialSelectedTabletType,
     // 특이사항
     note: initialNote,
+    // 사진 저장
+    // 선택된 파일을 저장할 변수
+    selectedFile: initialSelectedFile,
+    // 이미지 URL을 저장할 변수
+    imageUrl: initialImageUrl,
   },
   // state 상대 변경
   // this.$store.commit(이름, 변수);
@@ -175,6 +186,12 @@ export const store = createStore({
     updateSelectedUrnType(state, newSelectedUrnType) {
       state.selectedUrnType = newSelectedUrnType;
     },
+    updateBoneEngraveType(state, newBoneEngraveType) {
+      state.boneEngraveType = newBoneEngraveType;
+    },
+    updateBoneSelectedType(state, newBoneSelectedType) {
+      state.boneSelectedType = newBoneSelectedType;
+    },
     updateBoneSex(state, newBoneSex) {
       state.boneSex = newBoneSex;
     },
@@ -211,6 +228,12 @@ export const store = createStore({
     updateNote(state, newNote) {
       state.note = newNote;
     },
+    updateSelectedFile(state, newSelectedFile) {
+      state.selectedFile = newSelectedFile;
+    },
+    updateImageUrl(state, newImageUrl) {
+      state.imageUrl = newImageUrl;
+    },
     updateShowRouterView(state, newShowRouterView) {
       state.showRouterView = newShowRouterView;
       localStorage.setItem('vuexState', JSON.stringify(state));
@@ -234,6 +257,8 @@ export const store = createStore({
       state.funeralTime = initialFuneralTime,
       state.burialName = initialburialName,
       state.burialTime = initialburialTime,
+      state.boneEngraveType = initialEngraveType,
+      state.boneSelectedType = initialSelectedType,
       state.engraveType = initialEngraveType;
       state.boneSex = '',
       state.boneName1 = initialName1,
@@ -261,6 +286,8 @@ export const store = createStore({
       state.selectedTabletType = initialSelectedTabletType,
       state.showRouterView = initialShowRouterView;
       state.note = initialNote;
+      state.selectedFile = initialSelectedFile;
+      state.imageUrl = initialImageUrl;
       localStorage.setItem('vuexState', JSON.stringify(state));
     },
     resetState2(state) {
@@ -415,6 +442,12 @@ export const store = createStore({
     getSelectedUrnType(state) {
       return state.selectedUrnType;
     },
+    getBoneEngraveType(state) {
+      return state.boneEngraveType;
+    },
+    getBoneSelectedType(state) {
+      return state.boneSelectedType;
+    },
     getBoneSex(state) {
       return state.boneSex;
     },
@@ -453,6 +486,12 @@ export const store = createStore({
     },
     getNote(state) {
       return state.note;
+    },
+    getSelectedFile(state) {
+      return state.selectedFile;
+    },
+    getImageUrl(state) {
+      return state.imageUrl;
     },
   },
 });

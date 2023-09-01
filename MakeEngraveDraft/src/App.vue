@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import { getFirestore, collection, addDoc, getDocs, updateDoc, doc, where, query } from "firebase/firestore";
+
 import { mapMutations } from 'vuex';
 export default {
   name: 'App',
@@ -39,12 +41,17 @@ export default {
   },
   mounted() {
     // 페이지 로드 시 로그인 상태 확인
-    const authenticated = localStorage.getItem('authenticated');
-    if (authenticated === 'true') {
-      console.log('이미 인증된 상태입니다.');
+    this.authenticated = localStorage.getItem('authenticated');
+    this.user = JSON.parse(localStorage.getItem('user')); // 유저 정보를 JSON으로 파싱
+
+    if (this.authenticated === 'true' && this.user) {
+      // console.log('이미 인증된 상태입니다.');
     }else{
-      console.log('인증이 필요한 상태입니다.');
+      // console.log('인증이 필요한 상태입니다.');
+      // 홈 페이지로 이동
+      this.$router.push({ name: 'main' }); // 'home'은 홈 라우터의 이름이라 가정
     }
+
     // 마우스 우클릭 막기
     document.addEventListener("contextmenu", function(e) {
       e.preventDefault();
@@ -89,6 +96,27 @@ export default {
     },
     goToAdmin() {
       this.$router.push('/admin'); // admin 페이지로 이동
+    },
+    async checkPhone(){
+      // phones 컬렉션에서 이미 승인된 번호인지 확인
+      const phonesCollection = collection(firestore, "phones");
+      const phonesQuery = query(phonesCollection, where("phoneNumber", "==", this.phoneNumber), where("authenticated", "==", true));
+      const phonesSnapshot = await getDocs(phonesQuery);
+
+      if (phonesSnapshot.docs.length > 0) {
+        console.log('이미 승인된 번호입니다.');
+        // 로컬스토리지에 인증 상태 저장
+        localStorage.setItem('authenticated', 'true');
+        // 유저 정보를 JSON 형태로 저장
+        // 유저 정보를 어떻게 가져올 것인지에 따라 아래 코드 수정 필요
+        const user = {
+          // 유저 정보를 객체 형태로 작성
+        };
+        localStorage.setItem('user', JSON.stringify(user));
+        // 페이지 새로고침
+          window.location.reload();
+        return;
+      }
     }
   }
 };
