@@ -1037,8 +1037,8 @@
       <br>
     </div>
     <div class="app">
-        <button v-if="isIOS" class="order_button" @click="iosSMSEntry(); addOrder();">태림원(인천지점) 발주</button>
-        <button v-if="isAndroid" class="order_button" @click="androidSMSEntry(); addOrder();">태림원(인천지점) 발주</button><br>
+        <button v-if="isIOS" class="order_button" @click="openSMS('ios'); addOrder();">태림원(인천지점) 발주</button>
+        <button v-if="isAndroid" class="order_button" @click="openSMS('android'); addOrder();">태림원(인천지점) 발주</button><br>
         <button v-if="isUnknown" class="order_button" @click="addOrder();">문자 호환되지 않는 기종입니다.</button>
         <!-- <button v-if="isUnknown" class="order_button" :onclick="iosSMSEntry">태림원(인천지점) 발주</button> -->
     </div>
@@ -1460,19 +1460,8 @@ export default {
     isIOS() {
       return this.checkMobile() === 'ios';
     },
-    iosSMSEntry() {
-      const phoneNumber = this.leaderPhone;
-
-      const message = encodeURIComponent(this.getMsg());
-      return `sms:${phoneNumber}&body=${message}`;
-    },
     isAndroid() {
       return this.checkMobile() === 'android';
-    },
-    androidSMSEntry() {
-      const phoneNumber = this.leaderPhone;
-      const message = encodeURIComponent(this.getMsg());
-      return `sms:${phoneNumber}?body=${message}`;
     },
     isUnknown() {
       return this.checkMobile() === 'unknown';
@@ -1718,6 +1707,16 @@ export default {
       }
 
       return new Blob([u8arr], { type: mime });
+    },
+    openSMS(platform) {
+    const phoneNumber = this.leaderPhone;
+    const message = encodeURIComponent(this.getMsg());
+
+    if (platform === 'ios') {
+      window.location.href = `sms:${phoneNumber}&body=${message}`;
+    } else if (platform === 'android') {
+      window.location.href = `sms:${phoneNumber}?body=${message}`;
+    }
     },
     async addOrder(){
       if(this.isOrder){
