@@ -1676,7 +1676,7 @@ export default {
     },
     async downloadContainer() {
       const container = document.querySelector('.container'); // 캡처할 요소 선택
-      const canvas = await html2canvas(container); // HTML2Canvas를 사용하여 캡처
+      const canvas = await html2canvas(container, { scale: 3 }); // HTML2Canvas를 사용하여 캡처
 
       // 이미지 데이터를 URL로 변환
       const imageDataURL = canvas.toDataURL('image/png');
@@ -1826,7 +1826,7 @@ export default {
           selectedTabletType: this.selectedTabletType,
           // 특이사항
           note: this.note,
-          imageUrl: 'gs://taerimwon-b4e5c.appspot.com/'+firePath,
+          imageUrl: firePath,
           currentDate: currentDate, // 현재 날짜와 시간 추가
         };
         // 문서 ID를 자동으로 생성하고 추가
