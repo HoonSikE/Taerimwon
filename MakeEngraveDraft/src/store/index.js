@@ -29,6 +29,7 @@ const initialDate2 = '';
 const initialDate2Type = '양력';
 const initialReligion = '';
 const initialSelectedType = '일반';
+const initialBoneSex = '남성';
 const initialSelectedType2 = '없음';
 const initialSelectedUrnType = '';
 const initialSelectedTabletType = '';
@@ -78,7 +79,7 @@ export const store = createStore({
     boneEngraveType: initialEngraveType,
     // 각인 상세 종류 (일반, 형제, 직분, 기독, ...)
     boneSelectedType: initialSelectedType,
-    boneSex: '',
+    boneSex: initialBoneSex,
     boneName1: initialName1,
     boneName2: initialName2,
     boneDate1: initialDate1,
@@ -260,7 +261,7 @@ export const store = createStore({
       state.boneEngraveType = initialEngraveType,
       state.boneSelectedType = initialSelectedType,
       state.engraveType = initialEngraveType;
-      state.boneSex = '',
+      state.boneSex = initialBoneSex,
       state.boneName1 = initialName1,
       state.boneName2 = initialName2,
       state.boneDate1 = initialDate1,

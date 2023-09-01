@@ -56,7 +56,7 @@
         고인명: {{selectedOrder.name1}}<br>
         생년월일: {{selectedOrder.date1}} {{selectedOrder.date1Type}}<br>
         사망월일: {{selectedOrder.date2}} {{selectedOrder.date2Type}}<br>
-        <div v-if="selectedOrder.engraveType != '일반' && selectedOrder.engraveType != 'SGI' && selectedOrder.engraveType != '묘법'">
+        <div v-if="selectedOrder.engraveType != '일반' && selectedOrder.engraveType != 'SGI' && selectedOrder.engraveType != '묘법' && selectedOrder.engraveType != '순복음'">
           종교: {{selectedOrder.religion }}
         </div>
         <div v-if="selectedOrder.selectedType === '직분' || selectedOrder.selectedType === '법명' || selectedOrder.selectedType === '세례명'">
@@ -76,7 +76,7 @@
           </div>
            - 생년월일: {{ selectedOrder.boneDate1 }} {{ selectedOrder.boneDate1Type }}<br>
            - 사망월일: {{ selectedOrder.boneDate2 }} {{ selectedOrder.boneDate2Type }}<br>
-          <div v-if="selectedOrder.engraveType !== '일반' && selectedOrder.engraveType !== 'SGI' && selectedOrder.engraveType !== '묘법'">
+          <div v-if="selectedOrder.engraveType !== '일반' && selectedOrder.engraveType !== 'SGI' && selectedOrder.engraveType !== '묘법' && selectedOrder.engraveType !== '순복음'">
             - 종교: {{ selectedOrder.boneReligion }}<br>
           </div>
            - 유골함 각인 종류: {{selectedOrder.boneEngraveType}} [{{selectedOrder.boneSelectedType}}]<br>

@@ -226,7 +226,7 @@
               - {{selectedType}}을 2~6글자로 입력해주세요.
             </div>
           </div>
-          <div v-if="engraveType !== '일반' && engraveType !== 'SGI' && engraveType !== '묘법'">
+          <div v-if="engraveType !== '일반' && engraveType !== 'SGI' && engraveType !== '묘법' && engraveType !== '순복음'">
             종교
             <input v-model="religion" type="text" :placeholder="defaultReligionPlaceholder" style="height: 30px; width: 100%;"/>
             <div v-if="showReligionKoreanWarning"  class="warning_text">
@@ -478,8 +478,7 @@
                 <div>
                   성별
                   <select v-model="boneSex" style="height: 30px; width: 100%;">
-                    <option value="" selected disabled>성별 선택</option>
-                    <option value="남성">남성</option>
+                    <option value="남성" selected>남성</option>
                     <option value="여성">여성</option>
                   </select>
                 </div>
@@ -518,7 +517,7 @@
                     - 사망월일을 {{ getDateWarningMessage(boneDate2) }}
                   </div>
                 </div>
-                <div v-if="boneEngraveType !== '일반' && boneEngraveType !== 'SGI' && boneEngraveType !== '묘법'">
+                <div v-if="boneEngraveType !== '일반' && boneEngraveType !== 'SGI' && boneEngraveType !== '묘법' && boneEngraveType !== '순복음'">
                   종교
                   <input v-model="boneReligion" type="text" :placeholder="defaultReligionPlaceholder" style="height: 30px; width: 100%;"/>
                   <div v-if="showBoneReligionKoreanWarning"  class="warning_text">
@@ -1105,12 +1104,12 @@ export default {
 .bone-male {
   padding: 20px;
   border-radius: 10px;
-  background-color: rgb(195, 235, 255); /* 예시로 남성일 때 파란색 배경 */
+  background-color: rgb(115, 148, 219); /* 예시로 남성일 때 파란색 배경 */
 }
 
 .bone-female {
   padding: 20px;
   border-radius: 10px;
-  background-color: rgb(250, 224, 228); /* 예시로 여성일 때 분홍색 배경 */
+  background-color: rgb(229, 143, 156); /* 예시로 여성일 때 분홍색 배경 */
 }
 </style>
