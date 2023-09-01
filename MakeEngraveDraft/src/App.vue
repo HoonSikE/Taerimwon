@@ -78,6 +78,8 @@ export default {
       this.leaderDepartment = info.leaderDepartment;
       this.saveInfo = true;
     };
+
+    console.log(this.leaderName);
   },
   methods: {
     ...mapMutations(['resetState']),
