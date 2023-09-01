@@ -15,6 +15,7 @@ import ResultView from '../components/result/ResultView.vue'
 import Login from '../components/admins/LoginView.vue'
 import AdminHome from '../components/admins/AdminHomeView.vue'
 import AdminSignUp from '../components/admins/adminHome/AdminSignUpView.vue'
+import AdminPhoneList from '../components/admins/adminHome/AdminPhoneList.vue'
 import AdminOrderList from '../components/admins/adminHome/AdminOrderListView.vue'
 
 const router = createRouter({
@@ -80,6 +81,11 @@ const router = createRouter({
               path: 'adminSignUp',
               name: 'adminSignUp',
               component: AdminSignUp,
+            },
+            {
+              path: 'adminPhoneList',
+              name: 'adminPhoneList',
+              component: AdminPhoneList,
             },
             {
               path: 'adminOrderList',

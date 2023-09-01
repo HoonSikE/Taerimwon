@@ -72,8 +72,8 @@ export default {
 
       if (blacklistSnapshot.docs.length > 0) {
         // console.log('블랙리스트에 등록된 번호입니다.');
-        localStorage.removeItem('user'); // LocalStorage에서 상태 제거
-        localStorage.removeItem('authenticated'); // LocalStorage에서 상태 제거
+        // localStorage.removeItem('user'); // LocalStorage에서 상태 제거
+        // localStorage.removeItem('authenticated'); // LocalStorage에서 상태 제거
         this.user = null;
         this.authenticated = null;
         window.location.reload();
@@ -91,8 +91,8 @@ export default {
 
       if (querySnapshot.empty) {
         console.log('리스트에 등록되지 않은 번호입니다.');
-        localStorage.removeItem('user'); // LocalStorage에서 상태 제거
-        localStorage.removeItem('authenticated'); // LocalStorage에서 상태 제거
+        // localStorage.removeItem('user'); // LocalStorage에서 상태 제거
+        // localStorage.removeItem('authenticated'); // LocalStorage에서 상태 제거
         this.user = null;
         this.authenticated = null;
         window.location.reload();

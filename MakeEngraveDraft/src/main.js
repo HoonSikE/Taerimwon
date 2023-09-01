@@ -37,6 +37,6 @@ if (savedState) {
 // Firebase 초기화
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
-const firestore = getFirestore(firebaseApp);
+// const firestore = getFirestore(firebaseApp);
 // Storage 인스턴스 생성
-const storage = getStorage(app);
+// const storage = getStorage(app);

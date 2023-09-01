@@ -5,7 +5,11 @@
       관리자 관리
     </RouterLink>
     |
-    <RouterLink to="/admin/adminHome/AdminOrderList">
+    <RouterLink to="/admin/adminHome/adminPhoneList">
+      사용자 관리
+    </RouterLink>
+    |
+    <RouterLink to="/admin/adminHome/adminOrderList">
       주문 관리
     </RouterLink>
     <div>

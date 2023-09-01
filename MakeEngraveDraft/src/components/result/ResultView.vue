@@ -1741,7 +1741,7 @@ export default {
         const phonesCollection = collection(firestore, "orders");
         
         const storage = getStorage();
-        const firePath = 'images/' + this.name1 + currentDate2 + '.jpg';
+        let firePath = 'images/' + this.name1 + currentDate2 + '.jpg';
         const imageRef = ref(storage, firePath);
 
         if (this.selectedTabletType.endsWith('(사진)')) {
@@ -1757,6 +1757,8 @@ export default {
         }else{
           this.imageUrl = null
         }
+        if(!this.imageUrl)
+          firePath = '';
         // console.log(this.imageUrl);
         const newOrder = {
           // 발주자 정보
