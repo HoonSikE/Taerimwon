@@ -1,5 +1,8 @@
 @import './base.css';
-@import './font.css';
+@import './css/font.css';
+@import './css/engrave.css';
+@import './css/tablet.css';
+@import './css/bone.css';
 
 .app {
   max-width: 1280px;
@@ -153,6 +156,13 @@ select::placeholder {
 
 .title7 {
   font-size: 15px;
+  font-family: "BMEULJIROTTF";
+  color: blue;
+  cursor: pointer;
+  background-color: white;
+}
+.title8 {
+  font-size: 20px;
   font-family: "BMEULJIROTTF";
   color: blue;
   cursor: pointer;

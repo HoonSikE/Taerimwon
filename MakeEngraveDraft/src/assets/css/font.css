@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'BMEULJIROTTF';
+    src: url('../fonts/BMEULJIROTTF.ttf') format('truetype'),
+        url('../fonts/BMEULJIROTTF.woff') format('woff'),
+        url('../fonts/BMEULJIROTTF.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'HYGungSo';
+    src: url('../fonts/HYGungSo.ttf') format('truetype');
+    src: url('../fonts/HYGungSo.woff') format('woff');
+    /* src: url('./fonts/HYGungSo.woff2') format('woff2'); */
+}
+
+@font-face {
+    font-family: 'HYHaeSo';
+    src: url('../fonts/HYHaeSo.ttf') format('truetype');
+    src: url('../fonts/HYHaeSo.woff') format('woff');
+    /* src: url('./fonts/HYHaeSo.woff2') format('woff2'); */
+}
+
+@font-face {
+    font-family: 'CENTURY';
+    src: url('../fonts/CENTURY.ttf') format('truetype');
+    src: url('../fonts/CENTURY.woff') format('woff');
+    /* src: url('./fonts/CENTURY.woff2') format('woff2'); */
+}

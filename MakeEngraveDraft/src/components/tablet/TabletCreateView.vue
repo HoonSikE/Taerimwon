@@ -173,8 +173,7 @@
             <div v-if="selectedType2 === '문구'">
               문구<br>
               <select v-model="name3Type" style="height: 30px; width: 100%;">
-                <option value="" selected disabled>줄 선택</option>
-                <option value="one">1줄</option>
+                <option value="one" selected>1줄</option>
                 <option value="two">2줄</option>
                 <option value="three">3줄</option>
               </select>
@@ -225,6 +224,9 @@
         </select>
         <br><br>
         <div v-if="selectedTabletType.endsWith('(사진)')" style="text-align: center;">
+          <div class="warning_text">
+            * 사진 위패는 시안을 추후 제공해드립니다.
+          </div>
           <!-- 이미지 미리보기를 위한 엘리먼트 추가 -->
           <img v-if="imageUrl" :src="imageUrl" alt="Uploaded Image" style="width: 50%;"/>
           <!-- 파일 업로드를 위한 input 엘리먼트 추가 -->
@@ -233,13 +235,57 @@
           </div>
         </div>
       </div>
+      <div v-if="selectedTabletType.endsWith('(사진)')">
+      <!-- 문구 입력 -->
+        문구<br>
+        <select v-model="name3Type" style="height: 30px; width: 100%;">
+          <option value="one" selected>1줄</option>
+          <option value="two">2줄</option>
+          <option value="three">3줄</option>
+        </select>
+        <div>
+          <div v-if="name3Type === 'one' || name3Type === 'two' || name3Type === 'three'">
+            문구1<br>
+            <input v-model="name3_1" type="text" placeholder="예) 아버지 사랑합니다." style="height: 30px; width: 100%;"/>
+            <span @click="addHeart1" style="font-size: 15px; width: 15px; margin-left: -30px; cursor: pointer;">
+              ❤️
+            </span>
+            <div v-if="showName3_1Warning" class="warning_text">
+              - 문구1을 10글자 이하로 입력해주세요.
+            </div>
+          </div>
+          <div v-if="name3Type === 'two' || name3Type === 'three'">
+            문구2<br>
+            <input v-model="name3_2" type="text" placeholder="예) 아버지 사랑합니다." style="height: 30px; width: 100%;"/>
+            <span @click="addHeart2" style="font-size: 15px; width: 15px; margin-left: -30px; cursor: pointer;">
+              ❤️
+            </span>
+            <div v-if="showName3_2Warning" class="warning_text">
+              - 문구2를 10글자 이하로 입력해주세요.
+            </div>
+          </div>
+          <div v-if="name3Type === 'three'">
+            문구3<br>
+            <input v-model="name3_3" type="text" placeholder="예) 아버지 사랑합니다." style="height: 30px; width: 100%;"/>
+              <span @click="addHeart3" style="font-size: 15px; width: 15px; margin-left: -30px; cursor: pointer;">
+              ❤️
+            </span>
+            <div v-if="showName3_3Warning" class="warning_text">
+              - 문구3을 10글자 이하로 입력해주세요.
+            </div>
+          </div>
+        </div>
+        <div class="title7">
+          &nbsp;* 1줄 최대 10자(공백포함)까지 입력가능합니다.
+        </div>
+      </div>
     </div>
     <div class="appbr">
       <br>
     </div>
     <div class="app">
-      <div>
-        특이사항 (40자 이내)<br>
+      <div class="title8">
+        ● 특이사항 (40자 이내)<br>
         <input v-model="note" type="text" placeholder="특이사항을 적어주세요." style="height: 30px; width: 100%;"/>
         <div v-if="showNoteWarning" class="warning_text">
           - 특이사항을 40글자 이하로 입력해주세요.

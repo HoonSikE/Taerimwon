@@ -63,22 +63,22 @@
                 <img src="../../../assets/images/engrave/example/불교(법명).png" width="80" height="130" alt="불교(법명)">
                 <span class="selectText">[법명]</span>
               </div> 
-              <div
+              <!-- <div
                 class="link-item"
                 :class="{ selected: selectedType === '불교[검정]' }"
                 @click="updateSelectType('불교[검정]')"
               >
                 <img src="../../../assets/images/engrave/example/불교.png" width="80" height="130" alt="불교[검정]">
                 <span class="selectText">[기본[검정]]</span>
-              </div>
-              <div
+              </div> -->
+              <!-- <div
                 class="link-item"
                 :class="{ selected: selectedType === '법명[검정]' }"
                 @click="updateSelectType('법명[검정]')"
               >
                 <img src="../../../assets/images/engrave/example/불교(법명).png" width="80" height="130" alt="불교(법명)[검정]">
                 <span class="selectText">[법명[검정]]</span>
-              </div> 
+              </div>  -->
             </div>
             <!-- 천주교 -->
             <div v-if="engraveType === '천주교'">
@@ -205,7 +205,7 @@
               - 사망월일을 {{ getDateWarningMessage(date2) }}
             </div>
           </div>
-          <div v-if="selectedType === '직분'">
+          <div v-if="selectedType === '직분' || selectedType === '순복음'">
             직분
           </div>
           <div v-if="selectedType === '법명' || selectedType === '법명[검정]'">
@@ -214,12 +214,12 @@
           <div v-if="selectedType === '세례명'">
             세례명
           </div>
-          <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명' || selectedType === '법명[검정]'">
+          <div v-if="selectedType === '직분' || selectedType === '법명' || selectedType === '세례명' || selectedType === '법명[검정]' || selectedType === '순복음'">
             <input v-model="name2" type="text" :placeholder="defaultName2Placeholder" style="height: 30px; width: 100%;"/>
             <div v-if="showName2KoreanWarning" class="warning_text">
               - {{selectedType}}을 한국어로 올바르게 입력해주세요.
             </div>
-            <div v-else-if="showName2Warning && (selectedType === '직분' || selectedType === '법명'|| selectedType === '법명[검정]')" class="warning_text">
+            <div v-else-if="showName2Warning && (selectedType === '직분' || selectedType === '법명'|| selectedType === '법명[검정]' || selectedType === '순복음')" class="warning_text">
               - {{selectedType}}을 2~4글자로 입력해주세요.
             </div>
             <div v-else-if="showName2Warning2 && (selectedType === '세례명')" class="warning_text">
@@ -375,7 +375,7 @@
                           <img src="../../../assets/images/engrave/example/불교(법명).png" width="80" height="130" alt="불교(법명)">
                           <span class="selectText">[법명]</span>
                         </div> 
-                        <div
+                        <!-- <div
                           class="link-item"
                           :class="{ selected: boneSelectedType === '불교[검정]' }"
                           @click="updateBoneSelectType('불교[검정]')"
@@ -390,7 +390,7 @@
                         >
                           <img src="../../../assets/images/engrave/example/불교(법명).png" width="80" height="130" alt="불교(법명[검정]">
                           <span class="selectText">[법명[검정]]</span>
-                        </div> 
+                        </div>  -->
                       </div>
                       <!-- 천주교 -->
                       <div v-if="boneEngraveType === '천주교'">
@@ -524,7 +524,7 @@
                     - 종교를 한국어로 올바르게 입력해주세요.
                   </div>
                 </div>
-                <div v-if="boneSelectedType === '직분'">
+                <div v-if="boneSelectedType === '직분' || boneSelectedType === '순복음'">
                   직분
                 </div>
                 <div v-if="boneSelectedType === '법명'|| boneSelectedType === '법명[검정]'">
@@ -533,12 +533,12 @@
                 <div v-if="boneSelectedType === '세례명'">
                   세례명
                 </div>
-                <div v-if="boneSelectedType === '직분' || boneSelectedType === '법명' || boneSelectedType === '세례명'|| boneSelectedType === '법명[검정]'">
+                <div v-if="boneSelectedType === '직분' || boneSelectedType === '법명' || boneSelectedType === '세례명'|| boneSelectedType === '법명[검정]' || boneSelectedType === '순복음'">
                   <input v-model="boneName2" type="text" :placeholder="defaultName2Placeholder" style="height: 30px; width: 100%;"/>
                   <div v-if="showBoneName2KoreanWarning" class="warning_text">
                     - {{selectedType}}을 한국어로 올바르게 입력해주세요.
                   </div>
-                  <div v-else-if="showBoneName2Warning && (selectedType === '직분' || selectedType === '법명'|| boneSelectedType === '법명[검정]')" class="warning_text">
+                  <div v-else-if="showBoneName2Warning && (selectedType === '직분' || selectedType === '법명'|| boneSelectedType === '법명[검정]' || boneSelectedType === '순복음')" class="warning_text">
                     - {{selectedType}}을 2~4글자로 입력해주세요.
                   </div>
                   <div v-else-if="showBoneName2Warning2 && (selectedType === '세례명')" class="warning_text">
@@ -562,8 +562,9 @@
         </span>
       </router-link>
       <br>
-      <div>
-        특이사항 (40자 이내)<br>
+      <br>
+      <div class="title8">
+        ● 특이사항 (40자 이내)<br>
         <input v-model="note" type="text" placeholder="특이사항을 적어주세요." style="height: 30px; width: 100%;"/>
         <div v-if="showNoteWarning" class="warning_text">
           - 특이사항을 40글자 이하로 입력해주세요.

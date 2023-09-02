@@ -1,0 +1,91 @@
+/*=====합골1 시작======*/
+.image-text-container_bone1 {
+    display: flex;
+    width: 670px;
+    height: 650px;
+    background-image: url('../../assets/images/engrave/background/bone/bone.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(239, 239, 239);
+  }
+  /* 남성 텍스트 출력 */
+  .text-container_bone1_1 {
+    width: 160px;
+    height: 270px;
+  
+    /* 중심 포지션 270 240 */
+    transform: translate(140px, 280px);
+  
+    writing-mode: vertical-lr; /* 세로로 쓰기 설정 */
+    text-orientation: upright; /* 텍스트 방향 유지 */
+    white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+  
+    /* background-color: rgba(255, 0, 157, 0.461); */
+  }
+  /* 여성 텍스트 출력 */
+  .text-container_bone1_2 {
+    width: 160px;
+    height: 270px;
+  
+    /* 중심 포지션 270 240 */
+    transform: translate(230px, 280px);
+  
+    writing-mode: vertical-lr; /* 세로로 쓰기 설정 */
+    text-orientation: upright; /* 텍스트 방향 유지 */
+    white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+  
+    /* background-color: rgba(26, 255, 0, 0.461); */
+  }
+  /*=====합골1 끝======*/
+  /*=====합골2 시작======*/
+  .image-text-container_bone2 {
+    display: flex;
+    width: 670px;
+    height: 650px;
+    background-image: url('../../assets/images/engrave/background/bone/bone2.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(239, 239, 239);
+  }
+  /* 남성일 경우 텍스트 출력 */
+  .text-container_bone2_1 {
+    width: 106.66px;
+    height: 270px;
+  
+    /* 중심 포지션 270 240 */
+    transform: translate(180px, 350px);
+  
+    writing-mode: vertical-lr; /* 세로로 쓰기 설정 */
+    text-orientation: upright; /* 텍스트 방향 유지 */
+    white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+  
+    background-color: rgba(255, 0, 157, 0.461);
+  }
+  .text-container_bone2_2 {
+    /* display: flex; */
+    width: 106.66px;
+    height: 270px;
+  
+    /* 중심 포지션 270 240 */
+    transform: translate(180px, 350px);
+  
+    writing-mode: vertical-lr; /* 세로로 쓰기 설정 */
+    text-orientation: upright; /* 텍스트 방향 유지 */
+    white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+  
+    background-color: rgba(26, 255, 0, 0.461);
+  }
+  .text-container_bone2_3 {
+    width: 106.66px;
+    height: 270px;
+  
+    /* 중심 포지션 270 240 */
+    transform: translate(180px, 350px);
+  
+    writing-mode: vertical-lr; /* 세로로 쓰기 설정 */
+    text-orientation: upright; /* 텍스트 방향 유지 */
+    white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+  
+    background-color: rgba(0, 94, 255, 0.461);
+  }
+  /*=====합골2 끝======*/
