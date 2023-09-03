@@ -36,7 +36,7 @@
                   class="link-item"
                   :class="{ selected: selectedType2 === '문구' }"
                   @click="selectedType2 = '문구', name3_1 = '', name3_2 = '', name3_3 = ''">
-                <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" alt="문구">
+                <img src="../../assets/images/tablet/example/문구.png" alt="문구">
                 <span class="selectText">[문구 넣기]</span>
               </div>
             </div>
@@ -60,7 +60,7 @@
                   class="link-item"
                   :class="{ selected: selectedType2 === '문구' }"
                   @click="selectedType2 = '문구', name3_1 = '', name3_2 = '', name3_3 = ''">
-                <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" alt="문구">
+                <img src="../../assets/images/tablet/example/문구.png" alt="문구">
                 <span class="selectText">[문구 넣기]</span>
               </div>
             </div>
@@ -84,7 +84,7 @@
                   class="link-item"
                   :class="{ selected: selectedType2 === '문구' }"
                   @click="selectedType2 = '문구', name3_1 = '', name3_2 = '', name3_3 = ''">
-                <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" alt="문구">
+                <img src="../../assets/images/tablet/example/문구.png" alt="문구">
                 <span class="selectText">[문구 넣기]</span>
               </div>
             </div>
@@ -108,7 +108,7 @@
                   class="link-item"
                   :class="{ selected: selectedType2 === '문구' }"
                   @click="selectedType2 = '문구', name3_1 = '', name3_2 = '', name3_3 = ''">
-                <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" alt="문구">
+                <img src="../../assets/images/tablet/example/문구.png" alt="문구">
                 <span class="selectText">[문구 넣기]</span>
               </div>
             </div>
@@ -117,7 +117,7 @@
                 class="link-item"
                 :class="{ selected: selectedType2 === '문구' }"
                 @click="selectedType2 = '문구', name3_1 = '', name3_2 = '', name3_3 = ''">
-              <img src="../../assets/images/tablet/example/본관시안/일반(본관).png" alt="문구">
+              <img src="../../assets/images/tablet/example/문구.png" alt="문구">
               <span class="selectText">[문구 넣기]</span>
             </div>
           </span>

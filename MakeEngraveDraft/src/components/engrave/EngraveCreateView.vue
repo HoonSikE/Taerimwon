@@ -218,13 +218,13 @@
             <router-link :to="{name: 'engraveDetail'}" @click.native="updateRouteData('순복음', '순복음')" class="link-item"
                 :class="{ selected: selectedType === '순복음' }"
                 @click="selectedType = '순복음'">
-              <img src="../../assets/images/engrave/example/기독교.png" alt="순복음">
+              <img src="../../assets/images/engrave/example/순복음.png" alt="순복음">
               <span class="selectText">[순복음]</span>
             </router-link>
             <router-link :to="{name: 'engraveDetail'}" @click.native="updateRouteData('원불교', '원불교')" class="link-item"
                 :class="{ selected: selectedType === '원불교' }"
                 @click="selectedType = '원불교'">
-              <img src="../../assets/images/engrave/example/불교.png" alt="원불교">
+              <img src="../../assets/images/engrave/example/원불교.png" alt="원불교">
               <span class="selectText">[원불교]</span>
             </router-link>
           </div>

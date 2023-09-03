@@ -144,7 +144,7 @@
                 :class="{ selected: selectedType === '순복음' }"
                 @click="updateSelectType('순복음')"
               >
-                <img src="../../../assets/images/engrave/example/기독교.png" width="80" height="130" alt="묘법">
+                <img src="../../../assets/images/engrave/example/순복음.png" width="80" height="130" alt="묘법">
                 <span class="selectText">[기본]</span>
               </div>
             </div>
@@ -155,7 +155,7 @@
                 :class="{ selected: selectedType === '원불교' }"
                 @click="updateSelectType('원불교')"
               >
-                <img src="../../../assets/images/engrave/example/불교.png" width="80" height="130" alt="묘법">
+                <img src="../../../assets/images/engrave/example/원불교.png" width="80" height="130" alt="묘법">
                 <span class="selectText">[기본]</span>
               </div>
             </div>
@@ -304,13 +304,13 @@
                       <div class="link-item"
                           :class="{ selected: boneEngraveType === '순복음' }"
                           @click="boneEngraveType = '순복음', boneSelectedType = '순복음'">
-                        <img src="../../../assets/images/engrave/example/기독교.png" alt="순복음">
+                        <img src="../../../assets/images/engrave/example/순복음.png" alt="순복음">
                         <span class="selectText">[순복음]</span>
                       </div>
                       <div class="link-item"
                           :class="{ selected: boneEngraveType === '원불교' }"
                           @click="boneEngraveType = '원불교', boneSelectedType = '원불교'">
-                        <img src="../../../assets/images/engrave/example/불교.png" alt="원불교">
+                        <img src="../../../assets/images/engrave/example/원불교.png" alt="원불교">
                         <span class="selectText">[원불교]</span>
                       </div>
                     </div>
@@ -426,7 +426,7 @@
                           :class="{ selected: boneSelectedType === 'SGI(금색)' }"
                           @click="updateBoneSelectType('SGI(금색)')"
                         >
-                          <img src="../../../assets/images/engrave/example/sgi.png" width="80" height="130" alt="SGI(금색)">
+                          <img src="../../../assets/images/engrave/example/sgi(금색).png" width="80" height="130" alt="SGI(금색)">
                           <span class="selectText">[금색]</span>
                         </div>
                       </div>
@@ -445,7 +445,7 @@
                           :class="{ selected: boneSelectedType === '묘법(금색)' }"
                           @click="updateBoneSelectType('묘법(금색)')"
                         >
-                          <img src="../../../assets/images/engrave/example/sgi.png" width="80" height="130" alt="묘법(금색)">
+                          <img src="../../../assets/images/engrave/example/묘법(금색).png" width="80" height="130" alt="묘법(금색)">
                           <span class="selectText">[금색]</span>
                         </div>
                       </div>
@@ -456,7 +456,7 @@
                           :class="{ selected: boneSelectedType === '순복음' }"
                           @click="updateBoneSelectType('순복음')"
                         >
-                          <img src="../../../assets/images/engrave/example/기독교.png" width="80" height="130" alt="묘법">
+                          <img src="../../../assets/images/engrave/example/순복음.png" width="80" height="130" alt="묘법">
                           <span class="selectText">[기본]</span>
                         </div>
                       </div>
@@ -467,7 +467,7 @@
                           :class="{ selected: boneSelectedType === '원불교' }"
                           @click="updateBoneSelectType('원불교')"
                         >
-                          <img src="../../../assets/images/engrave/example/불교.png" width="80" height="130" alt="묘법">
+                          <img src="../../../assets/images/engrave/example/원불교.png" width="80" height="130" alt="묘법">
                           <span class="selectText">[기본]</span>
                         </div>
                       </div>
