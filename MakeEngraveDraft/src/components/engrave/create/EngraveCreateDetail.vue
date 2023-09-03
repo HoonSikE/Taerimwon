@@ -114,7 +114,7 @@
                 :class="{ selected: selectedType === 'SGI(금색)' }"
                 @click="updateSelectType('SGI(금색)')"
               >
-                <img src="../../../assets/images/engrave/example/sgi.png" width="80" height="130" alt="SGI(금색)">
+                <img src="../../../assets/images/engrave/example/sgi(금색).png" width="80" height="130" alt="SGI(금색)">
                 <span class="selectText">[금색]</span>
               </div>
             </div>
@@ -133,7 +133,7 @@
                 :class="{ selected: selectedType === '묘법(금색)' }"
                 @click="updateSelectType('묘법(금색)')"
               >
-                <img src="../../../assets/images/engrave/example/묘법.png" width="80" height="130" alt="묘법(금색)">
+                <img src="../../../assets/images/engrave/example/묘법(금색).png" width="80" height="130" alt="묘법(금색)">
                 <span class="selectText">[금색]</span>
               </div>
             </div>
