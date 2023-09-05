@@ -561,8 +561,11 @@
           (Click!!)
         </span>
       </router-link>
+    </div>
+    <div v-if="showRouterView"  class="appbr">
       <br>
-      <br>
+    </div>
+    <div v-if="showRouterView" class="app">
       <div class="title8">
         ● 특이사항 (40자 이내)<br>
         <input v-model="note" type="text" placeholder="특이사항을 적어주세요." style="height: 30px; width: 100%;"/>
@@ -570,12 +573,16 @@
           - 특이사항을 40글자 이하로 입력해주세요.
         </div>
       </div>
+    </div>
+    <div class="appbr">
       <br>
+    </div>
+    <div v-if="showRouterView" class="app">
       <router-link :to="{name: 'result'}" @click.native="updateRouteData2()" class="title4">
         👉 예시 보기 (각인)
       </router-link>
     </div>
-    <div v-else-if="!showRouterView">
+    <div v-if="!showRouterView">
       <div class="title5" @click="toggleRouterView">👉 위패 주문하지 않기!!</div>
       <router-view></router-view>
     </div>
@@ -948,30 +955,30 @@ export default {
     updateBoneSelectType(boneSelectedType){
       this.$store.commit('updateBoneSelectedType', boneSelectedType);
     },
-    encodedName1() {
-      const trimmedName1 = this.name1.trim();
-      return trimmedName1 === '' ? '홍길동' : encodeURIComponent(trimmedName1);
-    },
-    encodedName2() {
-      const trimmedName2 = this.name2.trim();
+    // encodedName1() {
+    //   const trimmedName1 = this.name1.trim();
+    //   return trimmedName1 === '' ? '홍길동' : encodeURIComponent(trimmedName1);
+    // },
+    // encodedName2() {
+    //   const trimmedName2 = this.name2.trim();
 
-      if(this.engraveType === '기독교')
-        return trimmedName2 === '' ? '직분' : encodeURIComponent(trimmedName2);
-      else if(this.engraveType === '불교')
-        return trimmedName2 === '' ? '법명' : encodeURIComponent(trimmedName2);
-      else if(this.engraveType === '천주교')
-        return trimmedName2 === '' ? '세례명' : encodeURIComponent(trimmedName2);
+    //   if(this.engraveType === '기독교')
+    //     return trimmedName2 === '' ? '직분' : encodeURIComponent(trimmedName2);
+    //   else if(this.engraveType === '불교')
+    //     return trimmedName2 === '' ? '법명' : encodeURIComponent(trimmedName2);
+    //   else if(this.engraveType === '천주교')
+    //     return trimmedName2 === '' ? '세례명' : encodeURIComponent(trimmedName2);
 
-      return trimmedName2 === '' ? this.selectedType : encodeURIComponent(trimmedName2);
-    },
-    encodedDate1() {
-      const trimmedDate1 = this.date1.trim();
-      return trimmedDate1 === '' ? this.Date1Placeholder : encodeURIComponent(trimmedDate1);
-    },
-    encodedDate2() {
-      const trimmedDate2 = this.date2.trim();
-      return trimmedDate2 === '' ? this.todayDate2Placeholder : encodeURIComponent(trimmedDate2);
-    },
+    //   return trimmedName2 === '' ? this.selectedType : encodeURIComponent(trimmedName2);
+    // },
+    // encodedDate1() {
+    //   const trimmedDate1 = this.date1.trim();
+    //   return trimmedDate1 === '' ? this.Date1Placeholder : encodeURIComponent(trimmedDate1);
+    // },
+    // encodedDate2() {
+    //   const trimmedDate2 = this.date2.trim();
+    //   return trimmedDate2 === '' ? this.todayDate2Placeholder : encodeURIComponent(trimmedDate2);
+    // },
     getTodayDate2Placeholder() {
       const today = new Date();
       const year = today.getFullYear();
@@ -1061,26 +1068,20 @@ export default {
 
       return "";
     },
+    // 위패 주문하기
     updateRouteData(){
-      this.name1 = decodeURIComponent(this.encodedName1());
-      this.name2 = decodeURIComponent(this.encodedName2());
-      this.date1 = decodeURIComponent(this.encodedDate1());
-      this.date2 = decodeURIComponent(this.encodedDate2());
       if(this.engraveType == 'SGI' || this.engraveType == '묘법')
         this.$store.commit('updateSelectedType2', '문구');
       else
         this.$store.commit('updateSelectedType2', this.engraveType);
       this.showRouterView = false;
-      this.$store.commit('updateName3', '')
+      this.$store.commit('updateName3', '');
     },
+    // 예시 보기
     updateRouteData2(){
-      this.name1 = decodeURIComponent(this.encodedName1());
-      this.name2 = decodeURIComponent(this.encodedName2());
-      this.date1 = decodeURIComponent(this.encodedDate1());
-      this.date2 = decodeURIComponent(this.encodedDate2());
       this.$store.commit('updateSelectedType2', '없음');
       // 로컬스토리지 저장
-      this.$store.commit('updateName3', '없음')
+      this.$store.commit('updateName3', '없음');
     },
     updateSelectedUrnType(event) {
       this.selectedUrnType = event.target.value;

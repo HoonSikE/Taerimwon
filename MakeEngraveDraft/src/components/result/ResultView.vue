@@ -1137,7 +1137,7 @@
       </div>
       <!--=====각인=====-->
       <div v-if="!selectedUrnType.startsWith('합골') && engraveImageContainerVisible" class="image-text-container" ref="engraveImageContainer">
-        <div class="text-container">
+        <div v-if="name1 !== ''" class="text-container">
           <span class="resultText1">
             <span v-if="engraveType == '일반' || engraveType == '불교' || engraveType == '묘법' || engraveType == 'SGI' || engraveType == '원불교'" class="resultText1_0_1">生</span>
             <span v-if="engraveType == '기독교' || engraveType == '순복음'" class="resultText1_0_2">出生</span>
@@ -1277,7 +1277,7 @@
       <div v-if="!selectedTabletType.endsWith('(사진)') && tabletImageContainerVisible && selectedType2 !== '없음' && selectedType2 !== '문구'" class="image-text-container2" ref="tabletImageContainer">
         <div class="text-container2">
           <!-- 본관 선택 x-->
-          <div v-if="name3 === '없음'" class="resultText3">
+          <div v-if="name3 === '없음' && name2 != ''" class="resultText3">
             <div v-if="engraveType ==='일반'" class="getResult3Mark_0">
               故
             </div>
@@ -1329,7 +1329,7 @@
             </span>
           </div>
           <!-- 본관 선택 o -->
-          <div v-else class="resultText3">
+          <div v-else-if="name3 !== '없음' && name3 != ''" class="resultText3">
             <div :class="getResult4Mark"></div>
             <!-- 일반 -->
             <span class="resultText4_1_1" data-letter-count="5" v-if="engraveType === '일반' && name3.length=== 5">
@@ -1453,9 +1453,9 @@
         </div>
       </div>
       <!-- 사진 -->
-      <!-- <div v-if="selectedTabletType.endsWith('(사진)') && tabletImageContainerVisible3" class="image-text-container3" ref="tabletImageContainer3">
-        <img v-if="imageUrl" :src="imageUrl" alt="Uploaded Image" style="width: 145px; height: auto; margin-left: 30px; margin-bottom: 20px;"/>
-      </div> -->
+      <div v-if="selectedTabletType.endsWith('(사진)') && tabletImageContainerVisible3" class="image-text-container3" ref="tabletImageContainer3">
+        <!-- <img v-if="imageUrl" :src="imageUrl" alt="Uploaded Image" style="width: 145px; height: auto; margin-left: 30px; margin-bottom: 20px;"/> -->
+      </div>
       <br>
       <hr>
       <div>

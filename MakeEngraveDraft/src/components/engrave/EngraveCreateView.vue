@@ -306,23 +306,23 @@ export default {
     },
     getCremationOptions() {
       return {
-        서울: this.cremationSeoul(),
-        인천: this.cremationIncheon(),
-        경기: this.cremationGyeonggi(),
-        강원: this.cremationGangwon(),
-        충북: this.cremationChungbuk(),
-        충남: this.cremationChungnam(),
-        대전: this.cremationDaejeon(),
-        세종: this.cremationSejong(),
-        대구: this.cremationDaegu(),
-        부산: this.cremationBusan(),
-        전북: this.cremationJeonbuk(),
-        광주: this.cremationGwangju(),
-        전남: this.cremationJeonnam(),
-        경북: this.cremationGyeongbuk(),
-        울산: this.cremationUlsan(),
-        경남: this.cremationGyeongnam(),
-        제주: this.cremationJeju(),
+        '서울 / 경기 / 인천': this.cremationSeoul(),
+        // 인천: this.cremationIncheon(),
+        // 경기: this.cremationGyeonggi(),
+        충청도: this.cremationChungbuk(),
+        강원도: this.cremationGangwon(),
+        // 충남: this.cremationChungnam(),
+        대구광역시: this.cremationDaegu(),
+        광주광역시: this.cremationGwangju(),
+        부산광영시: this.cremationBusan(),
+        세종특별자치시: this.cremationSejong(),
+        울산광역시: this.cremationUlsan(),
+        전라남도: this.cremationJeonnam(),
+        전라북도: this.cremationJeonbuk(),
+        경상북도: this.cremationGyeongbuk(),
+        경상남도: this.cremationGyeongnam(),
+        제주특별자치도: this.cremationJeju(),
+        // 대전: this.cremationDaejeon(),
       };
     },
     cremationTime: {
@@ -522,66 +522,61 @@ export default {
         this.clientPhone = formattedPhone;
       }
     },
-    showPhoneWarning(phone) {
-      if (phone.length === 0 || phone.padStart('010-')) {
-        return false;
-      }
-      const phonePattern = /^[0-9]{3}-[0-9]{3,4}-[0-9]{4}$/;
-
-      return !phonePattern.test(phone);
-    },
     // 화장장 목록
+    // 서울/경기/인천
     cremationSeoul(){
-      return ['서울시립승화원', '서울추모공원'];
+      return ['서울시립승화원', '서울추모공원', '인천가족공원', '수원시연화장', '용인평온의숲나래원', '함백산추모공원', '성남시장례문화원'];
     },
-    cremationIncheon(){
-      return ['인천가족공원'];
-    },
-    cremationGyeonggi(){
-      return ['수원시연화장', '성남시영생원', '용인 평온의 숲', '함백산추모공원'];
-    },
-    cremationGangwon(){
-      return ['춘천안식원', '원주 하늘나래원', '동해시공설화장장', '태박시화장장', '속초시화장장', '정선군하늘화장터', '인제 하늘내린도리안', '강릉 솔향하늘길'];
-    },
+    // cremationIncheon(){
+    //   return ['인천가족공원'];
+    // },
+    // cremationGyeonggi(){
+    //   return ['수원시연화장', '성남시영생원', '용인 평온의 숲', '함백산추모공원'];
+    // },
+    // 충청도
     cremationChungbuk(){
-      return ['청주시목련공원', '충주시공설화장장', '제천시영원한쉼터'];
+      return ['공주나래원', '천안추모공원', '홍성추모공원', '제천시영원한쉼터', '청주시목련공원', '충주시시설관리공단'];
     },
-    cremationChungnam(){
-      return ['천안추모공원', '홍성군 추모공원', '공주나래원'];
+    // 강원도
+    cremationGangwon(){
+      return ['태백시화장장', '원주 하늘나래원', '솔향하늘길화장장', '동해삼척공동화장장', '속초시승화원', '원주시하늘나래원', '인제종합장묘센터', '정선하늘터', '춘천안식원'];
     },
-    cremationDaejeon(){
-      return ['대전시정수원'];
-    },
-    cremationSejong(){
-      return ['세종시은하수공원'];
-    },
+    // cremationChungnam(){
+    //   return ['천안추모공원', '홍성군 추모공원', '공주나래원'];
+    // },
     cremationDaegu(){
       return ['대구명복공원'];
+    },
+    cremationGwangju(){
+      return ['광주영락공원'];
     },
     cremationBusan(){
       return ['부산영락공원'];
     },
-    cremationJeonbuk(){
-      return ['전주시승화원', '군산시승화원', '남원시승화원', '익산시공설화장장', '서남권추모공원'];
-    },
-    cremationGwangju(){
-      return ['광주시영락공원'];
-    },
-    cremationJeonnam(){
-      return ['목포추모공원', '여수시 영락공원 승화원', '순천시립 추모공원', '국립소록도병원화장장', '광양시화장장', '재단법인 청계원', '남도광역추모공원'];
-    },
-    cremationGyeongbuk(){
-      return ['포항시립우현화장장', '포항시구룡포화장장', '김천시공설화장장', '안동장사문화공원', '영주시화장장', '상주시승천원', '문경예송원', '의성군공설화장장', '울릉하늘섬공원', '경주하늘마루', '구미시추모공원'];
+    cremationSejong(){
+      return ['세종은하수공원'];
     },
     cremationUlsan(){
       return ['울산하늘공원'];
     },
+    cremationJeonnam(){
+      return ['국립소록도병원화장장', '순천시립추모공원', '곡성아름다운청계공원', '광양시화장장', '목포추모공원', '여수시승화원', '해남남도광역추모공원'];
+    },
+    cremationJeonbuk(){
+      return ['군산시승화원', '전주시승화원', '정읍서남권추모공원', '남원시승화원', '익산시정수원'];
+    },
+    cremationGyeongbuk(){
+      return ['경주하늘마루', '영주시화장장', '울릉하늘섬공원', '구미시추모공원', '김천시화장장', '문경예송원', '상주시승천원', '안동장사문화공원', '울진군립추모원', '의성군공설화장장', '포항시구룡포화장장', '포항시우현화장장'];
+    },
     cremationGyeongnam(){
-      return ['창원시립마산화장장', '진주시안락공원', '통영시추모공원', '사천시 누리원', '밀양시공설화장', '고성군공설화장장', '김해추모의 공원', '남해추모누리영화원', '창원시립상복공원', '함안하늘공원'];
+      return ['고성군공설화장장', '김해추모의공원', '진주시안락공원', '창원시립마산화장장', '남해추모누리영화원', '밀양시공설화장시설', '사천시누리원', '창원시립상복공원', '통영시추모공원', '함안하늘공원'];
     },
     cremationJeju(){
-      return ['제주 양지공원'];
+      return ['제주양지공원'];
     },
+    // cremationDaejeon(){
+    //   return ['대전시정수원'];
+    // },
     handleDateTimeInput(event, targetDate) {
       const inputValue = event.target.value;
       const numericValue = inputValue.replace(/\D/g, ''); // 숫자만 추출
@@ -715,6 +710,14 @@ export default {
         // 정보 삭제
         localStorage.removeItem('savedInfo');
       }
+    },
+    showPhoneWarning(phone) {
+      if (phone.length === 0 || phone.padStart('010-')) {
+        return false;
+      }
+      const phonePattern = /^[0-9]{3}-[0-9]{3,4}-[0-9]{4}$/;
+
+      return !phonePattern.test(phone);
     },
   },
   watch: {

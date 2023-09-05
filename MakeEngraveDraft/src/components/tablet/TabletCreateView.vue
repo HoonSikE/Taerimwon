@@ -292,6 +292,11 @@
         </div>
       </div>
       <br>
+    </div>
+    <div class="appbr">
+      <br>
+    </div>
+    <div class="app">
       <!-- 본관에 따른 데이터 전송값 변경 -->
       <div v-if="selectedType2 === '일반(본관)' || selectedType2 === '기독교(본관)' || selectedType2 === '불교(본관)' || selectedType2 === '천주교(본관)' || selectedType2 === '문구'">
         <router-link :to="{name: 'result'}" @click.native="updateRouteData()" class="title4">👉 예시 보기 (각인/위패)</router-link>
@@ -299,6 +304,9 @@
       <div v-else>
         <router-link :to="{name: 'result'}" @click.native="updateRouteData2()" class="title4">👉 예시 보기 (각인/위패)</router-link>
       </div>
+    </div>
+    <div class="appbr">
+      <br>
     </div>
   </div>
 </template>
@@ -468,20 +476,20 @@ export default {
         this.$store.commit('updateImageUrl', value);
       }
     },
-    encodedName3() {
-      const trimmedName3 = this.name3.trim();
+    // encodedName3() {
+    //   const trimmedName3 = this.name3.trim();
 
-      if(this.selectedType2 === "일반(본관)")
-        return trimmedName3 === '' ? '희빈홍씨길동신위' : encodeURIComponent(trimmedName3);
-      else if(this.selectedType2 === "기독교(본관)")
-        return trimmedName3 === '' ? '희빈홍씨길동' : encodeURIComponent(trimmedName3);
-      else if(this.selectedType2 === "불교(본관)")
-        return trimmedName3 === '' ? '희빈홍씨길동영가' : encodeURIComponent(trimmedName3);
-      else if(this.selectedType2 === "천주교(본관)")
-        return trimmedName3 === '' ? '희빈홍씨길동' : encodeURIComponent(trimmedName3);
+    //   if(this.selectedType2 === "일반(본관)")
+    //     return trimmedName3 === '' ? '희빈홍씨길동신위' : encodeURIComponent(trimmedName3);
+    //   else if(this.selectedType2 === "기독교(본관)")
+    //     return trimmedName3 === '' ? '희빈홍씨길동' : encodeURIComponent(trimmedName3);
+    //   else if(this.selectedType2 === "불교(본관)")
+    //     return trimmedName3 === '' ? '희빈홍씨길동영가' : encodeURIComponent(trimmedName3);
+    //   else if(this.selectedType2 === "천주교(본관)")
+    //     return trimmedName3 === '' ? '희빈홍씨길동' : encodeURIComponent(trimmedName3);
 
-      return trimmedName3 === '' ? '본관' : encodeURIComponent(trimmedName3);
-    },
+    //   return trimmedName3 === '' ? '본관' : encodeURIComponent(trimmedName3);
+    // },
     defaultName3Placeholder() {
       // 여기서 기본 placeholder 값을 설정합니다
       if(this.selectedType2 === "일반(본관)")
@@ -576,13 +584,6 @@ export default {
     }
   },
   methods: {
-    updateRouteData(){
-      this.name3 = decodeURIComponent(this.encodedName3);
-      // (사진)으로 끝나면 selectedType2를 ''로 설정
-      if (this.selectedTabletType.endsWith('(사진)')) {
-        this.selectedType2 = '';
-      }
-    },
     updateRouteData2(){
       this.name3 = '없음';
     },
@@ -614,6 +615,12 @@ export default {
         this.imageUrl = e.target.result;
       };
       reader.readAsDataURL(this.selectedFile);
+    },
+    updateRouteData(){
+      // (사진)으로 끝나면 selectedType2를 ''로 설정
+      if (this.selectedTabletType.endsWith('(사진)')) {
+        this.selectedType2 = '';
+      }
     },
   }
 };
