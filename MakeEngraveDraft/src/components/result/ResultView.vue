@@ -1155,6 +1155,7 @@
             <span class="resultText1_1">{{date1.substr(9, 1)}}</span>
             <span v-if="date1Type==='음력'" class="resultText1_3">陰</span>
             <span v-if="date1Type==='양력'" class="resultText1_3">陽</span>
+            <!-- 2023-09-06 -->
           </span>
           <!-- 일반, 기독교, 불교, 천주교-->
           <span class="resultText2" v-if="selectedType === '일반' || selectedType === '기독교' || selectedType === '불교' || selectedType === '불교[검정]'
