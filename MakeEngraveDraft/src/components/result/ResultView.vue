@@ -1158,6 +1158,7 @@
             <!-- 2023-09-06 -->
             <!-- 2023-09-07 -->
             <!-- 2023-09-08 -->
+            <!-- 2023-09-09 -->
           </span>
           <!-- 일반, 기독교, 불교, 천주교-->
           <span class="resultText2" v-if="selectedType === '일반' || selectedType === '기독교' || selectedType === '불교' || selectedType === '불교[검정]'
