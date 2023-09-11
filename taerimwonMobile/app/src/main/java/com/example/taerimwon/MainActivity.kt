@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        // 캠처 방지
+        // 캡처 방지
         window.setFlags(
             WindowManager.LayoutParams.FLAG_SECURE,
             WindowManager.LayoutParams.FLAG_SECURE
