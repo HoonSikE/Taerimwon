@@ -4,8 +4,12 @@ buildscript {
         google()
         jcenter()
         mavenCentral()
+        maven{
+            url 'https://naver.jfrog.io/artifactory/maven/'
+        }
     }
     dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10"
 
         // Dagger Hilt
         classpath 'com.google.dagger:hilt-android-gradle-plugin:2.42'

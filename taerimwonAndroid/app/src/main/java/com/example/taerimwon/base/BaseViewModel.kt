@@ -1,4 +1,4 @@
-package com.example.taxi.base
+package com.example.taerimwon.base
 
 import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable

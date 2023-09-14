@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/linearBackground">
+
+        <TextView
+            android:id="@+id/fragment_order_text2"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="fragment_order top"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/scroll_view_order"
+            android:background="@color/diamond"
+            />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll_view_order"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_order_text2"
+            app:layout_constraintBottom_toTopOf="@+id/button_result_fragment"
+            app:layout_constraintVertical_bias="0.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/fragment_order_text"
+                    android:layout_width="0dp"
+                    android:layout_height="600dp"
+                    android:text="fragment_order"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_urn_container"
+                    android:background="@color/gold"
+                    />
+
+                <FrameLayout
+                    android:id="@+id/fragment_urn_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_order_text"
+                    app:layout_constraintBottom_toTopOf="@id/fragment_tablet_container"
+                    />
+
+                <FrameLayout
+                    android:id="@+id/fragment_tablet_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_urn_container"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/button_result_fragment"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="다음 페이지"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
