@@ -31,4 +31,31 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     }
     private fun observer() {
     }
+
+    // MMS 메시지 보내기 함수
+    private fun sendMMS() {
+        // MMS 전송을 위한 데이터 준비
+        val values = ContentValues()
+        values.put(Telephony.Mms.ADDR, "수신자 전화번호") // 수신자 전화번호
+        values.put(Telephony.Mms.SUBJECT, "MMS 제목") // MMS 제목
+        values.put(Telephony.Mms.TEXT_ONLY, "MMS 내용") // MMS 내용
+
+        // MMS 메시지를 MMS 데이터베이스에 추가
+        val contentResolver = applicationContext.contentResolver
+        val mmsUri = contentResolver.insert(Telephony.Mms.Outbox.CONTENT_URI, values)
+
+        // MMS 이미지 추가
+        val imageValues = ContentValues()
+        imageValues.put(Telephony.Mms.Part.MSG_ID, mmsUri?.lastPathSegment)
+        imageValues.put(Telephony.Mms.Part.CONTENT_TYPE, "image/jpeg")
+        imageValues.put(Telephony.Mms.Part.NAME, "image.jpg")
+        imageValues.put(Telephony.Mms.Part.FILE_NAME, "image.jpg")
+        imageValues.put(Telephony.Mms.Part.URI, "파일 URI, 예: content://media/external/images/media/1")
+
+        contentResolver.insert(Telephony.Mms.Part.CONTENT_URI, imageValues)
+
+        // MMS 메시지 전송
+        val smsManager = SmsManager.getDefault()
+        smsManager.sendMultimediaMessage(applicationContext, mmsUri)
+    }
 }
