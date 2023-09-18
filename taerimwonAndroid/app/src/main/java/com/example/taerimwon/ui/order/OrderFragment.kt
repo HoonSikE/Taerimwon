@@ -1,10 +1,16 @@
 package com.example.taerimwon.ui.order
 
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
+import android.widget.RadioButton
+import androidx.core.view.isGone
 import com.example.taerimwon.R
 import com.example.taerimwon.databinding.FragmentOrderBinding
 import com.example.taerimwon.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.fragment.findNavController
+import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.result.TabletContainerFragment
 import com.example.taerimwon.ui.result.UrnContainerFragment
 
@@ -12,11 +18,30 @@ import com.example.taerimwon.ui.result.UrnContainerFragment
 class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order) {
     override fun init() {
         initData()
+        setOnCheckedChangeListener()
         setOnClickListeners()
         observer()
     }
 
     private fun initData() {
+        println("ApplicationClass.prefs.saveInfo :" + ApplicationClass.prefs.saveInfo)
+        println("ApplicationClass.prefs.leaderName :" + ApplicationClass.prefs.leaderName)
+        println("ApplicationClass.prefs.leaderTel :" + ApplicationClass.prefs.leaderTel)
+        println("ApplicationClass.prefs.leaderDepartment :" + ApplicationClass.prefs.leaderDepartment)
+
+        // 발주자 정보
+//        if(ApplicationClass.prefs.saveInfo) {
+            binding.checkboxLeader.isChecked = ApplicationClass.prefs.saveInfo
+            binding.editTextLeaderName.setText(ApplicationClass.prefs.leaderName)
+            binding.editTextLeaderTel.setText(ApplicationClass.prefs.leaderTel)
+            binding.editTextLeaderDepartment.setText(ApplicationClass.prefs.leaderDepartment)
+
+            binding.editTextClientName.setText(ApplicationClass.prefs.clientName)
+            binding.editTextClientTel.setText(ApplicationClass.prefs.clientTel)
+
+            binding.editTextNote.setText(ApplicationClass.prefs.note)
+//        }
+
         // Urn Fragment 추가
         val urnFragment = UrnContainerFragment()
         childFragmentManager.beginTransaction()
@@ -29,11 +54,179 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             .replace(R.id.fragment_tablet_container, tabletFragment)
             .commit()
     }
+    private fun setOnCheckedChangeListener(){
+        val radioGroup = binding.radioGroup
+        val layoutRadioCremation = binding.layoutRadioCremation
+        val layoutRadioFuneral = binding.layoutRadioFuneral
+        val layoutRadioBurial = binding.layoutRadioBurial
+
+        // 라디오 버튼 선택 시 호출되는 리스너 설정
+        radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            // 선택된 라디오 버튼을 루트 뷰 내에서 찾습니다.
+            val rootView = view // Fragment의 루트 뷰를 가져옵니다.
+            val radioButton = rootView?.findViewById<RadioButton>(checkedId)
+
+            // 선택된 라디오 버튼에 따라 레이아웃 변경
+            when (radioButton?.id) {
+                R.id.radioButton1 -> {
+                    layoutRadioCremation.visibility = View.VISIBLE
+                    layoutRadioFuneral.visibility = View.GONE
+                    layoutRadioBurial.visibility = View.GONE
+                }
+                R.id.radioButton2 -> {
+                    layoutRadioCremation.visibility = View.GONE
+                    layoutRadioFuneral.visibility = View.VISIBLE
+                    layoutRadioBurial.visibility = View.GONE
+                }
+                R.id.radioButton3 -> {
+                    layoutRadioCremation.visibility = View.GONE
+                    layoutRadioFuneral.visibility = View.GONE
+                    layoutRadioBurial.visibility = View.VISIBLE
+                }
+            }
+        }
+    }
     private fun setOnClickListeners() {
         binding.buttonResultFragment.setOnClickListener{
             findNavController().navigate(R.id.action_orderFragment_to_resultFragment)
         }
     }
     private fun observer() {
+        // 발주자 정보
+        binding.editTextLeaderName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 이전 텍스트 변경 이벤트
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // 텍스트 변경 이벤트
+                ApplicationClass.prefs.leaderName = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+                println("ApplicationClass.prefs.leaderName :" + ApplicationClass.prefs.leaderName)
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 텍스트 변경 후 이벤트
+            }
+        })
+        binding.editTextLeaderTel.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                ApplicationClass.prefs.leaderTel = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+                println("ApplicationClass.prefs.leaderTel :" + ApplicationClass.prefs.leaderTel)
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+        binding.editTextLeaderDepartment.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                ApplicationClass.prefs.leaderDepartment = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+                println("ApplicationClass.prefs.leaderDepartment :" + ApplicationClass.prefs.leaderDepartment)
+
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+        binding.checkboxLeader.setOnCheckedChangeListener { buttonView, isChecked ->
+            ApplicationClass.prefs.saveInfo = isChecked
+            println("ApplicationClass.prefs.saveInfo :" + ApplicationClass.prefs.saveInfo)
+            if(!ApplicationClass.prefs.saveInfo){
+                ApplicationClass.prefs.leaderName = ""
+                ApplicationClass.prefs.leaderTel = ""
+                ApplicationClass.prefs.leaderDepartment = ""
+            }
+        }
+
+        // 상주 정보
+        binding.editTextClientName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                ApplicationClass.prefs.clientName = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+        binding.editTextClientTel.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                ApplicationClass.prefs.clientTel = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+        // 발주 장소
+//        ApplicationClass.prefs.selectedLocation = binding.editText.toString()
+        // 화장장
+//        ApplicationClass.prefs.cremationArea = binding.editText.toString()
+        binding.editTextCremationTime.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                ApplicationClass.prefs.cremationTime = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+        // 장례식장
+        binding.editTextFuneralName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                ApplicationClass.prefs.funeralName = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+        binding.editTextFuneralNumber.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                ApplicationClass.prefs.funeralNumber = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+        binding.editTextFuneralTime.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                ApplicationClass.prefs.funeralTime = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+        // 장지
+        binding.editTextBurialName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                ApplicationClass.prefs.burialName = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+        binding.editTextBurialTime.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                ApplicationClass.prefs.burialTime = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+        // 메모
+        binding.editTextNote.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                ApplicationClass.prefs.note = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+            }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
     }
 }

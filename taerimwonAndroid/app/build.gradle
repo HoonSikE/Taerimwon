@@ -100,6 +100,10 @@ dependencies {
     // Firebase Storage 이미지 불러오기 (Glide)
     implementation 'com.github.bumptech.glide:glide:4.13.2'
     annotationProcessor 'com.github.bumptech.glide:glide:4.13.2'
+
+    // MMS 메시지 첨부
+    // 이미지 인코딩 디코딩
+    implementation 'org.jcodec:jcodec-android:0.2.3'
 }
 
 kapt {

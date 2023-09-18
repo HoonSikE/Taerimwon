@@ -19,5 +19,6 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
     private fun setOnClickListeners() {
     }
     private fun observer() {
+
     }
 }
