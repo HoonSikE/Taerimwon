@@ -37,6 +37,9 @@ class PhoneAuthDialogFragment() : DialogFragment() {
                 dismiss()
             }
         }
+        binding.buttonDlgAddressUpdate2.setOnClickListener {
+            dismiss()
+        }
 
         return view
     }

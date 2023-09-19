@@ -7,6 +7,7 @@ import kotlinx.parcelize.Parcelize
 data class User (
     val uid: String = "",
     val userTel: String = "",
+    val initDate: String = "",
     val currentDate: String = "",
     @field:JvmField
     val authenticated: Boolean = false,

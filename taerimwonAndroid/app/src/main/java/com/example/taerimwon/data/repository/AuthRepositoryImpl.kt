@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.fragment.app.FragmentActivity
 import com.example.taerimwon.data.dto.user.User
 import com.example.taerimwon.data.dto.user.black_list.BlackList
+import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.utils.constant.FireStoreCollection
 import com.example.taerimwon.utils.constant.UiState
 import com.google.firebase.FirebaseException
@@ -37,6 +38,14 @@ class AuthRepositoryImpl (
                 if (blackListItems.isNotEmpty()) {
                     result.invoke(UiState.Success(blackListItems))
                     println("blackList: " + blackListItems)
+
+                    for (blackList in blackListItems) {
+                        if (blackList.tel.replace("+82", "")
+                                .equals(ApplicationClass.prefs.userTel)
+                        ) {
+                            ApplicationClass.prefs.resetPreferencesUser();
+                        }
+                    }
                 } else {
                     println("blackList: " + "No documents found")
                     Log.d("getBlackList", "No documents found")
@@ -56,10 +65,11 @@ class AuthRepositoryImpl (
 
     override fun phoneAuth(tel: String, activity: FragmentActivity, result: (String) -> Unit){
         auth.setLanguageCode("ko-KR")
+        auth.firebaseAuthSettings.setAppVerificationDisabledForTesting(true)
 
         println("phoneNumber : " + tel)
         val options = PhoneAuthOptions.newBuilder(auth)
-            .setPhoneNumber(tel)
+            .setPhoneNumber("+82" + tel)
             .setTimeout(60L, TimeUnit.SECONDS)
             .setActivity(activity)
             .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -83,7 +93,7 @@ class AuthRepositoryImpl (
                     verificationId: String,
                     token: PhoneAuthProvider.ForceResendingToken
                 ) {
-                    println("ckeckPhoneAuth")
+                    println("phoneAuth:")
                     result.invoke(verificationId)
                 }
             })
@@ -100,11 +110,10 @@ class AuthRepositoryImpl (
                 if (task.isSuccessful) {
                     auth.signOut()
                     println("ckeckPhoneAuth isSuccessful")
-                    result.invoke(UiState.Success("User has been ckecked PhoneAuth successfully"))
-
 
                     // 유저 전화번호 추가
-                    val document = database.collection(FireStoreCollection.USER).document("hahaha")
+                    val document = database.collection(FireStoreCollection.USER).document(user.uid)
+
                     document
                         .set(user)
                         .addOnSuccessListener {
@@ -123,6 +132,8 @@ class AuthRepositoryImpl (
                             println("user has been added fail")
                             Log.d("adduser", "user has been added fail")
                         }
+
+                    result.invoke(UiState.Success("User has been ckecked PhoneAuth successfully"))
                 } else {
                     println("ckeckPhoneAuth Fail")
                     result.invoke(UiState.Failure("User has been ckecked PhoneAuth Failure"))

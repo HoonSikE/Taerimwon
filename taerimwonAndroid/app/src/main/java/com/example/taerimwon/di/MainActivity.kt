@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_SECURE,
             WindowManager.LayoutParams.FLAG_SECURE
         )
+
+        ApplicationClass.prefs.resetPreferences()
     }
 
     private fun checkStoragePermission() {

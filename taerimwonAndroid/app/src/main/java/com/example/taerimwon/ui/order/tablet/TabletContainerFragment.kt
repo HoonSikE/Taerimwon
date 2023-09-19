@@ -1,4 +1,4 @@
-package com.example.taerimwon.ui.result
+package com.example.taerimwon.ui.order.tablet
 
 import com.example.taerimwon.R
 import com.example.taerimwon.base.BaseFragment

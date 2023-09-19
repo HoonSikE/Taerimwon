@@ -30,7 +30,8 @@
                     android:hint="010-1234-5678"
                     android:gravity="center"
                     android:imeOptions="actionDone"
-                    android:inputType="number"
+                    android:inputType="phone"
+                    android:maxLength="13"
                     android:textColorHint="@color/hintGray"
                     app:layout_constraintTop_toBottomOf="@+id/text_tel"
                     app:layout_constraintStart_toStartOf="@+id/text_tel"
@@ -64,10 +65,12 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:text="다음 페이지"
+            android:enabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_tel" />
+            app:layout_constraintTop_toBottomOf="@+id/editText_tel"
+            />
 
 <!--        <ProgressBar-->
 <!--            android:id="@+id/progressBar_join_loading"-->

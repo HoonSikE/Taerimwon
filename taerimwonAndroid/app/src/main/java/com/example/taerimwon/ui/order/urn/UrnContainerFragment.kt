@@ -1,4 +1,4 @@
-package com.example.taerimwon.ui.result
+package com.example.taerimwon.ui.order.urn
 
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,6 +7,7 @@ import com.example.taerimwon.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.taerimwon.databinding.FragmentUrnContainerBinding
 import com.example.taerimwon.di.ApplicationClass
+import com.example.taerimwon.utils.input.DateTextWatcher
 
 
 @AndroidEntryPoint
@@ -40,7 +41,9 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                 // 텍스트 변경 후 이벤트
             }
         })
-        binding.editTextDate1.addTextChangedListener(object : TextWatcher {
+        val editTextDate1 = binding.editTextDate1
+        editTextDate1.addTextChangedListener(DateTextWatcher(editTextDate1))
+        editTextDate1.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // 이전 텍스트 변경 이벤트
             }
@@ -68,7 +71,9 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
 //                // 텍스트 변경 후 이벤트
 //            }
 //        })
-        binding.editTextDate2.addTextChangedListener(object : TextWatcher {
+        val editTextDate2 = binding.editTextDate2
+        editTextDate2.addTextChangedListener(DateTextWatcher(editTextDate2))
+        editTextDate2.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // 이전 텍스트 변경 이벤트
             }

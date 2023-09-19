@@ -18,18 +18,21 @@ import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.fragment.app.viewModels
 import com.example.taerimwon.R
 import com.example.taerimwon.base.BaseFragment
 import com.example.taerimwon.databinding.FragmentResultBinding
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.fragment.findNavController
 import com.example.taerimwon.di.ApplicationClass
+import com.example.taerimwon.ui.home.AuthViewModel
 import com.example.taerimwon.utils.view.toast
 import java.io.File
 import java.io.FileOutputStream
 
 @AndroidEntryPoint
 class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_result) {
+    val authViewModel: AuthViewModel by viewModels()
     private val REQUEST_CODE_STORAGE_PERMISSION = 101 // 권한 요청 코드
     private lateinit var msg: String
 
@@ -40,6 +43,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     }
 
     private fun initData() {
+        authViewModel.getBlackList()
+        if(!ApplicationClass.prefs.authenticated)
+            findNavController().navigate(R.id.action_resultFragment_to_phoneAuthFragment)
+
         msg = "발주자명: " + ApplicationClass.prefs.leaderName +
                 "\n발주자 전화번호: " + ApplicationClass.prefs.leaderTel +
                 "\n소속: " + ApplicationClass.prefs.leaderDepartment +
@@ -54,12 +61,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     }
     private fun setOnClickListeners() {
         binding.buttonResultToOrderFragment.setOnClickListener{
-            ApplicationClass.prefs.clientName = ""
-            ApplicationClass.prefs.clientTel = ""
-            ApplicationClass.prefs.name1 = ""
-            ApplicationClass.prefs.date1 = ""
-            ApplicationClass.prefs.date2 = ""
-            ApplicationClass.prefs.note = ""
+            ApplicationClass.prefs.resetPreferences()
 
             findNavController().navigate(R.id.action_resultFragment_to_orderFragment)
         }

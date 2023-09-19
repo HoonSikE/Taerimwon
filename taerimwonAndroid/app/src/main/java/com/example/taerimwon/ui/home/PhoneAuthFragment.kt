@@ -1,5 +1,6 @@
 package com.example.taerimwon.ui.home
 
+import android.telephony.PhoneNumberFormattingTextWatcher
 import androidx.fragment.app.viewModels
 import com.example.taerimwon.R
 import com.example.taerimwon.data.dto.user.User
@@ -9,6 +10,8 @@ import com.example.taerimwon.utils.view.toast
 import com.example.taerimwon.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.fragment.findNavController
+import com.example.taerimwon.di.ApplicationClass
+import com.example.taerimwon.utils.input.PhoneNumberTextWatcher
 
 @AndroidEntryPoint
 class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragment_phone_auth) {
@@ -19,57 +22,79 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
     override fun init() {
         initData()
         setOnClickListeners()
+        addTextChangedListener()
         observer()
     }
 
     private fun initData() {
         authViewModel.getBlackList()
+        if(ApplicationClass.prefs.authenticated)
+            findNavController().navigate(R.id.action_phoneAuthFragment_to_orderFragment)
     }
     private fun setOnClickListeners() {
         binding.buttonTelAuth.setOnClickListener{
-            var activity = requireActivity()
+            if(binding.editTextTel.text.toString() == "") {
+                toast("전화번호를 올바르게 입력해주세요")
+            }else{
+                var activity = requireActivity()
+                var userTel = binding.editTextTel.text.toString().replace("-", "")
 
-            authViewModel.getBlackList()
+                authViewModel.phoneAuth (
+                    tel = userTel,
+                    activity = activity
+                )
+                toast("인증번호가 전송되었습니다. 60초 이내에 입력해주세요.")
 
-            authViewModel.phoneAuth (
-                tel = "+82" + binding.editTextTel.text.toString(),
-                activity = activity
-            )
-            toast("인증번호가 전송되었습니다. 60초 이내에 입력해주세요.")
-//            binding.buttonTelAuth.isEnabled = false
+                // 유저 정보 추가
+                user = User(
+                    userTel,
+                    userTel,
+                    "getNowCalendar().toString()",
+                    "getNowCalendar().toString()",
+                    true
+                )
 
-            // 유저 정보 추가
-            user = User(
-                "dd",
-                "+82" + binding.editTextTel.text.toString(),
-                "dd",
-                true
-            )
-
-            val dialog = PhoneAuthDialogFragment()
-            // 화면 밖 터치시 종료되지 않게 하기
-            dialog.isCancelable = false
-            dialog.setOnOKClickedListener { content ->
-                if(verificationId != "") {
-                    authViewModel.ckeckPhoneAuth(
-                        user = user,
-                        verificationId = verificationId,
-                        code = content
-                    )
+                val dialog = PhoneAuthDialogFragment()
+                // 화면 밖 터치시 종료되지 않게 하기
+                dialog.isCancelable = false
+                dialog.setOnOKClickedListener { content ->
+                    if(verificationId != "") {
+                        authViewModel.ckeckPhoneAuth(
+                            user = user,
+                            verificationId = verificationId,
+                            code = content
+                        )
+                    }
                 }
+                dialog.show(childFragmentManager, "complete phone auth")
             }
-            dialog.show(childFragmentManager, "complete phone auth")
         }
         binding.buttonOrderFragment.setOnClickListener{
-            findNavController().navigate(R.id.action_phoneAuthFragment_to_orderFragment)
+            authViewModel.getBlackList()
+            if(ApplicationClass.prefs.authenticated)
+                findNavController().navigate(R.id.action_phoneAuthFragment_to_orderFragment)
         }
     }
     private fun observer() {
+        authViewModel.getBlackList.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is UiState.Loading -> {
+                    // 데이터 로딩 중인 경우 처리
+                }
+                is UiState.Success -> {
+                    val blackListItems = state.data // 실제 데이터를 얻기 위해 data 속성을 사용
+                }
+                is UiState.Failure -> {
+                    val errorMessage = state.error // 오류 메시지를 얻기 위해 error 속성을 사용
+                    // 오류 처리
+                }
+            }
+        }
         authViewModel.phoneAuth.observe(viewLifecycleOwner) { state ->
             verificationId = state
         }
         authViewModel.ckeckPhoneAuth.observe(viewLifecycleOwner) { state ->
-            when(state) {
+            when (state) {
                 is UiState.Loading -> {
 //                    binding.progressBarJoinLoading.show()
                 }
@@ -79,9 +104,21 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
                 }
                 is UiState.Success -> {
 //                    binding.progressBarJoinLoading.hide()
+                    binding.editTextTel.isEnabled = false
+                    binding.buttonTelAuth.isEnabled = false
+                    binding.buttonOrderFragment.isEnabled = true
+                    ApplicationClass.prefs.uid = user.uid
+                    ApplicationClass.prefs.userTel = user.userTel
+                    ApplicationClass.prefs.authenticated = true
                     toast(state.data)
+
+                    authViewModel.getBlackList()
                 }
             }
         }
+    }
+    private fun addTextChangedListener() {
+        val editTextTel = binding.editTextTel
+        editTextTel.addTextChangedListener(PhoneNumberTextWatcher(editTextTel))
     }
 }

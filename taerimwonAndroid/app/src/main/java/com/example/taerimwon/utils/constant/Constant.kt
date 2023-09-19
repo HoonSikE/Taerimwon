@@ -2,6 +2,8 @@ package com.example.taerimwon.utils.constant
 
 /**유저 ID**/
 const val UID = "uid"
+const val USERTEL = "userTel"
+const val AUTHENTICATED = "authenticated"
 
 /**발주자 정보**/
 const val LEADERNAME = "leaderName"

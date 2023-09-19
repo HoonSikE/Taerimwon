@@ -1,29 +1,40 @@
 package com.example.taerimwon.ui.order
 
+import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.RadioButton
 import androidx.core.view.isGone
+import androidx.fragment.app.viewModels
 import com.example.taerimwon.R
 import com.example.taerimwon.databinding.FragmentOrderBinding
 import com.example.taerimwon.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.fragment.findNavController
 import com.example.taerimwon.di.ApplicationClass
-import com.example.taerimwon.ui.result.TabletContainerFragment
-import com.example.taerimwon.ui.result.UrnContainerFragment
+import com.example.taerimwon.ui.home.AuthViewModel
+import com.example.taerimwon.ui.order.tablet.TabletContainerFragment
+import com.example.taerimwon.ui.order.urn.UrnContainerFragment
+import com.example.taerimwon.utils.input.DateTimeTextWatcher
+import com.example.taerimwon.utils.input.PhoneNumberTextWatcher
 
 @AndroidEntryPoint
 class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order) {
+    val authViewModel: AuthViewModel by viewModels()
     override fun init() {
         initData()
         setOnCheckedChangeListener()
         setOnClickListeners()
+        addTextChangedListener()
         observer()
     }
 
     private fun initData() {
+        authViewModel.getBlackList()
+        if (!ApplicationClass.prefs.authenticated)
+            findNavController().navigate(R.id.action_orderFragment_to_phoneAuthFragment)
+
         println("ApplicationClass.prefs.saveInfo :" + ApplicationClass.prefs.saveInfo)
         println("ApplicationClass.prefs.leaderName :" + ApplicationClass.prefs.leaderName)
         println("ApplicationClass.prefs.leaderTel :" + ApplicationClass.prefs.leaderTel)
@@ -31,15 +42,15 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
 
         // 발주자 정보
 //        if(ApplicationClass.prefs.saveInfo) {
-            binding.checkboxLeader.isChecked = ApplicationClass.prefs.saveInfo
-            binding.editTextLeaderName.setText(ApplicationClass.prefs.leaderName)
-            binding.editTextLeaderTel.setText(ApplicationClass.prefs.leaderTel)
-            binding.editTextLeaderDepartment.setText(ApplicationClass.prefs.leaderDepartment)
+        binding.checkboxLeader.isChecked = ApplicationClass.prefs.saveInfo
+        binding.editTextLeaderName.setText(ApplicationClass.prefs.leaderName)
+        binding.editTextLeaderTel.setText(ApplicationClass.prefs.leaderTel)
+        binding.editTextLeaderDepartment.setText(ApplicationClass.prefs.leaderDepartment)
 
-            binding.editTextClientName.setText(ApplicationClass.prefs.clientName)
-            binding.editTextClientTel.setText(ApplicationClass.prefs.clientTel)
+        binding.editTextClientName.setText(ApplicationClass.prefs.clientName)
+        binding.editTextClientTel.setText(ApplicationClass.prefs.clientTel)
 
-            binding.editTextNote.setText(ApplicationClass.prefs.note)
+        binding.editTextNote.setText(ApplicationClass.prefs.note)
 //        }
 
         // Urn Fragment 추가
@@ -54,7 +65,8 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             .replace(R.id.fragment_tablet_container, tabletFragment)
             .commit()
     }
-    private fun setOnCheckedChangeListener(){
+
+    private fun setOnCheckedChangeListener() {
         val radioGroup = binding.radioGroup
         val layoutRadioCremation = binding.layoutRadioCremation
         val layoutRadioFuneral = binding.layoutRadioFuneral
@@ -86,12 +98,14 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             }
         }
     }
+
     private fun setOnClickListeners() {
-        binding.buttonResultFragment.setOnClickListener{
+        binding.buttonResultFragment.setOnClickListener {
             findNavController().navigate(R.id.action_orderFragment_to_resultFragment)
         }
     }
-    private fun observer() {
+
+    private fun addTextChangedListener() {
         // 발주자 정보
         binding.editTextLeaderName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -100,7 +114,8 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 // 텍스트 변경 이벤트
-                ApplicationClass.prefs.leaderName = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+                ApplicationClass.prefs.leaderName =
+                    s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
                 println("ApplicationClass.prefs.leaderName :" + ApplicationClass.prefs.leaderName)
             }
 
@@ -108,34 +123,41 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                 // 텍스트 변경 후 이벤트
             }
         })
-        binding.editTextLeaderTel.addTextChangedListener(object : TextWatcher {
+
+        val editTextLeaderTel = binding.editTextLeaderTel
+        editTextLeaderTel.addTextChangedListener(PhoneNumberTextWatcher(editTextLeaderTel))
+        editTextLeaderTel.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                ApplicationClass.prefs.leaderTel = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+                ApplicationClass.prefs.leaderTel =
+                    s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
                 println("ApplicationClass.prefs.leaderTel :" + ApplicationClass.prefs.leaderTel)
             }
+
             override fun afterTextChanged(s: Editable?) {
             }
         })
         binding.editTextLeaderDepartment.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                ApplicationClass.prefs.leaderDepartment = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+                ApplicationClass.prefs.leaderDepartment =
+                    s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
                 println("ApplicationClass.prefs.leaderDepartment :" + ApplicationClass.prefs.leaderDepartment)
 
             }
+
             override fun afterTextChanged(s: Editable?) {
             }
         })
         binding.checkboxLeader.setOnCheckedChangeListener { buttonView, isChecked ->
             ApplicationClass.prefs.saveInfo = isChecked
             println("ApplicationClass.prefs.saveInfo :" + ApplicationClass.prefs.saveInfo)
-            if(!ApplicationClass.prefs.saveInfo){
-                ApplicationClass.prefs.leaderName = ""
-                ApplicationClass.prefs.leaderTel = ""
-                ApplicationClass.prefs.leaderDepartment = ""
+            if (!ApplicationClass.prefs.saveInfo) {
+                ApplicationClass.prefs.resetPreferencesLeader()
             }
         }
 
@@ -143,18 +165,27 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         binding.editTextClientName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                ApplicationClass.prefs.clientName = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+                ApplicationClass.prefs.clientName =
+                    s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
             }
+
             override fun afterTextChanged(s: Editable?) {
             }
         })
-        binding.editTextClientTel.addTextChangedListener(object : TextWatcher {
+
+        val editTextClientTel = binding.editTextClientTel
+        editTextClientTel.addTextChangedListener(PhoneNumberTextWatcher(editTextClientTel))
+        editTextClientTel.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                ApplicationClass.prefs.clientTel = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+                ApplicationClass.prefs.clientTel =
+                    s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
             }
+
             override fun afterTextChanged(s: Editable?) {
             }
         })
@@ -162,12 +193,17 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
 //        ApplicationClass.prefs.selectedLocation = binding.editText.toString()
         // 화장장
 //        ApplicationClass.prefs.cremationArea = binding.editText.toString()
-        binding.editTextCremationTime.addTextChangedListener(object : TextWatcher {
+        val editTextCremationTime = binding.editTextCremationTime
+        editTextCremationTime.addTextChangedListener(DateTimeTextWatcher(editTextCremationTime))
+        editTextCremationTime.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                ApplicationClass.prefs.cremationTime = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+                ApplicationClass.prefs.cremationTime =
+                    s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
             }
+
             override fun afterTextChanged(s: Editable?) {
             }
         })
@@ -175,27 +211,38 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         binding.editTextFuneralName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                ApplicationClass.prefs.funeralName = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+                ApplicationClass.prefs.funeralName =
+                    s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
             }
+
             override fun afterTextChanged(s: Editable?) {
             }
         })
         binding.editTextFuneralNumber.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                ApplicationClass.prefs.funeralNumber = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+                ApplicationClass.prefs.funeralNumber =
+                    s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
             }
+
             override fun afterTextChanged(s: Editable?) {
             }
         })
-        binding.editTextFuneralTime.addTextChangedListener(object : TextWatcher {
+        val editTextFuneralTime = binding.editTextFuneralTime
+        editTextFuneralTime.addTextChangedListener(DateTimeTextWatcher(editTextFuneralTime))
+        editTextFuneralTime.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                ApplicationClass.prefs.funeralTime = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+                ApplicationClass.prefs.funeralTime =
+                    s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
             }
+
             override fun afterTextChanged(s: Editable?) {
             }
         })
@@ -203,18 +250,27 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         binding.editTextBurialName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                ApplicationClass.prefs.burialName = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+                ApplicationClass.prefs.burialName =
+                    s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
             }
+
             override fun afterTextChanged(s: Editable?) {
             }
         })
-        binding.editTextBurialTime.addTextChangedListener(object : TextWatcher {
+
+        val editTextBurialTime = binding.editTextBurialTime
+        editTextBurialTime.addTextChangedListener(DateTimeTextWatcher(editTextBurialTime))
+        editTextBurialTime.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                ApplicationClass.prefs.burialTime = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+                ApplicationClass.prefs.burialTime =
+                    s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
             }
+
             override fun afterTextChanged(s: Editable?) {
             }
         })
@@ -222,11 +278,18 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         binding.editTextNote.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                ApplicationClass.prefs.note = s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+                ApplicationClass.prefs.note =
+                    s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
             }
+
             override fun afterTextChanged(s: Editable?) {
             }
         })
+    }
+
+    private fun observer() {
+
     }
 }

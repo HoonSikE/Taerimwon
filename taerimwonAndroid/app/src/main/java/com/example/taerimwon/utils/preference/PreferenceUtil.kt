@@ -11,6 +11,17 @@ class PreferenceUtil(context: Context) {
         set(value){
             user.edit().putString(UID, value).apply()
         }
+    var userTel : String?
+        get() = user.getString(USERTEL, "")
+        set(value){
+            user.edit().putString(USERTEL, value).apply()
+        }
+    var authenticated : Boolean
+        get() = user.getBoolean(AUTHENTICATED, false)
+        set(value){
+            user.edit().putBoolean(AUTHENTICATED, value).apply()
+        }
+
     private val manager: SharedPreferences = context.getSharedPreferences("manager", Context.MODE_PRIVATE)
     // 발주자 정보
     var leaderName : String?
@@ -266,4 +277,62 @@ class PreferenceUtil(context: Context) {
         set(value){
             order.edit().putString(IMAGEURL, value).apply()
         }
+
+    fun resetPreferencesUser() {
+        // user SharedPreferences 초기화
+        uid = ""
+        userTel = ""
+        authenticated = false
+    }
+    fun resetPreferencesLeader() {
+        // manager SharedPreferences 초기화
+        leaderName = ""
+        leaderTel = ""
+        leaderDepartment = ""
+        saveInfo = false
+    }
+    fun resetPreferences() {
+        // order SharedPreferences 초기화
+        clientName = ""
+        clientTel = ""
+        selectedLocation = ""
+        cremationArea = ""
+        cremationTime = ""
+        funeralName = ""
+        funeralNumber = ""
+        funeralTime = ""
+        burialName = ""
+        burialTime = ""
+        engraveType = ""
+        selectedType = ""
+        name1 = ""
+        name2 = ""
+        date1 = ""
+        date1Type = ""
+        date2 = ""
+        date2Type = ""
+        religion = ""
+        selectedUrnType = ""
+        boneEngraveType = ""
+        boneSelectedType = ""
+        boneSex = ""
+        boneName1 = ""
+        boneName2 = ""
+        boneDate1 = ""
+        boneDate1Type = ""
+        boneDate2 = ""
+        boneDate2Type = ""
+        boneReligion = ""
+        showRouterView = ""
+        selectedType2 = ""
+        name3 = ""
+        name3Type = ""
+        name3_1 = ""
+        name3_2 = ""
+        name3_3 = ""
+        selectedTabletType = ""
+        note = ""
+        selectedFile = ""
+        imageUrl = ""
+    }
 }
