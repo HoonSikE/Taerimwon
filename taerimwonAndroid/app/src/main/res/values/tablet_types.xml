@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tablet_types">
+        <item>흰색</item>
+        <item>검정</item>
+        <item>투명</item>
+        <item>백색(사진)</item>
+        <item>추모패(사진)</item>
+    </string-array>
+</resources>

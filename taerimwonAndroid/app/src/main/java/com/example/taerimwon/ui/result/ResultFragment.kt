@@ -11,6 +11,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.net.Uri
+import android.os.Handler
 import android.os.Process
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.example.taerimwon.R
 import com.example.taerimwon.base.BaseFragment
@@ -35,9 +37,11 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     val authViewModel: AuthViewModel by viewModels()
     private val REQUEST_CODE_STORAGE_PERMISSION = 101 // 권한 요청 코드
     private lateinit var msg: String
+    private lateinit var bitmap: Bitmap
 
     override fun init() {
         initData()
+        setImage()
         setOnClickListeners()
         observer()
     }
@@ -47,17 +51,61 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         if(!ApplicationClass.prefs.authenticated)
             findNavController().navigate(R.id.action_resultFragment_to_phoneAuthFragment)
 
-        msg = "발주자명: " + ApplicationClass.prefs.leaderName +
-                "\n발주자 전화번호: " + ApplicationClass.prefs.leaderTel +
-                "\n소속: " + ApplicationClass.prefs.leaderDepartment +
-                "\n\n상주명: " + ApplicationClass.prefs.clientName +
+        msg = "[태림원]" +
+                "\n발주자 정보" +
+                "\n - 발주자명: " + ApplicationClass.prefs.leaderName +
+                "\n - 발주자 전화번호: " + ApplicationClass.prefs.leaderTel +
+                "\n - 소속: " + ApplicationClass.prefs.leaderDepartment +
+                "\n\n상주 정보" +
+                "\n상주명: " + ApplicationClass.prefs.clientName +
                 "\n상주 전화번호: " + ApplicationClass.prefs.clientTel +
-                "\n\n고인명: " + ApplicationClass.prefs.name1 +
-                "\n생년월일: " + ApplicationClass.prefs.date1 +
-                "\n사망월일: " + ApplicationClass.prefs.date2 +
+                "\n\n발주 장소"
+
+        val selectedLocation = ApplicationClass.prefs.selectedLocation
+        if(selectedLocation.equals("화장장")){
+            msg += "\n - 화장장소: " + ApplicationClass.prefs.cremationArea +
+                    "\n - 화장시간: " + ApplicationClass.prefs.cremationTime
+        } else if(selectedLocation.equals("장례식장")){
+            msg += "\n - 장례식장 명: " + ApplicationClass.prefs.cremationTime +
+                    "\n - 호실: " + ApplicationClass.prefs.funeralNumber +
+                    "\n - 함 도착 시간: " + ApplicationClass.prefs.funeralTime
+        } else if(selectedLocation.equals("장지")){
+            msg += "\n - 장지명: " + ApplicationClass.prefs.burialName +
+                    "\n - 함 도착 시간: " + ApplicationClass.prefs.burialTime
+        }
+
+        msg += "\n\n각인 종류: " + ApplicationClass.prefs.selectedType
+
+        msg += "\n\n고인 정보: " +
+                "\n - 고인명: " + ApplicationClass.prefs.name1 +
+                "\n - 생년월일: " + ApplicationClass.prefs.date1 + " (${ApplicationClass.prefs.date1Type})" +
+                "\n - 사망월일: " + ApplicationClass.prefs.date2 + " (${ApplicationClass.prefs.date2Type})" +
+                "\n유골함 종류: " + ApplicationClass.prefs.selectedUrnType +
+                "\n위패 종류: " + ApplicationClass.prefs.selectedTabletType +
                 "\n\n특이사항: " + ApplicationClass.prefs.note
+
+        println(msg)
+
         binding.textResult.text = msg
-        binding.textResult3.text = msg
+    }
+    private fun setImage() {
+        val handler = Handler()
+        val delayMillis = 500 // 1초 (1000 밀리초)
+
+        handler.postDelayed({
+            // 여기에 1초 후에 실행하고자 하는 코드를 작성합니다.
+            // 1. XML 레이아웃
+            val layoutUrnImage = binding.layoutUrnImage
+
+            // 2. 레이아웃을 이미지로 변환
+            bitmap = Bitmap.createBitmap(layoutUrnImage.width, layoutUrnImage.height, Bitmap.Config.ARGB_8888)
+            val canvas = Canvas(bitmap)
+            layoutUrnImage.draw(canvas)
+
+            val layoutResultImage = binding.layoutResultImage
+//            layoutResultImage.setImageBitmap(bitmap)
+//            layoutUrnImage.visibility = View.GONE
+        }, delayMillis.toLong())
     }
     private fun setOnClickListeners() {
         binding.buttonResultToOrderFragment.setOnClickListener{
@@ -82,15 +130,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 if (readPermissionGranted && writePermissionGranted) {
                     // 파일 액세스 권한이 허용된 상태
                     // MMS 보내기
-                    // 1. XML 레이아웃
-                    val layoutResult = binding.layoutResult
-
-                    // 2. 레이아웃을 이미지로 변환
-                    val bitmap = Bitmap.createBitmap(
-                        layoutResult.width, layoutResult.height, Bitmap.Config.ARGB_8888
-                    )
-                    val canvas = Canvas(bitmap)
-                    layoutResult.draw(canvas)
 
                     // 3. 변환된 이미지를 저장 (파일로)
                     val imageFile = File(requireContext().cacheDir, "layout_result_image.png")

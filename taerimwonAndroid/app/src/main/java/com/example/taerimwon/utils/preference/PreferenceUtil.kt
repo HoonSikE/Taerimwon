@@ -61,13 +61,13 @@ class PreferenceUtil(context: Context) {
         }
     // 발주 장소
     var selectedLocation : String?
-        get() = order.getString(SELECTEDLOCATION, "")
+        get() = order.getString(SELECTEDLOCATION, "화장장")
         set(value){
             order.edit().putString(SELECTEDLOCATION, value).apply()
         }
     // 화장장
     var cremationArea : String?
-        get() = order.getString(CREMATIONAREA, "")
+        get() = order.getString(CREMATIONAREA, "서울/경기/인천")
         set(value){
             order.edit().putString(CREMATIONAREA, value).apply()
         }
@@ -111,7 +111,7 @@ class PreferenceUtil(context: Context) {
         }
     // 각인 상세 종류 (일반, 형제, 직분, 기독, ...)
     var selectedType : String?
-        get() = order.getString(SELECTEDTYPE, "")
+        get() = order.getString(SELECTEDTYPE, "일반")
         set(value){
             order.edit().putString(SELECTEDTYPE, value).apply()
         }
@@ -134,7 +134,7 @@ class PreferenceUtil(context: Context) {
             order.edit().putString(DATE1, value).apply()
         }
     var date1Type : String?
-        get() = order.getString(DATE1TYPE, "")
+        get() = order.getString(DATE1TYPE, "양력")
         set(value){
             order.edit().putString(DATE1TYPE, value).apply()
         }
@@ -145,7 +145,7 @@ class PreferenceUtil(context: Context) {
             order.edit().putString(DATE2, value).apply()
         }
     var date2Type : String?
-        get() = order.getString(DATE2TYPE, "")
+        get() = order.getString(DATE2TYPE, "양력")
         set(value){
             order.edit().putString(DATE2TYPE, value).apply()
         }
@@ -157,7 +157,7 @@ class PreferenceUtil(context: Context) {
         }
     // 선택된 유골 종류
     var selectedUrnType : String?
-        get() = order.getString(SELECTEDURNTYPE, "")
+        get() = order.getString(SELECTEDURNTYPE, "유골함")
         set(value){
             order.edit().putString(SELECTEDURNTYPE, value).apply()
         }
@@ -254,9 +254,9 @@ class PreferenceUtil(context: Context) {
         }
     // 선택된 위패 종류
     var selectedTabletType : String?
-        get() = order.getString(SELECTEDTABLETTYPE, "")
+        get() = order.getString(SELECTEDTABLETTYPE, "흰색")
         set(value){
-            order.edit().putString(SELECTEDLOCATION, value).apply()
+            order.edit().putString(SELECTEDTABLETTYPE, value).apply()
         }
     // 특이사항
     var note : String?
@@ -295,8 +295,8 @@ class PreferenceUtil(context: Context) {
         // order SharedPreferences 초기화
         clientName = ""
         clientTel = ""
-        selectedLocation = ""
-        cremationArea = ""
+        selectedLocation = "화장장"
+        cremationArea = "서울/경기/인천"
         cremationTime = ""
         funeralName = ""
         funeralNumber = ""
@@ -304,15 +304,15 @@ class PreferenceUtil(context: Context) {
         burialName = ""
         burialTime = ""
         engraveType = ""
-        selectedType = ""
+        selectedType = "일반"
         name1 = ""
         name2 = ""
         date1 = ""
-        date1Type = ""
+        date1Type = "양력"
         date2 = ""
-        date2Type = ""
+        date2Type = "양력"
         religion = ""
-        selectedUrnType = ""
+        selectedUrnType = "유골함"
         boneEngraveType = ""
         boneSelectedType = ""
         boneSex = ""
@@ -330,7 +330,7 @@ class PreferenceUtil(context: Context) {
         name3_1 = ""
         name3_2 = ""
         name3_3 = ""
-        selectedTabletType = ""
+        selectedTabletType = "흰색"
         note = ""
         selectedFile = ""
         imageUrl = ""

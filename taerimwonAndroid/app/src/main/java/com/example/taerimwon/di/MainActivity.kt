@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         ApplicationClass.prefs.resetPreferences()
+        supportActionBar?.hide()
     }
 
     private fun checkStoragePermission() {

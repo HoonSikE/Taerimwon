@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cremationAreas">
+        <item>서울/경기/인천</item>
+        <item>서울시립승화원</item>
+        <item>서울추모공원</item>
+        <item>인천가족공원</item>
+        <item>수원시연화장</item>
+    </string-array>
+</resources>

@@ -46,15 +46,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
-            <TextView
-                android:id="@+id/text_engrave_type2"
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_engrave_type2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="일반, 기독고, 불교, 천주교"
+                android:orientation="horizontal"
+                android:scrollbars="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_engrave_type"
+                app:layout_constraintEnd_toEndOf="parent"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -62,10 +62,12 @@
             android:id="@+id/layout_engrave_select_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/layout_engrave_type"
             tools:ignore="MissingConstraints"
-            >
+            tools:layout_editor_absoluteX="40dp">
+
             <TextView
                 android:id="@+id/text_engrave_select_type"
                 android:layout_width="wrap_content"
@@ -74,19 +76,17 @@
                 android:layout_marginTop="16dp"
                 android:text="[일반] 각인 종류"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-            <TextView
-                android:id="@+id/text_engrave_select_type2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_engrave_select_type2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="일반, 형제"
+                android:orientation="horizontal"
+                android:scrollbars="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_engrave_select_type"
-                />
-
+                app:layout_constraintTop_toBottomOf="@+id/text_engrave_select_type" />
             <!-- 정보 입력 -->
             <TextView
                 android:id="@+id/text_dead_title"
@@ -96,8 +96,7 @@
                 android:layout_marginTop="16dp"
                 android:text="● 정보 입력"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_engrave_select_type2"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/recyclerview_engrave_select_type2" />
 
             <!-- 고인 명 -->
             <TextView
@@ -108,8 +107,7 @@
                 android:layout_marginTop="16dp"
                 android:text="* 고인 명"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_dead_title"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/text_dead_title" />
 
             <EditText
                 android:id="@+id/editText_name1"
@@ -119,14 +117,14 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:hint="이름을 입력하세요"
-                android:paddingLeft="48dp"
                 android:imeOptions="actionDone"
                 android:inputType="textPersonName"
+                android:maxLength="4"
+                android:paddingLeft="48dp"
                 android:textColorHint="@color/hintGray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_name1"
-                />
+                app:layout_constraintTop_toBottomOf="@id/text_name1" />
 
             <ImageView
                 android:id="@+id/image_name1"
@@ -135,8 +133,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/editText_name1"
-                app:layout_constraintTop_toTopOf="@+id/editText_name1"
-                />
+                app:layout_constraintTop_toTopOf="@+id/editText_name1" />
 
             <!-- 고인 생년월일 -->
             <TextView
@@ -147,8 +144,7 @@
                 android:layout_marginTop="24dp"
                 android:text="* 생년월일"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editText_name1"
-                />
+                app:layout_constraintTop_toBottomOf="@id/editText_name1" />
 
             <EditText
                 android:id="@+id/editText_date1"
@@ -158,23 +154,24 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:hint="1900-01-01"
-                android:paddingLeft="48dp"
                 android:imeOptions="actionDone"
                 android:inputType="date"
+                android:paddingLeft="48dp"
                 android:textColorHint="@color/hintGray"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/spinner_date1_type"
-                app:layout_constraintTop_toBottomOf="@id/text_date1"
-                />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_date1" />
 
             <Spinner
                 android:id="@+id/spinner_date1_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="@+id/editText_date1"
-                app:layout_constraintStart_toEndOf="@+id/editText_date1"
                 app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintStart_toEndOf="@+id/editText_date1"
+                app:layout_constraintTop_toTopOf="@+id/editText_date1"
+                android:entries="@array/date_types"
+                android:spinnerMode="dropdown"
+                android:defaultValue="0"/>
 
             <ImageView
                 android:id="@+id/image_date1"
@@ -183,8 +180,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/editText_date1"
-                app:layout_constraintTop_toTopOf="@+id/editText_date1"
-                />
+                app:layout_constraintTop_toTopOf="@+id/editText_date1" />
             <!-- 고인 사망월일 -->
             <TextView
                 android:id="@+id/text_date2"
@@ -194,8 +190,7 @@
                 android:layout_marginTop="24dp"
                 android:text="* 사망월일"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editText_date1"
-                />
+                app:layout_constraintTop_toBottomOf="@id/editText_date1" />
 
             <EditText
                 android:id="@+id/editText_date2"
@@ -205,23 +200,24 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:hint="2023-09-01"
-                android:paddingLeft="48dp"
                 android:imeOptions="actionDone"
                 android:inputType="date"
+                android:paddingLeft="48dp"
                 android:textColorHint="@color/hintGray"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/spinner_date2_type"
-                app:layout_constraintTop_toBottomOf="@id/text_date2"
-                />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_date2" />
 
             <Spinner
                 android:id="@+id/spinner_date2_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="@+id/editText_date2"
-                app:layout_constraintStart_toEndOf="@+id/editText_date2"
                 app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintStart_toEndOf="@+id/editText_date2"
+                app:layout_constraintTop_toTopOf="@+id/editText_date2"
+                android:entries="@array/date_types"
+                android:spinnerMode="dropdown"
+                android:defaultValue="0"/>
 
             <ImageView
                 android:id="@+id/image_date2"
@@ -230,8 +226,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="@+id/editText_date2"
-                app:layout_constraintTop_toTopOf="@+id/editText_date2"
-                />
+                app:layout_constraintTop_toTopOf="@+id/editText_date2" />
 
             <!-- 유골함 종류 -->
             <TextView
@@ -242,15 +237,17 @@
                 android:layout_marginTop="24dp"
                 android:text="* 유골함 종류"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editText_date2"
-                />
+                app:layout_constraintTop_toBottomOf="@id/editText_date2" />
 
             <Spinner
                 android:id="@+id/spinner_urn_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/text_urn_type"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_urn_type"
+                android:entries="@array/urn_types"
+                android:spinnerMode="dropdown"
+                android:defaultValue="0"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

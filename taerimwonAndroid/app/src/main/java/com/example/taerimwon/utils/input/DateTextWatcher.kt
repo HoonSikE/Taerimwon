@@ -20,34 +20,43 @@ class DateTextWatcher(private val editText: EditText) : TextWatcher {
             return
         }
 
-        val originalText = s.toString()
-        val formattedText = formatToDateString(originalText)
-
-        if (s.toString() != formattedText) {
-            isFormatting = true
-            editText.setText(formattedText)
-            editText.setSelection(formattedText.length)
-            isFormatting = false
-        }
+        val formattedDate = formatDate(s.toString())
+        isFormatting = true
+        editText.setText(formattedDate)
+        editText.setSelection(formattedDate.length)
+        isFormatting = false
     }
 
     override fun afterTextChanged(s: Editable?) {
         // 텍스트 변경 후 이벤트
     }
 
-    private fun formatToDateString(inputText: String): String {
-        val cleanText = inputText.replace(Regex("[^0-9]"), "")
-        if (cleanText.length >= 8) {
-            try {
-                val inputFormat = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
-                val outputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                val date = inputFormat.parse(cleanText)
-                return outputFormat.format(date)
-            } catch (e: Exception) {
-                e.printStackTrace()
+    private fun formatDate(date: String): String {
+        val numericValue = date.replace(Regex("\\D"), "") // 숫자만 추출
+
+        var formattedDate = ""
+
+        if (numericValue.length >= 6) {
+            val year = numericValue.substring(0, 4)
+            formattedDate += year
+            val month = numericValue.substring(4, 6).padStart(2, '0')
+
+            if (numericValue.length >= 8) {
+                val day = numericValue.substring(6, 8).padStart(2, '0')
+                formattedDate += "-$month-$day"
+            } else {
+                formattedDate += "-$month-${numericValue.substring(6)}"
             }
+        } else {
+            formattedDate = date
         }
-        return inputText
+
+        // 마지막 글자가 하이픈인 경우 제거
+        if (numericValue.length > 0 && (formattedDate.endsWith('-') || numericValue.isEmpty())) {
+            formattedDate = formattedDate.substring(0, formattedDate.length - 1)
+        }
+
+        return formattedDate
     }
 }
 

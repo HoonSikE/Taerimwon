@@ -81,16 +81,19 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             // 선택된 라디오 버튼에 따라 레이아웃 변경
             when (radioButton?.id) {
                 R.id.radioButton1 -> {
+                    ApplicationClass.prefs.selectedLocation = "화장장"
                     layoutRadioCremation.visibility = View.VISIBLE
                     layoutRadioFuneral.visibility = View.GONE
                     layoutRadioBurial.visibility = View.GONE
                 }
                 R.id.radioButton2 -> {
+                    ApplicationClass.prefs.selectedLocation = "장례식장"
                     layoutRadioCremation.visibility = View.GONE
                     layoutRadioFuneral.visibility = View.VISIBLE
                     layoutRadioBurial.visibility = View.GONE
                 }
                 R.id.radioButton3 -> {
+                    ApplicationClass.prefs.selectedLocation = "장지"
                     layoutRadioCremation.visibility = View.GONE
                     layoutRadioFuneral.visibility = View.GONE
                     layoutRadioBurial.visibility = View.VISIBLE
