@@ -24,6 +24,8 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         initAdapter()
         initData()
         setOnClickListeners()
+        setOnItemSelectedListener()
+        addTextChangedListener()
         observer()
     }
     private fun initAdapter() {
@@ -55,7 +57,36 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
     }
     private fun setOnClickListeners() {
     }
-    private fun observer() {
+    private fun setOnItemSelectedListener() {
+        binding.spinnerDate1Type.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                ApplicationClass.prefs.date1Type = parent?.getItemAtPosition(position).toString() ?: ""
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Nothing to do here
+            }
+        })
+        binding.spinnerDate2Type.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                ApplicationClass.prefs.date2Type = parent?.getItemAtPosition(position).toString() ?: ""
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Nothing to do here
+            }
+        })
+        binding.spinnerUrnType.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                ApplicationClass.prefs.selectedUrnType = parent?.getItemAtPosition(position).toString() ?: ""
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Nothing to do here
+            }
+        })
+    }
+    private fun addTextChangedListener(){
         // 고인 정보
         binding.editTextName1.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -87,15 +118,6 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                 // 텍스트 변경 후 이벤트
             }
         })
-        binding.spinnerDate1Type.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                ApplicationClass.prefs.date1Type = parent?.getItemAtPosition(position).toString() ?: ""
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Nothing to do here
-            }
-        })
         val editTextDate2 = binding.editTextDate2
         editTextDate2.addTextChangedListener(DateTextWatcher(editTextDate2))
         editTextDate2.addTextChangedListener(object : TextWatcher {
@@ -112,23 +134,8 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                 // 텍스트 변경 후 이벤트
             }
         })
-        binding.spinnerDate2Type.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                ApplicationClass.prefs.date2Type = parent?.getItemAtPosition(position).toString() ?: ""
-            }
+    }
+    private fun observer() {
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Nothing to do here
-            }
-        })
-        binding.spinnerUrnType.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                ApplicationClass.prefs.selectedUrnType = parent?.getItemAtPosition(position).toString() ?: ""
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Nothing to do here
-            }
-        })
     }
 }

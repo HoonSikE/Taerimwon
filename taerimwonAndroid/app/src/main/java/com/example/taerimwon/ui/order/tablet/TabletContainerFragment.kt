@@ -20,6 +20,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         initAdapter()
         initData()
         setOnClickListeners()
+        setOnItemSelectedListener()
         observer()
     }
     private fun initAdapter() {
@@ -37,7 +38,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
     }
     private fun setOnClickListeners() {
     }
-    private fun observer() {
+    private fun setOnItemSelectedListener(){
         binding.spinnerTabletType2.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 ApplicationClass.prefs.selectedTabletType = parent?.getItemAtPosition(position).toString() ?: ""
@@ -47,5 +48,8 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
                 // Nothing to do here
             }
         })
+    }
+    private fun observer() {
+
     }
 }

@@ -382,7 +382,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/text_cremation_area"
                             android:entries="@array/cremationAreas"
                             android:spinnerMode="dropdown"
-                            android:defaultValue="0"
+                            android:defaultValue="1"
                             />
 
                         <!-- 화장 시간 -->

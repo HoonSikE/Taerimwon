@@ -4,6 +4,8 @@ import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.RadioButton
 import androidx.core.view.isGone
 import androidx.fragment.app.viewModels
@@ -26,6 +28,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         initData()
         setOnCheckedChangeListener()
         setOnClickListeners()
+        setOnItemSelectedListener()
         addTextChangedListener()
         observer()
     }
@@ -52,6 +55,24 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
 
         binding.editTextNote.setText(ApplicationClass.prefs.note)
 //        }
+
+        // 화장장 셀렉트박스
+        // Spinner에 표시할 데이터 목록
+//        val items = listOf("서울/경기/인천", "Item 2", "Item 3", "Item 4")
+
+        val spinner = binding.spinnerCremationArea
+        val cremationAreas = resources.getStringArray(R.array.cremationAreas).toMutableList()
+
+        // 비활성화할 아이템
+        val itemToDisable = "서울/경기/인천"
+        val indexOfItemToDisable = cremationAreas.indexOf(itemToDisable)
+        if (indexOfItemToDisable != -1) {
+            cremationAreas.removeAt(indexOfItemToDisable)
+        }
+
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, cremationAreas)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = adapter
 
         // Urn Fragment 추가
         val urnFragment = UrnContainerFragment()
@@ -106,6 +127,19 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         binding.buttonResultFragment.setOnClickListener {
             findNavController().navigate(R.id.action_orderFragment_to_resultFragment)
         }
+    }
+
+    private fun setOnItemSelectedListener() {
+        val spinnerCremationArea = binding.spinnerCremationArea
+        spinnerCremationArea.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                ApplicationClass.prefs.cremationArea = parent?.getItemAtPosition(position).toString() ?: ""
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Nothing to do here
+            }
+        })
     }
 
     private fun addTextChangedListener() {
