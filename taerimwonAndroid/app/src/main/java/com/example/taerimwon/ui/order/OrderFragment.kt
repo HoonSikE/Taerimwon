@@ -57,6 +57,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
 //        }
 
         // 화장장 셀렉트박스
+        // 2023-09-21
         // Spinner에 표시할 데이터 목록
 //        val items = listOf("서울/경기/인천", "Item 2", "Item 3", "Item 4")
 
