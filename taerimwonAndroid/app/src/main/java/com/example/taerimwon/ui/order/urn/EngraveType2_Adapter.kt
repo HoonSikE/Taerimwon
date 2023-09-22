@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taerimwon.R
+import com.example.taerimwon.databinding.ItemEngraveType2Binding
 
 class EngraveType2_Adapter: RecyclerView.Adapter<EngraveType2_Adapter.EngraveType2ListViewHolder>() {
     private var engraveType2List = mutableListOf<String>()
@@ -34,7 +35,17 @@ class EngraveType2_Adapter: RecyclerView.Adapter<EngraveType2_Adapter.EngraveTyp
         return engraveType2List.size
     }
 
-    inner class EngraveType2ListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val text_engrave_type2: TextView = view.findViewById(R.id.text_engrave_type2)
+    class EngraveType2ListViewHolder(private val binding: ItemEngraveType2Binding)
+        : RecyclerView.ViewHolder(binding.root) {
+        
+        fun bind(data: FrequentDestination) {
+            binding.textEngraveType2
+        }
+
+        fun bindOnItemClickListener(onItemClickListener: (View, String, String, String, String) -> Unit ) {
+            binding.root.setOnClickListener {
+                onItemClickListener(it, place, address, latitude, longitude)
+            }
+        }
     }
 }

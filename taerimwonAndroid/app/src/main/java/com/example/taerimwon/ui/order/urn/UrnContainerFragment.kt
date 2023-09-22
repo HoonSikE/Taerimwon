@@ -4,6 +4,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taerimwon.R
@@ -27,6 +28,9 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         setOnItemSelectedListener()
         addTextChangedListener()
         observer()
+    }
+    private val engraveTypeClickListener: (View, Int) -> Unit = { _, idx ->
+
     }
     private fun initAdapter() {
         engraveType2Adapter = EngraveType2_Adapter()
