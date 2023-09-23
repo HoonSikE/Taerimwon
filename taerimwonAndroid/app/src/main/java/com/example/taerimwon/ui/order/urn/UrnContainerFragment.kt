@@ -4,7 +4,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
-import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taerimwon.R
@@ -17,8 +16,8 @@ import com.example.taerimwon.utils.input.DateTextWatcher
 
 @AndroidEntryPoint
 class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.fragment_urn_container) {
-    private lateinit var engraveType2Adapter: EngraveType2_Adapter
-    private lateinit var engraveSelectType2Adapter: EngraveType2_Adapter
+    private lateinit var engraveType2Adapter: EngraveTypeAdapter
+    private lateinit var engraveSelectType2Adapter: EngraveTypeAdapter
     private var engraveType2List = ArrayList<String>()
     private var engraveSelectType2List = ArrayList<String>()
     override fun init() {
@@ -29,22 +28,25 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         addTextChangedListener()
         observer()
     }
-    private val engraveTypeClickListener: (View, Int) -> Unit = { _, idx ->
-
+    private val engraveTypeClickListener: (View, String) -> Unit = { _, idx ->
+        ApplicationClass.prefs.engraveType = idx
+        println(ApplicationClass.prefs.engraveType)
     }
     private fun initAdapter() {
-        engraveType2Adapter = EngraveType2_Adapter()
-        engraveSelectType2Adapter = EngraveType2_Adapter()
+        engraveType2Adapter = EngraveTypeAdapter().apply {
+            onItemClickListener = engraveTypeClickListener
+        }
+//        engraveSelectType2Adapter = EngraveTypeAdapter()
 
         binding.recyclerviewEngraveType2.apply {
             adapter = engraveType2Adapter
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         }
 
-        binding.recyclerviewEngraveSelectType2.apply {
-            adapter = engraveSelectType2Adapter
-            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-        }
+//        binding.recyclerviewEngraveSelectType2.apply {
+//            adapter = engraveSelectType2Adapter
+//            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+//        }
     }
     private fun initData() {
         binding.editTextName1.setText(ApplicationClass.prefs.name1)
@@ -56,7 +58,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         binding.recyclerviewEngraveType2.scrollToPosition(0)
 
         engraveSelectType2List = arrayListOf("일반", "형제")
-        engraveSelectType2Adapter.updateList(engraveSelectType2List)
+//        engraveSelectType2Adapter.updateList(engraveSelectType2List)
         binding.recyclerviewEngraveSelectType2.scrollToPosition(0)
     }
     private fun setOnClickListeners() {

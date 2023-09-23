@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taerimwon.R
 
-class TabletType2_Adapter: RecyclerView.Adapter<TabletType2_Adapter.TabletType2ListViewHolder>() {
+class TabletTypeAdapter: RecyclerView.Adapter<TabletTypeAdapter.TabletType2ListViewHolder>() {
     private var tabletType2List = mutableListOf<String>()
     lateinit var onItemClickListener: (View, String) -> Unit
 

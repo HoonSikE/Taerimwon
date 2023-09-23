@@ -13,7 +13,7 @@ import com.example.taerimwon.di.ApplicationClass
 
 @AndroidEntryPoint
 class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.layout.fragment_tablet_container) {
-    private lateinit var tabletSelectType2Adapter: TabletType2_Adapter
+    private lateinit var tabletSelectType2Adapter: TabletTypeAdapter
     private var tabletSelectType2List = ArrayList<String>()
 
     override fun init() {
@@ -24,7 +24,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         observer()
     }
     private fun initAdapter() {
-        tabletSelectType2Adapter = TabletType2_Adapter()
+        tabletSelectType2Adapter = TabletTypeAdapter()
 
         binding.recyclerviewTabletType2.apply {
             adapter = tabletSelectType2Adapter

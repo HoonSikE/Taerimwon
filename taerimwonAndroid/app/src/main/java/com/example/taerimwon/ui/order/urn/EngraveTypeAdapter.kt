@@ -3,12 +3,10 @@ package com.example.taerimwon.ui.order.urn
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.taerimwon.R
 import com.example.taerimwon.databinding.ItemEngraveType2Binding
 
-class EngraveType2_Adapter: RecyclerView.Adapter<EngraveType2_Adapter.EngraveType2ListViewHolder>() {
+class EngraveTypeAdapter: RecyclerView.Adapter<EngraveTypeAdapter.EngraveType2ListViewHolder>() {
     private var engraveType2List = mutableListOf<String>()
     lateinit var onItemClickListener: (View, String) -> Unit
 
@@ -22,12 +20,22 @@ class EngraveType2_Adapter: RecyclerView.Adapter<EngraveType2_Adapter.EngraveTyp
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EngraveType2ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_engrave_type2, parent, false)
-        return EngraveType2ListViewHolder(view)
+        return EngraveType2ListViewHolder(
+            ItemEngraveType2Binding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        ).apply {
+            bindOnItemClickListener(onItemClickListener)
+        }
+
+//        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_engrave_type2, parent, false)
+//        return EngraveType2ListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: EngraveType2ListViewHolder, position: Int) {
-        holder.text_engrave_type2.text = "[" + engraveType2List[position] + "]"
+        holder.bind(engraveType2List[position])
     }
 
 
@@ -37,14 +45,16 @@ class EngraveType2_Adapter: RecyclerView.Adapter<EngraveType2_Adapter.EngraveTyp
 
     class EngraveType2ListViewHolder(private val binding: ItemEngraveType2Binding)
         : RecyclerView.ViewHolder(binding.root) {
-        
-        fun bind(data: FrequentDestination) {
-            binding.textEngraveType2
+        lateinit var engraveType2: String
+
+        fun bind(data: String) {
+            binding.textEngraveType2.text = "[" + data + "]"
+            engraveType2 = data
         }
 
-        fun bindOnItemClickListener(onItemClickListener: (View, String, String, String, String) -> Unit ) {
+        fun bindOnItemClickListener(onItemClickListener: (View, String) -> Unit ) {
             binding.root.setOnClickListener {
-                onItemClickListener(it, place, address, latitude, longitude)
+                onItemClickListener(it, engraveType2)
             }
         }
     }
