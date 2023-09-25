@@ -46,7 +46,7 @@ class PreferenceUtil(context: Context) {
         }
 //    private val urn: SharedPreferences = context.getSharedPreferences("urn", Context.MODE_PRIVATE)
 //    private val tablet: SharedPreferences = context.getSharedPreferences("tablet", Context.MODE_PRIVATE)
-    private val order: SharedPreferences = context.getSharedPreferences("order", Context.MODE_PRIVATE)
+    val order: SharedPreferences = context.getSharedPreferences("order", Context.MODE_PRIVATE)
 
     // 상주 정보
     var clientName : String?
@@ -236,32 +236,37 @@ class PreferenceUtil(context: Context) {
         set(value){
             order.edit().putString(TABLETTYPE, value).apply()
         }
+    var tabletTypePosition : Int
+        get() = order.getInt(TABLETTYPEPOSITION, 0)
+        set(value){
+            order.edit().putInt(TABLETTYPEPOSITION, value).apply()
+        }
     // 위패 내용
     var name3 : String?
         get() = order.getString(NAME3, "")
         set(value){
             order.edit().putString(NAME3, value).apply()
         }
-    var name3Type : String?
-        get() = order.getString(NAME3TYPE, "")
-        set(value){
-            order.edit().putString(NAME3TYPE, value).apply()
-        }
-    var name3_1 : String?
-        get() = order.getString(NAME3_1, "")
-        set(value){
-            order.edit().putString(NAME3_1, value).apply()
-        }
-    var name3_2 : String?
-        get() = order.getString(NAME3_2, "")
-        set(value){
-            order.edit().putString(NAME3_2, value).apply()
-        }
-    var name3_3 : String?
-        get() = order.getString(NAME3_3, "")
-        set(value){
-            order.edit().putString(NAME3_3, value).apply()
-        }
+//    var name3Type : String?
+//        get() = order.getString(NAME3TYPE, "")
+//        set(value){
+//            order.edit().putString(NAME3TYPE, value).apply()
+//        }
+//    var name3_1 : String?
+//        get() = order.getString(NAME3_1, "")
+//        set(value){
+//            order.edit().putString(NAME3_1, value).apply()
+//        }
+//    var name3_2 : String?
+//        get() = order.getString(NAME3_2, "")
+//        set(value){
+//            order.edit().putString(NAME3_2, value).apply()
+//        }
+//    var name3_3 : String?
+//        get() = order.getString(NAME3_3, "")
+//        set(value){
+//            order.edit().putString(NAME3_3, value).apply()
+//        }
     // 선택된 위패 종류
     var selectedTabletType : String?
         get() = order.getString(SELECTEDTABLETTYPE, "선택안함")
@@ -337,11 +342,12 @@ class PreferenceUtil(context: Context) {
         boneReligion = ""
         showRouterView = ""
         tabletType = ""
+        tabletTypePosition = 0
         name3 = ""
-        name3Type = ""
-        name3_1 = ""
-        name3_2 = ""
-        name3_3 = ""
+//        name3Type = ""
+//        name3_1 = ""
+//        name3_2 = ""
+//        name3_3 = ""
         selectedTabletType = "선택안함"
         note = ""
         selectedFile = ""

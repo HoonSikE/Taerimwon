@@ -19,7 +19,6 @@
             >
             <ImageView
                 android:id="@+id/image_engrave_sample"
-                android:layout_marginTop="10dp"
                 android:layout_width="120dp"
                 android:layout_height="180dp"
                 android:src="@drawable/img_urn_sample1"

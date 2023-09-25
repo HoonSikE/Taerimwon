@@ -1,40 +1,93 @@
 package com.example.taerimwon.ui.order.tablet
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taerimwon.R
+import com.example.taerimwon.databinding.ItemTabletTypeBinding
+import com.example.taerimwon.di.ApplicationClass
 
-class TabletTypeAdapter: RecyclerView.Adapter<TabletTypeAdapter.TabletType2ListViewHolder>() {
-    private var tabletType2List = mutableListOf<String>()
+class TabletTypeAdapter(private val context: Context): RecyclerView.Adapter<TabletTypeAdapter.TabletTypeListViewHolder>() {
+    private var tabletTypeList = mutableListOf<String>()
     lateinit var onItemClickListener: (View, String) -> Unit
+    // 클릭된 아이템의 위치를 저장하는 변수
+    private var selectedItemPosition = 0
 
     fun setListDate(data: MutableList<String>){
-        tabletType2List = data
+        tabletTypeList = data
+    }
+
+    // 클릭된 아이템 설정 메서드
+    fun setSelectedItem(position: Int) {
+        selectedItemPosition = position
+        ApplicationClass.prefs.tabletTypePosition = position
+        notifyDataSetChanged() // 변경 사항을 적용하기 위해 어댑터에 알립니다.
     }
 
     fun updateList(data: MutableList<String>){
-        tabletType2List = data
+        tabletTypeList = data
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TabletType2ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_tablet_type, parent, false)
-        return TabletType2ListViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TabletTypeListViewHolder {
+        return TabletTypeListViewHolder(
+            ItemTabletTypeBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            ),
+            context // Context를 생성자를 통해 전달
+        ).apply {
+            bindOnItemClickListener(onItemClickListener)
+        }
     }
 
-    override fun onBindViewHolder(holder: TabletType2ListViewHolder, position: Int) {
-        holder.text_tablet_type2.text = "[" + tabletType2List[position] + "]"
+    override fun onBindViewHolder(holder: TabletTypeListViewHolder, position: Int) {
+        holder.bind(tabletTypeList[position])
+
+        // 클릭된 아이템에 따라 테두리를 설정합니다.
+        if (position == selectedItemPosition) {
+            holder.itemView.setBackgroundResource(R.drawable.black_border) // 클릭된 아이템에 테두리 적용
+        } else {
+            holder.itemView.background = null // 클릭되지 않은 아이템에 테두리 제거
+        }
     }
 
 
     override fun getItemCount(): Int {
-        return tabletType2List.size
+        return tabletTypeList.size
     }
 
-    inner class TabletType2ListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val text_tablet_type2: TextView = view.findViewById(R.id.text_tablet_type2)
+//        val text_tablet_type: TextView = view.findViewById(R.id.text_tablet_type)
+
+    inner class TabletTypeListViewHolder(private val binding: ItemTabletTypeBinding, private val context: Context)
+        : RecyclerView.ViewHolder(binding.root) {
+        lateinit var tableteType: String
+        lateinit var layoutTabletType: LinearLayout
+
+        fun bind(data: String) {
+            val datas = data.split(" ")
+            binding.textTabletType.text = "[" + datas[1] + "]"
+
+            // 이미지 이름을 문자열로 정의합니다.
+            val imageName = "img_tablet_sample" + datas[0]
+            // 이미지 리소스 ID를 가져옵니다.
+            val imageResource = context.resources.getIdentifier(imageName, "drawable", context.packageName)
+
+            binding.imageTabletSample.setImageResource(imageResource)
+            tableteType = data
+            layoutTabletType = binding.layoutTabletType
+        }
+
+        fun bindOnItemClickListener(onItemClickListener: (View, String) -> Unit) {
+            binding.root.setOnClickListener {
+                onItemClickListener(it, tableteType)
+                setSelectedItem(adapterPosition)
+            }
+        }
     }
 }

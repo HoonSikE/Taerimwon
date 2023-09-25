@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <LinearLayout
-            android:id="@+id/layout_messageItem_destination"
+            android:id="@+id/layout_tablet_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -19,16 +19,15 @@
             >
             <ImageView
                 android:id="@+id/image_tablet_sample"
-                android:layout_marginTop="10dp"
                 android:layout_width="80dp"
                 android:layout_height="240dp"
                 android:src="@drawable/img_tablet_common_sample"
                 />
             <TextView
-                android:id="@+id/text_tablet_type2"
+                android:id="@+id/text_tablet_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="일반"
+                android:text="[일반]"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 />

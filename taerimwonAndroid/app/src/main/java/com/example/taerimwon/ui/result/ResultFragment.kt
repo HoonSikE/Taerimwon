@@ -91,9 +91,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             msg += "\n - 세례명: " + ApplicationClass.prefs.name2
         }
 
-        msg += "\n유골함 종류: " + ApplicationClass.prefs.selectedUrnType +
-                "\n위패 종류: " + ApplicationClass.prefs.selectedTabletType +
-                "\n\n특이사항: " + ApplicationClass.prefs.note
+        msg += "\n\n유골함 종류: " + ApplicationClass.prefs.selectedUrnType
+
+        msg += "\n\n위패 종류: " + ApplicationClass.prefs.tabletType +
+                "\n - 위패 내용: " + ApplicationClass.prefs.name3 +
+                "\n - 위패 상세 종류: " + ApplicationClass.prefs.selectedTabletType
+
+        msg += "\n\n특이사항: " + ApplicationClass.prefs.note
 
         println(msg)
 

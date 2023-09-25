@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--일반-->
+    <string-array name="tablet_type1">
+        <item>1 일반</item>
+        <item>1_2 일반(본관)</item>
+        <item>0 문구</item>
+    </string-array>
+    <!--기독교-->
+    <string-array name="tablet_type2">
+        <item>2 기독교</item>
+        <item>2_2 기독교(본관)</item>
+        <item>0 문구</item>
+    </string-array>
+    <!--불교-->
+    <string-array name="tablet_type3">
+        <item>3 불교</item>
+        <item>3_2 불교(본관)</item>
+        <item>0 문구</item>
+    </string-array>
+    <!--천주교-->
+    <string-array name="tablet_type4">
+        <item>4 천주교</item>
+        <item>4_2 천주교(본관)</item>
+        <item>0 문구</item>
+    </string-array>
+    <!--SGI-->
+    <string-array name="tablet_type5">
+        <item>0 문구</item>
+    </string-array>
+    <!--묘법-->
+    <string-array name="tablet_type6">
+        <item>0 문구</item>
+    </string-array>
+    <!--순복음-->
+    <string-array name="tablet_type7">
+        <item>0 문구</item>
+    </string-array>
+    <!--원불교-->
+    <string-array name="tablet_type8">
+        <item>0 문구</item>
+    </string-array>
+</resources>

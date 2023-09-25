@@ -12,6 +12,7 @@ import com.example.taerimwon.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.taerimwon.databinding.FragmentUrnContainerBinding
 import com.example.taerimwon.di.ApplicationClass
+import com.example.taerimwon.ui.order.tablet.TabletContainerFragment
 import com.example.taerimwon.utils.input.DateTextWatcher
 
 

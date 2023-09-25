@@ -64,6 +64,7 @@ const val BONERELIGION = "boneReligion"
 const val SHOWROUTERVIEW = "showRouterView"
 // 위패 종류 (일반, 본관, 문구)
 const val TABLETTYPE = "tabletType"
+const val TABLETTYPEPOSITION = "tabletTypePosition"
 // 위패 내용
 const val NAME3 = "name3"
 // 문구
