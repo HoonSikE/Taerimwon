@@ -2,7 +2,9 @@ package com.example.taerimwon.ui.order.tablet
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.text.Editable
 import android.text.InputFilter
+import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +27,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         initData()
         setOnClickListeners()
         setOnItemSelectedListener()
+        addTextChangedListener()
         observer()
     }
     private val tabletTypeClickListener: (View, String) -> Unit = { _, tabletType ->
@@ -64,6 +67,13 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         binding.recyclerviewTabletType.scrollToPosition(ApplicationClass.prefs.tabletTypePosition)
     }
     private fun setOnClickListeners() {
+        binding.imageHeart.setOnClickListener{
+            val editTextName3 = binding.editTextName3
+            val updateText = editTextName3.text.toString() + "❤️"
+            editTextName3.setText(updateText)
+            if(updateText.length < 30)
+                editTextName3.setSelection(updateText.length)
+        }
     }
     private fun setOnItemSelectedListener(){
         binding.spinnerSelectTabletType.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
@@ -73,6 +83,23 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // Nothing to do here
+            }
+        })
+    }
+    private fun addTextChangedListener(){
+        // 본관, 문구
+        binding.editTextName3.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 이전 텍스트 변경 이벤트
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // 텍스트 변경 이벤트
+                ApplicationClass.prefs.name3 = s?.toString() ?: ""
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 텍스트 변경 후 이벤트
             }
         })
     }
@@ -117,6 +144,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.textName3.visibility = View.VISIBLE
             binding.editTextName3.visibility = View.VISIBLE
             binding.imageName3.visibility = View.VISIBLE
+            binding.imageHeart.visibility = View.GONE
             binding.textName3.text = "* 본관"
             binding.editTextName3.hint = "본관을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(10)
@@ -125,6 +153,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.textName3.visibility = View.VISIBLE
             binding.editTextName3.visibility = View.VISIBLE
             binding.imageName3.visibility = View.VISIBLE
+            binding.imageHeart.visibility = View.VISIBLE
             binding.textName3.text = "* 문구"
             binding.editTextName3.hint = "문구를 입력하세요. (최대 30자)"
             val inputFilter = InputFilter.LengthFilter(30)
@@ -133,6 +162,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.textName3.visibility = View.GONE
             binding.editTextName3.visibility = View.GONE
             binding.imageName3.visibility = View.GONE
+            binding.imageHeart.visibility = View.GONE
             ApplicationClass.prefs.name2 = ""
         }
     }

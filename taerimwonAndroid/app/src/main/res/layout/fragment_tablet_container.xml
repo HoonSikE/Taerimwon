@@ -154,8 +154,8 @@
                 android:paddingLeft="48dp"
                 android:textColorHint="@color/hintGray"
                 android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/image_heart"
                 app:layout_constraintTop_toBottomOf="@id/text_name3" />
 
             <ImageView
@@ -167,6 +167,20 @@
                 android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/editText_name3"
                 app:layout_constraintTop_toTopOf="@+id/editText_name3" />
+
+            <TextView
+                android:id="@+id/image_heart"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="❤️"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@+id/editText_name3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/editText_name3"
+                app:layout_constraintBottom_toBottomOf="@+id/editText_name3"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
