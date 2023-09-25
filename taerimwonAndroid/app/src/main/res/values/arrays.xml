@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--화장장-->
+    <string-array name="cremationAreas">
+        <item>서울/경기/인천</item>
+        <item>서울시립승화원</item>
+        <item>서울추모공원</item>
+        <item>인천가족공원</item>
+        <item>수원시연화장</item>
+    </string-array>
+    <!--양/음력-->
+    <string-array name="date_types">
+        <item>양력</item>
+        <item>음력</item>
+    </string-array>
+    <!--유골함 종류-->
+    <string-array name="urn_types">
+        <item>선택안함</item>
+        <item>유골함</item>
+        <item>유골함1</item>
+        <item>유골함2</item>
+        <item>유골함3</item>
+        <item>합골함</item>
+        <item>합골함1</item>
+        <item>합골함2</item>
+    </string-array>
+    <!--위패 종류-->
+    <string-array name="tablet_types">
+        <item>선택안함</item>
+        <item>흰색</item>
+        <item>검정</item>
+        <item>투명</item>
+        <item>백색(사진)</item>
+        <item>추모패(사진)</item>
+    </string-array>
+</resources>

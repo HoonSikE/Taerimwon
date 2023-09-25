@@ -105,15 +105,25 @@ class PreferenceUtil(context: Context) {
         }
     // 각인종류 (일반, 기독교, 천주교, ...)
     var engraveType : String?
-        get() = order.getString(ENGRAVETYPE, "")
+        get() = order.getString(ENGRAVETYPE, "일반")
         set(value){
             order.edit().putString(ENGRAVETYPE, value).apply()
         }
+    var engraveTypePosition : Int
+        get() = order.getInt(ENGRAVETYPEPOSITION, 0)
+        set(value){
+            order.edit().putInt(ENGRAVETYPEPOSITION, value).apply()
+        }
     // 각인 상세 종류 (일반, 형제, 직분, 기독, ...)
     var engraveType2 : String?
-        get() = order.getString(ENGRAVETYPE2, "일반")
+        get() = order.getString(ENGRAVETYPE2, "기본")
         set(value){
             order.edit().putString(ENGRAVETYPE2, value).apply()
+        }
+    var engraveType2Position : Int
+        get() = order.getInt(ENGRAVETYPE2POSITION, 0)
+        set(value){
+            order.edit().putInt(ENGRAVETYPE2POSITION, value).apply()
         }
     // 고인 성함
     var name1 : String?
@@ -157,7 +167,7 @@ class PreferenceUtil(context: Context) {
         }
     // 선택된 유골 종류
     var selectedUrnType : String?
-        get() = order.getString(SELECTEDURNTYPE, "유골함")
+        get() = order.getString(SELECTEDURNTYPE, "선택안함")
         set(value){
             order.edit().putString(SELECTEDURNTYPE, value).apply()
         }
@@ -254,7 +264,7 @@ class PreferenceUtil(context: Context) {
         }
     // 선택된 위패 종류
     var selectedTabletType : String?
-        get() = order.getString(SELECTEDTABLETTYPE, "흰색")
+        get() = order.getString(SELECTEDTABLETTYPE, "선택안함")
         set(value){
             order.edit().putString(SELECTEDTABLETTYPE, value).apply()
         }
@@ -296,15 +306,17 @@ class PreferenceUtil(context: Context) {
         clientName = ""
         clientTel = ""
         selectedLocation = "화장장"
-        cremationArea = "서울/경기/인천"
+        cremationArea = "서울시립승화원"
         cremationTime = ""
         funeralName = ""
         funeralNumber = ""
         funeralTime = ""
         burialName = ""
         burialTime = ""
-        engraveType = ""
-        engraveType2 = "일반"
+        engraveType = "일반"
+        engraveTypePosition = 0
+        engraveType2 = "기본"
+        engraveType2Position = 0
         name1 = ""
         name2 = ""
         date1 = ""
@@ -312,7 +324,7 @@ class PreferenceUtil(context: Context) {
         date2 = ""
         date2Type = "양력"
         religion = ""
-        selectedUrnType = "유골함"
+        selectedUrnType = "선택안함"
         boneEngraveType = ""
         boneEngraveType2 = ""
         boneSex = ""
@@ -330,7 +342,7 @@ class PreferenceUtil(context: Context) {
         name3_1 = ""
         name3_2 = ""
         name3_3 = ""
-        selectedTabletType = "흰색"
+        selectedTabletType = "선택안함"
         note = ""
         selectedFile = ""
         imageUrl = ""

@@ -13,6 +13,7 @@ import android.graphics.Canvas
 import android.net.Uri
 import android.os.Handler
 import android.os.Process
+import android.text.InputFilter
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -74,13 +75,23 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     "\n - 함 도착 시간: " + ApplicationClass.prefs.burialTime
         }
 
-        msg += "\n\n각인 종류: " + ApplicationClass.prefs.engraveType
+        msg += "\n\n각인 종류: " + ApplicationClass.prefs.engraveType + "[" + ApplicationClass.prefs.engraveType2 + "]"
 
         msg += "\n\n고인 정보: " +
                 "\n - 고인명: " + ApplicationClass.prefs.name1 +
-                "\n - 생년월일: " + ApplicationClass.prefs.date1 + " (${ApplicationClass.prefs.date1Type})" +
-                "\n - 사망월일: " + ApplicationClass.prefs.date2 + " (${ApplicationClass.prefs.date2Type})" +
-                "\n유골함 종류: " + ApplicationClass.prefs.selectedUrnType +
+                "\n - 생년월일: " + ApplicationClass.prefs.date1.toString().replace("-", ".") + " (${ApplicationClass.prefs.date1Type})" +
+                "\n - 사망월일: " + ApplicationClass.prefs.date2.toString().replace("-", ".") + " (${ApplicationClass.prefs.date2Type})"
+
+        // 직분, 세례명, 법명
+        if((ApplicationClass.prefs.engraveType == "기독교" || ApplicationClass.prefs.engraveType == "순복음") && (ApplicationClass.prefs.engraveType2 == "기본")) {
+            msg += "\n - 직분: " + ApplicationClass.prefs.name2
+        }else if(ApplicationClass.prefs.engraveType == "불교" && ApplicationClass.prefs.engraveType2 == "법명") {
+            msg += "\n - 법명: " + ApplicationClass.prefs.name2
+        }else if(ApplicationClass.prefs.engraveType == "천주교" && ApplicationClass.prefs.engraveType2 == "기본") {
+            msg += "\n - 세례명: " + ApplicationClass.prefs.name2
+        }
+
+        msg += "\n유골함 종류: " + ApplicationClass.prefs.selectedUrnType +
                 "\n위패 종류: " + ApplicationClass.prefs.selectedTabletType +
                 "\n\n특이사항: " + ApplicationClass.prefs.note
 
@@ -142,7 +153,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     val imageUri = FileProvider.getUriForFile(requireContext(), "${requireContext().packageName}.fileprovider", imageFile)
                     Log.d(TAG, "imageUri: " + imageUri)
 
-                    val tel = "01012345678"
+                    val tel = ApplicationClass.prefs.leaderTel.toString().replace("-", "")
                     val subject = "MMS 제목"
 //                    val sms_body = "MMS 내용"
                     val sms_body = msg

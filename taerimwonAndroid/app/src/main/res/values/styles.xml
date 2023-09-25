@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <style name="BlackBorder">
+        <item name="android:background">@drawable/black_border</item>
+    </style>
 <!--    <style name="ActionBarTitle" parent="android:TextAppearance">-->
 <!--        <item name="android:textSize">18sp</item>-->
 <!--        <item name="android:fontFamily">@font/scdream_regular</item>-->

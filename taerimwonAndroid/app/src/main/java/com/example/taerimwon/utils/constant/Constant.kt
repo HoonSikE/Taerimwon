@@ -29,8 +29,10 @@ const val BURIALNAME = "burialName"
 const val BURIALTIME = "burialTime"
 // 각인종류 (일반, 기독교, 천주교, ...)
 const val ENGRAVETYPE = "engraveType"
+const val ENGRAVETYPEPOSITION = "engraveTypePosition"
 // 각인 상세 종류 (일반, 형제, 직분, 기독, ...)
 const val ENGRAVETYPE2 = "engraveType2"
+const val ENGRAVETYPE2POSITION = "engraveType2Position"
 // 고인 성함
 const val NAME1 = "name1"
 // 직분, 세례명, 법명

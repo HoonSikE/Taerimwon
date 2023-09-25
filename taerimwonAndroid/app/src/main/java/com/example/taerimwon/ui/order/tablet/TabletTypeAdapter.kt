@@ -21,7 +21,7 @@ class TabletTypeAdapter: RecyclerView.Adapter<TabletTypeAdapter.TabletType2ListV
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TabletType2ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_tablet_type2, parent, false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_tablet_type, parent, false)
         return TabletType2ListViewHolder(view)
     }
 

@@ -1,6 +1,7 @@
 package com.example.taerimwon.ui.order.urn
 
 import android.text.Editable
+import android.text.InputFilter
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
@@ -17,9 +18,9 @@ import com.example.taerimwon.utils.input.DateTextWatcher
 @AndroidEntryPoint
 class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.fragment_urn_container) {
     private lateinit var engraveTypeAdapter: EngraveTypeAdapter
-    private lateinit var engraveSelectTypeAdapter: EngraveType2Adapter
+    private lateinit var engraveType2Adapter: EngraveType2Adapter
     private var engraveTypeList = ArrayList<String>()
-    private var engraveSelectTypeList = ArrayList<String>()
+    private var engraveType2List = ArrayList<String>()
     override fun init() {
         initAdapter()
         initData()
@@ -28,22 +29,39 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         addTextChangedListener()
         observer()
     }
-    private val engraveTypeClickListener: (View, String) -> Unit = { _, idx ->
-        ApplicationClass.prefs.engraveType = idx
-        println(ApplicationClass.prefs.engraveType)
+    private val engraveTypeClickListener: (View, String) -> Unit = { _, engraveType ->
+        // 배열을 가져옵니다.
+        val engraveTypes = engraveType.split(" ")
+        ApplicationClass.prefs.engraveType = engraveTypes[1]
+        ApplicationClass.prefs.religion = engraveTypes[1]
+        println("engraveType: " + ApplicationClass.prefs.engraveType)
 
-        engraveSelectTypeList = arrayListOf("일반", idx)
-        engraveSelectTypeAdapter.updateList(engraveSelectTypeList)
+        // 문자열 이름을 문자열로 정의합니다.
+        val arrName = "engrave_type" + engraveTypes[0]
+        // 문자열 배열을 가져옵니다.
+        val stringArray = resources.getIdentifier(arrName, "array", requireContext().packageName)
+        val engraveTypes2Array = resources.getStringArray(stringArray)
+
+        // 배열을 리스트로 변환합니다.
+        engraveType2List = mutableListOf(*engraveTypes2Array) as ArrayList<String>
+        engraveType2Adapter.updateList(engraveType2List)
+
+        // engraveType2 초기값
+        ApplicationClass.prefs.engraveType2 = "기본"
+        engraveType2Adapter.setSelectedItem(0)
+        setName2(ApplicationClass.prefs.engraveType.toString(), ApplicationClass.prefs.engraveType2.toString())
     }
-    private val engraveType2ClickListener: (View, String) -> Unit = { _, idx ->
-        ApplicationClass.prefs.engraveType2 = idx
-        println(ApplicationClass.prefs.engraveType2)
+    private val engraveType2ClickListener: (View, String) -> Unit = { _, engraveType2 ->
+        val engraveTypes2 = engraveType2.split(" ")
+        ApplicationClass.prefs.engraveType2 = engraveTypes2[1]
+        println("engraveType2: " + ApplicationClass.prefs.engraveType2)
+        setName2(ApplicationClass.prefs.engraveType.toString(), ApplicationClass.prefs.engraveType2.toString())
     }
     private fun initAdapter() {
-        engraveTypeAdapter = EngraveTypeAdapter().apply {
+        engraveTypeAdapter = EngraveTypeAdapter(requireContext()).apply {
             onItemClickListener = engraveTypeClickListener
         }
-        engraveSelectTypeAdapter = EngraveType2Adapter().apply {
+        engraveType2Adapter = EngraveType2Adapter(requireContext()).apply {
             onItemClickListener = engraveType2ClickListener
         }
 
@@ -53,22 +71,36 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         }
 
         binding.recyclerviewEngraveSelectType.apply {
-            adapter = engraveSelectTypeAdapter
+            adapter = engraveType2Adapter
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         }
+        engraveTypeAdapter.setSelectedItem(ApplicationClass.prefs.engraveTypePosition)
+        engraveType2Adapter.setSelectedItem(ApplicationClass.prefs.engraveType2Position)
     }
     private fun initData() {
         binding.editTextName1.setText(ApplicationClass.prefs.name1)
         binding.editTextDate1.setText(ApplicationClass.prefs.date1)
         binding.editTextDate2.setText(ApplicationClass.prefs.date2)
+        binding.editTextName2.setText(ApplicationClass.prefs.name2)
 
-        engraveTypeList = arrayListOf("일반", "기독교", "불교", "천주교", "SGI", "묘법", "순복음", "원불교")
+        // 배열을 가져옵니다.
+        val engraveTypesArray = resources.getStringArray(R.array.engrave_types)
+        // 배열을 리스트로 변환합니다.
+        engraveTypeList = mutableListOf(*engraveTypesArray) as ArrayList<String>
         engraveTypeAdapter.updateList(engraveTypeList)
-        binding.recyclerviewEngraveType.scrollToPosition(0)
+        binding.recyclerviewEngraveType.scrollToPosition(ApplicationClass.prefs.engraveTypePosition)
 
-        engraveSelectTypeList = arrayListOf("일반", "형제")
-        engraveSelectTypeAdapter.updateList(engraveSelectTypeList)
-        binding.recyclerviewEngraveSelectType.scrollToPosition(0)
+        // 배열을 가져옵니다.
+        // 문자열 이름을 문자열로 정의합니다.
+        val arrName = "engrave_type" + (ApplicationClass.prefs.engraveTypePosition + 1)
+        // 문자열 배열을 가져옵니다.
+        val stringArray = resources.getIdentifier(arrName, "array", requireContext().packageName)
+        val engraveTypes2Array = resources.getStringArray(stringArray)
+
+        // 배열을 리스트로 변환합니다.
+        engraveType2List = mutableListOf(*engraveTypes2Array) as ArrayList<String>
+        engraveType2Adapter.updateList(engraveType2List)
+        binding.recyclerviewEngraveSelectType.scrollToPosition(ApplicationClass.prefs.engraveType2Position)
     }
     private fun setOnClickListeners() {
     }
@@ -149,8 +181,56 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                 // 텍스트 변경 후 이벤트
             }
         })
+        // 직분, 법명, 세례명
+        binding.editTextName2.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 이전 텍스트 변경 이벤트
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // 텍스트 변경 이벤트
+                ApplicationClass.prefs.name2 = s?.toString() ?: ""
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 텍스트 변경 후 이벤트
+            }
+        })
     }
     private fun observer() {
 
+    }
+    private fun setName2(engraveType: String, engraveType2: String) {
+        // 직분, 세례명, 법명
+        if((engraveType == "기독교" || engraveType == "순복음") && (engraveType2 == "기본")) {
+            binding.textName2.visibility = View.VISIBLE
+            binding.editTextName2.visibility = View.VISIBLE
+            binding.imageName2.visibility = View.VISIBLE
+            binding.textName2.text = "* 직분"
+            binding.editTextName2.hint = "직분을 입력하세요."
+            val inputFilter = InputFilter.LengthFilter(4)
+            binding.editTextName2.filters = arrayOf(inputFilter)
+        }else if(engraveType == "불교" && engraveType2 == "법명") {
+            binding.textName2.visibility = View.VISIBLE
+            binding.editTextName2.visibility = View.VISIBLE
+            binding.imageName2.visibility = View.VISIBLE
+            binding.textName2.text = "* 법명"
+            binding.editTextName2.hint = "법명을 입력하세요."
+            val inputFilter = InputFilter.LengthFilter(4)
+            binding.editTextName2.filters = arrayOf(inputFilter)
+        }else if(engraveType == "천주교" && engraveType2 == "기본") {
+            binding.textName2.visibility = View.VISIBLE
+            binding.editTextName2.visibility = View.VISIBLE
+            binding.imageName2.visibility = View.VISIBLE
+            binding.textName2.text = "* 세례명"
+            binding.editTextName2.hint = "세례명을 입력하세요."
+            val inputFilter = InputFilter.LengthFilter(6)
+            binding.editTextName2.filters = arrayOf(inputFilter)
+        }else{
+            binding.textName2.visibility = View.GONE
+            binding.editTextName2.visibility = View.GONE
+            binding.imageName2.visibility = View.GONE
+            ApplicationClass.prefs.name2 = ""
+        }
     }
 }
