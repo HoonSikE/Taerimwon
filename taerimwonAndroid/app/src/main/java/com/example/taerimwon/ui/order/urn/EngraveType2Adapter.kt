@@ -6,16 +6,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taerimwon.databinding.ItemEngraveType2Binding
 
-class EngraveTypeAdapter: RecyclerView.Adapter<EngraveTypeAdapter.EngraveType2ListViewHolder>() {
-    private var engraveTypeList = mutableListOf<String>()
+class EngraveType2Adapter: RecyclerView.Adapter<EngraveType2Adapter.EngraveType2ListViewHolder>() {
+    private var engraveType2List = mutableListOf<String>()
     lateinit var onItemClickListener: (View, String) -> Unit
 
     fun setListDate(data: MutableList<String>){
-        engraveTypeList = data
+        engraveType2List = data
     }
 
     fun updateList(data: MutableList<String>){
-        engraveTypeList = data
+        engraveType2List = data
         notifyDataSetChanged()
     }
 
@@ -35,27 +35,26 @@ class EngraveTypeAdapter: RecyclerView.Adapter<EngraveTypeAdapter.EngraveType2Li
     }
 
     override fun onBindViewHolder(holder: EngraveType2ListViewHolder, position: Int) {
-        holder.bind(engraveTypeList[position])
+        holder.bind(engraveType2List[position])
     }
 
 
     override fun getItemCount(): Int {
-        return engraveTypeList.size
+        return engraveType2List.size
     }
 
     class EngraveType2ListViewHolder(private val binding: ItemEngraveType2Binding)
         : RecyclerView.ViewHolder(binding.root) {
-        lateinit var engraveType: String
+        lateinit var engraveType2: String
 
         fun bind(data: String) {
             binding.textEngraveType.text = "[" + data + "]"
-            engraveType = data
+            engraveType2 = data
         }
 
         fun bindOnItemClickListener(onItemClickListener: (View, String) -> Unit ) {
             binding.root.setOnClickListener {
-                onItemClickListener(it, engraveType)
-                println("adapter: " + engraveType)
+                onItemClickListener(it, engraveType2)
             }
         }
     }

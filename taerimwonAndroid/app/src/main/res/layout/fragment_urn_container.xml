@@ -48,11 +48,12 @@
                 />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview_engrave_type2"
+                android:id="@+id/recyclerview_engrave_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:scrollbars="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/text_engrave_type"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 />
@@ -79,7 +80,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview_engrave_select_type2"
+                android:id="@+id/recyclerview_engrave_select_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -96,7 +97,7 @@
                 android:layout_marginTop="16dp"
                 android:text="● 정보 입력"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerview_engrave_select_type2" />
+                app:layout_constraintTop_toBottomOf="@+id/recyclerview_engrave_select_type" />
 
             <!-- 고인 명 -->
             <TextView

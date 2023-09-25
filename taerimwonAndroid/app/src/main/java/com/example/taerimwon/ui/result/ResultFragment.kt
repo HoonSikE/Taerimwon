@@ -74,7 +74,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     "\n - 함 도착 시간: " + ApplicationClass.prefs.burialTime
         }
 
-        msg += "\n\n각인 종류: " + ApplicationClass.prefs.selectedType
+        msg += "\n\n각인 종류: " + ApplicationClass.prefs.engraveType
 
         msg += "\n\n고인 정보: " +
                 "\n - 고인명: " + ApplicationClass.prefs.name1 +

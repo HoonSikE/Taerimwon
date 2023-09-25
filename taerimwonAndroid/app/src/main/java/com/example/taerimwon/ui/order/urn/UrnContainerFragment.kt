@@ -16,10 +16,10 @@ import com.example.taerimwon.utils.input.DateTextWatcher
 
 @AndroidEntryPoint
 class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.fragment_urn_container) {
-    private lateinit var engraveType2Adapter: EngraveTypeAdapter
-    private lateinit var engraveSelectType2Adapter: EngraveTypeAdapter
-    private var engraveType2List = ArrayList<String>()
-    private var engraveSelectType2List = ArrayList<String>()
+    private lateinit var engraveTypeAdapter: EngraveTypeAdapter
+    private lateinit var engraveSelectTypeAdapter: EngraveType2Adapter
+    private var engraveTypeList = ArrayList<String>()
+    private var engraveSelectTypeList = ArrayList<String>()
     override fun init() {
         initAdapter()
         initData()
@@ -31,35 +31,44 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
     private val engraveTypeClickListener: (View, String) -> Unit = { _, idx ->
         ApplicationClass.prefs.engraveType = idx
         println(ApplicationClass.prefs.engraveType)
+
+        engraveSelectTypeList = arrayListOf("일반", idx)
+        engraveSelectTypeAdapter.updateList(engraveSelectTypeList)
+    }
+    private val engraveType2ClickListener: (View, String) -> Unit = { _, idx ->
+        ApplicationClass.prefs.engraveType2 = idx
+        println(ApplicationClass.prefs.engraveType2)
     }
     private fun initAdapter() {
-        engraveType2Adapter = EngraveTypeAdapter().apply {
+        engraveTypeAdapter = EngraveTypeAdapter().apply {
             onItemClickListener = engraveTypeClickListener
         }
-//        engraveSelectType2Adapter = EngraveTypeAdapter()
+        engraveSelectTypeAdapter = EngraveType2Adapter().apply {
+            onItemClickListener = engraveType2ClickListener
+        }
 
-        binding.recyclerviewEngraveType2.apply {
-            adapter = engraveType2Adapter
+        binding.recyclerviewEngraveType.apply {
+            adapter = engraveTypeAdapter
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         }
 
-//        binding.recyclerviewEngraveSelectType2.apply {
-//            adapter = engraveSelectType2Adapter
-//            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
-//        }
+        binding.recyclerviewEngraveSelectType.apply {
+            adapter = engraveSelectTypeAdapter
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        }
     }
     private fun initData() {
         binding.editTextName1.setText(ApplicationClass.prefs.name1)
         binding.editTextDate1.setText(ApplicationClass.prefs.date1)
         binding.editTextDate2.setText(ApplicationClass.prefs.date2)
 
-        engraveType2List = arrayListOf("일반", "기독교", "불교", "천주교", "SGI", "묘법", "순복음", "원불교")
-        engraveType2Adapter.updateList(engraveType2List)
-        binding.recyclerviewEngraveType2.scrollToPosition(0)
+        engraveTypeList = arrayListOf("일반", "기독교", "불교", "천주교", "SGI", "묘법", "순복음", "원불교")
+        engraveTypeAdapter.updateList(engraveTypeList)
+        binding.recyclerviewEngraveType.scrollToPosition(0)
 
-        engraveSelectType2List = arrayListOf("일반", "형제")
-//        engraveSelectType2Adapter.updateList(engraveSelectType2List)
-        binding.recyclerviewEngraveSelectType2.scrollToPosition(0)
+        engraveSelectTypeList = arrayListOf("일반", "형제")
+        engraveSelectTypeAdapter.updateList(engraveSelectTypeList)
+        binding.recyclerviewEngraveSelectType.scrollToPosition(0)
     }
     private fun setOnClickListeners() {
     }

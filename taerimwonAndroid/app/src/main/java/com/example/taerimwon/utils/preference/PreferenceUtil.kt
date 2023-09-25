@@ -110,10 +110,10 @@ class PreferenceUtil(context: Context) {
             order.edit().putString(ENGRAVETYPE, value).apply()
         }
     // 각인 상세 종류 (일반, 형제, 직분, 기독, ...)
-    var selectedType : String?
-        get() = order.getString(SELECTEDTYPE, "일반")
+    var engraveType2 : String?
+        get() = order.getString(ENGRAVETYPE2, "일반")
         set(value){
-            order.edit().putString(SELECTEDTYPE, value).apply()
+            order.edit().putString(ENGRAVETYPE2, value).apply()
         }
     // 고인 성함
     var name1 : String?
@@ -169,10 +169,10 @@ class PreferenceUtil(context: Context) {
             order.edit().putString(BONEENGRAVETYPE, value).apply()
         }
     // 각인 상세 종류 (일반, 형제, 직분, 기독, ...)
-    var boneSelectedType : String?
-        get() = order.getString(BONESELECTEDTYPE, "")
+    var boneEngraveType2 : String?
+        get() = order.getString(BONEENGRAVETYPE2, "")
         set(value){
-            order.edit().putString(BONESELECTEDTYPE, value).apply()
+            order.edit().putString(BONEENGRAVETYPE2, value).apply()
         }
     var boneSex : String?
         get() = order.getString(BONESEX, "")
@@ -221,10 +221,10 @@ class PreferenceUtil(context: Context) {
             order.edit().putString(SHOWROUTERVIEW, value).apply()
         }
     // 위패 종류 (일반, 본관, 문구)
-    var selectedType2 : String?
-        get() = order.getString(SELECTEDTYYPE2, "")
+    var tabletType : String?
+        get() = order.getString(TABLETTYPE, "")
         set(value){
-            order.edit().putString(SELECTEDTYYPE2, value).apply()
+            order.edit().putString(TABLETTYPE, value).apply()
         }
     // 위패 내용
     var name3 : String?
@@ -304,7 +304,7 @@ class PreferenceUtil(context: Context) {
         burialName = ""
         burialTime = ""
         engraveType = ""
-        selectedType = "일반"
+        engraveType2 = "일반"
         name1 = ""
         name2 = ""
         date1 = ""
@@ -314,7 +314,7 @@ class PreferenceUtil(context: Context) {
         religion = ""
         selectedUrnType = "유골함"
         boneEngraveType = ""
-        boneSelectedType = ""
+        boneEngraveType2 = ""
         boneSex = ""
         boneName1 = ""
         boneName2 = ""
@@ -324,7 +324,7 @@ class PreferenceUtil(context: Context) {
         boneDate2Type = ""
         boneReligion = ""
         showRouterView = ""
-        selectedType2 = ""
+        tabletType = ""
         name3 = ""
         name3Type = ""
         name3_1 = ""

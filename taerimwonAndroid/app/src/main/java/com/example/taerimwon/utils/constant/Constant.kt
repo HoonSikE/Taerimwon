@@ -30,7 +30,7 @@ const val BURIALTIME = "burialTime"
 // 각인종류 (일반, 기독교, 천주교, ...)
 const val ENGRAVETYPE = "engraveType"
 // 각인 상세 종류 (일반, 형제, 직분, 기독, ...)
-const val SELECTEDTYPE = "selectedType"
+const val ENGRAVETYPE2 = "engraveType2"
 // 고인 성함
 const val NAME1 = "name1"
 // 직분, 세례명, 법명
@@ -49,7 +49,7 @@ const val SELECTEDURNTYPE = "selectedUrnType"
 // 각인종류 (일반, 기독교, 천주교, ...)
 const val BONEENGRAVETYPE = "boneEngraveType"
 // 각인 상세 종류 (일반, 형제, 직분, 기독, ...)
-const val BONESELECTEDTYPE = "boneSelectedType"
+const val BONEENGRAVETYPE2 = "boneEngraveType2"
 const val BONESEX = "boneSex"
 const val BONENAME1 = "boneName1"
 const val BONENAME2 = "boneName2"
@@ -61,7 +61,7 @@ const val BONERELIGION = "boneReligion"
 // 위패 보기
 const val SHOWROUTERVIEW = "showRouterView"
 // 위패 종류 (일반, 본관, 문구)
-const val SELECTEDTYYPE2 = "selectedType2"
+const val TABLETTYPE = "tabletType"
 // 위패 내용
 const val NAME3 = "name3"
 // 문구
