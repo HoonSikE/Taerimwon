@@ -48,10 +48,67 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     }
 
     private fun initData() {
+        setMark()
+        setUrnData()
+        setMsg()
         authViewModel.getBlackList()
         if(!ApplicationClass.prefs.authenticated)
             findNavController().navigate(R.id.action_resultFragment_to_phoneAuthFragment)
+    }
+    private fun setMark() {
+        // 이미지 이름을 문자열로 정의합니다.
+        val imageName = "img_mark" + (ApplicationClass.prefs.engraveTypePosition + 1)
+        // 직분, 세례명, 법명
+        val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
+        binding.imageResult21.setImageResource(imageResource)
+    }
+    private fun setUrnData() {
+        // 이름
+        val name1 = ApplicationClass.prefs.name1
+        val tmp = StringBuilder()
+        if (name1 != null) {
+            for (c in name1) {
+                tmp.append(c).append("\n")
+            }
+            tmp.trimEnd() // 마지막 줄바꿈 문자 제거
+        }
+        binding.layoutResult22.text = tmp.toString()
 
+        // 출생일
+        val date1 = ApplicationClass.prefs.date1.toString()
+        binding.layoutResult121.text = date1[0].toString()
+        binding.layoutResult122.text = date1[1].toString()
+        binding.layoutResult123.text = date1[2].toString()
+        binding.layoutResult124.text = date1[3].toString()
+        binding.layoutResult141.text = date1[5].toString()
+        binding.layoutResult142.text = date1[6].toString()
+        binding.layoutResult161.text = date1[8].toString()
+        binding.layoutResult161.text = date1[9].toString()
+
+        val date1Type = ApplicationClass.prefs.date1Type
+        if(date1Type == "양력")
+            binding.layoutResult17.text = "陽"
+        else if(date1Type == "음력")
+            binding.layoutResult17.text = "陰"
+
+        // 사망일
+        val date2 = ApplicationClass.prefs.date1.toString()
+        binding.layoutResult321.text = date2[0].toString()
+        binding.layoutResult322.text = date2[1].toString()
+        binding.layoutResult323.text = date2[2].toString()
+        binding.layoutResult324.text = date2[3].toString()
+        binding.layoutResult341.text = date2[5].toString()
+        binding.layoutResult342.text = date2[6].toString()
+        binding.layoutResult361.text = date2[8].toString()
+        binding.layoutResult361.text = date2[9].toString()
+
+        val date2Type = ApplicationClass.prefs.date2Type
+        if(date2Type == "양력")
+            binding.layoutResult37.text = "陽"
+        else if(date2Type == "음력")
+            binding.layoutResult37.text = "陰"
+    }
+    private fun setMsg() {
         msg = "[태림원]" +
                 "\n발주자 정보" +
                 "\n - 발주자명: " + ApplicationClass.prefs.leaderName +
