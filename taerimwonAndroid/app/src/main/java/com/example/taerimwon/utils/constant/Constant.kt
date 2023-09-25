@@ -50,8 +50,10 @@ const val SELECTEDURNTYPE = "selectedUrnType"
 // 합골 추가 정보
 // 각인종류 (일반, 기독교, 천주교, ...)
 const val BONEENGRAVETYPE = "boneEngraveType"
+const val BONEENGRAVETYPEPOSITION = "boneEngraveTypePosition"
 // 각인 상세 종류 (일반, 형제, 직분, 기독, ...)
 const val BONEENGRAVETYPE2 = "boneEngraveType2"
+const val BONEENGRAVETYPE2POSITION = "boneEngraveType2Position"
 const val BONESEX = "boneSex"
 const val BONENAME1 = "boneName1"
 const val BONENAME2 = "boneName2"

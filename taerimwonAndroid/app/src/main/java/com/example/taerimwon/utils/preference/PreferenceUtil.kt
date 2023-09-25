@@ -161,7 +161,7 @@ class PreferenceUtil(context: Context) {
         }
     // 종교
     var religion : String?
-        get() = order.getString(RELIGION, "")
+        get() = order.getString(RELIGION, "무교")
         set(value){
             order.edit().putString(RELIGION, value).apply()
         }
@@ -174,18 +174,28 @@ class PreferenceUtil(context: Context) {
     // 합골 추가 정보
     // 각인종류 (일반, 기독교, 천주교, ...)
     var boneEngraveType : String?
-        get() = order.getString(BONEENGRAVETYPE, "")
+        get() = order.getString(BONEENGRAVETYPE, "일반")
         set(value){
             order.edit().putString(BONEENGRAVETYPE, value).apply()
         }
+    var boneEngraveTypePosition : Int
+        get() = order.getInt(BONEENGRAVETYPEPOSITION, 0)
+        set(value){
+            order.edit().putInt(BONEENGRAVETYPEPOSITION, value).apply()
+        }
     // 각인 상세 종류 (일반, 형제, 직분, 기독, ...)
     var boneEngraveType2 : String?
-        get() = order.getString(BONEENGRAVETYPE2, "")
+        get() = order.getString(BONEENGRAVETYPE2, "기본")
         set(value){
             order.edit().putString(BONEENGRAVETYPE2, value).apply()
         }
+    var boneEngraveType2Position : Int
+        get() = order.getInt(BONEENGRAVETYPE2POSITION, 0)
+        set(value){
+            order.edit().putInt(BONEENGRAVETYPE2POSITION, value).apply()
+        }
     var boneSex : String?
-        get() = order.getString(BONESEX, "")
+        get() = order.getString(BONESEX, "남성")
         set(value){
             order.edit().putString(BONESEX, value).apply()
         }
@@ -205,7 +215,7 @@ class PreferenceUtil(context: Context) {
             order.edit().putString(BONEDATE1, value).apply()
         }
     var boneDate1Type : String?
-        get() = order.getString(BONEDATE1TYPE, "")
+        get() = order.getString(BONEDATE1TYPE, "양력")
         set(value){
             order.edit().putString(BONEDATE1TYPE, value).apply()
         }
@@ -215,12 +225,12 @@ class PreferenceUtil(context: Context) {
             order.edit().putString(BONEDATE2, value).apply()
         }
     var boneDate2Type : String?
-        get() = order.getString(BONEDATE2TYPE, "")
+        get() = order.getString(BONEDATE2TYPE, "양력")
         set(value){
             order.edit().putString(BONEDATE2TYPE, value).apply()
         }
     var boneReligion : String?
-        get() = order.getString(BONERELIGION, "")
+        get() = order.getString(BONERELIGION, "무교")
         set(value){
             order.edit().putString(BONERELIGION, value).apply()
         }
@@ -232,7 +242,7 @@ class PreferenceUtil(context: Context) {
         }
     // 위패 종류 (일반, 본관, 문구)
     var tabletType : String?
-        get() = order.getString(TABLETTYPE, "")
+        get() = order.getString(TABLETTYPE, "일반")
         set(value){
             order.edit().putString(TABLETTYPE, value).apply()
         }
@@ -331,7 +341,9 @@ class PreferenceUtil(context: Context) {
         religion = ""
         selectedUrnType = "선택안함"
         boneEngraveType = ""
+        boneEngraveTypePosition = 0
         boneEngraveType2 = ""
+        boneEngraveType2Position = 0
         boneSex = ""
         boneName1 = ""
         boneName2 = ""

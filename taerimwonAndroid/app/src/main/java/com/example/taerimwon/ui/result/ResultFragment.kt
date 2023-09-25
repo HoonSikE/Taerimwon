@@ -93,6 +93,25 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         msg += "\n\n유골함 종류: " + ApplicationClass.prefs.selectedUrnType
 
+        if(ApplicationClass.prefs.selectedUrnType!!.contains("합골")){
+            msg += "\n\n========== "
+
+            msg += "\n합골 추가 정보: " +
+                    "\n - 고인명: " + ApplicationClass.prefs.boneName1 +
+                    "\n - 생년월일: " + ApplicationClass.prefs.boneDate1.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate1Type})" +
+                    "\n - 사망월일: " + ApplicationClass.prefs.boneDate2.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate2Type})"
+
+            // 직분, 세례명, 법명
+            if((ApplicationClass.prefs.boneEngraveType == "기독교" || ApplicationClass.prefs.boneEngraveType == "순복음") && (ApplicationClass.prefs.boneEngraveType2 == "기본")) {
+                msg += "\n - 직분: " + ApplicationClass.prefs.boneName2
+            }else if(ApplicationClass.prefs.boneEngraveType == "불교" && ApplicationClass.prefs.boneEngraveType2 == "법명") {
+                msg += "\n - 법명: " + ApplicationClass.prefs.boneName2
+            }else if(ApplicationClass.prefs.boneEngraveType == "천주교" && ApplicationClass.prefs.boneEngraveType2 == "기본") {
+                msg += "\n - 세례명: " + ApplicationClass.prefs.boneName2
+            }
+            msg += "\n========== "
+        }
+
         msg += "\n\n위패 종류: " + ApplicationClass.prefs.tabletType +
                 "\n - 위패 내용: " + ApplicationClass.prefs.name3 +
                 "\n - 위패 상세 종류: " + ApplicationClass.prefs.selectedTabletType

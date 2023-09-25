@@ -14,7 +14,7 @@
         <item>음력</item>
     </string-array>
     <!--유골함 종류-->
-    <string-array name="urn_types">
+    <string-array name="selected_urn_types">
         <item>선택안함</item>
         <item>유골함</item>
         <item>유골함1</item>
@@ -24,8 +24,13 @@
         <item>합골함1</item>
         <item>합골함2</item>
     </string-array>
+    <!--성별-->
+    <string-array name="bone_sex">
+        <item>남성</item>
+        <item>여성</item>
+    </string-array>
     <!--위패 종류-->
-    <string-array name="tablet_types">
+    <string-array name="selected_tablet_types">
         <item>선택안함</item>
         <item>흰색</item>
         <item>검정</item>

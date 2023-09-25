@@ -47,6 +47,10 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         }
     }
     private fun initData() {
+        val selectedTabletTypesArray = resources.getStringArray(R.array.selected_tablet_types)
+        val selectedTabletTypeList = mutableListOf(*selectedTabletTypesArray) as ArrayList<String>
+        binding.spinnerSelectTabletType.setSelection(selectedTabletTypeList.indexOf(ApplicationClass.prefs.selectedTabletType))
+
         // 배열을 가져옵니다.
         // 문자열 이름을 문자열로 정의합니다.
         val arrName = "tablet_type" + (ApplicationClass.prefs.engraveTypePosition + 1)
@@ -56,7 +60,6 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
 
         // 배열을 리스트로 변환합니다.
         tabletSelectTypeList = mutableListOf(*tabletTypesArray) as ArrayList<String>
-
         tabletSelectTypeAdapter.updateList(tabletSelectTypeList)
         binding.recyclerviewTabletType.scrollToPosition(ApplicationClass.prefs.tabletTypePosition)
     }

@@ -37,4 +37,6 @@
     <color name="gold">#FFD700</color>
     <color name="platinum">#0F52BA</color>
     <color name="diamond">#B9F2FF</color>
+    <color name="man">#5890FF</color>
+    <color name="woman">#FF5274</color>
 </resources>

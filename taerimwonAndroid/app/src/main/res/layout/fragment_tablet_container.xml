@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/text_select_tablet_type"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:entries="@array/tablet_types"
+                android:entries="@array/selected_tablet_types"
                 android:spinnerMode="dropdown"
                 android:defaultValue="0"
                 />
