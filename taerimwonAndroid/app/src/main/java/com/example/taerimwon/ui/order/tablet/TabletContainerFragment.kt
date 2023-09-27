@@ -79,6 +79,11 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         binding.spinnerSelectTabletType.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 ApplicationClass.prefs.selectedTabletType = parent?.getItemAtPosition(position).toString() ?: ""
+
+                if(ApplicationClass.prefs.selectedTabletType!!.contains("선택안함"))
+                    binding.layoutTablet.visibility = View.GONE
+                else
+                    binding.layoutTablet.visibility = View.VISIBLE
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -140,7 +145,16 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         }
     }
     private fun setName3(tabletType: String) {
-        if(tabletType.contains("본관")) {
+        if(tabletType == "일반" && ApplicationClass.prefs.selectedUrnType == "선택안함") {
+            binding.textName3.visibility = View.VISIBLE
+            binding.editTextName3.visibility = View.VISIBLE
+            binding.imageName3.visibility = View.VISIBLE
+            binding.imageHeart.visibility = View.GONE
+            binding.textName3.text = "* 이름"
+            binding.editTextName3.hint = "이름을 입력하세요."
+            val inputFilter = InputFilter.LengthFilter(4)
+            binding.editTextName3.filters = arrayOf(inputFilter)
+        }else if(tabletType.contains("본관")) {
             binding.textName3.visibility = View.VISIBLE
             binding.editTextName3.visibility = View.VISIBLE
             binding.imageName3.visibility = View.VISIBLE
@@ -164,6 +178,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.imageName3.visibility = View.GONE
             binding.imageHeart.visibility = View.GONE
             ApplicationClass.prefs.name2 = ""
+            ApplicationClass.prefs.name3 = ApplicationClass.prefs.name1
         }
     }
 }

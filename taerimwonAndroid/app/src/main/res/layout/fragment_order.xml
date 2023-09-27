@@ -325,7 +325,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:text="● 발주 장소 입력"
+                        android:text="● 발주 장소 입력(필수)"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         />
@@ -705,7 +705,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:text="* 특이사항 (최대 50자)"
+                        android:text="* 특이사항(선택)"
                         app:layout_constraintStart_toStartOf="parent"
                         />
 
@@ -716,7 +716,7 @@
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="8dp"
                         android:ems="10"
-                        android:hint="특이사항을 입력하세요"
+                        android:hint="특이사항을 입력하세요 (최대 30자)"
                         android:paddingLeft="48dp"
                         android:imeOptions="actionDone"
                         android:inputType="text"

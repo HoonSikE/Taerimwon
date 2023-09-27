@@ -37,8 +37,14 @@ import java.io.FileOutputStream
 class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_result) {
     val authViewModel: AuthViewModel by viewModels()
     private val REQUEST_CODE_STORAGE_PERMISSION = 101 // 권한 요청 코드
+    private lateinit var selectedUrnType: String
+    private lateinit var selectedTabletType: String
+
     private lateinit var msg: String
-    private lateinit var bitmap: Bitmap
+    private lateinit var urnBitmap: Bitmap
+    private lateinit var urnResultBitmap: Bitmap
+    private lateinit var tabletBitmap: Bitmap
+    private lateinit var tabletResultBitmap: Bitmap
 
     override fun init() {
         initData()
@@ -48,8 +54,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     }
 
     private fun initData() {
+        selectedUrnType = ApplicationClass.prefs.selectedUrnType.toString()
+        selectedTabletType = ApplicationClass.prefs.selectedTabletType.toString()
+
         setMark()
         setUrnData()
+        setTabletData()
         setMsg()
         authViewModel.getBlackList()
         if(!ApplicationClass.prefs.authenticated)
@@ -57,60 +67,258 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     }
     private fun setMark() {
         // 이미지 이름을 문자열로 정의합니다.
-        val imageName = "img_mark" + (ApplicationClass.prefs.engraveTypePosition + 1)
+        val engraveTypePosition = ApplicationClass.prefs.engraveTypePosition
+        var imageName = "img_mark" + (engraveTypePosition + 1)
+
+        if(engraveTypePosition == 4 || engraveTypePosition == 5){
+            if(ApplicationClass.prefs.engraveType2Position == 0)
+                imageName = "img_mark5"
+            else if(ApplicationClass.prefs.engraveType2Position == 1)
+                imageName = "img_mark5_2"
+        }
         // 직분, 세례명, 법명
         val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
-        binding.imageResult21.setImageResource(imageResource)
+        binding.imageUrnResult21.setImageResource(imageResource)
     }
     private fun setUrnData() {
+        if(ApplicationClass.prefs.name1 == "")
+            binding.layoutUrnResult.visibility = View.GONE
+        else
+            binding.layoutUrnResult.visibility = View.VISIBLE
+
         // 이름
-        val name1 = ApplicationClass.prefs.name1
+        val name1 = ApplicationClass.prefs.name1.toString()
+        val name2 = ApplicationClass.prefs.name2.toString()
         val tmp = StringBuilder()
-        if (name1 != null) {
-            for (c in name1) {
-                tmp.append(c).append("\n")
+
+        val engraveType = ApplicationClass.prefs.engraveType
+        val engraveType2 = ApplicationClass.prefs.engraveType2
+
+        if((engraveType == "일반" && engraveType2 == "기본")
+            || (engraveType == "기독교" && engraveType2 == "직분X")
+            || (engraveType == "불교" && engraveType2 == "기본")
+            || (engraveType == "천주교" && engraveType2 == "세례명X")
+            || (engraveType == "원불교")){
+            binding.layoutUrnResult22.visibility = View.VISIBLE
+            when (name1.length) {
+                2 -> {
+                    tmp.append(name1[0]).append("\n").append("\n").append(name1[1])
+                    binding.layoutUrnResult221.text = tmp.toString()
+                }
+                3 -> {
+                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2])
+                    binding.layoutUrnResult221.text = tmp.toString()
+                }
+                4 -> {
+                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
+                    binding.layoutUrnResult2214.text = tmp.toString()
+                    binding.layoutUrnResult221.visibility = View.GONE
+                    binding.layoutUrnResult2214.visibility = View.VISIBLE
+                }
             }
-            tmp.trimEnd() // 마지막 줄바꿈 문자 제거
+        }else if(engraveType2 == "형제"){
+            binding.layoutUrnResult23.visibility = View.VISIBLE
+            when (name1.length) {
+                2 -> {
+                    tmp.append(name1[0]).append("\n").append("\n").append(name1[1])
+                    binding.layoutUrnResult231.text = tmp.toString()
+                }
+                3 -> {
+                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2])
+                    binding.layoutUrnResult231.text = tmp.toString()
+                }
+                4 -> {
+                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
+                    binding.layoutUrnResult2314.text = tmp.toString()
+                    binding.layoutUrnResult231.visibility = View.GONE
+                    binding.layoutUrnResult2314.visibility = View.VISIBLE
+                }
+            }
+        }else if(engraveType == "기독교" && engraveType2 == "기본"
+            || engraveType == "불교" && engraveType2 == "법명"
+            || engraveType == "순복음"){
+            binding.layoutUrnResult24.visibility = View.VISIBLE
+            when (name1.length) {
+                2 -> {
+                    tmp.append(name1[0]).append("\n").append("\n").append(name1[1])
+                    binding.layoutUrnResult241.text = tmp.toString()
+                }
+                3 -> {
+                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2])
+                    binding.layoutUrnResult241.text = tmp.toString()
+                }
+                4 -> {
+                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
+                    binding.layoutUrnResult2414.text = tmp.toString()
+                    binding.layoutUrnResult241.visibility = View.GONE
+                    binding.layoutUrnResult2414.visibility = View.VISIBLE
+                }
+            }
+            when (name2.length) {
+                2 -> {
+                    binding.layoutUrnResult242.text = name2
+                }
+                3 -> {
+                    binding.layoutUrnResult242.text = name2
+                }
+                4 -> {
+                    binding.layoutUrnResult2424.text = name2
+                    binding.layoutUrnResult242.visibility = View.GONE
+                    binding.layoutUrnResult2424.visibility = View.VISIBLE
+                }
+            }
+        } else if(engraveType == "천주교" && engraveType2 == "기본"){
+            binding.layoutUrnResult25.visibility = View.VISIBLE
+            when (name1.length) {
+                2 -> {
+                    tmp.append(name1[0]).append("\n").append("\n").append(name1[1])
+                    binding.layoutUrnResult251.text = tmp.toString()
+                }
+                3 -> {
+                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2])
+                    binding.layoutUrnResult251.text = tmp.toString()
+                }
+                4 -> {
+                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
+                    binding.layoutUrnResult2514.text = tmp.toString()
+                    binding.layoutUrnResult251.visibility = View.GONE
+                    binding.layoutUrnResult2514.visibility = View.VISIBLE
+                }
+            }
+            when (name2.length) {
+                2 -> {
+                    binding.layoutUrnResult252.text = name2
+                }
+                3 -> {
+                    binding.layoutUrnResult252.text = name2
+                }
+                4 -> {
+                    binding.layoutUrnResult2524.text = name2
+                    binding.layoutUrnResult252.visibility = View.GONE
+                    binding.layoutUrnResult2524.visibility = View.VISIBLE
+                }
+                5 -> {
+                    binding.layoutUrnResult2525.text = name2
+                    binding.layoutUrnResult252.visibility = View.GONE
+                    binding.layoutUrnResult2525.visibility = View.VISIBLE
+                }
+                6 -> {
+                    binding.layoutUrnResult2526.text = name2
+                    binding.layoutUrnResult252.visibility = View.GONE
+                    binding.layoutUrnResult2526.visibility = View.VISIBLE
+                }
+            }
+        }else if(engraveType == "SGI"){
+            binding.layoutUrnResult26.visibility = View.VISIBLE
+            when (name1.length) {
+                2 -> {
+                    tmp.append(name1[0]).append("\n").append("\n").append(name1[1])
+                    binding.layoutUrnResult261.text = tmp.toString()
+                }
+                3 -> {
+                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2])
+                    binding.layoutUrnResult261.text = tmp.toString()
+                }
+                4 -> {
+                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
+                    binding.layoutUrnResult2614.text = tmp.toString()
+                    binding.layoutUrnResult261.visibility = View.GONE
+                    binding.layoutUrnResult2614.visibility = View.VISIBLE
+                }
+            }
+        }else if(engraveType == "묘법"){
+            binding.layoutUrnResult27.visibility = View.VISIBLE
+            when (name1.length) {
+                2 -> {
+                    tmp.append(name1[0]).append("\n").append("\n").append(name1[1])
+                    binding.layoutUrnResult271.text = tmp.toString()
+                }
+                3 -> {
+                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2])
+                    binding.layoutUrnResult271.text = tmp.toString()
+                }
+                4 -> {
+                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
+                    binding.layoutUrnResult2714.text = tmp.toString()
+                    binding.layoutUrnResult271.visibility = View.GONE
+                    binding.layoutUrnResult2714.visibility = View.VISIBLE
+                }
+            }
         }
-        binding.layoutResult22.text = tmp.toString()
 
         // 출생일
+        if(engraveType == "일반" || engraveType == "불교" || engraveType == "묘법" || engraveType == "SGI" || engraveType == "원불교"){
+            binding.layoutUrnResult111.visibility = View.VISIBLE
+            binding.layoutUrnResult112.visibility = View.GONE
+        } else if(engraveType == "기독교" || engraveType == "순복음"){
+            binding.layoutUrnResult111.visibility = View.GONE
+            binding.layoutUrnResult112.visibility = View.VISIBLE
+            binding.layoutUrnResult112.text = "出生"
+        } else if(engraveType == "천주교"){
+            binding.layoutUrnResult111.visibility = View.GONE
+            binding.layoutUrnResult112.visibility = View.VISIBLE
+            binding.layoutUrnResult112.text = "出生"
+        }
+
         val date1 = ApplicationClass.prefs.date1.toString()
 
         if(date1.length > 10){
-            binding.layoutResult121.text = date1[0].toString()
-            binding.layoutResult122.text = date1[1].toString()
-            binding.layoutResult123.text = date1[2].toString()
-            binding.layoutResult124.text = date1[3].toString()
-            binding.layoutResult141.text = date1[5].toString()
-            binding.layoutResult142.text = date1[6].toString()
-            binding.layoutResult161.text = date1[8].toString()
-            binding.layoutResult161.text = date1[9].toString()
+            binding.layoutUrnResult121.text = date1[0].toString()
+            binding.layoutUrnResult122.text = date1[1].toString()
+            binding.layoutUrnResult123.text = date1[2].toString()
+            binding.layoutUrnResult124.text = date1[3].toString()
+            binding.layoutUrnResult141.text = date1[5].toString()
+            binding.layoutUrnResult142.text = date1[6].toString()
+            binding.layoutUrnResult161.text = date1[8].toString()
+            binding.layoutUrnResult161.text = date1[9].toString()
         }
         val date1Type = ApplicationClass.prefs.date1Type
         if(date1Type == "양력")
-            binding.layoutResult17.text = "陽"
+            binding.layoutUrnResult17.text = "陽"
         else if(date1Type == "음력")
-            binding.layoutResult17.text = "陰"
+            binding.layoutUrnResult17.text = "陰"
 
         // 사망일
+        // 출생일
+        if(engraveType == "일반" || engraveType == "불교" || engraveType == "묘법" || engraveType == "SGI" || engraveType == "원불교"){
+            binding.layoutUrnResult311.visibility = View.VISIBLE
+            binding.layoutUrnResult312.visibility = View.GONE
+        } else if(engraveType == "기독교" || engraveType == "순복음"){
+            binding.layoutUrnResult311.visibility = View.GONE
+            binding.layoutUrnResult312.visibility = View.VISIBLE
+            binding.layoutUrnResult312.text = "召天"
+        } else if(engraveType == "천주교"){
+            binding.layoutUrnResult311.visibility = View.GONE
+            binding.layoutUrnResult312.visibility = View.VISIBLE
+            binding.layoutUrnResult312.text = "善終"
+        }
+
         val date2 = ApplicationClass.prefs.date1.toString()
         if(date2.length > 10){
-            binding.layoutResult321.text = date2[0].toString()
-            binding.layoutResult322.text = date2[1].toString()
-            binding.layoutResult323.text = date2[2].toString()
-            binding.layoutResult324.text = date2[3].toString()
-            binding.layoutResult341.text = date2[5].toString()
-            binding.layoutResult342.text = date2[6].toString()
-            binding.layoutResult361.text = date2[8].toString()
-            binding.layoutResult361.text = date2[9].toString()
+            binding.layoutUrnResult321.text = date2[0].toString()
+            binding.layoutUrnResult322.text = date2[1].toString()
+            binding.layoutUrnResult323.text = date2[2].toString()
+            binding.layoutUrnResult324.text = date2[3].toString()
+            binding.layoutUrnResult341.text = date2[5].toString()
+            binding.layoutUrnResult342.text = date2[6].toString()
+            binding.layoutUrnResult361.text = date2[8].toString()
+            binding.layoutUrnResult361.text = date2[9].toString()
         }
 
         val date2Type = ApplicationClass.prefs.date2Type
         if(date2Type == "양력")
-            binding.layoutResult37.text = "陽"
+            binding.layoutUrnResult37.text = "陽"
         else if(date2Type == "음력")
-            binding.layoutResult37.text = "陰"
+            binding.layoutUrnResult37.text = "陰"
+    }
+    private fun setTabletData() {
+        if (ApplicationClass.prefs.name3 == "")
+            binding.layoutTabletResult.visibility = View.GONE
+        else
+            binding.layoutTabletResult.visibility = View.VISIBLE
+
+        // 이름
+        val name1 = ApplicationClass.prefs.name1
     }
     private fun setMsg() {
         msg = "[태림원]" +
@@ -128,7 +336,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             msg += "\n - 화장장소: " + ApplicationClass.prefs.cremationArea +
                     "\n - 화장시간: " + ApplicationClass.prefs.cremationTime
         } else if(selectedLocation.equals("장례식장")){
-            msg += "\n - 장례식장 명: " + ApplicationClass.prefs.cremationTime +
+            msg += "\n - 장례식장 명: " + ApplicationClass.prefs.funeralName +
                     "\n - 호실: " + ApplicationClass.prefs.funeralNumber +
                     "\n - 함 도착 시간: " + ApplicationClass.prefs.funeralTime
         } else if(selectedLocation.equals("장지")){
@@ -136,46 +344,51 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     "\n - 함 도착 시간: " + ApplicationClass.prefs.burialTime
         }
 
-        msg += "\n\n각인 종류: " + ApplicationClass.prefs.engraveType + "[" + ApplicationClass.prefs.engraveType2 + "]"
-
-        msg += "\n\n고인 정보: " +
-                "\n - 고인명: " + ApplicationClass.prefs.name1 +
-                "\n - 생년월일: " + ApplicationClass.prefs.date1.toString().replace("-", ".") + " (${ApplicationClass.prefs.date1Type})" +
-                "\n - 사망월일: " + ApplicationClass.prefs.date2.toString().replace("-", ".") + " (${ApplicationClass.prefs.date2Type})"
-
-        // 직분, 세례명, 법명
-        if((ApplicationClass.prefs.engraveType == "기독교" || ApplicationClass.prefs.engraveType == "순복음") && (ApplicationClass.prefs.engraveType2 == "기본")) {
-            msg += "\n - 직분: " + ApplicationClass.prefs.name2
-        }else if(ApplicationClass.prefs.engraveType == "불교" && ApplicationClass.prefs.engraveType2 == "법명") {
-            msg += "\n - 법명: " + ApplicationClass.prefs.name2
-        }else if(ApplicationClass.prefs.engraveType == "천주교" && ApplicationClass.prefs.engraveType2 == "기본") {
-            msg += "\n - 세례명: " + ApplicationClass.prefs.name2
-        }
-
         msg += "\n\n유골함 종류: " + ApplicationClass.prefs.selectedUrnType
 
-        if(ApplicationClass.prefs.selectedUrnType!!.contains("합골")){
-            msg += "\n\n========== "
+        if(selectedUrnType != "선택안함"){
+            msg += "\n\n각인 종류: " + ApplicationClass.prefs.engraveType + "[" + ApplicationClass.prefs.engraveType2 + "]"
 
-            msg += "\n합골 추가 정보: " +
-                    "\n - 고인명: " + ApplicationClass.prefs.boneName1 +
-                    "\n - 생년월일: " + ApplicationClass.prefs.boneDate1.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate1Type})" +
-                    "\n - 사망월일: " + ApplicationClass.prefs.boneDate2.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate2Type})"
+            msg += "\n\n고인 정보: " +
+                    "\n - 고인명: " + ApplicationClass.prefs.name1 +
+                    "\n - 생년월일: " + ApplicationClass.prefs.date1.toString().replace("-", ".") + " (${ApplicationClass.prefs.date1Type})" +
+                    "\n - 사망월일: " + ApplicationClass.prefs.date2.toString().replace("-", ".") + " (${ApplicationClass.prefs.date2Type})"
 
             // 직분, 세례명, 법명
-            if((ApplicationClass.prefs.boneEngraveType == "기독교" || ApplicationClass.prefs.boneEngraveType == "순복음") && (ApplicationClass.prefs.boneEngraveType2 == "기본")) {
-                msg += "\n - 직분: " + ApplicationClass.prefs.boneName2
-            }else if(ApplicationClass.prefs.boneEngraveType == "불교" && ApplicationClass.prefs.boneEngraveType2 == "법명") {
-                msg += "\n - 법명: " + ApplicationClass.prefs.boneName2
-            }else if(ApplicationClass.prefs.boneEngraveType == "천주교" && ApplicationClass.prefs.boneEngraveType2 == "기본") {
-                msg += "\n - 세례명: " + ApplicationClass.prefs.boneName2
+            if((ApplicationClass.prefs.engraveType == "기독교" || ApplicationClass.prefs.engraveType == "순복음") && (ApplicationClass.prefs.engraveType2 == "기본")) {
+                msg += "\n - 직분: " + ApplicationClass.prefs.name2
+            }else if(ApplicationClass.prefs.engraveType == "불교" && ApplicationClass.prefs.engraveType2 == "법명") {
+                msg += "\n - 법명: " + ApplicationClass.prefs.name2
+            }else if(ApplicationClass.prefs.engraveType == "천주교" && ApplicationClass.prefs.engraveType2 == "기본") {
+                msg += "\n - 세례명: " + ApplicationClass.prefs.name2
             }
-            msg += "\n========== "
+
+            // 합골
+            if(ApplicationClass.prefs.selectedUrnType!!.contains("합골")){
+                msg += "\n\n========== "
+
+                msg += "\n합골 추가 정보: " +
+                        "\n - 고인명: " + ApplicationClass.prefs.boneName1 +
+                        "\n - 생년월일: " + ApplicationClass.prefs.boneDate1.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate1Type})" +
+                        "\n - 사망월일: " + ApplicationClass.prefs.boneDate2.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate2Type})"
+
+                // 직분, 세례명, 법명
+                if((ApplicationClass.prefs.boneEngraveType == "기독교" || ApplicationClass.prefs.boneEngraveType == "순복음") && (ApplicationClass.prefs.boneEngraveType2 == "기본")) {
+                    msg += "\n - 직분: " + ApplicationClass.prefs.boneName2
+                }else if(ApplicationClass.prefs.boneEngraveType == "불교" && ApplicationClass.prefs.boneEngraveType2 == "법명") {
+                    msg += "\n - 법명: " + ApplicationClass.prefs.boneName2
+                }else if(ApplicationClass.prefs.boneEngraveType == "천주교" && ApplicationClass.prefs.boneEngraveType2 == "기본") {
+                    msg += "\n - 세례명: " + ApplicationClass.prefs.boneName2
+                }
+                msg += "\n========== "
+            }
         }
 
-        msg += "\n\n위패 종류: " + ApplicationClass.prefs.tabletType +
-                "\n - 위패 내용: " + ApplicationClass.prefs.name3 +
-                "\n - 위패 상세 종류: " + ApplicationClass.prefs.selectedTabletType
+        msg += "\n\n - 위패 종류: " + ApplicationClass.prefs.selectedTabletType
+        if(selectedTabletType != "선택안함") {
+            msg += "\n위패 상세 종류: " + ApplicationClass.prefs.tabletType +
+                    "\n - 위패 내용: " + ApplicationClass.prefs.name3
+        }
 
         msg += "\n\n특이사항: " + ApplicationClass.prefs.note
 
@@ -188,18 +401,42 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val delayMillis = 500 // 1초 (1000 밀리초)
 
         handler.postDelayed({
-            // 여기에 1초 후에 실행하고자 하는 코드를 작성합니다.
-            // 1. XML 레이아웃
-            val layoutUrnImage = binding.layoutUrnImage
+            // 유골
+            if(selectedUrnType == "선택안함"){
+                binding.layoutUrnResultImage.visibility = View.GONE
+                binding.layoutUrnImage.visibility = View.GONE
+            }else{
+                // 여기에 1초 후에 실행하고자 하는 코드를 작성합니다.
+                // 1. XML 레이아웃
+                val layoutUrnImage = binding.layoutUrnImage
 
-            // 2. 레이아웃을 이미지로 변환
-            bitmap = Bitmap.createBitmap(layoutUrnImage.width, layoutUrnImage.height, Bitmap.Config.ARGB_8888)
-            val canvas = Canvas(bitmap)
-            layoutUrnImage.draw(canvas)
+                // 2. 레이아웃을 이미지로 변환
+                urnBitmap = Bitmap.createBitmap(layoutUrnImage.width, layoutUrnImage.height, Bitmap.Config.ARGB_8888)
+                val canvas = Canvas(urnBitmap)
+                layoutUrnImage.draw(canvas)
 
-            val layoutResultImage = binding.layoutResultImage
-//            layoutResultImage.setImageBitmap(bitmap)
-//            layoutUrnImage.visibility = View.GONE
+                val layoutUrnResultImage = binding.layoutUrnResultImage
+                layoutUrnResultImage.setImageBitmap(urnBitmap)
+                layoutUrnImage.visibility = View.GONE
+            }
+            // 위패
+            if(selectedTabletType == "선택안함"){
+                binding.layoutTabletResultImage.visibility = View.GONE
+                binding.layoutTabletImage.visibility = View.GONE
+            }else{
+                // 여기에 1초 후에 실행하고자 하는 코드를 작성합니다.
+                // 1. XML 레이아웃
+                val layoutTabletImage = binding.layoutTabletImage
+
+                // 2. 레이아웃을 이미지로 변환
+                tabletBitmap = Bitmap.createBitmap(layoutTabletImage.width, layoutTabletImage.height, Bitmap.Config.ARGB_8888)
+                val canvas2 = Canvas(tabletBitmap)
+                layoutTabletImage.draw(canvas2)
+
+                val layoutTabletResultImage = binding.layoutTabletResultImage
+                layoutTabletResultImage.setImageBitmap(tabletBitmap)
+                layoutTabletImage.visibility = View.GONE
+            }
         }, delayMillis.toLong())
     }
     private fun setOnClickListeners() {
@@ -225,17 +462,27 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 if (readPermissionGranted && writePermissionGranted) {
                     // 파일 액세스 권한이 허용된 상태
                     // MMS 보내기
+                    // 유골
+                    // 여기에 1초 후에 실행하고자 하는 코드를 작성합니다.
+                    // 1. XML 레이아웃
+                    val layoutUrnResult = binding.layoutUrnResult
+
+                    // 2. 레이아웃을 이미지로 변환
+                    urnResultBitmap = Bitmap.createBitmap(layoutUrnResult.width, layoutUrnResult.height, Bitmap.Config.ARGB_8888)
+                    val canvas = Canvas(urnResultBitmap)
+                    layoutUrnResult.draw(canvas)
 
                     // 3. 변환된 이미지를 저장 (파일로)
-                    val imageFile = File(requireContext().cacheDir, "layout_result_image.png")
-                    val outputStream = FileOutputStream(imageFile)
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+                    val urnImageFile = File(requireContext().cacheDir, "layout_urn_result_image.png")
+                    val outputStream = FileOutputStream(urnImageFile)
+                    urnResultBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
                     outputStream.close()
 
                     // 4. 이미지 파일의 경로를 Uri로 만들어서 MMS 메시지에 첨부
-                    Log.d(TAG, "imageFile: " + imageFile)
-                    val imageUri = FileProvider.getUriForFile(requireContext(), "${requireContext().packageName}.fileprovider", imageFile)
+                    Log.d(TAG, "imageFile: " + urnImageFile)
+                    val imageUri = FileProvider.getUriForFile(requireContext(), "${requireContext().packageName}.fileprovider", urnImageFile)
                     Log.d(TAG, "imageUri: " + imageUri)
+
 
                     val tel = ApplicationClass.prefs.leaderTel.toString().replace("-", "")
                     val subject = "MMS 제목"

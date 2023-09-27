@@ -8,180 +8,188 @@
         android:layout_height="match_parent"
         android:background="@color/linearBackground">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_tablet_title"
-            android:layout_width="match_parent"
+        <!-- 위패 종류 -->
+        <TextView
+            android:id="@+id/text_select_tablet_type"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="* 위패 종류"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints"
-            >
-            <TextView
-                android:id="@+id/text_tablet_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="위패 주문"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_tablet_type"
+        <Spinner
+            android:id="@+id/spinner_select_tablet_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/layout_tablet_title"
-            tools:ignore="MissingConstraints"
-            >
-            <TextView
-                android:id="@+id/text_tablet_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="위패 각인 종류"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview_tablet_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:scrollbars="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_tablet_type" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toBottomOf="@+id/text_select_tablet_type"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:entries="@array/selected_tablet_types"
+            android:spinnerMode="dropdown"
+            android:defaultValue="0"
+            />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_tablet_select_type"
+            android:id="@+id/layout_tablet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/layout_tablet_type"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_select_tablet_type"
+            android:visibility="gone"
             tools:ignore="MissingConstraints"
             >
-            <!-- 위패 종류 -->
-            <TextView
-                android:id="@+id/text_select_tablet_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="* 위패 종류"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
-
-            <Spinner
-                android:id="@+id/spinner_select_tablet_type"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_tablet_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/text_select_tablet_type"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:entries="@array/selected_tablet_types"
-                android:spinnerMode="dropdown"
-                android:defaultValue="0"
-                />
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints"
+                >
+                <TextView
+                    android:id="@+id/text_tablet_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="위패 주문"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!-- 직분, 세례명, 법명 -->
-            <TextView
-                android:id="@+id/text_name2"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_tablet_type"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="* 직분, 세례명, 법명"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spinner_select_tablet_type" />
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/layout_tablet_title"
+                tools:ignore="MissingConstraints"
+                >
+                <TextView
+                    android:id="@+id/text_tablet_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="위패 각인 종류"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_tablet_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:scrollbars="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_tablet_type" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <EditText
-                android:id="@+id/editText_name2"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:hint="직분, 세례명, 법명을 입력하세요"
-                android:imeOptions="actionDone"
-                android:inputType="textPersonName"
-                android:maxLength="10"
-                android:paddingLeft="48dp"
-                android:textColorHint="@color/hintGray"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_name2" />
-
-            <ImageView
-                android:id="@+id/image_name2"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="@+id/editText_name2"
-                app:layout_constraintTop_toTopOf="@+id/editText_name2" />
-
-            <!-- 본관, 문구 -->
-            <TextView
-                android:id="@+id/text_name3"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_tablet_select_type"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="* 본관, 문구"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editText_name2" />
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/layout_tablet_type"
+                tools:ignore="MissingConstraints"
+                >
+                <!-- 직분, 세례명, 법명 -->
+                <TextView
+                    android:id="@+id/text_name2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="* 직분, 세례명, 법명"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/editText_name3"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:hint="본관, 문구를 입력하세요"
-                android:imeOptions="actionDone"
-                android:inputType="textPersonName"
-                android:maxLength="4"
-                android:paddingLeft="48dp"
-                android:textColorHint="@color/hintGray"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/image_heart"
-                app:layout_constraintTop_toBottomOf="@id/text_name3" />
+                <EditText
+                    android:id="@+id/editText_name2"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:hint="직분, 세례명, 법명을 입력하세요"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPersonName"
+                    android:maxLength="10"
+                    android:paddingLeft="48dp"
+                    android:textColorHint="@color/hintGray"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text_name2" />
 
-            <ImageView
-                android:id="@+id/image_name3"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="@+id/editText_name3"
-                app:layout_constraintTop_toTopOf="@+id/editText_name3" />
+                <ImageView
+                    android:id="@+id/image_name2"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="@+id/editText_name2"
+                    app:layout_constraintTop_toTopOf="@+id/editText_name2" />
 
-            <TextView
-                android:id="@+id/image_heart"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="❤️"
-                android:visibility="gone"
-                app:layout_constraintStart_toEndOf="@+id/editText_name3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/editText_name3"
-                app:layout_constraintBottom_toBottomOf="@+id/editText_name3"
-                />
+                <!-- 본관, 문구 -->
+                <TextView
+                    android:id="@+id/text_name3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="* 본관, 문구"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/editText_name2" />
+
+                <EditText
+                    android:id="@+id/editText_name3"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:hint="본관, 문구를 입력하세요"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPersonName"
+                    android:maxLength="4"
+                    android:paddingLeft="48dp"
+                    android:textColorHint="@color/hintGray"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/image_heart"
+                    app:layout_constraintTop_toBottomOf="@id/text_name3" />
+
+                <ImageView
+                    android:id="@+id/image_name3"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="@+id/editText_name3"
+                    app:layout_constraintTop_toTopOf="@+id/editText_name3" />
+
+                <TextView
+                    android:id="@+id/image_heart"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="❤️"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toEndOf="@+id/editText_name3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/editText_name3"
+                    app:layout_constraintBottom_toBottomOf="@+id/editText_name3"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

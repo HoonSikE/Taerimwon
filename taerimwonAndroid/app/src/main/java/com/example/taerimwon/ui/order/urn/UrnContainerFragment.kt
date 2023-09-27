@@ -175,6 +175,44 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         engraveType2Adapter.updateList(engraveType2List)
         binding.recyclerviewEngraveSelectType.scrollToPosition(ApplicationClass.prefs.engraveType2Position)
 
+        // 직분, 세례명, 법명
+        val engraveType = ApplicationClass.prefs.engraveType
+        val engraveType2 = ApplicationClass.prefs.engraveType2
+        val name2 = ApplicationClass.prefs.name2
+        if((engraveType == "기독교" || engraveType == "순복음") && (engraveType2 == "기본")) {
+            binding.textName2.visibility = View.VISIBLE
+            binding.editTextName2.visibility = View.VISIBLE
+            binding.imageName2.visibility = View.VISIBLE
+            binding.textName2.text = "* 직분"
+            binding.editTextName2.hint = "직분을 입력하세요."
+            val inputFilter = InputFilter.LengthFilter(4)
+            binding.editTextName2.filters = arrayOf(inputFilter)
+            binding.editTextName2.setText(name2)
+        }else if(engraveType == "불교" && engraveType2 == "법명") {
+            binding.textName2.visibility = View.VISIBLE
+            binding.editTextName2.visibility = View.VISIBLE
+            binding.imageName2.visibility = View.VISIBLE
+            binding.textName2.text = "* 법명"
+            binding.editTextName2.hint = "법명을 입력하세요."
+            val inputFilter = InputFilter.LengthFilter(4)
+            binding.editTextName2.filters = arrayOf(inputFilter)
+            binding.editTextName2.setText(name2)
+        }else if(engraveType == "천주교" && engraveType2 == "기본") {
+            binding.textName2.visibility = View.VISIBLE
+            binding.editTextName2.visibility = View.VISIBLE
+            binding.imageName2.visibility = View.VISIBLE
+            binding.textName2.text = "* 세례명"
+            binding.editTextName2.hint = "세례명을 입력하세요."
+            val inputFilter = InputFilter.LengthFilter(6)
+            binding.editTextName2.filters = arrayOf(inputFilter)
+            binding.editTextName2.setText(name2)
+        }else{
+            binding.textName2.visibility = View.GONE
+            binding.editTextName2.visibility = View.GONE
+            binding.imageName2.visibility = View.GONE
+            ApplicationClass.prefs.name2 = ""
+        }
+
         /** 합골 **/
         val boneSexArray = resources.getStringArray(R.array.bone_sex)
         val boneSexList = mutableListOf(*boneSexArray) as ArrayList<String>
@@ -196,6 +234,44 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         boneEngraveTypeList = mutableListOf(*boneEngraveTypesArray) as ArrayList<String>
         boneEngraveTypeAdapter.updateList(boneEngraveTypeList)
         binding.recyclerviewBoneEngraveType.scrollToPosition(ApplicationClass.prefs.boneEngraveTypePosition)
+
+        // 직분, 세례명, 법명
+        val boneEngraveType = ApplicationClass.prefs.boneEngraveType
+        val boneEngraveType2 = ApplicationClass.prefs.boneEngraveType2
+        val boneName2 = ApplicationClass.prefs.boneName2
+        if((boneEngraveType == "기독교" || boneEngraveType == "순복음") && (boneEngraveType == "기본")) {
+            binding.textBoneName2.visibility = View.VISIBLE
+            binding.editTextBoneName2.visibility = View.VISIBLE
+            binding.imageBoneName2.visibility = View.VISIBLE
+            binding.textBoneName2.text = "* 직분"
+            binding.editTextBoneName2.hint = "직분을 입력하세요."
+            val inputFilter = InputFilter.LengthFilter(4)
+            binding.editTextBoneName2.filters = arrayOf(inputFilter)
+            binding.editTextBoneName2.setText(name2)
+        }else if(boneEngraveType == "불교" && boneEngraveType2 == "법명") {
+            binding.textBoneName2.visibility = View.VISIBLE
+            binding.editTextBoneName2.visibility = View.VISIBLE
+            binding.imageBoneName2.visibility = View.VISIBLE
+            binding.textBoneName2.text = "* 법명"
+            binding.editTextBoneName2.hint = "법명을 입력하세요."
+            val inputFilter = InputFilter.LengthFilter(4)
+            binding.editTextBoneName2.filters = arrayOf(inputFilter)
+            binding.editTextBoneName2.setText(boneName2)
+        }else if(boneEngraveType == "천주교" && boneEngraveType2 == "기본") {
+            binding.textBoneName2.visibility = View.VISIBLE
+            binding.editTextBoneName2.visibility = View.VISIBLE
+            binding.imageBoneName2.visibility = View.VISIBLE
+            binding.textBoneName2.text = "* 세례명"
+            binding.editTextBoneName2.hint = "세례명을 입력하세요."
+            val inputFilter = InputFilter.LengthFilter(6)
+            binding.editTextBoneName2.filters = arrayOf(inputFilter)
+            binding.editTextBoneName2.setText(boneName2)
+        }else{
+            binding.textBoneName2.visibility = View.GONE
+            binding.editTextBoneName2.visibility = View.GONE
+            binding.imageBoneName2.visibility = View.GONE
+            ApplicationClass.prefs.boneName2 = ""
+        }
 
         // 배열을 가져옵니다.
         // 문자열 이름을 문자열로 정의합니다.
@@ -232,6 +308,11 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         binding.spinnerUrnType.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 ApplicationClass.prefs.selectedUrnType = parent?.getItemAtPosition(position).toString() ?: ""
+
+                if(ApplicationClass.prefs.selectedUrnType!!.contains("선택안함"))
+                    binding.layoutUrn.visibility = View.GONE
+                else
+                    binding.layoutUrn.visibility = View.VISIBLE
 
                 if(ApplicationClass.prefs.selectedUrnType!!.contains("합골")) {
                     binding.layoutBoneEngrave.visibility = View.VISIBLE

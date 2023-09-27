@@ -25,6 +25,11 @@ import com.example.taerimwon.utils.view.toast
 @AndroidEntryPoint
 class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order) {
     val authViewModel: AuthViewModel by viewModels()
+    // 한글, 전화번호, 날짜, 날짜시간 점검 패턴
+    private val hanglePattern = """[가-힣]+""".toRegex()
+    private val telPattern = """^[0-9]{3}-[0-9]{4}-[0-9]{4}$""".toRegex()
+    private val dateTimePattern = """^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$""".toRegex()
+    private val datePattern = """^\d{4}-\d{2}-\d{2}$""".toRegex()
     override fun init() {
         initData()
         setOnCheckedChangeListener()
@@ -54,27 +59,67 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         binding.editTextClientName.setText(ApplicationClass.prefs.clientName)
         binding.editTextClientTel.setText(ApplicationClass.prefs.clientTel)
 
-        binding.editTextNote.setText(ApplicationClass.prefs.note)
-//        }
+        val selectedLocation = ApplicationClass.prefs.selectedLocation
+        val layoutRadioCremation = binding.layoutRadioCremation
+        val layoutRadioFuneral = binding.layoutRadioFuneral
+        val layoutRadioBurial = binding.layoutRadioBurial
+        if(selectedLocation == "화장장"){
+            binding.radioButton1.isChecked = true
+            binding.radioButton2.isChecked = false
+            binding.radioButton3.isChecked = false
 
-        // 화장장 셀렉트박스
-        // 2023-09-21
-        // Spinner에 표시할 데이터 목록
-//        val items = listOf("서울/경기/인천", "Item 2", "Item 3", "Item 4")
+            layoutRadioCremation.visibility = View.VISIBLE
+            layoutRadioFuneral.visibility = View.GONE
+            layoutRadioBurial.visibility = View.GONE
 
-        val spinner = binding.spinnerCremationArea
-        val cremationAreas = resources.getStringArray(R.array.cremationAreas).toMutableList()
+            // 화장장 셀렉트박스
+            // Spinner에 표시할 데이터 목록
+            val spinner = binding.spinnerCremationArea
+            val cremationAreas = resources.getStringArray(R.array.cremationAreas).toMutableList()
+            val dateTypeTypesArray = resources.getStringArray(R.array.cremationAreas)
 
-        // 비활성화할 아이템
-        val itemToDisable = "서울/경기/인천"
-        val indexOfItemToDisable = cremationAreas.indexOf(itemToDisable)
-        if (indexOfItemToDisable != -1) {
-            cremationAreas.removeAt(indexOfItemToDisable)
+            // 배열을 리스트로 변환합니다.
+            val dateTypeList = mutableListOf(*dateTypeTypesArray) as ArrayList<String>
+            binding.spinnerCremationArea.setSelection(dateTypeList.indexOf(ApplicationClass.prefs.date1Type))
+
+            // 비활성화할 아이템
+            val itemToDisable = "서울/경기/인천"
+            val indexOfItemToDisable = cremationAreas.indexOf(itemToDisable)
+            if (indexOfItemToDisable != -1) {
+                cremationAreas.removeAt(indexOfItemToDisable)
+            }
+
+            val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, cremationAreas)
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+
+            binding.editTextCremationTime.setText(ApplicationClass.prefs.cremationTime)
+        }else if(selectedLocation == "장례식장"){
+            binding.radioButton1.isChecked = false
+            binding.radioButton2.isChecked = true
+            binding.radioButton3.isChecked = false
+
+            layoutRadioCremation.visibility = View.GONE
+            layoutRadioFuneral.visibility = View.VISIBLE
+            layoutRadioBurial.visibility = View.GONE
+
+            binding.editTextFuneralName.setText(ApplicationClass.prefs.funeralName)
+            binding.editTextFuneralNumber.setText(ApplicationClass.prefs.funeralNumber)
+            binding.editTextFuneralTime.setText(ApplicationClass.prefs.funeralTime)
+        }else if(selectedLocation == "장지"){
+            binding.radioButton1.isChecked = false
+            binding.radioButton2.isChecked = false
+            binding.radioButton3.isChecked = true
+
+            layoutRadioCremation.visibility = View.GONE
+            layoutRadioFuneral.visibility = View.GONE
+            layoutRadioBurial.visibility = View.VISIBLE
+
+            binding.editTextBurialName.setText(ApplicationClass.prefs.burialName)
+            binding.editTextBurialTime.setText(ApplicationClass.prefs.burialTime)
         }
 
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, cremationAreas)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = adapter
+        binding.editTextNote.setText(ApplicationClass.prefs.note)
 
         // Urn Fragment 추가
         val urnFragment = UrnContainerFragment()
@@ -335,14 +380,133 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
 
     private fun checkInput(): Boolean {
         // 모든게 초기값인지 체크
-        if(checkInput2())
-            return true;
-        // 한글, 전화번호, 날짜, 날짜시간 점검 패턴
-        val hanglePattern = """[가-힣]+""".toRegex()
-        val telPattern = """^[0-9]{3}-[0-9]{4}-[0-9]{4}$""".toRegex()
-        val dateTimePattern = """^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$""".toRegex()
-        val datePattern = """^\d{4}-\d{2}-\d{2}$""".toRegex()
+        if(!checkOrderInput())
+            return false;
 
+        if(ApplicationClass.prefs.selectedUrnType == "선택안함"  && ApplicationClass.prefs.selectedTabletType == "선택안함"){
+            toast("유골함, 위패 중 하나는 선택해주세요.")
+            return false
+        }
+
+        if(ApplicationClass.prefs.selectedUrnType!!.contains("합골")){
+            toast("합골은 추가 예정입니다.")
+            return false
+        }
+
+        if(ApplicationClass.prefs.selectedTabletType != "선택안함"){
+            toast("위패는 추가 예정입니다.")
+            return false
+        }
+
+        // 유골함
+        if(ApplicationClass.prefs.selectedUrnType != "선택안함"){
+            if(!checkUrnInput()) {
+                // 고인 정보
+                val name1 = ApplicationClass.prefs.name1.toString()
+                if (!(name1.length in 2..4 && name1.matches(hanglePattern))) {
+                    toast("고인 명을 한글 2~4글자로 올바르게 입력해주세요.")
+                    return false
+                }
+                val date1 = ApplicationClass.prefs.date1.toString()
+                if (!date1.matches(datePattern)) {
+                    toast("생년월일을 1900-01-01 형태로 올바르게 입력해주세요.")
+                    return false
+                }
+                // date1Type 생략
+                val date2 = ApplicationClass.prefs.date2.toString()
+                if (!date2.matches(datePattern)) {
+                    toast("사망월일일을 2023-09-01 형태로 올바르게 입력해주세요.")
+                    return false
+                }
+                // date2Type 생략
+                // 종교 생략
+                // 직분, 세례명, 법명
+                if((ApplicationClass.prefs.engraveType == "기독교" || ApplicationClass.prefs.engraveType == "순복음") && (ApplicationClass.prefs.engraveType2 == "기본")) {
+                    val name2 = ApplicationClass.prefs.name2.toString()
+                    if (!(name2.length in 2..4 && name2.matches(hanglePattern))) {
+                        toast("직분을 한글 2~4글자로 올바르게 입력해주세요.")
+                        return false
+                    }
+                }else if(ApplicationClass.prefs.engraveType == "불교" && ApplicationClass.prefs.engraveType2 == "법명") {
+                    val name2 = ApplicationClass.prefs.name2.toString()
+                    if (!(name2.length in 2..4 && name2.matches(hanglePattern))) {
+                        toast("법명을 한글 2~4글자로 올바르게 입력해주세요.")
+                        return false
+                    }
+                }else if(ApplicationClass.prefs.engraveType == "천주교" && ApplicationClass.prefs.engraveType2 == "기본") {
+                    val name2 = ApplicationClass.prefs.name2.toString()
+                    if (!(name2.length in 2..6 && name2.matches(hanglePattern))) {
+                        toast("세례명을 한글 2~6글자로 올바르게 입력해주세요.")
+                        return false
+                    }
+                }
+                // 합골
+                if(ApplicationClass.prefs.selectedUrnType!!.contains("합골")){
+                    // 고인 정보
+                    val boneName1 = ApplicationClass.prefs.boneName1.toString()
+                    if (!(boneName1.length in 2..4 && boneName1.matches(hanglePattern))) {
+                        toast("고인 명을 한글 2~4글자로 올바르게 입력해주세요.")
+                        return false
+                    }
+                    val boneDate1 = ApplicationClass.prefs.boneDate1.toString()
+                    if (!boneDate1.matches(datePattern)) {
+                        toast("생년월일을 1900-01-01 형태로 올바르게 입력해주세요.")
+                        return false
+                    }
+                    // date1Type 생략
+                    val boneDate2 = ApplicationClass.prefs.boneDate2.toString()
+                    if (!boneDate2.matches(datePattern)) {
+                        toast("사망월일을 2023-09-01 형태로 올바르게 입력해주세요.")
+                        return false
+                    }
+                    // date2Type 생략
+                    // 종교 생략
+                    // 직분, 세례명, 법명
+                    if((ApplicationClass.prefs.engraveType == "기독교" || ApplicationClass.prefs.engraveType == "순복음") && (ApplicationClass.prefs.engraveType2 == "기본")) {
+                        val boneName2 = ApplicationClass.prefs.boneName2.toString()
+                        if (!(boneName2.length in 2..4 && boneName2.matches(hanglePattern))) {
+                            toast("직분을 한글 2~4글자로 올바르게 입력해주세요.")
+                            return false
+                        }
+                    }else if(ApplicationClass.prefs.engraveType == "불교" && ApplicationClass.prefs.engraveType2 == "법명") {
+                        val boneName2 = ApplicationClass.prefs.boneName2.toString()
+                        if (!(boneName2.length in 2..4 && boneName2.matches(hanglePattern))) {
+                            toast("법명을 한글 2~4글자로 올바르게 입력해주세요.")
+                            return false
+                        }
+                    }else if(ApplicationClass.prefs.engraveType == "천주교" && ApplicationClass.prefs.engraveType2 == "기본") {
+                        val boneName2 = ApplicationClass.prefs.boneName2.toString()
+                        if (!(boneName2.length in 2..6 && boneName2.matches(hanglePattern))) {
+                            toast("세례명을 한글 2~6글자로 올바르게 입력해주세요.")
+                            return false
+                        }
+                    }
+                }
+            }
+        }
+
+        // 위패
+        if(ApplicationClass.prefs.selectedTabletType != "선택안함"){
+            if(!checkTabletInput()){
+                val name3 = ApplicationClass.prefs.name3.toString()
+                if (!(name3.length in 2..20 && name3.matches(hanglePattern))) {
+                    toast("위패 내용을 한글 2~20글자로 올바르게 입력해주세요.")
+                    return false
+                }
+            }
+        }
+
+        // 특이 사항 (30자 이내)
+        val note = ApplicationClass.prefs.note.toString()
+        if (note.length > 30) {
+            toast("특이 사항을 30글자 이내로 입력해주세요.")
+            return false
+        }
+        return true
+    }
+    // 모든게 초기값인지 체크
+    private fun checkOrderInput(): Boolean {
+        // 발주자 정보 (필수)
         val leaderName = ApplicationClass.prefs.leaderName.toString()
         if (!(leaderName.length in 2..4 && leaderName.matches(hanglePattern))) {
             toast("발주자 명을 한글 2~4글자로 올바르게 입력해주세요.")
@@ -350,7 +514,6 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         }
         val leaderTel = ApplicationClass.prefs.leaderTel.toString()
         if (!leaderTel.matches(telPattern)) {
-            println("ㅇ" + leaderTel + "ㅇ")
             toast("발주자 전화번호를 010-1234-5678 형태로 올바르게 입력해주세요.")
             return false
         }
@@ -359,7 +522,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             toast("발주자 소속을 10글자 이내로 입력해주세요.")
             return false
         }
-        // 상주 정보
+        // 상주 정보 (선택)
         val clientName = ApplicationClass.prefs.clientName.toString()
         val clientTel = ApplicationClass.prefs.clientTel.toString()
         if(clientName != "" || clientTel != "") {
@@ -372,7 +535,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                 return false
             }
         }
-        // 발주 장소별
+        // 발주 장소별 (필수)
         val selectedLocation = ApplicationClass.prefs.selectedLocation.toString()
         if(selectedLocation == "화장장"){
 //            val cremationArea = ApplicationClass.prefs.cremationArea.toString()
@@ -412,235 +575,92 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                 return false
             }
         }
-        // 고인 정보
-        val name1 = ApplicationClass.prefs.name1.toString()
-        if (!(name1.length in 2..4 && name1.matches(hanglePattern))) {
-            toast("고인 명을 한글 2~4글자로 올바르게 입력해주세요.")
-            return false
-        }
-        val date1 = ApplicationClass.prefs.date1.toString()
-        if (!date1.matches(datePattern)) {
-            toast("생년월일을 1900-01-01 형태로 올바르게 입력해주세요.")
-            return false
-        }
-        // date1Type 생략
-        val date2 = ApplicationClass.prefs.date2.toString()
-        if (!date2.matches(datePattern)) {
-            toast("사망월일일을 2023-09-01 형태로 올바르게 입력해주세요.")
-            return false
-        }
-        // date2Type 생략
-        // 종교 생략
-        // 직분, 세례명, 법명
-        if((ApplicationClass.prefs.engraveType == "기독교" || ApplicationClass.prefs.engraveType == "순복음") && (ApplicationClass.prefs.engraveType2 == "기본")) {
-            val name2 = ApplicationClass.prefs.name2.toString()
-            if (!(name2.length in 2..4 && name2.matches(hanglePattern))) {
-                toast("직문을 한글 2~4글자로 올바르게 입력해주세요.")
-                return false
-            }
-        }else if(ApplicationClass.prefs.engraveType == "불교" && ApplicationClass.prefs.engraveType2 == "법명") {
-            val name2 = ApplicationClass.prefs.name2.toString()
-            if (!(name2.length in 2..4 && name2.matches(hanglePattern))) {
-                toast("법명을 한글 2~4글자로 올바르게 입력해주세요.")
-                return false
-            }
-        }else if(ApplicationClass.prefs.engraveType == "천주교" && ApplicationClass.prefs.engraveType2 == "기본") {
-            val name2 = ApplicationClass.prefs.name2.toString()
-            if (!(name2.length in 2..6 && name2.matches(hanglePattern))) {
-                toast("세례명을 한글 2~6글자로 올바르게 입력해주세요.")
-                return false
-            }
-        }
-        // 합골
-        if(ApplicationClass.prefs.selectedUrnType!!.contains("합골")){
+        // 특이 사항 생략(선택)
+        return true
+    }
+    private fun checkUrnInput(): Boolean {
+        // 유골함
+        if(ApplicationClass.prefs.selectedUrnType != "선택안함") {
             // 고인 정보
-            val boneName1 = ApplicationClass.prefs.boneName1.toString()
-            if (!(boneName1.length in 2..4 && boneName1.matches(hanglePattern))) {
-                toast("고인 명을 한글 2~4글자로 올바르게 입력해주세요.")
+            val name1 = ApplicationClass.prefs.name1.toString()
+            if (name1 != "") {
                 return false
             }
-            val boneDate1 = ApplicationClass.prefs.boneDate1.toString()
-            if (!boneDate1.matches(datePattern)) {
-                toast("생년월일을 1900-01-01 형태로 올바르게 입력해주세요.")
+            val date1 = ApplicationClass.prefs.date1.toString()
+            if (date1 != "") {
                 return false
             }
             // date1Type 생략
-            val boneDate2 = ApplicationClass.prefs.boneDate2.toString()
-            if (!boneDate2.matches(datePattern)) {
-                toast("사망월일을 2023-09-01 형태로 올바르게 입력해주세요.")
+            val date2 = ApplicationClass.prefs.date2.toString()
+            if (date2 != "") {
                 return false
             }
             // date2Type 생략
             // 종교 생략
             // 직분, 세례명, 법명
             if((ApplicationClass.prefs.engraveType == "기독교" || ApplicationClass.prefs.engraveType == "순복음") && (ApplicationClass.prefs.engraveType2 == "기본")) {
-                val boneName2 = ApplicationClass.prefs.boneName2.toString()
-                if (!(boneName2.length in 2..4 && boneName2.matches(hanglePattern))) {
-                    toast("직문을 한글 2~4글자로 올바르게 입력해주세요.")
+                val name2 = ApplicationClass.prefs.name2.toString()
+                if (name2 != "") {
                     return false
                 }
             }else if(ApplicationClass.prefs.engraveType == "불교" && ApplicationClass.prefs.engraveType2 == "법명") {
-                val boneName2 = ApplicationClass.prefs.boneName2.toString()
-                if (!(boneName2.length in 2..4 && boneName2.matches(hanglePattern))) {
-                    toast("법명을 한글 2~4글자로 올바르게 입력해주세요.")
+                val name2 = ApplicationClass.prefs.name2.toString()
+                if (name2 != "") {
                     return false
                 }
             }else if(ApplicationClass.prefs.engraveType == "천주교" && ApplicationClass.prefs.engraveType2 == "기본") {
-                val boneName2 = ApplicationClass.prefs.boneName2.toString()
-                if (!(boneName2.length in 2..6 && boneName2.matches(hanglePattern))) {
-                    toast("세례명을 한글 2~6글자로 올바르게 입력해주세요.")
+                val name2 = ApplicationClass.prefs.name2.toString()
+                if (name2 != "") {
                     return false
                 }
             }
-        }
-        // 위패
-        val name3 = ApplicationClass.prefs.name3.toString()
-        if (!(name3.length in 2..20 && name3.matches(hanglePattern))) {
-            toast("위패 내용을 한글 2~20글자로 올바르게 입력해주세요.")
-            return false
-        }
-        // 특이 사항
-        val note = ApplicationClass.prefs.note.toString()
-        if (leaderDepartment.length > 30) {
-            toast("특이 사항을 30글자 이내로 입력해주세요.")
-            return false
+            // 합골
+            if(ApplicationClass.prefs.selectedUrnType!!.contains("합골")){
+                // 고인 정보
+                val boneName1 = ApplicationClass.prefs.boneName1.toString()
+                if (boneName1 != "") {
+                    return false
+                }
+                val boneDate1 = ApplicationClass.prefs.boneDate1.toString()
+                if (boneDate1 != "") {
+                    return false
+                }
+                // date1Type 생략
+                val boneDate2 = ApplicationClass.prefs.boneDate2.toString()
+                if (boneDate2 != "") {
+                    return false
+                }
+                // date2Type 생략
+                // 종교 생략
+                // 직분, 세례명, 법명
+                if((ApplicationClass.prefs.engraveType == "기독교" || ApplicationClass.prefs.engraveType == "순복음") && (ApplicationClass.prefs.engraveType2 == "기본")) {
+                    val boneName2 = ApplicationClass.prefs.boneName2.toString()
+                    if (boneName2 != "") {
+                        return false
+                    }
+                }else if(ApplicationClass.prefs.engraveType == "불교" && ApplicationClass.prefs.engraveType2 == "법명") {
+                    val boneName2 = ApplicationClass.prefs.boneName2.toString()
+                    if (boneName2 != "") {
+                        return false
+                    }
+                }else if(ApplicationClass.prefs.engraveType == "천주교" && ApplicationClass.prefs.engraveType2 == "기본") {
+                    val boneName2 = ApplicationClass.prefs.boneName2.toString()
+                    if (boneName2 != "") {
+                        return false
+                    }
+                }
+            }
         }
         return true
     }
-    private fun checkInput2(): Boolean {
-        // 모든게 초기값인지 체크
-        // 발주자 정보
-        val leaderName = ApplicationClass.prefs.leaderName.toString()
-        if (leaderName != "") {
-            println("leaderName: " + leaderName)
-            return false
-        }
-        val leaderTel = ApplicationClass.prefs.leaderTel.toString()
-        if (leaderTel != "") {
-            return false
-        }
-        val leaderDepartment = ApplicationClass.prefs.leaderDepartment.toString()
-        if (leaderDepartment != "") {
-            return false
-        }
-        // 상주 정보
-        val clientName = ApplicationClass.prefs.clientName.toString()
-        if (clientName != "") {
-            return false
-        }
-        val clientTel = ApplicationClass.prefs.clientTel.toString()
-        if (clientTel != "") {
-            return false
-        }
-        // 발주 장소별
-        val selectedLocation = ApplicationClass.prefs.selectedLocation.toString()
-        if(selectedLocation == "화장장"){
-//            val cremationArea = ApplicationClass.prefs.cremationArea.toString()
-//            if (cremationArea != "") {
-//                return false
-//            }
-            val cremationTime = ApplicationClass.prefs.cremationTime.toString()
-            if (cremationTime != "") {
-                return false
-            }
-        } else if(selectedLocation == "장례식장"){
-            val funeralName = ApplicationClass.prefs.funeralName.toString()
-            if (funeralName != "") {
-                return false
-            }
-            val funeralNumber = ApplicationClass.prefs.funeralNumber.toString()
-            if (funeralNumber != "") {
-                return false
-            }
-            val funeralTime = ApplicationClass.prefs.funeralTime.toString()
-            if (funeralTime != "") {
-                return false
-            }
-        } else if(selectedLocation == "장지"){
-            val burialName = ApplicationClass.prefs.burialName.toString()
-            if (burialName != "") {
-                return false
-            }
-            val burialTime = ApplicationClass.prefs.burialTime.toString()
-            if (burialTime != "") {
-                return false
-            }
-        }
-        // 고인 정보
-        val name1 = ApplicationClass.prefs.name1.toString()
-        if (name1 != "") {
-            return false
-        }
-        val date1 = ApplicationClass.prefs.date1.toString()
-        if (date1 != "") {
-            return false
-        }
-        // date1Type 생략
-        val date2 = ApplicationClass.prefs.date2.toString()
-        if (date2 != "") {
-            return false
-        }
-        // date2Type 생략
-        // 종교 생략
-        // 직분, 세례명, 법명
-        if((ApplicationClass.prefs.engraveType == "기독교" || ApplicationClass.prefs.engraveType == "순복음") && (ApplicationClass.prefs.engraveType2 == "기본")) {
-            val name2 = ApplicationClass.prefs.name2.toString()
-            if (name2 != "") {
-                return false
-            }
-        }else if(ApplicationClass.prefs.engraveType == "불교" && ApplicationClass.prefs.engraveType2 == "법명") {
-            val name2 = ApplicationClass.prefs.name2.toString()
-            if (name2 != "") {
-                return false
-            }
-        }else if(ApplicationClass.prefs.engraveType == "천주교" && ApplicationClass.prefs.engraveType2 == "기본") {
-            val name2 = ApplicationClass.prefs.name2.toString()
-            if (name2 != "") {
-                return false
-            }
-        }
-        // 합골
-        if(ApplicationClass.prefs.selectedUrnType!!.contains("합골")){
-            // 고인 정보
-            val boneName1 = ApplicationClass.prefs.boneName1.toString()
-            if (boneName1 != "") {
-                return false
-            }
-            val boneDate1 = ApplicationClass.prefs.boneDate1.toString()
-            if (boneDate1 != "") {
-                return false
-            }
-            // date1Type 생략
-            val boneDate2 = ApplicationClass.prefs.boneDate2.toString()
-            if (boneDate2 != "") {
-                return false
-            }
-            // date2Type 생략
-            // 종교 생략
-            // 직분, 세례명, 법명
-            if((ApplicationClass.prefs.engraveType == "기독교" || ApplicationClass.prefs.engraveType == "순복음") && (ApplicationClass.prefs.engraveType2 == "기본")) {
-                val boneName2 = ApplicationClass.prefs.boneName2.toString()
-                if (boneName2 != "") {
-                    return false
-                }
-            }else if(ApplicationClass.prefs.engraveType == "불교" && ApplicationClass.prefs.engraveType2 == "법명") {
-                val boneName2 = ApplicationClass.prefs.boneName2.toString()
-                if (boneName2 != "") {
-                    return false
-                }
-            }else if(ApplicationClass.prefs.engraveType == "천주교" && ApplicationClass.prefs.engraveType2 == "기본") {
-                val boneName2 = ApplicationClass.prefs.boneName2.toString()
-                if (boneName2 != "") {
-                    return false
-                }
-            }
-        }
+    private fun checkTabletInput(): Boolean {
         // 위패
-        val name3 = ApplicationClass.prefs.name3
-        if (name3 != "") {
-            return false
+        if(ApplicationClass.prefs.selectedTabletType != "선택안함") {
+            val name3 = ApplicationClass.prefs.name3
+            if (name3 != "") {
+                return false
+            }
         }
-        // 특이 사항 생략
         return true
     }
 }
