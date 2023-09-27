@@ -76,15 +76,17 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         // 출생일
         val date1 = ApplicationClass.prefs.date1.toString()
-        binding.layoutResult121.text = date1[0].toString()
-        binding.layoutResult122.text = date1[1].toString()
-        binding.layoutResult123.text = date1[2].toString()
-        binding.layoutResult124.text = date1[3].toString()
-        binding.layoutResult141.text = date1[5].toString()
-        binding.layoutResult142.text = date1[6].toString()
-        binding.layoutResult161.text = date1[8].toString()
-        binding.layoutResult161.text = date1[9].toString()
 
+        if(date1.length > 10){
+            binding.layoutResult121.text = date1[0].toString()
+            binding.layoutResult122.text = date1[1].toString()
+            binding.layoutResult123.text = date1[2].toString()
+            binding.layoutResult124.text = date1[3].toString()
+            binding.layoutResult141.text = date1[5].toString()
+            binding.layoutResult142.text = date1[6].toString()
+            binding.layoutResult161.text = date1[8].toString()
+            binding.layoutResult161.text = date1[9].toString()
+        }
         val date1Type = ApplicationClass.prefs.date1Type
         if(date1Type == "양력")
             binding.layoutResult17.text = "陽"
@@ -93,14 +95,16 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         // 사망일
         val date2 = ApplicationClass.prefs.date1.toString()
-        binding.layoutResult321.text = date2[0].toString()
-        binding.layoutResult322.text = date2[1].toString()
-        binding.layoutResult323.text = date2[2].toString()
-        binding.layoutResult324.text = date2[3].toString()
-        binding.layoutResult341.text = date2[5].toString()
-        binding.layoutResult342.text = date2[6].toString()
-        binding.layoutResult361.text = date2[8].toString()
-        binding.layoutResult361.text = date2[9].toString()
+        if(date2.length > 10){
+            binding.layoutResult321.text = date2[0].toString()
+            binding.layoutResult322.text = date2[1].toString()
+            binding.layoutResult323.text = date2[2].toString()
+            binding.layoutResult324.text = date2[3].toString()
+            binding.layoutResult341.text = date2[5].toString()
+            binding.layoutResult342.text = date2[6].toString()
+            binding.layoutResult361.text = date2[8].toString()
+            binding.layoutResult361.text = date2[9].toString()
+        }
 
         val date2Type = ApplicationClass.prefs.date2Type
         if(date2Type == "양력")
