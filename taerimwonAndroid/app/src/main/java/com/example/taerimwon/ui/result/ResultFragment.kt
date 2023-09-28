@@ -42,7 +42,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
     private lateinit var msg: String
     private lateinit var urnBitmap: Bitmap
-    private lateinit var urnResultBitmap: Bitmap
+    private lateinit var urnContentBitmap: Bitmap
     private lateinit var tabletBitmap: Bitmap
     private lateinit var tabletResultBitmap: Bitmap
 
@@ -82,9 +82,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     }
     private fun setUrnData() {
         if(ApplicationClass.prefs.name1 == "")
-            binding.layoutUrnResult.visibility = View.GONE
+            binding.imageUrnImage.visibility = View.GONE
         else
-            binding.layoutUrnResult.visibility = View.VISIBLE
+            binding.imageUrnImage.visibility = View.VISIBLE
 
         // 이름
         val name1 = ApplicationClass.prefs.name1.toString()
@@ -247,17 +247,21 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         }
 
         // 출생일
-        if(engraveType == "일반" || engraveType == "불교" || engraveType == "묘법" || engraveType == "SGI" || engraveType == "원불교"){
-            binding.layoutUrnResult111.visibility = View.VISIBLE
-            binding.layoutUrnResult112.visibility = View.GONE
-        } else if(engraveType == "기독교" || engraveType == "순복음"){
-            binding.layoutUrnResult111.visibility = View.GONE
-            binding.layoutUrnResult112.visibility = View.VISIBLE
-            binding.layoutUrnResult112.text = "出生"
-        } else if(engraveType == "천주교"){
-            binding.layoutUrnResult111.visibility = View.GONE
-            binding.layoutUrnResult112.visibility = View.VISIBLE
-            binding.layoutUrnResult112.text = "出生"
+        when (engraveType) {
+            "일반", "불교", "묘법", "SGI", "원불교" -> {
+                binding.layoutUrnResult111.visibility = View.VISIBLE
+                binding.layoutUrnResult112.visibility = View.GONE
+            }
+            "기독교", "순복음" -> {
+                binding.layoutUrnResult111.visibility = View.GONE
+                binding.layoutUrnResult112.visibility = View.VISIBLE
+                binding.layoutUrnResult112.text = "出生"
+            }
+            "천주교" -> {
+                binding.layoutUrnResult111.visibility = View.GONE
+                binding.layoutUrnResult112.visibility = View.VISIBLE
+                binding.layoutUrnResult112.text = "出生"
+            }
         }
 
         val date1 = ApplicationClass.prefs.date1.toString()
@@ -280,17 +284,21 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         // 사망일
         // 출생일
-        if(engraveType == "일반" || engraveType == "불교" || engraveType == "묘법" || engraveType == "SGI" || engraveType == "원불교"){
-            binding.layoutUrnResult311.visibility = View.VISIBLE
-            binding.layoutUrnResult312.visibility = View.GONE
-        } else if(engraveType == "기독교" || engraveType == "순복음"){
-            binding.layoutUrnResult311.visibility = View.GONE
-            binding.layoutUrnResult312.visibility = View.VISIBLE
-            binding.layoutUrnResult312.text = "召天"
-        } else if(engraveType == "천주교"){
-            binding.layoutUrnResult311.visibility = View.GONE
-            binding.layoutUrnResult312.visibility = View.VISIBLE
-            binding.layoutUrnResult312.text = "善終"
+        when (engraveType) {
+            "일반", "불교", "묘법", "SGI", "원불교" -> {
+                binding.layoutUrnResult311.visibility = View.VISIBLE
+                binding.layoutUrnResult312.visibility = View.GONE
+            }
+            "기독교", "순복음" -> {
+                binding.layoutUrnResult311.visibility = View.GONE
+                binding.layoutUrnResult312.visibility = View.VISIBLE
+                binding.layoutUrnResult312.text = "召天"
+            }
+            "천주교" -> {
+                binding.layoutUrnResult311.visibility = View.GONE
+                binding.layoutUrnResult312.visibility = View.VISIBLE
+                binding.layoutUrnResult312.text = "善終"
+            }
         }
 
         val date2 = ApplicationClass.prefs.date1.toString()
@@ -407,17 +415,36 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 binding.layoutUrnImage.visibility = View.GONE
             }else{
                 // 여기에 1초 후에 실행하고자 하는 코드를 작성합니다.
+                // 텍스트를 이미지화
                 // 1. XML 레이아웃
-                val layoutUrnImage = binding.layoutUrnImage
+                val layoutUrnContent = binding.layoutUrnContent
 
                 // 2. 레이아웃을 이미지로 변환
-                urnBitmap = Bitmap.createBitmap(layoutUrnImage.width, layoutUrnImage.height, Bitmap.Config.ARGB_8888)
-                val canvas = Canvas(urnBitmap)
-                layoutUrnImage.draw(canvas)
+                urnContentBitmap = Bitmap.createBitmap(layoutUrnContent.width, layoutUrnContent.height, Bitmap.Config.ARGB_8888)
+                val canvasUrnContentBitmap = Canvas(urnContentBitmap)
+                layoutUrnContent.draw(canvasUrnContentBitmap)
 
-                val layoutUrnResultImage = binding.layoutUrnResultImage
-                layoutUrnResultImage.setImageBitmap(urnBitmap)
-                layoutUrnImage.visibility = View.GONE
+                val imageUrnImage = binding.imageUrnImage
+                imageUrnImage.setImageBitmap(urnContentBitmap)
+
+                if(selectedUrnType == "미정"){
+                    binding.layoutUrnResultImage.visibility = View.GONE
+                    binding.layoutUrnContentResultImage?.visibility = View.VISIBLE
+                    binding.layoutUrn.visibility = View.GONE
+                    val layoutUrnContentResultImage = binding.layoutUrnContentResultImage
+                    layoutUrnContentResultImage?.setImageBitmap(urnContentBitmap)
+                }else{
+                    // 유골 최종 결과
+                    val layoutUrnImage = binding.layoutUrnImage
+
+                    urnBitmap = Bitmap.createBitmap(layoutUrnImage.width, layoutUrnImage.height, Bitmap.Config.ARGB_8888)
+                    val canvasUrnBitmap = Canvas(urnBitmap)
+                    layoutUrnImage.draw(canvasUrnBitmap)
+
+                    val layoutUrnResultImage = binding.layoutUrnResultImage
+                    layoutUrnResultImage.setImageBitmap(urnBitmap)
+                    binding.layoutUrn.visibility = View.GONE
+                }
             }
             // 위패
             if(selectedTabletType == "선택안함"){
@@ -464,18 +491,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     // MMS 보내기
                     // 유골
                     // 여기에 1초 후에 실행하고자 하는 코드를 작성합니다.
-                    // 1. XML 레이아웃
-                    val layoutUrnResult = binding.layoutUrnResult
-
-                    // 2. 레이아웃을 이미지로 변환
-                    urnResultBitmap = Bitmap.createBitmap(layoutUrnResult.width, layoutUrnResult.height, Bitmap.Config.ARGB_8888)
-                    val canvas = Canvas(urnResultBitmap)
-                    layoutUrnResult.draw(canvas)
-
-                    // 3. 변환된 이미지를 저장 (파일로)
-                    val urnImageFile = File(requireContext().cacheDir, "layout_urn_result_image.png")
+                    val urnImageFile = File(requireContext().cacheDir, "태림원_결과.png")
                     val outputStream = FileOutputStream(urnImageFile)
-                    urnResultBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+                    urnContentBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
                     outputStream.close()
 
                     // 4. 이미지 파일의 경로를 Uri로 만들어서 MMS 메시지에 첨부
