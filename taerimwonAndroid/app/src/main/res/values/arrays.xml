@@ -16,14 +16,16 @@
     <!--유골함 종류-->
     <string-array name="selected_urn_types">
         <item>선택안함</item>
-        <item>미정</item>
+        <item>유골함(미정)</item>
         <item>유골함</item>
         <item>유골함1</item>
         <item>유골함2</item>
-        <item>유골함3</item>
-        <item>합골함</item>
-        <item>합골함1</item>
-        <item>합골함2</item>
+        <item>합골함1(미정)</item>
+        <item>합골함1-1</item>
+        <item>합골함1-2</item>
+        <item>합골함2(미정)</item>
+        <item>합골함2-1</item>
+        <item>합골함2-2</item>
     </string-array>
     <!--성별-->
     <string-array name="bone_sex">
@@ -33,6 +35,7 @@
     <!--위패 종류-->
     <string-array name="selected_tablet_types">
         <item>선택안함</item>
+        <item>미정</item>
         <item>흰색</item>
         <item>검정</item>
         <item>투명</item>

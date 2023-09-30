@@ -388,8 +388,8 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             return false
         }
 
-        if(ApplicationClass.prefs.selectedUrnType!!.contains("합골")){
-            toast("합골은 추가 예정입니다.")
+        if(ApplicationClass.prefs.selectedUrnType!!.contains("합골함2")){
+            toast("합골함2는 추가 예정입니다.")
             return false
         }
 
@@ -535,7 +535,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                 return false
             }
         }
-        // 발주 장소별 (필수)
+/**        // 발주 장소별 (필수)
         val selectedLocation = ApplicationClass.prefs.selectedLocation.toString()
         if(selectedLocation == "화장장"){
 //            val cremationArea = ApplicationClass.prefs.cremationArea.toString()
@@ -575,6 +575,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                 return false
             }
         }
+*/
         // 특이 사항 생략(선택)
         return true
     }

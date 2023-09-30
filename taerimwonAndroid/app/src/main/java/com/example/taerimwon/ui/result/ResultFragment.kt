@@ -43,8 +43,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     private lateinit var msg: String
     private lateinit var urnBitmap: Bitmap
     private lateinit var urnContentBitmap: Bitmap
+    private lateinit var boneBitmap: Bitmap
+    private lateinit var boneContentBitmap: Bitmap
     private lateinit var tabletBitmap: Bitmap
-    private lateinit var tabletResultBitmap: Bitmap
+    private lateinit var tabletContentBitmap: Bitmap
 
     override fun init() {
         initData()
@@ -57,15 +59,40 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         selectedUrnType = ApplicationClass.prefs.selectedUrnType.toString()
         selectedTabletType = ApplicationClass.prefs.selectedTabletType.toString()
 
-        setMark()
-        setUrnData()
-        setTabletData()
+        if(selectedUrnType != "선택안함") {
+            setUrnData()
+            if(selectedUrnType.contains("합골함")){
+                if(selectedUrnType.contains("합골함1")){
+                    setBone1Data()
+                    binding.layoutUrnContent.visibility = View.VISIBLE
+                    binding.layoutBoneContent.visibility = View.VISIBLE
+                    binding.layoutBoneResultImage.visibility = View.VISIBLE
+                    binding.layoutBone1.visibility = View.VISIBLE
+                }else if(selectedUrnType.contains("합골함2")){
+//                    binding.layoutBone2Content.visibility = View.VISIBLE
+                    binding.layoutBone2ResultImage.visibility = View.VISIBLE
+                    binding.layoutBone2.visibility = View.VISIBLE
+                }
+            }else{
+                binding.layoutUrnContent.visibility = View.VISIBLE
+                binding.layoutUrnResultImage.visibility = View.VISIBLE
+                binding.layoutUrn.visibility = View.VISIBLE
+            }
+        }
+
+        if(selectedTabletType != "선택안함") {
+            setTabletData()
+            binding.layoutTabletContent.visibility = View.VISIBLE
+            binding.layoutTabletResultImage.visibility = View.VISIBLE
+            binding.layoutTablet.visibility = View.VISIBLE
+        }
+
         setMsg()
         authViewModel.getBlackList()
         if(!ApplicationClass.prefs.authenticated)
             findNavController().navigate(R.id.action_resultFragment_to_phoneAuthFragment)
     }
-    private fun setMark() {
+    private fun setUrnMark() {
         // 이미지 이름을 문자열로 정의합니다.
         val engraveTypePosition = ApplicationClass.prefs.engraveTypePosition
         var imageName = "img_mark" + (engraveTypePosition + 1)
@@ -81,10 +108,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         binding.imageUrnResult21.setImageResource(imageResource)
     }
     private fun setUrnData() {
-        if(ApplicationClass.prefs.name1 == "")
+        // 내용이 없으면 빈 값
+        if(ApplicationClass.prefs.name1 == "") {
             binding.imageUrnImage.visibility = View.GONE
-        else
+            return
+        } else {
             binding.imageUrnImage.visibility = View.VISIBLE
+            setUrnMark()
+        }
 
         // 이름
         val name1 = ApplicationClass.prefs.name1.toString()
@@ -266,7 +297,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         val date1 = ApplicationClass.prefs.date1.toString()
 
-        if(date1.length > 10){
+        if(date1.length == 10){
             binding.layoutUrnResult121.text = date1[0].toString()
             binding.layoutUrnResult122.text = date1[1].toString()
             binding.layoutUrnResult123.text = date1[2].toString()
@@ -302,7 +333,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         }
 
         val date2 = ApplicationClass.prefs.date1.toString()
-        if(date2.length > 10){
+        if(date2.length == 10){
             binding.layoutUrnResult321.text = date2[0].toString()
             binding.layoutUrnResult322.text = date2[1].toString()
             binding.layoutUrnResult323.text = date2[2].toString()
@@ -319,11 +350,310 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         else if(date2Type == "음력")
             binding.layoutUrnResult37.text = "陰"
     }
+    private fun setBoneMark() {
+        // 이미지 이름을 문자열로 정의합니다.
+        val boneEngraveTypePosition = ApplicationClass.prefs.boneEngraveTypePosition
+        var imageName = "img_mark" + (boneEngraveTypePosition + 1)
+
+        if(boneEngraveTypePosition == 4 || boneEngraveTypePosition == 5){
+            if(ApplicationClass.prefs.boneEngraveType2Position == 0)
+                imageName = "img_mark5"
+            else if(ApplicationClass.prefs.boneEngraveType2Position == 1)
+                imageName = "img_mark5_2"
+        }
+        // 직분, 세례명, 법명
+        val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
+        binding.imageBoneResult21.setImageResource(imageResource)
+    }
+    private fun setBone1Data() {
+        // 내용이 없으면 빈 값
+        // name1 / boneName1
+        if(ApplicationClass.prefs.boneSex == "여성"){
+            if(ApplicationClass.prefs.name1 == "")
+                binding.imageBone1Image1.visibility = View.INVISIBLE
+            else
+                binding.imageBone1Image1.visibility = View.VISIBLE
+
+            if(ApplicationClass.prefs.boneName1 == "") {
+                binding.imageBone1Image2.visibility = View.INVISIBLE
+                return
+            }else {
+                binding.imageBone1Image2.visibility = View.VISIBLE
+                setBoneMark()
+            }
+        }
+        // boneName1 / name1
+        else if(ApplicationClass.prefs.boneSex == "남성"){
+            if(ApplicationClass.prefs.boneName1 == "") {
+                binding.imageBone1Image1.visibility = View.INVISIBLE
+                return
+            } else {
+                binding.imageBone1Image1.visibility = View.VISIBLE
+                setBoneMark()
+            }
+
+            if(ApplicationClass.prefs.name1 == "")
+                binding.imageBone1Image2.visibility = View.INVISIBLE
+            else
+                binding.imageBone1Image2.visibility = View.VISIBLE
+        }
+
+        // 이름
+        val boneName1 = ApplicationClass.prefs.boneName1.toString()
+        val boneName2 = ApplicationClass.prefs.boneName2.toString()
+        val tmp = StringBuilder()
+
+        val boneEngraveType = ApplicationClass.prefs.boneEngraveType
+        val boneEngraveType2 = ApplicationClass.prefs.boneEngraveType2
+
+        if((boneEngraveType == "일반" && boneEngraveType2 == "기본")
+            || (boneEngraveType == "기독교" && boneEngraveType2 == "직분X")
+            || (boneEngraveType == "불교" && boneEngraveType2 == "기본")
+            || (boneEngraveType == "천주교" && boneEngraveType2 == "세례명X")
+            || (boneEngraveType == "원불교")){
+            binding.layoutBoneResult22.visibility = View.VISIBLE
+            when (boneName1.length) {
+                2 -> {
+                    tmp.append(boneName1[0]).append("\n").append("\n").append(boneName1[1])
+                    binding.layoutBoneResult221.text = tmp.toString()
+                }
+                3 -> {
+                    tmp.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2])
+                    binding.layoutBoneResult221.text = tmp.toString()
+                }
+                4 -> {
+                    tmp.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2]).append("\n").append(boneName1[3])
+                    binding.layoutBoneResult2214.text = tmp.toString()
+                    binding.layoutBoneResult221.visibility = View.GONE
+                    binding.layoutBoneResult2214.visibility = View.VISIBLE
+                }
+            }
+        }else if(boneEngraveType2 == "형제"){
+            binding.layoutBoneResult23.visibility = View.VISIBLE
+            when (boneName1.length) {
+                2 -> {
+                    tmp.append(boneName1[0]).append("\n").append("\n").append(boneName1[1])
+                    binding.layoutBoneResult231.text = tmp.toString()
+                }
+                3 -> {
+                    tmp.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2])
+                    binding.layoutBoneResult231.text = tmp.toString()
+                }
+                4 -> {
+                    tmp.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2]).append("\n").append(boneName1[3])
+                    binding.layoutBoneResult2314.text = tmp.toString()
+                    binding.layoutBoneResult231.visibility = View.GONE
+                    binding.layoutBoneResult2314.visibility = View.VISIBLE
+                }
+            }
+        }else if(boneEngraveType == "기독교" && boneEngraveType2 == "기본"
+            || boneEngraveType == "불교" && boneEngraveType2 == "법명"
+            || boneEngraveType == "순복음"){
+            binding.layoutBoneResult24.visibility = View.VISIBLE
+            when (boneName1.length) {
+                2 -> {
+                    tmp.append(boneName1[0]).append("\n").append("\n").append(boneName1[1])
+                    binding.layoutBoneResult241.text = tmp.toString()
+                }
+                3 -> {
+                    tmp.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2])
+                    binding.layoutBoneResult241.text = tmp.toString()
+                }
+                4 -> {
+                    tmp.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2]).append("\n").append(boneName1[3])
+                    binding.layoutBoneResult2414.text = tmp.toString()
+                    binding.layoutBoneResult241.visibility = View.GONE
+                    binding.layoutBoneResult2414.visibility = View.VISIBLE
+                }
+            }
+            when (boneName2.length) {
+                2 -> {
+                    binding.layoutBoneResult242.text = boneName2
+                }
+                3 -> {
+                    binding.layoutBoneResult242.text = boneName2
+                }
+                4 -> {
+                    binding.layoutBoneResult2424.text = boneName2
+                    binding.layoutBoneResult242.visibility = View.GONE
+                    binding.layoutBoneResult2424.visibility = View.VISIBLE
+                }
+            }
+        } else if(boneEngraveType == "천주교" && boneEngraveType2 == "기본"){
+            binding.layoutBoneResult25.visibility = View.VISIBLE
+            when (boneName1.length) {
+                2 -> {
+                    tmp.append(boneName1[0]).append("\n").append("\n").append(boneName1[1])
+                    binding.layoutBoneResult251.text = tmp.toString()
+                }
+                3 -> {
+                    tmp.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2])
+                    binding.layoutBoneResult251.text = tmp.toString()
+                }
+                4 -> {
+                    tmp.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2]).append("\n").append(boneName1[3])
+                    binding.layoutBoneResult2514.text = tmp.toString()
+                    binding.layoutBoneResult251.visibility = View.GONE
+                    binding.layoutBoneResult2514.visibility = View.VISIBLE
+                }
+            }
+            when (boneName2.length) {
+                2 -> {
+                    binding.layoutBoneResult252.text = boneName2
+                }
+                3 -> {
+                    binding.layoutBoneResult252.text = boneName2
+                }
+                4 -> {
+                    binding.layoutBoneResult2524.text = boneName2
+                    binding.layoutBoneResult252.visibility = View.GONE
+                    binding.layoutBoneResult2524.visibility = View.VISIBLE
+                }
+                5 -> {
+                    binding.layoutBoneResult2525.text = boneName2
+                    binding.layoutBoneResult252.visibility = View.GONE
+                    binding.layoutBoneResult2525.visibility = View.VISIBLE
+                }
+                6 -> {
+                    binding.layoutBoneResult2526.text = boneName2
+                    binding.layoutBoneResult252.visibility = View.GONE
+                    binding.layoutBoneResult2526.visibility = View.VISIBLE
+                }
+            }
+        }else if(boneEngraveType == "SGI"){
+            binding.layoutBoneResult26.visibility = View.VISIBLE
+            when (boneName1.length) {
+                2 -> {
+                    tmp.append(boneName1[0]).append("\n").append("\n").append(boneName1[1])
+                    binding.layoutBoneResult261.text = tmp.toString()
+                }
+                3 -> {
+                    tmp.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2])
+                    binding.layoutBoneResult261.text = tmp.toString()
+                }
+                4 -> {
+                    tmp.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2]).append("\n").append(boneName1[3])
+                    binding.layoutBoneResult2614.text = tmp.toString()
+                    binding.layoutBoneResult261.visibility = View.GONE
+                    binding.layoutBoneResult2614.visibility = View.VISIBLE
+                }
+            }
+        }else if(boneEngraveType == "묘법"){
+            binding.layoutBoneResult27.visibility = View.VISIBLE
+            when (boneName1.length) {
+                2 -> {
+                    tmp.append(boneName1[0]).append("\n").append("\n").append(boneName1[1])
+                    binding.layoutBoneResult271.text = tmp.toString()
+                }
+                3 -> {
+                    tmp.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2])
+                    binding.layoutBoneResult271.text = tmp.toString()
+                }
+                4 -> {
+                    tmp.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2]).append("\n").append(boneName1[3])
+                    binding.layoutBoneResult2714.text = tmp.toString()
+                    binding.layoutBoneResult271.visibility = View.GONE
+                    binding.layoutBoneResult2714.visibility = View.VISIBLE
+                }
+            }
+        }
+
+        // 출생일
+        when (boneEngraveType) {
+            "일반", "불교", "묘법", "SGI", "원불교" -> {
+                binding.layoutBoneResult111.visibility = View.VISIBLE
+                binding.layoutBoneResult112.visibility = View.GONE
+            }
+            "기독교", "순복음" -> {
+                binding.layoutBoneResult111.visibility = View.GONE
+                binding.layoutBoneResult112.visibility = View.VISIBLE
+                binding.layoutBoneResult112.text = "出生"
+            }
+            "천주교" -> {
+                binding.layoutBoneResult111.visibility = View.GONE
+                binding.layoutBoneResult112.visibility = View.VISIBLE
+                binding.layoutBoneResult112.text = "出生"
+            }
+        }
+
+        val boneDate1 = ApplicationClass.prefs.boneDate1.toString()
+
+        if(boneDate1.length == 10){
+            binding.layoutBoneResult121.text = boneDate1[0].toString()
+            binding.layoutBoneResult122.text = boneDate1[1].toString()
+            binding.layoutBoneResult123.text = boneDate1[2].toString()
+            binding.layoutBoneResult124.text = boneDate1[3].toString()
+            binding.layoutBoneResult141.text = boneDate1[5].toString()
+            binding.layoutBoneResult142.text = boneDate1[6].toString()
+            binding.layoutBoneResult161.text = boneDate1[8].toString()
+            binding.layoutBoneResult161.text = boneDate1[9].toString()
+        }
+        val boneDate1Type = ApplicationClass.prefs.boneDate1Type
+        if(boneDate1Type == "양력")
+            binding.layoutBoneResult17.text = "陽"
+        else if(boneDate1Type == "음력")
+            binding.layoutBoneResult17.text = "陰"
+
+        // 사망일
+        // 출생일
+        when (boneEngraveType) {
+            "일반", "불교", "묘법", "SGI", "원불교" -> {
+                binding.layoutBoneResult311.visibility = View.VISIBLE
+                binding.layoutBoneResult312.visibility = View.GONE
+            }
+            "기독교", "순복음" -> {
+                binding.layoutBoneResult311.visibility = View.GONE
+                binding.layoutBoneResult312.visibility = View.VISIBLE
+                binding.layoutBoneResult312.text = "召天"
+            }
+            "천주교" -> {
+                binding.layoutBoneResult311.visibility = View.GONE
+                binding.layoutBoneResult312.visibility = View.VISIBLE
+                binding.layoutBoneResult312.text = "善終"
+            }
+        }
+
+        val boneDate2 = ApplicationClass.prefs.boneDate1.toString()
+        if(boneDate2.length == 10){
+            binding.layoutBoneResult321.text = boneDate2[0].toString()
+            binding.layoutBoneResult322.text = boneDate2[1].toString()
+            binding.layoutBoneResult323.text = boneDate2[2].toString()
+            binding.layoutBoneResult324.text = boneDate2[3].toString()
+            binding.layoutBoneResult341.text = boneDate2[5].toString()
+            binding.layoutBoneResult342.text = boneDate2[6].toString()
+            binding.layoutBoneResult361.text = boneDate2[8].toString()
+            binding.layoutBoneResult361.text = boneDate2[9].toString()
+        }
+
+        val boneDate2Type = ApplicationClass.prefs.boneDate2Type
+        if(boneDate2Type == "양력")
+            binding.layoutBoneResult37.text = "陽"
+        else if(boneDate2Type == "음력")
+            binding.layoutBoneResult37.text = "陰"
+    }
+    private fun setTableMark() {
+        // 이미지 이름을 문자열로 정의합니다.
+        val boneEngraveTypePosition = ApplicationClass.prefs.boneEngraveTypePosition
+        var imageName = "img_mark" + (boneEngraveTypePosition + 1)
+
+        if(boneEngraveTypePosition == 4 || boneEngraveTypePosition == 5){
+            if(ApplicationClass.prefs.boneEngraveType2Position == 0)
+                imageName = "img_mark5"
+            else if(ApplicationClass.prefs.boneEngraveType2Position == 1)
+                imageName = "img_mark5_2"
+        }
+        // 직분, 세례명, 법명
+        val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
+        binding.imageBoneResult21.setImageResource(imageResource)
+    }
     private fun setTabletData() {
-        if (ApplicationClass.prefs.name3 == "")
-            binding.layoutTabletResult.visibility = View.GONE
-        else
-            binding.layoutTabletResult.visibility = View.VISIBLE
+        if (ApplicationClass.prefs.name3 == "") {
+            binding.layoutTabletImage.visibility = View.GONE
+            return
+        } else {
+            binding.layoutTabletImage.visibility = View.VISIBLE
+//            setTableMark()
+        }
 
         // 이름
         val name1 = ApplicationClass.prefs.name1
@@ -372,7 +702,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             }
 
             // 합골
-            if(ApplicationClass.prefs.selectedUrnType!!.contains("합골")){
+            if(selectedUrnType.contains("합골")){
                 msg += "\n\n========== "
 
                 msg += "\n합골 추가 정보: " +
@@ -409,31 +739,68 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val delayMillis = 500 // 1초 (1000 밀리초)
 
         handler.postDelayed({
+            // 여기에 1초 후에 실행하고자 하는 코드를 작성합니다.
             // 유골
-            if(selectedUrnType == "선택안함"){
-                binding.layoutUrnResultImage.visibility = View.GONE
-                binding.layoutUrnImage.visibility = View.GONE
-            }else{
-                // 여기에 1초 후에 실행하고자 하는 코드를 작성합니다.
-                // 텍스트를 이미지화
-                // 1. XML 레이아웃
-                val layoutUrnContent = binding.layoutUrnContent
+            if(selectedUrnType != "선택안함") {
+                if(selectedUrnType.contains("합골함")){
+                    if(selectedUrnType.contains("합골함1")){
+                        // 유골 정보
+                        val layoutUrnContent = binding.layoutUrnContent
 
-                // 2. 레이아웃을 이미지로 변환
-                urnContentBitmap = Bitmap.createBitmap(layoutUrnContent.width, layoutUrnContent.height, Bitmap.Config.ARGB_8888)
-                val canvasUrnContentBitmap = Canvas(urnContentBitmap)
-                layoutUrnContent.draw(canvasUrnContentBitmap)
+                        // 2. 레이아웃을 이미지로 변환
+                        urnContentBitmap = Bitmap.createBitmap(layoutUrnContent.width, layoutUrnContent.height, Bitmap.Config.ARGB_8888)
+                        val canvasUrnContentBitmap = Canvas(urnContentBitmap)
+                        layoutUrnContent.draw(canvasUrnContentBitmap)
 
-                val imageUrnImage = binding.imageUrnImage
-                imageUrnImage.setImageBitmap(urnContentBitmap)
+                        // 합골 추가 정보
+                        val layoutBone1Content = binding.layoutBoneContent
 
-                if(selectedUrnType == "미정"){
-                    binding.layoutUrnResultImage.visibility = View.GONE
-                    binding.layoutUrnContentResultImage?.visibility = View.VISIBLE
-                    binding.layoutUrn.visibility = View.GONE
-                    val layoutUrnContentResultImage = binding.layoutUrnContentResultImage
-                    layoutUrnContentResultImage?.setImageBitmap(urnContentBitmap)
+                        // 2. 레이아웃을 이미지로 변환
+                        boneContentBitmap = Bitmap.createBitmap(layoutBone1Content.width, layoutBone1Content.height, Bitmap.Config.ARGB_8888)
+                        val canvasBoneContentBitmap = Canvas(boneContentBitmap)
+                        layoutBone1Content.draw(canvasBoneContentBitmap)
+
+                        // name1 / boneName1
+                        if(ApplicationClass.prefs.boneSex == "여성"){
+                            val imageBone1Image1 = binding.imageBone1Image1
+                            imageBone1Image1.setImageBitmap(urnContentBitmap)
+
+                            val imageBone1Image2 = binding.imageBone1Image2
+                            imageBone1Image2.setImageBitmap(boneContentBitmap)
+                        }
+                        // boneName1 / name1
+                        else if(ApplicationClass.prefs.boneSex == "남성"){
+                            val imageBone1Image1 = binding.imageBone1Image1
+                            imageBone1Image1.setImageBitmap(boneContentBitmap)
+
+                            val imageBone1Image2 = binding.imageBone1Image2
+                            imageBone1Image2.setImageBitmap(urnContentBitmap)
+                        }
+
+                        // 합골 최종 결과
+                        val layoutBone1 = binding.layoutBone1
+
+                        boneBitmap = Bitmap.createBitmap(layoutBone1.width, layoutBone1.height, Bitmap.Config.ARGB_8888)
+                        val canvasBoneBitmap = Canvas(boneBitmap)
+                        layoutBone1.draw(canvasBoneBitmap)
+
+                        val layoutBoneResultImage = binding.layoutBoneResultImage
+                        layoutBoneResultImage.setImageBitmap(boneBitmap)
+                    }else if(selectedUrnType.contains("합골함2")){
+                    }
                 }else{
+                    // 텍스트를 이미지화
+                    // 1. XML 레이아웃
+                    val layoutUrnContent = binding.layoutUrnContent
+
+                    // 2. 레이아웃을 이미지로 변환
+                    urnContentBitmap = Bitmap.createBitmap(layoutUrnContent.width, layoutUrnContent.height, Bitmap.Config.ARGB_8888)
+                    val canvasUrnContentBitmap = Canvas(urnContentBitmap)
+                    layoutUrnContent.draw(canvasUrnContentBitmap)
+
+                    val imageUrnImage = binding.imageUrnImage
+                    imageUrnImage.setImageBitmap(urnContentBitmap)
+
                     // 유골 최종 결과
                     val layoutUrnImage = binding.layoutUrnImage
 
@@ -443,14 +810,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
                     val layoutUrnResultImage = binding.layoutUrnResultImage
                     layoutUrnResultImage.setImageBitmap(urnBitmap)
-                    binding.layoutUrn.visibility = View.GONE
                 }
             }
-            // 위패
-            if(selectedTabletType == "선택안함"){
-                binding.layoutTabletResultImage.visibility = View.GONE
-                binding.layoutTabletImage.visibility = View.GONE
-            }else{
+
+            if(selectedTabletType != "선택안함") {
                 // 여기에 1초 후에 실행하고자 하는 코드를 작성합니다.
                 // 1. XML 레이아웃
                 val layoutTabletImage = binding.layoutTabletImage
@@ -465,6 +828,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 layoutTabletImage.visibility = View.GONE
             }
         }, delayMillis.toLong())
+
+//        binding.layoutResult.visibility = View.GONE
+//        binding.layoutResultContent.visibility = View.GONE
     }
     private fun setOnClickListeners() {
         binding.buttonResultToOrderFragment.setOnClickListener{
