@@ -70,7 +70,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     binding.layoutBone1.visibility = View.VISIBLE
                 }else if(selectedUrnType.contains("합골함2")){
                     setBone2Data()
-                    binding.layoutBone2Content.visibility = View.VISIBLE
+//                    binding.layoutBone2Content.visibility = View.VISIBLE
                     binding.layoutBone2ResultImage.visibility = View.VISIBLE
                     binding.layoutBone2.visibility = View.VISIBLE
                 }
@@ -633,9 +633,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         // 추가 정보 / 기존 정보
         if(engraveTypePosition == boneEngraveTypePosition) {
-            binding.imageBone2Result21.visibility = View.VISIBLE
-            binding.imageBone2Result211.visibility = View.GONE
-            binding.imageBone2Result212.visibility = View.GONE
+//            binding.imageBone2Result21.visibility = View.VISIBLE
+//            binding.imageBone2Result211.visibility = View.GONE
+//            binding.imageBone2Result212.visibility = View.GONE
 
             var imageName = "img_mark" + (engraveTypePosition + 1)
 
@@ -646,7 +646,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     imageName = "img_mark5_2"
             }
             val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
-            binding.imageBone2Result21.setImageResource(imageResource)
+//            binding.imageBone2Result21.setImageResource(imageResource)
             return
         }else if(ApplicationClass.prefs.boneSex == "여성"){
             // 정보1
@@ -667,7 +667,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 imageName1 = "img_mark5_2"
         }
         val imageResource1 = resources.getIdentifier(imageName1, "drawable", requireActivity().packageName)
-        binding.imageBone2Result211.setImageResource(imageResource1)
+//        binding.imageBone2Result211.setImageResource(imageResource1)
 
         // 이미지 이름을 문자열로 정의합니다.
         var imageName2 = "img_mark" + (boneEngraveTypePosition + 1)
@@ -679,7 +679,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 imageName2 = "img_mark5_2"
         }
         val imageResource = resources.getIdentifier(imageName2, "drawable", requireActivity().packageName)
-        binding.imageBone2Result212.setImageResource(imageResource)
+//        binding.imageBone2Result212.setImageResource(imageResource)
     }
     private fun setBone2Data() {
         // 정보1
@@ -735,17 +735,17 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             boneDate2Type = ApplicationClass.prefs.date2Type
 
             if(ApplicationClass.prefs.name1 == "") {
-                binding.layoutBone22Result1.visibility = View.INVISIBLE
-                binding.layoutBone22Result3.visibility = View.INVISIBLE
-                binding.layoutBone22Result2.visibility = View.INVISIBLE
+//                binding.layoutBone22Result1.visibility = View.INVISIBLE
+//                binding.layoutBone22Result3.visibility = View.INVISIBLE
+//                binding.layoutBone22Result2.visibility = View.INVISIBLE
             }else{
                 setBone2Mark()
             }
 
             if(ApplicationClass.prefs.boneName1 == "") {
-                binding.layoutBone21Result1.visibility = View.INVISIBLE
-                binding.layoutBone21Result3.visibility = View.INVISIBLE
-                binding.layoutBone21Result2.visibility = View.INVISIBLE
+//                binding.layoutBone21Result1.visibility = View.INVISIBLE
+//                binding.layoutBone21Result3.visibility = View.INVISIBLE
+//                binding.layoutBone21Result2.visibility = View.INVISIBLE
                 return
             }else {
                 setBone2Mark()
@@ -754,17 +754,17 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         // 기존 정보 / 추가 정보
         else if(ApplicationClass.prefs.boneSex == "남성"){
             if(ApplicationClass.prefs.name1 == ""){
-                binding.layoutBone21Result1.visibility = View.INVISIBLE
-                binding.layoutBone21Result3.visibility = View.INVISIBLE
-                binding.layoutBone21Result2.visibility = View.INVISIBLE
+//                binding.layoutBone21Result1.visibility = View.INVISIBLE
+//                binding.layoutBone21Result3.visibility = View.INVISIBLE
+//                binding.layoutBone21Result2.visibility = View.INVISIBLE
             }else{
                 setBone2Mark()
             }
 
             if(ApplicationClass.prefs.boneName1 == "") {
-                binding.layoutBone22Result1.visibility = View.INVISIBLE
-                binding.layoutBone22Result3.visibility = View.INVISIBLE
-                binding.layoutBone22Result2.visibility = View.INVISIBLE
+//                binding.layoutBone22Result1.visibility = View.INVISIBLE
+//                binding.layoutBone22Result3.visibility = View.INVISIBLE
+//                binding.layoutBone22Result2.visibility = View.INVISIBLE
                 return
             }else {
                 setBone2Mark()
@@ -1373,12 +1373,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     }else if(selectedUrnType.contains("합골함2")){
                         // 텍스트를 이미지화
                         // 1. XML 레이아웃
-                        val layoutBone2Content = binding.layoutBone2Content
+//                        val layoutBone2Content = binding.layoutBone2Content
 
                         // 2. 레이아웃을 이미지로 변환
-                        boneContentBitmap = Bitmap.createBitmap(layoutBone2Content.width, layoutBone2Content.height, Bitmap.Config.ARGB_8888)
-                        val canvasBoneContentBitmap = Canvas(boneContentBitmap)
-                        layoutBone2Content.draw(canvasBoneContentBitmap)
+//                        boneContentBitmap = Bitmap.createBitmap(layoutBone2Content.width, layoutBone2Content.height, Bitmap.Config.ARGB_8888)
+//                        val canvasBoneContentBitmap = Canvas(boneContentBitmap)
+//                        layoutBone2Content.draw(canvasBoneContentBitmap)
 
                         val imageBone2Image = binding.imageBone2Image
                         imageBone2Image.setImageBitmap(boneContentBitmap)
