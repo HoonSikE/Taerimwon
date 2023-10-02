@@ -340,9 +340,9 @@ class PreferenceUtil(context: Context) {
         date2Type = "양력"
         religion = ""
         selectedUrnType = "선택안함"
-        boneEngraveType = ""
+        boneEngraveType = "일반"
         boneEngraveTypePosition = 0
-        boneEngraveType2 = ""
+        boneEngraveType2 = "기본"
         boneEngraveType2Position = 0
         boneSex = ""
         boneName1 = ""

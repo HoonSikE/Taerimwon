@@ -216,7 +216,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         /** 합골 **/
         val boneSexArray = resources.getStringArray(R.array.bone_sex)
         val boneSexList = mutableListOf(*boneSexArray) as ArrayList<String>
-        binding.spinnerBoneDate1Type.setSelection(boneSexList.indexOf(ApplicationClass.prefs.boneSex))
+        binding.spinnerBoneSex.setSelection(boneSexList.indexOf(ApplicationClass.prefs.boneSex))
         binding.editTextBoneName1.setText(ApplicationClass.prefs.boneName1)
         binding.editTextBoneDate1.setText(ApplicationClass.prefs.boneDate1)
         // 배열을 가져옵니다.
@@ -239,7 +239,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         val boneEngraveType = ApplicationClass.prefs.boneEngraveType
         val boneEngraveType2 = ApplicationClass.prefs.boneEngraveType2
         val boneName2 = ApplicationClass.prefs.boneName2
-        if((boneEngraveType == "기독교" || boneEngraveType == "순복음") && (boneEngraveType == "기본")) {
+        if((boneEngraveType == "기독교" || boneEngraveType == "순복음") && (boneEngraveType2 == "기본")) {
             binding.textBoneName2.visibility = View.VISIBLE
             binding.editTextBoneName2.visibility = View.VISIBLE
             binding.imageBoneName2.visibility = View.VISIBLE
@@ -247,7 +247,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.editTextBoneName2.hint = "직분을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextBoneName2.filters = arrayOf(inputFilter)
-            binding.editTextBoneName2.setText(name2)
+            binding.editTextBoneName2.setText(boneName2)
         }else if(boneEngraveType == "불교" && boneEngraveType2 == "법명") {
             binding.textBoneName2.visibility = View.VISIBLE
             binding.editTextBoneName2.visibility = View.VISIBLE
@@ -277,8 +277,8 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         // 문자열 이름을 문자열로 정의합니다.
         val arrName2 = "engrave_type" + (ApplicationClass.prefs.boneEngraveTypePosition + 1)
         // 문자열 배열을 가져옵니다.
-        val stringArray2 = resources.getIdentifier(arrName, "array", requireContext().packageName)
-        val boneEngraveTypes2Array = resources.getStringArray(stringArray)
+        val stringArray2 = resources.getIdentifier(arrName2, "array", requireContext().packageName)
+        val boneEngraveTypes2Array = resources.getStringArray(stringArray2)
         // 배열을 리스트로 변환합니다.
         boneEngraveType2List = mutableListOf(*boneEngraveTypes2Array) as ArrayList<String>
         boneEngraveType2Adapter.updateList(boneEngraveType2List)
