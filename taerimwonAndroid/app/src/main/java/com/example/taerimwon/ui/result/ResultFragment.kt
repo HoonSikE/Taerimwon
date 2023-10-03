@@ -20,11 +20,13 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
+import androidx.core.view.marginTop
 import androidx.fragment.app.viewModels
 import com.example.taerimwon.R
 import com.example.taerimwon.base.BaseFragment
@@ -87,12 +89,11 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         }
 
         if(selectedTabletType != "선택안함") {
-            if(!selectedTabletType.contains("사진")){
-                setTabletData()
+            if(selectedTabletType.contains("사진")){
                 binding.layoutTabletContent.visibility = View.VISIBLE
+                binding.layoutTabletResult2.visibility = View.GONE
                 binding.layoutTabletResultImage.visibility = View.VISIBLE
                 binding.layoutTablet.visibility = View.VISIBLE
-            }else{
                 binding.layoutTabletPhoto.visibility = View.VISIBLE
                 // 이미지 경로(URI)를 SharedPreferences에서 가져옴
                 val tabletImageUri = ApplicationClass.prefs.tabletImageUri
@@ -101,6 +102,16 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     val imageUri = Uri.parse(tabletImageUri)
                     binding.imageAddPhoto.setImageURI(imageUri)
                 }
+            }else if(ApplicationClass.prefs.tabletType.toString().contains("문구")){
+                binding.layoutTabletContent.visibility = View.VISIBLE
+                binding.layoutTabletResult2.visibility = View.GONE
+                binding.layoutTabletResultImage.visibility = View.VISIBLE
+                binding.layoutTablet.visibility = View.VISIBLE
+            }else {
+                setTabletData()
+                binding.layoutTabletContent.visibility = View.VISIBLE
+                binding.layoutTabletResultImage.visibility = View.VISIBLE
+                binding.layoutTablet.visibility = View.VISIBLE
             }
         }
 
@@ -1432,30 +1443,284 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     }
     private fun setTableMark() {
         // 이미지 이름을 문자열로 정의합니다.
-        val boneEngraveTypePosition = ApplicationClass.prefs.boneEngraveTypePosition
-        var imageName = "img_mark" + (boneEngraveTypePosition + 1)
+        val religion = ApplicationClass.prefs.religion
+        val tabletType = ApplicationClass.prefs.tabletType
+        var imageName = "img_mark1"
 
-        if(boneEngraveTypePosition == 4 || boneEngraveTypePosition == 5){
-            if(ApplicationClass.prefs.boneEngraveType2Position == 0)
-                imageName = "img_mark5"
-            else if(ApplicationClass.prefs.boneEngraveType2Position == 1)
-                imageName = "img_mark5_2"
-        }
+        if(religion == "무교" && tabletType != "문구")
+            imageName = "img_mark1"
+        else if(religion == "기독교" && tabletType != "문구")
+            imageName = "img_mark2"
+        else if(religion == "불교" && tabletType != "문구")
+            imageName = "img_mark3"
+        else if(religion == "천주교" && tabletType != "문구")
+            imageName = "img_mark4"
+        else
+            return
+
         // 직분, 세례명, 법명
         val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
-        binding.imageBoneResult21.setImageResource(imageResource)
+        binding.layoutTabletResult12.setImageResource(imageResource)
     }
     private fun setTabletData() {
-        if (ApplicationClass.prefs.name3 == "") {
-            binding.layoutTabletImage.visibility = View.GONE
-            return
-        } else {
-            binding.layoutTabletImage.visibility = View.VISIBLE
-//            setTableMark()
-        }
+        setTableMark()
+        val pixel_size_26 = resources.getDimensionPixelSize(R.dimen.pixel_size_26)
+        val pixel_size_30 = resources.getDimensionPixelSize(R.dimen.pixel_size_30)
+        val pixel_size_35 = resources.getDimensionPixelSize(R.dimen.pixel_size_35)
+        val pixel_size_40 = resources.getDimensionPixelSize(R.dimen.pixel_size_40)
+        val pixel_size_45 = resources.getDimensionPixelSize(R.dimen.pixel_size_45)
+        val pixel_size_270 = resources.getDimensionPixelSize(R.dimen.pixel_size_270)
+        val pixel_size_280 = resources.getDimensionPixelSize(R.dimen.pixel_size_280)
+        val pixel_size_215 = resources.getDimensionPixelSize(R.dimen.pixel_size_215)
+        val pixel_size_335 = resources.getDimensionPixelSize(R.dimen.pixel_size_335)
+        val pixel_size_420 = resources.getDimensionPixelSize(R.dimen.pixel_size_420)
 
         // 이름
-        val name1 = ApplicationClass.prefs.name1
+        val name2 = ApplicationClass.prefs.name2.toString()
+        val name3 = ApplicationClass.prefs.name3.toString()
+        val tmp = StringBuilder()
+        val tmp2 = StringBuilder()
+        val religion = ApplicationClass.prefs.religion
+        val tabletType = ApplicationClass.prefs.tabletType.toString()
+
+        val layoutTabletResult20 = binding.layoutTabletResult20
+        val layoutTabletResult2 = binding.layoutTabletResult2
+        val layoutTabletResult22 = binding.layoutTabletResult22
+
+        if(!tabletType.contains("본관") && tabletType != "문구") {
+            when (tabletType) {
+                "일반", "불교" -> {
+                    when (name3.length) {
+                        2 -> {
+                            tmp.append(name3[0]).append("\n").append("\n").append(name3[1])
+                        }
+                        3 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
+                                .append(name3[2])
+                        }
+                        4 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
+                                .append(name3[2]).append("\n").append(name3[3])
+                            layoutTabletResult2.setLineSpacing(0f, 1.4f)
+                        }
+                    }
+                }
+                "기독교" -> {
+                    val layoutParams = layoutTabletResult2.layoutParams as ViewGroup.MarginLayoutParams
+                    val marginTopInPixels = 0
+                    layoutParams.topMargin = marginTopInPixels
+                    layoutTabletResult2.height = pixel_size_270
+                    layoutTabletResult2.setLineSpacing(0f, 1.7f)
+                    layoutTabletResult2.layoutParams = layoutParams
+
+                    when (name3.length) {
+                        2 -> {
+                            tmp.append(name3[0]).append("\n").append("\n").append(name3[1])
+                        }
+                        3 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
+                                .append(name3[2])
+                        }
+                        4 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
+                                .append(name3[2]).append("\n").append(name3[3])
+                            layoutTabletResult2.setLineSpacing(0f, 1.2f)
+                        }
+                    }
+
+                    layoutTabletResult20.visibility = View.VISIBLE
+                    tmp2.append(name2)
+                    when (name2.length) {
+                        2 -> {
+                        }
+                        3 -> {
+                        }
+                        4 -> {
+                            layoutTabletResult20.letterSpacing = -0.15f
+                        }
+                    }
+                    layoutTabletResult20.text = tmp2.toString()
+                }
+                "천주교" -> {
+                    layoutTabletResult2.height = pixel_size_270
+                    layoutTabletResult2.setLineSpacing(0f, 1.7f)
+
+                    when (name3.length) {
+                        2 -> {
+                            tmp.append(name3[0]).append("\n").append("\n").append(name3[1])
+                        }
+                        3 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
+                                .append(name3[2])
+                        }
+                        4 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
+                                .append(name3[2]).append("\n").append(name3[3])
+                            layoutTabletResult2.setLineSpacing(0f, 1.2f)
+                        }
+                    }
+
+                    layoutTabletResult22.visibility = View.VISIBLE
+                    tmp2.append(name2)
+                    when (name2.length) {
+                        2 -> {
+                        }
+                        3 -> {
+                        }
+                        4, 5 -> {
+                            layoutTabletResult22.letterSpacing = -0.15f
+                        }
+                        6 -> {
+                            layoutTabletResult22.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_26.toFloat())
+                            layoutTabletResult22.letterSpacing = -0.17f
+                        }
+                    }
+                    layoutTabletResult22.text = tmp2.toString()
+                }
+            }
+        }else if(tabletType.contains("본관") && tabletType != "문구") {
+            when (tabletType) {
+                "일반" -> {
+                    binding.layoutTabletResult12.visibility = View.GONE
+                    val layoutParams = layoutTabletResult2.layoutParams as ViewGroup.MarginLayoutParams
+                    val marginTopInPixels = 0
+                    layoutParams.topMargin = marginTopInPixels
+                    layoutTabletResult2.height = pixel_size_420
+                    layoutTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
+                    layoutTabletResult2.setLineSpacing(0f, 1.2f)
+                    layoutTabletResult2.layoutParams = layoutParams
+
+                    when (name3.length) {
+                        7 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+                                .append("\n").append(name3[6])
+                        }
+                        8 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+                                .append("\n").append(name3[6]).append("\n").append(name3[7])
+                            layoutTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                        }
+                        9 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+                                .append("\n").append(name3[6]).append("\n").append(name3[7]).append("\n").append(name3[8])
+                            layoutTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                        }
+                    }
+                }
+                "기독교" -> {
+                    layoutTabletResult2.height = pixel_size_215
+                    layoutTabletResult2.setLineSpacing(0f, 1.3f)
+                    layoutTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+
+                    layoutTabletResult22.visibility = View.VISIBLE
+                    val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
+                    layoutTabletResult22.typeface = hyhaeso
+                    layoutTabletResult22.text = "召天"
+
+                    when (name3.length) {
+                        5 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+                                .append("\n").append(name3[3]).append("\n").append(name3[4])
+                        }
+                        6 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+                            layoutTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
+                        }
+                        7 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+                                .append("\n").append(name3[6])
+                            layoutTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
+                            layoutTabletResult2.setLineSpacing(0f, 1.0f)
+                        }
+                    }
+
+                    layoutTabletResult20.visibility = View.VISIBLE
+                    tmp2.append(name2)
+                    when (name2.length) {
+                        2 -> {
+                        }
+                        3 -> {
+                        }
+                        4 -> {
+                            layoutTabletResult20.letterSpacing = -0.15f
+                        }
+                    }
+                    layoutTabletResult20.text = tmp2.toString()
+                }
+                "불교" -> {
+                    layoutTabletResult2.height = pixel_size_335
+                    layoutTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
+                    layoutTabletResult2.setLineSpacing(0f, 1.0f)
+
+                    when (name3.length) {
+                        7 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+                                .append("\n").append(name3[6])
+                        }
+                        8 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+                                .append("\n").append(name3[6]).append("\n").append(name3[7])
+                            layoutTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                        }
+                        9 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+                                .append("\n").append(name3[6]).append("\n").append(name3[7]).append("\n").append(name3[8])
+                            layoutTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                        }
+                    }
+                }
+                "천주교" -> {
+                    layoutTabletResult2.height = pixel_size_280
+                    layoutTabletResult2.setLineSpacing(0f, 1.0f)
+
+                    when (name3.length) {
+                        5 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+                                .append("\n").append(name3[3]).append("\n").append(name3[4])
+                        }
+                        6 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+                            layoutTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
+                        }
+                        7 -> {
+                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+                                .append("\n").append(name3[6])
+                            layoutTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                        }
+                    }
+
+                    layoutTabletResult22.visibility = View.VISIBLE
+                    tmp2.append(name2)
+                    when (name2.length) {
+                        2 -> {
+                        }
+                        3 -> {
+                        }
+                        4, 5 -> {
+                            layoutTabletResult22.letterSpacing = -0.15f
+                        }
+                        6 -> {
+                            layoutTabletResult22.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_26.toFloat())
+                            layoutTabletResult22.letterSpacing = -0.17f
+                        }
+                    }
+                    layoutTabletResult22.text = tmp2.toString()
+                }
+            }
+        }else if(tabletType == "문구"){
+
+        }
+        layoutTabletResult2.text = tmp.toString()
     }
     private fun setMsg() {
         msg = "[태림원]" +
@@ -1524,8 +1789,17 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         msg += "\n\n - 위패 종류: " + ApplicationClass.prefs.selectedTabletType
         if(selectedTabletType != "선택안함") {
-            msg += "\n위패 상세 종류: " + ApplicationClass.prefs.tabletType +
-                    "\n - 위패 내용: " + ApplicationClass.prefs.name3
+            msg += "\n위패 상세 종류: " + ApplicationClass.prefs.tabletType
+
+            if(!selectedTabletType.contains("사진")){
+                msg += "\n - 위패 내용: " + ApplicationClass.prefs.name3
+                if(!selectedTabletType.contains("본관")){
+                    if(ApplicationClass.prefs.tabletType == "기독교")
+                        msg += "\n직분: " + ApplicationClass.prefs.name2
+                    else if(ApplicationClass.prefs.tabletType == "천주교")
+                        msg += "\n세례명: " + ApplicationClass.prefs.name2
+                }
+            }
         }
 
         msg += "\n\n특이사항: " + ApplicationClass.prefs.note
@@ -1643,6 +1917,18 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             if(selectedTabletType != "선택안함") {
                 // 여기에 1초 후에 실행하고자 하는 코드를 작성합니다.
                 // 1. XML 레이아웃
+                val layoutTabletContent = binding.layoutTabletContent
+
+                // 2. 레이아웃을 이미지로 변환
+                tabletContentBitmap = Bitmap.createBitmap(layoutTabletContent.width, layoutTabletContent.height, Bitmap.Config.ARGB_8888)
+                val canvas = Canvas(tabletContentBitmap)
+                layoutTabletContent.draw(canvas)
+
+                val imageTabletImage = binding.imageTabletImage
+                imageTabletImage.setImageBitmap(tabletContentBitmap)
+
+                // 여기에 1초 후에 실행하고자 하는 코드를 작성합니다.
+                // 1. XML 레이아웃
                 val layoutTabletImage = binding.layoutTabletImage
 
                 // 2. 레이아웃을 이미지로 변환
@@ -1721,11 +2007,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     // MMS 메시지 보내기 함수
     private fun sendMMS(tel: String, subject: String, sms_body: String, imageUri: Uri) {
         var intent = Intent(Intent.ACTION_SEND)
-        if(ApplicationClass.prefs.name1 == ""){
-            intent = Intent(Intent.ACTION_SENDTO)
-            intent.data = Uri.parse("smsto:$tel") // 수신자 전화번호를 설정
-            intent.putExtra("sms_body", sms_body) // 메시지 내용을 설정
-        }else{
+//        if((ApplicationClass.prefs.name1 == "" && ApplicationClass.prefs.selectedTabletType == "선택안함")
+//            || (ApplicationClass.prefs.name3 == "" && ApplicationClass.prefs.selectedUrnType == "선택안함")
+//        ){
+//            intent = Intent(Intent.ACTION_SENDTO)
+//            intent.data = Uri.parse("smsto:$tel") // 수신자 전화번호를 설정
+//            intent.putExtra("sms_body", sms_body) // 메시지 내용을 설정
+//        }else{
             intent.apply {
                 type = "image/*"
                 putExtra(Intent.EXTRA_STREAM, imageUri)
@@ -1733,7 +2021,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //            putExtra("subject", subject)
                 putExtra("sms_body", sms_body)
             }
-        }
+//        }
 
         Log.d(TAG, "subject: " + subject)
         Log.d(TAG, "sms_body: " + sms_body)

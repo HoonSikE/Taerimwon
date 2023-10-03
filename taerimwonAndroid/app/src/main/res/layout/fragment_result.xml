@@ -99,6 +99,7 @@
                         app:layout_constraintStart_toEndOf="@+id/layout_bone2_result_image"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        android:visibility="gone"
                         >
                     </ImageView>
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -267,6 +268,7 @@
                         app:layout_constraintStart_toEndOf="@+id/layout_bone2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        android:visibility="gone"
                         >
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_tablet_image"
@@ -2326,47 +2328,65 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_marginTop="40px"
+                        android:visibility="gone"
                         >
-                        <TextView
-                            android:id="@+id/layout_tablet_result1_1"
-                            android:layout_width="65px"
-                            android:layout_height="65px"
-                            android:text="故"
-                            android:textSize="65px"
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/hyhaeso"
-                            android:textFontWeight="900"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            android:gravity="center"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:visibility="gone"
-                            />
                         <ImageView
                             android:id="@+id/layout_tablet_result1_2"
                             android:layout_width="wrap_content"
                             android:layout_height="55px"
-                            android:layout_marginTop="10px"
+                            android:layout_marginTop="15px"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:gravity="center"
-                            app:layout_constraintTop_toBottomOf="@+id/layout_tablet_result1_1"
+                            app:layout_constraintTop_toTopOf="parent"
                             />
                         <TextView
-                            android:id="@+id/layout_tablet_result2"
-                            android:layout_width="55px"
-                            android:layout_height="wrap_content"
-                            android:text="홍\n길\n동"
-                            android:textSize="55px"
+                            android:id="@+id/layout_tablet_result2_0"
+                            android:layout_width="130px"
+                            android:layout_height="50px"
+                            android:text="윗글자"
+                            android:textSize="30px"
                             android:textColor="@color/black"
                             android:fontFamily="@font/hygungso"
-                            android:textFontWeight="900"
+                            android:textFontWeight="500"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:gravity="center"
                             app:layout_constraintTop_toBottomOf="@+id/layout_tablet_result1_2"
-                            android:layout_marginTop="10px"
+                            android:layout_marginTop="15px"
+                            android:visibility="gone"
+                            />
+                        <TextView
+                            android:id="@+id/layout_tablet_result2"
+                            android:layout_width="55px"
+                            android:layout_height="330px"
+                            android:text="홍\n길\n동"
+                            android:textSize="55px"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/hygungso"
+                            android:textFontWeight="500"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:gravity="center"
+                            app:layout_constraintTop_toBottomOf="@+id/layout_tablet_result2_0"
+                            android:layout_marginTop="15px"
                             android:lineSpacingMultiplier="2"
+                            />
+                        <TextView
+                            android:id="@+id/layout_tablet_result2_2"
+                            android:layout_width="130px"
+                            android:layout_height="50px"
+                            android:text="밑글자"
+                            android:textSize="30px"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/hygungso"
+                            android:textFontWeight="500"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:gravity="center"
+                            android:layout_marginTop="15px"
+                            app:layout_constraintTop_toBottomOf="@+id/layout_tablet_result2"
+                            android:visibility="gone"
                             />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>

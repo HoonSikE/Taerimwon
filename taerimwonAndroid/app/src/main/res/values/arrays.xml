@@ -42,4 +42,11 @@
         <item>백색(사진)</item>
         <item>추모패(사진)</item>
     </string-array>
+    <string-array name="religion">
+        <item>선택안함</item>
+        <item>무교</item>
+        <item>기독교</item>
+        <item>불교</item>
+        <item>천주교</item>
+    </string-array>
 </resources>

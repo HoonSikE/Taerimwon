@@ -120,6 +120,7 @@ class PreferenceUtil(context: Context) {
         get() = order.getInt(ENGRAVETYPEPOSITION, 0)
         set(value){
             order.edit().putInt(ENGRAVETYPEPOSITION, value).apply()
+
         }
     // 각인 상세 종류 (일반, 형제, 직분, 기독, ...)
     var engraveType2 : String?
@@ -168,7 +169,7 @@ class PreferenceUtil(context: Context) {
         }
     // 종교
     var religion : String?
-        get() = order.getString(RELIGION, "무교")
+        get() = order.getString(RELIGION, "선택안함")
         set(value){
             order.edit().putString(RELIGION, value).apply()
         }
@@ -249,7 +250,7 @@ class PreferenceUtil(context: Context) {
         }
     // 위패 종류 (일반, 본관, 문구)
     var tabletType : String?
-        get() = order.getString(TABLETTYPE, "일반")
+        get() = order.getString(TABLETTYPE, "문구")
         set(value){
             order.edit().putString(TABLETTYPE, value).apply()
         }
@@ -346,7 +347,7 @@ class PreferenceUtil(context: Context) {
         date1Type = "양력"
         date2 = ""
         date2Type = "양력"
-        religion = ""
+        religion = "선택안함"
         selectedUrnType = "선택안함"
         boneEngraveType = "일반"
         boneEngraveTypePosition = 0
@@ -361,7 +362,7 @@ class PreferenceUtil(context: Context) {
         boneDate2Type = ""
         boneReligion = ""
         showRouterView = ""
-        tabletType = ""
+        tabletType = "문구"
         tabletTypePosition = 0
         name3 = ""
 //        name3Type = ""

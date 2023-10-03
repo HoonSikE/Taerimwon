@@ -9,6 +9,7 @@ import android.text.InputFilter
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taerimwon.R
@@ -16,12 +17,16 @@ import com.example.taerimwon.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.taerimwon.databinding.FragmentTabletContainerBinding
 import com.example.taerimwon.di.ApplicationClass
+import com.example.taerimwon.ui.order.OrderViewModel
 import com.example.taerimwon.utils.constant.ENGRAVETYPEPOSITION
+import com.example.taerimwon.utils.constant.UiState
 import com.example.taerimwon.utils.input.saveImageToInternalStorage
 
 
 @AndroidEntryPoint
 class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.layout.fragment_tablet_container) {
+    private val orderViewModel: OrderViewModel by viewModels()
+
     private lateinit var tabletSelectTypeAdapter: TabletTypeAdapter
     var tabletSelectTypeList = ArrayList<String>()
     // 이미지 선택 요청 코드를 나타내는 상수
@@ -41,7 +46,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         ApplicationClass.prefs.tabletType = tabletTypes[1]
         println("tabletType: " + ApplicationClass.prefs.tabletType)
 
-        setName2(ApplicationClass.prefs.engraveType.toString(), ApplicationClass.prefs.engraveType2.toString(), tabletTypes[1])
+        setName2(ApplicationClass.prefs.religion.toString(), ApplicationClass.prefs.engraveType.toString(), ApplicationClass.prefs.engraveType2.toString(), tabletTypes[1])
         setName3(tabletTypes[1])
     }
     private fun initAdapter() {
@@ -59,12 +64,28 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         val selectedTabletTypeList = mutableListOf(*selectedTabletTypesArray) as ArrayList<String>
         binding.spinnerSelectTabletType.setSelection(selectedTabletTypeList.indexOf(ApplicationClass.prefs.selectedTabletType))
 
+        val religionArray = resources.getStringArray(R.array.religion)
+        val religionArrayList = mutableListOf(*religionArray) as ArrayList<String>
+        binding.spinnerSelectTabletType.setSelection(religionArrayList.indexOf(ApplicationClass.prefs.religion))
+
         // 배열을 가져옵니다.
         // 문자열 이름을 문자열로 정의합니다.
-        val arrName = "tablet_type" + (ApplicationClass.prefs.engraveTypePosition + 1)
+        var position = 0
+        if(ApplicationClass.prefs.religion == "무교")
+            position = 1
+        else if(ApplicationClass.prefs.religion == "기독교")
+            position = 2
+        else if(ApplicationClass.prefs.religion == "불교")
+            position = 3
+        else if(ApplicationClass.prefs.religion == "천주교")
+            position = 4
+
+        var arrName = "tablet_type" + position
         // 문자열 배열을 가져옵니다.
         val stringArray = resources.getIdentifier(arrName, "array", requireContext().packageName)
         val tabletTypesArray = resources.getStringArray(stringArray)
+
+        setName3(ApplicationClass.prefs.tabletType.toString())
 
         // 배열을 리스트로 변환합니다.
         tabletSelectTypeList = mutableListOf(*tabletTypesArray) as ArrayList<String>
@@ -108,16 +129,6 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
 
                 // 경로(URI)를 SharedPreferences에 저장
                 ApplicationClass.prefs.tabletImageUri = imageFile?.toString()
-
-//                // 이미지 URI를 다음 프래그먼트로 전달
-//                val bundle = Bundle()
-//                bundle.putString("selectedImageUri", selectedImageUri.toString())
-
-//                // 다음 프래그먼트로 이동
-//                findNavController().navigate(
-//                    R.id.action_orderFragment_to_phoneAuthFragment,
-//                    bundle
-//                )
             }
         }
     }
@@ -134,16 +145,58 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
                         binding.layoutTabletPhoto.visibility = View.VISIBLE
                     }else{
                         binding.layoutTablet.visibility = View.VISIBLE
+                        binding.layoutTabletPhoto.visibility = View.GONE
                     }
                 }
             }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Nothing to do here
+            }
+        })
+        binding.spinnerReligion.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                ApplicationClass.prefs.religion = parent?.getItemAtPosition(position).toString()
+                ApplicationClass.prefs.tabletType = parent?.getItemAtPosition(position).toString()
 
+                if(ApplicationClass.prefs.tabletType == "무교")
+                    ApplicationClass.prefs.tabletType = "일반"
+
+                // 문자열 이름을 문자열로 정의합니다.
+                var arrName = "tablet_type" + position
+
+                // 문자열 배열을 가져옵니다.
+                val stringArray = resources.getIdentifier(arrName, "array", requireContext().packageName)
+                val tabletTypesArray = resources.getStringArray(stringArray)
+
+                // 배열을 리스트로 변환합니다.
+                tabletSelectTypeList = mutableListOf(*tabletTypesArray) as ArrayList<String>
+                tabletSelectTypeAdapter.updateList(tabletSelectTypeList)
+                binding.recyclerviewTabletType.scrollToPosition(ApplicationClass.prefs.tabletTypePosition)
+
+                setName2(ApplicationClass.prefs.religion.toString(), ApplicationClass.prefs.engraveType.toString(), ApplicationClass.prefs.engraveType2.toString(), ApplicationClass.prefs.tabletType.toString())
+                setName3(ApplicationClass.prefs.tabletType.toString())
+            }
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // Nothing to do here
             }
         })
     }
     private fun addTextChangedListener(){
+        // 직분, 세례명, 법명
+        binding.editTextName2.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 이전 텍스트 변경 이벤트
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // 텍스트 변경 이벤트
+                ApplicationClass.prefs.name2 = s?.toString() ?: ""
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 텍스트 변경 후 이벤트
+            }
+        })
         // 본관, 문구
         binding.editTextName3.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -161,11 +214,12 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         })
     }
     private fun observer() {
-
+        orderViewModel.engraveTypePosition.observe(viewLifecycleOwner) { value ->
+        }
     }
-    private fun setName2(engraveType: String, engraveType2: String, tabletType: String) {
+    private fun setName2(religion: String, engraveType: String, engraveType2: String, tabletType: String) {
         // 직분, 세례명, 법명
-        if((engraveType == "기독교" || engraveType == "순복음") && engraveType2 != "기본" && tabletType != "문구") {
+        if(religion == "기독교" && !((engraveType == "기독교" || engraveType == "순복음") && engraveType2 == "기본") && tabletType != "문구") {
             binding.textName2.visibility = View.VISIBLE
             binding.editTextName2.visibility = View.VISIBLE
             binding.imageName2.visibility = View.VISIBLE
@@ -173,15 +227,17 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.editTextName2.hint = "직분을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextName2.filters = arrayOf(inputFilter)
-        }else if(engraveType == "불교" && engraveType2 != "법명" && tabletType != "문구") {
-            binding.textName2.visibility = View.VISIBLE
-            binding.editTextName2.visibility = View.VISIBLE
-            binding.imageName2.visibility = View.VISIBLE
-            binding.textName2.text = "* 법명"
-            binding.editTextName2.hint = "법명을 입력하세요."
-            val inputFilter = InputFilter.LengthFilter(4)
-            binding.editTextName2.filters = arrayOf(inputFilter)
-        }else if(engraveType == "천주교" && engraveType2 != "기본" && tabletType != "문구") {
+        }
+//        else if(religion == "불교" && !(engraveType == "불교" && engraveType2 == "법명") && tabletType != "문구") {
+//            binding.textName2.visibility = View.VISIBLE
+//            binding.editTextName2.visibility = View.VISIBLE
+//            binding.imageName2.visibility = View.VISIBLE
+//            binding.textName2.text = "* 법명"
+//            binding.editTextName2.hint = "법명을 입력하세요."
+//            val inputFilter = InputFilter.LengthFilter(4)
+//            binding.editTextName2.filters = arrayOf(inputFilter)
+//        }
+        else if(religion == "천주교" && !(engraveType == "천주교" && engraveType2 == "기본") && tabletType != "문구") {
             binding.textName2.visibility = View.VISIBLE
             binding.editTextName2.visibility = View.VISIBLE
             binding.imageName2.visibility = View.VISIBLE
@@ -197,7 +253,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         }
     }
     private fun setName3(tabletType: String) {
-        if(tabletType == "일반" && ApplicationClass.prefs.selectedUrnType == "선택안함") {
+        if((tabletType == "일반" || tabletType == "기독교" || tabletType == "불교" || tabletType == "천주교") && ApplicationClass.prefs.selectedUrnType == "선택안함") {
             binding.textName3.visibility = View.VISIBLE
             binding.editTextName3.visibility = View.VISIBLE
             binding.imageName3.visibility = View.VISIBLE

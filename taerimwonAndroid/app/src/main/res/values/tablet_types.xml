@@ -25,19 +25,10 @@
         <item>0 문구</item>
     </string-array>
     <!--SGI-->
-    <string-array name="tablet_type5">
-        <item>0 문구</item>
-    </string-array>
     <!--묘법-->
-    <string-array name="tablet_type6">
-        <item>0 문구</item>
-    </string-array>
     <!--순복음-->
-    <string-array name="tablet_type7">
-        <item>0 문구</item>
-    </string-array>
     <!--원불교-->
-    <string-array name="tablet_type8">
+    <string-array name="tablet_type0">
         <item>0 문구</item>
     </string-array>
 </resources>

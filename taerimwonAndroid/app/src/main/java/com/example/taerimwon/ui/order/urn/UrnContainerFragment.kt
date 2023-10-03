@@ -6,6 +6,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taerimwon.R
@@ -13,6 +14,7 @@ import com.example.taerimwon.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.taerimwon.databinding.FragmentUrnContainerBinding
 import com.example.taerimwon.di.ApplicationClass
+import com.example.taerimwon.ui.order.OrderViewModel
 import com.example.taerimwon.ui.order.tablet.TabletContainerFragment
 import com.example.taerimwon.ui.order.urn.bone.BoneEngraveType2Adapter
 import com.example.taerimwon.ui.order.urn.bone.BoneEngraveTypeAdapter
@@ -21,6 +23,8 @@ import com.example.taerimwon.utils.input.DateTextWatcher
 
 @AndroidEntryPoint
 class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.fragment_urn_container) {
+    private val orderViewModel: OrderViewModel by viewModels()
+
     private lateinit var engraveTypeAdapter: EngraveTypeAdapter
     private lateinit var engraveType2Adapter: EngraveType2Adapter
     private var engraveTypeList = ArrayList<String>()
