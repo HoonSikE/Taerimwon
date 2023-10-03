@@ -5,6 +5,7 @@ import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.ContentValues
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -86,10 +87,21 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         }
 
         if(selectedTabletType != "선택안함") {
-            setTabletData()
-            binding.layoutTabletContent.visibility = View.VISIBLE
-            binding.layoutTabletResultImage.visibility = View.VISIBLE
-            binding.layoutTablet.visibility = View.VISIBLE
+            if(!selectedTabletType.contains("사진")){
+                setTabletData()
+                binding.layoutTabletContent.visibility = View.VISIBLE
+                binding.layoutTabletResultImage.visibility = View.VISIBLE
+                binding.layoutTablet.visibility = View.VISIBLE
+            }else{
+                binding.layoutTabletPhoto.visibility = View.VISIBLE
+                // 이미지 경로(URI)를 SharedPreferences에서 가져옴
+                val tabletImageUri = ApplicationClass.prefs.tabletImageUri
+
+                if (tabletImageUri != "") {
+                    val imageUri = Uri.parse(tabletImageUri)
+                    binding.imageAddPhoto.setImageURI(imageUri)
+                }
+            }
         }
 
         setMsg()

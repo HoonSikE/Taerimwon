@@ -5,6 +5,13 @@ import android.content.SharedPreferences
 import com.example.taerimwon.utils.constant.*
 
 class PreferenceUtil(context: Context) {
+    private val internalStorage = context.getSharedPreferences("internalStorage", Context.MODE_PRIVATE)
+    var tabletImageUri : String?
+        get() = internalStorage.getString(TABLETIMAGEURI, "")
+        set(value){
+            internalStorage.edit().putString(TABLETIMAGEURI, value).apply()
+        }
+
     private val user: SharedPreferences = context.getSharedPreferences("user", Context.MODE_PRIVATE)
     var uid : String?
         get() = user.getString(UID, "")
@@ -317,6 +324,7 @@ class PreferenceUtil(context: Context) {
         saveInfo = false
     }
     fun resetPreferences() {
+        tabletImageUri = ""
         // order SharedPreferences 초기화
         clientName = ""
         clientTel = ""

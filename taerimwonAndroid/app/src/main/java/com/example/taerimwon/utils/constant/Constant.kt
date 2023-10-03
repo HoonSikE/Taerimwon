@@ -1,5 +1,7 @@
 package com.example.taerimwon.utils.constant
 
+/**위패 사진**/
+const val TABLETIMAGEURI = "tabletImageUri"
 /**유저 ID**/
 const val UID = "uid"
 const val USERTEL = "userTel"

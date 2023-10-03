@@ -1,7 +1,9 @@
 package com.example.taerimwon.ui.order.tablet
 
+import android.app.Activity
 import android.content.Context
-import android.content.SharedPreferences
+import android.content.Intent
+import android.net.Uri
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
@@ -15,12 +17,15 @@ import dagger.hilt.android.AndroidEntryPoint
 import com.example.taerimwon.databinding.FragmentTabletContainerBinding
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.utils.constant.ENGRAVETYPEPOSITION
+import com.example.taerimwon.utils.input.saveImageToInternalStorage
 
 
 @AndroidEntryPoint
 class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.layout.fragment_tablet_container) {
     private lateinit var tabletSelectTypeAdapter: TabletTypeAdapter
     var tabletSelectTypeList = ArrayList<String>()
+    // 이미지 선택 요청 코드를 나타내는 상수
+    private val PICK_IMAGE_REQUEST_CODE = 123
 
     override fun init() {
         initAdapter()
@@ -65,6 +70,13 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         tabletSelectTypeList = mutableListOf(*tabletTypesArray) as ArrayList<String>
         tabletSelectTypeAdapter.updateList(tabletSelectTypeList)
         binding.recyclerviewTabletType.scrollToPosition(ApplicationClass.prefs.tabletTypePosition)
+
+        val tabletImageUri = ApplicationClass.prefs.tabletImageUri
+
+        if (tabletImageUri != "") {
+            val imageUri = Uri.parse(tabletImageUri)
+            binding.imageAddPhoto.setImageURI(imageUri)
+        }
     }
     private fun setOnClickListeners() {
         binding.imageHeart.setOnClickListener{
@@ -74,16 +86,56 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             if(updateText.length < 30)
                 editTextName3.setSelection(updateText.length)
         }
+        // 사진 첨부
+        binding.textAddPhoto.setOnClickListener{
+            val intent = Intent(Intent.ACTION_PICK)
+            intent.type = "image/*"
+            startActivityForResult(intent, PICK_IMAGE_REQUEST_CODE)
+        }
+    }
+    // 사진 첨부
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == PICK_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            val selectedImageUri: Uri? = data?.data
+            if (selectedImageUri != null) {
+                // 이미지를 미리보기로 표시
+                binding.imageAddPhoto.setImageURI(selectedImageUri)
+
+                // 이미지를 앱 내부 파일 시스템에 복사 또는 이동하고 그 경로를 얻음
+                val imageFile = saveImageToInternalStorage(requireContext(), selectedImageUri)
+
+                // 경로(URI)를 SharedPreferences에 저장
+                ApplicationClass.prefs.tabletImageUri = imageFile?.toString()
+
+//                // 이미지 URI를 다음 프래그먼트로 전달
+//                val bundle = Bundle()
+//                bundle.putString("selectedImageUri", selectedImageUri.toString())
+
+//                // 다음 프래그먼트로 이동
+//                findNavController().navigate(
+//                    R.id.action_orderFragment_to_phoneAuthFragment,
+//                    bundle
+//                )
+            }
+        }
     }
     private fun setOnItemSelectedListener(){
         binding.spinnerSelectTabletType.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                ApplicationClass.prefs.selectedTabletType = parent?.getItemAtPosition(position).toString() ?: ""
+                ApplicationClass.prefs.selectedTabletType = parent?.getItemAtPosition(position).toString()
 
                 if(ApplicationClass.prefs.selectedTabletType!!.contains("선택안함"))
                     binding.layoutTablet.visibility = View.GONE
-                else
-                    binding.layoutTablet.visibility = View.VISIBLE
+                else {
+                    if(ApplicationClass.prefs.selectedTabletType!!.contains("사진")){
+                        binding.layoutTablet.visibility = View.GONE
+                        binding.layoutTabletPhoto.visibility = View.VISIBLE
+                    }else{
+                        binding.layoutTablet.visibility = View.VISIBLE
+                    }
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {

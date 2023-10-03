@@ -86,6 +86,46 @@
                         app:layout_constraintTop_toTopOf="parent"
                         />
 
+                    <!--소속-->
+                    <TextView
+                        android:id="@+id/text_leader_department"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="24dp"
+                        android:text="* 소속"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/text_leader_title"
+                        />
+
+                    <EditText
+                        android:id="@+id/editText_leader_department"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="소속"
+                        android:paddingLeft="48dp"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:maxLength="8"
+                        android:textColorHint="@color/hintGray"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/text_leader_department"
+                        />
+
+                    <ImageView
+                        android:id="@+id/image_leader_department"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="@+id/editText_leader_department"
+                        app:layout_constraintTop_toTopOf="@+id/editText_leader_department"
+                        />
+
                     <!-- 발주자 명 -->
                     <TextView
                         android:id="@+id/text_leader_name"
@@ -95,7 +135,7 @@
                         android:layout_marginTop="16dp"
                         android:text="* 발주자 명"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_leader_title"
+                        app:layout_constraintTop_toBottomOf="@+id/editText_leader_department"
                         />
 
                     <EditText
@@ -164,46 +204,6 @@
                         android:layout_marginTop="8dp"
                         app:layout_constraintStart_toStartOf="@+id/editText_leader_tel"
                         app:layout_constraintTop_toTopOf="@+id/editText_leader_tel"
-                        />
-
-                    <!--소속-->
-                    <TextView
-                        android:id="@+id/text_leader_department"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
-                        android:text="* 소속"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/editText_leader_tel"
-                        />
-
-                    <EditText
-                        android:id="@+id/editText_leader_department"
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_marginHorizontal="16dp"
-                        android:layout_marginTop="8dp"
-                        android:ems="10"
-                        android:hint="소속"
-                        android:paddingLeft="48dp"
-                        android:imeOptions="actionDone"
-                        android:inputType="text"
-                        android:maxLength="8"
-                        android:textColorHint="@color/hintGray"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/text_leader_department"
-                        />
-
-                    <ImageView
-                        android:id="@+id/image_leader_department"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toStartOf="@+id/editText_leader_department"
-                        app:layout_constraintTop_toTopOf="@+id/editText_leader_department"
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
