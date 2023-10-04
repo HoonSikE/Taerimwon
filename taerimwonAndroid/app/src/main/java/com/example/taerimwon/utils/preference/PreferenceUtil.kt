@@ -120,7 +120,6 @@ class PreferenceUtil(context: Context) {
         get() = order.getInt(ENGRAVETYPEPOSITION, 0)
         set(value){
             order.edit().putInt(ENGRAVETYPEPOSITION, value).apply()
-
         }
     // 각인 상세 종류 (일반, 형제, 직분, 기독, ...)
     var engraveType2 : String?
