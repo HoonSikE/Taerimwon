@@ -321,11 +321,9 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                 if(ApplicationClass.prefs.selectedUrnType!!.contains("합골")) {
                     binding.layoutBoneEngrave.visibility = View.VISIBLE
                     if(ApplicationClass.prefs.boneSex == "남성"){
-                        val color = ContextCompat.getColor(requireContext(), R.color.man)
-                        binding.layoutBoneEngrave.setBackgroundColor(color)
+                        binding.layoutBoneEngrave.setBackgroundResource(R.drawable.view_radius_man)
                     } else if(ApplicationClass.prefs.boneSex == "여성"){
-                        val color = ContextCompat.getColor(requireContext(), R.color.woman)
-                        binding.layoutBoneEngrave.setBackgroundColor(color)
+                        binding.layoutBoneEngrave.setBackgroundResource(R.drawable.view_radius_woman)
                     }
                 }else
                     binding.layoutBoneEngrave.visibility = View.GONE

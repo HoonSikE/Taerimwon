@@ -47,6 +47,7 @@
                     >
                     <TextView
                         android:id="@+id/text_order_title"
+                        style="@style/HeadBold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -59,6 +60,11 @@
                 <!--=====발주자 정보 입력=====-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_leader"
+                    android:background="@drawable/view_radius"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginVertical="16dp"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -68,10 +74,10 @@
                     <!-- 발주자 정보 입력 -->
                     <TextView
                         android:id="@+id/text_leader_title"
+                        style="@style/SubHeadBold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
                         android:text="● 발주자 정보 입력 (필수)"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -79,16 +85,20 @@
 
                     <CheckBox
                         android:id="@+id/checkbox_leader"
+                        style="@style/SubHeadBold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="정보 저장"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginEnd="20dp"
+                        app:layout_constraintTop_toTopOf="@id/text_leader_title"
+                        app:layout_constraintBottom_toBottomOf="@id/text_leader_title"
                         />
 
                     <!--소속-->
                     <TextView
                         android:id="@+id/text_leader_department"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -100,6 +110,8 @@
 
                     <EditText
                         android:id="@+id/editText_leader_department"
+                        style="@style/Body"
+                        android:background="@drawable/edittext_regular"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_marginHorizontal="16dp"
@@ -124,11 +136,13 @@
                         android:layout_marginTop="8dp"
                         app:layout_constraintStart_toStartOf="@+id/editText_leader_department"
                         app:layout_constraintTop_toTopOf="@+id/editText_leader_department"
+                        app:srcCompat="@drawable/ic_company"
                         />
 
                     <!-- 발주자 명 -->
                     <TextView
                         android:id="@+id/text_leader_name"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -140,6 +154,8 @@
 
                     <EditText
                         android:id="@+id/editText_leader_name"
+                        style="@style/Body"
+                        android:background="@drawable/edittext_regular"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_marginHorizontal="16dp"
@@ -164,11 +180,13 @@
                         android:layout_marginTop="8dp"
                         app:layout_constraintStart_toStartOf="@+id/editText_leader_name"
                         app:layout_constraintTop_toTopOf="@+id/editText_leader_name"
+                        app:srcCompat="@drawable/ic_name"
                         />
 
                     <!-- 발주자 전화번호 -->
                     <TextView
                         android:id="@+id/text_leader_tel"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -180,6 +198,8 @@
 
                     <EditText
                         android:id="@+id/editText_leader_tel"
+                        style="@style/Body"
+                        android:background="@drawable/edittext_regular"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_marginHorizontal="16dp"
@@ -204,6 +224,7 @@
                         android:layout_marginTop="8dp"
                         app:layout_constraintStart_toStartOf="@+id/editText_leader_tel"
                         app:layout_constraintTop_toTopOf="@+id/editText_leader_tel"
+                        app:srcCompat="@drawable/ic_phone"
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -212,6 +233,11 @@
                     android:id="@+id/layout_client"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/view_radius"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginVertical="16dp"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="20dp"
                     android:orientation="vertical"
                     app:layout_constraintTop_toBottomOf="@+id/layout_leader"
                     tools:ignore="MissingConstraints"
@@ -219,6 +245,7 @@
                     <!-- 발주자 정보 입력 -->
                     <TextView
                         android:id="@+id/text_client_title"
+                        style="@style/SubHeadBold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -231,6 +258,7 @@
                     <!-- 상주 명 -->
                     <TextView
                         android:id="@+id/text_client_name"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -242,6 +270,8 @@
 
                     <EditText
                         android:id="@+id/editText_client_name"
+                        style="@style/Body"
+                        android:background="@drawable/edittext_regular"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_marginHorizontal="16dp"
@@ -266,11 +296,13 @@
                         android:layout_marginTop="8dp"
                         app:layout_constraintStart_toStartOf="@+id/editText_client_name"
                         app:layout_constraintTop_toTopOf="@+id/editText_client_name"
+                        app:srcCompat="@drawable/ic_name"
                         />
 
                     <!-- 상주 전화번호 -->
                     <TextView
                         android:id="@+id/text_client_tel"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -282,6 +314,8 @@
 
                     <EditText
                         android:id="@+id/editText_client_tel"
+                        style="@style/Body"
+                        android:background="@drawable/edittext_regular"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_marginHorizontal="16dp"
@@ -306,6 +340,7 @@
                         android:layout_marginTop="8dp"
                         app:layout_constraintStart_toStartOf="@+id/editText_client_tel"
                         app:layout_constraintTop_toTopOf="@+id/editText_client_tel"
+                        app:srcCompat="@drawable/ic_phone"
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -313,6 +348,11 @@
                     android:id="@+id/layout_radio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/view_radius"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginVertical="16dp"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="20dp"
                     android:orientation="vertical"
                     app:layout_constraintTop_toBottomOf="@+id/layout_client"
                     app:layout_constraintBottom_toTopOf="@+id/layout_urn_container"
@@ -321,6 +361,7 @@
                     <!-- 발주자 정보 입력 -->
                     <TextView
                         android:id="@+id/text_radio_title"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -331,13 +372,18 @@
                         />
                     <RadioGroup
                         android:id="@+id/radioGroup"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
                         android:orientation="horizontal"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_radio_title"
                         >
                         <RadioButton
                             android:id="@+id/radioButton1"
+                            style="@style/SubHead"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="화장장"
@@ -345,12 +391,14 @@
 
                         <RadioButton
                             android:id="@+id/radioButton2"
+                            style="@style/SubHead"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="장례식장" />
 
                         <RadioButton
                             android:id="@+id/radioButton3"
+                            style="@style/SubHead"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="장지" />
@@ -367,6 +415,7 @@
                         <!-- 화장장 -->
                         <TextView
                             android:id="@+id/text_cremation_area"
+                            style="@style/SubHead"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -378,17 +427,35 @@
 
                         <Spinner
                             android:id="@+id/spinner_cremation_area"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            style="@style/SubHead"
+                            android:background="@drawable/edittext_regular"
+                            android:layout_width="0dp"
+                            android:layout_height="48dp"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/text_cremation_area"
                             android:entries="@array/cremationAreas"
                             android:spinnerMode="dropdown"
                             android:defaultValue="1"
                             />
 
+                        <ImageView
+                            android:id="@+id/image_cremation_area"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="10dp"
+                            app:layout_constraintEnd_toEndOf="@+id/spinner_cremation_area"
+                            app:layout_constraintTop_toTopOf="@+id/spinner_cremation_area"
+                            app:srcCompat="@drawable/ic_spinner"
+                            />
+
                         <!-- 화장 시간 -->
                         <TextView
                             android:id="@+id/text_cremation_time"
+                            style="@style/SubHead"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -400,6 +467,8 @@
 
                         <EditText
                             android:id="@+id/editText_cremation_time"
+                            style="@style/Body"
+                            android:background="@drawable/edittext_regular"
                             android:layout_width="0dp"
                             android:layout_height="48dp"
                             android:layout_marginHorizontal="16dp"
@@ -424,6 +493,7 @@
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="@+id/editText_cremation_time"
                             app:layout_constraintTop_toTopOf="@+id/editText_cremation_time"
+                            app:srcCompat="@drawable/ic_time"
                             />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <!-- 장례식장 -->
@@ -439,6 +509,7 @@
                         <!-- 장례식장 명 -->
                         <TextView
                             android:id="@+id/text_funeral_name"
+                            style="@style/SubHead"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -450,6 +521,8 @@
 
                         <EditText
                             android:id="@+id/editText_funeral_name"
+                            style="@style/Body"
+                            android:background="@drawable/edittext_regular"
                             android:layout_width="0dp"
                             android:layout_height="48dp"
                             android:layout_marginHorizontal="16dp"
@@ -474,11 +547,13 @@
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="@+id/editText_funeral_name"
                             app:layout_constraintTop_toTopOf="@+id/editText_funeral_name"
+                            app:srcCompat="@drawable/ic_check"
                             />
 
                         <!-- 호실 -->
                         <TextView
                             android:id="@+id/text_funeral_number"
+                            style="@style/SubHead"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -491,6 +566,8 @@
 
                         <EditText
                             android:id="@+id/editText_funeral_number"
+                            style="@style/Body"
+                            android:background="@drawable/edittext_regular"
                             android:layout_width="0dp"
                             android:layout_height="48dp"
                             android:layout_marginHorizontal="16dp"
@@ -515,11 +592,13 @@
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="@+id/editText_funeral_number"
                             app:layout_constraintTop_toTopOf="@+id/editText_funeral_number"
+                            app:srcCompat="@drawable/ic_check"
                             />
 
                         <!-- 함 도착 시간 -->
                         <TextView
                             android:id="@+id/text_funeral_time"
+                            style="@style/SubHead"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -531,6 +610,8 @@
 
                         <EditText
                             android:id="@+id/editText_funeral_time"
+                            style="@style/Body"
+                            android:background="@drawable/edittext_regular"
                             android:layout_width="0dp"
                             android:layout_height="48dp"
                             android:layout_marginHorizontal="16dp"
@@ -555,6 +636,7 @@
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="@+id/editText_funeral_time"
                             app:layout_constraintTop_toTopOf="@+id/editText_funeral_time"
+                            app:srcCompat="@drawable/ic_time"
                             />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -572,6 +654,7 @@
                         <!-- 장지 명 -->
                         <TextView
                             android:id="@+id/text_burial_name"
+                            style="@style/SubHead"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -583,6 +666,8 @@
 
                         <EditText
                             android:id="@+id/editText_burial_name"
+                            style="@style/Body"
+                            android:background="@drawable/edittext_regular"
                             android:layout_width="0dp"
                             android:layout_height="48dp"
                             android:layout_marginHorizontal="16dp"
@@ -607,11 +692,13 @@
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="@+id/editText_burial_name"
                             app:layout_constraintTop_toTopOf="@+id/editText_burial_name"
+                            app:srcCompat="@drawable/ic_check"
                             />
 
                         <!-- 함 도착 시간 -->
                         <TextView
                             android:id="@+id/text_burial_time"
+                            style="@style/SubHead"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -623,6 +710,8 @@
 
                         <EditText
                             android:id="@+id/editText_burial_time"
+                            style="@style/Body"
+                            android:background="@drawable/edittext_regular"
                             android:layout_width="0dp"
                             android:layout_height="48dp"
                             android:layout_marginHorizontal="16dp"
@@ -647,6 +736,7 @@
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="@+id/editText_burial_time"
                             app:layout_constraintTop_toTopOf="@+id/editText_burial_time"
+                            app:srcCompat="@drawable/ic_time"
                             />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -698,9 +788,10 @@
                     app:layout_constraintTop_toBottomOf="@+id/layout_tablet_container"
                     tools:ignore="MissingConstraints"
                     >
-                    <!-- 발주자 명 -->
+                    <!-- 특이 사항 -->
                     <TextView
                         android:id="@+id/text_note"
+                        style="@style/SubHeadBold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -711,6 +802,8 @@
 
                     <EditText
                         android:id="@+id/editText_note"
+                        style="@style/Body"
+                        android:background="@drawable/edittext_regular"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_marginHorizontal="16dp"
@@ -726,18 +819,33 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/text_note"
                         />
+
+                    <ImageView
+                        android:id="@+id/image_note"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="@+id/editText_note"
+                        app:layout_constraintTop_toTopOf="@+id/editText_note"
+                        app:srcCompat="@drawable/ic_note"
+                        />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 
         <Button
             android:id="@+id/button_result_fragment"
+            style="@style/ButtonText"
             android:layout_width="0dp"
             android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="다음 페이지"
+            android:text="시안 보기"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

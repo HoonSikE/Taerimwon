@@ -52,7 +52,7 @@ class EngraveTypeAdapter(private val context: Context): RecyclerView.Adapter<Eng
 
         // 클릭된 아이템에 따라 테두리를 설정합니다.
         if (position == selectedItemPosition) {
-            holder.itemView.setBackgroundResource(R.drawable.black_border) // 클릭된 아이템에 테두리 적용
+            holder.itemView.setBackgroundResource(R.drawable.border) // 클릭된 아이템에 테두리 적용
         } else {
             holder.itemView.background = null // 클릭되지 않은 아이템에 테두리 제거
         }

@@ -6,11 +6,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/linearBackground">
+        android:background="@drawable/view_radius"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="16dp"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="20dp"
+        >
 
         <!-- 유골함 종류 -->
         <TextView
             android:id="@+id/text_urn_type"
+            style="@style/SubHead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -21,21 +27,38 @@
 
         <Spinner
             android:id="@+id/spinner_urn_type"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/SubHead"
+            android:background="@drawable/edittext_regular"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_urn_type"
             android:entries="@array/selected_urn_types"
             android:spinnerMode="dropdown"
             android:defaultValue="0"
             />
 
+        <ImageView
+            android:id="@+id/image_urn_type"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/spinner_urn_type"
+            app:layout_constraintTop_toTopOf="@+id/spinner_urn_type"
+            app:srcCompat="@drawable/ic_spinner"
+            />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_urn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginVertical="16dp"
             app:layout_constraintTop_toBottomOf="@+id/spinner_urn_type"
-            android:visibility="gone"
             tools:ignore="MissingConstraints"
             >
 
@@ -49,10 +72,10 @@
                 >
                 <TextView
                     android:id="@+id/text_urn_title"
+                    style="@style/SubHeadBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
                     android:text="유골함 주문"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -70,6 +93,8 @@
                 >
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_engrave_type"
+                    android:layout_marginVertical="8dp"
+                    android:paddingVertical="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -78,10 +103,9 @@
                     >
                     <TextView
                         android:id="@+id/text_engrave_type"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
                         android:text="유골함 각인 종류"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -89,6 +113,11 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerview_engrave_type"
+                        android:background="@drawable/edittext_regular"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="16dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -101,6 +130,8 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_engrave_select_type"
+                    android:layout_marginVertical="8dp"
+                    android:paddingVertical="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -111,16 +142,20 @@
 
                     <TextView
                         android:id="@+id/text_engrave_select_type"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
                         android:text="[일반] 각인 종류"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerview_engrave_select_type"
+                        android:background="@drawable/edittext_regular"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="16dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -131,6 +166,7 @@
                     <!-- 정보 입력 -->
                     <TextView
                         android:id="@+id/text_dead_title"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -142,6 +178,7 @@
                     <!-- 고인 명 -->
                     <TextView
                         android:id="@+id/text_name1"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -152,6 +189,8 @@
 
                     <EditText
                         android:id="@+id/editText_name1"
+                        style="@style/Body"
+                        android:background="@drawable/edittext_regular"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_marginHorizontal="16dp"
@@ -174,11 +213,14 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         app:layout_constraintStart_toStartOf="@+id/editText_name1"
-                        app:layout_constraintTop_toTopOf="@+id/editText_name1" />
+                        app:layout_constraintTop_toTopOf="@+id/editText_name1"
+                        app:srcCompat="@drawable/ic_name"
+                        />
 
                     <!-- 고인 생년월일 -->
                     <TextView
                         android:id="@+id/text_date1"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -189,6 +231,8 @@
 
                     <EditText
                         android:id="@+id/editText_date1"
+                        style="@style/Body"
+                        android:background="@drawable/edittext_regular"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_marginHorizontal="16dp"
@@ -204,10 +248,23 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/text_date1" />
 
+                    <ImageView
+                        android:id="@+id/image_date1"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="@+id/editText_date1"
+                        app:layout_constraintTop_toTopOf="@+id/editText_date1"
+                        app:srcCompat="@drawable/ic_calendar"
+                        />
+
                     <Spinner
                         android:id="@+id/spinner_date1_type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/SubHead"
+                        android:background="@drawable/edittext_regular"
+                        android:layout_width="100dp"
+                        android:layout_height="48dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/editText_date1"
                         app:layout_constraintTop_toTopOf="@+id/editText_date1"
@@ -216,16 +273,20 @@
                         android:defaultValue="0"/>
 
                     <ImageView
-                        android:id="@+id/image_date1"
+                        android:id="@+id/image_date1_type"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toStartOf="@+id/editText_date1"
-                        app:layout_constraintTop_toTopOf="@+id/editText_date1" />
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintEnd_toEndOf="@+id/spinner_date1_type"
+                        app:layout_constraintTop_toTopOf="@+id/spinner_date1_type"
+                        app:srcCompat="@drawable/ic_spinner"
+                        />
+
                     <!-- 고인 사망월일 -->
                     <TextView
                         android:id="@+id/text_date2"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -236,6 +297,8 @@
 
                     <EditText
                         android:id="@+id/editText_date2"
+                        style="@style/Body"
+                        android:background="@drawable/edittext_regular"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_marginHorizontal="16dp"
@@ -251,10 +314,23 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/text_date2" />
 
+                    <ImageView
+                        android:id="@+id/image_date2"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="@+id/editText_date2"
+                        app:layout_constraintTop_toTopOf="@+id/editText_date2"
+                        app:srcCompat="@drawable/ic_calendar"
+                        />
+
                     <Spinner
                         android:id="@+id/spinner_date2_type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/SubHead"
+                        android:background="@drawable/edittext_regular"
+                        android:layout_width="100dp"
+                        android:layout_height="48dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/editText_date2"
                         app:layout_constraintTop_toTopOf="@+id/editText_date2"
@@ -263,17 +339,20 @@
                         android:defaultValue="0"/>
 
                     <ImageView
-                        android:id="@+id/image_date2"
+                        android:id="@+id/image_date2_type"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toStartOf="@+id/editText_date2"
-                        app:layout_constraintTop_toTopOf="@+id/editText_date2" />
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintEnd_toEndOf="@+id/spinner_date2_type"
+                        app:layout_constraintTop_toTopOf="@+id/spinner_date2_type"
+                        app:srcCompat="@drawable/ic_spinner"
+                        />
 
                     <!-- 직분, 세례명, 법명 -->
                     <TextView
                         android:id="@+id/text_name2"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -285,6 +364,8 @@
 
                     <EditText
                         android:id="@+id/editText_name2"
+                        style="@style/Body"
+                        android:background="@drawable/edittext_regular"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_marginHorizontal="16dp"
@@ -309,13 +390,18 @@
                         android:layout_marginTop="8dp"
                         android:visibility="gone"
                         app:layout_constraintStart_toStartOf="@+id/editText_name2"
-                        app:layout_constraintTop_toTopOf="@+id/editText_name2" />
+                        app:layout_constraintTop_toTopOf="@+id/editText_name2"
+                        app:srcCompat="@drawable/ic_heart"
+                        />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!--합골-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_bone_engrave"
+                android:background="@drawable/view_radius_man"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -324,6 +410,7 @@
                 >
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_bone_engrave_type"
+                    android:layout_marginVertical="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -332,10 +419,9 @@
                     >
                     <TextView
                         android:id="@+id/text_bone_engrave_type"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
                         android:text="유골함 각인 종류"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -343,6 +429,11 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerview_bone_engrave_type"
+                        android:background="@drawable/edittext_regular"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="16dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -355,9 +446,10 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_bone_engrave_select_type"
+                    android:layout_marginVertical="8dp"
+                    android:paddingVertical="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
                     android:orientation="vertical"
                     app:layout_constraintTop_toBottomOf="@+id/layout_bone_engrave_type"
                     tools:ignore="MissingConstraints"
@@ -365,16 +457,20 @@
 
                     <TextView
                         android:id="@+id/text_bone_engrave_select_type"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
                         android:text="[일반] 각인 종류"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerview_bone_engrave_select_type"
+                        android:background="@drawable/edittext_regular"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="16dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -382,9 +478,11 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_bone_engrave_select_type" />
+
                     <!-- 정보 입력 -->
                     <TextView
                         android:id="@+id/text_bone_dead_title"
+                        style="@style/SubHeadBold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -396,27 +494,45 @@
                     <!-- 성별 -->
                     <TextView
                         android:id="@+id/text_bone_sex"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="24dp"
-                        android:text="* 유골함 종류"
+                        android:text="* 성별"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/text_bone_dead_title" />
 
                     <Spinner
                         android:id="@+id/spinner_bone_sex"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/Body"
+                        android:background="@drawable/edittext_regular"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_bone_sex"
                         android:entries="@array/bone_sex"
                         android:spinnerMode="dropdown"
                         android:defaultValue="0"
                         />
+
+                    <ImageView
+                        android:id="@+id/image_bone_sex"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintEnd_toEndOf="@+id/spinner_bone_sex"
+                        app:layout_constraintTop_toTopOf="@+id/spinner_bone_sex"
+                        app:srcCompat="@drawable/ic_spinner"
+                        />
                     <!-- 고인 명 -->
                     <TextView
                         android:id="@+id/text_bone_name1"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -427,6 +543,8 @@
 
                     <EditText
                         android:id="@+id/editText_bone_name1"
+                        style="@style/Body"
+                        android:background="@drawable/edittext_regular"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_marginHorizontal="16dp"
@@ -449,11 +567,14 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         app:layout_constraintStart_toStartOf="@+id/editText_bone_name1"
-                        app:layout_constraintTop_toTopOf="@+id/editText_bone_name1" />
+                        app:layout_constraintTop_toTopOf="@+id/editText_bone_name1"
+                        app:srcCompat="@drawable/ic_name"
+                        />
 
                     <!-- 고인 생년월일 -->
                     <TextView
                         android:id="@+id/text_bone_date1"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -464,6 +585,8 @@
 
                     <EditText
                         android:id="@+id/editText_bone_date1"
+                        style="@style/Body"
+                        android:background="@drawable/edittext_regular"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_marginHorizontal="16dp"
@@ -479,10 +602,23 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/text_bone_date1" />
 
+                    <ImageView
+                        android:id="@+id/image_bone_date1"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="@+id/editText_bone_date1"
+                        app:layout_constraintTop_toTopOf="@+id/editText_bone_date1"
+                        app:srcCompat="@drawable/ic_calendar"
+                        />
+
                     <Spinner
                         android:id="@+id/spinner_bone_date1_type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/Body"
+                        android:background="@drawable/edittext_regular"
+                        android:layout_width="100dp"
+                        android:layout_height="48dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/editText_bone_date1"
                         app:layout_constraintTop_toTopOf="@+id/editText_bone_date1"
@@ -491,16 +627,20 @@
                         android:defaultValue="0"/>
 
                     <ImageView
-                        android:id="@+id/image_bone_date1"
+                        android:id="@+id/image_bone_date1_type"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toStartOf="@+id/editText_bone_date1"
-                        app:layout_constraintTop_toTopOf="@+id/editText_bone_date1" />
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintEnd_toEndOf="@+id/spinner_bone_date1_type"
+                        app:layout_constraintTop_toTopOf="@+id/spinner_bone_date1_type"
+                        app:srcCompat="@drawable/ic_spinner"
+                        />
+
                     <!-- 고인 사망월일 -->
                     <TextView
                         android:id="@+id/text_bone_date2"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -511,6 +651,8 @@
 
                     <EditText
                         android:id="@+id/editText_bone_date2"
+                        style="@style/Body"
+                        android:background="@drawable/edittext_regular"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_marginHorizontal="16dp"
@@ -526,10 +668,22 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/text_bone_date2" />
 
+                    <ImageView
+                        android:id="@+id/image_bone_date2"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintStart_toStartOf="@+id/editText_bone_date2"
+                        app:layout_constraintTop_toTopOf="@+id/editText_bone_date2"
+                        app:srcCompat="@drawable/ic_calendar"
+                        />
+
                     <Spinner
                         android:id="@+id/spinner_bone_date2_type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:background="@drawable/edittext_regular"
+                        android:layout_width="100dp"
+                        android:layout_height="48dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/editText_bone_date2"
                         app:layout_constraintTop_toTopOf="@+id/editText_bone_date2"
@@ -538,17 +692,20 @@
                         android:defaultValue="0"/>
 
                     <ImageView
-                        android:id="@+id/image_bone_date2"
+                        android:id="@+id/image_bone_date2_type"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toStartOf="@+id/editText_bone_date2"
-                        app:layout_constraintTop_toTopOf="@+id/editText_bone_date2" />
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="10dp"
+                        app:layout_constraintEnd_toEndOf="@+id/spinner_bone_date2_type"
+                        app:layout_constraintTop_toTopOf="@+id/spinner_bone_date2_type"
+                        app:srcCompat="@drawable/ic_spinner"
+                        />
 
                     <!-- 직분, 세례명, 법명 -->
                     <TextView
                         android:id="@+id/text_bone_name2"
+                        style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -560,6 +717,8 @@
 
                     <EditText
                         android:id="@+id/editText_bone_name2"
+                        style="@style/Body"
+                        android:background="@drawable/edittext_regular"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_marginHorizontal="16dp"
@@ -584,7 +743,9 @@
                         android:layout_marginTop="8dp"
                         android:visibility="gone"
                         app:layout_constraintStart_toStartOf="@+id/editText_bone_name2"
-                        app:layout_constraintTop_toTopOf="@+id/editText_bone_name2" />
+                        app:layout_constraintTop_toTopOf="@+id/editText_bone_name2"
+                        app:srcCompat="@drawable/ic_heart"
+                        />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

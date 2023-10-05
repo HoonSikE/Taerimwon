@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taerimwon.R
 import com.example.taerimwon.databinding.ItemTabletTypeBinding
@@ -51,7 +50,7 @@ class TabletTypeAdapter(private val context: Context): RecyclerView.Adapter<Tabl
 
         // 클릭된 아이템에 따라 테두리를 설정합니다.
         if (position == selectedItemPosition) {
-            holder.itemView.setBackgroundResource(R.drawable.black_border) // 클릭된 아이템에 테두리 적용
+            holder.itemView.setBackgroundResource(R.drawable.border) // 클릭된 아이템에 테두리 적용
         } else {
             holder.itemView.background = null // 클릭되지 않은 아이템에 테두리 제거
         }

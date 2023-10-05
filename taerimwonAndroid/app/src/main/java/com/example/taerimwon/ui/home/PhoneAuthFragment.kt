@@ -90,6 +90,11 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
                     val blackListItems = state.data // 실제 데이터를 얻기 위해 data 속성을 사용
                     if(ApplicationClass.prefs.authenticated)
                         findNavController().navigate(R.id.action_phoneAuthFragment_to_orderFragment)
+                    binding.textTel.visibility = View.VISIBLE
+                    binding.editTextTel.visibility = View.VISIBLE
+                    binding.imageTel.visibility = View.VISIBLE
+                    binding.buttonTelAuth.visibility = View.VISIBLE
+                    binding.buttonOrderFragment.visibility = View.VISIBLE
                 }
                 is UiState.Failure -> {
                     val errorMessage = state.error // 오류 메시지를 얻기 위해 error 속성을 사용
