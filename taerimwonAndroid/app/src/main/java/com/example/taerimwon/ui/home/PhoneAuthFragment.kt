@@ -1,6 +1,7 @@
 package com.example.taerimwon.ui.home
 
 import android.telephony.PhoneNumberFormattingTextWatcher
+import android.view.View
 import androidx.fragment.app.viewModels
 import com.example.taerimwon.R
 import com.example.taerimwon.data.dto.user.User
@@ -11,6 +12,7 @@ import com.example.taerimwon.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.fragment.findNavController
 import com.example.taerimwon.di.ApplicationClass
+import com.example.taerimwon.utils.constant.enabled
 import com.example.taerimwon.utils.input.PhoneNumberTextWatcher
 
 @AndroidEntryPoint
@@ -28,13 +30,13 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
 
     private fun initData() {
         authViewModel.getBlackList()
-        if(ApplicationClass.prefs.authenticated)
-            findNavController().navigate(R.id.action_phoneAuthFragment_to_orderFragment)
     }
     private fun setOnClickListeners() {
         binding.buttonTelAuth.setOnClickListener{
-            if(binding.editTextTel.text.toString() == "") {
-                toast("전화번호를 올바르게 입력해주세요")
+            val editTextTel = binding.editTextTel.text.toString()
+            val telPattern = """^[0-9]{3}-[0-9]{4}-[0-9]{4}$""".toRegex()
+            if (!editTextTel.matches(telPattern)) {
+                toast("전화번호를 010-1234-5678 형태로 올바르게 입력해주세요.")
             }else{
                 var activity = requireActivity()
                 var userTel = binding.editTextTel.text.toString().replace("-", "")
@@ -43,7 +45,6 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
                     tel = userTel,
                     activity = activity
                 )
-                toast("인증번호가 전송되었습니다. 60초 이내에 입력해주세요.")
 
                 // 유저 정보 추가
                 user = User(
@@ -54,25 +55,29 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
                     true
                 )
 
-                val dialog = PhoneAuthDialogFragment()
-                // 화면 밖 터치시 종료되지 않게 하기
-                dialog.isCancelable = false
-                dialog.setOnOKClickedListener { content ->
-                    if(verificationId != "") {
-                        authViewModel.ckeckPhoneAuth(
-                            user = user,
-                            verificationId = verificationId,
-                            code = content
-                        )
-                    }
-                }
-                dialog.show(childFragmentManager, "complete phone auth")
+//                val dialog = PhoneAuthDialogFragment()
+//                // 화면 밖 터치시 종료되지 않게 하기
+//                dialog.isCancelable = false
+//                dialog.setOnOKClickedListener { content ->
+//                    if(verificationId != "") {
+//                        authViewModel.ckeckPhoneAuth(
+//                            user = user,
+//                            verificationId = verificationId,
+//                            code = content
+//                        )
+//                    }
+//                }
+//                dialog.show(childFragmentManager, "complete phone auth")
             }
         }
         binding.buttonOrderFragment.setOnClickListener{
-            authViewModel.getBlackList()
-            if(ApplicationClass.prefs.authenticated)
-                findNavController().navigate(R.id.action_phoneAuthFragment_to_orderFragment)
+            if(verificationId != "") {
+                authViewModel.ckeckPhoneAuth(
+                    user = user,
+                    verificationId = verificationId,
+                    code = binding.editTextTelAuth.text.toString()
+                )
+            }
         }
     }
     private fun observer() {
@@ -83,6 +88,8 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
                 }
                 is UiState.Success -> {
                     val blackListItems = state.data // 실제 데이터를 얻기 위해 data 속성을 사용
+                    if(ApplicationClass.prefs.authenticated)
+                        findNavController().navigate(R.id.action_phoneAuthFragment_to_orderFragment)
                 }
                 is UiState.Failure -> {
                     val errorMessage = state.error // 오류 메시지를 얻기 위해 error 속성을 사용
@@ -92,6 +99,14 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
         }
         authViewModel.phoneAuth.observe(viewLifecycleOwner) { state ->
             verificationId = state
+            if(verificationId != "fail"){
+                toast("인증번호가 전송되었습니다.\n60초 이내에 입력해주세요.")
+                binding.textTelAuth.visibility = View.VISIBLE
+                binding.editTextTelAuth.visibility = View.VISIBLE
+                binding.buttonOrderFragment.isEnabled = true
+            }else{
+                toast("인증번호 전송에 실패했습니다.\n관리자에게 문의해주세요.")
+            }
         }
         authViewModel.ckeckPhoneAuth.observe(viewLifecycleOwner) { state ->
             when (state) {
@@ -106,7 +121,7 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
 //                    binding.progressBarJoinLoading.hide()
                     binding.editTextTel.isEnabled = false
                     binding.buttonTelAuth.isEnabled = false
-                    binding.buttonOrderFragment.isEnabled = true
+                    binding.editTextTelAuth.isEnabled = false
                     ApplicationClass.prefs.uid = user.uid
                     ApplicationClass.prefs.userTel = user.userTel
                     ApplicationClass.prefs.authenticated = true

@@ -65,7 +65,7 @@ class AuthRepositoryImpl (
 
     override fun phoneAuth(tel: String, activity: FragmentActivity, result: (String) -> Unit){
         auth.setLanguageCode("ko-KR")
-//        auth.firebaseAuthSettings.setAppVerificationDisabledForTesting(true)
+        auth.firebaseAuthSettings.setAppVerificationDisabledForTesting(true)
 
         println("phoneNumber : " + tel)
         val options = PhoneAuthOptions.newBuilder(auth)
@@ -86,6 +86,7 @@ class AuthRepositoryImpl (
                     } else if (e is FirebaseTooManyRequestsException) {
                         // The SMS quota for the project has been exceeded
                     }
+                    result.invoke("fail")
                 }
 
                 // 전화번호는 확인 되었으나 인증코드를 입력해야 하는 상태
@@ -133,10 +134,10 @@ class AuthRepositoryImpl (
                             Log.d("adduser", "user has been added fail")
                         }
 
-                    result.invoke(UiState.Success("User has been ckecked PhoneAuth successfully"))
+                    result.invoke(UiState.Success("인증 성공했습니다."))
                 } else {
                     println("ckeckPhoneAuth Fail")
-                    result.invoke(UiState.Failure("User has been ckecked PhoneAuth Failure"))
+                    result.invoke(UiState.Failure("인증 실패했습니다."))
                 }
             }
     }
