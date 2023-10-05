@@ -61,7 +61,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         setOnClickListeners()
         observer()
     }
-
     private fun initData() {
         selectedUrnType = ApplicationClass.prefs.selectedUrnType.toString()
         selectedTabletType = ApplicationClass.prefs.selectedTabletType.toString()
@@ -1735,7 +1734,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         val selectedLocation = ApplicationClass.prefs.selectedLocation
         if(selectedLocation.equals("화장장")){
-            msg += "\n - 화장장소: " + ApplicationClass.prefs.cremationArea +
+            msg += "\n - 화장장소: " + ApplicationClass.prefs.cremationArea2 +
                     "\n - 화장시간: " + ApplicationClass.prefs.cremationTime
         } else if(selectedLocation.equals("장례식장")){
             msg += "\n - 장례식장 명: " + ApplicationClass.prefs.funeralName +
@@ -1806,7 +1805,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         println(msg)
 
-        binding.textResult.text = msg
+        binding.textResultText.text = msg
     }
     private fun setImage() {
         val handler = Handler()

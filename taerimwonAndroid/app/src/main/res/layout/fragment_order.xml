@@ -438,7 +438,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/text_cremation_area"
                             android:entries="@array/cremationAreas"
                             android:spinnerMode="dropdown"
-                            android:defaultValue="1"
+                            android:defaultValue="0"
                             />
 
                         <ImageView
@@ -452,6 +452,33 @@
                             app:srcCompat="@drawable/ic_spinner"
                             />
 
+                        <Spinner
+                            android:id="@+id/spinner_cremation_area2"
+                            style="@style/SubHead"
+                            android:background="@drawable/edittext_regular"
+                            android:layout_width="0dp"
+                            android:layout_height="48dp"
+                            android:layout_marginHorizontal="16dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/spinner_cremation_area"
+                            android:entries="@array/cremationAll"
+                            android:spinnerMode="dropdown"
+                            android:defaultValue="0"
+                            />
+
+                        <ImageView
+                            android:id="@+id/image_cremation_area2"
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="10dp"
+                            app:layout_constraintEnd_toEndOf="@+id/spinner_cremation_area2"
+                            app:layout_constraintTop_toTopOf="@+id/spinner_cremation_area2"
+                            app:srcCompat="@drawable/ic_spinner"
+                            />
+
                         <!-- 화장 시간 -->
                         <TextView
                             android:id="@+id/text_cremation_time"
@@ -462,7 +489,7 @@
                             android:layout_marginTop="24dp"
                             android:text="* 화장시간"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/spinner_cremation_area"
+                            app:layout_constraintTop_toBottomOf="@id/spinner_cremation_area2"
                             />
 
                         <EditText
@@ -837,6 +864,7 @@
         <Button
             android:id="@+id/button_result_fragment"
             style="@style/ButtonText"
+            android:background="@drawable/button_regular"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginHorizontal="16dp"

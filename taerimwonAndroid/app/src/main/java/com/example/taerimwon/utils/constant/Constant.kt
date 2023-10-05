@@ -21,6 +21,7 @@ const val CLIENTTEL = "clientTel"
 const val SELECTEDLOCATION = "selectedLocation"
 // 화장장
 const val CREMATIONAREA = "cremationArea"
+const val CREMATIONAREA2 = "cremationArea2"
 const val CREMATIONTIME = "cremationTime"
 // 장례식장
 const val FUNERALNAME = "funeralName"

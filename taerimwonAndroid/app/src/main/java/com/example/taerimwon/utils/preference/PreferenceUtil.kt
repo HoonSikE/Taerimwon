@@ -74,9 +74,14 @@ class PreferenceUtil(context: Context) {
         }
     // 화장장
     var cremationArea : String?
-        get() = order.getString(CREMATIONAREA, "서울/경기/인천")
+        get() = order.getString(CREMATIONAREA, "전국")
         set(value){
             order.edit().putString(CREMATIONAREA, value).apply()
+        }
+    var cremationArea2 : String?
+        get() = order.getString(CREMATIONAREA2, "서울시립승화원")
+        set(value){
+            order.edit().putString(CREMATIONAREA2, value).apply()
         }
     var cremationTime : String?
         get() = order.getString(CREMATIONTIME, "")
@@ -329,7 +334,8 @@ class PreferenceUtil(context: Context) {
         clientName = ""
         clientTel = ""
         selectedLocation = "화장장"
-        cremationArea = "서울시립승화원"
+        cremationArea = "전국"
+        cremationArea2 = "서울시립승화원"
         cremationTime = ""
         funeralName = ""
         funeralNumber = ""

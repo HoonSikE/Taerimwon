@@ -74,25 +74,14 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
 
             // 화장장 셀렉트박스
             // Spinner에 표시할 데이터 목록
-            val spinner = binding.spinnerCremationArea
-            val cremationAreas = resources.getStringArray(R.array.cremationAreas).toMutableList()
-            val dateTypeTypesArray = resources.getStringArray(R.array.cremationAreas)
+            val cremationAreasArray = resources.getStringArray(R.array.cremationAreas)
+            val cremationAreasList = mutableListOf(*cremationAreasArray) as ArrayList<String>
+            binding.spinnerCremationArea.setSelection(cremationAreasList.indexOf(ApplicationClass.prefs.cremationArea))
 
-            // 배열을 리스트로 변환합니다.
-            val dateTypeList = mutableListOf(*dateTypeTypesArray) as ArrayList<String>
-            binding.spinnerCremationArea.setSelection(dateTypeList.indexOf(ApplicationClass.prefs.date1Type))
-
-            // 비활성화할 아이템
-            val itemToDisable = "서울/경기/인천"
-            val indexOfItemToDisable = cremationAreas.indexOf(itemToDisable)
-            if (indexOfItemToDisable != -1) {
-                cremationAreas.removeAt(indexOfItemToDisable)
-            }
-
-            val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, cremationAreas)
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-
+            val cremationAreasArray2 = resources.getStringArray(R.array.cremationAll)
+            val cremationAreasList2 = mutableListOf(*cremationAreasArray2) as ArrayList<String>
+            binding.spinnerCremationArea2.setSelection(cremationAreasList2.indexOf(ApplicationClass.prefs.cremationArea2))
+            
             binding.editTextCremationTime.setText(ApplicationClass.prefs.cremationTime)
         }else if(selectedLocation == "장례식장"){
             binding.radioButton1.isChecked = false
@@ -182,6 +171,84 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         spinnerCremationArea.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 ApplicationClass.prefs.cremationArea = parent?.getItemAtPosition(position).toString() ?: ""
+
+                var cremationAreasArray2 = resources.getStringArray(R.array.cremationAll)
+
+                when (ApplicationClass.prefs.cremationArea) {
+                    "전국" -> {
+                        cremationAreasArray2 = resources.getStringArray(R.array.cremationAll)
+                        ApplicationClass.prefs.cremationArea2 = "서울시립승화원"
+                    }
+                    "서울/경기/인천" -> {
+                        cremationAreasArray2 = resources.getStringArray(R.array.cremationSeoul)
+                        ApplicationClass.prefs.cremationArea2 = "서울시립승화원"
+                    }
+                    "충청도" -> {
+                        cremationAreasArray2 = resources.getStringArray(R.array.cremationChungbuk)
+                        ApplicationClass.prefs.cremationArea2 = "공주나래원"
+                    }
+                    "강원도" -> {
+                        cremationAreasArray2 = resources.getStringArray(R.array.cremationGangwon)
+                        ApplicationClass.prefs.cremationArea2 = "태백시화장장"
+                    }
+                    "대구광역시" -> {
+                        cremationAreasArray2 = resources.getStringArray(R.array.cremationDaegu)
+                        ApplicationClass.prefs.cremationArea2 = "대구명복공원"
+                    }
+                    "광주광역시" -> {
+                        cremationAreasArray2 = resources.getStringArray(R.array.cremationGwangju)
+                        ApplicationClass.prefs.cremationArea2 = "광주영락공원"
+                    }
+                    "부산광역시" -> {
+                        cremationAreasArray2 = resources.getStringArray(R.array.cremationBusan)
+                        ApplicationClass.prefs.cremationArea2 = "부산영락공원"
+                    }
+                    "세종특별자치시" -> {
+                        cremationAreasArray2 = resources.getStringArray(R.array.cremationSejong)
+                        ApplicationClass.prefs.cremationArea2 = "세종은하수공원"
+                    }
+                    "울산광역시" -> {
+                        cremationAreasArray2 = resources.getStringArray(R.array.cremationUlsan)
+                        ApplicationClass.prefs.cremationArea2 = "울산하늘공원"
+                    }
+                    "전라남도" -> {
+                        cremationAreasArray2 = resources.getStringArray(R.array.cremationJeonnam)
+                        ApplicationClass.prefs.cremationArea2 = "국립소록도병원화장장"
+                    }
+                    "전라북도" -> {
+                        cremationAreasArray2 = resources.getStringArray(R.array.cremationJeonbuk)
+                        ApplicationClass.prefs.cremationArea2 = "군산시승화원"
+                    }
+                    "경상북도" -> {
+                        cremationAreasArray2 = resources.getStringArray(R.array.cremationGyeongbuk)
+                        ApplicationClass.prefs.cremationArea2 = "경주하늘마루"
+                    }
+                    "경상남도" -> {
+                        cremationAreasArray2 = resources.getStringArray(R.array.cremationGyeongnam)
+                        ApplicationClass.prefs.cremationArea2 = "고성군공설화장장"
+                    }
+                    "제주특별자치도" -> {
+                        cremationAreasArray2 = resources.getStringArray(R.array.cremationJeju)
+                        ApplicationClass.prefs.cremationArea2 = "제주양지공원"
+                    }
+                }
+                val cremationAreasList2 = mutableListOf(*cremationAreasArray2) as ArrayList<String>
+                val adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, cremationAreasList2)
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                binding.spinnerCremationArea2.adapter = adapter
+
+                binding.spinnerCremationArea2.setSelection(0)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Nothing to do here
+            }
+        })
+
+        val spinnerCremationArea2 = binding.spinnerCremationArea2
+        spinnerCremationArea2.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                ApplicationClass.prefs.cremationArea2 = parent?.getItemAtPosition(position).toString() ?: ""
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {

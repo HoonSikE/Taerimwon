@@ -303,7 +303,6 @@
                 android:layout_height="wrap_content"
                 android:text="* 사진 위패는 시안을 추후 제공해드립니다."
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_add_photo"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
