@@ -19,8 +19,6 @@
             style="@style/SubHead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
             android:text="* 유골함 종류"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -59,6 +57,7 @@
             android:layout_marginHorizontal="8dp"
             android:layout_marginVertical="16dp"
             app:layout_constraintTop_toBottomOf="@+id/spinner_urn_type"
+            android:visibility="gone"
             tools:ignore="MissingConstraints"
             >
 
@@ -169,8 +168,6 @@
                         style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
                         android:text="● 정보 입력"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/recyclerview_engrave_select_type" />
@@ -181,8 +178,6 @@
                         style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
                         android:text="* 고인 명"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/text_dead_title" />
@@ -223,8 +218,6 @@
                         style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
                         android:text="* 생년월일"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/editText_name1" />
@@ -289,8 +282,6 @@
                         style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
                         android:text="* 사망월일"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/editText_date1" />
@@ -355,8 +346,6 @@
                         style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
                         android:text="* 직분, 세례명, 법명"
                         android:visibility="gone"
                         app:layout_constraintStart_toStartOf="parent"
@@ -485,8 +474,6 @@
                         style="@style/SubHeadBold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
                         android:text="● 합골 추가 정보 입력"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/recyclerview_bone_engrave_select_type" />
@@ -497,8 +484,6 @@
                         style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
                         android:text="* 성별"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/text_bone_dead_title" />
@@ -535,8 +520,6 @@
                         style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
                         android:text="* 고인 명"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/spinner_bone_sex" />
@@ -577,8 +560,6 @@
                         style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
                         android:text="* 생년월일"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/editText_bone_name1" />
@@ -643,8 +624,6 @@
                         style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
                         android:text="* 사망월일"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/editText_bone_date1" />
@@ -708,8 +687,6 @@
                         style="@style/SubHead"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
                         android:text="* 직분, 세례명, 법명"
                         android:visibility="gone"
                         app:layout_constraintStart_toStartOf="parent"
