@@ -11,6 +11,11 @@ class PreferenceUtil(context: Context) {
         set(value){
             internalStorage.edit().putString(TABLETIMAGEURI, value).apply()
         }
+    var boneTabletImageUri : String?
+        get() = internalStorage.getString(BONETABLETIMAGEURI, "")
+        set(value){
+            internalStorage.edit().putString(BONETABLETIMAGEURI, value).apply()
+        }
 
     private val user: SharedPreferences = context.getSharedPreferences("user", Context.MODE_PRIVATE)
     var uid : String?
@@ -206,8 +211,13 @@ class PreferenceUtil(context: Context) {
         set(value){
             order.edit().putInt(BONEENGRAVETYPE2POSITION, value).apply()
         }
+    var sex : String?
+        get() = order.getString(SEX, "남성")
+        set(value){
+            order.edit().putString(SEX, value).apply()
+        }
     var boneSex : String?
-        get() = order.getString(BONESEX, "남성")
+        get() = order.getString(BONESEX, "여성")
         set(value){
             order.edit().putString(BONESEX, value).apply()
         }
@@ -246,11 +256,12 @@ class PreferenceUtil(context: Context) {
         set(value){
             order.edit().putString(BONERELIGION, value).apply()
         }
-    // 위패 보기
-    var showRouterView : String?
-        get() = order.getString(SHOWROUTERVIEW, "")
+    // 위패
+    // 종교
+    var tabletReligion : String?
+        get() = order.getString(RELIGION, "선택안함")
         set(value){
-            order.edit().putString(SHOWROUTERVIEW, value).apply()
+            order.edit().putString(RELIGION, value).apply()
         }
     // 위패 종류 (일반, 본관, 문구)
     var tabletType : String?
@@ -269,37 +280,17 @@ class PreferenceUtil(context: Context) {
         set(value){
             order.edit().putString(NAME3, value).apply()
         }
-//    var name3Type : String?
-//        get() = order.getString(NAME3TYPE, "")
-//        set(value){
-//            order.edit().putString(NAME3TYPE, value).apply()
-//        }
-//    var name3_1 : String?
-//        get() = order.getString(NAME3_1, "")
-//        set(value){
-//            order.edit().putString(NAME3_1, value).apply()
-//        }
-//    var name3_2 : String?
-//        get() = order.getString(NAME3_2, "")
-//        set(value){
-//            order.edit().putString(NAME3_2, value).apply()
-//        }
-//    var name3_3 : String?
-//        get() = order.getString(NAME3_3, "")
-//        set(value){
-//            order.edit().putString(NAME3_3, value).apply()
-//        }
+    // 직분, 세례명, 법명
+    var tabletName2 : String?
+        get() = order.getString(TABLETNAME3, "")
+        set(value){
+            order.edit().putString(TABLETNAME3, value).apply()
+        }
     // 선택된 위패 종류
     var selectedTabletType : String?
         get() = order.getString(SELECTEDTABLETTYPE, "선택안함")
         set(value){
             order.edit().putString(SELECTEDTABLETTYPE, value).apply()
-        }
-    // 특이사항
-    var note : String?
-        get() = order.getString(NOTE, "")
-        set(value){
-            order.edit().putString(NOTE, value).apply()
         }
     // 사진 저장
     // 선택된 파일을 저장할 변수
@@ -314,7 +305,71 @@ class PreferenceUtil(context: Context) {
         set(value){
             order.edit().putString(IMAGEURL, value).apply()
         }
-
+    // 위패 합골
+    var tabletSex : String?
+        get() = order.getString(TABLETSEX, "남성")
+        set(value){
+            order.edit().putString(TABLETSEX, value).apply()
+        }
+    var boneTabletSex : String?
+        get() = order.getString(BONETABLETSEX, "여성")
+        set(value){
+            order.edit().putString(BONETABLETSEX, value).apply()
+        }
+    // 종교
+    var boneTabletReligion : String?
+        get() = order.getString(BONERELIGION, "무교")
+        set(value){
+            order.edit().putString(BONERELIGION, value).apply()
+        }
+    // 위패 종류 (일반, 본관, 문구)
+    var boneTabletType : String?
+        get() = order.getString(BONETABLETTYPE, "문구")
+        set(value){
+            order.edit().putString(BONETABLETTYPE, value).apply()
+        }
+    var boneTabletTypePosition : Int
+        get() = order.getInt(TABLETTYPEPOSITION, 0)
+        set(value){
+            order.edit().putInt(TABLETTYPEPOSITION, value).apply()
+        }
+    // 위패 내용
+    var boneName3 : String?
+        get() = order.getString(BONENAME3, "")
+        set(value){
+            order.edit().putString(BONENAME3, value).apply()
+        }
+    // 직분, 세례명, 법명
+    var boneTabletName2 : String?
+        get() = order.getString(BONETABLETNAME3, "")
+        set(value){
+            order.edit().putString(BONETABLETNAME3, value).apply()
+        }
+    // 선택된 위패 종류
+    var boneSelectedTabletType : String?
+        get() = order.getString(BONESELECTEDTABLETTYPE, "선택안함")
+        set(value){
+            order.edit().putString(BONESELECTEDTABLETTYPE, value).apply()
+        }
+    // 사진 저장
+    // 선택된 파일을 저장할 변수
+    var boneSelectedFile : String?
+        get() = order.getString(BONESELECTEDFILE, "")
+        set(value){
+            order.edit().putString(BONESELECTEDFILE, value).apply()
+        }
+    // 이미지 URL을 저장할 변수
+    var boneImageUrl : String?
+        get() = order.getString(BONEIMAGEURL, "")
+        set(value){
+            order.edit().putString(BONEIMAGEURL, value).apply()
+        }
+    // 특이사항
+    var note : String?
+        get() = order.getString(NOTE, "")
+        set(value){
+            order.edit().putString(NOTE, value).apply()
+        }
     fun resetPreferencesUser() {
         // user SharedPreferences 초기화
         uid = ""
@@ -329,6 +384,7 @@ class PreferenceUtil(context: Context) {
         saveInfo = false
     }
     fun resetPreferences() {
+        boneTabletImageUri = ""
         tabletImageUri = ""
         // order SharedPreferences 초기화
         clientName = ""
@@ -358,7 +414,8 @@ class PreferenceUtil(context: Context) {
         boneEngraveTypePosition = 0
         boneEngraveType2 = "기본"
         boneEngraveType2Position = 0
-        boneSex = ""
+        sex = "남성"
+        boneSex = "여성"
         boneName1 = ""
         boneName2 = ""
         boneDate1 = ""
@@ -366,17 +423,24 @@ class PreferenceUtil(context: Context) {
         boneDate2 = ""
         boneDate2Type = ""
         boneReligion = ""
-        showRouterView = ""
+        tabletReligion = "일반"
         tabletType = "문구"
         tabletTypePosition = 0
         name3 = ""
-//        name3Type = ""
-//        name3_1 = ""
-//        name3_2 = ""
-//        name3_3 = ""
+        tabletName2 = ""
         selectedTabletType = "선택안함"
-        note = ""
         selectedFile = ""
         imageUrl = ""
+        tabletSex = "남성"
+        boneTabletSex = "여성"
+        boneTabletReligion = "일반여"
+        boneTabletType = "문구"
+        boneTabletTypePosition = 0
+        boneName3 = ""
+        boneTabletName2 = ""
+        boneSelectedTabletType = "선택안함"
+        boneSelectedFile = ""
+        boneImageUrl = ""
+        note = ""
     }
 }

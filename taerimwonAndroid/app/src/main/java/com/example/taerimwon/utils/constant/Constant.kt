@@ -2,6 +2,7 @@ package com.example.taerimwon.utils.constant
 
 /**위패 사진**/
 const val TABLETIMAGEURI = "tabletImageUri"
+const val BONETABLETIMAGEURI = "boneTabletImageUri"
 /**유저 ID**/
 const val UID = "uid"
 const val USERTEL = "userTel"
@@ -57,6 +58,7 @@ const val BONEENGRAVETYPEPOSITION = "boneEngraveTypePosition"
 // 각인 상세 종류 (일반, 형제, 직분, 기독, ...)
 const val BONEENGRAVETYPE2 = "boneEngraveType2"
 const val BONEENGRAVETYPE2POSITION = "boneEngraveType2Position"
+const val SEX = "sex"
 const val BONESEX = "boneSex"
 const val BONENAME1 = "boneName1"
 const val BONENAME2 = "boneName2"
@@ -65,18 +67,15 @@ const val BONEDATE1TYPE = "boneDate1Type"
 const val BONEDATE2 = "boneDate2"
 const val BONEDATE2TYPE = "boneDate2Type"
 const val BONERELIGION = "boneReligion"
-// 위패 보기
-const val SHOWROUTERVIEW = "showRouterView"
+// 위패
+// 위패 종교
+const val TABLETRELIGION = "tabletReligion"
 // 위패 종류 (일반, 본관, 문구)
 const val TABLETTYPE = "tabletType"
 const val TABLETTYPEPOSITION = "tabletTypePosition"
 // 위패 내용
 const val NAME3 = "name3"
-// 문구
-const val NAME3TYPE = "name3Type"
-const val NAME3_1 = "name3_1"
-const val NAME3_2 = "name3_2"
-const val NAME3_3 = "name3_3"
+const val TABLETNAME3 = "tabletName3"
 // 선택된 위패 종류
 const val SELECTEDTABLETTYPE = "selectedTabletType"
 // 특이사항
@@ -86,6 +85,26 @@ const val NOTE = "note"
 const val SELECTEDFILE = "selectedFile"
 // 이미지 URL을 저장할 변수
 const val IMAGEURL = "imageUrl"
+// 위패 합골
+const val TABLETSEX = "tabletSex"
+const val BONETABLETSEX = "boneTabletSex"
+// 위패 종교
+const val BONETABLETRELIGION = "boneTabletReligion"
+// 위패 종류 (일반, 본관, 문구)
+const val BONETABLETTYPE = "boneTabletType"
+const val BONETABLETTYPEPOSITION = "boneTabletTypePosition"
+// 위패 내용
+const val BONENAME3 = "boneName3"
+const val BONETABLETNAME3 = "boneTabletName3"
+// 선택된 위패 종류
+const val BONESELECTEDTABLETTYPE = "boneSelectedTabletType"
+// 특이사항
+const val BONENOTE = "boneNote"
+// 사진 저장
+// 선택된 파일을 저장할 변수
+const val BONESELECTEDFILE = "boneSelectedFile"
+// 이미지 URL을 저장할 변수
+const val BONEIMAGEURL = "boneImageUrl"
 
 object FireStoreCollection{
     val USER = "User"

@@ -388,13 +388,14 @@
             <!--합골-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_bone_engrave"
-                android:background="@drawable/view_radius_man"
+                android:background="@drawable/view_radius_woman"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@+id/layout_engrave"
+                android:visibility="gone"
                 tools:ignore="MissingConstraints"
                 >
                 <androidx.constraintlayout.widget.ConstraintLayout

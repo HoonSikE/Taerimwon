@@ -356,11 +356,13 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 ApplicationClass.prefs.boneSex = parent?.getItemAtPosition(position).toString() ?: ""
                 if(ApplicationClass.prefs.boneSex == "남성"){
-                    val color = ContextCompat.getColor(requireContext(), R.color.man)
-                    binding.layoutBoneEngrave.setBackgroundColor(color)
+                    ApplicationClass.prefs.sex = "여성"
+                    val drawableResource = R.drawable.view_radius_man
+                    binding.layoutBoneEngrave.setBackgroundResource(drawableResource)
                 } else if(ApplicationClass.prefs.boneSex == "여성"){
-                    val color = ContextCompat.getColor(requireContext(), R.color.woman)
-                    binding.layoutBoneEngrave.setBackgroundColor(color)
+                    ApplicationClass.prefs.sex = "남성"
+                    val drawableResource = R.drawable.view_radius_woman
+                    binding.layoutBoneEngrave.setBackgroundResource(drawableResource)
                 }
             }
 

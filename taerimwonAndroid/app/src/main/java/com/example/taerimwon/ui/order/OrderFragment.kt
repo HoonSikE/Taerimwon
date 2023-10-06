@@ -546,7 +546,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         // 위패
         if(ApplicationClass.prefs.selectedTabletType != "선택안함"){
             if(!checkTabletInput()){
-                val name2 = ApplicationClass.prefs.name2.toString()
+                val tabletName2 = ApplicationClass.prefs.tabletName2.toString()
                 val name3 = ApplicationClass.prefs.name3.toString()
                 val tabletType = ApplicationClass.prefs.tabletType.toString()
 
@@ -562,25 +562,25 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                     }
                     // 직분, 세례명, 법명
                     if((ApplicationClass.prefs.religion == "기독교")) {
-                        if (!(name2.length in 2..4 && name2.matches(hanglePattern))) {
+                        if (!(tabletName2.length in 2..4 && tabletName2.matches(hanglePattern))) {
                             toast("직분을 한글 2~4글자로 올바르게 입력해주세요.")
                             return false
                         }
                     }
                     else if(ApplicationClass.prefs.religion == "천주교") {
-                        if (!(name2.length in 2..6 && name2.matches(hanglePattern))) {
+                        if (!(tabletName2.length in 2..6 && tabletName2.matches(hanglePattern))) {
                             toast("세례명을 한글 2~6글자로 올바르게 입력해주세요.")
                             return false
                         }
                     }
                 } else if(tabletType.contains("본관")){
-                    if(ApplicationClass.prefs.religion == "일반" || ApplicationClass.prefs.religion == "법명") {
+                    if(ApplicationClass.prefs.religion == "일반" || ApplicationClass.prefs.religion == "불교") {
                         if (!(name3.length in 7..9 && name3.matches(hanglePattern))) {
                             toast("본관내용을 한글 7~9글자로 올바르게 입력해주세요.")
                             return false
                         }
                     } else if((ApplicationClass.prefs.religion == "기독교")) {
-                        if (!(name2.length in 2..4 && name2.matches(hanglePattern))) {
+                        if (!(tabletName2.length in 2..4 && tabletName2.matches(hanglePattern))) {
                             toast("직분을 한글 2~4글자로 올바르게 입력해주세요.")
                             return false
                         }
@@ -589,7 +589,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                             return false
                         }
                     } else if(ApplicationClass.prefs.religion == "천주교") {
-                        if (!(name2.length in 2..6 && name2.matches(hanglePattern))) {
+                        if (!(tabletName2.length in 2..6 && tabletName2.matches(hanglePattern))) {
                             toast("세례명을 한글 2~6글자로 올바르게 입력해주세요.")
                             return false
                         }
@@ -763,9 +763,9 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
     private fun checkTabletInput(): Boolean {
         // 위패
         if(ApplicationClass.prefs.selectedTabletType != "선택안함") {
-            val name2 = ApplicationClass.prefs.name2
+            val tabletName2 = ApplicationClass.prefs.tabletName2
             val name3 = ApplicationClass.prefs.name3
-            if (!(name2 == "" && name3 == "")) {
+            if (!(tabletName2 == "" && name3 == "")) {
                 return false
             }
         }
