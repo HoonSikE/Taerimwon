@@ -5,39 +5,59 @@
     </style>
 
     <style name="HeadBold" parent="android:TextAppearance">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">20dp</item>
         <item name="android:textColor">@color/primaryTextColor</item>
         <item name="android:textStyle">bold</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="SubHead" parent="android:TextAppearance">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:textColor">@color/primaryTextColor</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="SubHeadBold" parent="android:TextAppearance">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/primaryTextColor</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="Body" parent="android:TextAppearance">
-        <item name="android:textSize">14sp</item>
-        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
         <item name="android:textColor">@color/primaryTextColor</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">2</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
-    <style name="ButtonText" parent="android:TextAppearance">
-        <item name="android:textSize">14sp</item>
-        <item name="android:lineSpacingExtra">4sp</item>
+    <style name="ButtonTextAuth" parent="android:TextAppearance">
+        <item name="android:textSize">12dp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/primaryLightColor</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="ButtonText" parent="android:TextAppearance">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/primaryLightColor</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="BackButtonText" parent="android:TextAppearance">
+        <item name="android:textSize">16dp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">2</item>
         <item name="android:includeFontPadding">false</item>

@@ -160,6 +160,10 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
     }
 
     private fun setOnClickListeners() {
+        binding.buttonOrderToOrderFragment.setOnClickListener{
+            ApplicationClass.prefs.resetPreferences()
+            findNavController().navigate(R.id.action_orderFragment_to_orderFragment)
+        }
         binding.buttonResultFragment.setOnClickListener {
             if(checkInput())
                 findNavController().navigate(R.id.action_orderFragment_to_resultFragment)
@@ -641,7 +645,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                 return false
             }
         }
-/**        // 발주 장소별 (필수)
+        // 발주 장소별 (필수)
         val selectedLocation = ApplicationClass.prefs.selectedLocation.toString()
         if(selectedLocation == "화장장"){
 //            val cremationArea = ApplicationClass.prefs.cremationArea.toString()
@@ -681,7 +685,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                 return false
             }
         }
-*/
+
         // 특이 사항 생략(선택)
         return true
     }

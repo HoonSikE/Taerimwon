@@ -102,18 +102,21 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         // 문자열 이름을 문자열로 정의합니다.
         var position = 0
         if(ApplicationClass.prefs.tabletReligion == "일반")
-            position = 1
+            position = 0
         else if(ApplicationClass.prefs.tabletReligion == "기독교")
-            position = 2
+            position = 1
         else if(ApplicationClass.prefs.tabletReligion == "불교")
-            position = 3
+            position = 2
         else if(ApplicationClass.prefs.tabletReligion == "천주교")
-            position = 4
+            position = 3
 
         var arrName = "tablet_type" + position
         // 문자열 배열을 가져옵니다.
         val stringArray = resources.getIdentifier(arrName, "array", requireContext().packageName)
         val tabletTypesArray = resources.getStringArray(stringArray)
+
+        if(ApplicationClass.prefs.name3.toString().length > 4)
+            ApplicationClass.prefs.name3 = ApplicationClass.prefs.name3.toString().substring(0, 4)
 
         setName3(ApplicationClass.prefs.tabletType.toString())
 
@@ -150,19 +153,21 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         // 문자열 이름을 문자열로 정의합니다.
         var position2 = 0
         if(ApplicationClass.prefs.boneTabletReligion == "일반")
-            position2 = 1
+            position2 = 0
         else if(ApplicationClass.prefs.boneTabletReligion == "기독교")
-            position2 = 2
+            position2 = 1
         else if(ApplicationClass.prefs.boneTabletReligion == "불교")
-            position2 = 3
+            position2 = 2
         else if(ApplicationClass.prefs.boneTabletReligion == "천주교")
-            position2 = 4
+            position2 = 3
 
         var arrName2 = "tablet_type" + position2
         // 문자열 배열을 가져옵니다.
         val stringArray2 = resources.getIdentifier(arrName2, "array", requireContext().packageName)
         val boneTabletTypesArray = resources.getStringArray(stringArray2)
 
+        if(ApplicationClass.prefs.boneName3.toString().length > 4)
+            ApplicationClass.prefs.boneName3 = ApplicationClass.prefs.boneName3.toString().substring(0, 4)
         setBoneName3(ApplicationClass.prefs.boneTabletType.toString())
 
         // 배열을 리스트로 변환합니다.
@@ -319,11 +324,12 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
                 if(ApplicationClass.prefs.boneSelectedTabletType!!.contains("선택안함"))
                     binding.layoutBoneTablet.visibility = View.GONE
                 else {
+                    binding.layoutBoneTablet.visibility = View.VISIBLE
                     if(ApplicationClass.prefs.boneSelectedTabletType!!.contains("사진")){
-                        binding.layoutBoneTablet.visibility = View.GONE
+                        binding.layoutBoneTablet2.visibility = View.GONE
                         binding.layoutBoneTabletPhoto.visibility = View.VISIBLE
                     }else{
-                        binding.layoutBoneTablet.visibility = View.VISIBLE
+                        binding.layoutBoneTablet2.visibility = View.VISIBLE
                         binding.layoutBoneTabletPhoto.visibility = View.GONE
                     }
                 }
@@ -438,7 +444,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.textTabletName2.visibility = View.VISIBLE
             binding.editTextTabletName2.visibility = View.VISIBLE
             binding.imageTabletName2.visibility = View.VISIBLE
-            binding.textTabletName2.text = "* 직분"
+            binding.textTabletName2.text = "직분"
             binding.editTextTabletName2.hint = "직분을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextTabletName2.filters = arrayOf(inputFilter)
@@ -447,7 +453,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
 //            binding.textName2.visibility = View.VISIBLE
 //            binding.editTextName2.visibility = View.VISIBLE
 //            binding.imageName2.visibility = View.VISIBLE
-//            binding.textName2.text = "* 법명"
+//            binding.textName2.text = "법명"
 //            binding.editTextName2.hint = "법명을 입력하세요."
 //            val inputFilter = InputFilter.LengthFilter(4)
 //            binding.editTextName2.filters = arrayOf(inputFilter)
@@ -456,7 +462,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.textTabletName2.visibility = View.VISIBLE
             binding.editTextTabletName2.visibility = View.VISIBLE
             binding.imageTabletName2.visibility = View.VISIBLE
-            binding.textTabletName2.text = "* 세례명"
+            binding.textTabletName2.text = "세례명"
             binding.editTextTabletName2.hint = "세례명을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(6)
             binding.editTextTabletName2.filters = arrayOf(inputFilter)
@@ -473,7 +479,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.editTextName3.visibility = View.VISIBLE
             binding.imageName3.visibility = View.VISIBLE
             binding.imageHeart.visibility = View.GONE
-            binding.textName3.text = "* 이름"
+            binding.textName3.text = "이름"
             binding.editTextName3.hint = "이름을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextName3.filters = arrayOf(inputFilter)
@@ -482,7 +488,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.editTextName3.visibility = View.VISIBLE
             binding.imageName3.visibility = View.VISIBLE
             binding.imageHeart.visibility = View.GONE
-            binding.textName3.text = "* 본관"
+            binding.textName3.text = "본관"
             binding.editTextName3.hint = "본관을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(10)
             binding.editTextName3.filters = arrayOf(inputFilter)
@@ -491,7 +497,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.editTextName3.visibility = View.VISIBLE
             binding.imageName3.visibility = View.VISIBLE
             binding.imageHeart.visibility = View.VISIBLE
-            binding.textName3.text = "* 문구"
+            binding.textName3.text = "문구"
             binding.editTextName3.hint = "문구를 입력하세요. (최대 30자)"
             val inputFilter = InputFilter.LengthFilter(30)
             binding.editTextName3.filters = arrayOf(inputFilter)
@@ -510,7 +516,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.textBoneTabletName2.visibility = View.VISIBLE
             binding.editTextBoneTabletName2.visibility = View.VISIBLE
             binding.imageBoneTabletName2.visibility = View.VISIBLE
-            binding.textBoneTabletName2.text = "* 직분"
+            binding.textBoneTabletName2.text = "직분"
             binding.editTextBoneTabletName2.hint = "직분을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextBoneTabletName2.filters = arrayOf(inputFilter)
@@ -519,7 +525,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
 //            binding.textName2.visibility = View.VISIBLE
 //            binding.editTextName2.visibility = View.VISIBLE
 //            binding.imageName2.visibility = View.VISIBLE
-//            binding.textName2.text = "* 법명"
+//            binding.textName2.text = "법명"
 //            binding.editTextName2.hint = "법명을 입력하세요."
 //            val inputFilter = InputFilter.LengthFilter(4)
 //            binding.editTextName2.filters = arrayOf(inputFilter)
@@ -528,7 +534,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.textBoneTabletName2.visibility = View.VISIBLE
             binding.editTextBoneTabletName2.visibility = View.VISIBLE
             binding.imageBoneTabletName2.visibility = View.VISIBLE
-            binding.textBoneTabletName2.text = "* 세례명"
+            binding.textBoneTabletName2.text = "세례명"
             binding.editTextBoneTabletName2.hint = "세례명을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(6)
             binding.editTextBoneTabletName2.filters = arrayOf(inputFilter)
@@ -545,7 +551,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.editTextBoneName3.visibility = View.VISIBLE
             binding.imageBoneName3.visibility = View.VISIBLE
             binding.imageBoneHeart.visibility = View.GONE
-            binding.textBoneName3.text = "* 이름"
+            binding.textBoneName3.text = "이름"
             binding.editTextBoneName3.hint = "이름을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextBoneName3.filters = arrayOf(inputFilter)
@@ -554,7 +560,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.editTextBoneName3.visibility = View.VISIBLE
             binding.imageBoneName3.visibility = View.VISIBLE
             binding.imageBoneHeart.visibility = View.GONE
-            binding.textBoneName3.text = "* 본관"
+            binding.textBoneName3.text = "본관"
             binding.editTextBoneName3.hint = "본관을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(10)
             binding.editTextBoneName3.filters = arrayOf(inputFilter)
@@ -563,7 +569,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.editTextBoneName3.visibility = View.VISIBLE
             binding.imageBoneName3.visibility = View.VISIBLE
             binding.imageBoneHeart.visibility = View.VISIBLE
-            binding.textBoneName3.text = "* 문구"
+            binding.textBoneName3.text = "문구"
             binding.editTextBoneName3.hint = "문구를 입력하세요. (최대 30자)"
             val inputFilter = InputFilter.LengthFilter(30)
             binding.editTextBoneName3.filters = arrayOf(inputFilter)

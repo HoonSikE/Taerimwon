@@ -108,6 +108,7 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
                 toast("인증번호가 전송되었습니다.\n60초 이내에 입력해주세요.")
                 binding.textTelAuth.visibility = View.VISIBLE
                 binding.editTextTelAuth.visibility = View.VISIBLE
+                binding.imageTelAuth.visibility = View.VISIBLE
                 binding.buttonOrderFragment.isEnabled = true
             }else{
                 toast("인증번호 전송에 실패했습니다.\n관리자에게 문의해주세요.")

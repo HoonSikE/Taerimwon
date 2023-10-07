@@ -8,6 +8,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="4dp"
         android:paddingHorizontal="4dp"
         android:paddingVertical="8dp"
         android:orientation="horizontal">
@@ -17,6 +18,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
+            android:elevation="4dp"
             >
             <ImageView
                 android:id="@+id/image_engrave_sample"

@@ -187,7 +187,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.textName2.visibility = View.VISIBLE
             binding.editTextName2.visibility = View.VISIBLE
             binding.imageName2.visibility = View.VISIBLE
-            binding.textName2.text = "* 직분"
+            binding.textName2.text = "직분"
             binding.editTextName2.hint = "직분을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextName2.filters = arrayOf(inputFilter)
@@ -196,7 +196,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.textName2.visibility = View.VISIBLE
             binding.editTextName2.visibility = View.VISIBLE
             binding.imageName2.visibility = View.VISIBLE
-            binding.textName2.text = "* 법명"
+            binding.textName2.text = "법명"
             binding.editTextName2.hint = "법명을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextName2.filters = arrayOf(inputFilter)
@@ -205,7 +205,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.textName2.visibility = View.VISIBLE
             binding.editTextName2.visibility = View.VISIBLE
             binding.imageName2.visibility = View.VISIBLE
-            binding.textName2.text = "* 세례명"
+            binding.textName2.text = "세례명"
             binding.editTextName2.hint = "세례명을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(6)
             binding.editTextName2.filters = arrayOf(inputFilter)
@@ -247,7 +247,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.textBoneName2.visibility = View.VISIBLE
             binding.editTextBoneName2.visibility = View.VISIBLE
             binding.imageBoneName2.visibility = View.VISIBLE
-            binding.textBoneName2.text = "* 직분"
+            binding.textBoneName2.text = "직분"
             binding.editTextBoneName2.hint = "직분을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextBoneName2.filters = arrayOf(inputFilter)
@@ -256,7 +256,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.textBoneName2.visibility = View.VISIBLE
             binding.editTextBoneName2.visibility = View.VISIBLE
             binding.imageBoneName2.visibility = View.VISIBLE
-            binding.textBoneName2.text = "* 법명"
+            binding.textBoneName2.text = "법명"
             binding.editTextBoneName2.hint = "법명을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextBoneName2.filters = arrayOf(inputFilter)
@@ -265,7 +265,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.textBoneName2.visibility = View.VISIBLE
             binding.editTextBoneName2.visibility = View.VISIBLE
             binding.imageBoneName2.visibility = View.VISIBLE
-            binding.textBoneName2.text = "* 세례명"
+            binding.textBoneName2.text = "세례명"
             binding.editTextBoneName2.hint = "세례명을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(6)
             binding.editTextBoneName2.filters = arrayOf(inputFilter)
@@ -508,7 +508,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.textName2.visibility = View.VISIBLE
             binding.editTextName2.visibility = View.VISIBLE
             binding.imageName2.visibility = View.VISIBLE
-            binding.textName2.text = "* 직분"
+            binding.textName2.text = "직분"
             binding.editTextName2.hint = "직분을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextName2.filters = arrayOf(inputFilter)
@@ -516,7 +516,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.textName2.visibility = View.VISIBLE
             binding.editTextName2.visibility = View.VISIBLE
             binding.imageName2.visibility = View.VISIBLE
-            binding.textName2.text = "* 법명"
+            binding.textName2.text = "법명"
             binding.editTextName2.hint = "법명을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextName2.filters = arrayOf(inputFilter)
@@ -524,7 +524,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.textName2.visibility = View.VISIBLE
             binding.editTextName2.visibility = View.VISIBLE
             binding.imageName2.visibility = View.VISIBLE
-            binding.textName2.text = "* 세례명"
+            binding.textName2.text = "세례명"
             binding.editTextName2.hint = "세례명을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(6)
             binding.editTextName2.filters = arrayOf(inputFilter)
@@ -542,7 +542,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.textBoneName2.visibility = View.VISIBLE
             binding.editTextBoneName2.visibility = View.VISIBLE
             binding.imageBoneName2.visibility = View.VISIBLE
-            binding.textBoneName2.text = "* 직분"
+            binding.textBoneName2.text = "직분"
             binding.editTextBoneName2.hint = "직분을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextBoneName2.filters = arrayOf(inputFilter)
@@ -550,7 +550,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.textBoneName2.visibility = View.VISIBLE
             binding.editTextBoneName2.visibility = View.VISIBLE
             binding.imageBoneName2.visibility = View.VISIBLE
-            binding.textBoneName2.text = "* 법명"
+            binding.textBoneName2.text = "법명"
             binding.editTextBoneName2.hint = "법명을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextBoneName2.filters = arrayOf(inputFilter)
@@ -558,7 +558,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.textBoneName2.visibility = View.VISIBLE
             binding.editTextBoneName2.visibility = View.VISIBLE
             binding.imageBoneName2.visibility = View.VISIBLE
-            binding.textBoneName2.text = "* 세례명"
+            binding.textBoneName2.text = "세례명"
             binding.editTextBoneName2.hint = "세례명을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(6)
             binding.editTextBoneName2.filters = arrayOf(inputFilter)

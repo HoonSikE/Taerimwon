@@ -15,38 +15,46 @@
         <item>1 기본</item>
         <item>1_2 형제</item>
         <item>1_3 자매</item>
+        <item>1_4 年月日</item>
     </string-array>
     <!--기독교-->
     <string-array name="engrave_type2">
         <item>2 기본</item>
         <item>2_2 직분X</item>
+        <item>2_3 年月日</item>
     </string-array>
     <!--불교-->
     <string-array name="engrave_type3">
         <item>3 기본</item>
         <item>3_2 법명</item>
+        <item>3_3 年月日</item>
     </string-array>
     <!--천주교-->
     <string-array name="engrave_type4">
         <item>4 기본</item>
         <item>4_2 세례명X</item>
+        <item>4_3 年月日</item>
     </string-array>
     <!--SGI-->
     <string-array name="engrave_type5">
         <item>5 기본</item>
         <item>5_2 금색</item>
+<!--        <item>5_3 年月日</item>-->
     </string-array>
     <!--묘법-->
     <string-array name="engrave_type6">
         <item>6 기본</item>
         <item>6_2 금색</item>
+        <item>6_3 年月日</item>
     </string-array>
     <!--순복음-->
     <string-array name="engrave_type7">
         <item>7 기본</item>
+<!--        <item>7_2 年月日</item>-->
     </string-array>
     <!--원불교-->
     <string-array name="engrave_type8">
         <item>8 기본</item>
+<!--        <item>8_2 年月日</item>-->
     </string-array>
 </resources>

@@ -24,7 +24,7 @@
     <color name="primaryDarkColor">#213555</color>
 
     <color name="linearBackground">#F0F0F0</color>
-    <color name="contentBackground">#F5EFD7</color>
+    <color name="contentBackground">#FFFFFFFF</color>
     <color name="itemBackground">#4F709C</color>
     <color name="itemBackgroundLight">#c0c0c0</color>
 
@@ -34,7 +34,8 @@
     <color name="redTextColor">#F52D56</color>
     <color name="greenTextColor">#4CE5B1</color>
 
-    <color name="borderColor">#F4135F</color>
+    <color name="borderColor">#F86F03</color>
+    <color name="borderBackground">#FFECEC</color>
 
     <color name="background">#FFFFFF</color>
     <color name="transparent">#00000000</color>
@@ -42,5 +43,5 @@
     <color name="hintGray">#CBD7E2</color>
 
     <color name="man">#82A0D8</color>
-    <color name="woman">#EDB7ED</color>
+    <color name="woman">#FF9B9B</color>
 </resources>

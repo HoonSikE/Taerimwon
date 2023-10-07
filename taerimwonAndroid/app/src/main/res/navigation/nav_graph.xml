@@ -26,6 +26,14 @@
         tools:layout="@layout/fragment_phone_auth">
 
         <action
+            android:id="@+id/action_orderFragment_to_orderFragment"
+            app:destination="@id/orderFragment"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"/>
+
+        <action
             android:id="@+id/action_orderFragment_to_resultFragment"
             app:destination="@id/resultFragment"
             app:enterAnim="@anim/from_right"

@@ -18,7 +18,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/button_result_fragment"
-            android:layout_marginBottom="12dp"
+            android:paddingHorizontal="8dp"
+            android:paddingBottom="8dp"
             app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,29 +36,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@+id/layout_order_title"
+                    app:layout_constraintBottom_toTopOf="@+id/layout_leader"
                     />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_order_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintTop_toBottomOf="@+id/image_order_logo"
-                    tools:ignore="MissingConstraints"
-                    >
-                    <TextView
-                        android:id="@+id/text_order_title"
-                        style="@style/HeadBold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:text="기본 정보 입력"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
-                </androidx.constraintlayout.widget.ConstraintLayout>
                 <!--=====발주자 정보 입력=====-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_leader"
@@ -69,7 +50,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_order_title"
+                    app:layout_constraintTop_toBottomOf="@+id/image_order_logo"
+                    android:elevation="4dp"
                     tools:ignore="MissingConstraints"
                     >
                     <!-- 발주자 정보 입력 -->
@@ -103,8 +85,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
-                        android:text="* 소속"
+                        android:layout_marginTop="16dp"
+                        android:text="소속"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/text_leader_title"
                         />
@@ -148,7 +130,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:text="* 발주자 명"
+                        android:text="발주자 명"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/editText_leader_department"
                         />
@@ -191,8 +173,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
-                        android:text="* 전화번호"
+                        android:layout_marginTop="16dp"
+                        android:text="전화번호"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/editText_leader_name"
                         />
@@ -230,19 +212,22 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <!-- 상주 정보 입력 -->
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_client"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/view_radius"
                     android:layout_marginHorizontal="8dp"
                     android:layout_marginVertical="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/view_radius"
+                    android:elevation="2dp"
+                    android:orientation="vertical"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="20dp"
-                    android:orientation="vertical"
                     app:layout_constraintTop_toBottomOf="@+id/layout_leader"
                     tools:ignore="MissingConstraints"
-                    >
+                    tools:layout_editor_absoluteX="8dp">
                     <!-- 발주자 정보 입력 -->
                     <TextView
                         android:id="@+id/text_client_title"
@@ -250,11 +235,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
                         android:text="● 상주 정보 입력 (선택)"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <!-- 상주 명 -->
                     <TextView
@@ -264,30 +247,28 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:text="* 상주 명"
+                        android:text="상주 명"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_client_title"
-                        />
+                        app:layout_constraintTop_toBottomOf="@+id/text_client_title" />
 
                     <EditText
                         android:id="@+id/editText_client_name"
                         style="@style/Body"
-                        android:background="@drawable/edittext_regular"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="8dp"
+                        android:background="@drawable/edittext_regular"
                         android:ems="10"
                         android:hint="이름을 입력하세요."
-                        android:paddingLeft="48dp"
                         android:imeOptions="actionDone"
                         android:inputType="textPersonName"
                         android:maxLength="4"
+                        android:paddingLeft="48dp"
                         android:textColorHint="@color/hintGray"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/text_client_name"
-                        />
+                        app:layout_constraintTop_toBottomOf="@id/text_client_name" />
 
                     <ImageView
                         android:id="@+id/image_client_name"
@@ -297,41 +278,38 @@
                         android:layout_marginTop="8dp"
                         app:layout_constraintStart_toStartOf="@+id/editText_client_name"
                         app:layout_constraintTop_toTopOf="@+id/editText_client_name"
-                        app:srcCompat="@drawable/ic_name"
-                        />
+                        app:srcCompat="@drawable/ic_name" />
 
                     <!-- 상주 전화번호 -->
                     <TextView
                         android:id="@+id/text_client_tel"
                         style="@style/SubHead"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="58dp"
+                        android:layout_height="22dp"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
-                        android:text="* 전화번호"
+                        android:layout_marginTop="16dp"
+                        android:text="전화번호"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/editText_client_name"
-                        />
+                        app:layout_constraintTop_toBottomOf="@id/editText_client_name" />
 
                     <EditText
                         android:id="@+id/editText_client_tel"
                         style="@style/Body"
-                        android:background="@drawable/edittext_regular"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_marginHorizontal="16dp"
                         android:layout_marginTop="8dp"
+                        android:background="@drawable/edittext_regular"
                         android:ems="10"
                         android:hint="010-1234-5678"
-                        android:paddingLeft="48dp"
                         android:imeOptions="actionDone"
                         android:inputType="phone"
                         android:maxLength="13"
+                        android:paddingLeft="48dp"
                         android:textColorHint="@color/hintGray"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/text_client_tel"
-                        />
+                        app:layout_constraintTop_toBottomOf="@id/text_client_tel" />
 
                     <ImageView
                         android:id="@+id/image_client_tel"
@@ -341,8 +319,7 @@
                         android:layout_marginTop="8dp"
                         app:layout_constraintStart_toStartOf="@+id/editText_client_tel"
                         app:layout_constraintTop_toTopOf="@+id/editText_client_tel"
-                        app:srcCompat="@drawable/ic_phone"
-                        />
+                        app:srcCompat="@drawable/ic_phone" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -357,6 +334,7 @@
                     android:orientation="vertical"
                     app:layout_constraintTop_toBottomOf="@+id/layout_client"
                     app:layout_constraintBottom_toTopOf="@+id/layout_urn_container"
+                    android:elevation="4dp"
                     tools:ignore="MissingConstraints"
                     >
                     <!-- 발주자 정보 입력 -->
@@ -366,7 +344,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
                         android:text="● 발주 장소 입력(필수)"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -420,8 +397,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:text="* 화장장"
+                            android:text="화장장"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             />
@@ -487,8 +463,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:layout_marginTop="24dp"
-                            android:text="* 화장시간"
+                            android:layout_marginTop="16dp"
+                            android:text="화장시간"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/spinner_cremation_area2"
                             />
@@ -541,8 +517,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:text="* 장례식장 명"
+                            android:text="장례식장 명"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             />
@@ -575,7 +550,7 @@
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="@+id/editText_funeral_name"
                             app:layout_constraintTop_toTopOf="@+id/editText_funeral_name"
-                            app:srcCompat="@drawable/ic_check"
+                            app:srcCompat="@drawable/ic_place"
                             />
 
                         <!-- 호실 -->
@@ -586,7 +561,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="16dp"
-                            android:text="* 호실"
+                            android:text="호실"
                             android:maxLength="8"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/editText_funeral_name"
@@ -620,7 +595,7 @@
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="@+id/editText_funeral_number"
                             app:layout_constraintTop_toTopOf="@+id/editText_funeral_number"
-                            app:srcCompat="@drawable/ic_check"
+                            app:srcCompat="@drawable/ic_key"
                             />
 
                         <!-- 함 도착 시간 -->
@@ -630,8 +605,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:layout_marginTop="24dp"
-                            android:text="* 함 도착 시간"
+                            android:layout_marginTop="16dp"
+                            android:text="함 도착 시간"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/editText_funeral_number"
                             />
@@ -686,8 +661,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:text="* 장지 명"
+                            android:text="장지 명"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             />
@@ -720,7 +694,7 @@
                             android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="@+id/editText_burial_name"
                             app:layout_constraintTop_toTopOf="@+id/editText_burial_name"
-                            app:srcCompat="@drawable/ic_check"
+                            app:srcCompat="@drawable/ic_place"
                             />
 
                         <!-- 함 도착 시간 -->
@@ -730,8 +704,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:layout_marginTop="24dp"
-                            android:text="* 함 도착 시간"
+                            android:layout_marginTop="16dp"
+                            android:text="함 도착 시간"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/editText_burial_name"
                             />
@@ -773,9 +747,14 @@
                     android:id="@+id/layout_urn_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/view_radius"
+                    android:layout_marginHorizontal="8dp"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="20dp"
                     android:orientation="vertical"
                     app:layout_constraintTop_toBottomOf="@+id/layout_radio"
                     app:layout_constraintBottom_toTopOf="@+id/layout_tablet_container"
+                    android:elevation="4dp"
                     tools:ignore="MissingConstraints"
                     >
 
@@ -788,14 +767,19 @@
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_tablet_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/view_radius"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="16dp"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="20dp"
                     android:orientation="vertical"
                     app:layout_constraintTop_toBottomOf="@+id/layout_urn_container"
                     app:layout_constraintBottom_toTopOf="@+id/layout_note"
+                    android:elevation="4dp"
                     tools:ignore="MissingConstraints"
                     >
 
@@ -812,8 +796,15 @@
                     android:id="@+id/layout_note"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/view_radius"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginVertical="16dp"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="20dp"
                     android:orientation="vertical"
                     app:layout_constraintTop_toBottomOf="@+id/layout_tablet_container"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:elevation="4dp"
                     tools:ignore="MissingConstraints"
                     >
                     <!-- 특이 사항 -->
@@ -824,7 +815,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:text="* 특이사항(선택)"
+                        android:text="특이사항(선택)"
                         app:layout_constraintStart_toStartOf="parent"
                         />
 
@@ -863,19 +854,33 @@
         </androidx.core.widget.NestedScrollView>
 
         <Button
+            android:id="@+id/button_order_to_order_fragment"
+            style="@style/BackButtonText"
+            android:background="@drawable/button_back"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_result_fragment"
+            android:text="초기화"
+            />
+
+        <Button
             android:id="@+id/button_result_fragment"
             style="@style/ButtonText"
             android:background="@drawable/button_regular"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_order_to_order_fragment"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="시안 보기"
             />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

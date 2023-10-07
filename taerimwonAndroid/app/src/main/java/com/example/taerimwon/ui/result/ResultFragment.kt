@@ -35,6 +35,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.fragment.findNavController
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.home.AuthViewModel
+import com.example.taerimwon.ui.order.urn.UrnContainerFragment
 import com.example.taerimwon.utils.view.toast
 import java.io.File
 import java.io.FileOutputStream
@@ -155,6 +156,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             }
         }
 
+        // Urn Fragment 추가
+        val resultContainerFragment = ResultContainerFragment()
+        childFragmentManager.beginTransaction()
+            .replace(R.id.fragment_result_container, resultContainerFragment)
+            .commit()
+
         setMsg()
         authViewModel.getBlackList()
         if(!ApplicationClass.prefs.authenticated)
@@ -209,14 +216,28 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val engraveType = ApplicationClass.prefs.engraveType
         val engraveType2 = ApplicationClass.prefs.engraveType2
 
+        if(engraveType2.toString().contains("年月日")){
+            binding.layoutUrnResult13.visibility = View.GONE
+            binding.layoutUrnResult131.visibility = View.VISIBLE
+            binding.layoutUrnResult15.visibility = View.GONE
+            binding.layoutUrnResult151.visibility = View.VISIBLE
+            binding.layoutUrnResult171.visibility = View.VISIBLE
+
+            binding.layoutUrnResult33.visibility = View.GONE
+            binding.layoutUrnResult331.visibility = View.VISIBLE
+            binding.layoutUrnResult35.visibility = View.GONE
+            binding.layoutUrnResult351.visibility = View.VISIBLE
+            binding.layoutUrnResult371.visibility = View.VISIBLE
+        }
+
         binding.layoutUrnResult22.visibility = View.VISIBLE
         // 이름
         val layoutUrnResult221 = binding.layoutUrnResult221
 
-        if((engraveType == "일반" && engraveType2 == "기본")
-            || (engraveType == "기독교" && engraveType2 == "직분X")
-            || (engraveType == "불교" && engraveType2 == "기본")
-            || (engraveType == "천주교" && engraveType2 == "세례명X")
+        if((engraveType == "일반" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日")))
+            || (engraveType == "기독교" && (engraveType2 == "직분X" || engraveType2.toString().contains("年月日")))
+            || (engraveType == "불교" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日")))
+            || (engraveType == "천주교" && (engraveType2 == "세례명X" || engraveType2.toString().contains("年月日")))
             || (engraveType == "원불교")){
 
             when (name1.length) {
@@ -532,15 +553,28 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val boneEngraveType = ApplicationClass.prefs.boneEngraveType
         val boneEngraveType2 = ApplicationClass.prefs.boneEngraveType2
 
+        if(boneEngraveType2.toString().contains("年月日")){
+            binding.layoutBoneResult13.visibility = View.GONE
+            binding.layoutBoneResult131.visibility = View.VISIBLE
+            binding.layoutBoneResult15.visibility = View.GONE
+            binding.layoutBoneResult151.visibility = View.VISIBLE
+            binding.layoutBoneResult171.visibility = View.VISIBLE
+
+            binding.layoutBoneResult33.visibility = View.GONE
+            binding.layoutBoneResult331.visibility = View.VISIBLE
+            binding.layoutBoneResult35.visibility = View.GONE
+            binding.layoutBoneResult351.visibility = View.VISIBLE
+            binding.layoutBoneResult371.visibility = View.VISIBLE
+        }
 
         binding.layoutBoneResult22.visibility = View.VISIBLE
         // 이름
         val layoutBoneResult221 = binding.layoutBoneResult221
 
-        if((boneEngraveType == "일반" && boneEngraveType2 == "기본")
-            || (boneEngraveType == "기독교" && boneEngraveType2 == "직분X")
-            || (boneEngraveType == "불교" && boneEngraveType2 == "기본")
-            || (boneEngraveType == "천주교" && boneEngraveType2 == "세례명X")
+        if((boneEngraveType == "일반" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日")))
+            || (boneEngraveType == "기독교" && (boneEngraveType2 == "직분X" || boneEngraveType2.toString().contains("年月日")))
+            || (boneEngraveType == "불교" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日")))
+            || (boneEngraveType == "천주교" && (boneEngraveType2 == "세례명X" || boneEngraveType2.toString().contains("年月日")))
             || (boneEngraveType == "원불교")){
 
             when (boneName1.length) {
@@ -946,6 +980,31 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         var layoutBoneResult361 = binding.layoutBone22Result361
         var layoutBoneResult362 = binding.layoutBone22Result362
         var layoutBoneResult37 = binding.layoutBone22Result37
+
+        // 년월일
+        var layoutUrnResult13 = binding.layoutUrnResult13
+        var layoutUrnResult131 = binding.layoutUrnResult131
+        var layoutUrnResult15 = binding.layoutUrnResult15
+        var layoutUrnResult151 = binding.layoutUrnResult151
+        var layoutUrnResult171 = binding.layoutUrnResult171
+
+        var layoutUrnResult33 = binding.layoutUrnResult33
+        var layoutUrnResult331 = binding.layoutUrnResult331
+        var layoutUrnResult35 = binding.layoutUrnResult35
+        var layoutUrnResult351 = binding.layoutUrnResult351
+        var layoutUrnResult371 = binding.layoutUrnResult371
+
+        var layoutBoneResult13 = binding.layoutBoneResult13
+        var layoutBoneResult131 = binding.layoutBoneResult131
+        var layoutBoneResult15 = binding.layoutBoneResult15
+        var layoutBoneResult151 = binding.layoutBoneResult151
+        var layoutBoneResult171 = binding.layoutBoneResult171
+
+        var layoutBoneResult33 = binding.layoutBoneResult33
+        var layoutBoneResult331 = binding.layoutBoneResult331
+        var layoutBoneResult35 = binding.layoutBoneResult35
+        var layoutBoneResult351 = binding.layoutBoneResult351
+        var layoutBoneResult371 = binding.layoutBoneResult371
         // 폰트
         val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
 
@@ -974,6 +1033,31 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             boneDate1Type = ApplicationClass.prefs.date1Type
             boneDate2 = ApplicationClass.prefs.date1.toString()
             boneDate2Type = ApplicationClass.prefs.date2Type
+
+            // 년월일
+            layoutUrnResult13 = binding.layoutBoneResult13
+            layoutUrnResult131 = binding.layoutBoneResult131
+            layoutUrnResult15 = binding.layoutBoneResult15
+            layoutUrnResult151 = binding.layoutBoneResult151
+            layoutUrnResult171 = binding.layoutBoneResult171
+
+            layoutUrnResult33 = binding.layoutBoneResult33
+            layoutUrnResult331 = binding.layoutBoneResult331
+            layoutUrnResult35 = binding.layoutBoneResult35
+            layoutUrnResult351 = binding.layoutBoneResult351
+            layoutUrnResult371 = binding.layoutBoneResult371
+
+            layoutBoneResult13 = binding.layoutUrnResult13
+            layoutBoneResult131 = binding.layoutUrnResult131
+            layoutBoneResult15 = binding.layoutUrnResult15
+            layoutBoneResult151 = binding.layoutUrnResult151
+            layoutBoneResult171 = binding.layoutUrnResult171
+
+            layoutBoneResult33 = binding.layoutUrnResult33
+            layoutBoneResult331 = binding.layoutUrnResult331
+            layoutBoneResult35 = binding.layoutUrnResult35
+            layoutBoneResult351 = binding.layoutUrnResult351
+            layoutBoneResult371 = binding.layoutUrnResult371
         }
         // 기존 정보 / 추가 정보
         if(name1 == "") {
@@ -987,6 +1071,35 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             binding.layoutBone22Result22.visibility = View.INVISIBLE
         }
         setBone2Mark()
+
+        if(engraveType2.toString().contains("年月日")){
+            layoutUrnResult13.visibility = View.GONE
+            layoutUrnResult131.visibility = View.VISIBLE
+            layoutUrnResult15.visibility = View.GONE
+            layoutUrnResult151.visibility = View.VISIBLE
+            layoutUrnResult171.visibility = View.VISIBLE
+
+            layoutUrnResult33.visibility = View.GONE
+            layoutUrnResult331.visibility = View.VISIBLE
+            layoutUrnResult35.visibility = View.GONE
+            layoutUrnResult351.visibility = View.VISIBLE
+            layoutUrnResult371.visibility = View.VISIBLE
+        }
+
+        if(boneEngraveType2.toString().contains("年月日")){
+            layoutBoneResult13.visibility = View.GONE
+            layoutBoneResult131.visibility = View.VISIBLE
+            layoutBoneResult15.visibility = View.GONE
+            layoutBoneResult151.visibility = View.VISIBLE
+            layoutBoneResult171.visibility = View.VISIBLE
+
+            layoutBoneResult33.visibility = View.GONE
+            layoutBoneResult331.visibility = View.VISIBLE
+            layoutBoneResult35.visibility = View.GONE
+            layoutBoneResult351.visibility = View.VISIBLE
+            layoutBoneResult371.visibility = View.VISIBLE
+        }
+
 
         val pixel_size_16 = resources.getDimensionPixelSize(R.dimen.pixel_size_16)
         val pixel_size_20 = resources.getDimensionPixelSize(R.dimen.pixel_size_20)
@@ -1004,10 +1117,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val pixel_size_170 = resources.getDimensionPixelSize(R.dimen.pixel_size_170)
 
         /**정보1*/
-        if((engraveType == "일반" && engraveType2 == "기본")
-            || (engraveType == "기독교" && engraveType2 == "직분X")
-            || (engraveType == "불교" && engraveType2 == "기본")
-            || (engraveType == "천주교" && engraveType2 == "세례명X")
+        if((engraveType == "일반" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日")))
+            || (engraveType == "기독교" && (engraveType2 == "직분X" || engraveType2.toString().contains("年月日")))
+            || (engraveType == "불교" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日")))
+            || (engraveType == "천주교" && (engraveType2 == "세례명X" || engraveType2.toString().contains("年月日")))
             || (engraveType == "원불교")){
 
             when (name1.length) {
@@ -1245,10 +1358,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             layoutUrnResult37.text = "陰"
 
         /**정보2*/
-        if((boneEngraveType == "일반" && boneEngraveType2 == "기본")
-            || (boneEngraveType == "기독교" && boneEngraveType2 == "직분X")
-            || (boneEngraveType == "불교" && boneEngraveType2 == "기본")
-            || (boneEngraveType == "천주교" && boneEngraveType2 == "세례명X")
+        if((boneEngraveType == "일반" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日")))
+            || (boneEngraveType == "기독교" && (boneEngraveType2 == "직분X" || boneEngraveType2.toString().contains("年月日")))
+            || (boneEngraveType == "불교" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日")))
+            || (boneEngraveType == "천주교" && (boneEngraveType2 == "세례명X" || boneEngraveType2.toString().contains("年月日")))
             || (boneEngraveType == "원불교")){
 
             when (boneName1.length) {
@@ -1510,16 +1623,16 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     }
     private fun setTabletData() {
         setTableMark()
-        val pixel_size_26 = resources.getDimensionPixelSize(R.dimen.pixel_size_26)
-        val pixel_size_30 = resources.getDimensionPixelSize(R.dimen.pixel_size_30)
-        val pixel_size_35 = resources.getDimensionPixelSize(R.dimen.pixel_size_35)
-        val pixel_size_40 = resources.getDimensionPixelSize(R.dimen.pixel_size_40)
-        val pixel_size_45 = resources.getDimensionPixelSize(R.dimen.pixel_size_45)
-        val pixel_size_270 = resources.getDimensionPixelSize(R.dimen.pixel_size_270)
-        val pixel_size_280 = resources.getDimensionPixelSize(R.dimen.pixel_size_280)
-        val pixel_size_215 = resources.getDimensionPixelSize(R.dimen.pixel_size_215)
-        val pixel_size_335 = resources.getDimensionPixelSize(R.dimen.pixel_size_335)
-        val pixel_size_420 = resources.getDimensionPixelSize(R.dimen.pixel_size_420)
+        val pixel_size_13 = resources.getDimensionPixelSize(R.dimen.pixel_size_13)
+        val pixel_size_15 = resources.getDimensionPixelSize(R.dimen.pixel_size_15)
+        val pixel_size_17_5 = resources.getDimensionPixelSize(R.dimen.pixel_size_17_5)
+        val pixel_size_20 = resources.getDimensionPixelSize(R.dimen.pixel_size_20)
+        val pixel_size_22_5 = resources.getDimensionPixelSize(R.dimen.pixel_size_22_5)
+//        val pixel_size_26 = resources.getDimensionPixelSize(R.dimen.pixel_size_26)
+//        val pixel_size_30 = resources.getDimensionPixelSize(R.dimen.pixel_size_30)
+//        val pixel_size_35 = resources.getDimensionPixelSize(R.dimen.pixel_size_35)
+//        val pixel_size_40 = resources.getDimensionPixelSize(R.dimen.pixel_size_40)
+//        val pixel_size_45 = resources.getDimensionPixelSize(R.dimen.pixel_size_45)
 
         // 이름
         val tabletName2 = ApplicationClass.prefs.tabletName2.toString()
@@ -1629,7 +1742,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                             layoutTabletResult22.letterSpacing = -0.15f
                         }
                         6 -> {
-                            layoutTabletResult22.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_26.toFloat())
+                            layoutTabletResult22.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
                             layoutTabletResult22.letterSpacing = -0.17f
                         }
                     }
@@ -1656,13 +1769,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6]).append("\n").append(name3[7])
-                            layoutTabletResult0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                            layoutTabletResult0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
                         }
                         9 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6]).append("\n").append(name3[7]).append("\n").append(name3[8])
-                            layoutTabletResult0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                            layoutTabletResult0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_17_5.toFloat())
                         }
                     }
                     layoutTabletResult0.text = tmp.toString()
@@ -1685,14 +1798,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                         6 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                            layoutTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
+                            layoutTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
                             layoutTabletResult3.setLineSpacing(0f, 1.0f)
                         }
                         7 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6])
-                            layoutTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
+                            layoutTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
                             layoutTabletResult3.setLineSpacing(0f, 1.0f)
                         }
                     }
@@ -1726,13 +1839,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6]).append("\n").append(name3[7])
-                            layoutTabletResult31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                            layoutTabletResult31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
                         }
                         9 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6]).append("\n").append(name3[7]).append("\n").append(name3[8])
-                            layoutTabletResult31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                            layoutTabletResult31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_17_5.toFloat())
                         }
                     }
                     layoutTabletResult31.text = tmp.toString()
@@ -1750,13 +1863,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                         6 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                            layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
+                            layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_22_5.toFloat())
                         }
                         7 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6])
-                            layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                            layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
                         }
                     }
 
@@ -1771,7 +1884,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                             layoutTabletResult32.letterSpacing = -0.15f
                         }
                         6 -> {
-                            layoutTabletResult32.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_26.toFloat())
+                            layoutTabletResult32.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
                             layoutTabletResult32.letterSpacing = -0.17f
                         }
                     }
@@ -1808,16 +1921,16 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
     private fun setBoneTabletData() {
         setBoneTableMark()
-        val pixel_size_26 = resources.getDimensionPixelSize(R.dimen.pixel_size_26)
-        val pixel_size_30 = resources.getDimensionPixelSize(R.dimen.pixel_size_30)
-        val pixel_size_35 = resources.getDimensionPixelSize(R.dimen.pixel_size_35)
-        val pixel_size_40 = resources.getDimensionPixelSize(R.dimen.pixel_size_40)
-        val pixel_size_45 = resources.getDimensionPixelSize(R.dimen.pixel_size_45)
-        val pixel_size_270 = resources.getDimensionPixelSize(R.dimen.pixel_size_270)
-        val pixel_size_280 = resources.getDimensionPixelSize(R.dimen.pixel_size_280)
-        val pixel_size_215 = resources.getDimensionPixelSize(R.dimen.pixel_size_215)
-        val pixel_size_335 = resources.getDimensionPixelSize(R.dimen.pixel_size_335)
-        val pixel_size_420 = resources.getDimensionPixelSize(R.dimen.pixel_size_420)
+        val pixel_size_13 = resources.getDimensionPixelSize(R.dimen.pixel_size_13)
+        val pixel_size_15 = resources.getDimensionPixelSize(R.dimen.pixel_size_15)
+        val pixel_size_17_5 = resources.getDimensionPixelSize(R.dimen.pixel_size_17_5)
+        val pixel_size_20 = resources.getDimensionPixelSize(R.dimen.pixel_size_20)
+        val pixel_size_22_5 = resources.getDimensionPixelSize(R.dimen.pixel_size_22_5)
+//        val pixel_size_26 = resources.getDimensionPixelSize(R.dimen.pixel_size_26)
+//        val pixel_size_30 = resources.getDimensionPixelSize(R.dimen.pixel_size_30)
+//        val pixel_size_35 = resources.getDimensionPixelSize(R.dimen.pixel_size_35)
+//        val pixel_size_40 = resources.getDimensionPixelSize(R.dimen.pixel_size_40)
+//        val pixel_size_45 = resources.getDimensionPixelSize(R.dimen.pixel_size_45)
 
         // 이름
         var tabletName2 = ApplicationClass.prefs.tabletName2.toString()
@@ -1987,7 +2100,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                             layoutTabletResult22.letterSpacing = -0.15f
                         }
                         6 -> {
-                            layoutTabletResult22.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_26.toFloat())
+                            layoutTabletResult22.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
                             layoutTabletResult22.letterSpacing = -0.17f
                         }
                     }
@@ -2014,13 +2127,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6]).append("\n").append(name3[7])
-                            layoutTabletResult0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                            layoutTabletResult0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
                         }
                         9 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6]).append("\n").append(name3[7]).append("\n").append(name3[8])
-                            layoutTabletResult0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                            layoutTabletResult0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_17_5.toFloat())
                         }
                     }
                     layoutTabletResult0.text = tmp.toString()
@@ -2043,14 +2156,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                         6 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                            layoutTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
+                            layoutTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
                             layoutTabletResult3.setLineSpacing(0f, 1.0f)
                         }
                         7 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6])
-                            layoutTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
+                            layoutTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
                             layoutTabletResult3.setLineSpacing(0f, 1.0f)
                         }
                     }
@@ -2084,13 +2197,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6]).append("\n").append(name3[7])
-                            layoutTabletResult31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                            layoutTabletResult31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
                         }
                         9 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6]).append("\n").append(name3[7]).append("\n").append(name3[8])
-                            layoutTabletResult31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                            layoutTabletResult31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_17_5.toFloat())
                         }
                     }
                     layoutTabletResult31.text = tmp.toString()
@@ -2108,13 +2221,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                         6 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                            layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
+                            layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_22_5.toFloat())
                         }
                         7 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6])
-                            layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                            layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
                         }
                     }
 
@@ -2129,7 +2242,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                             layoutTabletResult32.letterSpacing = -0.15f
                         }
                         6 -> {
-                            layoutTabletResult32.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_26.toFloat())
+                            layoutTabletResult32.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
                             layoutTabletResult32.letterSpacing = -0.17f
                         }
                     }
@@ -2231,7 +2344,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                             layoutTablet2Result22.letterSpacing = -0.15f
                         }
                         6 -> {
-                            layoutTablet2Result22.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_26.toFloat())
+                            layoutTablet2Result22.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
                             layoutTablet2Result22.letterSpacing = -0.17f
                         }
                     }
@@ -2258,13 +2371,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
                                 .append("\n").append(boneName3[6]).append("\n").append(boneName3[7])
-                            layoutTablet2Result0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                            layoutTablet2Result0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
                         }
                         9 -> {
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
                                 .append("\n").append(boneName3[6]).append("\n").append(boneName3[7]).append("\n").append(boneName3[8])
-                            layoutTablet2Result0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                            layoutTablet2Result0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_17_5.toFloat())
                         }
                     }
                     layoutTablet2Result0.text = boneTmp.toString()
@@ -2287,14 +2400,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                         6 -> {
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
-                            layoutTablet2Result3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
+                            layoutTablet2Result3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
                             layoutTablet2Result3.setLineSpacing(0f, 1.0f)
                         }
                         7 -> {
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
                                 .append("\n").append(boneName3[6])
-                            layoutTablet2Result3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
+                            layoutTablet2Result3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
                             layoutTablet2Result3.setLineSpacing(0f, 1.0f)
                         }
                     }
@@ -2328,13 +2441,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
                                 .append("\n").append(boneName3[6]).append("\n").append(boneName3[7])
-                            layoutTablet2Result31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                            layoutTablet2Result31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
                         }
                         9 -> {
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
                                 .append("\n").append(boneName3[6]).append("\n").append(boneName3[7]).append("\n").append(boneName3[8])
-                            layoutTablet2Result31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                            layoutTablet2Result31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_17_5.toFloat())
                         }
                     }
                     layoutTablet2Result31.text = boneTmp.toString()
@@ -2352,13 +2465,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                         6 -> {
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
-                            layoutTablet2Result312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
+                            layoutTablet2Result312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_22_5.toFloat())
                         }
                         7 -> {
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
                                 .append("\n").append(boneName3[6])
-                            layoutTablet2Result312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                            layoutTablet2Result312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
                         }
                     }
 
@@ -2373,7 +2486,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                             layoutTablet2Result32.letterSpacing = -0.15f
                         }
                         6 -> {
-                            layoutTablet2Result32.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_26.toFloat())
+                            layoutTablet2Result32.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
                             layoutTablet2Result32.letterSpacing = -0.17f
                         }
                     }
@@ -2415,7 +2528,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         if(selectedUrnType != "선택안함"){
             msg += "\n\n각인 종류: " + ApplicationClass.prefs.engraveType + "[" + ApplicationClass.prefs.engraveType2 + "]"
 
-            msg += "\n\n고인 정보: " +
+            msg += "\n\n고인 정보" +
                     "\n - 고인명: " + ApplicationClass.prefs.name1 +
                     "\n - 생년월일: " + ApplicationClass.prefs.date1.toString().replace("-", ".") + " (${ApplicationClass.prefs.date1Type})" +
                     "\n - 사망월일: " + ApplicationClass.prefs.date2.toString().replace("-", ".") + " (${ApplicationClass.prefs.date2Type})"
@@ -2433,7 +2546,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             if(selectedUrnType.contains("합골")){
                 msg += "\n\n========== "
 
-                msg += "\n합골 추가 정보: " +
+                msg += "\n합골 추가 정보" +
                         "\n - 각인 종류: " + ApplicationClass.prefs.boneEngraveType + "[" + ApplicationClass.prefs.boneEngraveType2 + "]" +
                         "\n - 고인명: " + ApplicationClass.prefs.boneName1 +
                         "\n - 생년월일: " + ApplicationClass.prefs.boneDate1.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate1Type})" +
@@ -2451,9 +2564,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             }
         }
 
-        msg += "\n\n - 위패 종류: " + ApplicationClass.prefs.selectedTabletType
+        msg += "\n\n위패 종류: " + ApplicationClass.prefs.selectedTabletType
         if(selectedTabletType != "선택안함") {
-            msg += "\n위패 상세 종류: " + ApplicationClass.prefs.tabletType
+            msg += "\n\n위패 상세 종류: " + ApplicationClass.prefs.tabletType
 
             if(!selectedTabletType.contains("사진")){
                 msg += "\n - 위패 내용: " + ApplicationClass.prefs.name3
@@ -2466,8 +2579,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             }
         }
         if(boneSelectedTabletType != "선택안함") {
-            msg += "\n\n - 합골 위패 종류: " + ApplicationClass.prefs.boneSelectedTabletType
-            msg += "\n위패 상세 종류: " + ApplicationClass.prefs.boneTabletType
+            msg += "\n\n합골 위패 종류: " + ApplicationClass.prefs.boneSelectedTabletType
+            msg += "\n\n위패 상세 종류: " + ApplicationClass.prefs.boneTabletType
 
             if(!boneSelectedTabletType.contains("사진")){
                 msg += "\n - 위패 내용: " + ApplicationClass.prefs.boneName3
@@ -2480,11 +2593,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             }
         }
 
-        msg += "\n\n특이사항: " + ApplicationClass.prefs.note
-
-        println(msg)
-
-        binding.textResultText.text = msg
+        if(ApplicationClass.prefs.note == "")
+            msg += "\n\n특이사항: 없음"
+        else
+            msg += "\n\n특이사항: " + ApplicationClass.prefs.note
     }
     private fun setImage() {
         val handler = Handler()
@@ -2680,11 +2792,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     }
     private fun setOnClickListeners() {
         binding.buttonResultToOrderFragment.setOnClickListener{
-            ApplicationClass.prefs.resetPreferences()
-
-            findNavController().navigate(R.id.action_resultFragment_to_orderFragment)
-        }
-        binding.buttonResultToOrderFragment2.setOnClickListener{
             findNavController().navigate(R.id.action_resultFragment_to_orderFragment)
         }
         binding.buttonMMS.setOnClickListener{
