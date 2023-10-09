@@ -196,7 +196,7 @@
             android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="● 특이사항"
+            android:text="● 특이사항(선택)"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_result_text_tablet_tablet"
             />
@@ -211,17 +211,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/text_result_title_note"
+            app:layout_constraintBottom_toBottomOf="parent"
             >
-            <TextView
-                android:id="@+id/text_result_text_note"
-                style="@style/SubHead"
-                android:paddingHorizontal="16dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="특이사항 내용"
-                app:layout_constraintStart_toStartOf="parent"
+            <EditText
+                android:id="@+id/editText_note"
+                style="@style/Body"
+                android:background="@drawable/edittext_regular"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginHorizontal="8dp"
+                android:ems="10"
+                android:hint="특이사항을 입력하세요 (최대 30자)"
+                android:paddingLeft="48dp"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLength="30"
+                android:textColorHint="@color/hintGray"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <ImageView
+                android:id="@+id/image_note"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/editText_note"
+                app:layout_constraintTop_toTopOf="@+id/editText_note"
+                app:layout_constraintBottom_toBottomOf="@+id/editText_note"
+                app:srcCompat="@drawable/ic_note"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

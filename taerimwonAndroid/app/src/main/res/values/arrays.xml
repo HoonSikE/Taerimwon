@@ -2,7 +2,6 @@
 <resources>
     <!--화장장-->
     <string-array name="cremationAreas">
-        <item>전국</item>
         <item>서울/경기/인천</item>
         <item>충청도</item>
         <item>강원도</item>
@@ -16,70 +15,6 @@
         <item>경상북도</item>
         <item>경상남도</item>
         <item>제주특별자치도</item>
-    </string-array>
-    <string-array name="cremationAll">
-        <item>서울시립승화원</item>
-        <item>서울추모공원</item>
-        <item>인천가족공원</item>
-        <item>수원시연화장</item>
-        <item>용인평온의숲나래원</item>
-        <item>함백산추모공원</item>
-        <item>성남시장례문화원</item>
-        <item>공주나래원</item>
-        <item>천안추모공원</item>
-        <item>홍성추모공원</item>
-        <item>제천시영원한쉼터</item>
-        <item>청주시목련공원</item>
-        <item>충주시시설관리공단</item>
-        <item>태백시화장장</item>
-        <item>원주 하늘나래원</item>
-        <item>솔향하늘길화장장</item>
-        <item>동해삼척공동화장장</item>
-        <item>속초시승화원</item>
-        <item>원주시하늘나래원</item>
-        <item>인제종합장묘센터</item>
-        <item>정선하늘터</item>
-        <item>춘천안식원</item>
-        <item>대구명복공원</item>
-        <item>광주영락공원</item>
-        <item>부산영락공원</item>
-        <item>세종은하수공원</item>
-        <item>울산하늘공원</item>
-        <item>국립소록도병원화장장</item>
-        <item>순천시립추모공원</item>
-        <item>곡성아름다운청계공원</item>
-        <item>광양시화장장</item>
-        <item>목포추모공원</item>
-        <item>여수시승화원</item>
-        <item>해남남도광역추모공원</item>
-        <item>군산시승화원</item>
-        <item>전주시승화원</item>
-        <item>정읍서남권추모공원</item>
-        <item>남원시승화원</item>
-        <item>익산시정수원</item>
-        <item>경주하늘마루</item>
-        <item>영주시화장장</item>
-        <item>울릉하늘섬공원</item>
-        <item>구미시추모공원</item>
-        <item>김천시화장장</item>
-        <item>문경예송원</item>
-        <item>상주시승천원</item>
-        <item>안동장사문화공원</item>
-        <item>울진군립추모원</item>
-        <item>의성군공설화장장</item>
-        <item>포항시구룡포화장장</item>
-        <item>포항시우현화장장</item>
-        <item>고성군공설화장장</item>
-        <item>김해추모의공원</item>
-        <item>진주시안락공원</item>
-        <item>창원시립마산화장장</item>
-        <item>남해추모누리영화원</item>
-        <item>밀양시공설화장시설</item>
-        <item>사천시누리원</item>
-        <item>창원시립상복공원</item>
-        <item>통영시추모공원</item>
-        <item>함안하늘공원</item>
-        <item>제주양지공원</item>
     </string-array>
     <string-array name="cremationSeoul">
         <item>서울시립승화원</item>

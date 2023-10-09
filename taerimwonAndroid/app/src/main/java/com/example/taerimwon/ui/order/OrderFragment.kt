@@ -78,7 +78,62 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             val cremationAreasList = mutableListOf(*cremationAreasArray) as ArrayList<String>
             binding.spinnerCremationArea.setSelection(cremationAreasList.indexOf(ApplicationClass.prefs.cremationArea))
 
-            val cremationAreasArray2 = resources.getStringArray(R.array.cremationAll)
+            var cremationAreasArray2 = resources.getStringArray(R.array.cremationSeoul)
+
+            when (ApplicationClass.prefs.cremationArea) {
+                "서울/경기/인천" -> {
+                    cremationAreasArray2 = resources.getStringArray(R.array.cremationSeoul)
+                    ApplicationClass.prefs.cremationArea2 = "서울시립승화원"
+                }
+                "충청도" -> {
+                    cremationAreasArray2 = resources.getStringArray(R.array.cremationChungbuk)
+                    ApplicationClass.prefs.cremationArea2 = "공주나래원"
+                }
+                "강원도" -> {
+                    cremationAreasArray2 = resources.getStringArray(R.array.cremationGangwon)
+                    ApplicationClass.prefs.cremationArea2 = "태백시화장장"
+                }
+                "대구광역시" -> {
+                    cremationAreasArray2 = resources.getStringArray(R.array.cremationDaegu)
+                    ApplicationClass.prefs.cremationArea2 = "대구명복공원"
+                }
+                "광주광역시" -> {
+                    cremationAreasArray2 = resources.getStringArray(R.array.cremationGwangju)
+                    ApplicationClass.prefs.cremationArea2 = "광주영락공원"
+                }
+                "부산광역시" -> {
+                    cremationAreasArray2 = resources.getStringArray(R.array.cremationBusan)
+                    ApplicationClass.prefs.cremationArea2 = "부산영락공원"
+                }
+                "세종특별자치시" -> {
+                    cremationAreasArray2 = resources.getStringArray(R.array.cremationSejong)
+                    ApplicationClass.prefs.cremationArea2 = "세종은하수공원"
+                }
+                "울산광역시" -> {
+                    cremationAreasArray2 = resources.getStringArray(R.array.cremationUlsan)
+                    ApplicationClass.prefs.cremationArea2 = "울산하늘공원"
+                }
+                "전라남도" -> {
+                    cremationAreasArray2 = resources.getStringArray(R.array.cremationJeonnam)
+                    ApplicationClass.prefs.cremationArea2 = "국립소록도병원화장장"
+                }
+                "전라북도" -> {
+                    cremationAreasArray2 = resources.getStringArray(R.array.cremationJeonbuk)
+                    ApplicationClass.prefs.cremationArea2 = "군산시승화원"
+                }
+                "경상북도" -> {
+                    cremationAreasArray2 = resources.getStringArray(R.array.cremationGyeongbuk)
+                    ApplicationClass.prefs.cremationArea2 = "경주하늘마루"
+                }
+                "경상남도" -> {
+                    cremationAreasArray2 = resources.getStringArray(R.array.cremationGyeongnam)
+                    ApplicationClass.prefs.cremationArea2 = "고성군공설화장장"
+                }
+                "제주특별자치도" -> {
+                    cremationAreasArray2 = resources.getStringArray(R.array.cremationJeju)
+                    ApplicationClass.prefs.cremationArea2 = "제주양지공원"
+                }
+            }
             val cremationAreasList2 = mutableListOf(*cremationAreasArray2) as ArrayList<String>
             binding.spinnerCremationArea2.setSelection(cremationAreasList2.indexOf(ApplicationClass.prefs.cremationArea2))
             
@@ -107,8 +162,6 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             binding.editTextBurialName.setText(ApplicationClass.prefs.burialName)
             binding.editTextBurialTime.setText(ApplicationClass.prefs.burialTime)
         }
-
-        binding.editTextNote.setText(ApplicationClass.prefs.note)
 
         // Urn Fragment 추가
         val urnFragment = UrnContainerFragment()
@@ -176,13 +229,9 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 ApplicationClass.prefs.cremationArea = parent?.getItemAtPosition(position).toString() ?: ""
 
-                var cremationAreasArray2 = resources.getStringArray(R.array.cremationAll)
+                var cremationAreasArray2 = resources.getStringArray(R.array.cremationSeoul)
 
                 when (ApplicationClass.prefs.cremationArea) {
-                    "전국" -> {
-                        cremationAreasArray2 = resources.getStringArray(R.array.cremationAll)
-                        ApplicationClass.prefs.cremationArea2 = "서울시립승화원"
-                    }
                     "서울/경기/인천" -> {
                         cremationAreasArray2 = resources.getStringArray(R.array.cremationSeoul)
                         ApplicationClass.prefs.cremationArea2 = "서울시립승화원"
@@ -430,19 +479,6 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             override fun afterTextChanged(s: Editable?) {
             }
         })
-        // 메모
-        binding.editTextNote.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                ApplicationClass.prefs.note =
-                    s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-            }
-        })
     }
 
     private fun observer() {
@@ -604,13 +640,6 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                     }
                 }
             }
-        }
-
-        // 특이 사항 (30자 이내)
-        val note = ApplicationClass.prefs.note.toString()
-        if (note.length > 30) {
-            toast("특이 사항을 30글자 이내로 입력해주세요.")
-            return false
         }
         return true
     }

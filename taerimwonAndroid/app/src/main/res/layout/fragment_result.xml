@@ -119,12 +119,24 @@
                         >
                     </ImageView>
                 </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/text_result_text"
+                    style="@style/SubHeadBold"
+                    android:textColor="@color/redTextColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="자세한 각인요청은 특이사항에 적어주세요."
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_result_image"
+                    />
                 <!--결과-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_result_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_result_image"
+                    app:layout_constraintTop_toBottomOf="@+id/text_result_text"
                     >
                     <FrameLayout
                         android:id="@+id/fragment_result_container"
@@ -3121,7 +3133,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 
-        <Button
+        <TextView
             android:id="@+id/button_result_to_order_fragment"
             style="@style/BackButtonText"
             android:background="@drawable/button_back"
@@ -3134,9 +3146,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button_MMS"
             android:text="이전으로"
+            android:gravity="center"
             />
 
-        <Button
+        <TextView
             android:id="@+id/button_MMS"
             style="@style/ButtonText"
             android:background="@drawable/button_regular"
@@ -3149,6 +3162,7 @@
             app:layout_constraintStart_toEndOf="@+id/button_result_to_order_fragment"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="주문하기"
+            android:gravity="center"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

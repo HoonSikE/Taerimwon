@@ -15,7 +15,9 @@ import android.graphics.Typeface
 import android.net.Uri
 import android.os.Handler
 import android.os.Process
+import android.text.Editable
 import android.text.InputFilter
+import android.text.TextWatcher
 import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -2592,11 +2594,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
             }
         }
-
-        if(ApplicationClass.prefs.note == "")
-            msg += "\n\n특이사항: 없음"
-        else
-            msg += "\n\n특이사항: " + ApplicationClass.prefs.note
     }
     private fun setImage() {
         val handler = Handler()
@@ -2792,7 +2789,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     }
     private fun setOnClickListeners() {
         binding.buttonResultToOrderFragment.setOnClickListener{
-            findNavController().navigate(R.id.action_resultFragment_to_orderFragment)
+            if(checkInput()) {
+                if(ApplicationClass.prefs.note == "")
+                    msg += "\n\n특이사항: 없음"
+                else
+                    msg += "\n\n특이사항: " + ApplicationClass.prefs.note
+                
+                findNavController().navigate(R.id.action_resultFragment_to_orderFragment)
+            }
         }
         binding.buttonMMS.setOnClickListener{
             // 권한 확인
@@ -2843,6 +2847,15 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         }
     }
     private fun observer() {
+    }
+    private fun checkInput(): Boolean {
+        // 특이 사항 (30자 이내)
+        val note = ApplicationClass.prefs.note.toString()
+        if (note.length > 30) {
+            toast("특이 사항을 30글자 이내로 입력해주세요.")
+            return false
+        }
+        return true
     }
 
     // MMS 메시지 보내기 함수

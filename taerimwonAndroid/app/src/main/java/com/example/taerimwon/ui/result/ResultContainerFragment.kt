@@ -1,6 +1,8 @@
 package com.example.taerimwon.ui.result
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ResultContainerFragment : BaseFragment<FragmentResultContainerBinding>(R.layout.fragment_result_container) {
     override fun init() {
         initData()
+        addTextChangedListener()
     }
     private fun initData() {
         var textResultTextLeader = " - 소속: " + ApplicationClass.prefs.leaderDepartment +
@@ -119,10 +122,20 @@ class ResultContainerFragment : BaseFragment<FragmentResultContainerBinding>(R.l
             }
         }
         binding.textResultTextTablet.text = textResultTextTablet
+    }
+    private fun addTextChangedListener() {
+        // 메모
+        binding.editTextNote.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
 
-        var textResultTextNote = ApplicationClass.prefs.note
-        if(ApplicationClass.prefs.note == "")
-            textResultTextNote = "없음"
-        binding.textResultTextNote.text = textResultTextNote
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                ApplicationClass.prefs.note =
+                    s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
     }
 }
