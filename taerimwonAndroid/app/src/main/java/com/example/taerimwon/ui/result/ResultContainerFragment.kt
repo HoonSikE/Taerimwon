@@ -132,6 +132,7 @@ class ResultContainerFragment : BaseFragment<FragmentResultContainerBinding>(R.l
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 ApplicationClass.prefs.note =
                     s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+                print("ddddddd")
             }
 
             override fun afterTextChanged(s: Editable?) {
