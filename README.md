@@ -26,7 +26,7 @@
 
 # 👶 주요 기능
 
-## 🎅 Web
+## 📝 Web
 
 > + ### 주문 관리, 블랙리스트 관리
 <br>
@@ -73,86 +73,77 @@
 <br>
 
 ## 4. 주문 정보 입력
+   
    - 발주자 정보 입력 (정보 저장 기능)
-   - 상주 정보 입력
-   - 발주 장소 입력(yyyy:mm:dd hh:mm 형식 입력)
-   - 유골함 주문 (이미지 및 검색, yyyy:mm:dd 형식 입력)
-   - 위패 종류 (이미지 및 검색)
-
 <div align="center">
    <img src="./README/order/order1.jpg" width="40%">
-   <h3>발주자 정보 입력</h3>
 </div>
 <br>
 
+   - 상주 정보 입력
 <div align="center">
    <img src="./README/order/order2.jpg" width="40%">
-   <h3>상주 정보 입력</h3>
 </div>
 <br>
 
+   - 발주 장소 입력(yyyy:mm:dd hh:mm 형식 입력)   
 <div align="center">
    <img src="./README/order/order3.jpg" width="40%">
-   <h3>발주 장소 입력</h3>
 </div>
 <br>
 
+   - 유골함 주문 (이미지 및 검색, yyyy:mm:dd 형식 입력)
 <div align="center">
    <img src="./README/order/order4.jpg" width="40%">
    <img src="./README/order/order4_1.jpg" width="40%">
-   <h3>유골함 주문</h3>
 </div>
 <br>
 
+   - 위패 주문 (이미지 및 검색)
 <div align="center">
    <img src="./README/order/order5.jpg" width="40%">
    <img src="./README/order/order5_1.jpg" width="40%">
-   <h3>위패 주문</h3>
 </div>
 <br>
 
+   - 평장 주문
 <div align="center">
    <img src="./README/order/order6.jpg" width="40%">
    <img src="./README/order/order6_1.jpg" width="40%">
-   <h3>평장 주문</h3>
 </div>
 <br>
 
 ## 5. 각인 정보 출력
-   - 주문 정보 확인
-   - 확대 기능
 
+   - 주문 정보 확인
 <div align="center">
    <img src="./README/result/result1.jpg" width="40%">
    <img src="./README/result/result2.jpg" width="40%">
-   <h3>주문 정보 확인</h3>
 </div>
 
+   - 확대 기능
 <div align="center">
    <img src="./README/result/result3.jpg" width="40%">
    <img src="./README/result/result4.jpg" width="40%">
-   <h3>확대</h3>
 </div>
 
 <br>
 
 ## 6. 주문 정보 MMS 전송
-   - 발주자에게 각인 정보 전송 (사진, 텍스트)
 
+   - 발주자에게 각인 정보 전송 (사진, 텍스트)
 <div align="center">
    <img src="./README/mms/mms.jpg" width="40%">
-   <h3>발주자에게 각인 정보 전송 (사진, 텍스트)</h3>
 </div>
 
 <br>
 
 ## 7. 유골함 리스트
-   - 유골함 리스트 출력 및 확대
 
+   - 유골함 리스트 출력 및 확대
 <div align="center">
    <img src="./README/urnList/urnList1.jpg" width="40%">
    <img src="./README/urnList/urnList2.jpg" width="40%">
-   <h3>유골함 리스트 출력 및 확대</h3>
 </div>
 
 <br>
