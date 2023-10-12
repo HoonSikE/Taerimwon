@@ -16,6 +16,15 @@
         <item>경상남도</item>
         <item>제주특별자치도</item>
     </string-array>
+    <string-array name="cremationSeoul1">
+        <item>서울시립승화원</item>
+        <item>서울추모공원</item>
+        <item>인천가족공원</item>
+        <item>수원시연화장</item>
+        <item>용인평온의숲나래원</item>
+        <item>함백산추모공원</item>
+        <item>성남시장례문화원</item>
+    </string-array>
     <string-array name="cremationSeoul">
         <item>서울시립승화원</item>
         <item>서울추모공원</item>
