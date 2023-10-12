@@ -311,6 +311,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
     }
 
     // 2023-10-11
+    // 2023-10-11
 
     private fun addTextChangedListener() {
         // 발주자 정보
