@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--픽셀-->
-<!--    <dimen name="pixel_size_10">10px</dimen>-->
+    <dimen name="pixel_size_10">10px</dimen>
     <dimen name="pixel_size_10">10px</dimen>
     <dimen name="pixel_size_16">16px</dimen>
     <dimen name="pixel_size_23">23px</dimen>
