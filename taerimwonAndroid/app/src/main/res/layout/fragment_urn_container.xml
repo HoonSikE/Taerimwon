@@ -55,13 +55,34 @@
             app:srcCompat="@drawable/ic_spinner"
             />
 
+        <LinearLayout
+            android:id="@+id/lyaout_auto_complete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_urn_type"
+            app:layout_constraintBottom_toTopOf="@+id/layout_urn"
+            >
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:hint="검색어를 입력해주세요."
+                android:completionThreshold="1"
+                android:gravity="center_vertical"
+                android:textColorHint="#555555" />
+        </LinearLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_urn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             android:layout_marginVertical="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_urn_type"
+            app:layout_constraintTop_toBottomOf="@+id/lyaout_auto_complete"
             android:visibility="gone"
             tools:ignore="MissingConstraints"
             >

@@ -2803,13 +2803,16 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             val readPermission = Manifest.permission.READ_EXTERNAL_STORAGE
             val writePermission = Manifest.permission.WRITE_EXTERNAL_STORAGE
 
+            println("asdasd buttonMMS.setOnClickListener")
+
             val activityContext = activity as? Activity // 안전하게 캐스트
             if (activityContext != null) {
                 val readPermissionGranted = ContextCompat.checkSelfPermission(activityContext, readPermission) == PackageManager.PERMISSION_GRANTED
                 val writePermissionGranted = ContextCompat.checkSelfPermission(activityContext, writePermission) == PackageManager.PERMISSION_GRANTED
 
+                println("asdasd readPermissionGranted")
                 // 권한이 모두 허용되어 있는 경우
-                if (readPermissionGranted && writePermissionGranted) {
+//                if (readPermissionGranted && writePermissionGranted) {
                     // 파일 액세스 권한이 허용된 상태
                     // MMS 보내기
                     // 유골
@@ -2831,16 +2834,19 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     val sms_body = msg
 
                     // 5. attachmentUri를 사용하여 MMS 메시지를 만들고 보냅니다.
+                    println("asdasd sendMMS1")
                     sendMMS(tel, subject, sms_body, imageUri)
-                } else {
-                    // 하나 이상의 권한이 거부된 경우
-                    // 권한을 요청합니다.
-                    ActivityCompat.requestPermissions(
-                        activityContext,
-                        arrayOf(readPermission, writePermission),
-                        REQUEST_CODE_STORAGE_PERMISSION
-                    )
-                }
+                    println("asdasd sendMMS2")
+//                } else {
+//                    println("asdasd sendMMS3")
+//                    // 하나 이상의 권한이 거부된 경우
+//                    // 권한을 요청합니다.
+//                    ActivityCompat.requestPermissions(
+//                        activityContext,
+//                        arrayOf(readPermission, writePermission),
+//                        REQUEST_CODE_STORAGE_PERMISSION
+//                    )
+//                }
             } else {
                 // activityContext가 null인 경우에 대한 처리
             }

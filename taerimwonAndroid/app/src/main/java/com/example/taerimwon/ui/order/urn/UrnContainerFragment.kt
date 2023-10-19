@@ -5,25 +5,29 @@ import android.text.InputFilter
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
-import androidx.core.content.ContextCompat
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taerimwon.R
 import com.example.taerimwon.base.BaseFragment
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.taerimwon.data.dto.urn.UrnItem
 import com.example.taerimwon.databinding.FragmentUrnContainerBinding
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.order.OrderViewModel
-import com.example.taerimwon.ui.order.tablet.TabletContainerFragment
 import com.example.taerimwon.ui.order.urn.bone.BoneEngraveType2Adapter
 import com.example.taerimwon.ui.order.urn.bone.BoneEngraveTypeAdapter
 import com.example.taerimwon.utils.input.DateTextWatcher
+import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.fragment_urn_container) {
     private val orderViewModel: OrderViewModel by viewModels()
+
+    // 자동완성 단어들을 담을 리스트
+    private lateinit var searchList: MutableList<UrnItem>
 
     private lateinit var engraveTypeAdapter: EngraveTypeAdapter
     private lateinit var engraveType2Adapter: EngraveType2Adapter
@@ -142,6 +146,19 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         boneEngraveType2Adapter.setSelectedItem(ApplicationClass.prefs.boneEngraveType2Position)
     }
     private fun initData() {
+        // 검색 리스트
+        searchList = mutableListOf()
+
+        settingList()
+
+        // "ArrayList" - 리스트 객체
+        binding.autoCompleteTextView.setAdapter(ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_dropdown_item_1line,
+                searchList
+            )
+        )
+
         binding.editTextName1.setText(ApplicationClass.prefs.name1)
 
         binding.editTextDate1.setText(ApplicationClass.prefs.date1)
@@ -568,5 +585,36 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.imageBoneName2.visibility = View.GONE
             ApplicationClass.prefs.boneName2 = ""
         }
+    }
+
+    // 장동완성 단어 세팅
+    private fun settingList() {
+        searchList.add(UrnItem("img_urn_sample1", R.drawable.img_urn_sample1))
+        searchList.add(UrnItem("img_urn_sample2", R.drawable.img_urn_sample2))
+        searchList.add(UrnItem("img_urn_sample3", R.drawable.img_urn_sample3))
+        searchList.add(UrnItem("img_urn_sample4", R.drawable.img_urn_sample4))
+        searchList.add(UrnItem("img_urn_sample5", R.drawable.img_urn_sample5))
+        searchList.add(UrnItem("img_urn_sample6", R.drawable.img_urn_sample6))
+
+        searchList.add(UrnItem("img_urn_sample1", R.drawable.img_urn_sample1))
+        searchList.add(UrnItem("img_urn_sample2", R.drawable.img_urn_sample2))
+        searchList.add(UrnItem("img_urn_sample3", R.drawable.img_urn_sample3))
+        searchList.add(UrnItem("img_urn_sample4", R.drawable.img_urn_sample4))
+        searchList.add(UrnItem("img_urn_sample5", R.drawable.img_urn_sample5))
+        searchList.add(UrnItem("img_urn_sample6", R.drawable.img_urn_sample6))
+
+        searchList.add(UrnItem("img_urn_sample1", R.drawable.img_urn_sample1))
+        searchList.add(UrnItem("img_urn_sample2", R.drawable.img_urn_sample2))
+        searchList.add(UrnItem("img_urn_sample3", R.drawable.img_urn_sample3))
+        searchList.add(UrnItem("img_urn_sample4", R.drawable.img_urn_sample4))
+        searchList.add(UrnItem("img_urn_sample5", R.drawable.img_urn_sample5))
+        searchList.add(UrnItem("img_urn_sample6", R.drawable.img_urn_sample6))
+
+        searchList.add(UrnItem("img_urn_sample1", R.drawable.img_urn_sample1))
+        searchList.add(UrnItem("img_urn_sample2", R.drawable.img_urn_sample2))
+        searchList.add(UrnItem("img_urn_sample3", R.drawable.img_urn_sample3))
+        searchList.add(UrnItem("img_urn_sample4", R.drawable.img_urn_sample4))
+        searchList.add(UrnItem("img_urn_sample5", R.drawable.img_urn_sample5))
+        searchList.add(UrnItem("img_urn_sample6", R.drawable.img_urn_sample6))
     }
 }

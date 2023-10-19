@@ -1,7 +1,13 @@
 package com.example.taerimwon.ui.home
 
+import android.Manifest
+import android.app.PendingIntent
+import android.content.pm.PackageManager
 import android.telephony.PhoneNumberFormattingTextWatcher
+import android.telephony.SmsManager
 import android.view.View
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.example.taerimwon.R
 import com.example.taerimwon.data.dto.user.User
@@ -14,9 +20,11 @@ import androidx.navigation.fragment.findNavController
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.utils.constant.enabled
 import com.example.taerimwon.utils.input.PhoneNumberTextWatcher
+import java.util.*
 
 @AndroidEntryPoint
 class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragment_phone_auth) {
+    private val REQUEST_CODE_SMS_PERMISSION = 102 // 권한 요청 코드
     val authViewModel: AuthViewModel by viewModels()
     lateinit var user: User
     var verificationId : String = ""
@@ -55,19 +63,16 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
                     true
                 )
 
-//                val dialog = PhoneAuthDialogFragment()
-//                // 화면 밖 터치시 종료되지 않게 하기
-//                dialog.isCancelable = false
-//                dialog.setOnOKClickedListener { content ->
-//                    if(verificationId != "") {
-//                        authViewModel.ckeckPhoneAuth(
-//                            user = user,
-//                            verificationId = verificationId,
-//                            code = content
-//                        )
-//                    }
+//                val permission = Manifest.permission.SEND_SMS
+//                if (ContextCompat.checkSelfPermission(requireContext(), permission) != PackageManager.PERMISSION_GRANTED) {
+//                    ActivityCompat.requestPermissions(requireActivity(), arrayOf(permission), REQUEST_CODE_SMS_PERMISSION)
+//                } else {
+//                    // 권한이 이미 허용되어 있는 경우 SMS를 보낼 수 있습니다.
+//                    val smsManager = SmsManager.getDefault()
+//                    val phoneNumber = "+821045097485" // 대상 전화번호
+//                    val verificationCode = generateVerificationCode() // 랜덤한 인증 코드 생성
+//                    smsManager.sendTextMessage(phoneNumber, null, "Your verification code is: $verificationCode", null, null)
 //                }
-//                dialog.show(childFragmentManager, "complete phone auth")
             }
         }
         binding.buttonOrderFragment.setOnClickListener{
@@ -77,6 +82,18 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
                     verificationId = verificationId,
                     code = binding.editTextTelAuth.text.toString()
                 )
+            }
+        }
+    }
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when (requestCode) {
+            REQUEST_CODE_SMS_PERMISSION -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // SMS 권한이 허용된 경우
+                } else {
+                    // 사용자가 권한을 거부한 경우
+                    // 적절한 처리를 수행하세요.
+                }
             }
         }
     }
@@ -141,5 +158,18 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
     private fun addTextChangedListener() {
         val editTextTel = binding.editTextTel
         editTextTel.addTextChangedListener(PhoneNumberTextWatcher(editTextTel))
+    }
+    fun generateVerificationCode(): String {
+        val length = 6 // 인증 코드 길이 (원하는 길이로 수정 가능)
+
+        val random = Random(System.currentTimeMillis())
+        val code = StringBuilder()
+
+        for (i in 0 until length) {
+            val digit = random.nextInt(10) // 0부터 9 사이의 랜덤 숫자 생성
+            code.append(digit)
+        }
+
+        return code.toString()
     }
 }

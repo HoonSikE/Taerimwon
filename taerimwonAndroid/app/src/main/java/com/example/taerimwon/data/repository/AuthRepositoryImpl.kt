@@ -65,7 +65,7 @@ class AuthRepositoryImpl (
 
     override fun phoneAuth(tel: String, activity: FragmentActivity, result: (String) -> Unit){
         auth.setLanguageCode("ko-KR")
-        auth.firebaseAuthSettings.setAppVerificationDisabledForTesting(true)
+//        auth.firebaseAuthSettings.setAppVerificationDisabledForTesting(true)
 
         println("phoneNumber : " + tel)
         val options = PhoneAuthOptions.newBuilder(auth)
@@ -85,7 +85,10 @@ class AuthRepositoryImpl (
                         // Invalid request
                     } else if (e is FirebaseTooManyRequestsException) {
                         // The SMS quota for the project has been exceeded
+                    } else if (e is FirebaseAuthMissingActivityForRecaptchaException) {
+                        // reCAPTCHA verification attempted with null Activity
                     }
+
                     result.invoke("fail")
                 }
 

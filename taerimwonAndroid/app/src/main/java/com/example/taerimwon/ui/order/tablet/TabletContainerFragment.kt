@@ -248,9 +248,11 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
                 ApplicationClass.prefs.selectedTabletType = parent?.getItemAtPosition(position).toString()
                 println(ApplicationClass.prefs.selectedTabletType)
 
-                if(ApplicationClass.prefs.selectedTabletType!!.contains("선택안함"))
+                if(ApplicationClass.prefs.selectedTabletType!!.contains("선택안함")) {
                     binding.layoutTablet.visibility = View.GONE
-                else {
+                    binding.layoutTabletPhoto.visibility = View.GONE
+                    binding.layoutBone.visibility = View.GONE
+                }else {
                     binding.layoutBone.visibility = View.VISIBLE
                     if(ApplicationClass.prefs.selectedTabletType!!.contains("사진")){
                         binding.layoutTablet.visibility = View.GONE
