@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="AppTheme.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/linearBackground</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/img_logo</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+    </style>
+
     <style name="BlackBorder">
         <item name="android:background">@drawable/border</item>
     </style>

@@ -104,6 +104,9 @@ dependencies {
     // MMS 메시지 첨부
     // 이미지 인코딩 디코딩
     implementation 'org.jcodec:jcodec-android:0.2.3'
+
+    // 스플래시
+    implementation 'androidx.core:core-splashscreen:1.0.0-rc01'
 }
 
 kapt {

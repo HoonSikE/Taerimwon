@@ -31,18 +31,17 @@
         <Spinner
             android:id="@+id/spinner_urn_type"
             style="@style/SubHead"
-            android:background="@drawable/edittext_regular"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_urn_title"
+            android:background="@drawable/edittext_regular"
+            android:defaultValue="0"
             android:entries="@array/selected_urn_types"
             android:spinnerMode="dropdown"
-            android:defaultValue="0"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_urn_title" />
 
         <ImageView
             android:id="@+id/image_urn_type"
@@ -71,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:hint="검색어를 입력해주세요."
-                android:completionThreshold="1"
+                android:completionThreshold="0"
                 android:gravity="center_vertical"
                 android:textColorHint="#555555" />
         </LinearLayout>

@@ -2,13 +2,16 @@ package com.example.taerimwon.di
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.WindowManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.taerimwon.R
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,6 +20,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val REQUEST_CODE_STORAGE_PERMISSION = 101 // 권한 요청 코드
     override fun onCreate(savedInstanceState: Bundle?) {
+        // 스플래시
+        val splashScreen = installSplashScreen()
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 

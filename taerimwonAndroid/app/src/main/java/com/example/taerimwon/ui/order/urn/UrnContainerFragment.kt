@@ -28,6 +28,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
 
     // 자동완성 단어들을 담을 리스트
     private lateinit var searchList: MutableList<UrnItem>
+//    private lateinit var searchList: MutableList<String>
 
     private lateinit var engraveTypeAdapter: EngraveTypeAdapter
     private lateinit var engraveType2Adapter: EngraveType2Adapter
@@ -148,11 +149,10 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
     private fun initData() {
         // 검색 리스트
         searchList = mutableListOf()
-
         settingList()
 
         // "ArrayList" - 리스트 객체
-        binding.autoCompleteTextView.setAdapter(ArrayAdapter(
+        binding.autoCompleteTextView.setAdapter(UrnAutoCompleteAdapter(
                 requireContext(),
                 android.R.layout.simple_dropdown_item_1line,
                 searchList
@@ -306,6 +306,17 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         binding.recyclerviewBoneEngraveSelectType.scrollToPosition(ApplicationClass.prefs.boneEngraveType2Position)
     }
     private fun setOnClickListeners() {
+        binding.autoCompleteTextView.setOnItemClickListener { adapterView, view, position, rowId ->
+            println("tag "+ "position: $position, rowId:$rowId, string: ${adapterView.getItemAtPosition(position)}")
+            val selectedUrnItem = adapterView.getItemAtPosition(position) as UrnItem
+            binding.autoCompleteTextView.setText(selectedUrnItem.urnItem)
+        }
+
+        binding.autoCompleteTextView.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                (view as AutoCompleteTextView).showDropDown()
+            }
+        }
     }
     private fun setOnItemSelectedListener() {
         binding.spinnerDate1Type.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
@@ -589,32 +600,14 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
 
     // 장동완성 단어 세팅
     private fun settingList() {
-        searchList.add(UrnItem("img_urn_sample1", R.drawable.img_urn_sample1))
-        searchList.add(UrnItem("img_urn_sample2", R.drawable.img_urn_sample2))
-        searchList.add(UrnItem("img_urn_sample3", R.drawable.img_urn_sample3))
-        searchList.add(UrnItem("img_urn_sample4", R.drawable.img_urn_sample4))
-        searchList.add(UrnItem("img_urn_sample5", R.drawable.img_urn_sample5))
-        searchList.add(UrnItem("img_urn_sample6", R.drawable.img_urn_sample6))
-
-        searchList.add(UrnItem("img_urn_sample1", R.drawable.img_urn_sample1))
-        searchList.add(UrnItem("img_urn_sample2", R.drawable.img_urn_sample2))
-        searchList.add(UrnItem("img_urn_sample3", R.drawable.img_urn_sample3))
-        searchList.add(UrnItem("img_urn_sample4", R.drawable.img_urn_sample4))
-        searchList.add(UrnItem("img_urn_sample5", R.drawable.img_urn_sample5))
-        searchList.add(UrnItem("img_urn_sample6", R.drawable.img_urn_sample6))
-
-        searchList.add(UrnItem("img_urn_sample1", R.drawable.img_urn_sample1))
-        searchList.add(UrnItem("img_urn_sample2", R.drawable.img_urn_sample2))
-        searchList.add(UrnItem("img_urn_sample3", R.drawable.img_urn_sample3))
-        searchList.add(UrnItem("img_urn_sample4", R.drawable.img_urn_sample4))
-        searchList.add(UrnItem("img_urn_sample5", R.drawable.img_urn_sample5))
-        searchList.add(UrnItem("img_urn_sample6", R.drawable.img_urn_sample6))
-
-        searchList.add(UrnItem("img_urn_sample1", R.drawable.img_urn_sample1))
-        searchList.add(UrnItem("img_urn_sample2", R.drawable.img_urn_sample2))
-        searchList.add(UrnItem("img_urn_sample3", R.drawable.img_urn_sample3))
-        searchList.add(UrnItem("img_urn_sample4", R.drawable.img_urn_sample4))
-        searchList.add(UrnItem("img_urn_sample5", R.drawable.img_urn_sample5))
-        searchList.add(UrnItem("img_urn_sample6", R.drawable.img_urn_sample6))
+        searchList.add(UrnItem("일반", R.drawable.img_urn_sample1))
+        searchList.add(UrnItem("기독교", R.drawable.img_urn_sample2))
+        searchList.add(UrnItem("불교", R.drawable.img_urn_sample3))
+        searchList.add(UrnItem("천주교", R.drawable.img_urn_sample4))
+        searchList.add(UrnItem("SGI", R.drawable.img_urn_sample5))
+        searchList.add(UrnItem("기타등등", R.drawable.img_urn_sample6))
+        // 배열을 가져옵니다.
+//        val searchListArray = resources.getStringArray(R.array.selected_urn_types)
+//        searchList = mutableListOf(*searchListArray) as ArrayList<String>
     }
 }
