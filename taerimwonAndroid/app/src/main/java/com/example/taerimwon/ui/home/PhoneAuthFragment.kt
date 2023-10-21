@@ -3,6 +3,7 @@ package com.example.taerimwon.ui.home
 import android.Manifest
 import android.app.PendingIntent
 import android.content.pm.PackageManager
+import android.os.CountDownTimer
 import android.telephony.PhoneNumberFormattingTextWatcher
 import android.telephony.SmsManager
 import android.view.View
@@ -29,6 +30,8 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
     lateinit var user: User
     var verificationId : String = ""
 
+    private var timer: CountDownTimer? = null
+
     override fun init() {
         initData()
         setOnClickListeners()
@@ -38,6 +41,25 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
 
     private fun initData() {
         authViewModel.getBlackList()
+
+        // 타이머
+        val totalTime : Long = 1 * 60 * 1000 // 1분을 밀리초로 변환
+        timer = object : CountDownTimer(totalTime, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                // 남은 시간을 분과 초로 나누어 표시
+                val minutes = millisUntilFinished / 60000
+                val seconds = (millisUntilFinished % 60000) / 1000
+                binding.textTimer.text = String.format("%02d:%02d", minutes, seconds)
+                binding.buttonTelAuth.isEnabled = false
+                binding.buttonTelAuth.setBackgroundResource(R.drawable.button_auth2)
+            }
+
+            override fun onFinish() {
+                binding.textTimer.text = "00:00"
+                binding.buttonTelAuth.isEnabled = true
+                binding.buttonTelAuth.setBackgroundResource(R.drawable.button_auth)
+            }
+        }
     }
     private fun setOnClickListeners() {
         binding.buttonTelAuth.setOnClickListener{
@@ -105,11 +127,13 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
                 }
                 is UiState.Success -> {
                     val blackListItems = state.data // 실제 데이터를 얻기 위해 data 속성을 사용
-                    if(ApplicationClass.prefs.authenticated)
+                    if(ApplicationClass.prefs.authenticated) {
+                        timer?.cancel()
                         findNavController().navigate(R.id.action_phoneAuthFragment_to_orderFragment)
+                    }
                     binding.textTel.visibility = View.VISIBLE
                     binding.editTextTel.visibility = View.VISIBLE
-                    binding.imageTel.visibility = View.VISIBLE
+//                    binding.imageTel.visibility = View.VISIBLE
                     binding.buttonTelAuth.visibility = View.VISIBLE
                     binding.buttonOrderFragment.visibility = View.VISIBLE
                 }
@@ -123,10 +147,14 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
             verificationId = state
             if(verificationId != "fail"){
                 toast("인증번호가 전송되었습니다.\n60초 이내에 입력해주세요.")
+               binding.buttonTelAuth.text = "재전송"
                 binding.textTelAuth.visibility = View.VISIBLE
                 binding.editTextTelAuth.visibility = View.VISIBLE
-                binding.imageTelAuth.visibility = View.VISIBLE
+                binding.textTimer.visibility = View.VISIBLE
+//                binding.imageTelAuth.visibility = View.VISIBLE
                 binding.buttonOrderFragment.isEnabled = true
+
+                timer?.start()
             }else{
                 toast("인증번호 전송에 실패했습니다.\n관리자에게 문의해주세요.")
             }

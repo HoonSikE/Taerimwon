@@ -1,7 +1,6 @@
 package com.example.taerimwon.ui.order.tablet
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.text.Editable
@@ -9,25 +8,30 @@ import android.text.InputFilter
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
-import androidx.core.content.ContextCompat
+import android.widget.AutoCompleteTextView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taerimwon.R
 import com.example.taerimwon.base.BaseFragment
+import com.example.taerimwon.data.dto.tablet.TabletItem
+import com.example.taerimwon.data.dto.urn.UrnItem
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.taerimwon.databinding.FragmentTabletContainerBinding
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.order.OrderViewModel
 import com.example.taerimwon.ui.order.tablet.bone.BoneTabletTypeAdapter
-import com.example.taerimwon.utils.constant.ENGRAVETYPEPOSITION
-import com.example.taerimwon.utils.constant.UiState
+import com.example.taerimwon.ui.order.urn.UrnAutoCompleteAdapter
 import com.example.taerimwon.utils.input.saveImageToInternalStorage
 
 
 @AndroidEntryPoint
 class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.layout.fragment_tablet_container) {
     private val orderViewModel: OrderViewModel by viewModels()
+
+    // 자동완성 단어들을 담을 리스트
+    private lateinit var searchList: MutableList<TabletItem>
+    private lateinit var searchList2: MutableList<TabletItem>
 
     private lateinit var tabletSelectTypeAdapter: TabletTypeAdapter
     var tabletSelectTypeList = ArrayList<String>()
@@ -86,6 +90,27 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         }
     }
     private fun initData() {
+        searchList = mutableListOf()
+        settingList()
+        // "ArrayList" - 리스트 객체
+        binding.autoCompleteTextView.setAdapter(
+            TabletAutoCompleteAdapter(
+                requireContext(),
+                android.R.layout.simple_dropdown_item_1line,
+                searchList
+            )
+        )
+        searchList2 = mutableListOf()
+        settingList2()
+        // "ArrayList" - 리스트 객체
+        binding.autoCompleteTextView2.setAdapter(
+            TabletAutoCompleteAdapter(
+                requireContext(),
+                android.R.layout.simple_dropdown_item_1line,
+                searchList2
+            )
+        )
+
         binding.editTextTabletName2.setText(ApplicationClass.prefs.tabletName2)
         binding.editTextName3.setText(ApplicationClass.prefs.name3)
 
@@ -183,6 +208,28 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         }
     }
     private fun setOnClickListeners() {
+        binding.autoCompleteTextView.setOnItemClickListener { adapterView, view, position, rowId ->
+            println("tag1 "+ "position: $position, rowId:$rowId, string: ${adapterView.getItemAtPosition(position)}")
+            val selectedTabletItem = adapterView.getItemAtPosition(position) as TabletItem
+            binding.autoCompleteTextView.setText(selectedTabletItem.tabletItem)
+        }
+
+        binding.autoCompleteTextView.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                (view as AutoCompleteTextView).showDropDown()
+            }
+        }
+        binding.autoCompleteTextView2.setOnItemClickListener { adapterView, view, position, rowId ->
+            println("tag2 "+ "position: $position, rowId:$rowId, string: ${adapterView.getItemAtPosition(position)}")
+            val selectedTabletItem = adapterView.getItemAtPosition(position) as TabletItem
+            binding.autoCompleteTextView.setText(selectedTabletItem.tabletItem)
+        }
+
+        binding.autoCompleteTextView2.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
+            if (hasFocus) {
+                (view as AutoCompleteTextView).showDropDown()
+            }
+        }
         binding.imageHeart.setOnClickListener{
             val editTextName3 = binding.editTextName3
             val updateText = editTextName3.text.toString() + "❤️"
@@ -582,5 +629,27 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.imageBoneHeart.visibility = View.GONE
             ApplicationClass.prefs.boneTabletName2 = ""
         }
+    }
+    private fun settingList() {
+        searchList.add(TabletItem("일반", R.drawable.img_urn_sample1))
+        searchList.add(TabletItem("기독교", R.drawable.img_urn_sample2))
+        searchList.add(TabletItem("불교", R.drawable.img_urn_sample3))
+        searchList.add(TabletItem("천주교", R.drawable.img_urn_sample4))
+        searchList.add(TabletItem("SGI", R.drawable.img_urn_sample5))
+        searchList.add(TabletItem("기타등등", R.drawable.img_urn_sample6))
+        // 배열을 가져옵니다.
+//        val searchListArray = resources.getStringArray(R.array.selected_urn_types)
+//        searchList = mutableListOf(*searchListArray) as ArrayList<String>
+    }
+    private fun settingList2() {
+        searchList2.add(TabletItem("일반2", R.drawable.img_urn_sample1))
+        searchList2.add(TabletItem("기독교2", R.drawable.img_urn_sample2))
+        searchList2.add(TabletItem("불교2", R.drawable.img_urn_sample3))
+        searchList2.add(TabletItem("천주교2", R.drawable.img_urn_sample4))
+        searchList2.add(TabletItem("SGI2", R.drawable.img_urn_sample5))
+        searchList2.add(TabletItem("기타등등2", R.drawable.img_urn_sample6))
+        // 배열을 가져옵니다.
+//        val searchListArray = resources.getStringArray(R.array.selected_urn_types)
+//        searchList = mutableListOf(*searchListArray) as ArrayList<String>
     }
 }

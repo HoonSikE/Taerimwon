@@ -2789,29 +2789,32 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     }
     private fun setOnClickListeners() {
         binding.buttonResultToOrderFragment.setOnClickListener{
-            if(checkInput()) {
-                if(ApplicationClass.prefs.note == "")
-                    msg += "\n\n특이사항: 없음"
-                else
-                    msg += "\n\n특이사항: " + ApplicationClass.prefs.note
-                
-                findNavController().navigate(R.id.action_resultFragment_to_orderFragment)
-            }
+            findNavController().navigate(R.id.action_resultFragment_to_orderFragment)
         }
         binding.buttonMMS.setOnClickListener{
-            // 권한 확인
-            val readPermission = Manifest.permission.READ_EXTERNAL_STORAGE
-            val writePermission = Manifest.permission.WRITE_EXTERNAL_STORAGE
+            if(checkInput()) {
+                var msg2 = msg
+                if (ApplicationClass.prefs.note == "")
+                    msg2 += "\n\n특이사항: 없음"
+                else
+                    msg2 += "\n\n특이사항: " + ApplicationClass.prefs.note
 
-            println("asdasd buttonMMS.setOnClickListener")
+                // 권한 확인
+                val readPermission = Manifest.permission.READ_EXTERNAL_STORAGE
+                val writePermission = Manifest.permission.WRITE_EXTERNAL_STORAGE
 
-            val activityContext = activity as? Activity // 안전하게 캐스트
-            if (activityContext != null) {
-                val readPermissionGranted = ContextCompat.checkSelfPermission(activityContext, readPermission) == PackageManager.PERMISSION_GRANTED
-                val writePermissionGranted = ContextCompat.checkSelfPermission(activityContext, writePermission) == PackageManager.PERMISSION_GRANTED
+                val activityContext = activity as? Activity // 안전하게 캐스트
+                if (activityContext != null) {
+                    val readPermissionGranted = ContextCompat.checkSelfPermission(
+                        activityContext,
+                        readPermission
+                    ) == PackageManager.PERMISSION_GRANTED
+                    val writePermissionGranted = ContextCompat.checkSelfPermission(
+                        activityContext,
+                        writePermission
+                    ) == PackageManager.PERMISSION_GRANTED
 
-                println("asdasd readPermissionGranted")
-                // 권한이 모두 허용되어 있는 경우
+                    // 권한이 모두 허용되어 있는 경우
 //                if (readPermissionGranted && writePermissionGranted) {
                     // 파일 액세스 권한이 허용된 상태
                     // MMS 보내기
@@ -2824,14 +2827,19 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
                     // 4. 이미지 파일의 경로를 Uri로 만들어서 MMS 메시지에 첨부
                     Log.d(TAG, "imageFile: " + msgImageFile)
-                    val imageUri = FileProvider.getUriForFile(requireContext(), "${requireContext().packageName}.fileprovider", msgImageFile)
+                    val imageUri = FileProvider.getUriForFile(
+                        requireContext(),
+                        "${requireContext().packageName}.fileprovider",
+                        msgImageFile
+                    )
                     Log.d(TAG, "imageUri: " + imageUri)
 
 
                     val tel = ApplicationClass.prefs.leaderTel.toString().replace("-", "")
                     val subject = "MMS 제목"
 //                    val sms_body = "MMS 내용"
-                    val sms_body = msg
+
+                    val sms_body = msg2
 
                     // 5. attachmentUri를 사용하여 MMS 메시지를 만들고 보냅니다.
                     println("asdasd sendMMS1")
@@ -2847,8 +2855,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                        REQUEST_CODE_STORAGE_PERMISSION
 //                    )
 //                }
-            } else {
-                // activityContext가 null인 경우에 대한 처리
+                } else {
+                    // activityContext가 null인 경우에 대한 처리
+                }
             }
         }
     }

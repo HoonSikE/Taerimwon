@@ -23,9 +23,9 @@
             style="@style/SubHeadBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginStart="40dp"
-            android:text="전화번호"
+            android:layout_marginTop="58dp"
+            android:layout_marginStart="20dp"
+            android:text="전화번호 입력"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_phone_auth_logo"
             android:visibility="gone"
@@ -34,12 +34,12 @@
         <EditText
             android:id="@+id/editText_tel"
             style="@style/SubHead"
+            android:backgroundTint="@color/gold"
             android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="32dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/edittext_regular"
             android:ems="10"
             android:gravity="center"
             android:hint="010-1234-5678"
@@ -53,29 +53,44 @@
             android:visibility="gone"
             />
 
-        <ImageView
-            android:id="@+id/image_tel"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintStart_toStartOf="@+id/editText_tel"
+<!--        <ImageView-->
+<!--            android:id="@+id/image_tel"-->
+<!--            android:layout_width="32dp"-->
+<!--            android:layout_height="32dp"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/editText_tel"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/editText_tel"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/editText_tel"-->
+<!--            app:srcCompat="@drawable/ic_tel"-->
+<!--            />-->
+
+        <TextView
+            android:id="@+id/text_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="1:00"
+            android:textSize="16dp"
+            android:textColor="@color/redTextColor"
+            android:layout_marginEnd="16dp"
             app:layout_constraintTop_toTopOf="@+id/editText_tel"
             app:layout_constraintBottom_toBottomOf="@+id/editText_tel"
-            app:srcCompat="@drawable/ic_tel"
+            app:layout_constraintEnd_toEndOf="@+id/editText_tel"
             android:visibility="gone"
             />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_tel_auth"
             style="@style/ButtonTextAuth"
-            android:background="@drawable/button_regular"
-            android:layout_width="100dp"
-            android:layout_height="48dp"
-            android:text="인증번호 발송"
+            android:background="@drawable/button_auth"
+            android:layout_width="66dp"
+            android:layout_height="44dp"
+            android:text="인증번호"
             app:layout_constraintTop_toTopOf="@+id/editText_tel"
+            app:layout_constraintBottom_toBottomOf="@+id/editText_tel"
             app:layout_constraintStart_toEndOf="@+id/editText_tel"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             android:visibility="gone"
             />
@@ -87,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="20dp"
             android:text="인증번호"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText_tel"
@@ -97,13 +112,13 @@
         <EditText
             android:id="@+id/editText_tel_auth"
             style="@style/SubHead"
-            android:background="@drawable/edittext_regular"
+            android:backgroundTint="@color/gold"
             android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginHorizontal="32dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="20dp"
             android:layout_marginTop="8dp"
             android:ems="10"
-            android:hint="인증번호를 입력하세요"
+            android:hint="인증번호 6자리를 입력해주세요"
             android:gravity="center"
             android:imeOptions="actionDone"
             android:inputType="number"
@@ -115,33 +130,32 @@
             android:visibility="gone"
             />
 
-        <ImageView
-            android:id="@+id/image_tel_auth"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintStart_toStartOf="@+id/editText_tel_auth"
-            app:layout_constraintTop_toTopOf="@+id/editText_tel_auth"
-            app:layout_constraintBottom_toBottomOf="@+id/editText_tel_auth"
-            app:srcCompat="@drawable/ic_msg"
-            android:visibility="gone"
-            />
+<!--        <ImageView-->
+<!--            android:id="@+id/image_tel_auth"-->
+<!--            android:layout_width="32dp"-->
+<!--            android:layout_height="32dp"-->
+<!--            android:layout_marginStart="8dp"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/editText_tel_auth"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/editText_tel_auth"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/editText_tel_auth"-->
+<!--            app:srcCompat="@drawable/ic_msg"-->
+<!--            />-->
 
         <!--다음 페이지-->
-        <Button
+        <TextView
             android:id="@+id/button_order_fragment"
             style="@style/ButtonText"
             android:background="@drawable/button_regular"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginHorizontal="24dp"
             android:layout_marginBottom="32dp"
-            android:text="인증 하기"
+            android:text="인증 확인"
             android:enabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:gravity="center"
             android:visibility="gone"
             />
 

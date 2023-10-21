@@ -1,5 +1,7 @@
 package com.example.taerimwon.ui.order
 
+import android.annotation.SuppressLint
+import android.os.Build
 import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,6 +9,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.RadioButton
+import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.fragment.app.viewModels
 import com.example.taerimwon.R
@@ -32,7 +35,6 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
     private val datePattern = """^\d{4}-\d{2}-\d{2}$""".toRegex()
     override fun init() {
         initData()
-        setOnCheckedChangeListener()
         setOnClickListeners()
         setOnItemSelectedListener()
         addTextChangedListener()
@@ -63,10 +65,21 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         val layoutRadioCremation = binding.layoutRadioCremation
         val layoutRadioFuneral = binding.layoutRadioFuneral
         val layoutRadioBurial = binding.layoutRadioBurial
+
+        val whiteColor = ContextCompat.getColor(requireContext(), R.color.white)
+        val blackColor = ContextCompat.getColor(requireContext(), R.color.black)
+
         if(selectedLocation == "화장장"){
-            binding.radioButton1.isChecked = true
-            binding.radioButton2.isChecked = false
-            binding.radioButton3.isChecked = false
+            // style 변경
+            binding.button1.setTextColor(whiteColor)
+            // background 변경
+            binding.button1.setBackgroundResource(R.drawable.button_primary)
+
+            binding.button2.setTextColor(blackColor)
+            binding.button2.setBackgroundResource(R.drawable.button_gray)
+
+            binding.button3.setTextColor(blackColor)
+            binding.button3.setBackgroundResource(R.drawable.button_gray)
 
             layoutRadioCremation.visibility = View.VISIBLE
             layoutRadioFuneral.visibility = View.GONE
@@ -139,9 +152,16 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             
             binding.editTextCremationTime.setText(ApplicationClass.prefs.cremationTime)
         }else if(selectedLocation == "장례식장"){
-            binding.radioButton1.isChecked = false
-            binding.radioButton2.isChecked = true
-            binding.radioButton3.isChecked = false
+            // style 변경
+            binding.button1.setTextColor(blackColor)
+            // background 변경
+            binding.button1.setBackgroundResource(R.drawable.button_gray)
+
+            binding.button2.setTextColor(whiteColor)
+            binding.button2.setBackgroundResource(R.drawable.button_primary)
+
+            binding.button3.setTextColor(blackColor)
+            binding.button3.setBackgroundResource(R.drawable.button_gray)
 
             layoutRadioCremation.visibility = View.GONE
             layoutRadioFuneral.visibility = View.VISIBLE
@@ -151,9 +171,16 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             binding.editTextFuneralNumber.setText(ApplicationClass.prefs.funeralNumber)
             binding.editTextFuneralTime.setText(ApplicationClass.prefs.funeralTime)
         }else if(selectedLocation == "장지"){
-            binding.radioButton1.isChecked = false
-            binding.radioButton2.isChecked = false
-            binding.radioButton3.isChecked = true
+            // style 변경
+            binding.button1.setTextColor(blackColor)
+            // background 변경
+            binding.button1.setBackgroundResource(R.drawable.button_gray)
+
+            binding.button2.setTextColor(blackColor)
+            binding.button2.setBackgroundResource(R.drawable.button_gray)
+
+            binding.button3.setTextColor(whiteColor)
+            binding.button3.setBackgroundResource(R.drawable.button_primary)
 
             layoutRadioCremation.visibility = View.GONE
             layoutRadioFuneral.visibility = View.GONE
@@ -176,42 +203,6 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             .commit()
     }
 
-    private fun setOnCheckedChangeListener() {
-        val radioGroup = binding.radioGroup
-        val layoutRadioCremation = binding.layoutRadioCremation
-        val layoutRadioFuneral = binding.layoutRadioFuneral
-        val layoutRadioBurial = binding.layoutRadioBurial
-
-        // 라디오 버튼 선택 시 호출되는 리스너 설정
-        radioGroup.setOnCheckedChangeListener { group, checkedId ->
-            // 선택된 라디오 버튼을 루트 뷰 내에서 찾습니다.
-            val rootView = view // Fragment의 루트 뷰를 가져옵니다.
-            val radioButton = rootView?.findViewById<RadioButton>(checkedId)
-
-            // 선택된 라디오 버튼에 따라 레이아웃 변경
-            when (radioButton?.id) {
-                R.id.radioButton1 -> {
-                    ApplicationClass.prefs.selectedLocation = "화장장"
-                    layoutRadioCremation.visibility = View.VISIBLE
-                    layoutRadioFuneral.visibility = View.GONE
-                    layoutRadioBurial.visibility = View.GONE
-                }
-                R.id.radioButton2 -> {
-                    ApplicationClass.prefs.selectedLocation = "장례식장"
-                    layoutRadioCremation.visibility = View.GONE
-                    layoutRadioFuneral.visibility = View.VISIBLE
-                    layoutRadioBurial.visibility = View.GONE
-                }
-                R.id.radioButton3 -> {
-                    ApplicationClass.prefs.selectedLocation = "장지"
-                    layoutRadioCremation.visibility = View.GONE
-                    layoutRadioFuneral.visibility = View.GONE
-                    layoutRadioBurial.visibility = View.VISIBLE
-                }
-            }
-        }
-    }
-
     private fun setOnClickListeners() {
         binding.buttonOrderToOrderFragment.setOnClickListener{
             ApplicationClass.prefs.resetPreferences()
@@ -220,6 +211,63 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         binding.buttonResultFragment.setOnClickListener {
             if(checkInput())
                 findNavController().navigate(R.id.action_orderFragment_to_resultFragment)
+        }
+        val layoutRadioCremation = binding.layoutRadioCremation
+        val layoutRadioFuneral = binding.layoutRadioFuneral
+        val layoutRadioBurial = binding.layoutRadioBurial
+
+        val whiteColor = ContextCompat.getColor(requireContext(), R.color.white)
+        val blackColor = ContextCompat.getColor(requireContext(), R.color.black)
+        binding.button1.setOnClickListener {
+            // style 변경
+            binding.button1.setTextColor(whiteColor)
+            // background 변경
+            binding.button1.setBackgroundResource(R.drawable.button_primary)
+
+            binding.button2.setTextColor(blackColor)
+            binding.button2.setBackgroundResource(R.drawable.button_gray)
+
+            binding.button3.setTextColor(blackColor)
+            binding.button3.setBackgroundResource(R.drawable.button_gray)
+
+            ApplicationClass.prefs.selectedLocation = "화장장"
+            layoutRadioCremation.visibility = View.VISIBLE
+            layoutRadioFuneral.visibility = View.GONE
+            layoutRadioBurial.visibility = View.GONE
+        }
+        binding.button2.setOnClickListener {
+            // style 변경
+            binding.button1.setTextColor(blackColor)
+            // background 변경
+            binding.button1.setBackgroundResource(R.drawable.button_gray)
+
+            binding.button2.setTextColor(whiteColor)
+            binding.button2.setBackgroundResource(R.drawable.button_primary)
+
+            binding.button3.setTextColor(blackColor)
+            binding.button3.setBackgroundResource(R.drawable.button_gray)
+
+            ApplicationClass.prefs.selectedLocation = "장례식장"
+            layoutRadioCremation.visibility = View.GONE
+            layoutRadioFuneral.visibility = View.VISIBLE
+            layoutRadioBurial.visibility = View.GONE
+        }
+        binding.button3.setOnClickListener {
+            // style 변경
+            binding.button1.setTextColor(blackColor)
+            // background 변경
+            binding.button1.setBackgroundResource(R.drawable.button_gray)
+
+            binding.button2.setTextColor(blackColor)
+            binding.button2.setBackgroundResource(R.drawable.button_gray)
+
+            binding.button3.setTextColor(whiteColor)
+            binding.button3.setBackgroundResource(R.drawable.button_primary)
+
+            ApplicationClass.prefs.selectedLocation = "장지"
+            layoutRadioCremation.visibility = View.GONE
+            layoutRadioFuneral.visibility = View.GONE
+            layoutRadioBurial.visibility = View.VISIBLE
         }
     }
 

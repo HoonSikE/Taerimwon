@@ -5,7 +5,6 @@ import android.text.InputFilter
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,7 +27,6 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
 
     // 자동완성 단어들을 담을 리스트
     private lateinit var searchList: MutableList<UrnItem>
-//    private lateinit var searchList: MutableList<String>
 
     private lateinit var engraveTypeAdapter: EngraveTypeAdapter
     private lateinit var engraveType2Adapter: EngraveType2Adapter

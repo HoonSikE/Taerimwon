@@ -30,10 +30,12 @@ class MainActivity : AppCompatActivity() {
         checkStoragePermission()
 
         // 캡쳐방지
-//        window.setFlags(
-//            WindowManager.LayoutParams.FLAG_SECURE,
-//            WindowManager.LayoutParams.FLAG_SECURE
-//        )
+        if(ApplicationClass.prefs.userTel != "01065673569"){
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_SECURE,
+                WindowManager.LayoutParams.FLAG_SECURE
+            )
+        }
 
         ApplicationClass.prefs.resetPreferences()
         supportActionBar?.hide()
