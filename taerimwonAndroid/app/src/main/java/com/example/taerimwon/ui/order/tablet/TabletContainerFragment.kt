@@ -111,6 +111,9 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             )
         )
 
+        binding.autoCompleteTextView.setText(ApplicationClass.prefs.selectedTabletName)
+        binding.autoCompleteTextView2.setText(ApplicationClass.prefs.selectedTabletName2)
+
         binding.editTextTabletName2.setText(ApplicationClass.prefs.tabletName2)
         binding.editTextName3.setText(ApplicationClass.prefs.name3)
 
@@ -212,6 +215,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             println("tag1 "+ "position: $position, rowId:$rowId, string: ${adapterView.getItemAtPosition(position)}")
             val selectedTabletItem = adapterView.getItemAtPosition(position) as TabletItem
             binding.autoCompleteTextView.setText(selectedTabletItem.tabletItem)
+            ApplicationClass.prefs.selectedTabletName = selectedTabletItem.tabletItem
         }
 
         binding.autoCompleteTextView.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
@@ -222,7 +226,8 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         binding.autoCompleteTextView2.setOnItemClickListener { adapterView, view, position, rowId ->
             println("tag2 "+ "position: $position, rowId:$rowId, string: ${adapterView.getItemAtPosition(position)}")
             val selectedTabletItem = adapterView.getItemAtPosition(position) as TabletItem
-            binding.autoCompleteTextView.setText(selectedTabletItem.tabletItem)
+            binding.autoCompleteTextView2.setText(selectedTabletItem.tabletItem)
+            ApplicationClass.prefs.selectedTabletName2 = selectedTabletItem.tabletItem
         }
 
         binding.autoCompleteTextView2.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
@@ -421,6 +426,34 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         })
     }
     private fun addTextChangedListener(){
+        binding.autoCompleteTextView.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 이전 텍스트 변경 이벤트
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // 텍스트 변경 이벤트
+                ApplicationClass.prefs.selectedTabletName = s?.toString() ?: ""
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 텍스트 변경 후 이벤트
+            }
+        })
+        binding.autoCompleteTextView2.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 이전 텍스트 변경 이벤트
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // 텍스트 변경 이벤트
+                ApplicationClass.prefs.selectedTabletName2 = s?.toString() ?: ""
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 텍스트 변경 후 이벤트
+            }
+        })
         // 직분, 세례명, 법명
         binding.editTextTabletName2.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -631,25 +664,13 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         }
     }
     private fun settingList() {
-        searchList.add(TabletItem("일반", R.drawable.img_urn_sample1))
-        searchList.add(TabletItem("기독교", R.drawable.img_urn_sample2))
-        searchList.add(TabletItem("불교", R.drawable.img_urn_sample3))
-        searchList.add(TabletItem("천주교", R.drawable.img_urn_sample4))
-        searchList.add(TabletItem("SGI", R.drawable.img_urn_sample5))
-        searchList.add(TabletItem("기타등등", R.drawable.img_urn_sample6))
-        // 배열을 가져옵니다.
-//        val searchListArray = resources.getStringArray(R.array.selected_urn_types)
-//        searchList = mutableListOf(*searchListArray) as ArrayList<String>
+        searchList.add(TabletItem("미정", 0))
+        searchList.add(TabletItem("기본", R.drawable.img_tablet))
+        searchList.add(TabletItem("기본(검정)", R.drawable.img_tablet))
     }
     private fun settingList2() {
-        searchList2.add(TabletItem("일반2", R.drawable.img_urn_sample1))
-        searchList2.add(TabletItem("기독교2", R.drawable.img_urn_sample2))
-        searchList2.add(TabletItem("불교2", R.drawable.img_urn_sample3))
-        searchList2.add(TabletItem("천주교2", R.drawable.img_urn_sample4))
-        searchList2.add(TabletItem("SGI2", R.drawable.img_urn_sample5))
-        searchList2.add(TabletItem("기타등등2", R.drawable.img_urn_sample6))
-        // 배열을 가져옵니다.
-//        val searchListArray = resources.getStringArray(R.array.selected_urn_types)
-//        searchList = mutableListOf(*searchListArray) as ArrayList<String>
+        searchList2.add(TabletItem("미정", 0))
+        searchList2.add(TabletItem("기본", R.drawable.img_tablet))
+        searchList2.add(TabletItem("기본(검정)", R.drawable.img_tablet))
     }
 }

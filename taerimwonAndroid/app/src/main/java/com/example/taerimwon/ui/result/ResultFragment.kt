@@ -8,10 +8,7 @@ import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Typeface
+import android.graphics.*
 import android.net.Uri
 import android.os.Handler
 import android.os.Process
@@ -21,12 +18,14 @@ import android.text.TextWatcher
 import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
+import android.view.ScaleGestureDetector
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.ViewCompat
 import androidx.core.view.isVisible
 import androidx.core.view.marginTop
 import androidx.fragment.app.viewModels
@@ -35,6 +34,7 @@ import com.example.taerimwon.base.BaseFragment
 import com.example.taerimwon.databinding.FragmentResultBinding
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.fragment.findNavController
+import com.example.taerimwon.data.dto.urn.UrnItem
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.home.AuthViewModel
 import com.example.taerimwon.ui.order.urn.UrnContainerFragment
@@ -60,6 +60,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     private lateinit var tabletContentBitmap: Bitmap
     private lateinit var boneTabletBitmap: Bitmap
     private lateinit var boneTabletContentBitmap: Bitmap
+    private var index = 1;
+    private var scale = 1.0f
 
     override fun init() {
         initData()
@@ -67,7 +69,29 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         setOnClickListeners()
         observer()
     }
+
+    inner class ScaleGestureListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
+        override fun onScale(detector: ScaleGestureDetector): Boolean {
+            val scaleFactor = detector.scaleFactor
+
+            val layoutResultImage = binding.layoutResultImage
+            // View를 확대 또는 축소
+            layoutResultImage.scaleX *= scaleFactor
+            layoutResultImage.scaleY *= scaleFactor
+
+            return true
+        }
+    }
     private fun initData() {
+        val scaleGestureDetector = ScaleGestureDetector(requireContext(), ScaleGestureListener())
+        // 확대/축소를 적용할 View
+        val layoutResultImage = binding.layoutResultImage
+
+        layoutResultImage.setOnTouchListener { _, event ->
+            scaleGestureDetector.onTouchEvent(event)
+            true
+        }
+
         selectedUrnType = ApplicationClass.prefs.selectedUrnType.toString()
         selectedTabletType = ApplicationClass.prefs.selectedTabletType.toString()
         boneSelectedTabletType = ApplicationClass.prefs.boneSelectedTabletType.toString()
@@ -174,6 +198,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             return
         // 이미지 이름을 문자열로 정의합니다.
         val engraveTypePosition = ApplicationClass.prefs.engraveTypePosition
+
+        if(engraveTypePosition == 0){
+            binding.layoutUrnResult21.visibility = View.VISIBLE
+            binding.imageUrnResult21.visibility = View.GONE
+            return
+        }
         var imageName = "img_mark" + (engraveTypePosition + 1)
 
         if(engraveTypePosition == 4 || engraveTypePosition == 5){
@@ -186,6 +216,78 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         binding.imageUrnResult21.setImageResource(imageResource)
     }
     private fun setUrnData() {
+        val selectedUrnName = ApplicationClass.prefs.selectedUrnName
+        if(selectedUrnType == "유골함"){
+            val layoutUrnImage = binding.layoutUrnImage
+            var newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn)
+
+            if(selectedUrnName == "기본"){
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn)
+            }else if(selectedUrnName == "기본(검정)"){
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn)
+            }else if(selectedUrnName == "도원기독교 DW-3 4010"){
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn1)
+            }else if(selectedUrnName == "도원불교 DW-4 4010"){
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn2)
+            }else if(selectedUrnName == "도원천주교 DW-5 4010"){
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn3)
+            }else if(selectedUrnName == "도원칼라난 DW-2 4010"){
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4)
+            }else if(selectedUrnName == "도원칼라송학 DW-1 4010"){
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5)
+            }else if(selectedUrnName == "도화청꽃 DH-4 4010"){
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn6)
+            }else if(selectedUrnName == "도화홍꽃 DH-5 4010"){
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn7)
+            }else if(selectedUrnName == "소담난 SDN-2 4008"){
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8)
+            }else if(selectedUrnName == "소담송학 SDS-1 4008"){
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn9)
+            }
+            layoutUrnImage.background = newBackground
+        }
+
+        if(selectedUrnName!!.contains("검정")){
+            binding.layoutUrnResult111.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult112.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult121.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult122.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult123.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult124.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult13.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult131.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult141.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult142.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult15.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult151.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult161.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult162.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult171.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult17.setTextColor(Color.parseColor("#FFD700"))
+
+            binding.layoutUrnResult21.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult220.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult221.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult222.setTextColor(Color.parseColor("#FFD700"))
+
+            binding.layoutUrnResult311.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult312.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult321.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult322.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult323.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult324.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult33.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult331.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult341.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult342.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult35.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult351.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult361.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult362.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult371.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult37.setTextColor(Color.parseColor("#FFD700"))
+        }
+
         // 내용이 없으면 빈 값
         if(ApplicationClass.prefs.name1 == "") {
             binding.imageUrnImage.visibility = View.INVISIBLE
@@ -219,11 +321,17 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val engraveType2 = ApplicationClass.prefs.engraveType2
 
         if(engraveType2.toString().contains("年月日")){
+            binding.layoutUrnResult111.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            binding.layoutUrnResult112.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+
             binding.layoutUrnResult13.visibility = View.GONE
             binding.layoutUrnResult131.visibility = View.VISIBLE
             binding.layoutUrnResult15.visibility = View.GONE
             binding.layoutUrnResult151.visibility = View.VISIBLE
             binding.layoutUrnResult171.visibility = View.VISIBLE
+
+            binding.layoutUrnResult311.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            binding.layoutUrnResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
 
             binding.layoutUrnResult33.visibility = View.GONE
             binding.layoutUrnResult331.visibility = View.VISIBLE
@@ -496,6 +604,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             return
         // 이미지 이름을 문자열로 정의합니다.
         val boneEngraveTypePosition = ApplicationClass.prefs.boneEngraveTypePosition
+
+        if(boneEngraveTypePosition == 0){
+            binding.layoutBoneResult21.visibility = View.VISIBLE
+            binding.imageBoneResult21.visibility = View.GONE
+            return
+        }
+
         var imageName = "img_mark" + (boneEngraveTypePosition + 1)
 
         if(boneEngraveTypePosition == 4 || boneEngraveTypePosition == 5){
@@ -508,6 +623,47 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         binding.imageBoneResult21.setImageResource(imageResource)
     }
     private fun setBone1Data() {
+        val selectedUrnName = ApplicationClass.prefs.selectedUrnName
+        if(selectedUrnName!!.contains("검정")){
+            binding.layoutBoneResult111.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult112.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult121.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult122.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult123.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult124.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult13.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult131.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult141.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult142.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult15.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult151.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult161.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult162.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult171.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult17.setTextColor(Color.parseColor("#FFD700"))
+
+            binding.layoutBoneResult21.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult220.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult221.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult222.setTextColor(Color.parseColor("#FFD700"))
+
+            binding.layoutBoneResult311.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult312.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult321.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult322.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult323.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult324.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult33.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult331.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult341.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult342.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult35.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult351.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult361.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult362.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult371.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneResult37.setTextColor(Color.parseColor("#FFD700"))
+        }
         // 내용이 없으면 빈 값
         // name1 / boneName1
         if(ApplicationClass.prefs.boneSex == "여성"){
@@ -556,11 +712,17 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val boneEngraveType2 = ApplicationClass.prefs.boneEngraveType2
 
         if(boneEngraveType2.toString().contains("年月日")){
+            binding.layoutBoneResult111.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            binding.layoutBoneResult112.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+
             binding.layoutBoneResult13.visibility = View.GONE
             binding.layoutBoneResult131.visibility = View.VISIBLE
             binding.layoutBoneResult15.visibility = View.GONE
             binding.layoutBoneResult151.visibility = View.VISIBLE
             binding.layoutBoneResult171.visibility = View.VISIBLE
+
+            binding.layoutBoneResult311.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            binding.layoutBoneResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
 
             binding.layoutBoneResult33.visibility = View.GONE
             binding.layoutBoneResult331.visibility = View.VISIBLE
@@ -829,16 +991,25 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         // 정보1
         var name1 = ApplicationClass.prefs.name1
         var engraveTypePosition = ApplicationClass.prefs.engraveTypePosition
+        var layoutBone2Result211 = binding.layoutBone2Result211
+        var imageBone2Result211 = binding.imageBone2Result211
 
         // 정보2
         var boneName1 = ApplicationClass.prefs.boneName1
         var boneEngraveTypePosition = ApplicationClass.prefs.boneEngraveTypePosition
+        var layoutBone2Result212 = binding.layoutBone2Result212
+        var imageBone2Result212 = binding.imageBone2Result212
 
         // 추가 정보 / 기존 정보
         if(engraveTypePosition == boneEngraveTypePosition && !(name1 == "" || boneName1 == "")) {
             binding.imageBone2Result21.visibility = View.VISIBLE
             binding.imageBone2Result211.visibility = View.GONE
             binding.imageBone2Result212.visibility = View.GONE
+
+            if(engraveTypePosition == 0){
+                binding.layoutBone2Result21.visibility = View.VISIBLE
+                binding.imageBone2Result21.visibility = View.GONE
+            }
 
             var imageName = "img_mark" + (engraveTypePosition + 1)
 
@@ -855,16 +1026,24 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             // 정보1
             name1 = ApplicationClass.prefs.boneName1
             engraveTypePosition = ApplicationClass.prefs.boneEngraveTypePosition
+            layoutBone2Result211 = binding.layoutBone2Result212
+            imageBone2Result211 = binding.imageBone2Result212
 
             // 정보2
             boneName1 = ApplicationClass.prefs.name1
             boneEngraveTypePosition = ApplicationClass.prefs.engraveTypePosition
+            layoutBone2Result212 = binding.layoutBone2Result211
+            imageBone2Result212 = binding.imageBone2Result211
         }
         // 기존 정보 / 추가 정보
         else if(ApplicationClass.prefs.boneSex == "여성"){
         }
 
         if(name1 != ""){
+            if(engraveTypePosition == 0){
+                layoutBone2Result211.visibility = View.VISIBLE
+                imageBone2Result211.visibility = View.GONE
+            }
             // 이미지 이름을 문자열로 정의합니다.
             var imageName1 = "img_mark" + (engraveTypePosition + 1)
 
@@ -879,6 +1058,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         }
 
         if(boneName1 != ""){
+            if(boneEngraveTypePosition == 0){
+                layoutBone2Result212.visibility = View.VISIBLE
+                imageBone2Result212.visibility = View.GONE
+            }
             // 이미지 이름을 문자열로 정의합니다.
             var imageName2 = "img_mark" + (boneEngraveTypePosition + 1)
 
@@ -920,6 +1103,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         var boneDate2Type = ApplicationClass.prefs.boneDate2Type
 
         // 정보1
+        // 마크
+        var layoutUrnResult211 = binding.layoutBone2Result211
         // 이름
         var layoutUrnResult221 = binding.layoutBone21Result221
         // 위 글자
@@ -952,6 +1137,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         var layoutUrnResult37 = binding.layoutBone21Result37
 
         // 정보2
+        // 마크
+        var layoutBoneResult211 = binding.layoutBone2Result212
         // 이름
         var layoutBoneResult221 = binding.layoutBone22Result221
         // 위 글자
@@ -984,29 +1171,29 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         var layoutBoneResult37 = binding.layoutBone22Result37
 
         // 년월일
-        var layoutUrnResult13 = binding.layoutUrnResult13
-        var layoutUrnResult131 = binding.layoutUrnResult131
-        var layoutUrnResult15 = binding.layoutUrnResult15
-        var layoutUrnResult151 = binding.layoutUrnResult151
-        var layoutUrnResult171 = binding.layoutUrnResult171
+        var layoutUrnResult13 = binding.layoutBone21Result13
+        var layoutUrnResult131 = binding.layoutBone21Result131
+        var layoutUrnResult15 = binding.layoutBone21Result15
+        var layoutUrnResult151 = binding.layoutBone21Result151
+        var layoutUrnResult171 = binding.layoutBone21Result171
 
-        var layoutUrnResult33 = binding.layoutUrnResult33
-        var layoutUrnResult331 = binding.layoutUrnResult331
-        var layoutUrnResult35 = binding.layoutUrnResult35
-        var layoutUrnResult351 = binding.layoutUrnResult351
-        var layoutUrnResult371 = binding.layoutUrnResult371
+        var layoutUrnResult33 = binding.layoutBone21Result33
+        var layoutUrnResult331 = binding.layoutBone21Result331
+        var layoutUrnResult35 = binding.layoutBone21Result35
+        var layoutUrnResult351 = binding.layoutBone21Result351
+        var layoutUrnResult371 = binding.layoutBone21Result371
 
-        var layoutBoneResult13 = binding.layoutBoneResult13
-        var layoutBoneResult131 = binding.layoutBoneResult131
-        var layoutBoneResult15 = binding.layoutBoneResult15
-        var layoutBoneResult151 = binding.layoutBoneResult151
-        var layoutBoneResult171 = binding.layoutBoneResult171
+        var layoutBoneResult13 = binding.layoutBone22Result13
+        var layoutBoneResult131 = binding.layoutBone22Result131
+        var layoutBoneResult15 = binding.layoutBone22Result15
+        var layoutBoneResult151 = binding.layoutBone22Result151
+        var layoutBoneResult171 = binding.layoutBone22Result171
 
-        var layoutBoneResult33 = binding.layoutBoneResult33
-        var layoutBoneResult331 = binding.layoutBoneResult331
-        var layoutBoneResult35 = binding.layoutBoneResult35
-        var layoutBoneResult351 = binding.layoutBoneResult351
-        var layoutBoneResult371 = binding.layoutBoneResult371
+        var layoutBoneResult33 = binding.layoutBone22Result33
+        var layoutBoneResult331 = binding.layoutBone22Result331
+        var layoutBoneResult35 = binding.layoutBone22Result35
+        var layoutBoneResult351 = binding.layoutBone22Result351
+        var layoutBoneResult371 = binding.layoutBone22Result371
         // 폰트
         val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
 
@@ -1037,29 +1224,32 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             boneDate2Type = ApplicationClass.prefs.date2Type
 
             // 년월일
-            layoutUrnResult13 = binding.layoutBoneResult13
-            layoutUrnResult131 = binding.layoutBoneResult131
-            layoutUrnResult15 = binding.layoutBoneResult15
-            layoutUrnResult151 = binding.layoutBoneResult151
-            layoutUrnResult171 = binding.layoutBoneResult171
+            layoutUrnResult13 = binding.layoutBone22Result13
+            layoutUrnResult131 = binding.layoutBone22Result131
+            layoutUrnResult15 = binding.layoutBone22Result15
+            layoutUrnResult151 = binding.layoutBone22Result151
+            layoutUrnResult171 = binding.layoutBone22Result171
 
-            layoutUrnResult33 = binding.layoutBoneResult33
-            layoutUrnResult331 = binding.layoutBoneResult331
-            layoutUrnResult35 = binding.layoutBoneResult35
-            layoutUrnResult351 = binding.layoutBoneResult351
-            layoutUrnResult371 = binding.layoutBoneResult371
+//            layoutUrnResult30 = binding.layoutBone22Result30
+            layoutUrnResult33 = binding.layoutBone22Result33
+            layoutUrnResult331 = binding.layoutBone22Result331
+            layoutUrnResult35 = binding.layoutBone22Result35
+            layoutUrnResult351 = binding.layoutBone22Result351
+            layoutUrnResult371 = binding.layoutBone22Result371
 
-            layoutBoneResult13 = binding.layoutUrnResult13
-            layoutBoneResult131 = binding.layoutUrnResult131
-            layoutBoneResult15 = binding.layoutUrnResult15
-            layoutBoneResult151 = binding.layoutUrnResult151
-            layoutBoneResult171 = binding.layoutUrnResult171
+//            layoutBoneResult10 = binding.layoutBone21Result10
+            layoutBoneResult13 = binding.layoutBone21Result13
+            layoutBoneResult131 = binding.layoutBone21Result131
+            layoutBoneResult15 = binding.layoutBone21Result15
+            layoutBoneResult151 = binding.layoutBone21Result151
+            layoutBoneResult171 = binding.layoutBone21Result171
 
-            layoutBoneResult33 = binding.layoutUrnResult33
-            layoutBoneResult331 = binding.layoutUrnResult331
-            layoutBoneResult35 = binding.layoutUrnResult35
-            layoutBoneResult351 = binding.layoutUrnResult351
-            layoutBoneResult371 = binding.layoutUrnResult371
+//            layoutBoneResult30 = binding.layoutBone21Result30
+            layoutBoneResult33 = binding.layoutBone21Result33
+            layoutBoneResult331 = binding.layoutBone21Result331
+            layoutBoneResult35 = binding.layoutBone21Result35
+            layoutBoneResult351 = binding.layoutBone21Result351
+            layoutBoneResult371 = binding.layoutBone21Result371
         }
         // 기존 정보 / 추가 정보
         if(name1 == "") {
@@ -1075,11 +1265,18 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         setBone2Mark()
 
         if(engraveType2.toString().contains("年月日")){
+            val pixel_size_20 = resources.getDimensionPixelSize(R.dimen.pixel_size_20)
+            layoutUrnResult111.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            layoutUrnResult112.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+
             layoutUrnResult13.visibility = View.GONE
             layoutUrnResult131.visibility = View.VISIBLE
             layoutUrnResult15.visibility = View.GONE
             layoutUrnResult151.visibility = View.VISIBLE
             layoutUrnResult171.visibility = View.VISIBLE
+
+            layoutUrnResult311.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            layoutUrnResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
 
             layoutUrnResult33.visibility = View.GONE
             layoutUrnResult331.visibility = View.VISIBLE
@@ -1089,11 +1286,18 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         }
 
         if(boneEngraveType2.toString().contains("年月日")){
+            val pixel_size_20 = resources.getDimensionPixelSize(R.dimen.pixel_size_20)
+            layoutBoneResult111.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            layoutBoneResult112.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+
             layoutBoneResult13.visibility = View.GONE
             layoutBoneResult131.visibility = View.VISIBLE
             layoutBoneResult15.visibility = View.GONE
             layoutBoneResult151.visibility = View.VISIBLE
             layoutBoneResult171.visibility = View.VISIBLE
+
+            layoutBoneResult311.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            layoutBoneResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
 
             layoutBoneResult33.visibility = View.GONE
             layoutBoneResult331.visibility = View.VISIBLE
@@ -1102,6 +1306,90 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             layoutBoneResult371.visibility = View.VISIBLE
         }
 
+        val selectedUrnName = ApplicationClass.prefs.selectedUrnName
+        if(selectedUrnName!!.contains("검정")){
+            binding.layoutBone2Result21.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBone2Result211.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBone2Result212.setTextColor(Color.parseColor("#FFD700"))
+
+            layoutUrnResult111.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult112.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult121.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult122.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult123.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult124.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult13.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult131.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult141.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult142.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult15.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult151.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult161.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult162.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult171.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult17.setTextColor(Color.parseColor("#FFD700"))
+
+            layoutUrnResult211.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult220.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult221.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult222.setTextColor(Color.parseColor("#FFD700"))
+
+            layoutUrnResult311.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult312.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult321.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult322.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult323.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult324.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult33.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult331.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult341.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult342.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult35.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult351.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult361.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult362.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult371.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult37.setTextColor(Color.parseColor("#FFD700"))
+
+            layoutBoneResult111.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult112.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult121.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult122.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult123.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult124.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult13.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult131.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult141.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult142.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult15.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult151.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult161.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult162.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult171.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult17.setTextColor(Color.parseColor("#FFD700"))
+
+            layoutBoneResult211.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult220.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult221.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult222.setTextColor(Color.parseColor("#FFD700"))
+
+            layoutBoneResult311.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult312.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult321.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult322.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult323.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult324.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult33.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult331.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult341.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult342.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult35.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult351.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult361.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult362.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult371.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult37.setTextColor(Color.parseColor("#FFD700"))
+        }
 
         val pixel_size_16 = resources.getDimensionPixelSize(R.dimen.pixel_size_16)
         val pixel_size_20 = resources.getDimensionPixelSize(R.dimen.pixel_size_20)
@@ -1608,9 +1896,11 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val tabletType = ApplicationClass.prefs.tabletType
         var imageName = "img_mark1"
 
-        if(tabletReligion == "일반" && tabletType != "문구")
-            imageName = "img_mark1"
-        else if(tabletReligion == "기독교" && tabletType != "문구")
+        if(tabletReligion == "일반" && tabletType != "문구") {
+//            imageName = "img_mark1"
+            binding.layoutTabletResult10.visibility = View.VISIBLE
+            binding.layoutTabletResult12.visibility = View.GONE
+        }else if(tabletReligion == "기독교" && tabletType != "문구")
             imageName = "img_mark2"
         else if(tabletReligion == "불교" && tabletType != "문구")
             imageName = "img_mark3"
@@ -1654,6 +1944,21 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val layoutTabletResult31 = binding.layoutTabletResult31
         val layoutTabletResult312 = binding.layoutTabletResult312
         val layoutTabletResult32 = binding.layoutTabletResult32
+
+        val selectedTabletName = ApplicationClass.prefs.selectedTabletName
+        if(selectedTabletName!!.contains("검정")){
+            binding.layoutTabletResult0.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTabletResult10.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTabletResult20.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTabletResult2.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTabletResult21.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTabletResult22.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTabletResult30.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTabletResult3.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTabletResult31.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTabletResult312.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTabletResult32.setTextColor(Color.parseColor("#FFD700"))
+        }
 
         if(!tabletType.contains("본관") && tabletType != "문구") {
             when (tabletType) {
@@ -1905,9 +2210,11 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val boneTabletType = ApplicationClass.prefs.boneTabletType
         var imageName = "img_mark1"
 
-        if(boneTabletReligion == "일반" && boneTabletType != "문구")
-            imageName = "img_mark1"
-        else if(boneTabletReligion == "기독교" && boneTabletType != "문구")
+        if(boneTabletReligion == "일반" && boneTabletType != "문구") {
+//            imageName = "img_mark1"
+            binding.layoutTablet2Result10.visibility = View.VISIBLE
+            binding.layoutTablet2Result12.visibility = View.GONE
+        }else if(boneTabletReligion == "기독교" && boneTabletType != "문구")
             imageName = "img_mark2"
         else if(boneTabletReligion == "불교" && boneTabletType != "문구")
             imageName = "img_mark3"
@@ -1920,7 +2227,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
         binding.layoutTablet2Result12.setImageResource(imageResource)
     }
-
     private fun setBoneTabletData() {
         setBoneTableMark()
         val pixel_size_13 = resources.getDimensionPixelSize(R.dimen.pixel_size_13)
@@ -1933,6 +2239,21 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //        val pixel_size_35 = resources.getDimensionPixelSize(R.dimen.pixel_size_35)
 //        val pixel_size_40 = resources.getDimensionPixelSize(R.dimen.pixel_size_40)
 //        val pixel_size_45 = resources.getDimensionPixelSize(R.dimen.pixel_size_45)
+
+        val selectedTabletName2 = ApplicationClass.prefs.selectedTabletName2
+        if(selectedTabletName2!!.contains("검정")){
+            binding.layoutTablet2Result0.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTablet2Result10.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTablet2Result20.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTablet2Result2.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTablet2Result21.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTablet2Result22.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTablet2Result30.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTablet2Result3.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTablet2Result31.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTablet2Result312.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTablet2Result32.setTextColor(Color.parseColor("#FFD700"))
+        }
 
         // 이름
         var tabletName2 = ApplicationClass.prefs.tabletName2.toString()
@@ -2502,15 +2823,19 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
     }
     private fun setMsg() {
-        msg = "[태림원]" +
-                "\n발주자 정보" +
+        msg = "[태림원 주문]" +
+                "\n${index++}. 발주자 정보" +
                 "\n - 발주자명: " + ApplicationClass.prefs.leaderName +
                 "\n - 발주자 전화번호: " + ApplicationClass.prefs.leaderTel +
-                "\n - 소속: " + ApplicationClass.prefs.leaderDepartment +
-                "\n\n상주 정보" +
-                "\n상주명: " + ApplicationClass.prefs.clientName +
-                "\n상주 전화번호: " + ApplicationClass.prefs.clientTel +
-                "\n\n발주 장소"
+                "\n - 소속: " + ApplicationClass.prefs.leaderDepartment
+
+        if(ApplicationClass.prefs.clientName != "" && ApplicationClass.prefs.clientName != ""){
+            msg += "\n\n${index++}. 상주 정보" +
+                    "\n - 이름: " + ApplicationClass.prefs.clientName +
+                    "\n - 전화번호: " + ApplicationClass.prefs.clientTel
+        }
+
+        msg += "\n\n${index++}. 발주 장소"
 
         val selectedLocation = ApplicationClass.prefs.selectedLocation
         if(selectedLocation.equals("화장장")){
@@ -2525,13 +2850,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     "\n - 함 도착 시간: " + ApplicationClass.prefs.burialTime
         }
 
-        msg += "\n\n유골함 종류: " + ApplicationClass.prefs.selectedUrnType
+        msg += "\n\n${index++}. 유골함" +
+                "\n - 함 종류: " + ApplicationClass.prefs.selectedUrnType +
+                "\n - 함 명칭: " + ApplicationClass.prefs.selectedUrnName
 
         if(selectedUrnType != "선택안함"){
-            msg += "\n\n각인 종류: " + ApplicationClass.prefs.engraveType + "[" + ApplicationClass.prefs.engraveType2 + "]"
+            msg += "\n - 각인 종류: " + ApplicationClass.prefs.engraveType + "[" + ApplicationClass.prefs.engraveType2 + "]"
 
-            msg += "\n\n고인 정보" +
-                    "\n - 고인명: " + ApplicationClass.prefs.name1 +
+            msg += "\n - 고인명: " + ApplicationClass.prefs.name1 +
                     "\n - 생년월일: " + ApplicationClass.prefs.date1.toString().replace("-", ".") + " (${ApplicationClass.prefs.date1Type})" +
                     "\n - 사망월일: " + ApplicationClass.prefs.date2.toString().replace("-", ".") + " (${ApplicationClass.prefs.date2Type})"
 
@@ -2546,7 +2872,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
             // 합골
             if(selectedUrnType.contains("합골")){
-                msg += "\n\n========== "
+                msg += "\n========== "
 
                 msg += "\n합골 추가 정보" +
                         "\n - 각인 종류: " + ApplicationClass.prefs.boneEngraveType + "[" + ApplicationClass.prefs.boneEngraveType2 + "]" +
@@ -2566,33 +2892,39 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             }
         }
 
-        msg += "\n\n위패 종류: " + ApplicationClass.prefs.selectedTabletType
+        msg += "\n\n${index++}. 위패" +
+                "\n - 위패 종류: " + ApplicationClass.prefs.selectedTabletType +
+                "\n - 위패 명칭: " + ApplicationClass.prefs.selectedTabletName
         if(selectedTabletType != "선택안함") {
-            msg += "\n\n위패 상세 종류: " + ApplicationClass.prefs.tabletType
+            msg += "\n - 위패 상세 종류: " + ApplicationClass.prefs.tabletType
 
             if(!selectedTabletType.contains("사진")){
                 msg += "\n - 위패 내용: " + ApplicationClass.prefs.name3
                 if(!selectedTabletType.contains("본관")){
                     if(ApplicationClass.prefs.tabletType.toString().contains("기독교"))
-                        msg += "\n직분: " + ApplicationClass.prefs.tabletName2
+                        msg += "\n - 직분: " + ApplicationClass.prefs.tabletName2
                     else if(ApplicationClass.prefs.tabletType.toString().contains("천주교"))
-                        msg += "\n세례명: " + ApplicationClass.prefs.tabletName2
+                        msg += "\n - 세례명: " + ApplicationClass.prefs.tabletName2
                 }
             }
         }
         if(boneSelectedTabletType != "선택안함") {
-            msg += "\n\n합골 위패 종류: " + ApplicationClass.prefs.boneSelectedTabletType
-            msg += "\n\n위패 상세 종류: " + ApplicationClass.prefs.boneTabletType
+            msg += "\n========== "
+            msg += "\n합골 추가 정보" +
+                    "\n - 합골 위패 종류: " + ApplicationClass.prefs.boneSelectedTabletType +
+                    "\n - 합골 위패 명칭: " + ApplicationClass.prefs.selectedTabletName2
+            msg += "\n - 위패 상세 종류: " + ApplicationClass.prefs.boneTabletType
 
             if(!boneSelectedTabletType.contains("사진")){
                 msg += "\n - 위패 내용: " + ApplicationClass.prefs.boneName3
                 if(!boneSelectedTabletType.contains("본관")){
                     if(ApplicationClass.prefs.boneTabletType.toString().contains("기독교"))
-                        msg += "\n직분: " + ApplicationClass.prefs.boneTabletName2
+                        msg += "\n - 직분: " + ApplicationClass.prefs.boneTabletName2
                     else if(ApplicationClass.prefs.boneTabletType.toString().contains("천주교"))
-                        msg += "\n세례명: " + ApplicationClass.prefs.boneTabletName2
+                        msg += "\n - 세례명: " + ApplicationClass.prefs.boneTabletName2
                 }
             }
+            msg += "\n========== "
         }
     }
     private fun setImage() {
@@ -2788,6 +3120,16 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         }, delayMillis.toLong())
     }
     private fun setOnClickListeners() {
+        binding.imageZoomIn.setOnClickListener {
+            scale += 0.2f
+            applyScale()
+        }
+
+        binding.imageZoomOut.setOnClickListener {
+            scale -= 0.2f
+            applyScale()
+        }
+
         binding.buttonResultToOrderFragment.setOnClickListener{
             findNavController().navigate(R.id.action_resultFragment_to_orderFragment)
         }
@@ -2795,9 +3137,11 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             if(checkInput()) {
                 var msg2 = msg
                 if (ApplicationClass.prefs.note == "")
-                    msg2 += "\n\n특이사항: 없음"
+                    msg2 += "\n\n${index}. 특이사항" +
+                            "\n - 없음"
                 else
-                    msg2 += "\n\n특이사항: " + ApplicationClass.prefs.note
+                    msg2 += "\n\n${index}. 특이사항" +
+                            "\n - " + ApplicationClass.prefs.note
 
                 // 권한 확인
                 val readPermission = Manifest.permission.READ_EXTERNAL_STORAGE
@@ -2842,11 +3186,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     val sms_body = msg2
 
                     // 5. attachmentUri를 사용하여 MMS 메시지를 만들고 보냅니다.
-                    println("asdasd sendMMS1")
                     sendMMS(tel, subject, sms_body, imageUri)
-                    println("asdasd sendMMS2")
 //                } else {
-//                    println("asdasd sendMMS3")
 //                    // 하나 이상의 권한이 거부된 경우
 //                    // 권한을 요청합니다.
 //                    ActivityCompat.requestPermissions(
@@ -2909,5 +3250,11 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             // SMS/MMS 앱을 찾을 수 없는 경우
             toast("기본 메시지 앱을 찾을 수 없습니다.")
         }
+    }
+    private fun applyScale() {
+        if (scale < 0.5f) scale = 0.5f // 최소 크기 설정
+        if (scale > 2) scale = 2.0f // 최대 크기 설정
+        ViewCompat.setScaleX(binding.layoutResultImage, scale)
+        ViewCompat.setScaleY(binding.layoutResultImage, scale)
     }
 }

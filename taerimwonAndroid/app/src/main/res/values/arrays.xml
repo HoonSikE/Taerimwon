@@ -117,6 +117,18 @@
         <item>합골함1</item>
         <item>합골함2</item>
     </string-array>
+<!--    <string-array name="selected_urn">-->
+<!--        <item>미정</item>-->
+<!--        <item>기본</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="selected_bone1">-->
+<!--        <item>미정</item>-->
+<!--        <item>합골함1</item>-->
+<!--    </string-array>-->
+<!--    <string-array name="selected_bone2">-->
+<!--        <item>미정</item>-->
+<!--        <item>합골함2</item>-->
+<!--    </string-array>-->
     <!--성별-->
     <string-array name="bone_sex">
         <item>남성</item>

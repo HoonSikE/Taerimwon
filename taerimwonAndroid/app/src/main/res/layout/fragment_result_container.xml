@@ -5,221 +5,264 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         >
-        <!--발주자-->
-        <TextView
-            android:id="@+id/text_result_title_leader"
-            style="@style/HeadBold"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="● 발주자"
-            app:layout_constraintStart_toStartOf="parent"
+        <View
+            android:id="@+id/View1"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/viewColor"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints"
             />
+        <!--발주자-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_result_text_leader"
-            android:background="@drawable/view_radius"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginVertical="16dp"
+            android:background="@color/contentBackground"
             android:paddingHorizontal="8dp"
             android:paddingVertical="20dp"
             android:elevation="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/text_result_title_leader"
+            app:layout_constraintTop_toBottomOf="@+id/View1"
             >
+            <TextView
+                android:id="@+id/text_result_title_leader"
+                style="@style/SubHeadBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="● 발주자"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
             <TextView
                 android:id="@+id/text_result_text_leader"
                 style="@style/SubHead"
-                android:paddingHorizontal="16dp"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:text="발주자 내용"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_result_title_leader"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <!--상주 정보-->
-        <TextView
-            android:id="@+id/text_result_title_client"
-            style="@style/HeadBold"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="● 상주 정보"
-            app:layout_constraintStart_toStartOf="parent"
+        <View
+            android:id="@+id/View2"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/viewColor"
             app:layout_constraintTop_toBottomOf="@+id/layout_result_text_leader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints"
             />
+        <!--상주 정보-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_result_text_client"
-            android:background="@drawable/view_radius"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginVertical="16dp"
+            android:background="@color/contentBackground"
             android:paddingHorizontal="8dp"
             android:paddingVertical="20dp"
             android:elevation="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/text_result_title_client"
+            app:layout_constraintTop_toBottomOf="@+id/View2"
             >
+            <TextView
+                android:id="@+id/text_result_title_client"
+                style="@style/SubHeadBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="● 상주 정보"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
             <TextView
                 android:id="@+id/text_result_text_client"
                 style="@style/SubHead"
-                android:paddingHorizontal="16dp"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:text="상주 정보 내용"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_result_title_client"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <!--발주 장소-->
-        <TextView
-            android:id="@+id/text_result_title_location"
-            style="@style/HeadBold"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="● 발주 장소"
-            app:layout_constraintStart_toStartOf="parent"
+        <View
+            android:id="@+id/View3"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/viewColor"
             app:layout_constraintTop_toBottomOf="@+id/layout_result_text_client"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints"
             />
+        <!--발주 장소-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_result_text_location"
-            android:background="@drawable/view_radius"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginVertical="16dp"
+            android:background="@color/contentBackground"
             android:paddingHorizontal="8dp"
             android:paddingVertical="20dp"
             android:elevation="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/text_result_title_location"
+            app:layout_constraintTop_toBottomOf="@+id/View3"
             >
+            <TextView
+                android:id="@+id/text_result_title_location"
+                style="@style/SubHeadBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="● 발주 장소"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
             <TextView
                 android:id="@+id/text_result_text_location"
                 style="@style/SubHead"
-                android:paddingHorizontal="16dp"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:text="발주 장소 내용"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_result_title_location"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <!--유골함-->
-        <TextView
-            android:id="@+id/text_result_title_urn"
-            style="@style/HeadBold"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="● 유골함"
-            app:layout_constraintStart_toStartOf="parent"
+        <View
+            android:id="@+id/View4"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/viewColor"
             app:layout_constraintTop_toBottomOf="@+id/layout_result_text_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints"
             />
+        <!--유골함-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_result_text_urn"
-            android:background="@drawable/view_radius"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginVertical="16dp"
-            android:paddingHorizontal="8dp"
-            android:paddingVertical="20dp"
-            android:elevation="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/text_result_title_urn"
-            >
+            android:background="@color/contentBackground"
+            android:elevation="4dp"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/View4"
+            tools:layout_editor_absoluteX="0dp">
+
+            <TextView
+                android:id="@+id/text_result_title_urn"
+                style="@style/SubHeadBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="● 유골함"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/text_result_text_urn"
                 style="@style/SubHead"
-                android:paddingHorizontal="16dp"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:text="유골함 내용"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintTop_toBottomOf="@+id/text_result_title_urn" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <!--위패-->
-        <TextView
-            android:id="@+id/text_result_title_tablet"
-            style="@style/HeadBold"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="● 위패"
-            app:layout_constraintStart_toStartOf="parent"
+
+        <View
+            android:id="@+id/View5"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/viewColor"
             app:layout_constraintTop_toBottomOf="@+id/layout_result_text_urn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints"
             />
+        <!--위패-->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_result_text_tablet_tablet"
-            android:background="@drawable/view_radius"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginVertical="16dp"
+            android:id="@+id/layout_result_text_tablet"
+            android:background="@color/contentBackground"
             android:paddingHorizontal="8dp"
             android:paddingVertical="20dp"
             android:elevation="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/text_result_title_tablet"
+            app:layout_constraintTop_toBottomOf="@+id/View5"
             >
+            <TextView
+                android:id="@+id/text_result_title_tablet"
+                style="@style/SubHeadBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="● 위패"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
             <TextView
                 android:id="@+id/text_result_text_tablet"
                 style="@style/SubHead"
-                android:paddingHorizontal="16dp"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:text="위패 내용"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_result_title_tablet"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <!--특이사항-->
-        <TextView
-            android:id="@+id/text_result_title_note"
-            style="@style/HeadBold"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="● 특이사항(선택)"
+        <View
+            android:id="@+id/View6"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/viewColor"
+            app:layout_constraintTop_toBottomOf="@+id/layout_result_text_tablet"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_result_text_tablet_tablet"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints"
             />
+        <!--특이사항-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_result_text_note"
-            android:background="@drawable/view_radius"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginVertical="16dp"
+            android:background="@color/contentBackground"
             android:paddingHorizontal="8dp"
             android:paddingVertical="20dp"
             android:elevation="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/text_result_title_note"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/View6"
             >
+            <TextView
+                android:id="@+id/text_result_title_note"
+                style="@style/SubHeadBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="● 특이사항(선택)"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
             <EditText
                 android:id="@+id/editText_note"
                 style="@style/Body"
                 android:background="@drawable/edittext_regular"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_marginHorizontal="8dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
                 android:ems="10"
                 android:hint="특이사항을 입력하세요 (최대 30자)"
                 android:paddingLeft="48dp"
@@ -229,20 +272,29 @@
                 android:textColorHint="@color/hintGray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_result_title_note"
                 />
 
             <ImageView
                 android:id="@+id/image_note"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintStart_toStartOf="@+id/editText_note"
                 app:layout_constraintTop_toTopOf="@+id/editText_note"
-                app:layout_constraintBottom_toBottomOf="@+id/editText_note"
                 app:srcCompat="@drawable/ic_note"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/View7"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/viewColor"
+            app:layout_constraintTop_toBottomOf="@+id/layout_result_text_note"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -27,6 +27,8 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
 
     // 자동완성 단어들을 담을 리스트
     private lateinit var searchList: MutableList<UrnItem>
+    private lateinit var searchList2: MutableList<UrnItem>
+    private lateinit var searchList3: MutableList<UrnItem>
 
     private lateinit var engraveTypeAdapter: EngraveTypeAdapter
     private lateinit var engraveType2Adapter: EngraveType2Adapter
@@ -147,7 +149,11 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
     private fun initData() {
         // 검색 리스트
         searchList = mutableListOf()
+        searchList2 = mutableListOf()
+        searchList3 = mutableListOf()
         settingList()
+        settingList2()
+        settingList3()
 
         // "ArrayList" - 리스트 객체
         binding.autoCompleteTextView.setAdapter(UrnAutoCompleteAdapter(
@@ -156,6 +162,8 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                 searchList
             )
         )
+
+        binding.autoCompleteTextView.setText(ApplicationClass.prefs.selectedUrnName)
 
         binding.editTextName1.setText(ApplicationClass.prefs.name1)
 
@@ -308,6 +316,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             println("tag "+ "position: $position, rowId:$rowId, string: ${adapterView.getItemAtPosition(position)}")
             val selectedUrnItem = adapterView.getItemAtPosition(position) as UrnItem
             binding.autoCompleteTextView.setText(selectedUrnItem.urnItem)
+            ApplicationClass.prefs.selectedUrnName = selectedUrnItem.urnItem
         }
 
         binding.autoCompleteTextView.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
@@ -343,6 +352,33 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                     binding.layoutUrn.visibility = View.GONE
                 else
                     binding.layoutUrn.visibility = View.VISIBLE
+
+
+                if(ApplicationClass.prefs.selectedUrnType == "유골함"){
+                    binding.autoCompleteTextView.setAdapter(
+                        UrnAutoCompleteAdapter(
+                            requireContext(),
+                            android.R.layout.simple_dropdown_item_1line,
+                            searchList
+                        )
+                    )
+                } else if(ApplicationClass.prefs.selectedUrnType == "합골함1"){
+                    binding.autoCompleteTextView.setAdapter(
+                        UrnAutoCompleteAdapter(
+                            requireContext(),
+                            android.R.layout.simple_dropdown_item_1line,
+                            searchList2
+                        )
+                    )
+                } else if(ApplicationClass.prefs.selectedUrnType == "합골함2"){
+                    binding.autoCompleteTextView.setAdapter(
+                        UrnAutoCompleteAdapter(
+                            requireContext(),
+                            android.R.layout.simple_dropdown_item_1line,
+                            searchList3
+                        )
+                    )
+                }
 
                 if(ApplicationClass.prefs.selectedUrnType!!.contains("합골")) {
                     binding.layoutBoneEngrave.visibility = View.VISIBLE
@@ -398,6 +434,20 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         })
     }
     private fun addTextChangedListener(){
+        binding.autoCompleteTextView.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                // 이전 텍스트 변경 이벤트
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                // 텍스트 변경 이벤트
+                ApplicationClass.prefs.selectedUrnName = s?.toString() ?: ""
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                // 텍스트 변경 후 이벤트
+            }
+        })
         // 고인 정보
         binding.editTextName1.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -598,14 +648,27 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
 
     // 장동완성 단어 세팅
     private fun settingList() {
-        searchList.add(UrnItem("일반", R.drawable.img_urn_sample1))
-        searchList.add(UrnItem("기독교", R.drawable.img_urn_sample2))
-        searchList.add(UrnItem("불교", R.drawable.img_urn_sample3))
-        searchList.add(UrnItem("천주교", R.drawable.img_urn_sample4))
-        searchList.add(UrnItem("SGI", R.drawable.img_urn_sample5))
-        searchList.add(UrnItem("기타등등", R.drawable.img_urn_sample6))
-        // 배열을 가져옵니다.
-//        val searchListArray = resources.getStringArray(R.array.selected_urn_types)
-//        searchList = mutableListOf(*searchListArray) as ArrayList<String>
+        searchList.add(UrnItem("미정", 0))
+        searchList.add(UrnItem("기본", R.drawable.img_urn))
+        searchList.add(UrnItem("기본(검정)", R.drawable.img_urn))
+        searchList.add(UrnItem("도원기독교 DW-3 4010", R.drawable.img_urn1))
+        searchList.add(UrnItem("도원불교 DW-4 4010", R.drawable.img_urn2))
+        searchList.add(UrnItem("도원천주교 DW-5 4010", R.drawable.img_urn3))
+        searchList.add(UrnItem("도원칼라난 DW-2 4010", R.drawable.img_urn4))
+        searchList.add(UrnItem("도원칼라송학 DW-1 4010", R.drawable.img_urn5))
+        searchList.add(UrnItem("도화청꽃 DH-4 4010", R.drawable.img_urn6))
+        searchList.add(UrnItem("도화홍꽃 DH-5 4010", R.drawable.img_urn7))
+        searchList.add(UrnItem("소담난 SDN-2 4008", R.drawable.img_urn8))
+        searchList.add(UrnItem("소담송학 SDS-1 4008", R.drawable.img_urn9))
+    }
+    private fun settingList2() {
+        searchList2.add(UrnItem("미정", 0))
+        searchList2.add(UrnItem("기본", R.drawable.img_bone1))
+        searchList2.add(UrnItem("기본(검정)", R.drawable.img_bone1))
+    }
+    private fun settingList3() {
+        searchList3.add(UrnItem("미정", 0))
+        searchList3.add(UrnItem("기본", R.drawable.img_bone2))
+        searchList3.add(UrnItem("기본(검정)", R.drawable.img_bone2))
     }
 }

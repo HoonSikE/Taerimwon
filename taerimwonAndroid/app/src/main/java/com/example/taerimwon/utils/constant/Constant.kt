@@ -51,6 +51,7 @@ const val DATE2TYPE = "date2Type"
 const val RELIGION = "religion"
 // 선택된 유골 종류
 const val SELECTEDURNTYPE = "selectedUrnType"
+const val SELECTEDURNNAME = "selectedUrnName"
 // 합골 추가 정보
 // 각인종류 (일반, 기독교, 천주교, ...)
 const val BONEENGRAVETYPE = "boneEngraveType"
@@ -78,6 +79,8 @@ const val NAME3 = "name3"
 const val TABLETNAME3 = "tabletName3"
 // 선택된 위패 종류
 const val SELECTEDTABLETTYPE = "selectedTabletType"
+const val SELECTEDTABLETNAME = "selectedTabletName"
+const val SELECTEDTABLETNAME2 = "selectedTabletName2"
 // 특이사항
 const val NOTE = "note"
 // 사진 저장

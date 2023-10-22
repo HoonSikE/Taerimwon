@@ -6,10 +6,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/linearBackground">
+        android:background="@color/contentBackground">
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/scroll_view_order"
+            android:id="@+id/scroll_view_result"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:fillViewport="true"
@@ -30,10 +30,10 @@
                 >
                 <!--로고-->
                 <ImageView
-                    android:id="@+id/image_order_logo"
+                    android:id="@+id/image_result_logo"
                     android:layout_marginTop="10dp"
-                    android:layout_width="200dp"
-                    android:layout_height="100dp"
+                    android:layout_width="250dp"
+                    android:layout_height="125dp"
                     android:src="@drawable/img_logo"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -42,101 +42,166 @@
                     tools:viewBindingIgnore="true"
                     />
 
-                <TextView
-                    android:id="@+id/text_result_title"
-                    style="@style/HeadBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="● 결과 확인"
+                <View
+                    android:id="@+id/View1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/viewColor"
+                    app:layout_constraintTop_toBottomOf="@+id/image_result_logo"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/image_order_logo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="MissingConstraints"
                     tools:viewBindingIgnore="true"
                     />
-                <!--이미지 출력-->
+
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_result_image"
-                    android:background="@drawable/view_radius"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/text_result_title"
-                    android:layout_marginTop="10dp"
+                    android:id="@+id/layout_result_title_image"
+                    android:background="@color/contentBackground"
                     android:paddingHorizontal="8dp"
-                    android:paddingVertical="8dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:paddingVertical="20dp"
                     android:elevation="4dp"
-                    >
-                    <ImageView
-                        android:id="@+id/layout_tablet2_result_image"
-                        android:layout_width="80dp"
-                        android:layout_height="192dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/layout_urn_result_image"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:visibility="gone"
-                        >
-                    </ImageView>
-                    <ImageView
-                        android:id="@+id/layout_urn_result_image"
-                        android:layout_width="216dp"
-                        android:layout_height="232dp"
-                        app:layout_constraintStart_toEndOf="@id/layout_tablet2_result_image"
-                        app:layout_constraintEnd_toStartOf="@+id/layout_bone_result_image"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:visibility="gone"
-                        >
-                    </ImageView>
-                    <ImageView
-                        android:id="@+id/layout_bone_result_image"
-                        android:layout_width="200dp"
-                        android:layout_height="190dp"
-                        app:layout_constraintStart_toEndOf="@+id/layout_urn_result_image"
-                        app:layout_constraintEnd_toStartOf="@+id/layout_bone2_result_image"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:visibility="gone"
-                        >
-                    </ImageView>
-                    <ImageView
-                        android:id="@+id/layout_bone2_result_image"
-                        android:layout_width="200dp"
-                        android:layout_height="220dp"
-                        app:layout_constraintStart_toEndOf="@+id/layout_bone_result_image"
-                        app:layout_constraintEnd_toStartOf="@+id/layout_tablet_result_image"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:visibility="gone"
-                        >
-                    </ImageView>
-                    <ImageView
-                        android:id="@+id/layout_tablet_result_image"
-                        android:layout_width="80dp"
-                        android:layout_height="192dp"
-                        app:layout_constraintStart_toEndOf="@+id/layout_bone2_result_image"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:visibility="gone"
-                        >
-                    </ImageView>
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                <TextView
-                    android:id="@+id/text_result_text"
-                    style="@style/SubHeadBold"
-                    android:textColor="@color/redTextColor"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="자세한 각인요청은 특이사항에 적어주세요."
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_result_image"
-                    />
+                    app:layout_constraintTop_toBottomOf="@+id/View1"
+                    tools:viewBindingIgnore="true"
+                    >
+                    <TextView
+                        android:id="@+id/text_result_title"
+                        style="@style/SubHeadBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="● 결과 확인"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:viewBindingIgnore="true"
+                        />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_zoom"
+                        android:background="@drawable/view_zoom"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:elevation="8dp"
+                        tools:viewBindingIgnore="true"
+                        >
+                        <TextView
+                            android:id="@+id/image_zoom_in"
+                            style="@style/SubHeadWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:text="+"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/image_zoom_out"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:gravity="center"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:background="@color/white"
+                            android:layout_height="0.5dp"
+                            app:layout_constraintTop_toBottomOf="@+id/image_zoom_in"
+                            app:layout_constraintBottom_toTopOf="@+id/image_zoom_out"
+                            />
+                        <TextView
+                            android:id="@+id/image_zoom_out"
+                            style="@style/SubHeadWhite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:text="-"
+                            app:layout_constraintTop_toBottomOf="@+id/image_zoom_in"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:gravity="center"
+                            />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--이미지 출력-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_result_image"
+                        android:background="@drawable/view_radius"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/text_result_title"
+                        android:layout_marginTop="10dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:elevation="4dp"
+                        >
+                        <ImageView
+                            android:id="@+id/layout_tablet2_result_image"
+                            android:layout_width="80dp"
+                            android:layout_height="192dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/layout_urn_result_image"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="gone"
+                            >
+                        </ImageView>
+                        <ImageView
+                            android:id="@+id/layout_urn_result_image"
+                            android:layout_width="216dp"
+                            android:layout_height="232dp"
+                            app:layout_constraintStart_toEndOf="@id/layout_tablet2_result_image"
+                            app:layout_constraintEnd_toStartOf="@+id/layout_bone_result_image"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:visibility="gone"
+                            >
+                        </ImageView>
+                        <ImageView
+                            android:id="@+id/layout_bone_result_image"
+                            android:layout_width="200dp"
+                            android:layout_height="190dp"
+                            app:layout_constraintStart_toEndOf="@+id/layout_urn_result_image"
+                            app:layout_constraintEnd_toStartOf="@+id/layout_bone2_result_image"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:visibility="gone"
+                            >
+                        </ImageView>
+                        <ImageView
+                            android:id="@+id/layout_bone2_result_image"
+                            android:layout_width="200dp"
+                            android:layout_height="220dp"
+                            app:layout_constraintStart_toEndOf="@+id/layout_bone_result_image"
+                            app:layout_constraintEnd_toStartOf="@+id/layout_tablet_result_image"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:visibility="gone"
+                            >
+                        </ImageView>
+                        <ImageView
+                            android:id="@+id/layout_tablet_result_image"
+                            android:layout_width="80dp"
+                            android:layout_height="192dp"
+                            app:layout_constraintStart_toEndOf="@+id/layout_bone2_result_image"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="gone"
+                            >
+                        </ImageView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/text_result_text"
+                        style="@style/Body"
+                        android:textColor="@color/redTextColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="자세한 각인요청은 특이사항에 적어주세요."
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_result_image"
+                        tools:viewBindingIgnore="true"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
                 <!--결과-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_result_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/text_result_text"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_result_title_image"
                     >
                     <FrameLayout
                         android:id="@+id/fragment_result_container"
@@ -176,6 +241,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/image_add_photo"
+                        tools:viewBindingIgnore="true"
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -207,6 +273,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/image_bone_add_photo"
+                        tools:viewBindingIgnore="true"
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -229,25 +296,24 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:visibility="gone"
                         >
+
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_tablet2_image"
-                            android:layout_width="200px"
-                            android:layout_height="480px"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_width="0dp"
+                            android:layout_height="3dp"
                             android:background="@drawable/img_tablet"
-                            >
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
                             <ImageView
                                 android:id="@+id/image_tablet2_image"
                                 android:layout_width="150px"
                                 android:layout_height="420px"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
                                 android:layout_marginBottom="20px"
-                                >
-                            </ImageView>
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"></ImageView>
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <!--유골함-->
@@ -267,16 +333,16 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:background="@drawable/img_urn"
+                            android:background="@drawable/img_urn1"
                             >
                             <ImageView
                                 android:id="@+id/image_urn_image"
-                                android:layout_width="180px"
-                                android:layout_height="280px"
+                                android:layout_width="210px"
+                                android:layout_height="320px"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                android:layout_marginBottom="40px"
+                                android:layout_marginBottom="60px"
                                 >
                             </ImageView>
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -423,6 +489,23 @@
                             android:visibility="gone"
                             />
 
+                        <TextView
+                            android:id="@+id/layout_tablet2_result1_0"
+                            android:layout_width="27.5px"
+                            android:layout_height="27.5px"
+                            android:text="故"
+                            android:textSize="27.5px"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/hyhaeso"
+                            android:textFontWeight="900"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:gravity="center"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="7.5px"
+                            android:visibility="gone"
+                            />
+
                         <ImageView
                             android:id="@+id/layout_tablet2_result1_2"
                             android:layout_width="wrap_content"
@@ -431,7 +514,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:gravity="center"
-                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/layout_tablet2_result1_0"
                             />
                         <TextView
                             android:id="@+id/layout_tablet2_result2_0"
@@ -597,7 +680,7 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_urn_result1"
                             android:layout_width="50px"
-                            android:layout_height="250px"
+                            android:layout_height="wrap_content"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/layout_urn_result2"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -705,6 +788,7 @@
                                 android:textFontWeight="900"
                                 app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
                                 app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
+                                android:layout_marginLeft="0.55dp"
                                 android:gravity="center"
                                 app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_2_4"
                                 />
@@ -735,6 +819,7 @@
                                 app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
                                 app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                                 android:gravity="center"
+                                android:layout_marginTop="-2dp"
                                 app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_3_1"
                                 />
                             <TextView
@@ -763,6 +848,7 @@
                                 app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
                                 app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                                 android:gravity="center"
+                                android:layout_marginLeft="0.55dp"
                                 app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_4_2"
                                 />
                             <TextView
@@ -792,6 +878,7 @@
                                 app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
                                 app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                                 android:gravity="center"
+                                android:layout_marginTop="-2dp"
                                 app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_5_1"
                                 />
                             <TextView
@@ -847,21 +934,21 @@
                             app:layout_constraintBottom_toBottomOf="@+id/layout_urn_result1"
                             tools:ignore="MissingConstraints"
                             >
-<!--                            <TextView-->
-<!--                                android:id="@+id/layout_urn_result2_1"-->
-<!--                                android:layout_width="65px"-->
-<!--                                android:layout_height="65px"-->
-<!--                                android:text="故"-->
-<!--                                android:textSize="65px"-->
-<!--                                android:textColor="@color/black"-->
-<!--                                android:fontFamily="@font/hyhaeso"-->
-<!--                                android:textFontWeight="900"-->
-<!--                                app:layout_constraintStart_toStartOf="parent"-->
-<!--                                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                                android:gravity="center"-->
-<!--                                app:layout_constraintTop_toTopOf="parent"-->
-<!--                                android:visibility="gone"-->
-<!--                                />-->
+                            <TextView
+                                android:id="@+id/layout_urn_result2_1"
+                                android:layout_width="60px"
+                                android:layout_height="60px"
+                                android:text="故"
+                                android:textSize="55px"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/hyhaeso"
+                                android:textFontWeight="900"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:gravity="center"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:visibility="gone"
+                                />
                             <!--로고-->
                             <ImageView
                                 android:id="@+id/image_urn_result2_1"
@@ -871,7 +958,7 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 android:gravity="center"
-                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_urn_result2_1"
                                 />
                             <!--이름-->
                             <androidx.constraintlayout.widget.ConstraintLayout
@@ -943,7 +1030,7 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_urn_result3"
                             android:layout_width="50px"
-                            android:layout_height="250px"
+                            android:layout_height="wrap_content"
                             app:layout_constraintStart_toEndOf="@+id/layout_urn_result2"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -1052,6 +1139,7 @@
                                 app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
                                 app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                                 android:gravity="center"
+                                android:layout_marginLeft="0.55dp"
                                 app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_2_4"
                                 />
                             <TextView
@@ -1081,6 +1169,7 @@
                                 app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
                                 app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                                 android:gravity="center"
+                                android:layout_marginTop="-2dp"
                                 app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_3_1"
                                 />
                             <TextView
@@ -1109,6 +1198,7 @@
                                 app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
                                 app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                                 android:gravity="center"
+                                android:layout_marginLeft="0.55dp"
                                 app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_4_2"
                                 />
                             <TextView
@@ -1138,6 +1228,7 @@
                                 app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
                                 app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                                 android:gravity="center"
+                                android:layout_marginTop="-2dp"
                                 app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_5_1"
                                 />
                             <TextView
@@ -1200,7 +1291,7 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_bone_result1"
                             android:layout_width="50px"
-                            android:layout_height="250px"
+                            android:layout_height="wrap_content"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/layout_bone_result2"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -1450,6 +1541,21 @@
                             app:layout_constraintBottom_toBottomOf="@+id/layout_bone_result1"
                             tools:ignore="MissingConstraints"
                             >
+                            <TextView
+                                android:id="@+id/layout_Bone_result2_1"
+                                android:layout_width="60px"
+                                android:layout_height="60px"
+                                android:text="故"
+                                android:textSize="55px"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/hyhaeso"
+                                android:textFontWeight="900"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:gravity="center"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:visibility="gone"
+                                />
                             <!--로고-->
                             <ImageView
                                 android:id="@+id/image_bone_result2_1"
@@ -1459,7 +1565,7 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 android:gravity="center"
-                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_Bone_result2_1"
                                 />
                             <!--이름-->
                             <androidx.constraintlayout.widget.ConstraintLayout
@@ -1531,7 +1637,7 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_bone_result3"
                             android:layout_width="50px"
-                            android:layout_height="250px"
+                            android:layout_height="wrap_content"
                             app:layout_constraintStart_toEndOf="@+id/layout_bone_result2"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -1776,20 +1882,19 @@
                     <!--합골2 추가 내용-->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/layout_bone2_content"
-                        android:layout_width="360px"
-                        android:layout_height="270px"
+                        android:layout_width="wrap_content"
+                        android:layout_height="280px"
                         app:layout_constraintStart_toEndOf="@+id/layout_bone_content"
                         app:layout_constraintEnd_toStartOf="@+id/layout_tablet_content"
                         app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginBottom="40px"
                         android:visibility="gone"
-
                         >
                         <!--출생일1-->
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_bone2_1_result1"
-                            android:layout_width="50px"
-                            android:layout_height="250px"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/layout_bone2_1_result3"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -2013,6 +2118,7 @@
                                 app:layout_constraintEnd_toEndOf="@+id/layout_bone2_1_result1_1"
                                 android:gravity="center"
                                 app:layout_constraintTop_toBottomOf="@+id/layout_bone2_1_result1_6_2"
+                                android:visibility="gone"
                                 />
                             <TextView
                                 android:id="@+id/layout_bone2_1_result1_7"
@@ -2032,8 +2138,8 @@
                         <!--사망일1-->
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_bone2_1_result3"
-                            android:layout_width="50px"
-                            android:layout_height="250px"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             app:layout_constraintStart_toEndOf="@+id/layout_bone2_1_result1"
                             app:layout_constraintEnd_toStartOf="@+id/layout_bone2_result2"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -2277,17 +2383,47 @@
                         <!--이름 / 마크-->
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_bone2_result2"
-                            android:layout_width="160px"
+                            android:layout_width="wrap_content"
                             android:layout_height="270px"
                             app:layout_constraintStart_toEndOf="@+id/layout_bone2_1_result3"
                             app:layout_constraintEnd_toStartOf="@+id/layout_bone2_2_result1"
                             tools:ignore="MissingConstraints"
                             >
                             <!--마크-->
+                            <TextView
+                                android:id="@+id/layout_Bone2_result2_1"
+                                android:layout_width="60px"
+                                android:layout_height="60px"
+                                android:text="故"
+                                android:textSize="55px"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/hyhaeso"
+                                android:textFontWeight="900"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:gravity="center"
+                                app:layout_constraintTop_toTopOf="parent"
+                                android:visibility="gone"
+                                />
                             <ImageView
                                 android:id="@+id/image_bone2_result2_1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="50px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:gravity="center"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_Bone2_result2_1"
+                                android:visibility="gone"
+                                />
+                            <TextView
+                                android:id="@+id/layout_Bone2_result2_1_1"
+                                android:layout_width="60px"
+                                android:layout_height="60px"
+                                android:text="故"
+                                android:textSize="55px"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/hyhaeso"
+                                android:textFontWeight="900"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 android:gravity="center"
@@ -2302,7 +2438,22 @@
                                 app:layout_constraintEnd_toEndOf="parent"
                                 android:layout_marginRight="80px"
                                 android:gravity="center"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_Bone2_result2_1_1"
+                                />
+                            <TextView
+                                android:id="@+id/layout_Bone2_result2_1_2"
+                                android:layout_width="60px"
+                                android:layout_height="60px"
+                                android:text="故"
+                                android:textSize="55px"
+                                android:textColor="@color/black"
+                                android:fontFamily="@font/hyhaeso"
+                                android:textFontWeight="900"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:gravity="center"
                                 app:layout_constraintTop_toTopOf="parent"
+                                android:visibility="gone"
                                 />
                             <ImageView
                                 android:id="@+id/image_bone2_result2_1_2"
@@ -2312,12 +2463,12 @@
                                 app:layout_constraintEnd_toEndOf="parent"
                                 android:layout_marginLeft="80px"
                                 android:gravity="center"
-                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_Bone2_result2_1_2"
                                 />
                             <!--이름-->
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/layout_bone2_1_result2"
-                                android:layout_width="160px"
+                                android:layout_width="wrap_content"
                                 android:layout_height="220px"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 tools:ignore="MissingConstraints"
@@ -2325,7 +2476,7 @@
                                 <!--이름1-->
                                 <androidx.constraintlayout.widget.ConstraintLayout
                                     android:id="@+id/layout_bone2_1_result2_2"
-                                    android:layout_width="80px"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="200px"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintEnd_toStartOf="@+id/layout_bone2_2_result2_2"
@@ -2389,7 +2540,7 @@
                                 <!--이름2-->
                                 <androidx.constraintlayout.widget.ConstraintLayout
                                     android:id="@+id/layout_bone2_2_result2_2"
-                                    android:layout_width="80px"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="200px"
                                     app:layout_constraintStart_toEndOf="@+id/layout_bone2_1_result2_2"
                                     app:layout_constraintEnd_toEndOf="parent"
@@ -2455,8 +2606,8 @@
                         <!--출생일1-->
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_bone2_2_result1"
-                            android:layout_width="50px"
-                            android:layout_height="250px"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             app:layout_constraintStart_toEndOf="@+id/layout_bone2_result2"
                             app:layout_constraintEnd_toStartOf="@+id/layout_bone2_2_result3"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -2593,7 +2744,7 @@
                                 app:layout_constraintStart_toStartOf="@+id/layout_bone2_2_result1_1"
                                 app:layout_constraintEnd_toEndOf="@+id/layout_bone2_2_result1_1"
                                 android:gravity="center"
-                                app:layout_constraintTop_toBottomOf="@+id/layout_bone2_2_result1_3"
+                                app:layout_constraintTop_toBottomOf="@+id/layout_bone2_2_result1_3_1"
                                 />
                             <TextView
                                 android:id="@+id/layout_bone2_2_result1_4_2"
@@ -2679,6 +2830,7 @@
                                 app:layout_constraintEnd_toEndOf="@+id/layout_bone2_2_result1_1"
                                 android:gravity="center"
                                 app:layout_constraintTop_toBottomOf="@+id/layout_bone2_2_result1_6_2"
+                                android:visibility="gone"
                                 />
                             <TextView
                                 android:id="@+id/layout_bone2_2_result1_7"
@@ -2698,8 +2850,8 @@
                         <!--사망일2-->
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_bone2_2_result3"
-                            android:layout_width="50px"
-                            android:layout_height="250px"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             app:layout_constraintStart_toEndOf="@+id/layout_bone2_2_result1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -2970,6 +3122,22 @@
                             android:visibility="gone"
                             />
 
+                        <TextView
+                            android:id="@+id/layout_tablet_result1_0"
+                            android:layout_width="27.5px"
+                            android:layout_height="27.5px"
+                            android:text="故"
+                            android:textSize="27.5px"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/hyhaeso"
+                            android:textFontWeight="900"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:gravity="center"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginTop="7.5px"
+                            android:visibility="gone"
+                            />
                         <ImageView
                             android:id="@+id/layout_tablet_result1_2"
                             android:layout_width="wrap_content"
@@ -2978,7 +3146,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             android:gravity="center"
-                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/layout_tablet_result1_0"
                             />
                         <TextView
                             android:id="@+id/layout_tablet_result2_0"

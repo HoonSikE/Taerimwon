@@ -17,6 +17,8 @@ import com.example.taerimwon.databinding.FragmentOrderBinding
 import com.example.taerimwon.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.fragment.findNavController
+import com.example.taerimwon.data.dto.tablet.TabletItem
+import com.example.taerimwon.data.dto.urn.UrnItem
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.home.AuthViewModel
 import com.example.taerimwon.ui.order.tablet.TabletContainerFragment
@@ -28,11 +30,16 @@ import com.example.taerimwon.utils.view.toast
 @AndroidEntryPoint
 class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order) {
     val authViewModel: AuthViewModel by viewModels()
+
     // 한글, 전화번호, 날짜, 날짜시간 점검 패턴
     private val hanglePattern = """[가-힣]+""".toRegex()
     private val telPattern = """^[0-9]{3}-[0-9]{4}-[0-9]{4}$""".toRegex()
     private val dateTimePattern = """^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$""".toRegex()
     private val datePattern = """^\d{4}-\d{2}-\d{2}$""".toRegex()
+
+    private lateinit var searchList: MutableList<String>
+    private lateinit var searchList2: MutableList<String>
+
     override fun init() {
         initData()
         setOnClickListeners()
@@ -45,6 +52,11 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         authViewModel.getBlackList()
         if (!ApplicationClass.prefs.authenticated)
             findNavController().navigate(R.id.action_orderFragment_to_phoneAuthFragment)
+
+        searchList = mutableListOf()
+        searchList2 = mutableListOf()
+        settingList()
+        settingList2()
 
         println("ApplicationClass.prefs.saveInfo :" + ApplicationClass.prefs.saveInfo)
         println("ApplicationClass.prefs.leaderName :" + ApplicationClass.prefs.leaderName)
@@ -546,6 +558,12 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         // 유골함
         if(ApplicationClass.prefs.selectedUrnType != "선택안함"){
             if(!checkUrnInput()) {
+                val containsString = searchList.any { it == ApplicationClass.prefs.selectedUrnName }
+
+                if (!containsString) {
+                    toast("유골함 종류를 골라주세요.")
+                    return false
+                }
                 // 고인 정보
                 val name1 = ApplicationClass.prefs.name1.toString()
                 if (!(name1.length in 2..4 && name1.matches(hanglePattern))) {
@@ -634,6 +652,12 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         // 위패
         if(ApplicationClass.prefs.selectedTabletType != "선택안함"){
             if(!checkTabletInput()){
+                val containsString = searchList2.any { it == ApplicationClass.prefs.selectedTabletName }
+                if (!containsString) {
+                    toast("위패 종류를 골라주세요.")
+                    return false
+                }
+
                 val tabletName2 = ApplicationClass.prefs.tabletName2.toString()
                 val name3 = ApplicationClass.prefs.name3.toString()
                 val tabletType = ApplicationClass.prefs.tabletType.toString()
@@ -684,6 +708,69 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                         if (!(name3.length in 5..7 && name3.matches(hanglePattern))) {
                             toast("본관내용을 한글 5~7글자로 올바르게 입력해주세요.")
                             return false
+                        }
+                    }
+                }
+
+                // 위패 합골
+                if(ApplicationClass.prefs.boneSelectedTabletType != "선택안함"){
+                    val containsString = searchList2.any { it == ApplicationClass.prefs.selectedTabletName2 }
+                    if (!containsString) {
+                        toast("위패 종류를 골라주세요.")
+                        return false
+                    }
+
+                    val boneTabletName2 = ApplicationClass.prefs.boneTabletName2.toString()
+                    val boneName3 = ApplicationClass.prefs.boneName3.toString()
+                    val boneTabletType = ApplicationClass.prefs.boneTabletType.toString()
+
+                    if(boneTabletType.contains("문구")){
+                        if (!(boneName3.length in 1..20 && boneName3.matches(hanglePattern))) {
+                            toast("문구 내용[합골]을 한글 1~20글자로 올바르게 입력해주세요.")
+                            return false
+                        }
+                    }else if(!boneTabletType.contains("본관") && !boneTabletType.contains("사진")){
+                        if (!(boneName3.length in 2..4 && boneName3.matches(hanglePattern))) {
+                            toast("이름[합골]을 한글 2~4글자로 올바르게 입력해주세요.")
+                            return false
+                        }
+                        // 직분, 세례명, 법명
+                        if((ApplicationClass.prefs.boneReligion == "기독교")) {
+                            if (!(boneTabletName2.length in 2..4 && boneTabletName2.matches(hanglePattern))) {
+                                toast("직분[합골]을 한글 2~4글자로 올바르게 입력해주세요.")
+                                return false
+                            }
+                        }
+                        else if(ApplicationClass.prefs.boneReligion == "천주교") {
+                            if (!(boneTabletName2.length in 2..6 && boneTabletName2.matches(hanglePattern))) {
+                                toast("세례명[합골]을 한글 2~6글자로 올바르게 입력해주세요.")
+                                return false
+                            }
+                        }
+                    } else if(boneTabletType.contains("본관")){
+                        if(ApplicationClass.prefs.boneReligion == "일반" || ApplicationClass.prefs.boneReligion == "불교") {
+                            if (!(boneName3.length in 7..9 && boneName3.matches(hanglePattern))) {
+                                toast("본관내용을 한글 7~9글자로 올바르게 입력해주세요.")
+                                return false
+                            }
+                        } else if((ApplicationClass.prefs.boneReligion == "기독교")) {
+                            if (!(boneTabletName2.length in 2..4 && boneTabletName2.matches(hanglePattern))) {
+                                toast("직분을 한글 2~4글자로 올바르게 입력해주세요.")
+                                return false
+                            }
+                            if (!(boneName3.length in 5..7 && boneName3.matches(hanglePattern))) {
+                                toast("본관내용을 한글 5~7글자로 올바르게 입력해주세요.")
+                                return false
+                            }
+                        } else if(ApplicationClass.prefs.boneReligion == "천주교") {
+                            if (!(boneTabletName2.length in 2..6 && boneTabletName2.matches(hanglePattern))) {
+                                toast("세례명을 한글 2~6글자로 올바르게 입력해주세요.")
+                                return false
+                            }
+                            if (!(boneName3.length in 5..7 && boneName3.matches(hanglePattern))) {
+                                toast("본관내용을 한글 5~7글자로 올바르게 입력해주세요.")
+                                return false
+                            }
                         }
                     }
                 }
@@ -769,6 +856,10 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
     private fun checkUrnInput(): Boolean {
         // 유골함
         if(ApplicationClass.prefs.selectedUrnType != "선택안함") {
+            val containsString = searchList.any { it == ApplicationClass.prefs.selectedUrnName }
+            if (!containsString) {
+                return false
+            }
             // 고인 정보
             val name1 = ApplicationClass.prefs.name1.toString()
             if (name1 != "") {
@@ -844,12 +935,47 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
     private fun checkTabletInput(): Boolean {
         // 위패
         if(ApplicationClass.prefs.selectedTabletType != "선택안함") {
+            val containsString = searchList2.any { it == ApplicationClass.prefs.selectedTabletName }
+            if (!containsString) {
+                return false
+            }
             val tabletName2 = ApplicationClass.prefs.tabletName2
             val name3 = ApplicationClass.prefs.name3
             if (!(tabletName2 == "" && name3 == "")) {
                 return false
             }
         }
+        // 합골
+        if(ApplicationClass.prefs.boneSelectedTabletType != "선택안함") {
+            val containsString = searchList2.any { it == ApplicationClass.prefs.selectedTabletName2 }
+            if (!containsString) {
+                return false
+            }
+            val boneTabletName2 = ApplicationClass.prefs.boneTabletName2
+            val boneName3 = ApplicationClass.prefs.boneName3
+            if (!(boneTabletName2 == "" && boneName3 == "")) {
+                return false
+            }
+        }
         return true
+    }
+    private fun settingList() {
+        searchList.add("미정")
+        searchList.add("기본")
+        searchList.add("기본(검정)")
+        searchList.add("도원기독교 DW-3 4010")
+        searchList.add("도원불교 DW-4 4010")
+        searchList.add("도원천주교 DW-5 4010")
+        searchList.add("도원칼라난 DW-2 4010")
+        searchList.add("도원칼라송학 DW-1 4010")
+        searchList.add("도화청꽃 DH-4 4010")
+        searchList.add("도화홍꽃 DH-5 4010")
+        searchList.add("소담난 SDN-2 4008")
+        searchList.add("소담송학 SDS-1 4008")
+    }
+    private fun settingList2() {
+        searchList2.add("미정")
+        searchList2.add("기본")
+        searchList2.add("기본(검정)")
     }
 }

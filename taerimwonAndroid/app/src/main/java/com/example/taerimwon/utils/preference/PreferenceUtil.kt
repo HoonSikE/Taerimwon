@@ -188,6 +188,11 @@ class PreferenceUtil(context: Context) {
         set(value){
             order.edit().putString(SELECTEDURNTYPE, value).apply()
         }
+    var selectedUrnName : String?
+        get() = order.getString(SELECTEDURNNAME, "")
+        set(value){
+            order.edit().putString(SELECTEDURNNAME, value).apply()
+        }
     // 합골 추가 정보
     // 각인종류 (일반, 기독교, 천주교, ...)
     var boneEngraveType : String?
@@ -291,6 +296,16 @@ class PreferenceUtil(context: Context) {
         get() = order.getString(SELECTEDTABLETTYPE, "선택안함")
         set(value){
             order.edit().putString(SELECTEDTABLETTYPE, value).apply()
+        }
+    var selectedTabletName : String?
+        get() = order.getString(SELECTEDTABLETNAME, "")
+        set(value){
+            order.edit().putString(SELECTEDTABLETNAME, value).apply()
+        }
+    var selectedTabletName2 : String?
+        get() = order.getString(SELECTEDTABLETNAME2, "")
+        set(value){
+            order.edit().putString(SELECTEDTABLETNAME2, value).apply()
         }
     // 사진 저장
     // 선택된 파일을 저장할 변수
@@ -410,6 +425,7 @@ class PreferenceUtil(context: Context) {
         date2Type = "양력"
         religion = "선택안함"
         selectedUrnType = "선택안함"
+        selectedUrnName = ""
         boneEngraveType = "일반"
         boneEngraveTypePosition = 0
         boneEngraveType2 = "기본"
@@ -429,6 +445,8 @@ class PreferenceUtil(context: Context) {
         name3 = ""
         tabletName2 = ""
         selectedTabletType = "선택안함"
+        selectedTabletName = ""
+        selectedTabletName2 = ""
         selectedFile = ""
         imageUrl = ""
         tabletSex = "남성"

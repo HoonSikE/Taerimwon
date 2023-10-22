@@ -23,13 +23,18 @@ class ResultContainerFragment : BaseFragment<FragmentResultContainerBinding>(R.l
     private fun initData() {
         var textResultTextLeader = " - 소속: " + ApplicationClass.prefs.leaderDepartment +
                                     "\n - 발주자명: " + ApplicationClass.prefs.leaderName +
-                                    "\n - 발주자 전화번호: " + ApplicationClass.prefs.leaderTel
+                                    "\n - 전화번호: " + ApplicationClass.prefs.leaderTel
 
         binding.textResultTextLeader.text = textResultTextLeader
 
-        var textResultTextClient = "상주명: " + ApplicationClass.prefs.clientName +
-                                    "\n상주 전화번호: " + ApplicationClass.prefs.clientTel
-        binding.textResultTextClient.text = textResultTextClient
+        if(ApplicationClass.prefs.clientName == "" && ApplicationClass.prefs.clientTel == "") {
+            binding.View2.visibility = View.GONE
+            binding.layoutResultTextClient.visibility = View.GONE
+        }else{
+            var textResultTextClient = " - 이름: " + ApplicationClass.prefs.clientName +
+                    "\n - 전화번호: " + ApplicationClass.prefs.clientTel
+            binding.textResultTextClient.text = textResultTextClient
+        }
 
         var textResultTextLocation = ""
 
@@ -47,15 +52,18 @@ class ResultContainerFragment : BaseFragment<FragmentResultContainerBinding>(R.l
         }
         binding.textResultTextLocation.text = textResultTextLocation
 
+
         var textResultTextUrn = ""
-
         val selectedUrnType = ApplicationClass.prefs.selectedUrnType.toString()
-        textResultTextUrn += "유골함 종류: " + selectedUrnType
-        if(selectedUrnType != "선택안함"){
-            textResultTextUrn += "\n\n각인 종류: " + ApplicationClass.prefs.engraveType + "[" + ApplicationClass.prefs.engraveType2 + "]"
+        textResultTextUrn += " - 함 종류: " + selectedUrnType +
+                            "\n - 함 명칭: " + ApplicationClass.prefs.selectedUrnName
+        if(selectedUrnType == "선택안함"){
+            binding.View4.visibility = View.GONE
+            binding.layoutResultTextUrn.visibility = View.GONE
+        }else {
+            textResultTextUrn += "\n - 각인 종류: " + ApplicationClass.prefs.engraveType + "[" + ApplicationClass.prefs.engraveType2 + "]"
 
-            textResultTextUrn += "\n\n고인 정보" +
-                    "\n - 고인명: " + ApplicationClass.prefs.name1 +
+            textResultTextUrn += "\n - 고인명: " + ApplicationClass.prefs.name1 +
                     "\n - 생년월일: " + ApplicationClass.prefs.date1.toString().replace("-", ".") + " (${ApplicationClass.prefs.date1Type})" +
                     "\n - 사망월일: " + ApplicationClass.prefs.date2.toString().replace("-", ".") + " (${ApplicationClass.prefs.date2Type})"
 
@@ -92,32 +100,38 @@ class ResultContainerFragment : BaseFragment<FragmentResultContainerBinding>(R.l
         var textResultTextTablet = ""
 
         val selectedTabletType = ApplicationClass.prefs.selectedTabletType.toString()
-        textResultTextTablet += "위패 종류: " + selectedTabletType
-        if(selectedTabletType != "선택안함") {
-            textResultTextTablet += "\n\n위패 상세 종류: " + ApplicationClass.prefs.tabletType
+        textResultTextTablet += " - 위패 종류: " + selectedTabletType
+        if(selectedTabletType == "선택안함") {
+            binding.View5.visibility = View.GONE
+            binding.layoutResultTextTablet.visibility = View.GONE
+        }else {
+            textResultTextTablet += "\n - 위패 상세 종류: " + ApplicationClass.prefs.tabletType +
+                                    "\n - 위패 명칭: " + ApplicationClass.prefs.selectedTabletName
 
             if(!selectedTabletType.contains("사진")){
                 textResultTextTablet += "\n - 위패 내용: " + ApplicationClass.prefs.name3
                 if(!selectedTabletType.contains("본관")){
                     if(ApplicationClass.prefs.tabletType.toString().contains("기독교"))
-                        textResultTextTablet += "\n직분: " + ApplicationClass.prefs.tabletName2
+                        textResultTextTablet += "\n - 직분: " + ApplicationClass.prefs.tabletName2
                     else if(ApplicationClass.prefs.tabletType.toString().contains("천주교"))
-                        textResultTextTablet += "\n세례명: " + ApplicationClass.prefs.tabletName2
+                        textResultTextTablet += "\n - 세례명: " + ApplicationClass.prefs.tabletName2
                 }
             }
         }
         val boneSelectedTabletType = ApplicationClass.prefs.boneSelectedTabletType.toString()
         if(boneSelectedTabletType != "선택안함") {
-            textResultTextTablet += "\n\n합골 위패 종류: " + ApplicationClass.prefs.boneSelectedTabletType
-            textResultTextTablet += "\n\n위패 상세 종류: " + ApplicationClass.prefs.boneTabletType
+            textResultTextTablet += "\n\n합골 추가 정보"
+            textResultTextTablet += "\n - 합골 위패 종류: " + ApplicationClass.prefs.boneSelectedTabletType
+            textResultTextTablet += "\n - 위패 상세 종류: " + ApplicationClass.prefs.boneTabletType +
+                                    "\n - 합골 위패 명칭: " + ApplicationClass.prefs.selectedTabletName2
 
             if(!boneSelectedTabletType.contains("사진")){
                 textResultTextTablet += "\n - 위패 내용: " + ApplicationClass.prefs.boneName3
                 if(!boneSelectedTabletType.contains("본관")){
                     if(ApplicationClass.prefs.boneTabletType.toString().contains("기독교"))
-                        textResultTextTablet += "\n직분: " + ApplicationClass.prefs.boneTabletName2
+                        textResultTextTablet += "\n - 직분: " + ApplicationClass.prefs.boneTabletName2
                     else if(ApplicationClass.prefs.boneTabletType.toString().contains("천주교"))
-                        textResultTextTablet += "\n세례명: " + ApplicationClass.prefs.boneTabletName2
+                        textResultTextTablet += "\n - 세례명: " + ApplicationClass.prefs.boneTabletName2
                 }
             }
         }
@@ -132,7 +146,6 @@ class ResultContainerFragment : BaseFragment<FragmentResultContainerBinding>(R.l
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 ApplicationClass.prefs.note =
                     s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
-                print("ddddddd")
             }
 
             override fun afterTextChanged(s: Editable?) {
