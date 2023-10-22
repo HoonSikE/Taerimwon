@@ -28,8 +28,6 @@ class UrnAutoCompleteAdapter(context: Context, resource: Int, private val items:
         val imageView: ImageView = tmpConvertView.findViewById(R.id.image_view)
 
         //getItem(position) 코드로 자동완성 될 아이템을 가져온다
-
-        //getItem(position) 코드로 자동완성 될 아이템을 가져온다
         val urnItem: UrnItem? = getItem(position)
 
         if (urnItem != null) {
@@ -45,7 +43,7 @@ class UrnAutoCompleteAdapter(context: Context, resource: Int, private val items:
                 val filterResults = FilterResults()
                 val filteredItems = mutableListOf<UrnItem>()
 
-                if (constraint == null || constraint.isEmpty()) {
+                if (constraint.isNullOrBlank()) {
                     // 검색어가 비어있으면 모든 원본 아이템을 유지합니다.
                     filteredItems.addAll(originalItems)
                 } else {

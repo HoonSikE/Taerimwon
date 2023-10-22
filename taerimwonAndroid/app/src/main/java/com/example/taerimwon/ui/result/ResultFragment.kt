@@ -221,7 +221,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             val layoutUrnImage = binding.layoutUrnImage
             var newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn)
 
-            if(selectedUrnName == "기본"){
+            if(selectedUrnName == "미정"){
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
+            }else if(selectedUrnName == "기본"){
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn)
             }else if(selectedUrnName == "기본(검정)"){
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn)
@@ -535,12 +537,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             "기독교", "순복음" -> {
                 binding.layoutUrnResult111.visibility = View.GONE
                 binding.layoutUrnResult112.visibility = View.VISIBLE
-                binding.layoutUrnResult112.text = "出生"
+                binding.layoutUrnResult112.text = "出\n生"
             }
             "천주교" -> {
                 binding.layoutUrnResult111.visibility = View.GONE
                 binding.layoutUrnResult112.visibility = View.VISIBLE
-                binding.layoutUrnResult112.text = "出生"
+                binding.layoutUrnResult112.text = "出\n生"
             }
         }
 
@@ -572,12 +574,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             "기독교", "순복음" -> {
                 binding.layoutUrnResult311.visibility = View.GONE
                 binding.layoutUrnResult312.visibility = View.VISIBLE
-                binding.layoutUrnResult312.text = "召天"
+                binding.layoutUrnResult312.text = "召\n天"
             }
             "천주교" -> {
                 binding.layoutUrnResult311.visibility = View.GONE
                 binding.layoutUrnResult312.visibility = View.VISIBLE
-                binding.layoutUrnResult312.text = "善終"
+                binding.layoutUrnResult312.text = "善\n終"
             }
         }
 
@@ -624,6 +626,17 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     }
     private fun setBone1Data() {
         val selectedUrnName = ApplicationClass.prefs.selectedUrnName
+
+        var newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_bone1)
+
+        if(selectedUrnName == "미정"){
+            newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
+        }
+        else if(selectedUrnName == "기본"){
+            newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_bone1)
+        }
+        binding.layoutBone1Image.background = newBackground
+
         if(selectedUrnName!!.contains("검정")){
             binding.layoutBoneResult111.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutBoneResult112.setTextColor(Color.parseColor("#FFD700"))
@@ -1076,6 +1089,17 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         }
     }
     private fun setBone2Data() {
+        var newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_bone2)
+
+        val selectedUrnName = ApplicationClass.prefs.selectedUrnName
+        if(selectedUrnName == "미정"){
+            newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
+        }
+        else if(selectedUrnName == "기본"){
+            newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_bone2)
+        }
+        binding.layoutBone2Image.background = newBackground
+
         // 정보1
         var name1 = ApplicationClass.prefs.name1.toString()
         var name2 = ApplicationClass.prefs.name2.toString()
@@ -1306,7 +1330,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             layoutBoneResult371.visibility = View.VISIBLE
         }
 
-        val selectedUrnName = ApplicationClass.prefs.selectedUrnName
         if(selectedUrnName!!.contains("검정")){
             binding.layoutBone2Result21.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutBone2Result211.setTextColor(Color.parseColor("#FFD700"))
@@ -1588,12 +1611,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             "기독교", "순복음" -> {
                 layoutUrnResult111.visibility = View.GONE
                 layoutUrnResult112.visibility = View.VISIBLE
-                layoutUrnResult112.text = "出生"
+                layoutUrnResult112.text = "出\n生"
             }
             "천주교" -> {
                 layoutUrnResult111.visibility = View.GONE
                 layoutUrnResult112.visibility = View.VISIBLE
-                layoutUrnResult112.text = "出生"
+                layoutUrnResult112.text = "出\n生"
             }
         }
 
@@ -1622,12 +1645,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             "기독교", "순복음" -> {
                 layoutUrnResult311.visibility = View.GONE
                 layoutUrnResult312.visibility = View.VISIBLE
-                layoutUrnResult312.text = "召天"
+                layoutUrnResult312.text = "召\n天"
             }
             "천주교" -> {
                 layoutUrnResult311.visibility = View.GONE
                 layoutUrnResult312.visibility = View.VISIBLE
-                layoutUrnResult312.text = "善終"
+                layoutUrnResult312.text = "善\n終"
             }
         }
 
@@ -1914,6 +1937,17 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         binding.layoutTabletResult12.setImageResource(imageResource)
     }
     private fun setTabletData() {
+        var newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
+
+        val selectedTabletName = ApplicationClass.prefs.selectedTabletName
+        if(selectedTabletName == "미정"){
+            newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
+        }
+        else if(selectedTabletName == "기본"){
+            newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
+        }
+        binding.layoutTabletImage.background = newBackground
+
         setTableMark()
         val pixel_size_13 = resources.getDimensionPixelSize(R.dimen.pixel_size_13)
         val pixel_size_15 = resources.getDimensionPixelSize(R.dimen.pixel_size_15)
@@ -1945,7 +1979,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val layoutTabletResult312 = binding.layoutTabletResult312
         val layoutTabletResult32 = binding.layoutTabletResult32
 
-        val selectedTabletName = ApplicationClass.prefs.selectedTabletName
         if(selectedTabletName!!.contains("검정")){
             binding.layoutTabletResult0.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutTabletResult10.setTextColor(Color.parseColor("#FFD700"))
@@ -2228,6 +2261,17 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         binding.layoutTablet2Result12.setImageResource(imageResource)
     }
     private fun setBoneTabletData() {
+        var newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
+
+        val selectedTabletName2 = ApplicationClass.prefs.selectedTabletName2
+        if(selectedTabletName2 == "미정"){
+            newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
+        }
+        else if(selectedTabletName2 == "기본"){
+            newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
+        }
+        binding.layoutTablet2Image.background = newBackground
+
         setBoneTableMark()
         val pixel_size_13 = resources.getDimensionPixelSize(R.dimen.pixel_size_13)
         val pixel_size_15 = resources.getDimensionPixelSize(R.dimen.pixel_size_15)
@@ -2240,7 +2284,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //        val pixel_size_40 = resources.getDimensionPixelSize(R.dimen.pixel_size_40)
 //        val pixel_size_45 = resources.getDimensionPixelSize(R.dimen.pixel_size_45)
 
-        val selectedTabletName2 = ApplicationClass.prefs.selectedTabletName2
         if(selectedTabletName2!!.contains("검정")){
             binding.layoutTablet2Result0.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutTablet2Result10.setTextColor(Color.parseColor("#FFD700"))
@@ -2940,11 +2983,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             val canvasMsgBitmap = Canvas(msgBitmap)
             layoutResultContent.draw(canvasMsgBitmap)
             // 유골
+            val selectedUrnName = ApplicationClass.prefs.selectedUrnName
             if(selectedUrnType != "선택안함") {
                 if(selectedUrnType.contains("합골함")){
                     if(selectedUrnType.contains("합골함1")){
                         // 유골 정보
-                        val layoutUrnContent = binding.layoutUrnContent
+                        var layoutUrnContent = binding.layoutUrnContent
 
                         // 2. 레이아웃을 이미지로 변환
                         urnContentBitmap = Bitmap.createBitmap(layoutUrnContent.width, layoutUrnContent.height, Bitmap.Config.ARGB_8888)

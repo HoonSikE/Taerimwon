@@ -968,10 +968,10 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         searchList.add("도원천주교 DW-5 4010")
         searchList.add("도원칼라난 DW-2 4010")
         searchList.add("도원칼라송학 DW-1 4010")
-        searchList.add("도화청꽃 DH-4 4010")
-        searchList.add("도화홍꽃 DH-5 4010")
-        searchList.add("소담난 SDN-2 4008")
-        searchList.add("소담송학 SDS-1 4008")
+        searchList.add("도화청꽃 DH-44010")
+        searchList.add("도화홍꽃 DH-54010")
+        searchList.add("소담난 SDN-24008")
+        searchList.add("소담송학 SDS-14008")
     }
     private fun settingList2() {
         searchList2.add("미정")
