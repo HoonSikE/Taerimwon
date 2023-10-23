@@ -817,10 +817,10 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
 //                return false
 //            }
             val cremationTime = ApplicationClass.prefs.cremationTime.toString()
-            if (!cremationTime.matches(dateTimePattern)) {
-                toast("화장 시간을 2023-09-01 00:00 형태로 올바르게 입력해주세요.")
-                return false
-            }
+//            if (!cremationTime.matches(dateTimePattern)) {
+//                toast("화장 시간을 2023-09-01 00:00 형태로 올바르게 입력해주세요.")
+//                return false
+//            }
         } else if(selectedLocation == "장례식장"){
             val funeralName = ApplicationClass.prefs.funeralName.toString()
             if (!(funeralName.length <= 10 && funeralName.matches(hanglePattern))) {
@@ -968,10 +968,10 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         searchList.add("도원천주교 DW-5 4010")
         searchList.add("도원칼라난 DW-2 4010")
         searchList.add("도원칼라송학 DW-1 4010")
-        searchList.add("도화청꽃 DH-44010")
-        searchList.add("도화홍꽃 DH-54010")
-        searchList.add("소담난 SDN-24008")
-        searchList.add("소담송학 SDS-14008")
+        searchList.add("도화청꽃 DH-4 4010")
+        searchList.add("도화홍꽃 DH-5 4010")
+        searchList.add("소담난 SDN-2 4008")
+        searchList.add("소담송학 SDS-14 008")
     }
     private fun settingList2() {
         searchList2.add("미정")

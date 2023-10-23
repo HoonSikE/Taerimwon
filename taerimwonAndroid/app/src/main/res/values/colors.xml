@@ -46,4 +46,6 @@
 
     <color name="man">#82A0D8</color>
     <color name="woman">#FF9B9B</color>
+
+    <color name="backgroundResultImage">#ced5d9</color>
 </resources>
