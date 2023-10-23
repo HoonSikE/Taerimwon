@@ -464,7 +464,6 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             }
         })
         val editTextDate1 = binding.editTextDate1
-        editTextDate1.addTextChangedListener(DateTextWatcher(editTextDate1))
         editTextDate1.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // 이전 텍스트 변경 이벤트
@@ -473,14 +472,16 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 // 텍스트 변경 이벤트
                 ApplicationClass.prefs.date1 = s?.toString() ?: ""
+                println("dd" + s?.toString())
             }
 
             override fun afterTextChanged(s: Editable?) {
                 // 텍스트 변경 후 이벤트
             }
         })
+        editTextDate1.addTextChangedListener(DateTextWatcher(editTextDate1))
+
         val editTextDate2 = binding.editTextDate2
-        editTextDate2.addTextChangedListener(DateTextWatcher(editTextDate2))
         editTextDate2.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // 이전 텍스트 변경 이벤트
@@ -495,6 +496,8 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                 // 텍스트 변경 후 이벤트
             }
         })
+        editTextDate2.addTextChangedListener(DateTextWatcher(editTextDate2))
+
         // 직분, 법명, 세례명
         binding.editTextName2.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -527,7 +530,6 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             }
         })
         val editTextBoneDate1 = binding.editTextBoneDate1
-        editTextBoneDate1.addTextChangedListener(DateTextWatcher(editTextBoneDate1))
         editTextBoneDate1.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // 이전 텍스트 변경 이벤트
@@ -542,8 +544,9 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                 // 텍스트 변경 후 이벤트
             }
         })
+        editTextBoneDate1.addTextChangedListener(DateTextWatcher(editTextBoneDate1))
+
         val editTextBoneDate2 = binding.editTextBoneDate2
-        editTextBoneDate2.addTextChangedListener(DateTextWatcher(editTextBoneDate2))
         editTextBoneDate2.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // 이전 텍스트 변경 이벤트
@@ -558,6 +561,8 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                 // 텍스트 변경 후 이벤트
             }
         })
+        editTextBoneDate2.addTextChangedListener(DateTextWatcher(editTextBoneDate2))
+
         // 직분, 법명, 세례명
         binding.editTextBoneName2.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -651,15 +656,15 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         searchList.add(UrnItem("미정", 0))
         searchList.add(UrnItem("기본", R.drawable.img_urn))
         searchList.add(UrnItem("기본(검정)", R.drawable.img_urn))
-        searchList.add(UrnItem("도원기독교 DW-3 4010", R.drawable.img_urn1))
-        searchList.add(UrnItem("도원불교 DW-4 4010", R.drawable.img_urn2))
-        searchList.add(UrnItem("도원천주교 DW-5 4010", R.drawable.img_urn3))
-        searchList.add(UrnItem("도원칼라난 DW-2 4010", R.drawable.img_urn4))
-        searchList.add(UrnItem("도원칼라송학 DW-1 4010", R.drawable.img_urn5))
-        searchList.add(UrnItem("도화청꽃 DH-4 4010", R.drawable.img_urn6))
-        searchList.add(UrnItem("도화홍꽃 DH-5 4010", R.drawable.img_urn7))
-        searchList.add(UrnItem("소담난 SDN-2 4008", R.drawable.img_urn8))
-        searchList.add(UrnItem("소담송학 SDS-1 4008", R.drawable.img_urn9))
+        searchList.add(UrnItem("도원기독교 DW-3 4010", R.drawable.img_urn1))
+        searchList.add(UrnItem("도원불교 DW-4 4010", R.drawable.img_urn2))
+        searchList.add(UrnItem("도원천주교 DW-5 4010", R.drawable.img_urn3))
+        searchList.add(UrnItem("도원칼라난 DW-2 4010", R.drawable.img_urn4))
+        searchList.add(UrnItem("도원칼라송학 DW-1 4010", R.drawable.img_urn5))
+        searchList.add(UrnItem("도화청꽃 DH-4 4010", R.drawable.img_urn6))
+        searchList.add(UrnItem("도화홍꽃 DH-5 4010", R.drawable.img_urn7))
+        searchList.add(UrnItem("소담난 SDN-2 4008", R.drawable.img_urn8))
+        searchList.add(UrnItem("소담송학 SDS-1 4008", R.drawable.img_urn9))
     }
     private fun settingList2() {
         searchList2.add(UrnItem("미정", 0))

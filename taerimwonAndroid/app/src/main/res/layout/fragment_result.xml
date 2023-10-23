@@ -674,6 +674,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/layout_bone_content"
                         app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginBottom="40px"
+                        android:visibility="gone"
                         >
                         <!--왼쪽-->
                         <androidx.constraintlayout.widget.ConstraintLayout

@@ -459,7 +459,6 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         // 화장장
 //        ApplicationClass.prefs.cremationArea = binding.editText.toString()
         val editTextCremationTime = binding.editTextCremationTime
-        editTextCremationTime.addTextChangedListener(DateTimeTextWatcher(editTextCremationTime))
         editTextCremationTime.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -472,6 +471,8 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             override fun afterTextChanged(s: Editable?) {
             }
         })
+        editTextCremationTime.addTextChangedListener(DateTimeTextWatcher(editTextCremationTime))
+
         // 장례식장
         binding.editTextFuneralName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -498,7 +499,6 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             }
         })
         val editTextFuneralTime = binding.editTextFuneralTime
-        editTextFuneralTime.addTextChangedListener(DateTimeTextWatcher(editTextFuneralTime))
         editTextFuneralTime.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -511,6 +511,8 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             override fun afterTextChanged(s: Editable?) {
             }
         })
+        editTextFuneralTime.addTextChangedListener(DateTimeTextWatcher(editTextFuneralTime))
+
         // 장지
         binding.editTextBurialName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -526,7 +528,6 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         })
 
         val editTextBurialTime = binding.editTextBurialTime
-        editTextBurialTime.addTextChangedListener(DateTimeTextWatcher(editTextBurialTime))
         editTextBurialTime.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -539,6 +540,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             override fun afterTextChanged(s: Editable?) {
             }
         })
+        editTextBurialTime.addTextChangedListener(DateTimeTextWatcher(editTextBurialTime))
     }
 
     private fun observer() {
@@ -963,15 +965,15 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         searchList.add("미정")
         searchList.add("기본")
         searchList.add("기본(검정)")
-        searchList.add("도원기독교 DW-3 4010")
-        searchList.add("도원불교 DW-4 4010")
-        searchList.add("도원천주교 DW-5 4010")
-        searchList.add("도원칼라난 DW-2 4010")
-        searchList.add("도원칼라송학 DW-1 4010")
-        searchList.add("도화청꽃 DH-4 4010")
-        searchList.add("도화홍꽃 DH-5 4010")
-        searchList.add("소담난 SDN-2 4008")
-        searchList.add("소담송학 SDS-14 008")
+        searchList.add("도원기독교 DW-3 4010")
+        searchList.add("도원불교 DW-4 4010")
+        searchList.add("도원천주교 DW-5 4010")
+        searchList.add("도원칼라난 DW-2 4010")
+        searchList.add("도원칼라송학 DW-1 4010")
+        searchList.add("도화청꽃 DH-4 4010")
+        searchList.add("도화홍꽃 DH-5 4010")
+        searchList.add("소담난 SDN-2 4008")
+        searchList.add("소담송학 SDS-14 008")
     }
     private fun settingList2() {
         searchList2.add("미정")

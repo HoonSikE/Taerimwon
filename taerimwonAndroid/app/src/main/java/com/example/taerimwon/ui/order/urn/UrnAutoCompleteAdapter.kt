@@ -47,11 +47,14 @@ class UrnAutoCompleteAdapter(context: Context, resource: Int, private val items:
                     // 검색어가 비어있으면 모든 원본 아이템을 유지합니다.
                     filteredItems.addAll(originalItems)
                 } else {
-                    val filterPattern = constraint.toString().toLowerCase(Locale.getDefault())
+                    val filterPattern = constraint.toString().toLowerCase().replace(" ", "").trim()
+                    val filterInitialSound = getInitialSounds(constraint.toString().toLowerCase().replace(" ", "").trim())
 
                     for (item in originalItems) {
+                        val itemInitialSound = getInitialSounds(item.urnItem.toLowerCase().replace(" ", "").trim())
+
                         // 여기서 초성과 부분 검색을 모두 적용합니다.
-                        if (item.urnItem.contains(filterPattern) || isInitialMatch(item.urnItem, filterPattern)) {
+                        if (item.urnItem.toLowerCase().replace(" ", "").trim().contains(filterPattern) || itemInitialSound.contains(filterInitialSound)) {
                             filteredItems.add(item)
                         }
                     }
@@ -75,25 +78,34 @@ class UrnAutoCompleteAdapter(context: Context, resource: Int, private val items:
         }
     }
 
-    private fun isInitialMatch(item: String, constraint: String): Boolean {
-        val initials = mutableListOf<Char>()
-        for (word in item.split(" ")) {
-            if (word.isNotEmpty()) {
-                val hangulChar = word[0].toLowerCase()
-                val initial = getHangulInitialSound(hangulChar)
-                if (initial == constraint[0].toLowerCase()) {
-                    initials.add(initial)
-                }
+    private fun getInitialSounds(text: String): String {
+        val jaum = StringBuilder()
+        for (c in text) {
+            if (c.isHangul()) {
+                jaum.append(getInitialSound(c))
+            }else{
+                jaum.append(c)
             }
         }
-        return initials.isNotEmpty()
+        println(jaum)
+        return jaum.toString()
     }
 
-    private fun getHangulInitialSound(c: Char): Char {
-        if (c >= '가' && c <= '힣') {
-            val initialSound = ((c - '가') / 588).toInt()
-            return charArrayOf('ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ')[initialSound]
-        }
-        return c
+    // 가: 44032
+    val HANGUL_BEGIN_UNICODE = '가'
+    // 힣: 55203
+    val HANGUL_LAST_UNICODE = '힣'
+    // 각 자음마다 가지는 글자수: 588
+    val HANGUL_BASE_UNIT = 588
+    private fun getInitialSound(c: Char): Char {
+        val INITIAL_SOUND = charArrayOf(
+            'ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'
+        )
+        val index = (c - HANGUL_BEGIN_UNICODE) / HANGUL_BASE_UNIT
+        return INITIAL_SOUND[index]
+    }
+
+    private fun Char.isHangul(): Boolean {
+        return this in HANGUL_BEGIN_UNICODE..HANGUL_LAST_UNICODE
     }
 }
