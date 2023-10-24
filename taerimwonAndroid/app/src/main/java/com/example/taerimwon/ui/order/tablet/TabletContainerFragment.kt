@@ -671,6 +671,6 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
     private fun settingList2() {
         searchList2.add(TabletItem("미정", 0))
         searchList2.add(TabletItem("기본", R.drawable.img_tablet))
-        searchList2.add(TabletItem("기본(검정)", R.drawable.img_tablet))
+        searchList2.add(TabletItem("기본(검정)", R.drawable.img_tablet0))
     }
 }

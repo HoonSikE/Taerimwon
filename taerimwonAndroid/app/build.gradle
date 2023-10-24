@@ -107,6 +107,9 @@ dependencies {
 
     // 스플래시
     implementation 'androidx.core:core-splashscreen:1.0.0-rc01'
+
+    // 이미지 줌 인/아웃
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 }
 
 kapt {

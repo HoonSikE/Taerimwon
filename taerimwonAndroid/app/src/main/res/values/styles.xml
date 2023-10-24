@@ -17,6 +17,13 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
+    <style name="HeadBoldWhite" parent="android:TextAppearance">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
     <style name="SubHead" parent="android:TextAppearance">
         <item name="android:textSize">16dp</item>
         <item name="android:textColor">@color/primaryTextColor</item>

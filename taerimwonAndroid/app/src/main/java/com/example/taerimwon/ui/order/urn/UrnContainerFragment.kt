@@ -655,7 +655,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
     private fun settingList() {
         searchList.add(UrnItem("미정", 0))
         searchList.add(UrnItem("기본", R.drawable.img_urn))
-        searchList.add(UrnItem("기본(검정)", R.drawable.img_urn))
+        searchList.add(UrnItem("기본(검정)", R.drawable.img_urn0))
         searchList.add(UrnItem("도원기독교 DW-3 4010", R.drawable.img_urn1))
         searchList.add(UrnItem("도원불교 DW-4 4010", R.drawable.img_urn2))
         searchList.add(UrnItem("도원천주교 DW-5 4010", R.drawable.img_urn3))
@@ -669,11 +669,11 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
     private fun settingList2() {
         searchList2.add(UrnItem("미정", 0))
         searchList2.add(UrnItem("기본", R.drawable.img_bone1))
-        searchList2.add(UrnItem("기본(검정)", R.drawable.img_bone1))
+        searchList2.add(UrnItem("기본(검정)", R.drawable.img_bone1_0))
     }
     private fun settingList3() {
         searchList3.add(UrnItem("미정", 0))
         searchList3.add(UrnItem("기본", R.drawable.img_bone2))
-        searchList3.add(UrnItem("기본(검정)", R.drawable.img_bone2))
+        searchList3.add(UrnItem("기본(검정)", R.drawable.img_bone2_0))
     }
 }

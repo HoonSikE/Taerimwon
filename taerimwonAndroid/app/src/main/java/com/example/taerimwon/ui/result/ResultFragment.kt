@@ -229,25 +229,29 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
             }else if(selectedUrnName == "기본"){
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn)
+                binding.imageUrnImage0.visibility = View.GONE
+                binding.imageUrnImage1.visibility = View.VISIBLE
             }else if(selectedUrnName == "기본(검정)"){
-                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn)
-            }else if(selectedUrnName == "도원기독교 DW-3 4010"){
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn0)
+                binding.imageUrnImage0.visibility = View.GONE
+                binding.imageUrnImage1.visibility = View.VISIBLE
+            }else if(selectedUrnName == "도원기독교 DW-3 4010"){
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn1)
-            }else if(selectedUrnName == "도원불교 DW-4 4010"){
+            }else if(selectedUrnName == "도원불교 DW-4 4010"){
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn2)
-            }else if(selectedUrnName == "도원천주교 DW-5 4010"){
+            }else if(selectedUrnName == "도원천주교 DW-5 4010"){
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn3)
-            }else if(selectedUrnName == "도원칼라난 DW-2 4010"){
+            }else if(selectedUrnName == "도원칼라난 DW-2 4010"){
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4)
-            }else if(selectedUrnName == "도원칼라송학 DW-1 4010"){
+            }else if(selectedUrnName == "도원칼라송학 DW-1 4010"){
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5)
-            }else if(selectedUrnName == "도화청꽃 DH-4 4010"){
+            }else if(selectedUrnName == "도화청꽃 DH-4 4010"){
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn6)
-            }else if(selectedUrnName == "도화홍꽃 DH-5 4010"){
+            }else if(selectedUrnName == "도화홍꽃 DH-5 4010"){
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn7)
-            }else if(selectedUrnName == "소담난 SDN-2 4008"){
+            }else if(selectedUrnName == "소담난 SDN-2 4008"){
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8)
-            }else if(selectedUrnName == "소담송학 SDS-1 4008"){
+            }else if(selectedUrnName == "소담송학 SDS-1 4008"){
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn9)
             }
             layoutUrnImage.background = newBackground
@@ -545,12 +549,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             "기독교", "순복음" -> {
                 binding.layoutUrnResult111.visibility = View.GONE
                 binding.layoutUrnResult112.visibility = View.VISIBLE
-                binding.layoutUrnResult112.text = "出\n生"
+                binding.layoutUrnResult112.text = "出生"
             }
             "천주교" -> {
                 binding.layoutUrnResult111.visibility = View.GONE
                 binding.layoutUrnResult112.visibility = View.VISIBLE
-                binding.layoutUrnResult112.text = "出\n生"
+                binding.layoutUrnResult112.text = "出生"
             }
         }
 
@@ -582,12 +586,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             "기독교", "순복음" -> {
                 binding.layoutUrnResult311.visibility = View.GONE
                 binding.layoutUrnResult312.visibility = View.VISIBLE
-                binding.layoutUrnResult312.text = "召\n天"
+                binding.layoutUrnResult312.text = "召天"
             }
             "천주교" -> {
                 binding.layoutUrnResult311.visibility = View.GONE
                 binding.layoutUrnResult312.visibility = View.VISIBLE
-                binding.layoutUrnResult312.text = "善\n終"
+                binding.layoutUrnResult312.text = "善終"
             }
         }
 
@@ -642,6 +646,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         }
         else if(selectedUrnName == "기본"){
             newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_bone1)
+        }
+        else if(selectedUrnName == "기본(검정)"){
+            newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_bone1_0)
         }
         binding.layoutBone1Image.background = newBackground
 
@@ -1109,6 +1116,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         }
         else if(selectedUrnName == "기본"){
             newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_bone2)
+        }else if(selectedUrnName == "기본(검정)"){
+            newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_bone2_0)
         }
         binding.layoutBone2Image.background = newBackground
 
@@ -2042,6 +2051,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         }
         else if(selectedTabletName == "기본"){
             newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
+        }
+        else if(selectedTabletName == "기본(검정)"){
+            newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet0)
         }
         binding.layoutTabletImage.background = newBackground
 
@@ -3262,14 +3274,11 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         }, delayMillis.toLong())
     }
     private fun setOnClickListeners() {
-        binding.imageZoomIn.setOnClickListener {
-            scale += 0.2f
-            applyScale()
-        }
-
-        binding.imageZoomOut.setOnClickListener {
-            scale -= 0.2f
-            applyScale()
+        binding.layoutZoom.setOnClickListener {
+            val dialog = ResultDialogFragment()
+            // 화면 밖 터치시 종료되지 않게 하기
+            dialog.isCancelable = false
+            dialog.show(childFragmentManager, "show layout zoom")
         }
 
         binding.buttonResultToOrderFragment.setOnClickListener{
@@ -3392,11 +3401,5 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             // SMS/MMS 앱을 찾을 수 없는 경우
             toast("기본 메시지 앱을 찾을 수 없습니다.")
         }
-    }
-    private fun applyScale() {
-        if (scale < 0.5f) scale = 0.5f // 최소 크기 설정
-        if (scale > 2) scale = 2.0f // 최대 크기 설정
-        ViewCompat.setScaleX(binding.layoutResultImage, scale)
-        ViewCompat.setScaleY(binding.layoutResultImage, scale)
     }
 }
