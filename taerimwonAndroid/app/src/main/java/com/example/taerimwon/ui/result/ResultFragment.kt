@@ -3,41 +3,27 @@ package com.example.taerimwon.ui.result
 import android.Manifest
 import android.app.Activity
 import android.content.ActivityNotFoundException
-import android.content.ContentValues
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.*
 import android.net.Uri
 import android.os.Handler
-import android.os.Process
-import android.text.Editable
-import android.text.InputFilter
-import android.text.TextWatcher
 import android.util.Log
 import android.util.TypedValue
-import android.view.LayoutInflater
-import android.view.ScaleGestureDetector
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.isVisible
-import androidx.core.view.marginTop
 import androidx.fragment.app.viewModels
 import com.example.taerimwon.R
 import com.example.taerimwon.base.BaseFragment
 import com.example.taerimwon.databinding.FragmentResultBinding
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.fragment.findNavController
-import com.example.taerimwon.data.dto.urn.UrnItem
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.home.AuthViewModel
-import com.example.taerimwon.ui.order.urn.UrnContainerFragment
 import com.example.taerimwon.utils.view.toast
 import java.io.File
 import java.io.FileOutputStream
@@ -69,29 +55,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         setOnClickListeners()
         observer()
     }
-
-    inner class ScaleGestureListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
-        override fun onScale(detector: ScaleGestureDetector): Boolean {
-            val scaleFactor = detector.scaleFactor
-
-            val layoutResultImage = binding.layoutResultImage
-            // View를 확대 또는 축소
-            layoutResultImage.scaleX *= scaleFactor
-            layoutResultImage.scaleY *= scaleFactor
-
-            return true
-        }
-    }
     private fun initData() {
-        val scaleGestureDetector = ScaleGestureDetector(requireContext(), ScaleGestureListener())
-        // 확대/축소를 적용할 View
-        val layoutResultImage = binding.layoutResultImage
-
-        layoutResultImage.setOnTouchListener { _, event ->
-            scaleGestureDetector.onTouchEvent(event)
-            true
-        }
-
         selectedUrnType = ApplicationClass.prefs.selectedUrnType.toString()
         selectedTabletType = ApplicationClass.prefs.selectedTabletType.toString()
         boneSelectedTabletType = ApplicationClass.prefs.boneSelectedTabletType.toString()
@@ -213,7 +177,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         if(engraveTypePosition == 4 || engraveTypePosition == 5){
             if(ApplicationClass.prefs.engraveType2Position == 0)
                 imageName = "img_mark5"
-            else if(ApplicationClass.prefs.engraveType2Position == 1)
+            else if(ApplicationClass.prefs.engraveType2Position == 1 || ApplicationClass.prefs.engraveType2Position == 2)
                 imageName = "img_mark5_2"
         }
         val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
@@ -331,8 +295,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val engraveType2 = ApplicationClass.prefs.engraveType2
 
         if(engraveType2.toString().contains("年月日")){
-            binding.layoutUrnResult111.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
-            binding.layoutUrnResult112.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
+
+            binding.layoutUrnResult111.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            binding.layoutUrnResult111.setTypeface(hyhaeso, Typeface.BOLD)
+            binding.layoutUrnResult112.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            binding.layoutUrnResult112.setTypeface(hyhaeso, Typeface.BOLD)
 
             binding.layoutUrnResult13.visibility = View.GONE
             binding.layoutUrnResult131.visibility = View.VISIBLE
@@ -340,10 +308,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             binding.layoutUrnResult151.visibility = View.VISIBLE
             binding.layoutUrnResult171.visibility = View.VISIBLE
 
-            binding.layoutUrnResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            binding.layoutUrnResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            binding.layoutUrnResult17.setTypeface(hyhaeso, Typeface.BOLD)
 
-            binding.layoutUrnResult311.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
-            binding.layoutUrnResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            binding.layoutUrnResult311.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            binding.layoutUrnResult311.setTypeface(hyhaeso, Typeface.BOLD)
+            binding.layoutUrnResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            binding.layoutUrnResult312.setTypeface(hyhaeso, Typeface.BOLD)
 
             binding.layoutUrnResult33.visibility = View.GONE
             binding.layoutUrnResult331.visibility = View.VISIBLE
@@ -351,7 +322,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             binding.layoutUrnResult351.visibility = View.VISIBLE
             binding.layoutUrnResult371.visibility = View.VISIBLE
 
-            binding.layoutUrnResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            binding.layoutUrnResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            binding.layoutUrnResult37.setTypeface(hyhaeso, Typeface.BOLD)
         }
 
         binding.layoutUrnResult22.visibility = View.VISIBLE
@@ -359,9 +331,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val layoutUrnResult221 = binding.layoutUrnResult221
 
         if((engraveType == "일반" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日")))
-            || (engraveType == "기독교" && (engraveType2 == "직분X" || engraveType2.toString().contains("年月日")))
+            || (engraveType == "기독교" && (engraveType2 == "직분X"))
             || (engraveType == "불교" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日")))
-            || (engraveType == "천주교" && (engraveType2 == "세례명X" || engraveType2.toString().contains("年月日")))
+            || (engraveType == "천주교" && (engraveType2 == "세례명X"))
             || (engraveType == "원불교")){
 
             when (name1.length) {
@@ -381,7 +353,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             layoutUrnResult221.text = tmp.toString()
         }else if(engraveType2 == "형제" || engraveType2 == "자매"){
             binding.layoutUrnResult222.visibility = View.VISIBLE
-            if(engraveType2 == "자매")
+
+            if(engraveType2 == "형제")
+                binding.layoutUrnResult222.text = "형제"
+            else if(engraveType2 == "자매")
                 binding.layoutUrnResult222.text = "자매"
 
             layoutUrnResult221.height = pixel_size_170
@@ -403,7 +378,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
             }
             layoutUrnResult221.text = tmp.toString()
-        }else if(engraveType == "기독교" && engraveType2 == "기본"
+        }else if(engraveType == "기독교" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日"))
             || engraveType == "불교" && engraveType2 == "법명"
             || engraveType == "순복음"){
             val layoutUrnResult220 = binding.layoutUrnResult220
@@ -435,7 +410,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
             }
             layoutUrnResult220.text = name2
-        } else if(engraveType == "천주교" && engraveType2 == "기본"){
+        } else if(engraveType == "천주교" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日"))){
             val layoutUrnResult222 = binding.layoutUrnResult222
             layoutUrnResult221.height = pixel_size_170
             when (name1.length) {
@@ -462,16 +437,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutUrnResult222.letterSpacing = -0.15f
                 }
                 4 -> {
-                    layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
-                    layoutUrnResult222.letterSpacing = -0.2f
+                    layoutUrnResult222.textScaleX = 0.65f
                 }
                 5 -> {
-                    layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
-                    layoutUrnResult222.letterSpacing = -0.2f
+                    layoutUrnResult222.textScaleX = 0.54f
                 }
                 6 -> {
-                    layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_16.toFloat())
-                    layoutUrnResult222.letterSpacing = -0.2f
+                    layoutUrnResult222.textScaleX = 0.44f
                 }
             }
             layoutUrnResult222.text = name2
@@ -479,8 +451,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             val layoutUrnResult220 = binding.layoutUrnResult220
             layoutUrnResult220.visibility = View.VISIBLE
             layoutUrnResult220.width = pixel_size_80
+            val serifamedium = ResourcesCompat.getFont(requireContext(), R.font.serifamedium)
+            layoutUrnResult220.typeface = serifamedium
             layoutUrnResult220.text = "SGI"
-            layoutUrnResult220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_23.toFloat())
+            layoutUrnResult220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
             layoutUrnResult220.letterSpacing = 0f
 
             layoutUrnResult221.height = pixel_size_145
@@ -491,7 +465,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             layoutUrnResult222.visibility = View.VISIBLE
             layoutUrnResult222.text = "位"
             val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
-            layoutUrnResult222.typeface = hyhaeso
+            layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
+//            layoutUrnResult222.typeface = hyhaeso
             layoutUrnResult222.setLineSpacing(0f, 1.0f)
 
             when (name1.length) {
@@ -510,10 +485,11 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         }else if(engraveType == "묘법"){
             val layoutUrnResult220 = binding.layoutUrnResult220
             layoutUrnResult220.visibility = View.VISIBLE
-            layoutUrnResult220.width = pixel_size_80
+//            layoutUrnResult220.width = pixel_size_80
             layoutUrnResult220.text = "妙法"
             val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
-            layoutUrnResult220.typeface = hyhaeso
+            layoutUrnResult220.setTypeface(hyhaeso, Typeface.BOLD)
+//            layoutUrnResult220.typeface = hyhaeso
             layoutUrnResult220.letterSpacing = 0f
 
             layoutUrnResult221.height = pixel_size_145
@@ -523,7 +499,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             val layoutUrnResult222 = binding.layoutUrnResult222
             layoutUrnResult222.visibility = View.VISIBLE
             layoutUrnResult222.text = "位"
-            layoutUrnResult222.typeface = hyhaeso
+            layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
+//            layoutUrnResult222.typeface = hyhaeso
 
             when (name1.length) {
                 2 -> {
@@ -549,12 +526,18 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             "기독교", "순복음" -> {
                 binding.layoutUrnResult111.visibility = View.GONE
                 binding.layoutUrnResult112.visibility = View.VISIBLE
-                binding.layoutUrnResult112.text = "出生"
+                if(engraveType2.toString().contains("年月日"))
+                    binding.layoutUrnResult112.text = "出\n生"
+                else
+                    binding.layoutUrnResult112.text = "出生"
             }
             "천주교" -> {
                 binding.layoutUrnResult111.visibility = View.GONE
                 binding.layoutUrnResult112.visibility = View.VISIBLE
-                binding.layoutUrnResult112.text = "出生"
+                if(engraveType2.toString().contains("年月日"))
+                    binding.layoutUrnResult112.text = "出\n生"
+                else
+                    binding.layoutUrnResult112.text = "出生"
             }
         }
 
@@ -586,12 +569,19 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             "기독교", "순복음" -> {
                 binding.layoutUrnResult311.visibility = View.GONE
                 binding.layoutUrnResult312.visibility = View.VISIBLE
-                binding.layoutUrnResult312.text = "召天"
+                if(engraveType2.toString().contains("年月日"))
+                    binding.layoutUrnResult312.text = "召\n天"
+                else
+                    binding.layoutUrnResult312.text = "召天"
             }
             "천주교" -> {
                 binding.layoutUrnResult311.visibility = View.GONE
                 binding.layoutUrnResult312.visibility = View.VISIBLE
-                binding.layoutUrnResult312.text = "善終"
+
+                if(engraveType2.toString().contains("年月日"))
+                    binding.layoutUrnResult312.text = "善\n終"
+                else
+                    binding.layoutUrnResult312.text = "善終"
             }
         }
 
@@ -630,7 +620,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         if(boneEngraveTypePosition == 4 || boneEngraveTypePosition == 5){
             if(ApplicationClass.prefs.boneEngraveType2Position == 0)
                 imageName = "img_mark5"
-            else if(ApplicationClass.prefs.boneEngraveType2Position == 1)
+            else if(ApplicationClass.prefs.boneEngraveType2Position == 1 || ApplicationClass.prefs.boneEngraveType2Position == 2)
                 imageName = "img_mark5_2"
         }
         val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
@@ -740,8 +730,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val boneEngraveType2 = ApplicationClass.prefs.boneEngraveType2
 
         if(boneEngraveType2.toString().contains("年月日")){
-            binding.layoutBoneResult111.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
-            binding.layoutBoneResult112.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
+
+            binding.layoutBoneResult111.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            binding.layoutBoneResult111.setTypeface(hyhaeso, Typeface.BOLD)
+            binding.layoutBoneResult112.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            binding.layoutBoneResult112.setTypeface(hyhaeso, Typeface.BOLD)
 
             binding.layoutBoneResult13.visibility = View.GONE
             binding.layoutBoneResult131.visibility = View.VISIBLE
@@ -749,10 +743,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             binding.layoutBoneResult151.visibility = View.VISIBLE
             binding.layoutBoneResult171.visibility = View.VISIBLE
 
-            binding.layoutBoneResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            binding.layoutBoneResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            binding.layoutBoneResult17.setTypeface(hyhaeso, Typeface.BOLD)
 
-            binding.layoutBoneResult311.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
-            binding.layoutBoneResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            binding.layoutBoneResult311.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            binding.layoutBoneResult311.setTypeface(hyhaeso, Typeface.BOLD)
+            binding.layoutBoneResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            binding.layoutBoneResult312.setTypeface(hyhaeso, Typeface.BOLD)
 
             binding.layoutBoneResult33.visibility = View.GONE
             binding.layoutBoneResult331.visibility = View.VISIBLE
@@ -760,7 +757,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             binding.layoutBoneResult351.visibility = View.VISIBLE
             binding.layoutBoneResult371.visibility = View.VISIBLE
 
-            binding.layoutBoneResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            binding.layoutBoneResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            binding.layoutBoneResult37.setTypeface(hyhaeso, Typeface.BOLD)
         }
 
         binding.layoutBoneResult22.visibility = View.VISIBLE
@@ -768,9 +766,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val layoutBoneResult221 = binding.layoutBoneResult221
 
         if((boneEngraveType == "일반" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日")))
-            || (boneEngraveType == "기독교" && (boneEngraveType2 == "직분X" || boneEngraveType2.toString().contains("年月日")))
+            || (boneEngraveType == "기독교" && (boneEngraveType2 == "직분X"))
             || (boneEngraveType == "불교" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日")))
-            || (boneEngraveType == "천주교" && (boneEngraveType2 == "세례명X" || boneEngraveType2.toString().contains("年月日")))
+            || (boneEngraveType == "천주교" && (boneEngraveType2 == "세례명X"))
             || (boneEngraveType == "원불교")){
 
             when (boneName1.length) {
@@ -788,8 +786,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
             }
             layoutBoneResult221.text = tmp.toString()
-        }else if(boneEngraveType2 == "형제"){
-            binding.layoutUrnResult222.visibility = View.VISIBLE
+        }else if(boneEngraveType2 == "형제" || boneEngraveType2 == "자매"){
+            binding.layoutBoneResult222.visibility = View.VISIBLE
+
+            if(boneEngraveType2 == "형제")
+                binding.layoutBoneResult222.text = "형제"
+            else if(boneEngraveType2 == "자매")
+                binding.layoutBoneResult222.text = "자매"
+
             layoutBoneResult221.height = pixel_size_170
             when (boneName1.length) {
                 2 -> {
@@ -809,7 +813,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
             }
             layoutBoneResult221.text = tmp.toString()
-        }else if(boneEngraveType == "기독교" && boneEngraveType2 == "기본"
+        }else if(boneEngraveType == "기독교" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日"))
             || boneEngraveType == "불교" && boneEngraveType2 == "법명"
             || boneEngraveType == "순복음"){
             val layoutBoneResult220 = binding.layoutBoneResult220
@@ -835,13 +839,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             layoutBoneResult220.visibility = View.VISIBLE
             when (boneName2.length) {
                 4 -> {
-                    layoutBoneResult220.width = pixel_size_100
+//                    layoutBoneResult220.width = pixel_size_100
                     layoutBoneResult220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
                     layoutBoneResult220.letterSpacing = -0.2f
                 }
             }
             layoutBoneResult220.text = boneName2
-        } else if(boneEngraveType == "천주교" && boneEngraveType2 == "기본"){
+        } else if(boneEngraveType == "천주교" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日"))){
             val layoutBoneResult222 = binding.layoutBoneResult222
             layoutBoneResult221.height = pixel_size_170
             when (boneName1.length) {
@@ -861,32 +865,31 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             }
             layoutBoneResult221.text = tmp.toString()
             layoutBoneResult222.visibility = View.VISIBLE
-            layoutBoneResult222.width = pixel_size_100
+//            layoutBoneResult222.width = pixel_size_100
             when (boneName2.length) {
                 2, 3 -> {
-                    layoutBoneResult222.width = pixel_size_90
+//                    layoutBoneResult222.width = pixel_size_90
                     layoutBoneResult222.letterSpacing = -0.15f
                 }
                 4 -> {
-                    layoutBoneResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
-                    layoutBoneResult222.letterSpacing = -0.2f
+                    layoutBoneResult222.textScaleX = 0.65f
                 }
                 5 -> {
-                    layoutBoneResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
-                    layoutBoneResult222.letterSpacing = -0.2f
+                    layoutBoneResult222.textScaleX = 0.54f
                 }
                 6 -> {
-                    layoutBoneResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_16.toFloat())
-                    layoutBoneResult222.letterSpacing = -0.2f
+                    layoutBoneResult222.textScaleX = 0.44f
                 }
             }
             layoutBoneResult222.text = boneName2
         }else if(boneEngraveType == "SGI"){
             val layoutBoneResult220 = binding.layoutBoneResult220
             layoutBoneResult220.visibility = View.VISIBLE
-            layoutBoneResult220.width = pixel_size_80
+//            layoutBoneResult220.width = pixel_size_80
+            val serifamedium = ResourcesCompat.getFont(requireContext(), R.font.serifamedium)
+            layoutBoneResult220.typeface = serifamedium
             layoutBoneResult220.text = "SGI"
-            layoutBoneResult220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_23.toFloat())
+            layoutBoneResult220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
             layoutBoneResult220.letterSpacing = 0f
 
             layoutBoneResult221.height = pixel_size_145
@@ -897,7 +900,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             layoutBoneResult222.visibility = View.VISIBLE
             layoutBoneResult222.text = "位"
             val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
-            layoutBoneResult222.typeface = hyhaeso
+            layoutBoneResult222.setTypeface(hyhaeso, Typeface.BOLD)
+//            layoutBoneResult222.typeface = hyhaeso
             layoutBoneResult222.setLineSpacing(0f, 1.0f)
 
             when (boneName1.length) {
@@ -916,10 +920,11 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         }else if(boneEngraveType == "묘법"){
             val layoutBoneResult220 = binding.layoutBoneResult220
             layoutBoneResult220.visibility = View.VISIBLE
-            layoutBoneResult220.width = pixel_size_80
+//            layoutBoneResult220.width = pixel_size_80
             layoutBoneResult220.text = "妙法"
             val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
-            layoutBoneResult220.typeface = hyhaeso
+            layoutBoneResult220.setTypeface(hyhaeso, Typeface.BOLD)
+//            layoutBoneResult220.typeface = hyhaeso
             layoutBoneResult220.letterSpacing = 0f
 
             layoutBoneResult221.height = pixel_size_145
@@ -929,7 +934,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             val layoutBoneResult222 = binding.layoutBoneResult222
             layoutBoneResult222.visibility = View.VISIBLE
             layoutBoneResult222.text = "位"
-            layoutBoneResult222.typeface = hyhaeso
+            layoutBoneResult222.setTypeface(hyhaeso, Typeface.BOLD)
+//            layoutBoneResult222.typeface = hyhaeso
 
             when (boneName1.length) {
                 2 -> {
@@ -955,12 +961,18 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             "기독교", "순복음" -> {
                 binding.layoutBoneResult111.visibility = View.GONE
                 binding.layoutBoneResult112.visibility = View.VISIBLE
-                binding.layoutBoneResult112.text = "出生"
+                if(ApplicationClass.prefs.boneEngraveType2.toString().contains("年月日"))
+                    binding.layoutBoneResult112.text = "出\n生"
+                else
+                    binding.layoutBoneResult112.text = "出生"
             }
             "천주교" -> {
                 binding.layoutBoneResult111.visibility = View.GONE
                 binding.layoutBoneResult112.visibility = View.VISIBLE
-                binding.layoutBoneResult112.text = "出生"
+                if(ApplicationClass.prefs.boneEngraveType2.toString().contains("年月日"))
+                    binding.layoutBoneResult112.text = "出\n生"
+                else
+                    binding.layoutBoneResult112.text = "出生"
             }
         }
 
@@ -992,12 +1004,20 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             "기독교", "순복음" -> {
                 binding.layoutBoneResult311.visibility = View.GONE
                 binding.layoutBoneResult312.visibility = View.VISIBLE
-                binding.layoutBoneResult312.text = "召天"
+
+                if(ApplicationClass.prefs.boneEngraveType2.toString().contains("年月日"))
+                    binding.layoutBoneResult312.text = "召\n天"
+                else
+                    binding.layoutBoneResult312.text = "召天"
             }
             "천주교" -> {
                 binding.layoutBoneResult311.visibility = View.GONE
                 binding.layoutBoneResult312.visibility = View.VISIBLE
-                binding.layoutBoneResult312.text = "善終"
+
+                if(ApplicationClass.prefs.boneEngraveType2.toString().contains("年月日"))
+                    binding.layoutBoneResult312.text = "善\n終"
+                else
+                    binding.layoutBoneResult312.text = "善終"
             }
         }
 
@@ -1033,6 +1053,36 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         var imageBone2Result212 = binding.imageBone2Result212
 
         // 추가 정보 / 기존 정보
+//        if((engraveTypePosition == 4 && boneEngraveTypePosition == 4) || (engraveTypePosition == 5 && boneEngraveTypePosition == 5) ||(engraveTypePosition == 4 && boneEngraveTypePosition == 5) || (engraveTypePosition == 5 && boneEngraveTypePosition == 4)){
+//            binding.imageBone2Result21.visibility = View.VISIBLE
+//            binding.imageBone2Result211.visibility = View.GONE
+//            binding.imageBone2Result212.visibility = View.GONE
+//            val engraveType2Position = ApplicationClass.prefs.engraveType2Position
+//            val boneEngraveType2Position = ApplicationClass.prefs.boneEngraveType2Position
+//
+//            var imageName = "img_mark5"
+//
+//            when(engraveType2Position){
+//                0 -> {
+//                    when(boneEngraveType2Position){
+//                        0 -> {
+//                            imageName = "img_mark5"
+//                        }
+//                    }
+//                }
+//                1, 2 -> {
+//                    when(boneEngraveType2Position){
+//                        1, 2 -> {
+//                            imageName = "img_mark5_2"
+//                        }
+//                    }
+//                }
+//            }
+//            val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
+//            binding.imageBone2Result21.setImageResource(imageResource)
+//            return
+//        }
+//        else
         if(engraveTypePosition == boneEngraveTypePosition && !(name1 == "" || boneName1 == "")) {
             binding.imageBone2Result21.visibility = View.VISIBLE
             binding.imageBone2Result211.visibility = View.GONE
@@ -1048,7 +1098,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             if(engraveTypePosition == 4 || engraveTypePosition == 5){
                 if(ApplicationClass.prefs.engraveType2Position == 0)
                     imageName = "img_mark5"
-                else if(ApplicationClass.prefs.engraveType2Position == 1)
+                else if(ApplicationClass.prefs.engraveType2Position == 1 || ApplicationClass.prefs.engraveType2Position == 2)
                     imageName = "img_mark5_2"
             }
             val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
@@ -1082,7 +1132,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             if(engraveTypePosition == 4 || engraveTypePosition == 5){
                 if(ApplicationClass.prefs.engraveType2Position == 0)
                     imageName1 = "img_mark5"
-                else if(ApplicationClass.prefs.engraveType2Position == 1)
+                else if(ApplicationClass.prefs.engraveType2Position == 1 || ApplicationClass.prefs.engraveType2Position == 2)
                     imageName1 = "img_mark5_2"
             }
             val imageResource1 = resources.getIdentifier(imageName1, "drawable", requireActivity().packageName)
@@ -1100,7 +1150,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             if(boneEngraveTypePosition == 4 || boneEngraveTypePosition == 5){
                 if(ApplicationClass.prefs.boneEngraveType2Position == 0)
                     imageName2 = "img_mark5"
-                else if(ApplicationClass.prefs.boneEngraveType2Position == 1)
+                else if(ApplicationClass.prefs.boneEngraveType2Position == 1 || ApplicationClass.prefs.boneEngraveType2Position == 2)
                     imageName2 = "img_mark5_2"
             }
             val imageResource = resources.getIdentifier(imageName2, "drawable", requireActivity().packageName)
@@ -1157,7 +1207,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         // 위 글자
         var layoutUrnResult220 = binding.layoutBone21Result220
         // 아래 글자
-//        var layoutUrnResult222 = binding.layoutBone21Result222
+        var layoutUrnResult222 = binding.layoutBone21Result222
         // 좌
         var layoutUrnResult111 = binding.layoutBone21Result111
         var layoutUrnResult112 = binding.layoutBone21Result112
@@ -1191,7 +1241,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         // 위 글자
         var layoutBoneResult220 = binding.layoutBone22Result220
         // 아래 글자
-//        var layoutBoneResult222 = binding.layoutBone22Result222
+        var layoutBoneResult222 = binding.layoutBone22Result222
         // 좌
         var layoutBoneResult111 = binding.layoutBone22Result111
         var layoutBoneResult112 = binding.layoutBone22Result112
@@ -1247,28 +1297,96 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         // 추가 정보 / 기존 정보
         if(ApplicationClass.prefs.boneSex == "남성"){
             // 정보1
-            name1 = ApplicationClass.prefs.boneName1.toString()
-            name2 = ApplicationClass.prefs.boneName2.toString()
+//            name1 = ApplicationClass.prefs.boneName1.toString()
+//            name2 = ApplicationClass.prefs.boneName2.toString()
 
-            engraveType = ApplicationClass.prefs.boneEngraveType
-            engraveType2 = ApplicationClass.prefs.boneEngraveType2
+//            engraveType = ApplicationClass.prefs.boneEngraveType
+//            engraveType2 = ApplicationClass.prefs.boneEngraveType2
 
-            date1 = ApplicationClass.prefs.boneDate1.toString()
-            date1Type = ApplicationClass.prefs.boneDate1Type
-            date2 = ApplicationClass.prefs.boneDate1.toString()
-            date2Type = ApplicationClass.prefs.boneDate2Type
+//            date1 = ApplicationClass.prefs.boneDate1.toString()
+//            date1Type = ApplicationClass.prefs.boneDate1Type
+//            date2 = ApplicationClass.prefs.boneDate1.toString()
+//            date2Type = ApplicationClass.prefs.boneDate2Type
 
             // 정보2
-            boneName1 = ApplicationClass.prefs.name1.toString()
-            boneName2 = ApplicationClass.prefs.name2.toString()
+//            boneName1 = ApplicationClass.prefs.name1.toString()
+//            boneName2 = ApplicationClass.prefs.name2.toString()
 
-            boneEngraveType = ApplicationClass.prefs.engraveType
-            boneEngraveType2 = ApplicationClass.prefs.engraveType2
+//            boneEngraveType = ApplicationClass.prefs.engraveType
+//            boneEngraveType2 = ApplicationClass.prefs.engraveType2
 
-            boneDate1 = ApplicationClass.prefs.date1.toString()
-            boneDate1Type = ApplicationClass.prefs.date1Type
-            boneDate2 = ApplicationClass.prefs.date1.toString()
-            boneDate2Type = ApplicationClass.prefs.date2Type
+//            boneDate1 = ApplicationClass.prefs.date1.toString()
+//            boneDate1Type = ApplicationClass.prefs.date1Type
+//            boneDate2 = ApplicationClass.prefs.date1.toString()
+//            boneDate2Type = ApplicationClass.prefs.date2Type
+
+            // 정보1
+            // 마크
+            layoutUrnResult211 = binding.layoutBone2Result212
+            // 이름
+            layoutUrnResult221 = binding.layoutBone22Result221
+            // 위 글자
+            layoutUrnResult220 = binding.layoutBone22Result220
+            // 아래 글자
+            layoutUrnResult222 = binding.layoutBone22Result222
+            // 좌
+            layoutUrnResult111 = binding.layoutBone22Result111
+            layoutUrnResult112 = binding.layoutBone22Result112
+            layoutUrnResult121 = binding.layoutBone22Result121
+            layoutUrnResult122 = binding.layoutBone22Result122
+            layoutUrnResult123 = binding.layoutBone22Result123
+            layoutUrnResult124 = binding.layoutBone22Result124
+            layoutUrnResult141 = binding.layoutBone22Result141
+            layoutUrnResult142 = binding.layoutBone22Result142
+            layoutUrnResult161 = binding.layoutBone22Result161
+            layoutUrnResult162 = binding.layoutBone22Result162
+            layoutUrnResult17 = binding.layoutBone22Result17
+            // 우
+            layoutUrnResult311 = binding.layoutBone22Result311
+            layoutUrnResult312 = binding.layoutBone22Result312
+            layoutUrnResult321 = binding.layoutBone22Result321
+            layoutUrnResult322 = binding.layoutBone22Result322
+            layoutUrnResult323 = binding.layoutBone22Result323
+            layoutUrnResult324 = binding.layoutBone22Result324
+            layoutUrnResult341 = binding.layoutBone22Result341
+            layoutUrnResult342 = binding.layoutBone22Result342
+            layoutUrnResult361 = binding.layoutBone22Result361
+            layoutUrnResult362 = binding.layoutBone22Result362
+            layoutUrnResult37 = binding.layoutBone22Result37
+
+            // 정보2
+            // 마크
+            layoutBoneResult211 = binding.layoutBone2Result211
+            // 이름
+            layoutBoneResult221 = binding.layoutBone21Result221
+            // 위 글자
+            layoutBoneResult220 = binding.layoutBone21Result220
+            // 아래 글자
+            layoutBoneResult222 = binding.layoutBone21Result222
+            // 좌
+            layoutBoneResult111 = binding.layoutBone21Result111
+            layoutBoneResult112 = binding.layoutBone21Result112
+            layoutBoneResult121 = binding.layoutBone21Result121
+            layoutBoneResult122 = binding.layoutBone21Result122
+            layoutBoneResult123 = binding.layoutBone21Result123
+            layoutBoneResult124 = binding.layoutBone21Result124
+            layoutBoneResult141 = binding.layoutBone21Result141
+            layoutBoneResult142 = binding.layoutBone21Result142
+            layoutBoneResult161 = binding.layoutBone21Result161
+            layoutBoneResult162 = binding.layoutBone21Result162
+            layoutBoneResult17 = binding.layoutBone21Result17
+            // 우
+            layoutBoneResult311 = binding.layoutBone21Result311
+            layoutBoneResult312 = binding.layoutBone21Result312
+            layoutBoneResult321 = binding.layoutBone21Result321
+            layoutBoneResult322 = binding.layoutBone21Result322
+            layoutBoneResult323 = binding.layoutBone21Result323
+            layoutBoneResult324 = binding.layoutBone21Result324
+            layoutBoneResult341 = binding.layoutBone21Result341
+            layoutBoneResult342 = binding.layoutBone21Result342
+            layoutBoneResult361 = binding.layoutBone21Result361
+            layoutBoneResult362 = binding.layoutBone21Result362
+            layoutBoneResult37 = binding.layoutBone21Result37
 
             // 년월일
             layoutUrnResult13 = binding.layoutBone22Result13
@@ -1312,9 +1430,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         setBone2Mark()
 
         if(engraveType2.toString().contains("年月日")){
-            val pixel_size_20 = resources.getDimensionPixelSize(R.dimen.pixel_size_20)
-            layoutUrnResult111.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
-            layoutUrnResult112.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            val pixel_size_25 = resources.getDimensionPixelSize(R.dimen.pixel_size_25)
+            val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
+            layoutUrnResult111.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            layoutUrnResult111.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutUrnResult112.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            layoutUrnResult112.setTypeface(hyhaeso, Typeface.BOLD)
 
             layoutUrnResult13.visibility = View.GONE
             layoutUrnResult131.visibility = View.VISIBLE
@@ -1322,10 +1443,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             layoutUrnResult151.visibility = View.VISIBLE
             layoutUrnResult171.visibility = View.VISIBLE
 
-            layoutUrnResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            layoutUrnResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            layoutUrnResult17.setTypeface(hyhaeso, Typeface.BOLD)
 
-            layoutUrnResult311.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
-            layoutUrnResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            layoutUrnResult311.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            layoutUrnResult311.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutUrnResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            layoutUrnResult312.setTypeface(hyhaeso, Typeface.BOLD)
 
             layoutUrnResult33.visibility = View.GONE
             layoutUrnResult331.visibility = View.VISIBLE
@@ -1333,13 +1457,16 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             layoutUrnResult351.visibility = View.VISIBLE
             layoutUrnResult371.visibility = View.VISIBLE
 
-            layoutUrnResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            layoutUrnResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
         }
 
         if(boneEngraveType2.toString().contains("年月日")){
-            val pixel_size_20 = resources.getDimensionPixelSize(R.dimen.pixel_size_20)
-            layoutBoneResult111.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
-            layoutBoneResult112.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
+            val pixel_size_25 = resources.getDimensionPixelSize(R.dimen.pixel_size_25)
+            layoutBoneResult111.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            layoutBoneResult111.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutBoneResult112.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            layoutBoneResult112.setTypeface(hyhaeso, Typeface.BOLD)
 
             layoutBoneResult13.visibility = View.GONE
             layoutBoneResult131.visibility = View.VISIBLE
@@ -1347,10 +1474,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             layoutBoneResult151.visibility = View.VISIBLE
             layoutBoneResult171.visibility = View.VISIBLE
 
-            layoutBoneResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            layoutBoneResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            layoutBoneResult17.setTypeface(hyhaeso, Typeface.BOLD)
 
-            layoutBoneResult311.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
-            layoutBoneResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            layoutBoneResult311.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            layoutBoneResult311.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutBoneResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            layoutBoneResult312.setTypeface(hyhaeso, Typeface.BOLD)
 
             layoutBoneResult33.visibility = View.GONE
             layoutBoneResult331.visibility = View.VISIBLE
@@ -1358,7 +1488,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             layoutBoneResult351.visibility = View.VISIBLE
             layoutBoneResult371.visibility = View.VISIBLE
 
-            layoutBoneResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+            layoutBoneResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+            layoutBoneResult37.setTypeface(hyhaeso, Typeface.BOLD)
         }
 
         if(selectedUrnName!!.contains("검정")){
@@ -1386,7 +1517,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             layoutUrnResult211.setTextColor(Color.parseColor("#FFD700"))
             layoutUrnResult220.setTextColor(Color.parseColor("#FFD700"))
             layoutUrnResult221.setTextColor(Color.parseColor("#FFD700"))
-//            layoutUrnResult222.setTextColor(Color.parseColor("#FFD700"))
+            layoutUrnResult222.setTextColor(Color.parseColor("#FFD700"))
 
             layoutUrnResult311.setTextColor(Color.parseColor("#FFD700"))
             layoutUrnResult312.setTextColor(Color.parseColor("#FFD700"))
@@ -1425,7 +1556,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             layoutBoneResult211.setTextColor(Color.parseColor("#FFD700"))
             layoutBoneResult220.setTextColor(Color.parseColor("#FFD700"))
             layoutBoneResult221.setTextColor(Color.parseColor("#FFD700"))
-//            layoutBoneResult222.setTextColor(Color.parseColor("#FFD700"))
+            layoutBoneResult222.setTextColor(Color.parseColor("#FFD700"))
 
             layoutBoneResult311.setTextColor(Color.parseColor("#FFD700"))
             layoutBoneResult312.setTextColor(Color.parseColor("#FFD700"))
@@ -1445,6 +1576,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             layoutBoneResult37.setTextColor(Color.parseColor("#FFD700"))
         }
 
+        val pixel_size_0 = resources.getDimensionPixelSize(R.dimen.pixel_size_0)
+        val pixel_size_4 = resources.getDimensionPixelSize(R.dimen.pixel_size_4)
         val pixel_size_16 = resources.getDimensionPixelSize(R.dimen.pixel_size_16)
         val pixel_size_20 = resources.getDimensionPixelSize(R.dimen.pixel_size_20)
         val pixel_size_23 = resources.getDimensionPixelSize(R.dimen.pixel_size_23)
@@ -1462,9 +1595,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         /**정보1*/
         if((engraveType == "일반" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日")))
-            || (engraveType == "기독교" && (engraveType2 == "직분X" || engraveType2.toString().contains("年月日")))
+            || (engraveType == "기독교" && (engraveType2 == "직분X"))
             || (engraveType == "불교" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日")))
-            || (engraveType == "천주교" && (engraveType2 == "세례명X" || engraveType2.toString().contains("年月日")))
+            || (engraveType == "천주교" && (engraveType2 == "세례명X"))
             || (engraveType == "원불교")){
 
             when (name1.length) {
@@ -1476,61 +1609,47 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 4 -> {
                     tmp1.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
-
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
-                    layoutUrnResult221.setLineSpacing(0f, 1.0f)
+                    layoutUrnResult221.setLineSpacing(0f, 1.05f)
                 }
             }
             layoutUrnResult221.text = tmp1.toString()
         }else if(engraveType2 == "형제" || engraveType2 == "자매"){
-//            layoutUrnResult222.visibility = View.VISIBLE
-            layoutUrnResult220.visibility = View.VISIBLE
+            layoutUrnResult222.visibility = View.VISIBLE
+//            layoutUrnResult220.visibility = View.VISIBLE
             layoutUrnResult221.height = pixel_size_170
 
             if(engraveType2 == "형제")
-//                layoutUrnResult222.text = "자매"
-                layoutUrnResult220.text = "형\n제"
-            if(engraveType2 == "자매")
-//                layoutUrnResult222.text = "자매"
-                layoutUrnResult220.text = "자\n매"
+                layoutUrnResult222.text = "형제"
+            else if(engraveType2 == "자매")
+                layoutUrnResult222.text = "자매"
 
             when (name1.length) {
                 2 -> {
                     tmp1.append(name1[0]).append("\n").append("\n").append(name1[1])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
-                    layoutUrnResult221.setLineSpacing(0f, 1.1f)
                 }
                 3 -> {
                     tmp1.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
-                    layoutUrnResult221.setLineSpacing(0f, 1.1f)
                 }
                 4 -> {
                     tmp1.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
-                    layoutUrnResult221.setLineSpacing(0f, 1.0f)
+                    layoutUrnResult221.setLineSpacing(0f, 1.05f)
                 }
             }
             layoutUrnResult221.text = tmp1.toString()
-        }else if(engraveType == "기독교" && engraveType2 == "기본"
+        }else if(engraveType == "기독교" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日"))
             || engraveType == "불교" && engraveType2 == "법명"
             || engraveType == "순복음"){
             layoutUrnResult221.height = pixel_size_170
             when (name1.length) {
                 2 -> {
                     tmp1.append(name1[0]).append("\n").append("\n").append(name1[1])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
-                    layoutUrnResult221.setLineSpacing(0f, 1.1f)
                 }
                 3 -> {
                     tmp1.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
-                    layoutUrnResult221.setLineSpacing(0f, 1.1f)
                 }
                 4 -> {
                     tmp1.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
-                    layoutUrnResult221.setLineSpacing(0f, 1.0f)
+                    layoutUrnResult221.setLineSpacing(0f, 1.05f)
                 }
             }
             layoutUrnResult221.text = tmp1.toString()
@@ -1542,7 +1661,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 3 -> {
                     tmp1_2.append(name2[0]).append("\n").append(name2[1]).append("\n").append(name2[2])
 
-                    layoutUrnResult221.setLineSpacing(0f, 1.0f)
+                    layoutUrnResult220.setLineSpacing(0f, 1.0f)
                 }
                 4 -> {
                     tmp1_2.append(name2[0] + "" + name2[1]).append("\n").append(name2[2] + "" + name2[3])
@@ -1552,28 +1671,25 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
             }
             layoutUrnResult220.text = tmp1_2
-        } else if(engraveType == "천주교" && engraveType2 == "기본"){
+        } else if(engraveType == "천주교" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日"))){
             layoutUrnResult221.height = pixel_size_170
             when (name1.length) {
                 2 -> {
                     tmp1.append(name1[0]).append("\n").append("\n").append(name1[1])
-                    layoutUrnResult221.setLineSpacing(0f, 1.1f)
                 }
                 3 -> {
                     tmp1.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2])
-                    layoutUrnResult221.setLineSpacing(0f, 1.1f)
                 }
                 4 -> {
                     tmp1.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
-                    layoutUrnResult221.setLineSpacing(0f, 1.0f)
+                    layoutUrnResult221.setLineSpacing(0f, 1.05f)
                 }
             }
             layoutUrnResult221.text = tmp1.toString()
 //            layoutUrnResult222.visibility = View.VISIBLE
             layoutUrnResult220.visibility = View.VISIBLE
 //            layoutUrnResult222.width = pixel_size_100
-            layoutUrnResult220.width = pixel_size_100
+//            layoutUrnResult220.width = pixel_size_100
             when (name2.length) {
                 2 ->{
                     tmp1_2.append(name2[0]).append("\n").append(name2[1])
@@ -1581,7 +1697,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 3 -> {
                     tmp1_2.append(name2[0]).append("\n").append(name2[1]).append("\n").append(name2[2])
 
-                    layoutUrnResult221.setLineSpacing(0f, 1.0f)
+                    layoutUrnResult220.setLineSpacing(0f, 1.0f)
 //                    layoutUrnResult222.width = pixel_size_90
 //                    layoutUrnResult222.letterSpacing = -0.15f
                 }
@@ -1594,7 +1710,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 5 -> {
                     tmp1_2.append(name2[0] + "" + name2[3]).append("\n").append(name2[1] + "" + name2[4]).append("\n").append(name2[2])
 
-                    layoutUrnResult221.setLineSpacing(0f, 1.0f)
+                    layoutUrnResult220.setLineSpacing(0f, 1.0f)
 
 //                    layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
 //                    layoutUrnResult222.letterSpacing = -0.2f
@@ -1602,7 +1718,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 6 -> {
                     tmp1_2.append(name2[0] + "" + name2[3]).append("\n").append(name2[1] + "" + name2[4]).append("\n").append(name2[2] + "" + name2[5])
 
-                    layoutUrnResult221.setLineSpacing(0f, 1.0f)
+                    layoutUrnResult220.setLineSpacing(0f, 1.0f)
 
 //                    layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_16.toFloat())
 //                    layoutUrnResult222.letterSpacing = -0.2f
@@ -1612,19 +1728,23 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             layoutUrnResult220.text = tmp1_2
         }else if(engraveType == "SGI"){
             layoutUrnResult220.visibility = View.VISIBLE
-            layoutUrnResult220.width = pixel_size_80
+//            layoutUrnResult220.width = pixel_size_80
+            val serifamedium = ResourcesCompat.getFont(requireContext(), R.font.serifamedium)
+            layoutUrnResult220.typeface = serifamedium
             layoutUrnResult220.text = "SGI"
             layoutUrnResult220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_23.toFloat())
+            layoutUrnResult220.setPadding(0, 0, 0, pixel_size_4)
             layoutUrnResult220.letterSpacing = 0f
 
-            layoutUrnResult221.height = pixel_size_145
+//            layoutUrnResult221.height = pixel_size_145
             layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
             layoutUrnResult221.setLineSpacing(0f, 1.0f)
 
-//            layoutUrnResult222.visibility = View.VISIBLE
-//            layoutUrnResult222.text = "位"
+            layoutUrnResult222.visibility = View.VISIBLE
+            layoutUrnResult222.text = "位"
+            layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
 //            layoutUrnResult222.typeface = hyhaeso
-//            layoutUrnResult222.setLineSpacing(0f, 1.0f)
+            layoutUrnResult222.setLineSpacing(0f, 1.0f)
 
             when (name1.length) {
                 2 -> {
@@ -1635,25 +1755,28 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 4 -> {
                     tmp1.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                    layoutUrnResult221.setLineSpacing(0f, 1.05f)
                 }
             }
             layoutUrnResult221.text = tmp1.toString()
         }else if(engraveType == "묘법"){
-            val layoutUrnResult220 = binding.layoutUrnResult220
             layoutUrnResult220.visibility = View.VISIBLE
-            layoutUrnResult220.width = pixel_size_80
+//            layoutUrnResult220.width = pixel_size_80
             layoutUrnResult220.text = "妙法"
-            layoutUrnResult220.typeface = hyhaeso
+            layoutUrnResult220.setTypeface(hyhaeso, Typeface.BOLD)
+//            layoutUrnResult220.typeface = hyhaeso
             layoutUrnResult220.letterSpacing = 0f
 
-            layoutUrnResult221.height = pixel_size_145
+//            layoutUrnResult221.height = pixel_size_145
             layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
             layoutUrnResult221.setLineSpacing(0f, 1.0f)
 
-//            layoutUrnResult222.visibility = View.VISIBLE
-//            layoutUrnResult222.text = "位"
+            layoutUrnResult222.visibility = View.VISIBLE
+            layoutUrnResult222.text = "位"
+            layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
 //            layoutUrnResult222.typeface = hyhaeso
+            layoutUrnResult222.setLineSpacing(0f, 1.0f)
+
 
             when (name1.length) {
                 2 -> {
@@ -1664,7 +1787,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 4 -> {
                     tmp1.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                    layoutUrnResult221.setLineSpacing(0f, 1.05f)
                 }
             }
             layoutUrnResult221.text = tmp1.toString()
@@ -1740,9 +1863,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         /**정보2*/
         if((boneEngraveType == "일반" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日")))
-            || (boneEngraveType == "기독교" && (boneEngraveType2 == "직분X" || boneEngraveType2.toString().contains("年月日")))
+            || (boneEngraveType == "기독교" && (boneEngraveType2 == "직분X"))
             || (boneEngraveType == "불교" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日")))
-            || (boneEngraveType == "천주교" && (boneEngraveType2 == "세례명X" || boneEngraveType2.toString().contains("年月日")))
+            || (boneEngraveType == "천주교" && (boneEngraveType2 == "세례명X"))
             || (boneEngraveType == "원불교")){
 
             when (boneName1.length) {
@@ -1754,60 +1877,48 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 4 -> {
                     tmp2.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2]).append("\n").append(boneName1[3])
-
-                    layoutBoneResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
-                    layoutBoneResult221.setLineSpacing(0f, 1.0f)
+                    layoutBoneResult221.setLineSpacing(0f, 1.05f)
                 }
             }
             layoutBoneResult221.text = tmp2.toString()
         }else if(boneEngraveType2 == "형제" || boneEngraveType2 == "자매" ){
-//            layoutBoneResult222.visibility = View.VISIBLE
-            layoutBoneResult220.visibility = View.VISIBLE
+            layoutBoneResult222.visibility = View.VISIBLE
+//            layoutBoneResult220.visibility = View.VISIBLE
             if(boneEngraveType2 == "형제")
-//                layoutBoneResult222.text = "자매"
-                layoutBoneResult220.text = "형\n제"
+                layoutBoneResult222.text = "형제"
+//                layoutBoneResult220.text = "형\n제"
             if(boneEngraveType2 == "자매")
-//                layoutBoneResult222.text = "자매"
-                layoutBoneResult220.text = "자\n매"
+                layoutBoneResult222.text = "자매"
+//                layoutBoneResult220.text = "자\n매"
 
-            layoutBoneResult221.height = pixel_size_170
+//            layoutBoneResult221.height = pixel_size_170
             when (boneName1.length) {
                 2 -> {
                     tmp2.append(boneName1[0]).append("\n").append("\n").append(boneName1[1])
-                    layoutBoneResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
-                    layoutBoneResult221.setLineSpacing(0f, 1.1f)
                 }
                 3 -> {
                     tmp2.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2])
-                    layoutBoneResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
-                    layoutBoneResult221.setLineSpacing(0f, 1.1f)
                 }
                 4 -> {
                     tmp2.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2]).append("\n").append(boneName1[3])
-                    layoutBoneResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
-                    layoutBoneResult221.setLineSpacing(0f, 1.0f)
+                    layoutBoneResult221.setLineSpacing(0f, 1.05f)
                 }
             }
             layoutBoneResult221.text = tmp2.toString()
-        }else if(boneEngraveType == "기독교" && boneEngraveType2 == "기본"
+        }else if(boneEngraveType == "기독교" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日"))
             || boneEngraveType == "불교" && boneEngraveType2 == "법명"
             || boneEngraveType == "순복음"){
-            layoutBoneResult221.height = pixel_size_170
+//            layoutBoneResult221.height = pixel_size_170
             when (boneName1.length) {
                 2 -> {
                     tmp2.append(boneName1[0]).append("\n").append("\n").append(boneName1[1])
-                    layoutBoneResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
-                    layoutBoneResult221.setLineSpacing(0f, 1.1f)
                 }
                 3 -> {
                     tmp2.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2])
-                    layoutBoneResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
-                    layoutBoneResult221.setLineSpacing(0f, 1.1f)
                 }
                 4 -> {
                     tmp2.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2]).append("\n").append(boneName1[3])
-                    layoutBoneResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
-                    layoutBoneResult221.setLineSpacing(0f, 1.0f)
+                    layoutBoneResult221.setLineSpacing(0f, 1.05f)
                 }
             }
             layoutBoneResult221.text = tmp2.toString()
@@ -1819,42 +1930,38 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 3 -> {
                     tmp2_2.append(boneName2[0]).append("\n").append(boneName2[1]).append("\n").append(boneName2[2])
 
-                    layoutBoneResult221.setLineSpacing(0f, 1.0f)
+                    layoutBoneResult220.setLineSpacing(0f, 1.0f)
 
 //                    layoutBoneResult222.width = pixel_size_90
 //                    layoutBoneResult222.letterSpacing = -0.15f
                 }
                 4 -> {
                     tmp2_2.append(boneName2[0] + "" + boneName2[1]).append("\n").append(boneName2[2] + "" + boneName2[3])
-
 //                    layoutBoneResult220.width = pixel_size_100
 //                    layoutBoneResult220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
 //                    layoutBoneResult220.letterSpacing = -0.2f
                 }
             }
             layoutBoneResult220.text = tmp2_2
-        } else if(boneEngraveType == "천주교" && boneEngraveType2 == "기본"){
-            layoutBoneResult221.height = pixel_size_170
+        } else if(boneEngraveType == "천주교" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日"))){
+//            layoutBoneResult221.height = pixel_size_170
             when (boneName1.length) {
                 2 -> {
                     tmp2.append(boneName1[0]).append("\n").append("\n").append(boneName1[1])
-                    layoutBoneResult221.setLineSpacing(0f, 1.1f)
                 }
                 3 -> {
                     tmp2.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2])
-                    layoutBoneResult221.setLineSpacing(0f, 1.1f)
                 }
                 4 -> {
                     tmp2.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2]).append("\n").append(boneName1[3])
-                    layoutBoneResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
-                    layoutBoneResult221.setLineSpacing(0f, 1.0f)
+                    layoutBoneResult221.setLineSpacing(0f, 1.05f)
                 }
             }
             layoutBoneResult221.text = tmp2.toString()
 //            layoutBoneResult222.visibility = View.VISIBLE
             layoutBoneResult220.visibility = View.VISIBLE
 //            layoutBoneResult222.width = pixel_size_100
-            layoutBoneResult220.width = pixel_size_100
+//            layoutBoneResult220.width = pixel_size_100
             when (boneName2.length) {
                 2 -> {
                     tmp2_2.append(boneName2[0]).append("\n").append(boneName2[1])
@@ -1862,7 +1969,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 3 -> {
                     tmp2_2.append(boneName2[0]).append("\n").append(boneName2[1]).append("\n").append(boneName2[2])
 
-                    layoutBoneResult221.setLineSpacing(0f, 1.0f)
+                    layoutBoneResult220.setLineSpacing(0f, 1.0f)
 
 //                    layoutBoneResult222.width = pixel_size_90
 //                    layoutBoneResult222.letterSpacing = -0.15f
@@ -1876,13 +1983,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 5 -> {
                     tmp2_2.append(boneName2[0] + "" + boneName2[3]).append("\n").append(boneName2[1] + "" + boneName2[4]).append("\n").append(boneName2[3])
 
-                    layoutBoneResult221.setLineSpacing(0f, 1.0f)
+                    layoutBoneResult220.setLineSpacing(0f, 1.0f)
 
 //                    layoutBoneResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
 //                    layoutBoneResult222.letterSpacing = -0.2f
                 }
                 6 -> {
-                    tmp2_2.append(boneName2[0] + "" + boneName2[3]).append("\n").append(boneName2[1] + "" + boneName2[4]).append("\n").append(boneName2[3] + "" + boneName2[5])
+                    tmp2_2.append(boneName2[0] + "" + boneName2[3]).append("\n").append(boneName2[1] + "" + boneName2[4]).append("\n").append(boneName2[2] + "" + boneName2[5])
 
                     layoutBoneResult221.setLineSpacing(0f, 1.0f)
 
@@ -1894,19 +2001,23 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             layoutBoneResult220.text = tmp2_2
         }else if(boneEngraveType == "SGI"){
             layoutBoneResult220.visibility = View.VISIBLE
-            layoutBoneResult220.width = pixel_size_80
+//            layoutBoneResult220.width = pixel_size_80
+            val serifamedium = ResourcesCompat.getFont(requireContext(), R.font.serifamedium)
+            layoutBoneResult220.typeface = serifamedium
             layoutBoneResult220.text = "SGI"
             layoutBoneResult220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_23.toFloat())
+            layoutBoneResult220.setPadding(0, 0, 0, pixel_size_4)
             layoutBoneResult220.letterSpacing = 0f
 
-            layoutBoneResult221.height = pixel_size_145
+//            layoutBoneResult221.height = pixel_size_145
             layoutBoneResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
             layoutBoneResult221.setLineSpacing(0f, 1.0f)
 
-//            layoutBoneResult222.visibility = View.VISIBLE
-//            layoutBoneResult222.text = "位"
+            layoutBoneResult222.visibility = View.VISIBLE
+            layoutBoneResult222.text = "位"
+            layoutBoneResult222.setTypeface(hyhaeso, Typeface.BOLD)
 //            layoutBoneResult222.typeface = hyhaeso
-//            layoutBoneResult222.setLineSpacing(0f, 1.0f)
+            layoutBoneResult222.setLineSpacing(0f, 1.0f)
 
             when (boneName1.length) {
                 2 -> {
@@ -1917,24 +2028,27 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 4 -> {
                     tmp2.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2]).append("\n").append(boneName1[3])
-                    layoutBoneResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                    layoutBoneResult221.setLineSpacing(0f, 1.05f)
                 }
             }
             layoutBoneResult221.text = tmp2.toString()
         }else if(boneEngraveType == "묘법"){
             layoutBoneResult220.visibility = View.VISIBLE
-            layoutBoneResult220.width = pixel_size_80
+//            layoutBoneResult220.width = pixel_size_80
             layoutBoneResult220.text = "妙法"
-            layoutBoneResult220.typeface = hyhaeso
+            layoutBoneResult220.setTypeface(hyhaeso, Typeface.BOLD)
+//            layoutBoneResult220.typeface = hyhaeso
             layoutBoneResult220.letterSpacing = 0f
 
-            layoutBoneResult221.height = pixel_size_145
+//            layoutBoneResult221.height = pixel_size_145
             layoutBoneResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
             layoutBoneResult221.setLineSpacing(0f, 1.0f)
 
-//            layoutBoneResult222.visibility = View.VISIBLE
-//            layoutBoneResult222.text = "位"
+            layoutBoneResult222.visibility = View.VISIBLE
+            layoutBoneResult222.text = "位"
+            layoutBoneResult222.setTypeface(hyhaeso, Typeface.BOLD)
 //            layoutBoneResult222.typeface = hyhaeso
+            layoutBoneResult222.setLineSpacing(0f, 1.0f)
 
             when (boneName1.length) {
                 2 -> {
@@ -1945,7 +2059,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 4 -> {
                     tmp2.append(boneName1[0]).append("\n").append(boneName1[1]).append("\n").append(boneName1[2]).append("\n").append(boneName1[3])
-                    layoutBoneResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                    layoutBoneResult221.setLineSpacing(0f, 1.05f)
                 }
             }
             layoutBoneResult221.text = tmp2.toString()
@@ -2025,7 +2139,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val tabletType = ApplicationClass.prefs.tabletType
         var imageName = "img_mark1"
 
-        if(tabletReligion == "일반" && tabletType != "문구") {
+        if(tabletReligion == "일반" && tabletType == "본관") {
+            binding.layoutTabletResult10.visibility = View.GONE
+            binding.layoutTabletResult12.visibility = View.GONE
+        }else if(tabletReligion == "일반" && tabletType != "문구") {
 //            imageName = "img_mark1"
             binding.layoutTabletResult10.visibility = View.VISIBLE
             binding.layoutTabletResult12.visibility = View.GONE
@@ -2248,7 +2365,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                         6 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                            layoutTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
                             layoutTabletResult3.setLineSpacing(0f, 1.0f)
                         }
                         7 -> {
@@ -2313,13 +2429,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                         6 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                            layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_22_5.toFloat())
+                            layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
                         }
                         7 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6])
                             layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutTabletResult312.setLineSpacing(0f, 1.0f)
                         }
                     }
 
@@ -2353,7 +2470,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val boneTabletType = ApplicationClass.prefs.boneTabletType
         var imageName = "img_mark1"
 
-        if(boneTabletReligion == "일반" && boneTabletType != "문구") {
+        if(boneTabletReligion == "일반" && boneTabletType == "본관") {
+            binding.layoutTablet2Result10.visibility = View.GONE
+            binding.layoutTablet2Result12.visibility = View.GONE
+        }else if(boneTabletReligion == "일반" && boneTabletType != "문구") {
 //            imageName = "img_mark1"
             binding.layoutTablet2Result10.visibility = View.VISIBLE
             binding.layoutTablet2Result12.visibility = View.GONE
@@ -2416,6 +2536,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         var tabletReligion = ApplicationClass.prefs.tabletReligion
         var tabletType = ApplicationClass.prefs.tabletType.toString()
 
+        var layoutTabletResult10 = binding.layoutTabletResult10
+        var layoutTabletResult12 = binding.layoutTabletResult12
         var layoutTabletResult0 = binding.layoutTabletResult0
         var layoutTabletResult20 = binding.layoutTabletResult20
         var layoutTabletResult2 = binding.layoutTabletResult2
@@ -2435,6 +2557,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         var boneTabletReligion = ApplicationClass.prefs.boneTabletReligion
         var boneTabletType = ApplicationClass.prefs.boneTabletType.toString()
 
+        var layoutTablet2Result10 = binding.layoutTablet2Result10
+        var layoutTablet2Result12 = binding.layoutTablet2Result12
         var layoutTablet2Result0 = binding.layoutTablet2Result0
         var layoutTablet2Result20 = binding.layoutTablet2Result20
         var layoutTablet2Result2 = binding.layoutTablet2Result2
@@ -2456,6 +2580,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             tabletReligion = ApplicationClass.prefs.boneTabletReligion
             tabletType = ApplicationClass.prefs.boneTabletType.toString()
 
+            layoutTabletResult10 = binding.layoutTablet2Result10
+            layoutTabletResult12 = binding.layoutTablet2Result12
             layoutTabletResult0 = binding.layoutTablet2Result0
             layoutTabletResult20 = binding.layoutTablet2Result20
             layoutTabletResult2 = binding.layoutTablet2Result2
@@ -2475,6 +2601,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             boneTabletReligion = ApplicationClass.prefs.tabletReligion
             boneTabletType = ApplicationClass.prefs.tabletType.toString()
 
+            layoutTablet2Result10 = binding.layoutTabletResult10
+            layoutTablet2Result12 = binding.layoutTabletResult12
             layoutTablet2Result0 = binding.layoutTabletResult0
             layoutTablet2Result20 = binding.layoutTabletResult20
             layoutTablet2Result2 = binding.layoutTabletResult2
@@ -2590,8 +2718,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 "일반(본관)" -> {
                     println("일반 진입")
 
-                    binding.layoutTabletResult12.visibility = View.GONE
-                    binding.layoutTabletResult0.visibility = View.VISIBLE
+                    layoutTabletResult10.visibility = View.GONE
+                    layoutTabletResult12.visibility = View.GONE
+                    layoutTabletResult0.visibility = View.VISIBLE
 
                     when (name3.length) {
                         7 -> {
@@ -2632,7 +2761,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                         6 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                            layoutTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
                             layoutTabletResult3.setLineSpacing(0f, 1.0f)
                         }
                         7 -> {
@@ -2697,13 +2825,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                         6 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                            layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_22_5.toFloat())
+                            layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
                         }
                         7 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6])
                             layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutTabletResult312.setLineSpacing(0f, 1.0f)
                         }
                     }
 
@@ -2834,8 +2963,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 "일반(본관)" -> {
                     println("일반 진입")
 
-                    binding.layoutTablet2Result12.visibility = View.GONE
-                    binding.layoutTablet2Result0.visibility = View.VISIBLE
+                    layoutTablet2Result10.visibility = View.GONE
+                    layoutTablet2Result12.visibility = View.GONE
+                    layoutTablet2Result0.visibility = View.VISIBLE
 
                     when (boneName3.length) {
                         7 -> {
@@ -2876,7 +3006,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                         6 -> {
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
-                            layoutTablet2Result3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
                             layoutTablet2Result3.setLineSpacing(0f, 1.0f)
                         }
                         7 -> {
@@ -2941,13 +3070,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                         6 -> {
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
-                            layoutTablet2Result312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_22_5.toFloat())
+                            layoutTablet2Result312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
                         }
                         7 -> {
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
                                 .append("\n").append(boneName3[6])
                             layoutTablet2Result312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutTablet2Result312.setLineSpacing(0f, 1.0f)
                         }
                     }
 
@@ -3278,6 +3408,15 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             val dialog = ResultDialogFragment()
             // 화면 밖 터치시 종료되지 않게 하기
             dialog.isCancelable = false
+
+
+            val layoutResultImage = binding.layoutResultImage
+            val resultBitmap = Bitmap.createBitmap(layoutResultImage.width, layoutResultImage.height, Bitmap.Config.ARGB_8888)
+            val canvasBitmap = Canvas(resultBitmap)
+            layoutResultImage.draw(canvasBitmap)
+
+            dialog.setImageBitmap(resultBitmap)
+
             dialog.show(childFragmentManager, "show layout zoom")
         }
 

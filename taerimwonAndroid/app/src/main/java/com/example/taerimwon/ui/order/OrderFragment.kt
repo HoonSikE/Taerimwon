@@ -586,7 +586,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                 // date2Type 생략
                 // 종교 생략
                 // 직분, 세례명, 법명
-                if((ApplicationClass.prefs.engraveType == "기독교" || ApplicationClass.prefs.engraveType == "순복음") && (ApplicationClass.prefs.engraveType2 == "기본")) {
+                if((ApplicationClass.prefs.engraveType == "기독교" || ApplicationClass.prefs.engraveType == "순복음") && (ApplicationClass.prefs.engraveType2 == "기본" || ApplicationClass.prefs.engraveType2 == "年月日")) {
                     val name2 = ApplicationClass.prefs.name2.toString()
                     if (!(name2.length in 2..4 && name2.matches(hanglePattern))) {
                         toast("직분을 한글 2~4글자로 올바르게 입력해주세요.")
@@ -598,7 +598,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                         toast("법명을 한글 2~4글자로 올바르게 입력해주세요.")
                         return false
                     }
-                }else if(ApplicationClass.prefs.engraveType == "천주교" && ApplicationClass.prefs.engraveType2 == "기본") {
+                }else if(ApplicationClass.prefs.engraveType == "천주교" && (ApplicationClass.prefs.engraveType2 == "기본" || ApplicationClass.prefs.engraveType2 == "年月日")) {
                     val name2 = ApplicationClass.prefs.name2.toString()
                     if (!(name2.length in 2..6 && name2.matches(hanglePattern))) {
                         toast("세례명을 한글 2~6글자로 올바르게 입력해주세요.")
@@ -615,34 +615,34 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
 
                     if(!(boneName1 == "" && boneDate1 == "" && boneDate2 == "" && boneName2 == "")){
                         if (!(boneName1.length in 2..4 && boneName1.matches(hanglePattern))) {
-                            toast("(합골)고인 명을 한글 2~4글자로 올바르게 입력해주세요.")
+                            toast("[합골]고인 명을 한글 2~4글자로 올바르게 입력해주세요.")
                             return false
                         }
                         if (!boneDate1.matches(datePattern)) {
-                            toast("(합골)생년월일을 1900-01-01 형태로 올바르게 입력해주세요.")
+                            toast("[합골]생년월일을 1900-01-01 형태로 올바르게 입력해주세요.")
                             return false
                         }
                         // date1Type 생략
                         if (!boneDate2.matches(datePattern)) {
-                            toast("(합골)사망월일을 2023-09-01 형태로 올바르게 입력해주세요.")
+                            toast("[합골]사망월일을 2023-09-01 형태로 올바르게 입력해주세요.")
                             return false
                         }
                         // date2Type 생략
                         // 종교 생략
                         // 직분, 세례명, 법명
-                        if((ApplicationClass.prefs.boneEngraveType == "기독교" || ApplicationClass.prefs.boneEngraveType == "순복음") && (ApplicationClass.prefs.boneEngraveType2 == "기본")) {
+                        if((ApplicationClass.prefs.boneEngraveType == "기독교" || ApplicationClass.prefs.boneEngraveType == "순복음") && (ApplicationClass.prefs.boneEngraveType2 == "기본"  || ApplicationClass.prefs.boneEngraveType2 == "年月日")) {
                             if (!(boneName2.length in 2..4 && boneName2.matches(hanglePattern))) {
-                                toast("(합골)직분을 한글 2~4글자로 올바르게 입력해주세요.")
+                                toast("[합골]직분을 한글 2~4글자로 올바르게 입력해주세요.")
                                 return false
                             }
                         }else if(ApplicationClass.prefs.boneEngraveType == "불교" && ApplicationClass.prefs.boneEngraveType2 == "법명") {
                             if (!(boneName2.length in 2..4 && boneName2.matches(hanglePattern))) {
-                                toast("(합골)법명을 한글 2~4글자로 올바르게 입력해주세요.")
+                                toast("[합골]법명을 한글 2~4글자로 올바르게 입력해주세요.")
                                 return false
                             }
-                        }else if(ApplicationClass.prefs.boneEngraveType == "천주교" && ApplicationClass.prefs.boneEngraveType2 == "기본") {
+                        }else if(ApplicationClass.prefs.boneEngraveType == "천주교" && (ApplicationClass.prefs.boneEngraveType2 == "기본" || ApplicationClass.prefs.boneEngraveType2 == "年月日")) {
                             if (!(boneName2.length in 2..6 && boneName2.matches(hanglePattern))) {
-                                toast("(합골)세례명을 한글 2~6글자로 올바르게 입력해주세요.")
+                                toast("[합골]세례명을 한글 2~6글자로 올바르게 입력해주세요.")
                                 return false
                             }
                         }
@@ -718,7 +718,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                 if(ApplicationClass.prefs.boneSelectedTabletType != "선택안함"){
                     val containsString = searchList2.any { it == ApplicationClass.prefs.selectedTabletName2 }
                     if (!containsString) {
-                        toast("위패 종류를 골라주세요.")
+                        toast("[합골]위패 종류를 골라주세요.")
                         return false
                     }
 
@@ -728,49 +728,49 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
 
                     if(boneTabletType.contains("문구")){
                         if (!(boneName3.length in 1..20 && boneName3.matches(hanglePattern))) {
-                            toast("문구 내용[합골]을 한글 1~20글자로 올바르게 입력해주세요.")
+                            toast("[합골]문구 내용을 한글 1~20글자로 올바르게 입력해주세요.")
                             return false
                         }
                     }else if(!boneTabletType.contains("본관") && !boneTabletType.contains("사진")){
                         if (!(boneName3.length in 2..4 && boneName3.matches(hanglePattern))) {
-                            toast("이름[합골]을 한글 2~4글자로 올바르게 입력해주세요.")
+                            toast("[합골]이름을 한글 2~4글자로 올바르게 입력해주세요.")
                             return false
                         }
                         // 직분, 세례명, 법명
                         if((ApplicationClass.prefs.boneReligion == "기독교")) {
                             if (!(boneTabletName2.length in 2..4 && boneTabletName2.matches(hanglePattern))) {
-                                toast("직분[합골]을 한글 2~4글자로 올바르게 입력해주세요.")
+                                toast("[합골]직분을 한글 2~4글자로 올바르게 입력해주세요.")
                                 return false
                             }
                         }
                         else if(ApplicationClass.prefs.boneReligion == "천주교") {
                             if (!(boneTabletName2.length in 2..6 && boneTabletName2.matches(hanglePattern))) {
-                                toast("세례명[합골]을 한글 2~6글자로 올바르게 입력해주세요.")
+                                toast("[합골]세례명을 한글 2~6글자로 올바르게 입력해주세요.")
                                 return false
                             }
                         }
                     } else if(boneTabletType.contains("본관")){
                         if(ApplicationClass.prefs.boneReligion == "일반" || ApplicationClass.prefs.boneReligion == "불교") {
                             if (!(boneName3.length in 7..9 && boneName3.matches(hanglePattern))) {
-                                toast("본관내용을 한글 7~9글자로 올바르게 입력해주세요.")
+                                toast("[합골]본관내용을 한글 7~9글자로 올바르게 입력해주세요.")
                                 return false
                             }
                         } else if((ApplicationClass.prefs.boneReligion == "기독교")) {
                             if (!(boneTabletName2.length in 2..4 && boneTabletName2.matches(hanglePattern))) {
-                                toast("직분을 한글 2~4글자로 올바르게 입력해주세요.")
+                                toast("[합골]직분을 한글 2~4글자로 올바르게 입력해주세요.")
                                 return false
                             }
                             if (!(boneName3.length in 5..7 && boneName3.matches(hanglePattern))) {
-                                toast("본관내용을 한글 5~7글자로 올바르게 입력해주세요.")
+                                toast("[합골]본관내용을 한글 5~7글자로 올바르게 입력해주세요.")
                                 return false
                             }
                         } else if(ApplicationClass.prefs.boneReligion == "천주교") {
                             if (!(boneTabletName2.length in 2..6 && boneTabletName2.matches(hanglePattern))) {
-                                toast("세례명을 한글 2~6글자로 올바르게 입력해주세요.")
+                                toast("[합골]세례명을 한글 2~6글자로 올바르게 입력해주세요.")
                                 return false
                             }
                             if (!(boneName3.length in 5..7 && boneName3.matches(hanglePattern))) {
-                                toast("본관내용을 한글 5~7글자로 올바르게 입력해주세요.")
+                                toast("[합골]본관내용을 한글 5~7글자로 올바르게 입력해주세요.")
                                 return false
                             }
                         }
@@ -973,7 +973,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         searchList.add("도화청꽃 DH-4 4010")
         searchList.add("도화홍꽃 DH-5 4010")
         searchList.add("소담난 SDN-2 4008")
-        searchList.add("소담송학 SDS-14 008")
+        searchList.add("소담송학 SDS-1 4008")
     }
     private fun settingList2() {
         searchList2.add("미정")
