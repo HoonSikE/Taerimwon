@@ -189,34 +189,47 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             val layoutUrnImage = binding.layoutUrnImage
             var newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn)
 
-            if(selectedUrnName == "미정"){
-                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
-            }else if(selectedUrnName == "기본"){
-                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn)
-                binding.imageUrnImage0.visibility = View.GONE
-                binding.imageUrnImage1.visibility = View.VISIBLE
-            }else if(selectedUrnName == "기본(검정)"){
-                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn0)
-                binding.imageUrnImage0.visibility = View.GONE
-                binding.imageUrnImage1.visibility = View.VISIBLE
-            }else if(selectedUrnName == "도원기독교 DW-3 4010"){
-                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn1)
-            }else if(selectedUrnName == "도원불교 DW-4 4010"){
-                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn2)
-            }else if(selectedUrnName == "도원천주교 DW-5 4010"){
-                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn3)
-            }else if(selectedUrnName == "도원칼라난 DW-2 4010"){
-                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4)
-            }else if(selectedUrnName == "도원칼라송학 DW-1 4010"){
-                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5)
-            }else if(selectedUrnName == "도화청꽃 DH-4 4010"){
-                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn6)
-            }else if(selectedUrnName == "도화홍꽃 DH-5 4010"){
-                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn7)
-            }else if(selectedUrnName == "소담난 SDN-2 4008"){
-                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8)
-            }else if(selectedUrnName == "소담송학 SDS-1 4008"){
-                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn9)
+            when (selectedUrnName) {
+                "미정" -> {
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
+                }
+                "기본" -> {
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn)
+                    binding.imageUrnImage0.visibility = View.GONE
+                    binding.imageUrnImage1.visibility = View.VISIBLE
+                }
+                "기본(검정)" -> {
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn0)
+                    binding.imageUrnImage0.visibility = View.GONE
+                    binding.imageUrnImage1.visibility = View.VISIBLE
+                }
+                "도원기독교 DW-3 4010" -> {
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn1)
+                }
+                "도원불교 DW-4 4010" -> {
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn2)
+                }
+                "도원천주교 DW-5 4010" -> {
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn3)
+                }
+                "도원칼라난 DW-2 4010" -> {
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4)
+                }
+                "도원칼라송학 DW-1 4010" -> {
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5)
+                }
+                "도화청꽃 DH-4 4010" -> {
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn6)
+                }
+                "도화홍꽃 DH-5 4010" -> {
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn7)
+                }
+                "소담난 SDN-2 4008" -> {
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8)
+                }
+                "소담송학 SDS-1 4008" -> {
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn9)
+                }
             }
             layoutUrnImage.background = newBackground
         }
@@ -2163,14 +2176,29 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         var newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
 
         val selectedTabletName = ApplicationClass.prefs.selectedTabletName
-        if(selectedTabletName == "미정"){
-            newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
-        }
-        else if(selectedTabletName == "기본"){
-            newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
-        }
-        else if(selectedTabletName == "기본(검정)"){
-            newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet0)
+
+        when (selectedTabletName) {
+            "미정" -> {
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
+            }
+//            "기본" -> {
+//                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
+//            }
+//            "기본(검정)" -> {
+//                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet0)
+//            }
+            "도원기독교 DW-3 4010" -> {
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet1)
+            }
+            "도원불교 DW-4 4010" -> {
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet2)
+            }
+            "도원천주교 DW-5 4010" -> {
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet3)
+            }
+            "도원칼라난 DW-2 4010" -> {
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet4)
+            }
         }
         binding.layoutTabletImage.background = newBackground
 

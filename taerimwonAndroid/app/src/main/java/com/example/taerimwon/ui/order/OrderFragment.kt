@@ -963,8 +963,8 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
     }
     private fun settingList() {
         searchList.add("미정")
-        searchList.add("기본")
-        searchList.add("기본(검정)")
+//        searchList.add("기본")
+//        searchList.add("기본(검정)")
         searchList.add("도원기독교 DW-3 4010")
         searchList.add("도원불교 DW-4 4010")
         searchList.add("도원천주교 DW-5 4010")
@@ -977,7 +977,11 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
     }
     private fun settingList2() {
         searchList2.add("미정")
-        searchList2.add("기본")
-        searchList2.add("기본(검정)")
+        searchList2.add("조각위패(황금향,조각종교)")
+        searchList2.add("검정위패-TR-2-0802")
+        searchList2.add("사진위패 TR-3 1005")
+        searchList2.add("추모패-TR-4-1307")
+//        searchList2.add("기본")
+//        searchList2.add("기본(검정)")
     }
 }
