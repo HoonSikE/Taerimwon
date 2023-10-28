@@ -138,6 +138,7 @@
     <string-array name="selected_tablet_types">
         <item>선택안함</item>
         <item>각인</item>
+        <item>각인[합골]</item>
         <item>사진</item>
     </string-array>
     <string-array name="religion">

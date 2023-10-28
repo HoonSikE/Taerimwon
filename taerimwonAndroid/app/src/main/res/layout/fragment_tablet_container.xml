@@ -359,7 +359,7 @@
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!--위패 합골-->
+        <!--위패 추가-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_bone"
             android:layout_width="match_parent"
@@ -376,7 +376,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="● 위패 주문[합골]"
+                android:text="● 위패 추가 주문"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
@@ -437,7 +437,7 @@
                         style="@style/SubHeadBold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="위패[합골] 종류"
+                        android:text="위패[추가] 종류"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         />
