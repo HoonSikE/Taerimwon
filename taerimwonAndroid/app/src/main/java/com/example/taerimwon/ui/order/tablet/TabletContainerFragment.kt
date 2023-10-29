@@ -678,6 +678,8 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         searchList2.add(TabletItem("검정위패-TR-2-0802", R.drawable.img_tablet2))
         searchList2.add(TabletItem("사진위패 TR-3 1005", R.drawable.img_tablet3))
         searchList2.add(TabletItem("추모패-TR-4-1307", R.drawable.img_tablet4))
+        searchList2.add(TabletItem("추모패-TR-4-1307", R.drawable.img_tablet4))
+        searchList2.add(TabletItem("추모패-TR-4-1307", R.drawable.img_tablet4))
 //        searchList2.add(TabletItem("기본", R.drawable.img_tablet))
 //        searchList2.add(TabletItem("기본(검정)", R.drawable.img_tablet0))
     }
