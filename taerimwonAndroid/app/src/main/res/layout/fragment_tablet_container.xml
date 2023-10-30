@@ -56,57 +56,59 @@
             />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_tablet_auto_complete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_select_tablet_type"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            >
+            <TextView
+                android:id="@+id/text_auto_complete"
+                style="@style/SubHeadBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="위패 종류"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView"
+                style="@style/SubHead"
+                android:backgroundTint="@color/gold"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:hint="검색어를 입력해주세요."
+                android:completionThreshold="0"
+                android:gravity="center_vertical"
+                android:textColorHint="#555555"
+                app:layout_constraintTop_toBottomOf="@+id/text_auto_complete"/>
+
+            <TextView
+                android:id="@+id/text_tablet_tablet_photo"
+                style="@style/Body"
+                android:textColor="@color/redTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="* 검색창을 클릭하면 목록을 확인할 수 있습니다."
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_tablet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_select_tablet_type"
+            app:layout_constraintTop_toBottomOf="@+id/layout_tablet_auto_complete"
             tools:ignore="MissingConstraints"
             android:visibility="gone"
             >
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_tablet_auto_complete"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginHorizontal="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="8dp"
-                >
-                <TextView
-                    android:id="@+id/text_auto_complete"
-                    style="@style/SubHeadBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="위패 종류"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextView"
-                    style="@style/SubHead"
-                    android:backgroundTint="@color/gold"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:hint="검색어를 입력해주세요."
-                    android:completionThreshold="0"
-                    android:gravity="center_vertical"
-                    android:textColorHint="#555555"
-                    app:layout_constraintTop_toBottomOf="@+id/text_auto_complete"/>
-
-                <TextView
-                    android:id="@+id/text_tablet_tablet_photo"
-                    style="@style/Body"
-                    android:textColor="@color/redTextColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="* 검색창을 클릭하면 목록을 확인할 수 있습니다."
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/autoCompleteTextView"
-                    />
-            </androidx.constraintlayout.widget.ConstraintLayout>
             <!-- 종교 -->
             <TextView
                 android:id="@+id/text_religion"
@@ -117,7 +119,7 @@
                 android:layout_marginTop="8dp"
                 android:text="종교"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layout_tablet_auto_complete"
+                app:layout_constraintTop_toTopOf="parent"
                 />
 
             <Spinner
@@ -320,10 +322,10 @@
             <!-- 이미지 첨부 뷰 -->
             <ImageView
                 android:id="@+id/image_add_photo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/img_logo"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/img_profile"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -337,10 +339,11 @@
                 android:background="@drawable/edittext_regular"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:text="사진 첨부"
+                android:text="사진 첨부 (가로:세로 = 3:4)"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_add_photo"
+                android:layout_marginTop="4dp"
                 android:clickable="true"
                 android:focusable="true"
             />
@@ -392,7 +395,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/text_select_bone_tablet_type"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:entries="@array/selected_tablet_types"
+                android:entries="@array/selected_tablet_types2"
                 android:spinnerMode="dropdown"
                 android:defaultValue="0"
                 />
@@ -718,10 +721,10 @@
                     <!-- 이미지 첨부 뷰 -->
                     <ImageView
                         android:id="@+id/image_bone_add_photo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:src="@drawable/img_logo"
+                        android:layout_width="150dp"
+                        android:layout_height="200dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/img_profile"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
@@ -735,10 +738,11 @@
                         android:background="@drawable/edittext_regular"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
-                        android:text="사진 첨부"
+                        android:text="사진 첨부 (비율: 가로:세로 = 3:4)"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/image_bone_add_photo"
+                        android:layout_marginTop="4dp"
                         android:clickable="true"
                         android:focusable="true"
                         />

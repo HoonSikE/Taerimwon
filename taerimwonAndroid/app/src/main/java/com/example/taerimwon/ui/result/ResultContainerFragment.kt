@@ -120,10 +120,25 @@ class ResultContainerFragment : BaseFragment<FragmentResultContainerBinding>(R.l
         }
         val boneSelectedTabletType = ApplicationClass.prefs.boneSelectedTabletType.toString()
         if(boneSelectedTabletType != "선택안함") {
-            textResultTextTablet += "\n\n합골 추가 정보"
-            textResultTextTablet += "\n - 합골 위패 종류: " + ApplicationClass.prefs.boneSelectedTabletType
+            textResultTextTablet += "\n\n위패 추가 정보"
+            textResultTextTablet += "\n - 추가 위패 종류: " + ApplicationClass.prefs.boneSelectedTabletType
             textResultTextTablet += "\n - 위패 상세 종류: " + ApplicationClass.prefs.boneTabletType +
-                                    "\n - 합골 위패 명칭: " + ApplicationClass.prefs.selectedTabletName2
+                                    "\n - 추가 위패 명칭: " + ApplicationClass.prefs.selectedTabletName2
+
+            if(!boneSelectedTabletType.contains("사진")){
+                textResultTextTablet += "\n - 위패 내용: " + ApplicationClass.prefs.boneName3
+                if(!boneSelectedTabletType.contains("본관")){
+                    if(ApplicationClass.prefs.boneTabletType.toString().contains("기독교"))
+                        textResultTextTablet += "\n - 직분: " + ApplicationClass.prefs.boneTabletName2
+                    else if(ApplicationClass.prefs.boneTabletType.toString().contains("천주교"))
+                        textResultTextTablet += "\n - 세례명: " + ApplicationClass.prefs.boneTabletName2
+                }
+            }
+        }
+
+        if(selectedTabletType == "합골") {
+            textResultTextTablet += "\n\n합골 추가 정보"
+            textResultTextTablet += "\n - 위패 상세 종류: " + ApplicationClass.prefs.boneTabletType
 
             if(!boneSelectedTabletType.contains("사진")){
                 textResultTextTablet += "\n - 위패 내용: " + ApplicationClass.prefs.boneName3

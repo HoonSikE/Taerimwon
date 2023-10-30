@@ -156,10 +156,16 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         settingList3()
 
         // "ArrayList" - 리스트 객체
+        var searchListTmp = searchList
+        if(ApplicationClass.prefs.boneSelectedTabletType == "합골함1")
+            searchListTmp = searchList2
+        else if(ApplicationClass.prefs.boneSelectedTabletType == "합골함2")
+            searchListTmp = searchList3
+
         binding.autoCompleteTextView.setAdapter(UrnAutoCompleteAdapter(
                 requireContext(),
                 android.R.layout.simple_dropdown_item_1line,
-                searchList
+                searchListTmp
             )
         )
 
@@ -354,30 +360,34 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                     binding.layoutUrn.visibility = View.VISIBLE
 
 
-                if(ApplicationClass.prefs.selectedUrnType == "유골함"){
-                    binding.autoCompleteTextView.setAdapter(
-                        UrnAutoCompleteAdapter(
-                            requireContext(),
-                            android.R.layout.simple_dropdown_item_1line,
-                            searchList
+                when (ApplicationClass.prefs.selectedUrnType) {
+                    "유골함" -> {
+                        binding.autoCompleteTextView.setAdapter(
+                            UrnAutoCompleteAdapter(
+                                requireContext(),
+                                android.R.layout.simple_dropdown_item_1line,
+                                searchList
+                            )
                         )
-                    )
-                } else if(ApplicationClass.prefs.selectedUrnType == "합골함1"){
-                    binding.autoCompleteTextView.setAdapter(
-                        UrnAutoCompleteAdapter(
-                            requireContext(),
-                            android.R.layout.simple_dropdown_item_1line,
-                            searchList2
+                    }
+                    "합골함1" -> {
+                        binding.autoCompleteTextView.setAdapter(
+                            UrnAutoCompleteAdapter(
+                                requireContext(),
+                                android.R.layout.simple_dropdown_item_1line,
+                                searchList2
+                            )
                         )
-                    )
-                } else if(ApplicationClass.prefs.selectedUrnType == "합골함2"){
-                    binding.autoCompleteTextView.setAdapter(
-                        UrnAutoCompleteAdapter(
-                            requireContext(),
-                            android.R.layout.simple_dropdown_item_1line,
-                            searchList3
+                    }
+                    "합골함2" -> {
+                        binding.autoCompleteTextView.setAdapter(
+                            UrnAutoCompleteAdapter(
+                                requireContext(),
+                                android.R.layout.simple_dropdown_item_1line,
+                                searchList3
+                            )
                         )
-                    )
+                    }
                 }
 
                 if(ApplicationClass.prefs.selectedUrnType!!.contains("합골")) {
@@ -442,6 +452,16 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 // 텍스트 변경 이벤트
                 ApplicationClass.prefs.selectedUrnName = s?.toString() ?: ""
+
+                val selectedUrnName = ApplicationClass.prefs.selectedUrnName.toString()
+
+                if(selectedUrnName.contains("수목함")
+                    || selectedUrnName.contains("밀봉외함")
+                    || selectedUrnName.contains("표석")
+                    || selectedUrnName.contains("피아노")){
+                    binding.layoutEngrave.visibility = View.GONE
+                    binding.textUrnGuide.visibility = View.VISIBLE
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -789,6 +809,13 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         searchList.add(UrnItem("조각천주교 ZE-13 1035", R.drawable.img_urn10_11))
         searchList.add(UrnItem("청연 ZE-2 11832", R.drawable.img_urn10_12))
         searchList.add(UrnItem("화접도 ZE-5 11832", R.drawable.img_urn10_13))
+
+        // 11. 평장
+        searchList.add(UrnItem("밀봉외함 MH-1 1015", R.drawable.img_urn11_1))
+        searchList.add(UrnItem("표석(大) PS-2 2317", R.drawable.img_urn11_2))
+        searchList.add(UrnItem("표석(小) PS-4 0911", R.drawable.img_urn11_3))
+        searchList.add(UrnItem("피아노(大) PS-1 3020", R.drawable.img_urn11_4))
+        searchList.add(UrnItem("피아노(小) PS-3 2015", R.drawable.img_urn11_5))
     }
     private fun settingList2() {
         searchList2.add(UrnItem("미정", 0))

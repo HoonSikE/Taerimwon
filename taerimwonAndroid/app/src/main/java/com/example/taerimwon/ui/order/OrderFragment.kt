@@ -1098,6 +1098,13 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         searchList.add("조각천주교 ZE-13 1035")
         searchList.add("청연 ZE-2 11832")
         searchList.add("화접도 ZE-5 11832")
+
+        // 11. 평장
+        searchList.add("밀봉외함 MH-1 1015")
+        searchList.add("표석(大) PS-2 2317")
+        searchList.add("표석(小) PS-4 0911")
+        searchList.add("피아노(大) PS-1 3020")
+        searchList.add("피아노(小) PS-3 2015")
         
         // 합골 1
         searchList.add("합골금띠 HG-1 4612")

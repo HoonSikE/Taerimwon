@@ -2,6 +2,7 @@ package com.example.taerimwon.ui.order.tablet
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.text.Editable
 import android.text.InputFilter
@@ -20,9 +21,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import com.example.taerimwon.databinding.FragmentTabletContainerBinding
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.order.OrderViewModel
+import com.example.taerimwon.ui.order.tablet.bone.BoneTabletAutoCompleteAdapter
 import com.example.taerimwon.ui.order.tablet.bone.BoneTabletTypeAdapter
 import com.example.taerimwon.ui.order.urn.UrnAutoCompleteAdapter
 import com.example.taerimwon.utils.input.saveImageToInternalStorage
+import com.example.taerimwon.utils.view.toast
+import java.lang.Math.abs
 
 
 @AndroidEntryPoint
@@ -32,6 +36,9 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
     // 자동완성 단어들을 담을 리스트
     private lateinit var searchList: MutableList<TabletItem>
     private lateinit var searchList2: MutableList<TabletItem>
+
+    private lateinit var searchBoneList: MutableList<TabletItem>
+    private lateinit var searchBoneList2: MutableList<TabletItem>
 
     private lateinit var tabletSelectTypeAdapter: TabletTypeAdapter
     var tabletSelectTypeList = ArrayList<String>()
@@ -92,22 +99,37 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
     private fun initData() {
         searchList = mutableListOf()
         settingList()
+        searchList2 = mutableListOf()
+        settingList2()
+
         // "ArrayList" - 리스트 객체
+        var searchListTmp = searchList
+        if(ApplicationClass.prefs.selectedTabletType == "사진")
+            searchListTmp = searchList2
+
         binding.autoCompleteTextView.setAdapter(
             TabletAutoCompleteAdapter(
                 requireContext(),
                 android.R.layout.simple_dropdown_item_1line,
-                searchList
+                searchListTmp
             )
         )
-        searchList2 = mutableListOf()
-        settingList2()
+
+        searchBoneList = mutableListOf()
+        settingBoneList()
+        searchBoneList2 = mutableListOf()
+        settingBoneList2()
+
         // "ArrayList" - 리스트 객체
+        var searchBoneListTmp = searchBoneList
+        if(ApplicationClass.prefs.boneSelectedTabletType == "사진")
+            searchBoneListTmp = searchBoneList2
+
         binding.autoCompleteTextView2.setAdapter(
-            TabletAutoCompleteAdapter(
+            BoneTabletAutoCompleteAdapter(
                 requireContext(),
                 android.R.layout.simple_dropdown_item_1line,
-                searchList2
+                searchBoneListTmp
             )
         )
 
@@ -129,14 +151,12 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         // 배열을 가져옵니다.
         // 문자열 이름을 문자열로 정의합니다.
         var position = 0
-        if(ApplicationClass.prefs.tabletReligion == "일반")
-            position = 0
-        else if(ApplicationClass.prefs.tabletReligion == "기독교")
-            position = 1
-        else if(ApplicationClass.prefs.tabletReligion == "불교")
-            position = 2
-        else if(ApplicationClass.prefs.tabletReligion == "천주교")
-            position = 3
+        when (ApplicationClass.prefs.tabletReligion) {
+            "일반" -> position = 0
+            "기독교" -> position = 1
+            "불교" -> position = 2
+            "천주교" -> position = 3
+        }
 
         var arrName = "tablet_type" + position
         // 문자열 배열을 가져옵니다.
@@ -160,7 +180,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.imageAddPhoto.setImageURI(imageUri)
         }
 
-        /**합골*/
+        /**합골, 위패 추가*/
         val boneSexArray = resources.getStringArray(R.array.bone_sex)
         val boneSexList = mutableListOf(*boneSexArray) as ArrayList<String>
         binding.spinnerBoneSex.setSelection(boneSexList.indexOf(ApplicationClass.prefs.boneTabletSex))
@@ -168,7 +188,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         binding.editTextBoneTabletName2.setText(ApplicationClass.prefs.boneTabletName2)
         binding.editTextBoneName3.setText(ApplicationClass.prefs.boneName3)
 
-        val selectedBoneTabletTypesArray = resources.getStringArray(R.array.selected_tablet_types)
+        val selectedBoneTabletTypesArray = resources.getStringArray(R.array.selected_tablet_types2)
         val selectedBoneTabletTypeList = mutableListOf(*selectedBoneTabletTypesArray) as ArrayList<String>
         binding.spinnerSelectBoneTabletType.setSelection(selectedBoneTabletTypeList.indexOf(ApplicationClass.prefs.boneSelectedTabletType))
 
@@ -180,14 +200,12 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         // 배열을 가져옵니다.
         // 문자열 이름을 문자열로 정의합니다.
         var position2 = 0
-        if(ApplicationClass.prefs.boneTabletReligion == "일반")
-            position2 = 0
-        else if(ApplicationClass.prefs.boneTabletReligion == "기독교")
-            position2 = 1
-        else if(ApplicationClass.prefs.boneTabletReligion == "불교")
-            position2 = 2
-        else if(ApplicationClass.prefs.boneTabletReligion == "천주교")
-            position2 = 3
+        when (ApplicationClass.prefs.boneTabletReligion) {
+            "일반" -> position2 = 0
+            "기독교" -> position2 = 1
+            "불교" -> position2 = 2
+            "천주교" -> position2 = 3
+        }
 
         var arrName2 = "tablet_type" + position2
         // 문자열 배열을 가져옵니다.
@@ -270,27 +288,43 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         if (requestCode == PICK_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             val selectedImageUri: Uri? = data?.data
             if (selectedImageUri != null) {
-                // 이미지를 미리보기로 표시
-                binding.imageAddPhoto.setImageURI(selectedImageUri)
 
                 // 이미지를 앱 내부 파일 시스템에 복사 또는 이동하고 그 경로를 얻음
                 val imageFile = saveImageToInternalStorage(requireContext(), selectedImageUri)
 
-                // 경로(URI)를 SharedPreferences에 저장
-                ApplicationClass.prefs.tabletImageUri = imageFile?.toString()
+                if (is3x4AspectRatio(selectedImageUri, 0.1f)) {
+                    // 이미지를 미리보기로 표시
+                    binding.imageAddPhoto.setImageURI(selectedImageUri)
+
+                    // 3:4 비율의 이미지를 선택한 경우
+                    // 경로(URI)를 SharedPreferences에 저장
+                    ApplicationClass.prefs.tabletImageUri = imageFile?.toString()
+                } else {
+                    // 3:4 비율이 아닌 이미지를 선택한 경우, 사용자에게 메시지 표시 또는 처리 방법을 결정
+                    // 예: Toast 메시지를 표시하거나 경고 메시지를 표시
+                    toast("이미지는 3:4 비율이어야 합니다.")
+                }
             }
         }
         else if (requestCode == PICK_IMAGE_REQUEST_CODE2 && resultCode == Activity.RESULT_OK) {
             val selectedImageUri: Uri? = data?.data
             if (selectedImageUri != null) {
-                // 이미지를 미리보기로 표시
-                binding.imageBoneAddPhoto.setImageURI(selectedImageUri)
 
                 // 이미지를 앱 내부 파일 시스템에 복사 또는 이동하고 그 경로를 얻음
                 val imageFile = saveImageToInternalStorage(requireContext(), selectedImageUri)
 
-                // 경로(URI)를 SharedPreferences에 저장
-                ApplicationClass.prefs.boneTabletImageUri = imageFile?.toString()
+                if (is3x4AspectRatio(selectedImageUri, 0.1f)) {
+                    // 이미지를 미리보기로 표시
+                    binding.imageBoneAddPhoto.setImageURI(selectedImageUri)
+
+                    // 3:4 비율의 이미지를 선택한 경우
+                    // 경로(URI)를 SharedPreferences에 저장
+                    ApplicationClass.prefs.boneTabletImageUri = imageFile?.toString()
+                } else {
+                    // 3:4 비율이 아닌 이미지를 선택한 경우, 사용자에게 메시지 표시 또는 처리 방법을 결정
+                    // 예: Toast 메시지를 표시하거나 경고 메시지를 표시
+                    toast("이미지는 3:4 비율이어야 합니다.")
+                }
             }
         }
     }
@@ -301,17 +335,57 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
                 println(ApplicationClass.prefs.selectedTabletType)
 
                 if(ApplicationClass.prefs.selectedTabletType!!.contains("선택안함")) {
+                    binding.layoutTabletAutoComplete.visibility = View.GONE
                     binding.layoutTablet.visibility = View.GONE
                     binding.layoutTabletPhoto.visibility = View.GONE
                     binding.layoutBone.visibility = View.GONE
                 }else {
+                    binding.textSelectBoneTabletType.text = "● 위패 추가 주문"
+                    binding.spinnerSelectBoneTabletType.visibility = View.VISIBLE
+                    binding.imageSelectBoneTabletType.visibility = View.VISIBLE
+
+                    binding.layoutTabletAutoComplete.visibility = View.VISIBLE
+                    binding.layoutTablet2AutoComplete.visibility = View.VISIBLE
                     binding.layoutBone.visibility = View.VISIBLE
                     if(ApplicationClass.prefs.selectedTabletType!!.contains("사진")){
                         binding.layoutTablet.visibility = View.GONE
                         binding.layoutTabletPhoto.visibility = View.VISIBLE
-                    }else{
+                    }else {
                         binding.layoutTablet.visibility = View.VISIBLE
                         binding.layoutTabletPhoto.visibility = View.GONE
+
+                        if(ApplicationClass.prefs.selectedTabletType!!.contains("합골")) {
+                            ApplicationClass.prefs.boneSelectedTabletType = "선택안함"
+
+                            binding.textSelectBoneTabletType.text = "● 위패[합골] 추가 정보"
+                            binding.spinnerSelectBoneTabletType.visibility = View.GONE
+                            binding.imageSelectBoneTabletType.visibility = View.GONE
+
+                            binding.layoutBoneTablet.visibility = View.VISIBLE
+                            binding.layoutTablet2AutoComplete.visibility = View.GONE
+                            binding.layoutBoneTablet2.visibility = View.VISIBLE
+                        }
+                    }
+                }
+
+                when (ApplicationClass.prefs.selectedTabletType) {
+                    "사진" -> {
+                        binding.autoCompleteTextView.setAdapter(
+                            TabletAutoCompleteAdapter(
+                                requireContext(),
+                                android.R.layout.simple_dropdown_item_1line,
+                                searchList2
+                            )
+                        )
+                    }
+                    else -> {
+                        binding.autoCompleteTextView.setAdapter(
+                            TabletAutoCompleteAdapter(
+                                requireContext(),
+                                android.R.layout.simple_dropdown_item_1line,
+                                searchList
+                            )
+                        )
                     }
                 }
             }
@@ -375,9 +449,11 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
                 ApplicationClass.prefs.boneSelectedTabletType = parent?.getItemAtPosition(position).toString()
                 println(ApplicationClass.prefs.boneSelectedTabletType)
 
-                if(ApplicationClass.prefs.boneSelectedTabletType!!.contains("선택안함"))
+                if(ApplicationClass.prefs.boneSelectedTabletType!!.contains("선택안함")) {
+//                    binding.layoutTabletAutoComplete.visibility = View.GONE
                     binding.layoutBoneTablet.visibility = View.GONE
-                else {
+                }else {
+//                    binding.layoutTabletAutoComplete.visibility = View.VISIBLE
                     binding.layoutBoneTablet.visibility = View.VISIBLE
                     if(ApplicationClass.prefs.boneSelectedTabletType!!.contains("사진")){
                         binding.layoutBoneTablet2.visibility = View.GONE
@@ -385,6 +461,27 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
                     }else{
                         binding.layoutBoneTablet2.visibility = View.VISIBLE
                         binding.layoutBoneTabletPhoto.visibility = View.GONE
+                    }
+                }
+
+                when (ApplicationClass.prefs.boneSelectedTabletType) {
+                    "사진" -> {
+                        binding.autoCompleteTextView2.setAdapter(
+                            BoneTabletAutoCompleteAdapter(
+                                requireContext(),
+                                android.R.layout.simple_dropdown_item_1line,
+                                searchBoneList2
+                            )
+                        )
+                    }
+                    else -> {
+                        binding.autoCompleteTextView2.setAdapter(
+                            BoneTabletAutoCompleteAdapter(
+                                requireContext(),
+                                android.R.layout.simple_dropdown_item_1line,
+                                searchBoneList
+                            )
+                        )
                     }
                 }
             }
@@ -667,20 +764,53 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         searchList.add(TabletItem("미정", 0))
         searchList.add(TabletItem("조각위패(황금향,조각종교)", R.drawable.img_tablet1))
         searchList.add(TabletItem("검정위패-TR-2-0802", R.drawable.img_tablet2))
-        searchList.add(TabletItem("사진위패 TR-3 1005", R.drawable.img_tablet3))
-        searchList.add(TabletItem("추모패-TR-4-1307", R.drawable.img_tablet4))
+//        searchList.add(TabletItem("사진위패 TR-3 1005", R.drawable.img_tablet3))
+//        searchList.add(TabletItem("추모패-TR-4-1307", R.drawable.img_tablet4))
 //        searchList.add(TabletItem("기본", R.drawable.img_tablet))
 //        searchList.add(TabletItem("기본(검정)", R.drawable.img_tablet))
     }
     private fun settingList2() {
         searchList2.add(TabletItem("미정", 0))
-        searchList2.add(TabletItem("조각위패(황금향,조각종교)", R.drawable.img_tablet1))
-        searchList2.add(TabletItem("검정위패-TR-2-0802", R.drawable.img_tablet2))
+//        searchList2.add(TabletItem("조각위패(황금향,조각종교)", R.drawable.img_tablet1))
+//        searchList2.add(TabletItem("검정위패-TR-2-0802", R.drawable.img_tablet2))
         searchList2.add(TabletItem("사진위패 TR-3 1005", R.drawable.img_tablet3))
-        searchList2.add(TabletItem("추모패-TR-4-1307", R.drawable.img_tablet4))
-        searchList2.add(TabletItem("추모패-TR-4-1307", R.drawable.img_tablet4))
         searchList2.add(TabletItem("추모패-TR-4-1307", R.drawable.img_tablet4))
 //        searchList2.add(TabletItem("기본", R.drawable.img_tablet))
 //        searchList2.add(TabletItem("기본(검정)", R.drawable.img_tablet0))
+    }
+    private fun settingBoneList() {
+        searchBoneList.add(TabletItem("미정", 0))
+        searchBoneList.add(TabletItem("조각위패(황금향,조각종교)", R.drawable.img_tablet1))
+        searchBoneList.add(TabletItem("검정위패-TR-2-0802", R.drawable.img_tablet2))
+//        searchList.add(TabletItem("사진위패 TR-3 1005", R.drawable.img_tablet3))
+//        searchList.add(TabletItem("추모패-TR-4-1307", R.drawable.img_tablet4))
+//        searchList.add(TabletItem("기본", R.drawable.img_tablet))
+//        searchList.add(TabletItem("기본(검정)", R.drawable.img_tablet))
+    }
+    private fun settingBoneList2() {
+        searchBoneList2.add(TabletItem("미정", 0))
+//        searchList2.add(TabletItem("조각위패(황금향,조각종교)", R.drawable.img_tablet1))
+//        searchList2.add(TabletItem("검정위패-TR-2-0802", R.drawable.img_tablet2))
+        searchBoneList2.add(TabletItem("사진위패 TR-3 1005", R.drawable.img_tablet3))
+        searchBoneList2.add(TabletItem("추모패-TR-4-1307", R.drawable.img_tablet4))
+//        searchList2.add(TabletItem("기본", R.drawable.img_tablet))
+//        searchList2.add(TabletItem("기본(검정)", R.drawable.img_tablet0))
+    }
+    fun is3x4AspectRatio(uri: Uri, aspectRatioTolerance: Float): Boolean {
+        val options = BitmapFactory.Options()
+        options.inJustDecodeBounds = true
+        BitmapFactory.decodeStream(requireContext().contentResolver.openInputStream(uri), null, options)
+        val width = options.outWidth
+        val height = options.outHeight
+
+        // 원하는 비율 (4:3)과의 비율 차이를 계산
+        val targetAspectRatio = 3f / 4f
+        val imageAspectRatio = width.toFloat() / height.toFloat()
+        val aspectRatioDifference = abs(targetAspectRatio - imageAspectRatio)
+
+        // 비율 차이가 허용 범위 내에 있으면 true 반환
+        return aspectRatioDifference <= aspectRatioTolerance
+
+//        return width * 4 == height * 3
     }
 }
