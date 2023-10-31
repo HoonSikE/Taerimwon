@@ -16,14 +16,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.taerimwon.R
 import com.example.taerimwon.base.BaseFragment
 import com.example.taerimwon.data.dto.tablet.TabletItem
-import com.example.taerimwon.data.dto.urn.UrnItem
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.taerimwon.databinding.FragmentTabletContainerBinding
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.order.OrderViewModel
-import com.example.taerimwon.ui.order.tablet.bone.BoneTabletAutoCompleteAdapter
-import com.example.taerimwon.ui.order.tablet.bone.BoneTabletTypeAdapter
-import com.example.taerimwon.ui.order.urn.UrnAutoCompleteAdapter
+import com.example.taerimwon.ui.order.tablet.tablet2.Tablet2AutoCompleteAdapter
+import com.example.taerimwon.ui.order.tablet.tablet2.Tablet2TypeAdapter
 import com.example.taerimwon.utils.input.saveImageToInternalStorage
 import com.example.taerimwon.utils.view.toast
 import java.lang.Math.abs
@@ -43,7 +41,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
     private lateinit var tabletSelectTypeAdapter: TabletTypeAdapter
     var tabletSelectTypeList = ArrayList<String>()
 
-    private lateinit var boneTabletSelectTypeAdapter: BoneTabletTypeAdapter
+    private lateinit var boneTabletSelectTypeAdapter: Tablet2TypeAdapter
     var boneTabletSelectTypeList = ArrayList<String>()
     // 이미지 선택 요청 코드를 나타내는 상수
     private val PICK_IMAGE_REQUEST_CODE = 123
@@ -86,7 +84,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
         }
 
-        boneTabletSelectTypeAdapter = BoneTabletTypeAdapter(requireContext()).apply {
+        boneTabletSelectTypeAdapter = Tablet2TypeAdapter(requireContext()).apply {
             onItemClickListener = boneTabletTypeClickListener
         }
         boneTabletSelectTypeAdapter.setSelectedItem(ApplicationClass.prefs.boneTabletTypePosition)
@@ -126,7 +124,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             searchBoneListTmp = searchBoneList2
 
         binding.autoCompleteTextView2.setAdapter(
-            BoneTabletAutoCompleteAdapter(
+            Tablet2AutoCompleteAdapter(
                 requireContext(),
                 android.R.layout.simple_dropdown_item_1line,
                 searchBoneListTmp
@@ -181,6 +179,40 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         }
 
         /**합골, 위패 추가*/
+        if(ApplicationClass.prefs.selectedTabletType!!.contains("선택안함")) {
+            binding.layoutTabletAutoComplete.visibility = View.GONE
+            binding.layoutTablet.visibility = View.GONE
+            binding.layoutTabletPhoto.visibility = View.GONE
+            binding.layoutBone.visibility = View.GONE
+        }else {
+            binding.textSelectBoneTabletType.text = "● 위패 추가 주문"
+            binding.spinnerSelectBoneTabletType.visibility = View.VISIBLE
+            binding.imageSelectBoneTabletType.visibility = View.VISIBLE
+
+            binding.layoutTabletAutoComplete.visibility = View.VISIBLE
+            binding.layoutTablet2AutoComplete.visibility = View.VISIBLE
+            binding.layoutBone.visibility = View.VISIBLE
+            if(ApplicationClass.prefs.selectedTabletType!!.contains("사진")){
+                binding.layoutTablet.visibility = View.GONE
+                binding.layoutTabletPhoto.visibility = View.VISIBLE
+            }else {
+                binding.layoutTablet.visibility = View.VISIBLE
+                binding.layoutTabletPhoto.visibility = View.GONE
+
+                if(ApplicationClass.prefs.selectedTabletType!!.contains("합골")) {
+                    ApplicationClass.prefs.boneSelectedTabletType = "선택안함"
+
+                    binding.textSelectBoneTabletType.text = "● 위패[합골] 추가 정보"
+                    binding.spinnerSelectBoneTabletType.visibility = View.GONE
+                    binding.imageSelectBoneTabletType.visibility = View.GONE
+
+                    binding.layoutBoneTablet.visibility = View.VISIBLE
+                    binding.layoutTablet2AutoComplete.visibility = View.GONE
+                    binding.layoutBoneTablet2.visibility = View.VISIBLE
+                }
+            }
+        }
+
         val boneSexArray = resources.getStringArray(R.array.bone_sex)
         val boneSexList = mutableListOf(*boneSexArray) as ArrayList<String>
         binding.spinnerBoneSex.setSelection(boneSexList.indexOf(ApplicationClass.prefs.boneTabletSex))
@@ -467,7 +499,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
                 when (ApplicationClass.prefs.boneSelectedTabletType) {
                     "사진" -> {
                         binding.autoCompleteTextView2.setAdapter(
-                            BoneTabletAutoCompleteAdapter(
+                            Tablet2AutoCompleteAdapter(
                                 requireContext(),
                                 android.R.layout.simple_dropdown_item_1line,
                                 searchBoneList2
@@ -476,7 +508,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
                     }
                     else -> {
                         binding.autoCompleteTextView2.setAdapter(
-                            BoneTabletAutoCompleteAdapter(
+                            Tablet2AutoCompleteAdapter(
                                 requireContext(),
                                 android.R.layout.simple_dropdown_item_1line,
                                 searchBoneList
@@ -502,7 +534,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
                 val boneTabletTypesArray = resources.getStringArray(stringArray)
 
                 // 리사이클러뷰 초기화.
-                boneTabletSelectTypeAdapter = BoneTabletTypeAdapter(requireContext()).apply {
+                boneTabletSelectTypeAdapter = Tablet2TypeAdapter(requireContext()).apply {
                     onItemClickListener = boneTabletTypeClickListener
                 }
                 binding.recyclerviewBoneTabletType.apply {

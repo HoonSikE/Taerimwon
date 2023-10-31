@@ -40,7 +40,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:viewBindingIgnore="true"
                     />
-
                 <View
                     android:id="@+id/View1"
                     android:layout_width="match_parent"
@@ -52,9 +51,9 @@
                     tools:ignore="MissingConstraints"
                     tools:viewBindingIgnore="true"
                     />
-
+                <!--유골함-->
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_result_title_image"
+                    android:id="@+id/layout_result_title_image1"
                     android:background="@color/contentBackground"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="20dp"
@@ -65,23 +64,23 @@
                     tools:viewBindingIgnore="true"
                     >
                     <TextView
-                        android:id="@+id/text_result_title"
+                        android:id="@+id/text_result_title1"
                         style="@style/SubHeadBold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="● 결과 확인"
+                        android:text="● 유골함"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:viewBindingIgnore="true"
                         />
                     <!--이미지 출력-->
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/layout_result_image"
+                        android:id="@+id/layout_result_image1"
                         android:background="@drawable/view_radius"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:layout_constraintTop_toBottomOf="@+id/text_result_title"
+                        app:layout_constraintTop_toBottomOf="@+id/text_result_title1"
                         android:layout_marginTop="10dp"
                         android:paddingHorizontal="8dp"
                         android:paddingVertical="8dp"
@@ -89,61 +88,63 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         android:elevation="4dp"
                         >
-                        <ImageView
-                            android:id="@+id/layout_tablet2_result_image"
-                            android:layout_width="80dp"
-                            android:layout_height="192dp"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_urn_result_image1_2"
+                            android:layout_width="130dp"
+                            android:layout_height="150dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/layout_urn_result_image"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:background="@drawable/img_urn10_9"
+                            android:visibility="gone"
+                            >
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <ImageView
+                            android:id="@+id/layout_urn_result_image"
+                            android:layout_width="130dp"
+                            android:layout_height="150dp"
+                            app:layout_constraintStart_toEndOf="@+id/layout_urn_result_image1_2"
+                            app:layout_constraintEnd_toStartOf="@+id/layout_urn_result_image2_2"
                             app:layout_constraintBottom_toBottomOf="parent"
                             android:visibility="gone"
                             >
                         </ImageView>
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_urn_result_image2_2"
+                            android:layout_width="130dp"
+                            android:layout_height="150dp"
+                            app:layout_constraintStart_toEndOf="@+id/layout_urn_result_image"
+                            app:layout_constraintEnd_toStartOf="@+id/layout_urn_result_image2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:background="@drawable/img_urn10_9"
+                            android:visibility="gone"
+                            >
+                        </androidx.constraintlayout.widget.ConstraintLayout>
                         <ImageView
-                            android:id="@+id/layout_urn_result_image"
-                            android:layout_width="216dp"
-                            android:layout_height="232dp"
-                            app:layout_constraintStart_toEndOf="@id/layout_tablet2_result_image"
+                            android:id="@+id/layout_urn_result_image2"
+                            android:layout_width="130dp"
+                            android:layout_height="150dp"
+                            app:layout_constraintStart_toEndOf="@+id/layout_urn_result_image2_2"
                             app:layout_constraintEnd_toStartOf="@+id/layout_bone_result_image"
-                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
                             android:visibility="gone"
                             >
                         </ImageView>
                         <ImageView
                             android:id="@+id/layout_bone_result_image"
-                            android:layout_width="200dp"
-                            android:layout_height="190dp"
-                            app:layout_constraintStart_toEndOf="@+id/layout_urn_result_image"
+                            android:layout_width="180dp"
+                            android:layout_height="200dp"
+                            app:layout_constraintStart_toEndOf="@+id/layout_urn_result_image2"
                             app:layout_constraintEnd_toStartOf="@+id/layout_bone2_result_image"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:visibility="gone"
-                            >
-                        </ImageView>
-                        <ImageView
-                            android:id="@+id/layout_bone2_result_image"
-                            android:layout_width="200dp"
-                            android:layout_height="220dp"
-                            app:layout_constraintStart_toEndOf="@+id/layout_bone_result_image"
-                            app:layout_constraintEnd_toStartOf="@+id/layout_tablet_result_image"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:visibility="gone"
-                            >
-                        </ImageView>
-                        <ImageView
-                            android:id="@+id/layout_tablet_result_image"
-                            android:layout_width="80dp"
-                            android:layout_height="192dp"
-                            app:layout_constraintStart_toEndOf="@+id/layout_bone2_result_image"
-                            app:layout_constraintEnd_toStartOf="@+id/layout_bone_tablet_result_image"
                             app:layout_constraintBottom_toBottomOf="parent"
                             android:visibility="gone"
                             >
                         </ImageView>
                         <ImageView
-                            android:id="@+id/layout_bone_tablet_result_image"
-                            android:layout_width="80dp"
-                            android:layout_height="192dp"
-                            app:layout_constraintStart_toEndOf="@+id/layout_tablet_result_image"
+                            android:id="@+id/layout_bone2_result_image"
+                            android:layout_width="180dp"
+                            android:layout_height="200dp"
+                            app:layout_constraintStart_toEndOf="@+id/layout_bone_result_image"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
                             android:visibility="gone"
@@ -151,13 +152,13 @@
                         </ImageView>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <TextView
-                        android:id="@+id/layout_zoom"
+                        android:id="@+id/layout_zoom1"
                         style="@style/Body"
                         android:background="@drawable/view_zoom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="확대"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_result_image"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_result_image1"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginTop="8dp"
@@ -167,25 +168,343 @@
                         >
                     </TextView>
                     <TextView
-                        android:id="@+id/text_result_text"
+                        android:id="@+id/layout_pre"
+                        style="@style/Body"
+                        android:background="@drawable/view_zoom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="이전"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_zoom1"
+                        app:layout_constraintEnd_toStartOf="@+id/layout_current"
+                        android:layout_marginTop="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="2dp"
+                        tools:viewBindingIgnore="true"
+                        android:visibility="gone"
+                        >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/layout_current"
+                        style="@style/Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1/00"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_zoom1"
+                        app:layout_constraintStart_toStartOf="@+id/layout_zoom1"
+                        app:layout_constraintEnd_toEndOf="@+id/layout_zoom1"
+                        android:layout_marginTop="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="2dp"
+                        tools:viewBindingIgnore="true"
+                        android:visibility="gone"
+                        >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/layout_next"
+                        style="@style/Body"
+                        android:background="@drawable/view_zoom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="다음"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_zoom1"
+                        app:layout_constraintStart_toEndOf="@+id/layout_current"
+                        android:layout_marginTop="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="2dp"
+                        tools:viewBindingIgnore="true"
+                        android:visibility="gone"
+                        >
+                    </TextView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:id="@+id/View2"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/viewColor"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_result_title_image1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="MissingConstraints"
+                    />
+                <!--위패-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_result_title_image2"
+                    android:background="@color/contentBackground"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="20dp"
+                    android:elevation="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/View2"
+                    tools:viewBindingIgnore="true"
+                    >
+                    <TextView
+                        android:id="@+id/text_result_title2"
+                        style="@style/SubHeadBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="● 위패"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:viewBindingIgnore="true"
+                        />
+                    <!--이미지 출력-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_result_image2"
+                        android:background="@drawable/view_radius"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/text_result_title2"
+                        android:layout_marginTop="10dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:elevation="4dp"
+                        >
+                        <ImageView
+                            android:id="@+id/layout_tablet_result_image"
+                            android:layout_width="80dp"
+                            android:layout_height="192dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/layout_tablet_photo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="gone"
+                            >
+                        </ImageView>
+                        <!-- 사진 위패 -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_tablet_photo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toEndOf="@+id/layout_tablet_result_image"
+                            app:layout_constraintEnd_toStartOf="@+id/layout_tablet2_result_image"
+                            tools:ignore="MissingConstraints"
+                            android:visibility="gone"
+                            >
+                            <ImageView
+                                android:id="@+id/image_add_photo"
+                                android:layout_width="150dp"
+                                android:layout_height="200dp"
+                                android:layout_marginTop="16dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:background="@drawable/img_profile"
+                                android:scaleType="fitCenter"
+                                />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <ImageView
+                            android:id="@+id/layout_tablet2_result_image"
+                            android:layout_width="80dp"
+                            android:layout_height="192dp"
+                            app:layout_constraintStart_toEndOf="@+id/layout_tablet_photo"
+                            app:layout_constraintEnd_toStartOf="@+id/layout_tablet2_photo"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="gone"
+                            >
+                        </ImageView>
+                        <!-- 사진 위패 -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_tablet2_photo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toEndOf="@+id/layout_tablet2_result_image"
+                            app:layout_constraintEnd_toStartOf="@+id/layout_bone_tablet_result_image"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            tools:ignore="MissingConstraints"
+                            android:visibility="gone"
+                            >
+                            <ImageView
+                                android:id="@+id/image_bone_add_photo"
+                                android:layout_width="150dp"
+                                android:layout_height="200dp"
+                                android:layout_marginTop="16dp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:background="@drawable/img_profile"
+                                android:scaleType="fitCenter"
+                                />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <ImageView
+                            android:id="@+id/layout_bone_tablet_result_image"
+                            android:layout_width="80dp"
+                            android:layout_height="192dp"
+                            app:layout_constraintStart_toEndOf="@+id/layout_tablet2_photo"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="gone"
+                            >
+                        </ImageView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/text_tablet_photo"
                         style="@style/Body"
                         android:textColor="@color/redTextColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:text="사진 위패는 시안을 추후 제공해드립니다."
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_result_image2"
+                        tools:viewBindingIgnore="true"
+                        android:visibility="gone"
+                        />
+                    <TextView
+                        android:id="@+id/layout_zoom2"
+                        style="@style/Body"
+                        android:background="@drawable/view_zoom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="확대"
+                        app:layout_constraintTop_toBottomOf="@+id/text_tablet_photo"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="2dp"
+                        tools:viewBindingIgnore="true"
+                        >
+                    </TextView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:id="@+id/View3"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:background="@color/viewColor"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_result_title_image2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:ignore="MissingConstraints"
+                    />
+                <!--평장-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_result_title_image3"
+                    android:background="@color/contentBackground"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="20dp"
+                    android:elevation="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/View3"
+                    tools:viewBindingIgnore="true"
+                    >
+                    <TextView
+                        android:id="@+id/text_result_title3"
+                        style="@style/SubHeadBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="● 평장"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:viewBindingIgnore="true"
+                        />
+                    <!--이미지 출력-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_result_image3"
+                        android:background="@drawable/view_radius"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/text_result_title3"
+                        android:layout_marginTop="10dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:elevation="4dp"
+                        >
+                        <ImageView
+                            android:id="@+id/layout_pyeongjang_result_image"
+                            android:layout_width="180dp"
+                            android:layout_height="100dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/layout_pyeongjang_result_image2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="gone"
+                            >
+                        </ImageView>
+                        <ImageView
+                            android:id="@+id/layout_pyeongjang_result_image2"
+                            android:layout_width="180dp"
+                            android:layout_height="200dp"
+                            app:layout_constraintStart_toEndOf="@+id/layout_pyeongjang_result_image"
+                            app:layout_constraintEnd_toStartOf="@+id/layout_pyeongjang_result_image3"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="gone"
+                            >
+                        </ImageView>
+                        <ImageView
+                            android:id="@+id/layout_pyeongjang_result_image3"
+                            android:layout_width="180dp"
+                            android:layout_height="100dp"
+                            app:layout_constraintStart_toEndOf="@+id/layout_pyeongjang_result_image2"
+                            app:layout_constraintEnd_toStartOf="@+id/layout_pyeongjang_result_image4"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="gone"
+                            >
+                        </ImageView>
+                        <ImageView
+                            android:id="@+id/layout_pyeongjang_result_image4"
+                            android:layout_width="180dp"
+                            android:layout_height="200dp"
+                            app:layout_constraintStart_toEndOf="@+id/layout_pyeongjang_result_image3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="gone"
+                            >
+                        </ImageView>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/layout_zoom3"
+                        style="@style/Body"
+                        android:background="@drawable/view_zoom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="확대"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_result_image3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="2dp"
+                        tools:viewBindingIgnore="true"
+                        >
+                    </TextView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!--특이사항 안내-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_result_title_image4"
+                    android:background="@color/contentBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_result_title_image3"
+                    android:layout_marginTop="8dp"
+                    tools:viewBindingIgnore="true"
+                    >
+                    <TextView
+                        android:id="@+id/text_result_text3"
+                        style="@style/Body"
+                        android:textColor="@color/redTextColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text="자세한 각인요청은 특이사항에 적어주세요."
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_zoom"
+                        app:layout_constraintTop_toTopOf="parent"
                         tools:viewBindingIgnore="true"
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-                <!--결과-->
+                <!--결과 텍스트-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_result_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_result_title_image"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_result_title_image4"
                     >
                     <FrameLayout
                         android:id="@+id/fragment_result_container"
@@ -196,133 +515,25 @@
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <!-- 사진 위패 -->
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_tablet_photo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_result_text"
-                    app:layout_constraintBottom_toTopOf="@+id/layout_bone_tablet_photo"
-                    tools:ignore="MissingConstraints"
-                    android:visibility="gone"
-                    >
-                    <ImageView
-                        android:id="@+id/image_add_photo"
-                        android:layout_width="150dp"
-                        android:layout_height="200dp"
-                        android:layout_marginTop="16dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:background="@drawable/img_profile"
-                        android:scaleType="fitCenter"
-                        />
-                    <TextView
-                        android:id="@+id/text_tablet_photo"
-                        style="@style/SubHeadBold"
-                        android:textColor="@color/redTextColor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="사진 위패는 시안을 추후 제공해드립니다."
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/image_add_photo"
-                        tools:viewBindingIgnore="true"
-                        />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                <!-- 사진 위패 -->
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_bone_tablet_photo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_tablet_photo"
-                    app:layout_constraintBottom_toTopOf="@+id/layout_result"
-                    tools:ignore="MissingConstraints"
-                    android:visibility="gone"
-                    >
-                    <ImageView
-                        android:id="@+id/image_bone_add_photo"
-                        android:layout_width="150dp"
-                        android:layout_height="200dp"
-                        android:layout_marginTop="16dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:background="@drawable/img_profile"
-                        android:scaleType="fitCenter"
-                        />
-                    <TextView
-                        android:id="@+id/text_bone_tablet_photo"
-                        style="@style/SubHeadBold"
-                        android:textColor="@color/redTextColor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="사진 위패는 시안을 추후 제공해드립니다."
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/image_bone_add_photo"
-                        tools:viewBindingIgnore="true"
-                        />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <!--배경에 내용 추가-->
+                <!--유골함-->
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_result"
+                    android:id="@+id/layout_result1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_photo"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_result_text"
                     >
-                    <!--위패-->
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/layout_tablet2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/layout_urn"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:visibility="gone"
-                        >
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/layout_tablet2_image"
-                            android:layout_width="200px"
-                            android:layout_height="480px"
-                            android:background="@drawable/img_tablet1"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-                            <ImageView
-                                android:id="@+id/image_tablet2_image"
-                                android:layout_width="130px"
-                                android:layout_height="410px"
-                                android:layout_marginBottom="20px"
-                                app:layout_constraintBottom_toTopOf="@+id/image_tablet2_image2"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent">
-                            </ImageView>
-                            <ImageView
-                                android:id="@+id/image_tablet2_image2"
-                                android:layout_width="190px"
-                                android:layout_height="20px"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                android:visibility="gone"
-                                >
-                            </ImageView>
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
                     <!--유골함-->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/layout_urn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:layout_constraintStart_toEndOf="@+id/layout_tablet2"
-                        app:layout_constraintEnd_toStartOf="@+id/layout_bone1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/layout_urn2"
                         app:layout_constraintTop_toTopOf="parent"
+                        android:visibility="gone"
                         >
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_urn_image"
@@ -331,30 +542,286 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:background="@drawable/img_urn1_1"
+                            android:background="@drawable/img_urn10_9"
                             >
+                            <!-- android:layout_width="210px"
+                                android:layout_height="250px" -->
+
+                            <!-- android:layout_width="150px"
+                                android:layout_height="210px" -->
                             <ImageView
                                 android:id="@+id/image_urn_image"
-                                android:layout_width="200px"
-                                android:layout_height="240px"
+                                android:layout_width="210px"
+                                android:layout_height="250px"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image0"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image60"
                                 >
                             </ImageView>
                             <ImageView
-                                android:id="@+id/image_urn_image0"
+                                android:id="@+id/image_urn_image60"
                                 android:layout_width="190px"
-                                android:layout_height="130px"
+                                android:layout_height="60px"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image1"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image80"
+                                android:visibility="gone"
                                 >
                             </ImageView>
                             <ImageView
-                                android:id="@+id/image_urn_image1"
+                                android:id="@+id/image_urn_image80"
                                 android:layout_width="190px"
-                                android:layout_height="70px"
+                                android:layout_height="80px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image90"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image90"
+                                android:layout_width="190px"
+                                android:layout_height="90px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image100"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image100"
+                                android:layout_width="190px"
+                                android:layout_height="100px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image120"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image120"
+                                android:layout_width="190px"
+                                android:layout_height="120px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image140"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image140"
+                                android:layout_width="190px"
+                                android:layout_height="140px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image160"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image160"
+                                android:layout_width="190px"
+                                android:layout_height="160px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image180"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image180"
+                                android:layout_width="190px"
+                                android:layout_height="180px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image190"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image190"
+                                android:layout_width="190px"
+                                android:layout_height="190px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image200"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image200"
+                                android:layout_width="190px"
+                                android:layout_height="200px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image210"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image210"
+                                android:layout_width="190px"
+                                android:layout_height="210px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image220"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image220"
+                                android:layout_width="190px"
+                                android:layout_height="220px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--유골함2-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_urn2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toEndOf="@+id/layout_urn"
+                        app:layout_constraintEnd_toStartOf="@+id/layout_bone1"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:visibility="gone"
+                        >
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_urn_image2"
+                            android:layout_width="540px"
+                            android:layout_height="600px"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:background="@drawable/img_urn8_3"
+                            >
+                            <ImageView
+                                android:id="@+id/image_urn_image2"
+                                android:layout_width="210px"
+                                android:layout_height="250px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image60_2"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image60_2"
+                                android:layout_width="190px"
+                                android:layout_height="60px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image80_2"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image80_2"
+                                android:layout_width="190px"
+                                android:layout_height="80px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image90_2"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image90_2"
+                                android:layout_width="190px"
+                                android:layout_height="90px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image100_2"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image100_2"
+                                android:layout_width="190px"
+                                android:layout_height="100px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image120_2"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image120_2"
+                                android:layout_width="190px"
+                                android:layout_height="120px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image140_2"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image140_2"
+                                android:layout_width="190px"
+                                android:layout_height="140px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image160_2"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image160_2"
+                                android:layout_width="190px"
+                                android:layout_height="160px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image180_2"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image180_2"
+                                android:layout_width="190px"
+                                android:layout_height="180px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image190_2"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image190_2"
+                                android:layout_width="190px"
+                                android:layout_height="190px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image200_2"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image200_2"
+                                android:layout_width="190px"
+                                android:layout_height="200px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image210_2"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image210_2"
+                                android:layout_width="190px"
+                                android:layout_height="210px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toTopOf="@+id/image_urn_image220_2"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_urn_image220_2"
+                                android:layout_width="190px"
+                                android:layout_height="220px"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -368,7 +835,7 @@
                         android:id="@+id/layout_bone1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:layout_constraintStart_toEndOf="@+id/layout_urn"
+                        app:layout_constraintStart_toEndOf="@+id/layout_urn2"
                         app:layout_constraintEnd_toStartOf="@+id/layout_bone2"
                         app:layout_constraintTop_toTopOf="parent"
                         android:visibility="gone"
@@ -410,7 +877,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintStart_toEndOf="@+id/layout_bone1"
-                        app:layout_constraintEnd_toStartOf="@+id/layout_tablet"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:visibility="gone"
                         >
@@ -445,13 +912,23 @@
                             </ImageView>
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                    <!--위패-->
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!--위패-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_result2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_result1"
+                    >
+                    <!--위패1-->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/layout_tablet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:layout_constraintStart_toEndOf="@+id/layout_bone2"
-                        app:layout_constraintEnd_toStartOf="@+id/layout_bone_tablet"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/layout_tablet2"
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:visibility="gone"
                         >
@@ -486,6 +963,47 @@
                             </ImageView>
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--위패2-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_tablet2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toEndOf="@+id/layout_tablet"
+                        app:layout_constraintEnd_toStartOf="@+id/layout_bone_tablet"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:visibility="gone"
+                        >
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_tablet2_image"
+                            android:layout_width="200px"
+                            android:layout_height="480px"
+                            android:background="@drawable/img_tablet1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:id="@+id/image_tablet2_image"
+                                android:layout_width="130px"
+                                android:layout_height="410px"
+                                android:layout_marginBottom="20px"
+                                app:layout_constraintBottom_toTopOf="@+id/image_tablet2_image2"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent">
+                            </ImageView>
+                            <ImageView
+                                android:id="@+id/image_tablet2_image2"
+                                android:layout_width="190px"
+                                android:layout_height="20px"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:visibility="gone"
+                                >
+                            </ImageView>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                     <!--합골 위패-->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/layout_bone_tablet"
@@ -494,6 +1012,7 @@
                         app:layout_constraintStart_toEndOf="@+id/layout_tablet"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        android:visibility="gone"
                         >
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_bone_tablet_image"
@@ -527,13 +1046,108 @@
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
+                <!--평장-->
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_result_content"
+                    android:id="@+id/layout_result3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_result"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_result2"
+                    >
+                    <!--표석-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_pyeongjang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="600px"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/layout_pyeongjang2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:visibility="gone"
+                        >
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_pyeongjang_image"
+                            android:layout_width="540px"
+                            android:layout_height="300px"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:background="@drawable/img_urn11_2"
+                            >
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--밀봉외함-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_pyeongjang2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="600px"
+                        app:layout_constraintStart_toEndOf="@+id/layout_pyeongjang"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:visibility="gone"
+                        >
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_pyeongjang_image2"
+                            android:layout_width="540px"
+                            android:layout_height="600px"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:background="@drawable/img_urn11_1"
+                            >
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--표석2-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_pyeongjang3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="600px"
+                        app:layout_constraintStart_toEndOf="@+id/layout_pyeongjang2"
+                        app:layout_constraintEnd_toStartOf="@+id/layout_pyeongjang4"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:visibility="gone"
+                        >
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_pyeongjang_image3"
+                            android:layout_width="540px"
+                            android:layout_height="300px"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:background="@drawable/img_urn11_2"
+                            >
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!--밀봉외함2-->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_pyeongjang4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="600px"
+                        app:layout_constraintStart_toEndOf="@+id/layout_pyeongjang3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:visibility="gone"
+                        >
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_pyeongjang_image4"
+                            android:layout_width="540px"
+                            android:layout_height="600px"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:background="@drawable/img_urn11_1"
+                            >
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_result_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minWidth="10px"
+                    android:minHeight="10px"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_result3"
                     app:layout_constraintBottom_toBottomOf="parent"
                     >
                     <!--위패 내용-->
@@ -553,6 +1167,17 @@
                         android:layout_width="180px"
                         android:layout_height="280px"
                         app:layout_constraintStart_toEndOf="@+id/fragment_tablet2_content"
+                        app:layout_constraintEnd_toStartOf="@+id/fragment_urn_content2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginBottom="40px"
+                        android:visibility="gone"
+                        />
+                    <!--유골함 내용-->
+                    <FrameLayout
+                        android:id="@+id/fragment_urn_content2"
+                        android:layout_width="180px"
+                        android:layout_height="280px"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_urn_content"
                         app:layout_constraintEnd_toStartOf="@+id/fragment_bone_content"
                         app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginBottom="40px"
@@ -563,7 +1188,7 @@
                         android:id="@+id/fragment_bone_content"
                         android:layout_width="180px"
                         android:layout_height="280px"
-                        app:layout_constraintStart_toEndOf="@+id/fragment_urn_content"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_urn_content2"
                         app:layout_constraintEnd_toStartOf="@+id/fragment_bone2_content"
                         app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginBottom="40px"
@@ -600,6 +1225,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_marginTop="20px"
+                        android:visibility="gone"
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>

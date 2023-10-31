@@ -165,7 +165,7 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet_result2_0"
                     android:layout_width="wrap_content"
-                    android:layout_height="25px"
+                    android:layout_height="wrap_content"
                     android:text="윗글자"
                     android:textSize="15px"
                     android:textColor="@color/black"
@@ -181,7 +181,7 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet_result2"
                     android:layout_width="27.5px"
-                    android:layout_height="165px"
+                    android:layout_height="wrap_content"
                     android:text="홍\n길\n동"
                     android:textSize="27.5px"
                     android:textColor="@color/black"
@@ -198,7 +198,7 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet_result2_1"
                     android:layout_width="27.5px"
-                    android:layout_height="135px"
+                    android:layout_height="wrap_content"
                     android:text="홍\n길\n동"
                     android:textSize="27.5px"
                     android:textColor="@color/black"
@@ -215,7 +215,7 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet_result2_2"
                     android:layout_width="wrap_content"
-                    android:layout_height="25px"
+                    android:layout_height="wrap_content"
                     android:text="밑글자"
                     android:textSize="15px"
                     android:textColor="@color/black"
@@ -232,7 +232,7 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet_result3_0"
                     android:layout_width="wrap_content"
-                    android:layout_height="25px"
+                    android:layout_height="wrap_content"
                     android:text="윗글자"
                     android:textSize="15px"
                     android:textColor="@color/black"
@@ -298,7 +298,7 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet_result3_2"
                     android:layout_width="wrap_content"
-                    android:layout_height="25px"
+                    android:layout_height="wrap_content"
                     android:text="밑글자"
                     android:textSize="15px"
                     android:textColor="@color/black"
@@ -341,7 +341,7 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet2_result2_0"
                     android:layout_width="wrap_content"
-                    android:layout_height="25px"
+                    android:layout_height="wrap_content"
                     android:text="윗글자"
                     android:textSize="15px"
                     android:textColor="@color/black"
@@ -357,7 +357,7 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet2_result2"
                     android:layout_width="27.5px"
-                    android:layout_height="165px"
+                    android:layout_height="wrap_content"
                     android:text="홍\n길\n동"
                     android:textSize="27.5px"
                     android:textColor="@color/black"
@@ -374,7 +374,7 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet2_result2_1"
                     android:layout_width="27.5px"
-                    android:layout_height="135px"
+                    android:layout_height="wrap_content"
                     android:text="홍\n길\n동"
                     android:textSize="27.5px"
                     android:textColor="@color/black"
@@ -391,7 +391,7 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet2_result2_2"
                     android:layout_width="wrap_content"
-                    android:layout_height="25px"
+                    android:layout_height="wrap_content"
                     android:text="밑글자"
                     android:textSize="15px"
                     android:textColor="@color/black"
@@ -408,7 +408,7 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet2_result3_0"
                     android:layout_width="wrap_content"
-                    android:layout_height="25px"
+                    android:layout_height="wrap_content"
                     android:text="윗글자"
                     android:textSize="15px"
                     android:textColor="@color/black"
@@ -474,7 +474,7 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet2_result3_2"
                     android:layout_width="wrap_content"
-                    android:layout_height="25px"
+                    android:layout_height="wrap_content"
                     android:text="밑글자"
                     android:textSize="15px"
                     android:textColor="@color/black"

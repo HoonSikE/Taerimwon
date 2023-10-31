@@ -7,13 +7,11 @@ const val BONETABLETIMAGEURI = "boneTabletImageUri"
 const val UID = "uid"
 const val USERTEL = "userTel"
 const val AUTHENTICATED = "authenticated"
-
 /**발주자 정보**/
 const val LEADERNAME = "leaderName"
 const val LEADERTEL = "leaderTel"
 const val LEADERDEPARTMENT = "leaderDepartment"
 const val SAVEINFO = "saveInfo"
-
 /**주문 정보**/
 // 상주 정보
 const val ClIENTNAME = "clientName"
@@ -31,6 +29,7 @@ const val FUNERALTIME = "funeralTime"
 // 장지
 const val BURIALNAME = "burialName"
 const val BURIALTIME = "burialTime"
+/**유골함 정보**/
 // 각인종류 (일반, 기독교, 천주교, ...)
 const val ENGRAVETYPE = "engraveType"
 const val ENGRAVETYPEPOSITION = "engraveTypePosition"
@@ -47,12 +46,13 @@ const val DATE1TYPE = "date1Type"
 // 사망월일
 const val DATE2 = "date2"
 const val DATE2TYPE = "date2Type"
-// 종교
-const val RELIGION = "religion"
 // 선택된 유골 종류
 const val SELECTEDURNTYPE = "selectedUrnType"
 const val SELECTEDURNNAME = "selectedUrnName"
-// 합골 추가 정보
+/**유골함 추가 정보*/
+const val SELECTEDURNTYPE2 = "selectedUrnType2"
+const val SELECTEDURNNAME2 = "selectedUrnName2"
+/**합골 추가 정보**/
 // 각인종류 (일반, 기독교, 천주교, ...)
 const val BONEENGRAVETYPE = "boneEngraveType"
 const val BONEENGRAVETYPEPOSITION = "boneEngraveTypePosition"
@@ -67,8 +67,9 @@ const val BONEDATE1 = "boneDate1"
 const val BONEDATE1TYPE = "boneDate1Type"
 const val BONEDATE2 = "boneDate2"
 const val BONEDATE2TYPE = "boneDate2Type"
+const val RELIGION = "religion"
 const val BONERELIGION = "boneReligion"
-// 위패
+/**위패 정보**/
 // 위패 종교
 const val TABLETRELIGION = "tabletReligion"
 // 위패 종류 (일반, 본관, 문구)
@@ -81,14 +82,7 @@ const val TABLETNAME3 = "tabletName3"
 const val SELECTEDTABLETTYPE = "selectedTabletType"
 const val SELECTEDTABLETNAME = "selectedTabletName"
 const val SELECTEDTABLETNAME2 = "selectedTabletName2"
-// 특이사항
-const val NOTE = "note"
-// 사진 저장
-// 선택된 파일을 저장할 변수
-const val SELECTEDFILE = "selectedFile"
-// 이미지 URL을 저장할 변수
-const val IMAGEURL = "imageUrl"
-// 위패 합골
+/**위패 추가 정보**/
 const val TABLETSEX = "tabletSex"
 const val BONETABLETSEX = "boneTabletSex"
 // 위패 종교
@@ -101,9 +95,21 @@ const val BONENAME3 = "boneName3"
 const val BONETABLETNAME3 = "boneTabletName3"
 // 선택된 위패 종류
 const val BONESELECTEDTABLETTYPE = "boneSelectedTabletType"
-// 특이사항
-const val BONENOTE = "boneNote"
-// 사진 저장
+
+/**평장**/
+// 선택된 평장 종류
+const val SELECTEDPYEONGJANGTYPE = "selectedPyeongjangType"
+const val SELECTEDPYEONGJANGNAME = "selectedPyeongjangName"
+// 선택된 평장 종류2
+const val SELECTEDPYEONGJANGTYPE2 = "selectedPyeongjangType2"
+const val SELECTEDPYEONGJANGNAME2 = "selectedPyeongjangName2"
+/**특이사항**/
+const val NOTE = "note"
+/**사진 저장**/
+// 선택된 파일을 저장할 변수
+const val SELECTEDFILE = "selectedFile"
+// 이미지 URL을 저장할 변수
+const val IMAGEURL = "imageUrl"
 // 선택된 파일을 저장할 변수
 const val BONESELECTEDFILE = "boneSelectedFile"
 // 이미지 URL을 저장할 변수

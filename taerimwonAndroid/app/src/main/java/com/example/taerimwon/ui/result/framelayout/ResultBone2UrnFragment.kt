@@ -652,9 +652,6 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 }
                 4 -> {
                     tmp1_2.append(name2[0] + "" + name2[1]).append("\n").append(name2[2] + "" + name2[3])
-//                    layoutUrnResult220.width = pixel_size_100
-//                    layoutUrnResult220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
-//                    layoutUrnResult220.letterSpacing = -0.2f
                 }
             }
             layoutUrnResult220.text = tmp1_2
@@ -687,30 +684,19 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                     tmp1_2.append(name2[0]).append("\n").append(name2[1]).append("\n").append(name2[2])
 
                     layoutUrnResult220.setLineSpacing(0f, 1.0f)
-//                    layoutUrnResult222.width = pixel_size_90
-//                    layoutUrnResult222.letterSpacing = -0.15f
                 }
                 4 -> {
                     tmp1_2.append(name2[0] + "" + name2[1]).append("\n").append(name2[2] + "" + name2[3])
-
-//                    layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
-//                    layoutUrnResult222.letterSpacing = -0.2f
                 }
                 5 -> {
                     tmp1_2.append(name2[0] + "" + name2[3]).append("\n").append(name2[1] + "" + name2[4]).append("\n").append(name2[2])
 
                     layoutUrnResult220.setLineSpacing(0f, 1.0f)
-
-//                    layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
-//                    layoutUrnResult222.letterSpacing = -0.2f
                 }
                 6 -> {
                     tmp1_2.append(name2[0] + "" + name2[3]).append("\n").append(name2[1] + "" + name2[4]).append("\n").append(name2[2] + "" + name2[5])
 
                     layoutUrnResult220.setLineSpacing(0f, 1.0f)
-
-//                    layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_16.toFloat())
-//                    layoutUrnResult222.letterSpacing = -0.2f
                 }
             }
 //            layoutUrnResult222.text = tmp1_2

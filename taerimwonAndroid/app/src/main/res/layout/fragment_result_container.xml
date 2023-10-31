@@ -234,6 +234,49 @@
             app:layout_constraintEnd_toEndOf="parent"
             tools:ignore="MissingConstraints"
             />
+        <!--평장-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_result_text_pyeongjang"
+            android:background="@color/contentBackground"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="20dp"
+            android:elevation="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/View6"
+            >
+            <TextView
+                android:id="@+id/text_result_title_pyeongjang"
+                style="@style/SubHeadBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="● 평장"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+            <TextView
+                android:id="@+id/text_result_text_pyeongjang"
+                style="@style/SubHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="평장 내용"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_result_title_pyeongjang"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/View7"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/viewColor"
+            app:layout_constraintTop_toBottomOf="@+id/layout_result_text_pyeongjang"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints"
+            />
         <!--특이사항-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_result_text_note"
@@ -243,7 +286,7 @@
             android:elevation="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/View6"
+            app:layout_constraintTop_toBottomOf="@+id/View7"
             >
             <TextView
                 android:id="@+id/text_result_title_note"
@@ -287,7 +330,7 @@
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
         <View
-            android:id="@+id/View7"
+            android:id="@+id/View8"
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:background="@color/viewColor"

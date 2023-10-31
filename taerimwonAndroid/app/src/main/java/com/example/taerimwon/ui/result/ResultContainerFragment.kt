@@ -76,6 +76,27 @@ class ResultContainerFragment : BaseFragment<FragmentResultContainerBinding>(R.l
                 textResultTextUrn += "\n - 세례명: " + ApplicationClass.prefs.name2
             }
 
+            // 추가
+            val selectedUrnType2 = ApplicationClass.prefs.selectedUrnType2.toString()
+            if(selectedUrnType != "선택안함"){
+                textResultTextUrn += "\n\n유골함 추가 정보" +
+                        "\n - 함 종류: " + selectedUrnType2 +
+                        "\n - 함 명칭: " + ApplicationClass.prefs.selectedUrnName2 +
+                        "\n - 각인 종류: " + ApplicationClass.prefs.boneEngraveType + "[" + ApplicationClass.prefs.boneEngraveType2 + "]" +
+                        "\n - 성별: " + ApplicationClass.prefs.boneSex +
+                        "\n - 고인명: " + ApplicationClass.prefs.boneName1 +
+                        "\n - 생년월일: " + ApplicationClass.prefs.boneDate1.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate1Type})" +
+                        "\n - 사망월일: " + ApplicationClass.prefs.boneDate2.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate2Type})"
+
+                // 직분, 세례명, 법명
+                if((ApplicationClass.prefs.boneEngraveType == "기독교" || ApplicationClass.prefs.boneEngraveType == "순복음") && (ApplicationClass.prefs.boneEngraveType2 == "기본")) {
+                    textResultTextUrn += "\n - 직분: " + ApplicationClass.prefs.boneName2
+                }else if(ApplicationClass.prefs.boneEngraveType == "불교" && ApplicationClass.prefs.boneEngraveType2 == "법명") {
+                    textResultTextUrn += "\n - 법명: " + ApplicationClass.prefs.boneName2
+                }else if(ApplicationClass.prefs.boneEngraveType == "천주교" && ApplicationClass.prefs.boneEngraveType2 == "기본") {
+                    textResultTextUrn += "\n - 세례명: " + ApplicationClass.prefs.boneName2
+                }
+            }
             // 합골
             if(selectedUrnType.contains("합골")){
                 textResultTextUrn += "\n\n합골 추가 정보" +
@@ -118,6 +139,7 @@ class ResultContainerFragment : BaseFragment<FragmentResultContainerBinding>(R.l
                 }
             }
         }
+        /** 위패 */
         val boneSelectedTabletType = ApplicationClass.prefs.boneSelectedTabletType.toString()
         if(boneSelectedTabletType != "선택안함") {
             textResultTextTablet += "\n\n위패 추가 정보"
@@ -136,7 +158,7 @@ class ResultContainerFragment : BaseFragment<FragmentResultContainerBinding>(R.l
             }
         }
 
-        if(selectedTabletType == "합골") {
+        if(selectedTabletType.contains("합골")) {
             textResultTextTablet += "\n\n합골 추가 정보"
             textResultTextTablet += "\n - 위패 상세 종류: " + ApplicationClass.prefs.boneTabletType
 
@@ -151,6 +173,30 @@ class ResultContainerFragment : BaseFragment<FragmentResultContainerBinding>(R.l
             }
         }
         binding.textResultTextTablet.text = textResultTextTablet
+
+        /** 평장 */
+        var textResultTextPyeongjang = ""
+
+        val selectedPyeongjangType = ApplicationClass.prefs.selectedPyeongjangType.toString()
+        textResultTextPyeongjang += " - 평장 종류: " + selectedPyeongjangType
+        if(selectedPyeongjangType == "선택안함") {
+            binding.View6.visibility = View.GONE
+            binding.layoutResultTextPyeongjang.visibility = View.GONE
+        }else {
+            textResultTextPyeongjang += "\n - 평장 명칭: " + ApplicationClass.prefs.selectedPyeongjangName
+
+            /** 평장 추가 */
+            val selectedPyeongjangType2 = ApplicationClass.prefs.selectedPyeongjangType2.toString()
+
+            if(selectedPyeongjangType2 == "선택안함") {
+            }else {
+                textResultTextTablet += "\n\n평장 추가 정보"
+                textResultTextPyeongjang += "\n - 평장 종류: " + selectedPyeongjangType2
+                textResultTextPyeongjang += "\n - 평장 명칭: " + ApplicationClass.prefs.selectedPyeongjangName2
+            }
+        }
+        binding.textResultTextPyeongjang.text = textResultTextPyeongjang
+
     }
     private fun addTextChangedListener() {
         // 메모

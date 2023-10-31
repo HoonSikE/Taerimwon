@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_messageItem_main"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="4dp"
+        android:orientation="horizontal">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_image_view"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:background="@color/backgroundResultImage"
+            tools:ignore="MissingConstraints">
+            <ImageView
+                android:id="@+id/image_view"
+                android:src="@drawable/img_urn1_1"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/text_view"
+            style="@style/SubHeadBold"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="유골함"
+            app:layout_constraintStart_toEndOf="@+id/layout_image_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/layout_image_view"
+            app:layout_constraintBottom_toBottomOf="@+id/layout_image_view"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.taerimwon.ui.order.tablet.bone
+package com.example.taerimwon.ui.order.tablet.tablet2
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,9 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.taerimwon.R
 import com.example.taerimwon.data.dto.tablet.TabletItem
-import java.util.*
 
-class BoneTabletAutoCompleteAdapter(context: Context, resource: Int, private val items: List<TabletItem>) : ArrayAdapter<TabletItem>(context, resource, items) {
+class Tablet2AutoCompleteAdapter(context: Context, resource: Int, private val items: List<TabletItem>) : ArrayAdapter<TabletItem>(context, resource, items) {
     private val originalItems = items.toMutableList() // 원본 아이템 유지
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {

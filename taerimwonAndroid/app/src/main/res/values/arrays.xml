@@ -117,6 +117,15 @@
         <item>합골함1</item>
         <item>합골함2</item>
     </string-array>
+    <string-array name="selected_urn_types2">
+        <item>선택안함</item>
+        <item>유골함</item>
+    </string-array>
+    <string-array name="selected_pyeongjang_types">
+        <item>선택안함</item>
+        <item>표석</item>
+        <item>밀봉외함</item>
+    </string-array>
 <!--    <string-array name="selected_urn">-->
 <!--        <item>미정</item>-->
 <!--        <item>기본</item>-->

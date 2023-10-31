@@ -1,4 +1,4 @@
-package com.example.taerimwon.ui.order.tablet.bone
+package com.example.taerimwon.ui.order.tablet.tablet2
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import com.example.taerimwon.R
 import com.example.taerimwon.databinding.ItemTabletTypeBinding
 import com.example.taerimwon.di.ApplicationClass
 
-class BoneTabletTypeAdapter(private val context: Context): RecyclerView.Adapter<BoneTabletTypeAdapter.TabletTypeListViewHolder>() {
+class Tablet2TypeAdapter(private val context: Context): RecyclerView.Adapter<Tablet2TypeAdapter.TabletTypeListViewHolder>() {
     private var boneTabletTypeList = mutableListOf<String>()
     lateinit var onItemClickListener: (View, String) -> Unit
     // 클릭된 아이템의 위치를 저장하는 변수

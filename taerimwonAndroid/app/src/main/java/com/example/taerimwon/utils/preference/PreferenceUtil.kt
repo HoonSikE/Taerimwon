@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import com.example.taerimwon.utils.constant.*
 
 class PreferenceUtil(context: Context) {
+    /**위패 사진**/
     private val internalStorage = context.getSharedPreferences("internalStorage", Context.MODE_PRIVATE)
     var tabletImageUri : String?
         get() = internalStorage.getString(TABLETIMAGEURI, "")
@@ -16,7 +17,7 @@ class PreferenceUtil(context: Context) {
         set(value){
             internalStorage.edit().putString(BONETABLETIMAGEURI, value).apply()
         }
-
+    /**유저 ID**/
     private val user: SharedPreferences = context.getSharedPreferences("user", Context.MODE_PRIVATE)
     var uid : String?
         get() = user.getString(UID, "")
@@ -34,6 +35,7 @@ class PreferenceUtil(context: Context) {
             user.edit().putBoolean(AUTHENTICATED, value).apply()
         }
 
+    /**발주자 정보**/
     private val manager: SharedPreferences = context.getSharedPreferences("manager", Context.MODE_PRIVATE)
     // 발주자 정보
     var leaderName : String?
@@ -56,10 +58,8 @@ class PreferenceUtil(context: Context) {
         set(value){
             manager.edit().putBoolean(SAVEINFO, value).apply()
         }
-//    private val urn: SharedPreferences = context.getSharedPreferences("urn", Context.MODE_PRIVATE)
-//    private val tablet: SharedPreferences = context.getSharedPreferences("tablet", Context.MODE_PRIVATE)
+    /**주문 정보**/
     val order: SharedPreferences = context.getSharedPreferences("order", Context.MODE_PRIVATE)
-
     // 상주 정보
     var clientName : String?
         get() = order.getString(ClIENTNAME, "")
@@ -120,6 +120,7 @@ class PreferenceUtil(context: Context) {
         set(value){
             order.edit().putString(BURIALTIME, value).apply()
         }
+    /**유골함 정보**/
     // 각인종류 (일반, 기독교, 천주교, ...)
     var engraveType : String?
         get() = order.getString(ENGRAVETYPE, "일반")
@@ -193,7 +194,19 @@ class PreferenceUtil(context: Context) {
         set(value){
             order.edit().putString(SELECTEDURNNAME, value).apply()
         }
-    // 합골 추가 정보
+    /**유골함 추가 정보*/
+    // 선택된 유골 종류
+    var selectedUrnType2 : String?
+        get() = order.getString(SELECTEDURNTYPE2, "선택안함")
+        set(value){
+            order.edit().putString(SELECTEDURNTYPE2, value).apply()
+        }
+    var selectedUrnName2 : String?
+        get() = order.getString(SELECTEDURNNAME2, "")
+        set(value){
+            order.edit().putString(SELECTEDURNNAME2, value).apply()
+        }
+    /**합골 추가 정보**/
     // 각인종류 (일반, 기독교, 천주교, ...)
     var boneEngraveType : String?
         get() = order.getString(BONEENGRAVETYPE, "일반")
@@ -257,7 +270,7 @@ class PreferenceUtil(context: Context) {
             order.edit().putString(BONEDATE2TYPE, value).apply()
         }
     var boneReligion : String?
-        get() = order.getString(BONERELIGION, "무교")
+        get() = order.getString(BONERELIGION, "일반")
         set(value){
             order.edit().putString(BONERELIGION, value).apply()
         }
@@ -270,7 +283,7 @@ class PreferenceUtil(context: Context) {
         }
     // 위패 종류 (일반, 본관, 문구)
     var tabletType : String?
-        get() = order.getString(TABLETTYPE, "문구")
+        get() = order.getString(TABLETTYPE, "일반")
         set(value){
             order.edit().putString(TABLETTYPE, value).apply()
         }
@@ -339,7 +352,7 @@ class PreferenceUtil(context: Context) {
         }
     // 위패 종류 (일반, 본관, 문구)
     var boneTabletType : String?
-        get() = order.getString(BONETABLETTYPE, "문구")
+        get() = order.getString(BONETABLETTYPE, "일반")
         set(value){
             order.edit().putString(BONETABLETTYPE, value).apply()
         }
@@ -379,6 +392,29 @@ class PreferenceUtil(context: Context) {
         set(value){
             order.edit().putString(BONEIMAGEURL, value).apply()
         }
+    // 선택된 평장 종류
+    var selectedPyeongjangType : String?
+        get() = order.getString(SELECTEDPYEONGJANGTYPE, "선택안함")
+        set(value){
+            order.edit().putString(SELECTEDPYEONGJANGTYPE, value).apply()
+        }
+    var selectedPyeongjangName : String?
+        get() = order.getString(SELECTEDPYEONGJANGNAME, "")
+        set(value){
+            order.edit().putString(SELECTEDPYEONGJANGNAME, value).apply()
+        }
+    // 선택된 평장 종류2
+    var selectedPyeongjangType2 : String?
+        get() = order.getString(SELECTEDPYEONGJANGTYPE2, "선택안함")
+        set(value){
+            order.edit().putString(SELECTEDPYEONGJANGTYPE2, value).apply()
+        }
+    var selectedPyeongjangName2 : String?
+        get() = order.getString(SELECTEDPYEONGJANGNAME2, "")
+        set(value){
+            order.edit().putString(SELECTEDPYEONGJANGNAME2, value).apply()
+        }
+
     // 특이사항
     var note : String?
         get() = order.getString(NOTE, "")
@@ -399,9 +435,8 @@ class PreferenceUtil(context: Context) {
         saveInfo = false
     }
     fun resetPreferences() {
-        boneTabletImageUri = ""
-        tabletImageUri = ""
         // order SharedPreferences 초기화
+        /**주문 정보**/
         clientName = ""
         clientTel = ""
         selectedLocation = "화장장"
@@ -413,6 +448,7 @@ class PreferenceUtil(context: Context) {
         funeralTime = ""
         burialName = ""
         burialTime = ""
+        /**유골함 정보**/
         engraveType = "일반"
         engraveTypePosition = 0
         engraveType2 = "기본"
@@ -426,6 +462,10 @@ class PreferenceUtil(context: Context) {
         religion = "선택안함"
         selectedUrnType = "선택안함"
         selectedUrnName = ""
+        /**유골함 추가 정보*/
+        selectedUrnType2 = "선택안함"
+        selectedUrnName2 = ""
+        /**합골 추가 정보**/
         boneEngraveType = "일반"
         boneEngraveTypePosition = 0
         boneEngraveType2 = "기본"
@@ -439,8 +479,9 @@ class PreferenceUtil(context: Context) {
         boneDate2 = ""
         boneDate2Type = ""
         boneReligion = ""
+        /**위패 정보**/
         tabletReligion = "일반"
-        tabletType = "문구"
+        tabletType = "일반"
         tabletTypePosition = 0
         name3 = ""
         tabletName2 = ""
@@ -449,16 +490,28 @@ class PreferenceUtil(context: Context) {
         selectedTabletName2 = ""
         selectedFile = ""
         imageUrl = ""
+        /**위패 추가 정보**/
         tabletSex = "남성"
         boneTabletSex = "여성"
-        boneTabletReligion = "일반여"
-        boneTabletType = "문구"
+        boneTabletReligion = "일반"
+        boneTabletType = "일반"
         boneTabletTypePosition = 0
         boneName3 = ""
         boneTabletName2 = ""
         boneSelectedTabletType = "선택안함"
+
+        /**평장**/
+        selectedPyeongjangType = "선택안함"
+        selectedPyeongjangName = ""
+        selectedPyeongjangType2 = "선택안함"
+        selectedPyeongjangName2 = ""
+        /**특이사항**/
+        note = ""
+
+        /**사진 저장**/
         boneSelectedFile = ""
         boneImageUrl = ""
-        note = ""
+        boneTabletImageUri = ""
+        tabletImageUri = ""
     }
 }

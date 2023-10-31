@@ -21,6 +21,7 @@ import com.example.taerimwon.data.dto.tablet.TabletItem
 import com.example.taerimwon.data.dto.urn.UrnItem
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.home.AuthViewModel
+import com.example.taerimwon.ui.order.pyeongjang.PyeongjangContainerFragment
 import com.example.taerimwon.ui.order.tablet.TabletContainerFragment
 import com.example.taerimwon.ui.order.urn.UrnContainerFragment
 import com.example.taerimwon.utils.input.DateTimeTextWatcher
@@ -39,6 +40,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
 
     private lateinit var searchList: MutableList<String>
     private lateinit var searchList2: MutableList<String>
+    private lateinit var searchList3: MutableList<String>
 
     override fun init() {
         initData()
@@ -49,14 +51,16 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
     }
 
     private fun initData() {
-        authViewModel.getBlackList()
-        if (!ApplicationClass.prefs.authenticated)
-            findNavController().navigate(R.id.action_orderFragment_to_phoneAuthFragment)
+//        authViewModel.getBlackList()
+//        if (!ApplicationClass.prefs.authenticated)
+//            findNavController().navigate(R.id.action_orderFragment_to_phoneAuthFragment)
 
         searchList = mutableListOf()
         searchList2 = mutableListOf()
+        searchList3 = mutableListOf()
         settingList()
         settingList2()
+        settingList3()
 
         println("ApplicationClass.prefs.saveInfo :" + ApplicationClass.prefs.saveInfo)
         println("ApplicationClass.prefs.leaderName :" + ApplicationClass.prefs.leaderName)
@@ -212,6 +216,12 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         val tabletFragment = TabletContainerFragment()
         childFragmentManager.beginTransaction()
             .replace(R.id.fragment_tablet_container, tabletFragment)
+            .commit()
+
+        // Tablet Fragment 추가
+        val pyeongjangFragment = PyeongjangContainerFragment()
+        childFragmentManager.beginTransaction()
+            .replace(R.id.fragment_pyeongjang_container, pyeongjangFragment)
             .commit()
     }
 
@@ -552,8 +562,8 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         if(!checkOrderInput())
             return false;
 
-        if(ApplicationClass.prefs.selectedUrnType == "선택안함"  && ApplicationClass.prefs.selectedTabletType == "선택안함"){
-            toast("유골함, 위패 중 하나는 선택해주세요.")
+        if(ApplicationClass.prefs.selectedUrnType == "선택안함"  && ApplicationClass.prefs.selectedTabletType == "선택안함" && ApplicationClass.prefs.selectedPyeongjangType == "선택안함"){
+            toast("유골함, 위패, 평장 중 하나는 선택해주세요.")
             return false
         }
 
@@ -778,6 +788,26 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                 }
             }
         }
+
+        // 평장
+        if(ApplicationClass.prefs.selectedPyeongjangType != "선택안함"){
+            if(!checkPyeongjangInput()) {
+                val containsString = searchList3.any { it == ApplicationClass.prefs.selectedPyeongjangName }
+                if (!containsString) {
+                    toast("평장 종류를 골라주세요.")
+                    return false
+                }
+                // 추가
+                if(ApplicationClass.prefs.selectedPyeongjangType2 != "선택안함"){
+                    val containsString2 = searchList3.any { it == ApplicationClass.prefs.selectedPyeongjangName2 }
+                    if (!containsString2) {
+                        toast("평장[추가] 종류를 골라주세요.")
+                        return false
+                    }
+                }
+            }
+        }
+
         return true
     }
     // 모든게 초기값인지 체크
@@ -961,6 +991,23 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         }
         return true
     }
+    private fun checkPyeongjangInput(): Boolean {
+        // 평장
+        if(ApplicationClass.prefs.selectedPyeongjangType != "선택안함") {
+            val containsString = searchList3.any { it == ApplicationClass.prefs.selectedPyeongjangName }
+            if (!containsString) {
+                return false
+            }
+            // 추가
+            if(ApplicationClass.prefs.selectedPyeongjangType2 != "선택안함"){
+                val containsString2 = searchList3.any { it == ApplicationClass.prefs.selectedPyeongjangName2 }
+                if (!containsString2) {
+                    return false
+                }
+            }
+        }
+        return true
+    }
     private fun settingList() {
         searchList.add("미정")
 //        searchList.add("기본")
@@ -1099,13 +1146,6 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         searchList.add("청연 ZE-2 11832")
         searchList.add("화접도 ZE-5 11832")
 
-        // 11. 평장
-        searchList.add("밀봉외함 MH-1 1015")
-        searchList.add("표석(大) PS-2 2317")
-        searchList.add("표석(小) PS-4 0911")
-        searchList.add("피아노(大) PS-1 3020")
-        searchList.add("피아노(小) PS-3 2015")
-        
         // 합골 1
         searchList.add("합골금띠 HG-1 4612")
         searchList.add("합골실버십장생 HG-2 4914")
@@ -1122,4 +1162,13 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
 //        searchList2.add("기본")
 //        searchList2.add("기본(검정)")
     }
+    private fun settingList3() {
+        // 11. 평장
+        searchList3.add("밀봉외함 MH-1 1015")
+        searchList3.add("표석(大) PS-2 2317")
+        searchList3.add("표석(小) PS-4 0911")
+        searchList3.add("피아노(大) PS-1 3020")
+        searchList3.add("피아노(小) PS-3 2015")
+    }
+
 }
