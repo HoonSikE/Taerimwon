@@ -1681,12 +1681,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             "미정" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
             }
-//            "기본" -> {
-//                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_bone2)
-//            }
-//            "기본(검정)" -> {
-//                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_bone2_0)
-//            }
             "합골금띠 HG-1 4612" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_bone2_1)
             }
@@ -1709,12 +1703,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             "미정" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
             }
-//            "기본" -> {
-//                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
-//            }
-//            "기본(검정)" -> {
-//                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet0)
-//            }
             "조각위패(황금향,조각종교)" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet1)
                 binding.imageTabletImage2.visibility = View.VISIBLE
@@ -1745,12 +1733,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             "미정" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
             }
-//            "기본" -> {
-//                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
-//            }
-//            "기본(검정)" -> {
-//                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet0)
-//            }
             "조각위패(황금향,조각종교)" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet1)
                 binding.imageTablet2Image2.visibility = View.VISIBLE
@@ -1779,12 +1761,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             "미정" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
             }
-//            "기본" -> {
-//                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
-//            }
-//            "기본(검정)" -> {
-//                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet0)
-//            }
             "조각위패(황금향,조각종교)" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet1)
                 binding.imageBoneTabletImage2.visibility = View.VISIBLE
