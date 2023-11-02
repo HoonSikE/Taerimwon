@@ -456,6 +456,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                         binding.layoutBoneUrnTitle.visibility = View.VISIBLE
                         binding.spinnerBoneUrnType.visibility = View.GONE
                         binding.imageBoneUrnType.visibility = View.GONE
+                        binding.layoutBoneEngrave.visibility = View.VISIBLE
                         binding.layoutUrnAutoComplete2.visibility = View.GONE
 
                         ApplicationClass.prefs.selectedUrnType2 = "선택안함"

@@ -13,16 +13,60 @@ import com.example.taerimwon.databinding.FragmentResultUrnBinding
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.home.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class ResultUrn2Fragment : BaseFragment<FragmentResultUrn2Binding>(R.layout.fragment_result_urn2) {
+    private lateinit var selectedUrnType: String
     private lateinit var selectedUrnType2: String
-
+    private lateinit var selectedUrnName2 : String
+    private lateinit var boneName1 : String
+    private lateinit var boneName2 : String
+    private lateinit var boneEngraveType : String
+    private lateinit var boneEngraveType2 : String
+    private var boneEngraveTypePosition by Delegates.notNull<Int>()
+    private var boneEngraveType2Position by Delegates.notNull<Int>()
+    private lateinit var boneDate1 : String
+    private lateinit var boneDate1Type : String
+    private lateinit var boneDate2 : String
+    private lateinit var boneDate2Type : String
     override fun init() {
         initData()
     }
     private fun initData() {
+        selectedUrnType = ApplicationClass.prefs.selectedUrnType.toString()
         selectedUrnType2 = ApplicationClass.prefs.selectedUrnType2.toString()
+        selectedUrnName2 = ApplicationClass.prefs.selectedUrnName2.toString()
+        boneName1 = ApplicationClass.prefs.boneName1.toString()
+        boneName2 = ApplicationClass.prefs.boneName2.toString()
+        boneEngraveType = ApplicationClass.prefs.boneEngraveType.toString()
+        boneEngraveType2 = ApplicationClass.prefs.boneEngraveType2.toString()
+        boneEngraveTypePosition = ApplicationClass.prefs.boneEngraveTypePosition
+        boneEngraveType2Position = ApplicationClass.prefs.boneEngraveType2Position
+
+        boneDate1 = ApplicationClass.prefs.boneDate1.toString()
+        boneDate1Type = ApplicationClass.prefs.boneDate1Type.toString()
+        boneDate2 = ApplicationClass.prefs.boneDate2.toString()
+        boneDate2Type = ApplicationClass.prefs.boneDate2Type.toString()
+
+        if(!selectedUrnType.contains("선택안함") && (selectedUrnType.contains("합골함1") || !selectedUrnType2.contains("선택안함"))) {
+            if(ApplicationClass.prefs.boneSex == "남성"){
+                selectedUrnType = ApplicationClass.prefs.selectedUrnType2.toString()
+                selectedUrnType2 = ApplicationClass.prefs.selectedUrnType.toString()
+                selectedUrnName2 = ApplicationClass.prefs.selectedUrnName.toString()
+                boneName1 = ApplicationClass.prefs.name1.toString()
+                boneName2 = ApplicationClass.prefs.name2.toString()
+                boneEngraveType = ApplicationClass.prefs.engraveType.toString()
+                boneEngraveType2 = ApplicationClass.prefs.engraveType2.toString()
+                boneEngraveTypePosition = ApplicationClass.prefs.engraveTypePosition
+                boneEngraveType2Position = ApplicationClass.prefs.engraveTypePosition
+
+                boneDate1 = ApplicationClass.prefs.date1.toString()
+                boneDate1Type = ApplicationClass.prefs.date1Type.toString()
+                boneDate2 = ApplicationClass.prefs.date2.toString()
+                boneDate2Type = ApplicationClass.prefs.date2Type.toString()
+            }
+        }
 
         if(selectedUrnType2 != "선택안함") {
             setUrnData()
@@ -31,10 +75,8 @@ class ResultUrn2Fragment : BaseFragment<FragmentResultUrn2Binding>(R.layout.frag
         }
     }
     private fun setUrnMark() {
-        if(ApplicationClass.prefs.boneName1 == "")
+        if(boneName1 == "")
             return
-        // 이미지 이름을 문자열로 정의합니다.
-        val boneEngraveTypePosition = ApplicationClass.prefs.boneEngraveTypePosition
 
         if(boneEngraveTypePosition == 0){
             binding.layoutUrnResult21.visibility = View.VISIBLE
@@ -44,13 +86,12 @@ class ResultUrn2Fragment : BaseFragment<FragmentResultUrn2Binding>(R.layout.frag
         var imageName = "img_mark" + (boneEngraveTypePosition + 1)
 
         if(boneEngraveTypePosition == 4 || boneEngraveTypePosition == 5){
-            if(ApplicationClass.prefs.boneEngraveType2Position == 0)
+            if(boneEngraveType2Position == 0)
                 imageName = "img_mark5"
-            else if(ApplicationClass.prefs.boneEngraveType2Position == 1 || ApplicationClass.prefs.boneEngraveType2Position == 2)
+            else if(boneEngraveType2Position == 1 || boneEngraveType2Position == 2)
                 imageName = "img_mark5_2"
         }
 
-        val selectedUrnName2 = ApplicationClass.prefs.selectedUrnName2
         if(selectedUrnName2!!.contains("블랙") || selectedUrnName2!!.contains("검정")) {
             if(boneEngraveTypePosition == 3){
                 imageName = "img_mark4_2"
@@ -63,8 +104,6 @@ class ResultUrn2Fragment : BaseFragment<FragmentResultUrn2Binding>(R.layout.frag
         binding.imageUrnResult21.setImageResource(imageResource)
     }
     private fun setUrnData() {
-        val selectedUrnName2 = ApplicationClass.prefs.selectedUrnName2
-
         if(selectedUrnName2!!.contains("블랙") || selectedUrnName2!!.contains("검정")){
             binding.layoutUrnResult111.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult112.setTextColor(Color.parseColor("#FFD700"))
@@ -109,17 +148,13 @@ class ResultUrn2Fragment : BaseFragment<FragmentResultUrn2Binding>(R.layout.frag
         when(selectedUrnName2){
             // 7. 수목함
             "운학수목함 WH-1 1505", "황토수목함 HT-1 1604",
-            // 4. 잠금형 삼중 명품자개함
-            "아름골드자개 ARG-1 8025", "아름꽃자개 ARF-2 8025", "아름화이트자개 SGS-3 8025", "휴안골드자개 HUG-16 10228",
-            "휴안백십장생자개 HUG-17 12535" , "휴안블랙자개 HUG-15 10228", "휴안홍한지십장생자개 HUG-19 13139", "휴안화이트자개 HUG-14 10228",
-            "휴안흑십장생자개 HUG-18 12535" ,
             -> {
                 binding.layoutResultContent.visibility = View.INVISIBLE
                 return
             }
         }
         // 내용이 없으면 빈 값
-        if(ApplicationClass.prefs.boneName1 == "") {
+        if(boneName1 == "") {
             binding.layoutResultContent.visibility = View.INVISIBLE
             return
         } else {
@@ -138,13 +173,7 @@ class ResultUrn2Fragment : BaseFragment<FragmentResultUrn2Binding>(R.layout.frag
         val pixel_size_145 = resources.getDimensionPixelSize(R.dimen.pixel_size_145)
         val pixel_size_170 = resources.getDimensionPixelSize(R.dimen.pixel_size_170)
 
-        // 이름
-        val boneName1 = ApplicationClass.prefs.boneName1.toString()
-        val boneName2 = ApplicationClass.prefs.boneName2.toString()
         val tmp = StringBuilder()
-
-        val boneEngraveType = ApplicationClass.prefs.boneEngraveType
-        val boneEngraveType2 = ApplicationClass.prefs.boneEngraveType2
 
         if(boneEngraveType2.toString().contains("年月日")){
             val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
@@ -393,22 +422,19 @@ class ResultUrn2Fragment : BaseFragment<FragmentResultUrn2Binding>(R.layout.frag
             }
         }
 
-        val date1 = ApplicationClass.prefs.date1.toString()
-
-        if(date1.length == 10){
-            binding.layoutUrnResult121.text = date1[0].toString()
-            binding.layoutUrnResult122.text = date1[1].toString()
-            binding.layoutUrnResult123.text = date1[2].toString()
-            binding.layoutUrnResult124.text = date1[3].toString()
-            binding.layoutUrnResult141.text = date1[5].toString()
-            binding.layoutUrnResult142.text = date1[6].toString()
-            binding.layoutUrnResult161.text = date1[8].toString()
-            binding.layoutUrnResult162.text = date1[9].toString()
+        if(boneDate1.length == 10){
+            binding.layoutUrnResult121.text = boneDate1[0].toString()
+            binding.layoutUrnResult122.text = boneDate1[1].toString()
+            binding.layoutUrnResult123.text = boneDate1[2].toString()
+            binding.layoutUrnResult124.text = boneDate1[3].toString()
+            binding.layoutUrnResult141.text = boneDate1[5].toString()
+            binding.layoutUrnResult142.text = boneDate1[6].toString()
+            binding.layoutUrnResult161.text = boneDate1[8].toString()
+            binding.layoutUrnResult162.text = boneDate1[9].toString()
         }
-        val date1Type = ApplicationClass.prefs.date1Type
-        if(date1Type == "양력")
+        if(boneDate1Type == "양력")
             binding.layoutUrnResult17.text = "陽"
-        else if(date1Type == "음력")
+        else if(boneDate1Type == "음력")
             binding.layoutUrnResult17.text = "陰"
 
         // 사망일
@@ -442,22 +468,20 @@ class ResultUrn2Fragment : BaseFragment<FragmentResultUrn2Binding>(R.layout.frag
             }
         }
 
-        val date2 = ApplicationClass.prefs.date2.toString()
-        if(date2.length == 10){
-            binding.layoutUrnResult321.text = date2[0].toString()
-            binding.layoutUrnResult322.text = date2[1].toString()
-            binding.layoutUrnResult323.text = date2[2].toString()
-            binding.layoutUrnResult324.text = date2[3].toString()
-            binding.layoutUrnResult341.text = date2[5].toString()
-            binding.layoutUrnResult342.text = date2[6].toString()
-            binding.layoutUrnResult361.text = date2[8].toString()
-            binding.layoutUrnResult362.text = date2[9].toString()
+        if(boneDate2.length == 10){
+            binding.layoutUrnResult321.text = boneDate2[0].toString()
+            binding.layoutUrnResult322.text = boneDate2[1].toString()
+            binding.layoutUrnResult323.text = boneDate2[2].toString()
+            binding.layoutUrnResult324.text = boneDate2[3].toString()
+            binding.layoutUrnResult341.text = boneDate2[5].toString()
+            binding.layoutUrnResult342.text = boneDate2[6].toString()
+            binding.layoutUrnResult361.text = boneDate2[8].toString()
+            binding.layoutUrnResult362.text = boneDate2[9].toString()
         }
 
-        val date2Type = ApplicationClass.prefs.date2Type
-        if(date2Type == "양력")
+        if(boneDate2Type == "양력")
             binding.layoutUrnResult37.text = "陽"
-        else if(date2Type == "음력")
+        else if(boneDate2Type == "음력")
             binding.layoutUrnResult37.text = "陰"
     }
 }

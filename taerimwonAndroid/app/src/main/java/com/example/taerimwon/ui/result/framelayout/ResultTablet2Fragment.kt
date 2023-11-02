@@ -34,6 +34,11 @@ import java.io.FileOutputStream
 class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layout.fragment_result_tablet2) {
     private lateinit var selectedTabletType: String
     private lateinit var boneSelectedTabletType: String
+    private lateinit var boneTabletType: String
+    private lateinit var boneTabletReligion: String
+    private lateinit var selectedTabletName2: String
+    private lateinit var boneTabletName2: String
+    private lateinit var boneName3: String
 
     override fun init() {
         initData()
@@ -41,11 +46,28 @@ class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layou
     private fun initData() {
         selectedTabletType = ApplicationClass.prefs.selectedTabletType.toString()
         boneSelectedTabletType = ApplicationClass.prefs.boneSelectedTabletType.toString()
+        boneTabletType = ApplicationClass.prefs.boneTabletType.toString()
+        boneTabletReligion = ApplicationClass.prefs.boneTabletReligion.toString()
+        selectedTabletName2 = ApplicationClass.prefs.selectedTabletName2.toString()
+        boneTabletName2 = ApplicationClass.prefs.boneTabletName2.toString()
+        boneName3 = ApplicationClass.prefs.boneName3.toString()
+
+        if(!selectedTabletType.contains("선택안함") && !selectedTabletType.contains("합골") && !boneSelectedTabletType.contains("선택안함")) {
+            if(ApplicationClass.prefs.boneTabletSex == "남성"){
+                selectedTabletType = ApplicationClass.prefs.boneSelectedTabletType.toString()
+                boneSelectedTabletType = ApplicationClass.prefs.selectedTabletType.toString()
+                boneTabletType = ApplicationClass.prefs.tabletType.toString()
+                boneTabletReligion = ApplicationClass.prefs.tabletReligion.toString()
+                selectedTabletName2 = ApplicationClass.prefs.selectedTabletName.toString()
+                boneTabletName2 = ApplicationClass.prefs.tabletName2.toString()
+                boneName3 = ApplicationClass.prefs.name3.toString()
+            }
+        }
 
         if(boneSelectedTabletType != "선택안함") {
             if(boneSelectedTabletType.contains("사진")){
-            }else if(ApplicationClass.prefs.boneTabletType.toString().contains("문구")){
-            }else if(ApplicationClass.prefs.boneTabletType.toString().contains("합골")) {
+            }else if(boneTabletType.toString().contains("문구")){
+            }else if(boneTabletType.toString().contains("합골")) {
                 binding.layoutResultContent.visibility = View.GONE
             }else {
                 setTablet2Data()
@@ -54,8 +76,6 @@ class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layou
     }
     private fun setTable2Mark() {
         // 이미지 이름을 문자열로 정의합니다.
-        val boneTabletReligion = ApplicationClass.prefs.boneTabletReligion
-        val boneTabletType = ApplicationClass.prefs.boneTabletType
         var imageName = "img_mark1"
 
         if(boneTabletReligion == "일반" && boneTabletType == "본관") {
@@ -79,8 +99,6 @@ class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layou
         binding.layoutTablet2Result12.setImageResource(imageResource)
     }
     private fun setTablet2Data() {
-        val selectedTabletName2 = ApplicationClass.prefs.selectedTabletName2
-
         setTable2Mark()
         val pixel_size_13 = resources.getDimensionPixelSize(R.dimen.pixel_size_13)
         val pixel_size_15 = resources.getDimensionPixelSize(R.dimen.pixel_size_15)
@@ -102,20 +120,12 @@ class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layou
         }
 
         // 이름
-        var tabletName2 = ApplicationClass.prefs.tabletName2.toString()
-        var name3 = ApplicationClass.prefs.name3.toString()
         var tmp = StringBuilder()
         var tmp2 = StringBuilder()
-        var tabletReligion = ApplicationClass.prefs.tabletReligion
-        var tabletType = ApplicationClass.prefs.tabletType.toString()
 
         // 합골
-        var boneTabletName2 = ApplicationClass.prefs.boneTabletName2.toString()
-        var boneName3 = ApplicationClass.prefs.boneName3.toString()
         var boneTmp = StringBuilder()
         var boneTmp2 = StringBuilder()
-        var boneTabletReligion = ApplicationClass.prefs.boneTabletReligion
-        var boneTabletType = ApplicationClass.prefs.boneTabletType.toString()
 
         var layoutTablet2Result10 = binding.layoutTablet2Result10
         var layoutTablet2Result12 = binding.layoutTablet2Result12

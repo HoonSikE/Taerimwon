@@ -103,6 +103,11 @@ const val SELECTEDPYEONGJANGNAME = "selectedPyeongjangName"
 // 선택된 평장 종류2
 const val SELECTEDPYEONGJANGTYPE2 = "selectedPyeongjangType2"
 const val SELECTEDPYEONGJANGNAME2 = "selectedPyeongjangName2"
+
+const val PYEONGJANGSEX = "pyeongjangSex"
+const val PYEONGJANGSEX2 = "pyeongjangSex2"
+
+
 /**특이사항**/
 const val NOTE = "note"
 /**사진 저장**/

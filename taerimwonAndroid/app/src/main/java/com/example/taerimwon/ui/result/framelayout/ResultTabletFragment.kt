@@ -18,6 +18,11 @@ import dagger.hilt.android.AndroidEntryPoint
 class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.fragment_result_tablet) {
     private lateinit var selectedTabletType: String
     private lateinit var boneSelectedTabletType: String
+    private lateinit var tabletType: String
+    private lateinit var tabletReligion: String
+    private lateinit var selectedTabletName: String
+    private lateinit var tabletName2: String
+    private lateinit var name3: String
 
     override fun init() {
         initData()
@@ -25,13 +30,30 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
     private fun initData() {
         selectedTabletType = ApplicationClass.prefs.selectedTabletType.toString()
         boneSelectedTabletType = ApplicationClass.prefs.boneSelectedTabletType.toString()
+        tabletType = ApplicationClass.prefs.tabletType.toString()
+        tabletReligion = ApplicationClass.prefs.tabletReligion.toString()
+        selectedTabletName = ApplicationClass.prefs.selectedTabletName.toString()
+        tabletName2 = ApplicationClass.prefs.tabletName2.toString()
+        name3 = ApplicationClass.prefs.name3.toString()
+
+        if(!selectedTabletType.contains("선택안함") && !selectedTabletType.contains("합골") && !boneSelectedTabletType.contains("선택안함")) {
+            if(ApplicationClass.prefs.boneTabletSex == "남성"){
+                selectedTabletType = ApplicationClass.prefs.boneSelectedTabletType.toString()
+                boneSelectedTabletType = ApplicationClass.prefs.selectedTabletType.toString()
+                tabletType = ApplicationClass.prefs.boneTabletType.toString()
+                tabletReligion = ApplicationClass.prefs.boneTabletReligion.toString()
+                selectedTabletName = ApplicationClass.prefs.selectedTabletName2.toString()
+                tabletName2 = ApplicationClass.prefs.boneTabletName2.toString()
+                name3 = ApplicationClass.prefs.boneName3.toString()
+            }
+        }
 
         if(selectedTabletType != "선택안함") {
             if(selectedTabletType.contains("사진")){
                 binding.layoutResultContent.visibility = View.GONE
-            }else if(ApplicationClass.prefs.tabletType.toString().contains("문구")){
+            }else if(tabletType.toString().contains("문구")){
                 binding.layoutResultContent.visibility = View.GONE
-            }else if(ApplicationClass.prefs.tabletType.toString().contains("합골")) {
+            }else if(tabletType.toString().contains("합골")) {
                 binding.layoutResultContent.visibility = View.GONE
             }else {
                 setTabletData()
@@ -39,16 +61,12 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
         }
     }
     private fun setTableMark() {
-        // 이미지 이름을 문자열로 정의합니다.
-        val tabletReligion = ApplicationClass.prefs.tabletReligion
-        val tabletType = ApplicationClass.prefs.tabletType
         var imageName = "img_mark1"
 
         if(tabletReligion == "일반" && tabletType == "본관") {
             binding.layoutTabletResult10.visibility = View.GONE
             binding.layoutTabletResult12.visibility = View.GONE
         }else if(tabletReligion == "일반" && tabletType != "문구") {
-//            imageName = "img_mark1"
             binding.layoutTabletResult10.visibility = View.VISIBLE
             binding.layoutTabletResult12.visibility = View.GONE
         }else if(tabletReligion == "기독교" && tabletType != "문구")
@@ -65,27 +83,22 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
         binding.layoutTabletResult12.setImageResource(imageResource)
     }
     private fun setTabletData() {
-        val selectedTabletName = ApplicationClass.prefs.selectedTabletName
 
         setTableMark()
         val pixel_size_13 = resources.getDimensionPixelSize(R.dimen.pixel_size_13)
         val pixel_size_15 = resources.getDimensionPixelSize(R.dimen.pixel_size_15)
         val pixel_size_17_5 = resources.getDimensionPixelSize(R.dimen.pixel_size_17_5)
         val pixel_size_20 = resources.getDimensionPixelSize(R.dimen.pixel_size_20)
-        val pixel_size_22_5 = resources.getDimensionPixelSize(R.dimen.pixel_size_22_5)
+//        val pixel_size_22_5 = resources.getDimensionPixelSize(R.dimen.pixel_size_22_5)
 //        val pixel_size_26 = resources.getDimensionPixelSize(R.dimen.pixel_size_26)
 //        val pixel_size_30 = resources.getDimensionPixelSize(R.dimen.pixel_size_30)
 //        val pixel_size_35 = resources.getDimensionPixelSize(R.dimen.pixel_size_35)
 //        val pixel_size_40 = resources.getDimensionPixelSize(R.dimen.pixel_size_40)
 //        val pixel_size_45 = resources.getDimensionPixelSize(R.dimen.pixel_size_45)
 
-        // 이름
-        val tabletName2 = ApplicationClass.prefs.tabletName2.toString()
-        val name3 = ApplicationClass.prefs.name3.toString()
+
         val tmp = StringBuilder()
         val tmp2 = StringBuilder()
-        val tabletReligion = ApplicationClass.prefs.tabletReligion
-        val tabletType = ApplicationClass.prefs.tabletType.toString()
 
         val layoutTabletResult0 = binding.layoutTabletResult0
         val layoutTabletResult20 = binding.layoutTabletResult20

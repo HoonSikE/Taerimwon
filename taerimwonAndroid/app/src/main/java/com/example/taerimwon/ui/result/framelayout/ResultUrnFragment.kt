@@ -12,16 +12,61 @@ import com.example.taerimwon.databinding.FragmentResultUrnBinding
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.home.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragment_result_urn) {
     private lateinit var selectedUrnType: String
+    private lateinit var selectedUrnType2: String
+    private lateinit var selectedUrnName : String
+    private lateinit var name1 : String
+    private lateinit var name2 : String
+    private lateinit var engraveType : String
+    private lateinit var engraveType2 : String
+    private var engraveTypePosition by Delegates.notNull<Int>()
+    private var engraveType2Position by Delegates.notNull<Int>()
+    private lateinit var date1 : String
+    private lateinit var date1Type : String
+    private lateinit var date2 : String
+    private lateinit var date2Type : String
 
     override fun init() {
         initData()
     }
     private fun initData() {
         selectedUrnType = ApplicationClass.prefs.selectedUrnType.toString()
+        selectedUrnType2 = ApplicationClass.prefs.selectedUrnType2.toString()
+        selectedUrnName = ApplicationClass.prefs.selectedUrnName.toString()
+        name1 = ApplicationClass.prefs.name1.toString()
+        name2 = ApplicationClass.prefs.name2.toString()
+        engraveType = ApplicationClass.prefs.engraveType.toString()
+        engraveType2 = ApplicationClass.prefs.engraveType2.toString()
+        engraveTypePosition = ApplicationClass.prefs.engraveTypePosition
+        engraveType2Position = ApplicationClass.prefs.engraveType2Position
+
+        date1 = ApplicationClass.prefs.date1.toString()
+        date1Type = ApplicationClass.prefs.date1Type.toString()
+        date2 = ApplicationClass.prefs.date2.toString()
+        date2Type = ApplicationClass.prefs.date2Type.toString()
+
+        if(!selectedUrnType.contains("선택안함") && (selectedUrnType.contains("합골함1") || !selectedUrnType2.contains("선택안함"))) {
+            if(ApplicationClass.prefs.boneSex == "남성"){
+                selectedUrnType = ApplicationClass.prefs.selectedUrnType2.toString()
+                selectedUrnType2 = ApplicationClass.prefs.selectedUrnType.toString()
+                selectedUrnName = ApplicationClass.prefs.selectedUrnName2.toString()
+                name1 = ApplicationClass.prefs.boneName1.toString()
+                name2 = ApplicationClass.prefs.boneName2.toString()
+                engraveType = ApplicationClass.prefs.boneEngraveType.toString()
+                engraveType2 = ApplicationClass.prefs.boneEngraveType2.toString()
+                engraveTypePosition = ApplicationClass.prefs.boneEngraveTypePosition
+                engraveType2Position = ApplicationClass.prefs.boneEngraveType2Position
+
+                date1 = ApplicationClass.prefs.boneDate1.toString()
+                date1Type = ApplicationClass.prefs.boneDate1Type.toString()
+                date2 = ApplicationClass.prefs.boneDate2.toString()
+                date2Type = ApplicationClass.prefs.boneDate2Type.toString()
+            }
+        }
 
         if(selectedUrnType != "선택안함") {
             setUrnData()
@@ -30,10 +75,8 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         }
     }
     private fun setUrnMark() {
-        if(ApplicationClass.prefs.name1 == "")
+        if(name1 == "")
             return
-        // 이미지 이름을 문자열로 정의합니다.
-        val engraveTypePosition = ApplicationClass.prefs.engraveTypePosition
 
         if(engraveTypePosition == 0){
             binding.layoutUrnResult21.visibility = View.VISIBLE
@@ -43,13 +86,12 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         var imageName = "img_mark" + (engraveTypePosition + 1)
 
         if(engraveTypePosition == 4 || engraveTypePosition == 5){
-            if(ApplicationClass.prefs.engraveType2Position == 0)
+            if(engraveType2Position == 0)
                 imageName = "img_mark5"
-            else if(ApplicationClass.prefs.engraveType2Position == 1 || ApplicationClass.prefs.engraveType2Position == 2)
+            else if(engraveType2Position == 1 || engraveType2Position == 2)
                 imageName = "img_mark5_2"
         }
 
-        val selectedUrnName = ApplicationClass.prefs.selectedUrnName
         if(selectedUrnName!!.contains("블랙") || selectedUrnName!!.contains("검정")) {
             if(engraveTypePosition == 3){
                 imageName = "img_mark4_2"
@@ -57,15 +99,10 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
                 imageName = "img_mark5_2"
             }
         }
-
-
-
         val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
         binding.imageUrnResult21.setImageResource(imageResource)
     }
     private fun setUrnData() {
-        val selectedUrnName = ApplicationClass.prefs.selectedUrnName
-
         if(selectedUrnName!!.contains("블랙") || selectedUrnName!!.contains("검정")){
             binding.layoutUrnResult111.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult112.setTextColor(Color.parseColor("#FFD700"))
@@ -110,17 +147,13 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         when(selectedUrnName){
             // 7. 수목함
             "운학수목함 WH-1 1505", "황토수목함 HT-1 1604",
-                // 4. 잠금형 삼중 명품자개함
-            "아름골드자개 ARG-1 8025", "아름꽃자개 ARF-2 8025", "아름화이트자개 SGS-3 8025", "휴안골드자개 HUG-16 10228",
-            "휴안백십장생자개 HUG-17 12535" , "휴안블랙자개 HUG-15 10228", "휴안홍한지십장생자개 HUG-19 13139", "휴안화이트자개 HUG-14 10228",
-            "휴안흑십장생자개 HUG-18 12535" ,
             -> {
                 binding.layoutResultContent.visibility = View.INVISIBLE
                 return
             }
         }
         // 내용이 없으면 빈 값
-        if(ApplicationClass.prefs.name1 == "") {
+        if(name1 == "") {
             binding.layoutResultContent.visibility = View.INVISIBLE
             return
         } else {
@@ -139,15 +172,10 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         val pixel_size_145 = resources.getDimensionPixelSize(R.dimen.pixel_size_145)
         val pixel_size_170 = resources.getDimensionPixelSize(R.dimen.pixel_size_170)
 
-        // 이름
-        val name1 = ApplicationClass.prefs.name1.toString()
-        val name2 = ApplicationClass.prefs.name2.toString()
+
         val tmp = StringBuilder()
 
-        val engraveType = ApplicationClass.prefs.engraveType
-        val engraveType2 = ApplicationClass.prefs.engraveType2
-
-        if(engraveType2.toString().contains("年月日")){
+        if(engraveType2.contains("年月日")){
             val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
 
             binding.layoutUrnResult111.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
@@ -183,9 +211,9 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         // 이름
         val layoutUrnResult221 = binding.layoutUrnResult221
 
-        if((engraveType == "일반" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日")))
+        if((engraveType == "일반" && (engraveType2 == "기본" || engraveType2.contains("年月日")))
             || (engraveType == "기독교" && (engraveType2 == "직분X"))
-            || (engraveType == "불교" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日")))
+            || (engraveType == "불교" && (engraveType2 == "기본" || engraveType2.contains("年月日")))
             || (engraveType == "천주교" && (engraveType2 == "세례명X"))
             || (engraveType == "원불교")){
 
@@ -387,14 +415,12 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             "천주교" -> {
                 binding.layoutUrnResult111.visibility = View.GONE
                 binding.layoutUrnResult112.visibility = View.VISIBLE
-                if(engraveType2.toString().contains("年月日"))
+                if(engraveType2.contains("年月日"))
                     binding.layoutUrnResult112.text = "出\n生"
                 else
                     binding.layoutUrnResult112.text = "出生"
             }
         }
-
-        val date1 = ApplicationClass.prefs.date1.toString()
 
         if(date1.length == 10){
             binding.layoutUrnResult121.text = date1[0].toString()
@@ -406,7 +432,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             binding.layoutUrnResult161.text = date1[8].toString()
             binding.layoutUrnResult162.text = date1[9].toString()
         }
-        val date1Type = ApplicationClass.prefs.date1Type
+
         if(date1Type == "양력")
             binding.layoutUrnResult17.text = "陽"
         else if(date1Type == "음력")
@@ -443,7 +469,6 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             }
         }
 
-        val date2 = ApplicationClass.prefs.date2.toString()
         if(date2.length == 10){
             binding.layoutUrnResult321.text = date2[0].toString()
             binding.layoutUrnResult322.text = date2[1].toString()
@@ -455,7 +480,6 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             binding.layoutUrnResult362.text = date2[9].toString()
         }
 
-        val date2Type = ApplicationClass.prefs.date2Type
         if(date2Type == "양력")
             binding.layoutUrnResult37.text = "陽"
         else if(date2Type == "음력")

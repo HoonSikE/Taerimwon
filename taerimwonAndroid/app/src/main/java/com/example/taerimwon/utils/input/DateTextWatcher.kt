@@ -182,13 +182,13 @@ class DateTextWatcher(private val editText: EditText) : TextWatcher {
             formattedDate = date
         }
 
-        if(numericValue.length == 5 && numericValue.substring(4, 5) == "0"){
-            formattedDate = formattedDate.substring(0, formattedDate.length - 1)
-        }
-
-        if(numericValue.length == 7 && numericValue.substring(6, 7) == "0"){
-            formattedDate = formattedDate.substring(0, formattedDate.length - 1)
-        }
+//        if(numericValue.length == 5 && numericValue.substring(4, 5) == "0"){
+//            formattedDate = formattedDate.substring(0, formattedDate.length - 1)
+//        }
+//
+//        if(numericValue.length == 7 && numericValue.substring(6, 7) == "0"){
+//            formattedDate = formattedDate.substring(0, formattedDate.length - 1)
+//        }
 
         // 마지막 글자가 하이픈인 경우 제거
         if (numericValue.length > 0 && (formattedDate.endsWith('-') || numericValue.isEmpty())) {

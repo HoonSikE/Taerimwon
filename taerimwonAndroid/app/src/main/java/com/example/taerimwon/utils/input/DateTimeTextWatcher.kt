@@ -264,21 +264,21 @@ class DateTimeTextWatcher(private val editText: EditText) : TextWatcher {
             formattedDateTime = dateTime
         }
 
-        if(numericValue.length == 5 && numericValue.substring(4, 5) == "0"){
-            formattedDateTime = formattedDateTime.substring(0, formattedDateTime.length - 1)
-        }
-
-        if(numericValue.length == 7 && numericValue.substring(6, 7) == "0"){
-            formattedDateTime = formattedDateTime.substring(0, formattedDateTime.length - 1)
-        }
-
-        if(numericValue.length == 9 && numericValue.substring(8, 9) == "0"){
-            formattedDateTime = formattedDateTime.substring(0, formattedDateTime.length - 1)
-        }
-
-        if(numericValue.length == 11 && numericValue.substring(10, 11) == "0"){
-            formattedDateTime = formattedDateTime.substring(0, formattedDateTime.length - 1)
-        }
+//        if(numericValue.length == 5 && numericValue.substring(4, 5) == "0"){
+//            formattedDateTime = formattedDateTime.substring(0, formattedDateTime.length - 1)
+//        }
+//
+//        if(numericValue.length == 7 && numericValue.substring(6, 7) == "0"){
+//            formattedDateTime = formattedDateTime.substring(0, formattedDateTime.length - 1)
+//        }
+//
+//        if(numericValue.length == 9 && numericValue.substring(8, 9) == "0"){
+//            formattedDateTime = formattedDateTime.substring(0, formattedDateTime.length - 1)
+//        }
+//
+//        if(numericValue.length == 11 && numericValue.substring(10, 11) == "0"){
+//            formattedDateTime = formattedDateTime.substring(0, formattedDateTime.length - 1)
+//        }
 
         // 마지막 글자가 공백, 하이폰, 또는 콜론인 경우 제거
         if (numericValue.length > 0 && (formattedDateTime.endsWith(' ') || formattedDateTime.endsWith('-') || formattedDateTime.endsWith(':') || numericValue.isEmpty())) {

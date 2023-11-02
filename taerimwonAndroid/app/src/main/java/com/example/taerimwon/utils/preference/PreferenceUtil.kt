@@ -415,6 +415,17 @@ class PreferenceUtil(context: Context) {
             order.edit().putString(SELECTEDPYEONGJANGNAME2, value).apply()
         }
 
+    var pyeongjangSex : String?
+        get() = order.getString(TABLETSEX, "남성")
+        set(value){
+            order.edit().putString(TABLETSEX, value).apply()
+        }
+    var pyeongjangSex2 : String?
+        get() = order.getString(BONETABLETSEX, "여성")
+        set(value){
+            order.edit().putString(BONETABLETSEX, value).apply()
+        }
+
     // 특이사항
     var note : String?
         get() = order.getString(NOTE, "")
@@ -505,6 +516,8 @@ class PreferenceUtil(context: Context) {
         selectedPyeongjangName = ""
         selectedPyeongjangType2 = "선택안함"
         selectedPyeongjangName2 = ""
+        pyeongjangSex = "남성"
+        pyeongjangSex2 = "여성"
         /**특이사항**/
         note = ""
 
