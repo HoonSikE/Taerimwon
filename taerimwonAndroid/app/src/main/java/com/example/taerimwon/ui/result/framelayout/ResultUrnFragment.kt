@@ -17,7 +17,6 @@ import kotlin.properties.Delegates
 @AndroidEntryPoint
 class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragment_result_urn) {
     private lateinit var selectedUrnType: String
-    private lateinit var selectedUrnType2: String
     private lateinit var selectedUrnName : String
     private lateinit var name1 : String
     private lateinit var name2 : String
@@ -35,7 +34,6 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
     }
     private fun initData() {
         selectedUrnType = ApplicationClass.prefs.selectedUrnType.toString()
-        selectedUrnType2 = ApplicationClass.prefs.selectedUrnType2.toString()
         selectedUrnName = ApplicationClass.prefs.selectedUrnName.toString()
         name1 = ApplicationClass.prefs.name1.toString()
         name2 = ApplicationClass.prefs.name2.toString()
@@ -49,10 +47,9 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         date2 = ApplicationClass.prefs.date2.toString()
         date2Type = ApplicationClass.prefs.date2Type.toString()
 
-        if(!selectedUrnType.contains("선택안함") && (selectedUrnType.contains("합골함1") || !selectedUrnType2.contains("선택안함"))) {
+        if(!selectedUrnType.contains("선택안함") && (selectedUrnType.contains("합골함1") || !ApplicationClass.prefs.selectedUrnType2.toString().contains("선택안함"))) {
             if(ApplicationClass.prefs.boneSex == "남성"){
                 selectedUrnType = ApplicationClass.prefs.selectedUrnType2.toString()
-                selectedUrnType2 = ApplicationClass.prefs.selectedUrnType.toString()
                 selectedUrnName = ApplicationClass.prefs.selectedUrnName2.toString()
                 name1 = ApplicationClass.prefs.boneName1.toString()
                 name2 = ApplicationClass.prefs.boneName2.toString()

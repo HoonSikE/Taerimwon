@@ -25,7 +25,6 @@ import androidx.navigation.fragment.findNavController
 import com.example.taerimwon.databinding.FragmentResultTablet2Binding
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.home.AuthViewModel
-import com.example.taerimwon.ui.result.ResultContainerFragment
 import com.example.taerimwon.utils.view.toast
 import java.io.File
 import java.io.FileOutputStream
@@ -93,6 +92,12 @@ class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layou
             imageName = "img_mark4"
         else
             return
+
+        if(selectedTabletName2!!.contains("검정")) {
+            if(boneTabletReligion == "천주교" && boneTabletType != "문구"){
+                imageName = "img_mark4_2"
+            }
+        }
 
         // 직분, 세례명, 법명
         val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)

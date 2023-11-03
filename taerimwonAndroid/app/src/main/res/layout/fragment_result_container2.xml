@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        >
+        <!--특이사항-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_result_text_note"
+            android:background="@color/contentBackground"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="20dp"
+            android:elevation="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            <TextView
+                android:id="@+id/text_result_title_note"
+                style="@style/SubHeadBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="● 특이사항(선택)"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+            <EditText
+                android:id="@+id/editText_note"
+                style="@style/Body"
+                android:background="@drawable/edittext_regular"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:hint="특이사항을 입력하세요 (최대 30자)"
+                android:paddingLeft="48dp"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLength="30"
+                android:textColorHint="@color/hintGray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_result_title_note"
+                />
+
+            <ImageView
+                android:id="@+id/image_note"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="@+id/editText_note"
+                app:layout_constraintTop_toTopOf="@+id/editText_note"
+                app:srcCompat="@drawable/ic_note"
+                />
+
+            <TextView
+                android:id="@+id/text_result_text3"
+                style="@style/Body"
+                android:textColor="@color/redTextColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="자세한 각인요청은 특이사항에 적어주세요."
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editText_note"
+                tools:viewBindingIgnore="true"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/View1"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/viewColor"
+            app:layout_constraintTop_toBottomOf="@+id/layout_result_text_note"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

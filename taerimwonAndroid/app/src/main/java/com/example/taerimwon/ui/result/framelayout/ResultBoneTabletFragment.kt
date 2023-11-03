@@ -26,7 +26,6 @@ import com.example.taerimwon.databinding.FragmentResultBoneTabletBinding
 import com.example.taerimwon.databinding.FragmentResultTabletBinding
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.home.AuthViewModel
-import com.example.taerimwon.ui.result.ResultContainerFragment
 import com.example.taerimwon.utils.view.toast
 import java.io.File
 import java.io.FileOutputStream

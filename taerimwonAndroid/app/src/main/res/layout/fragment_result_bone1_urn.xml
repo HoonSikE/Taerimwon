@@ -13,9 +13,9 @@
         app:layout_constraintTop_toBottomOf="@+id/layout_result"
         app:layout_constraintBottom_toBottomOf="parent"
         >
-        <!--합골 추가 내용-->
+        <!--유골함 내용-->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_bone_content"
+            android:id="@+id/layout_urn_content"
             android:layout_width="180px"
             android:layout_height="280px"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,22 +25,23 @@
             >
             <!--왼쪽-->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_bone_result1"
+                android:id="@+id/layout_urn_result1"
                 android:layout_width="50px"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/layout_bone_result2"
+                app:layout_constraintEnd_toStartOf="@+id/layout_urn_result2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 >
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_bone_result1_1"
+                    android:id="@+id/layout_urn_result1_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:ignore="MissingConstraints"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     >
                     <TextView
-                        android:id="@+id/layout_bone_result1_1_1"
+                        android:id="@+id/layout_urn_result1_1_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="生"
@@ -53,7 +54,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         />
                     <TextView
-                        android:id="@+id/layout_bone_result1_1_2"
+                        android:id="@+id/layout_urn_result1_1_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="出生"
@@ -69,7 +70,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
-                    android:id="@+id/layout_bone_result1_2_1"
+                    android:id="@+id/layout_urn_result1_2_1"
                     android:layout_width="20px"
                     android:layout_height="20px"
                     android:text="0"
@@ -78,13 +79,13 @@
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
                     android:textScaleX="1.5"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result1_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result1_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result1_1"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_1"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result1_2_2"
+                    android:id="@+id/layout_urn_result1_2_2"
                     android:layout_width="20px"
                     android:layout_height="20px"
                     android:text="0"
@@ -93,13 +94,13 @@
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
                     android:textScaleX="1.5"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result1_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result1_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result1_2_1"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_2_1"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result1_2_3"
+                    android:id="@+id/layout_urn_result1_2_3"
                     android:layout_width="20px"
                     android:layout_height="20px"
                     android:text="0"
@@ -108,13 +109,13 @@
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
                     android:textScaleX="1.5"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result1_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result1_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result1_2_2"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_2_2"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result1_2_4"
+                    android:id="@+id/layout_urn_result1_2_4"
                     android:layout_width="20px"
                     android:layout_height="20px"
                     android:text="0"
@@ -123,13 +124,13 @@
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
                     android:textScaleX="1.5"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result1_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result1_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result1_2_3"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_2_3"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result1_3"
+                    android:id="@+id/layout_urn_result1_3"
                     android:layout_width="20px"
                     android:layout_height="8px"
                     android:text="●"
@@ -137,13 +138,13 @@
                     android:textColor="@color/black"
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result1_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result1_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result1_2_4"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_2_4"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result1_3_1"
+                    android:id="@+id/layout_urn_result1_3_1"
                     android:layout_width="wrap_content"
                     android:layout_height="16px"
                     android:text="年"
@@ -152,14 +153,14 @@
                     android:fontFamily="@font/hyhaeso"
                     android:textFontWeight="900"
                     android:textScaleX="1.8"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result1_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result1_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result1_3"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_3"
                     android:visibility="gone"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result1_4_1"
+                    android:id="@+id/layout_urn_result1_4_1"
                     android:layout_width="20px"
                     android:layout_height="20px"
                     android:text="0"
@@ -168,13 +169,13 @@
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
                     android:textScaleX="1.5"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result1_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result1_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result1_3_1"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_3_1"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result1_4_2"
+                    android:id="@+id/layout_urn_result1_4_2"
                     android:layout_width="20px"
                     android:layout_height="20px"
                     android:text="0"
@@ -183,13 +184,13 @@
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
                     android:textScaleX="1.5"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result1_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result1_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result1_4_1"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_4_1"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result1_5"
+                    android:id="@+id/layout_urn_result1_5"
                     android:layout_width="20px"
                     android:layout_height="8px"
                     android:text="●"
@@ -197,13 +198,13 @@
                     android:textColor="@color/black"
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result1_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result1_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result1_4_2"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_4_2"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result1_5_1"
+                    android:id="@+id/layout_urn_result1_5_1"
                     android:layout_width="wrap_content"
                     android:layout_height="16px"
                     android:text="月"
@@ -212,14 +213,14 @@
                     android:fontFamily="@font/hyhaeso"
                     android:textFontWeight="900"
                     android:textScaleX="1.8"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result1_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result1_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result1_5"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_5"
                     android:visibility="gone"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result1_6_1"
+                    android:id="@+id/layout_urn_result1_6_1"
                     android:layout_width="20px"
                     android:layout_height="20px"
                     android:text="0"
@@ -228,13 +229,13 @@
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
                     android:textScaleX="1.5"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result1_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result1_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result1_5_1"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_5_1"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result1_6_2"
+                    android:id="@+id/layout_urn_result1_6_2"
                     android:layout_width="20px"
                     android:layout_height="20px"
                     android:text="0"
@@ -243,13 +244,13 @@
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
                     android:textScaleX="1.5"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result1_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result1_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result1_6_1"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_6_1"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result1_7_1"
+                    android:id="@+id/layout_urn_result1_7_1"
                     android:layout_width="wrap_content"
                     android:layout_height="17px"
                     android:text="日"
@@ -258,14 +259,14 @@
                     android:fontFamily="@font/hyhaeso"
                     android:textFontWeight="900"
                     android:textScaleX="1.8"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result1_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result1_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result1_6_2"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_6_2"
                     android:visibility="gone"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result1_7"
+                    android:id="@+id/layout_urn_result1_7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="陰"
@@ -273,23 +274,23 @@
                     android:textColor="@color/black"
                     android:fontFamily="@font/hyhaeso"
                     android:textFontWeight="300"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result1_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result1_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result1_7_1"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_7_1"
                     />
             </androidx.constraintlayout.widget.ConstraintLayout>
             <!--이름-->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_bone_result2"
+                android:id="@+id/layout_urn_result2"
                 android:layout_width="80px"
                 android:layout_height="280px"
-                app:layout_constraintStart_toEndOf="@+id/layout_bone_result1"
-                app:layout_constraintBottom_toBottomOf="@+id/layout_bone_result1"
+                app:layout_constraintStart_toEndOf="@+id/layout_urn_result1"
+                app:layout_constraintBottom_toBottomOf="@+id/layout_urn_result1"
                 tools:ignore="MissingConstraints"
                 >
                 <TextView
-                    android:id="@+id/layout_Bone_result2_1"
+                    android:id="@+id/layout_urn_result2_1"
                     android:layout_width="60px"
                     android:layout_height="60px"
                     android:text="故"
@@ -305,29 +306,29 @@
                     />
                 <!--로고-->
                 <ImageView
-                    android:id="@+id/image_bone_result2_1"
+                    android:id="@+id/image_urn_result2_1"
                     android:layout_width="wrap_content"
                     android:layout_height="55px"
                     android:layout_marginTop="5px"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_Bone_result2_1"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result2_1"
                     />
                 <!--이름-->
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_bone_result2_2"
+                    android:id="@+id/layout_urn_result2_2"
                     android:layout_width="80px"
                     android:layout_height="215px"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/image_bone_result2_1"
+                    app:layout_constraintTop_toBottomOf="@+id/image_urn_result2_1"
                     android:layout_marginTop="5px"
                     tools:ignore="MissingConstraints"
                     >
                     <!--위 글씨-->
                     <TextView
-                        android:id="@+id/layout_bone_result2_2_0"
+                        android:id="@+id/layout_urn_result2_2_0"
                         android:layout_width="90px"
                         android:layout_height="30px"
                         android:text="윗글자"
@@ -338,14 +339,14 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toTopOf="@+id/layout_bone_result2_2_1"
+                        app:layout_constraintBottom_toTopOf="@+id/layout_urn_result2_2_1"
                         android:gravity="center"
                         android:letterSpacing="-0.15"
                         android:visibility="gone"
                         />
                     <!--이름-->
                     <TextView
-                        android:id="@+id/layout_bone_result2_2_1"
+                        android:id="@+id/layout_urn_result2_2_1"
                         android:layout_width="55px"
                         android:layout_height="wrap_content"
                         android:text="홍\n길\n동"
@@ -355,14 +356,14 @@
                         android:textFontWeight="100"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_bone_result2_2_0"
-                        app:layout_constraintBottom_toTopOf="@+id/layout_bone_result2_2_2"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_urn_result2_2_0"
+                        app:layout_constraintBottom_toTopOf="@+id/layout_urn_result2_2_2"
                         android:gravity="center"
                         android:lineSpacingMultiplier="1.2"
                         />
                     <!--밑 글씨-->
                     <TextView
-                        android:id="@+id/layout_bone_result2_2_2"
+                        android:id="@+id/layout_urn_result2_2_2"
                         android:layout_width="80px"
                         android:layout_height="30px"
                         android:text="형제"
@@ -381,23 +382,25 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
             <!--오른쪽-->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_bone_result3"
-                android:layout_width="50px"
+                android:id="@+id/layout_urn_result3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@+id/layout_bone_result2"
+                android:minWidth="50px"
+                app:layout_constraintStart_toEndOf="@+id/layout_urn_result2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 tools:ignore="MissingConstraints"
                 >
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_bone_result3_1"
+                    android:id="@+id/layout_urn_result3_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:ignore="MissingConstraints"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     >
                     <TextView
-                        android:id="@+id/layout_bone_result3_1_1"
+                        android:id="@+id/layout_urn_result3_1_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="卒"
@@ -410,7 +413,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         />
                     <TextView
-                        android:id="@+id/layout_bone_result3_1_2"
+                        android:id="@+id/layout_urn_result3_1_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="召天"
@@ -425,7 +428,7 @@
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 <TextView
-                    android:id="@+id/layout_bone_result3_2_1"
+                    android:id="@+id/layout_urn_result3_2_1"
                     android:layout_width="20px"
                     android:layout_height="20px"
                     android:text="0"
@@ -434,13 +437,13 @@
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
                     android:textScaleX="1.5"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result3_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result3_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result3_1"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_1"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result3_2_2"
+                    android:id="@+id/layout_urn_result3_2_2"
                     android:layout_width="20px"
                     android:layout_height="20px"
                     android:text="0"
@@ -449,13 +452,28 @@
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
                     android:textScaleX="1.5"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result3_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result3_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result3_2_1"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_2_1"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result3_2_3"
+                    android:id="@+id/layout_urn_result3_2_3"
+                    android:layout_width="20px"
+                    android:layout_height="20px"
+                    android:text="0"
+                    android:textSize="20px"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/century"
+                    android:textScaleX="1.5"
+                    android:textFontWeight="900"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
+                    android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_2_2"
+                    />
+                <TextView
+                    android:id="@+id/layout_urn_result3_2_4"
                     android:layout_width="20px"
                     android:layout_height="20px"
                     android:text="0"
@@ -464,28 +482,13 @@
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
                     android:textScaleX="1.5"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result3_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result3_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result3_2_2"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_2_3"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result3_2_4"
-                    android:layout_width="20px"
-                    android:layout_height="20px"
-                    android:text="0"
-                    android:textSize="20px"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/century"
-                    android:textFontWeight="900"
-                    android:textScaleX="1.5"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result3_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result3_1"
-                    android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result3_2_3"
-                    />
-                <TextView
-                    android:id="@+id/layout_bone_result3_3"
+                    android:id="@+id/layout_urn_result3_3"
                     android:layout_width="20px"
                     android:layout_height="8px"
                     android:text="●"
@@ -493,13 +496,13 @@
                     android:textColor="@color/black"
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result3_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result3_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result3_2_4"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_2_4"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result3_3_1"
+                    android:id="@+id/layout_urn_result3_3_1"
                     android:layout_width="wrap_content"
                     android:layout_height="16px"
                     android:text="年"
@@ -508,14 +511,14 @@
                     android:fontFamily="@font/hyhaeso"
                     android:textFontWeight="900"
                     android:textScaleX="1.8"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result3_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result3_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result3_3"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_3"
                     android:visibility="gone"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result3_4_1"
+                    android:id="@+id/layout_urn_result3_4_1"
                     android:layout_width="20px"
                     android:layout_height="20px"
                     android:text="0"
@@ -524,13 +527,13 @@
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
                     android:textScaleX="1.5"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result3_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result3_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result3_3_1"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_3_1"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result3_4_2"
+                    android:id="@+id/layout_urn_result3_4_2"
                     android:layout_width="20px"
                     android:layout_height="20px"
                     android:text="0"
@@ -539,13 +542,13 @@
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
                     android:textScaleX="1.5"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result3_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result3_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result3_4_1"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_4_1"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result3_5"
+                    android:id="@+id/layout_urn_result3_5"
                     android:layout_width="20px"
                     android:layout_height="8px"
                     android:text="●"
@@ -553,13 +556,13 @@
                     android:textColor="@color/black"
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result3_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result3_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result3_4_2"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_4_2"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result3_5_1"
+                    android:id="@+id/layout_urn_result3_5_1"
                     android:layout_width="wrap_content"
                     android:layout_height="16px"
                     android:text="月"
@@ -568,14 +571,14 @@
                     android:fontFamily="@font/hyhaeso"
                     android:textFontWeight="900"
                     android:textScaleX="1.8"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result3_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result3_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result3_5"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_5"
                     android:visibility="gone"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result3_6_1"
+                    android:id="@+id/layout_urn_result3_6_1"
                     android:layout_width="20px"
                     android:layout_height="20px"
                     android:text="0"
@@ -584,13 +587,13 @@
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
                     android:textScaleX="1.5"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result3_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result3_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result3_5_1"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_5_1"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result3_6_2"
+                    android:id="@+id/layout_urn_result3_6_2"
                     android:layout_width="20px"
                     android:layout_height="20px"
                     android:text="0"
@@ -599,13 +602,13 @@
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
                     android:textScaleX="1.5"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result3_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result3_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result3_6_1"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_6_1"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result3_7_1"
+                    android:id="@+id/layout_urn_result3_7_1"
                     android:layout_width="wrap_content"
                     android:layout_height="17px"
                     android:text="日"
@@ -614,14 +617,14 @@
                     android:fontFamily="@font/hyhaeso"
                     android:textFontWeight="900"
                     android:textScaleX="1.8"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result3_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result3_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result3_6_2"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_6_2"
                     android:visibility="gone"
                     />
                 <TextView
-                    android:id="@+id/layout_bone_result3_7"
+                    android:id="@+id/layout_urn_result3_7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="陽"
@@ -629,10 +632,10 @@
                     android:textColor="@color/black"
                     android:fontFamily="@font/hyhaeso"
                     android:textFontWeight="300"
-                    app:layout_constraintStart_toStartOf="@+id/layout_bone_result3_1"
-                    app:layout_constraintEnd_toEndOf="@+id/layout_bone_result3_1"
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
+                    app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_result3_7_1"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_7_1"
                     />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

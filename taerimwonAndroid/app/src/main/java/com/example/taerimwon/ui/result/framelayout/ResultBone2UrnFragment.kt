@@ -276,124 +276,29 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
         // 추가 정보 / 기존 정보
         if(ApplicationClass.prefs.boneSex == "남성"){
             // 정보1
-//            name1 = ApplicationClass.prefs.boneName1.toString()
-//            name2 = ApplicationClass.prefs.boneName2.toString()
+            name1 = ApplicationClass.prefs.boneName1.toString()
+            name2 = ApplicationClass.prefs.boneName2.toString()
 
-//            engraveType = ApplicationClass.prefs.boneEngraveType
-//            engraveType2 = ApplicationClass.prefs.boneEngraveType2
+            engraveType = ApplicationClass.prefs.boneEngraveType
+            engraveType2 = ApplicationClass.prefs.boneEngraveType2
 
-//            date1 = ApplicationClass.prefs.boneDate1.toString()
-//            date1Type = ApplicationClass.prefs.boneDate1Type
-//            date2 = ApplicationClass.prefs.boneDate1.toString()
-//            date2Type = ApplicationClass.prefs.boneDate2Type
-
-            // 정보2
-//            boneName1 = ApplicationClass.prefs.name1.toString()
-//            boneName2 = ApplicationClass.prefs.name2.toString()
-
-//            boneEngraveType = ApplicationClass.prefs.engraveType
-//            boneEngraveType2 = ApplicationClass.prefs.engraveType2
-
-//            boneDate1 = ApplicationClass.prefs.date1.toString()
-//            boneDate1Type = ApplicationClass.prefs.date1Type
-//            boneDate2 = ApplicationClass.prefs.date1.toString()
-//            boneDate2Type = ApplicationClass.prefs.date2Type
-
-            // 정보1
-            // 마크
-            layoutUrnResult211 = binding.layoutBone2Result212
-            // 이름
-            layoutUrnResult221 = binding.layoutBone22Result221
-            // 위 글자
-            layoutUrnResult220 = binding.layoutBone22Result220
-            // 아래 글자
-            layoutUrnResult222 = binding.layoutBone22Result222
-            // 좌
-            layoutUrnResult111 = binding.layoutBone22Result111
-            layoutUrnResult112 = binding.layoutBone22Result112
-            layoutUrnResult121 = binding.layoutBone22Result121
-            layoutUrnResult122 = binding.layoutBone22Result122
-            layoutUrnResult123 = binding.layoutBone22Result123
-            layoutUrnResult124 = binding.layoutBone22Result124
-            layoutUrnResult141 = binding.layoutBone22Result141
-            layoutUrnResult142 = binding.layoutBone22Result142
-            layoutUrnResult161 = binding.layoutBone22Result161
-            layoutUrnResult162 = binding.layoutBone22Result162
-            layoutUrnResult17 = binding.layoutBone22Result17
-            // 우
-            layoutUrnResult311 = binding.layoutBone22Result311
-            layoutUrnResult312 = binding.layoutBone22Result312
-            layoutUrnResult321 = binding.layoutBone22Result321
-            layoutUrnResult322 = binding.layoutBone22Result322
-            layoutUrnResult323 = binding.layoutBone22Result323
-            layoutUrnResult324 = binding.layoutBone22Result324
-            layoutUrnResult341 = binding.layoutBone22Result341
-            layoutUrnResult342 = binding.layoutBone22Result342
-            layoutUrnResult361 = binding.layoutBone22Result361
-            layoutUrnResult362 = binding.layoutBone22Result362
-            layoutUrnResult37 = binding.layoutBone22Result37
+            date1 = ApplicationClass.prefs.boneDate1.toString()
+            date1Type = ApplicationClass.prefs.boneDate1Type
+            date2 = ApplicationClass.prefs.boneDate1.toString()
+            date2Type = ApplicationClass.prefs.boneDate2Type
 
             // 정보2
-            // 마크
-            layoutBoneResult211 = binding.layoutBone2Result211
-            // 이름
-            layoutBoneResult221 = binding.layoutBone21Result221
-            // 위 글자
-            layoutBoneResult220 = binding.layoutBone21Result220
-            // 아래 글자
-            layoutBoneResult222 = binding.layoutBone21Result222
-            // 좌
-            layoutBoneResult111 = binding.layoutBone21Result111
-            layoutBoneResult112 = binding.layoutBone21Result112
-            layoutBoneResult121 = binding.layoutBone21Result121
-            layoutBoneResult122 = binding.layoutBone21Result122
-            layoutBoneResult123 = binding.layoutBone21Result123
-            layoutBoneResult124 = binding.layoutBone21Result124
-            layoutBoneResult141 = binding.layoutBone21Result141
-            layoutBoneResult142 = binding.layoutBone21Result142
-            layoutBoneResult161 = binding.layoutBone21Result161
-            layoutBoneResult162 = binding.layoutBone21Result162
-            layoutBoneResult17 = binding.layoutBone21Result17
-            // 우
-            layoutBoneResult311 = binding.layoutBone21Result311
-            layoutBoneResult312 = binding.layoutBone21Result312
-            layoutBoneResult321 = binding.layoutBone21Result321
-            layoutBoneResult322 = binding.layoutBone21Result322
-            layoutBoneResult323 = binding.layoutBone21Result323
-            layoutBoneResult324 = binding.layoutBone21Result324
-            layoutBoneResult341 = binding.layoutBone21Result341
-            layoutBoneResult342 = binding.layoutBone21Result342
-            layoutBoneResult361 = binding.layoutBone21Result361
-            layoutBoneResult362 = binding.layoutBone21Result362
-            layoutBoneResult37 = binding.layoutBone21Result37
+            boneName1 = ApplicationClass.prefs.name1.toString()
+            boneName2 = ApplicationClass.prefs.name2.toString()
 
-            // 년월일
-            layoutUrnResult13 = binding.layoutBone22Result13
-            layoutUrnResult131 = binding.layoutBone22Result131
-            layoutUrnResult15 = binding.layoutBone22Result15
-            layoutUrnResult151 = binding.layoutBone22Result151
-            layoutUrnResult171 = binding.layoutBone22Result171
+            boneEngraveType = ApplicationClass.prefs.engraveType
+            boneEngraveType2 = ApplicationClass.prefs.engraveType2
 
-//            layoutUrnResult30 = binding.layoutBone22Result30
-            layoutUrnResult33 = binding.layoutBone22Result33
-            layoutUrnResult331 = binding.layoutBone22Result331
-            layoutUrnResult35 = binding.layoutBone22Result35
-            layoutUrnResult351 = binding.layoutBone22Result351
-            layoutUrnResult371 = binding.layoutBone22Result371
+            boneDate1 = ApplicationClass.prefs.date1.toString()
+            boneDate1Type = ApplicationClass.prefs.date1Type
+            boneDate2 = ApplicationClass.prefs.date1.toString()
+            boneDate2Type = ApplicationClass.prefs.date2Type
 
-//            layoutBoneResult10 = binding.layoutBone21Result10
-            layoutBoneResult13 = binding.layoutBone21Result13
-            layoutBoneResult131 = binding.layoutBone21Result131
-            layoutBoneResult15 = binding.layoutBone21Result15
-            layoutBoneResult151 = binding.layoutBone21Result151
-            layoutBoneResult171 = binding.layoutBone21Result171
-
-//            layoutBoneResult30 = binding.layoutBone21Result30
-            layoutBoneResult33 = binding.layoutBone21Result33
-            layoutBoneResult331 = binding.layoutBone21Result331
-            layoutBoneResult35 = binding.layoutBone21Result35
-            layoutBoneResult351 = binding.layoutBone21Result351
-            layoutBoneResult371 = binding.layoutBone21Result371
         }
         // 기존 정보 / 추가 정보
         if(name1 == "") {

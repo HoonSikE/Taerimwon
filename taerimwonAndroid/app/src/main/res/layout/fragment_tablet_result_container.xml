@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        >
+        <!--위패-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_result_text_tablet"
+            android:background="@color/contentBackground"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="20dp"
+            android:elevation="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            <TextView
+                android:id="@+id/text_result_title_tablet"
+                style="@style/SubHeadBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="● 위패"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+            <TextView
+                android:id="@+id/text_result_text_tablet"
+                style="@style/SubHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="위패 내용"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_result_title_tablet"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/View1"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/viewColor"
+            app:layout_constraintTop_toBottomOf="@+id/layout_result_text_tablet"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="MissingConstraints"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

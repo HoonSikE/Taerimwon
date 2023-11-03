@@ -78,6 +78,12 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
         else
             return
 
+        if(selectedTabletName!!.contains("검정")) {
+            if(tabletReligion == "천주교" && tabletType != "문구"){
+                imageName = "img_mark4_2"
+            }
+        }
+
         // 직분, 세례명, 법명
         val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
         binding.layoutTabletResult12.setImageResource(imageResource)
