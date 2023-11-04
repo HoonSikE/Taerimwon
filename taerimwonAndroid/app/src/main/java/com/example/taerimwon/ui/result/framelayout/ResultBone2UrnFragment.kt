@@ -626,6 +626,8 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutUrnResult222.visibility = View.VISIBLE
             layoutUrnResult222.text = "位"
             layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
+
 //            layoutUrnResult222.typeface = hyhaeso
             layoutUrnResult222.setLineSpacing(0f, 1.0f)
 
@@ -660,6 +662,8 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutUrnResult222.visibility = View.VISIBLE
             layoutUrnResult222.text = "位"
             layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
+
 //            layoutUrnResult222.typeface = hyhaeso
             layoutUrnResult222.setLineSpacing(0f, 1.0f)
 
@@ -689,11 +693,15 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutUrnResult111.visibility = View.GONE
                 layoutUrnResult112.visibility = View.VISIBLE
                 layoutUrnResult112.text = "出\n生"
+
+                layoutUrnResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
             "천주교" -> {
                 layoutUrnResult111.visibility = View.GONE
                 layoutUrnResult112.visibility = View.VISIBLE
                 layoutUrnResult112.text = "出\n生"
+
+                layoutUrnResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
         }
 
@@ -723,11 +731,15 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutUrnResult311.visibility = View.GONE
                 layoutUrnResult312.visibility = View.VISIBLE
                 layoutUrnResult312.text = "召\n天"
+
+                layoutUrnResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
             "천주교" -> {
                 layoutUrnResult311.visibility = View.GONE
                 layoutUrnResult312.visibility = View.VISIBLE
                 layoutUrnResult312.text = "善\n終"
+
+                layoutUrnResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
         }
 
@@ -911,6 +923,8 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutBoneResult222.visibility = View.VISIBLE
             layoutBoneResult222.text = "位"
             layoutBoneResult222.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutBoneResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
+
 //            layoutBoneResult222.typeface = hyhaeso
             layoutBoneResult222.setLineSpacing(0f, 1.0f)
 
@@ -945,6 +959,8 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutBoneResult222.visibility = View.VISIBLE
             layoutBoneResult222.text = "位"
             layoutBoneResult222.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutBoneResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
+
 //            layoutBoneResult222.typeface = hyhaeso
             layoutBoneResult222.setLineSpacing(0f, 1.0f)
 
@@ -963,8 +979,10 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutBoneResult221.text = tmp2.toString()
         }
 
-        if((engraveType == "묘법" || engraveType == "SGI") && (boneEngraveType == "묘법" || boneEngraveType == "SGI"))
+        if((engraveType == "묘법" || engraveType == "SGI") && (boneEngraveType == "묘법" || boneEngraveType == "SGI")) {
             layoutBoneResult222.visibility = View.GONE
+            layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
+        }
 
         // 출생일
         when (boneEngraveType) {
@@ -976,11 +994,15 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutBoneResult111.visibility = View.GONE
                 layoutBoneResult112.visibility = View.VISIBLE
                 layoutBoneResult112.text = "出\n生"
+
+                layoutBoneResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
             "천주교" -> {
                 layoutBoneResult111.visibility = View.GONE
                 layoutBoneResult112.visibility = View.VISIBLE
                 layoutBoneResult112.text = "出\n生"
+
+                layoutBoneResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
         }
 
@@ -1010,11 +1032,15 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutBoneResult311.visibility = View.GONE
                 layoutBoneResult312.visibility = View.VISIBLE
                 layoutBoneResult312.text = "召\n天"
+
+                layoutBoneResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
             "천주교" -> {
                 layoutBoneResult311.visibility = View.GONE
                 layoutBoneResult312.visibility = View.VISIBLE
                 layoutBoneResult312.text = "善\n終"
+
+                layoutBoneResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
         }
 

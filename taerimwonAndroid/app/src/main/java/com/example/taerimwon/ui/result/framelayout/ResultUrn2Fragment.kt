@@ -92,7 +92,8 @@ class ResultUrn2Fragment : BaseFragment<FragmentResultUrn2Binding>(R.layout.frag
                 imageName = "img_mark5_2"
         }
 
-        if(selectedUrnName2!!.contains("블랙") || selectedUrnName2!!.contains("검정")) {
+        if(selectedUrnName2!!.contains("블랙") || selectedUrnName2!!.contains("검정")
+            || selectedUrnName2!!.contains("휴안홍") || selectedUrnName2!!.contains("휴안흑")) {
             if(boneEngraveTypePosition == 3){
                 imageName = "img_mark4_2"
             }else if(boneEngraveTypePosition == 4 || boneEngraveTypePosition == 5) {
@@ -104,7 +105,8 @@ class ResultUrn2Fragment : BaseFragment<FragmentResultUrn2Binding>(R.layout.frag
         binding.imageUrnResult21.setImageResource(imageResource)
     }
     private fun setUrnData() {
-        if(selectedUrnName2!!.contains("블랙") || selectedUrnName2!!.contains("검정")){
+        if(selectedUrnName2!!.contains("블랙") || selectedUrnName2!!.contains("검정")
+            || selectedUrnName2!!.contains("휴안홍") || selectedUrnName2!!.contains("휴안흑")){
             binding.layoutUrnResult111.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult112.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult121.setTextColor(Color.parseColor("#FFD700"))

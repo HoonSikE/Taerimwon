@@ -169,6 +169,7 @@
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
                     android:textScaleX="1.5"
+                    android:layout_marginTop="-1dp"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                     android:gravity="center"

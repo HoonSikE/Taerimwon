@@ -49,7 +49,6 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
 
         if(!selectedUrnType.contains("선택안함") && (selectedUrnType.contains("합골함1") || !ApplicationClass.prefs.selectedUrnType2.toString().contains("선택안함"))) {
             if(ApplicationClass.prefs.boneSex == "남성"){
-                selectedUrnType = ApplicationClass.prefs.selectedUrnType2.toString()
                 selectedUrnName = ApplicationClass.prefs.selectedUrnName2.toString()
                 name1 = ApplicationClass.prefs.boneName1.toString()
                 name2 = ApplicationClass.prefs.boneName2.toString()
@@ -89,7 +88,8 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
                 imageName = "img_mark5_2"
         }
 
-        if(selectedUrnName!!.contains("블랙") || selectedUrnName!!.contains("검정")) {
+        if(selectedUrnName!!.contains("블랙") || selectedUrnName!!.contains("검정")
+            || selectedUrnName!!.contains("휴안홍") || selectedUrnName!!.contains("휴안흑")) {
             if(engraveTypePosition == 3){
                 imageName = "img_mark4_2"
             }else if(engraveTypePosition == 4 || engraveTypePosition == 5) {
@@ -100,7 +100,8 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         binding.imageUrnResult21.setImageResource(imageResource)
     }
     private fun setUrnData() {
-        if(selectedUrnName!!.contains("블랙") || selectedUrnName!!.contains("검정")){
+        if(selectedUrnName!!.contains("블랙") || selectedUrnName!!.contains("검정")
+            || selectedUrnName!!.contains("휴안홍") || selectedUrnName!!.contains("휴안흑")){
             binding.layoutUrnResult111.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult112.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult121.setTextColor(Color.parseColor("#FFD700"))

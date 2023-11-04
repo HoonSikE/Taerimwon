@@ -33,12 +33,14 @@ import java.io.FileOutputStream
 @AndroidEntryPoint
 class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R.layout.fragment_result_bone_tablet) {
     private lateinit var selectedTabletType: String
+    private lateinit var selectedTabletName: String
 
     override fun init() {
         initData()
     }
     private fun initData() {
         selectedTabletType = ApplicationClass.prefs.selectedTabletType.toString()
+        selectedTabletName = ApplicationClass.prefs.selectedTabletName.toString()
 
         if(selectedTabletType != "선택안함") {
             if(selectedTabletType.contains("사진")){
@@ -48,9 +50,9 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
             }else if(selectedTabletType.contains("합골")){
 //                setTabletData()
                 setTablet2Data()
-            }else {
-                binding.layoutResultContent.visibility = View.GONE
             }
+        }else {
+            binding.layoutResultContent.visibility = View.GONE
         }
     }
     private fun setTable2Mark() {
@@ -74,61 +76,45 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
         var layoutBoneTablet2Result10 = binding.layoutBoneTablet2Result10
         var layoutBoneTablet2Result12 = binding.layoutBoneTablet2Result12
 
-
-//        if(ApplicationClass.prefs.boneSex == "남성"){
+        if(ApplicationClass.prefs.boneTabletSex == "남성"){
+            println("ApplicationClass.prefs.boneTabletSex" + ApplicationClass.prefs.boneTabletSex)
 //            // 정보1
-//            name3 = ApplicationClass.prefs.boneName3
-//            tabletReligion = ApplicationClass.prefs.boneTabletReligion
-//            tabletType = ApplicationClass.prefs.boneTabletType
-//            layoutBoneTabletMark1 = binding.layoutBoneTabletMark2
-//            layoutBoneTabletResult10 = binding.layoutBoneTablet2Result10
-//            layoutBoneTabletResult12 = binding.layoutBoneTablet2Result12
+            name3 = ApplicationClass.prefs.boneName3
+            tabletReligion = ApplicationClass.prefs.boneTabletReligion
+            tabletType = ApplicationClass.prefs.boneTabletType
 //
 //            // 정보2
-//            boneName3 = ApplicationClass.prefs.name3
-//            boneTabletReligion = ApplicationClass.prefs.tabletReligion
-//            boneTabletType = ApplicationClass.prefs.tabletType
-//            layoutBoneTabletMark2 = binding.layoutBoneTabletMark1
-//            layoutBoneTablet2Result10 = binding.layoutBoneTabletResult10
-//            layoutBoneTablet2Result12 = binding.layoutBoneTabletResult12
-//        }
-//        else if(ApplicationClass.prefs.boneSex == "여성"){
-//        }
+            boneName3 = ApplicationClass.prefs.name3
+            boneTabletReligion = ApplicationClass.prefs.tabletReligion
+            boneTabletType = ApplicationClass.prefs.tabletType
+        }
+        else if(ApplicationClass.prefs.boneTabletSex == "여성"){
+        }
 
-        val selectedTabletName = ApplicationClass.prefs.selectedTabletName
         // 추가 정보 / 기존 정보
-        if(tabletReligion == boneTabletReligion && !(name3 == "" || boneName3 == "")) {
+        if(tabletReligion == boneTabletReligion && (tabletType != "문구" && boneTabletType != "문구") && !(name3 == "" || boneName3 == "")) {
             var imageName = "img_mark1"
 
-            layoutBoneTabletMark0.visibility = View.VISIBLE
-            layoutBoneTabletMark1.visibility = View.GONE
-            layoutBoneTabletMark2.visibility = View.GONE
-
-            if(tabletReligion == "일반" && (tabletType != "문구" && boneTabletType != "문구")) {
+            if(tabletReligion == "일반") {
                 if(tabletType.toString().contains("본관") && boneTabletType.toString().contains("본관")){
-                    layoutBoneTabletMark0.visibility = View.GONE
                 }else if(!tabletType.toString().contains("본관") && !boneTabletType.toString().contains("본관")){
                     layoutBoneTabletResult00.visibility = View.VISIBLE
                 }else {
-                    layoutBoneTabletMark0.visibility = View.GONE
-
                     if(!tabletType.toString().contains("본관")){
-                        layoutBoneTabletMark2.visibility = View.VISIBLE
                         layoutBoneTabletResult10.visibility = View.VISIBLE
                     }
                     if(!boneTabletType.toString().contains("본관")){
-                        layoutBoneTabletMark1.visibility = View.VISIBLE
                         layoutBoneTablet2Result10.visibility = View.VISIBLE
                     }
                 }
-            }else if(tabletReligion == "기독교" && (tabletType != "문구" && boneTabletType != "문구")){
-                binding.layoutBoneTabletResult01.visibility = View.VISIBLE
+            }else if(tabletReligion == "기독교"){
+                layoutBoneTabletResult01.visibility = View.VISIBLE
                 imageName = "img_mark2"
-            }else if(tabletReligion == "불교" && (tabletType != "문구" && boneTabletType != "문구")){
-                binding.layoutBoneTabletResult01.visibility = View.VISIBLE
+            }else if(tabletReligion == "불교"){
+                layoutBoneTabletResult01.visibility = View.VISIBLE
                 imageName = "img_mark3"
-            }else if(tabletReligion == "천주교" && (tabletType != "문구" && boneTabletType != "문구")) {
-                binding.layoutBoneTabletResult01.visibility = View.VISIBLE
+            }else if(tabletReligion == "천주교") {
+                layoutBoneTabletResult01.visibility = View.VISIBLE
                 imageName = "img_mark4"
                 if(selectedTabletName!!.contains("검정")) {
                     imageName = "img_mark4_2"
@@ -136,61 +122,56 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
             }
             val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
             layoutBoneTabletResult01.setImageResource(imageResource)
-        }else {
-            if(name3 != ""){
+        }
+        else {
+            if(name3 != "" && tabletType != "문구"){
                 // 이미지 이름을 문자열로 정의합니다.
                 var imageName = "img_mark1"
-                layoutBoneTabletMark1.visibility = View.VISIBLE
                 layoutBoneTabletResult12.visibility = View.VISIBLE
 
-                if(tabletReligion == "일반" && tabletType.toString().contains("본관")) {
-                    layoutBoneTabletMark1.visibility = View.GONE
-                }else if(tabletReligion == "일반" && tabletType != "문구") {
+                if(tabletType == "일반(본관)") {
+                    layoutBoneTabletResult12.visibility = View.GONE
+                }else if(tabletType == "일반") {
 //            imageName = "img_mark1"
                     layoutBoneTabletResult10.visibility = View.VISIBLE
                     layoutBoneTabletResult12.visibility = View.GONE
-                }else if(tabletReligion == "기독교" && tabletType != "문구")
+                }else if(tabletReligion == "기독교")
                     imageName = "img_mark2"
-                else if(tabletReligion == "불교" && tabletType != "문구")
+                else if(tabletReligion == "불교")
                     imageName = "img_mark3"
-                else if(tabletReligion == "천주교" && tabletType != "문구") {
+                else if(tabletReligion == "천주교") {
                     imageName = "img_mark4"
                     if(selectedTabletName!!.contains("검정")) {
                         imageName = "img_mark4_2"
                     }
                 }
-                else
-                    return
 
                 // 직분, 세례명, 법명
                 val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
                 layoutBoneTabletResult12.setImageResource(imageResource)
             }
 
-            if(boneName3 != ""){
+            if(boneName3 != "" && boneTabletType != "문구"){
                 // 이미지 이름을 문자열로 정의합니다.
                 var imageName = "img_mark1"
-                layoutBoneTabletMark2.visibility = View.VISIBLE
                 layoutBoneTablet2Result12.visibility = View.VISIBLE
 
-                if(boneTabletReligion == "일반" && boneTabletType.toString().contains("본관")) {
-                    layoutBoneTabletMark2.visibility = View.GONE
-                }else if(boneTabletReligion == "일반" && boneTabletType != "문구") {
+                if(boneTabletType == "일반(본관)") {
+                    layoutBoneTablet2Result12.visibility = View.GONE
+                }else if(boneTabletType == "일반") {
 //            imageName = "img_mark1"
                     layoutBoneTablet2Result10.visibility = View.VISIBLE
                     layoutBoneTablet2Result12.visibility = View.GONE
-                }else if(boneTabletReligion == "기독교" && boneTabletType != "문구")
+                }else if(boneTabletReligion == "기독교")
                     imageName = "img_mark2"
-                else if(boneTabletReligion == "불교" && boneTabletType != "문구")
+                else if(boneTabletReligion == "불교")
                     imageName = "img_mark3"
-                else if(boneTabletReligion == "천주교" && boneTabletType != "문구"){
+                else if(boneTabletReligion == "천주교"){
                     imageName = "img_mark4"
                     if(selectedTabletName!!.contains("검정")) {
                         imageName = "img_mark4_2"
                     }
                 }
-                else
-                    return
 
                 // 직분, 세례명, 법명
                 val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
@@ -199,13 +180,12 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
         }
     }
     private fun setTablet2Data() {
-        val selectedTabletName = ApplicationClass.prefs.selectedTabletName
-
         setTable2Mark()
         val pixel_size_13 = resources.getDimensionPixelSize(R.dimen.pixel_size_13)
         val pixel_size_15 = resources.getDimensionPixelSize(R.dimen.pixel_size_15)
         val pixel_size_17_5 = resources.getDimensionPixelSize(R.dimen.pixel_size_17_5)
         val pixel_size_20 = resources.getDimensionPixelSize(R.dimen.pixel_size_20)
+        val pixel_size_35 = resources.getDimensionPixelSize(R.dimen.pixel_size_35)
 
         // 이름
         var tabletName2 = ApplicationClass.prefs.tabletName2.toString()
@@ -214,380 +194,717 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
         var tmp2 = StringBuilder()
         var tabletReligion = ApplicationClass.prefs.tabletReligion
         var tabletType = ApplicationClass.prefs.tabletType.toString()
-//
-//        var layoutBoneTabletResult00 = binding.layoutBoneTabletResult00
-//
-//        var layoutBoneTabletResult10 = binding.layoutBoneTabletResult10
-//        var layoutBoneTabletResult12 = binding.layoutBoneTabletResult12
-//
-//        var layoutBoneTabletResult0 = binding.layoutBoneTabletResult0
-//        var layoutBoneTabletResult20 = binding.layoutBoneTabletResult20
-//        var layoutBoneTabletResult2 = binding.layoutBoneTabletResult2
-//        var layoutBoneTabletResult21 = binding.layoutBoneTabletResult21
-//        var layoutBoneTabletResult22 = binding.layoutBoneTabletResult22
-//        var layoutBoneTabletResult30 = binding.layoutBoneTabletResult30
-//        var layoutBoneTabletResult3 = binding.layoutBoneTabletResult3
-//        var layoutBoneTabletResult31 = binding.layoutBoneTabletResult31
-//        var layoutBoneTabletResult312 = binding.layoutBoneTabletResult312
-//        var layoutBoneTabletResult32 = binding.layoutBoneTabletResult32
-//
-//        // 합골
+
+        // 합골
         var boneTabletName2 = ApplicationClass.prefs.boneTabletName2.toString()
         var boneName3 = ApplicationClass.prefs.boneName3.toString()
         var boneTmp = StringBuilder()
         var boneTmp2 = StringBuilder()
         var boneTabletReligion = ApplicationClass.prefs.boneTabletReligion
         var boneTabletType = ApplicationClass.prefs.boneTabletType.toString()
-//
-//        var layoutBoneTablet2Result10 = binding.layoutBoneTablet2Result10
-//        var layoutBoneTablet2Result12 = binding.layoutBoneTablet2Result12
-//        var layoutBoneTablet2Result0 = binding.layoutBoneTablet2Result0
-//        var layoutBoneTablet2Result20 = binding.layoutBoneTablet2Result20
-//        var layoutBoneTablet2Result2 = binding.layoutBoneTablet2Result2
-//        var layoutBoneTablet2Result21 = binding.layoutBoneTablet2Result21
-//        var layoutBoneTablet2Result22 = binding.layoutBoneTablet2Result22
-//        var layoutBoneTablet2Result30 = binding.layoutBoneTablet2Result30
-//        var layoutBoneTablet2Result3 = binding.layoutBoneTablet2Result3
-//        var layoutBoneTablet2Result31 = binding.layoutBoneTablet2Result31
-//        var layoutBoneTablet2Result312 = binding.layoutBoneTablet2Result312
-//        var layoutBoneTablet2Result32 = binding.layoutBoneTablet2Result32
 
-//        // 추가 정보 / 기존 정보
-//        if(ApplicationClass.prefs.boneTabletSex == "남성"){
-//            // 이름
-//            tabletName2 = ApplicationClass.prefs.boneTabletName2.toString()
-//            name3 = ApplicationClass.prefs.boneName3.toString()
-//            tmp = StringBuilder()
-//            tmp2 = StringBuilder()
+
+        // 추가 정보 / 기존 정보
+        if(ApplicationClass.prefs.boneTabletSex == "남성"){
+            // 이름
+            tabletName2 = ApplicationClass.prefs.boneTabletName2.toString()
+            name3 = ApplicationClass.prefs.boneName3.toString()
 //            tabletReligion = ApplicationClass.prefs.boneTabletReligion
-//            tabletType = ApplicationClass.prefs.boneTabletType.toString()
-//
-//            layoutBoneTabletResult10 = binding.layoutBoneTablet2Result10
-//            layoutBoneTabletResult12 = binding.layoutBoneTablet2Result12
-//            layoutBoneTabletResult0 = binding.layoutBoneTablet2Result0
-//            layoutBoneTabletResult20 = binding.layoutBoneTablet2Result20
-//            layoutBoneTabletResult2 = binding.layoutBoneTablet2Result2
-//            layoutBoneTabletResult21 = binding.layoutBoneTablet2Result21
-//            layoutBoneTabletResult22 = binding.layoutBoneTablet2Result22
-//            layoutBoneTabletResult30 = binding.layoutBoneTablet2Result30
-//            layoutBoneTabletResult3 = binding.layoutBoneTablet2Result3
-//            layoutBoneTabletResult31 = binding.layoutBoneTablet2Result31
-//            layoutBoneTabletResult312 = binding.layoutBoneTablet2Result312
-//            layoutBoneTabletResult32 = binding.layoutBoneTablet2Result32
-//
-//            // 합골
-//            boneTabletName2 = ApplicationClass.prefs.tabletName2.toString()
-//            boneName3 = ApplicationClass.prefs.name3.toString()
-//            boneTmp = StringBuilder()
-//            boneTmp2 = StringBuilder()
+            tabletType = ApplicationClass.prefs.boneTabletType.toString()
+
+            // 합골
+            boneTabletName2 = ApplicationClass.prefs.tabletName2.toString()
+            boneName3 = ApplicationClass.prefs.name3.toString()
 //            boneTabletReligion = ApplicationClass.prefs.tabletReligion
-//            boneTabletType = ApplicationClass.prefs.tabletType.toString()
-//
-//            layoutBoneTablet2Result10 = binding.layoutBoneTabletResult10
-//            layoutBoneTablet2Result12 = binding.layoutBoneTabletResult12
-//            layoutBoneTablet2Result0 = binding.layoutBoneTabletResult0
-//            layoutBoneTablet2Result20 = binding.layoutBoneTabletResult20
-//            layoutBoneTablet2Result2 = binding.layoutBoneTabletResult2
-//            layoutBoneTablet2Result21 = binding.layoutBoneTabletResult21
-//            layoutBoneTablet2Result22 = binding.layoutBoneTabletResult22
-//            layoutBoneTablet2Result30 = binding.layoutBoneTabletResult30
-//            layoutBoneTablet2Result3 = binding.layoutBoneTabletResult3
-//            layoutBoneTablet2Result31 = binding.layoutBoneTabletResult31
-//            layoutBoneTablet2Result312 = binding.layoutBoneTabletResult312
-//            layoutBoneTablet2Result32 = binding.layoutBoneTabletResult32
-//        }
+            boneTabletType = ApplicationClass.prefs.tabletType.toString()
+        }
 
         if(selectedTabletName!!.contains("검정")){
             binding.layoutBoneTabletResult00.setTextColor(Color.parseColor("#FFD700"))
 
-            binding.layoutBoneTabletResult0.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutBoneTabletResult10.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutBoneTabletResult20.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutBoneTabletResult2.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneTabletResult1.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutBoneTabletResult21.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutBoneTabletResult22.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutBoneTabletResult30.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneTabletResult23.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneTabletResult24.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneTabletResult25.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneTabletResult26.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneTabletResult27.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneTabletResult28.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneTabletResult29.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutBoneTabletResult3.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutBoneTabletResult31.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutBoneTabletResult312.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutBoneTabletResult32.setTextColor(Color.parseColor("#FFD700"))
 
-            binding.layoutBoneTablet2Result0.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutBoneTablet2Result10.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutBoneTablet2Result20.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutBoneTablet2Result2.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneTablet2Result1.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutBoneTablet2Result21.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutBoneTablet2Result22.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutBoneTablet2Result30.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneTablet2Result23.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneTablet2Result24.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneTablet2Result25.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneTablet2Result26.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneTablet2Result27.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneTablet2Result28.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutBoneTablet2Result29.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutBoneTablet2Result3.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutBoneTablet2Result31.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutBoneTablet2Result312.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutBoneTablet2Result32.setTextColor(Color.parseColor("#FFD700"))
         }
 
         if(!tabletType.contains("본관") && tabletType != "문구") {
+            val layoutBoneTabletResult1 = binding.layoutBoneTabletResult1
+            val layoutBoneTabletResult2 = binding.layoutBoneTabletResult2
+            val layoutBoneTabletResult21 = binding.layoutBoneTabletResult21
+            val layoutBoneTabletResult22 = binding.layoutBoneTabletResult22
+            val layoutBoneTabletResult23 = binding.layoutBoneTabletResult23
+            val layoutBoneTabletResult24 = binding.layoutBoneTabletResult24
+            val layoutBoneTabletResult25 = binding.layoutBoneTabletResult25
+            val layoutBoneTabletResult26 = binding.layoutBoneTabletResult26
+            val layoutBoneTabletResult27 = binding.layoutBoneTabletResult27
+            val layoutBoneTabletResult28 = binding.layoutBoneTabletResult28
+            val layoutBoneTabletResult29 = binding.layoutBoneTabletResult29
+            val layoutBoneTabletResult3 = binding.layoutBoneTabletResult3
+            layoutBoneTabletResult2.visibility = View.VISIBLE
+
             when (tabletType) {
                 "일반", "불교" -> {
-                    binding.layoutBoneTabletResult2.visibility = View.VISIBLE
+                    val layoutParams = layoutBoneTabletResult2.layoutParams
+                    layoutParams.width = 65
+                    layoutParams.height = 340
+                    layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (name3.length) {
                         2 -> {
-                            tmp.append(name3[0]).append("\n").append("\n").append(name3[1])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[1].toString()
+
+                                tmp.append(name3[0]).append("\n").append("\n").append(name3[1])
+//                            layoutBoneTabletResult2.setLineSpacing(260f, 1f)
                         }
                         3 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
-                                .append(name3[2])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[2].toString()
+
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
+//                                .append(name3[2])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 3.2f)
                         }
                         4 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
-                                .append(name3[2]).append("\n").append(name3[3])
-                            binding.layoutBoneTabletResult2.setLineSpacing(0f, 1.4f)
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = name3[2].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[3].toString()
+
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
+//                                .append(name3[2]).append("\n").append(name3[3])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 2.2f)
                         }
                     }
-                    binding.layoutBoneTabletResult2.text = tmp.toString()
+//                    layoutBoneTabletResult2.text = tmp.toString()
                 }
                 "기독교" -> {
-                    binding.layoutBoneTabletResult21.visibility = View.VISIBLE
+                    layoutBoneTabletResult1.visibility = View.VISIBLE
 
-                    val layoutParams = binding.layoutBoneTabletResult21.layoutParams as ViewGroup.MarginLayoutParams
-                    val marginTopInPixels = 0
-                    layoutParams.topMargin = marginTopInPixels
-                    binding.layoutBoneTabletResult21.setLineSpacing(0f, 1.7f)
-                    binding.layoutBoneTabletResult21.layoutParams = layoutParams
+                    val layoutParams = layoutBoneTabletResult2.layoutParams
+                    layoutParams.width = 65
+                    layoutParams.height = 310
+                    layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (name3.length) {
                         2 -> {
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[1].toString()
+
                             tmp.append(name3[0]).append("\n").append("\n").append(name3[1])
+//                            layoutBoneTabletResult2.setLineSpacing(260f, 1f)
                         }
                         3 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
-                                .append(name3[2])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[2].toString()
+
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
+//                                .append(name3[2])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 3.2f)
                         }
                         4 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
-                                .append(name3[2]).append("\n").append(name3[3])
-                            binding.layoutBoneTabletResult21.setLineSpacing(0f, 1.2f)
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = name3[2].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[3].toString()
+
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
+//                                .append(name3[2]).append("\n").append(name3[3])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 2.2f)
                         }
                     }
 
-                    binding.layoutBoneTabletResult20.visibility = View.VISIBLE
                     when (tabletName2.length) {
                         2 ->{
-                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1])
+//                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1])
                         }
                         3 -> {
-                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1]).append("\n").append(tabletName2[2])
-
-                            binding.layoutBoneTabletResult20.setLineSpacing(0f, 1.0f)
+//                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1]).append("\n").append(tabletName2[2])
                         }
                         4 -> {
-                            tmp2.append(tabletName2[0] + "" + tabletName2[1]).append("\n").append(tabletName2[2] + "" + tabletName2[3])
+//                            tmp2.append(tabletName2[0] + "" + tabletName2[1]).append("\n").append(tabletName2[2] + "" + tabletName2[3])
+                            layoutBoneTabletResult1.letterSpacing = -0.2f
                         }
                     }
-                    binding.layoutBoneTabletResult20.text = tmp2.toString()
-                    binding.layoutBoneTabletResult21.text = tmp.toString()
+                    tmp2.append(tabletName2)
+                    layoutBoneTabletResult1.text = tmp2.toString()
+//                    layoutBoneTabletResult2.text = tmp.toString()
                 }
                 "천주교" -> {
-                    binding.layoutBoneTabletResult21.visibility = View.VISIBLE
-                    binding.layoutBoneTabletResult21.setLineSpacing(0f, 1.7f)
+                    layoutBoneTabletResult3.visibility = View.VISIBLE
+
+                    val layoutParams = layoutBoneTabletResult2.layoutParams
+                    layoutParams.width = 65
+                    layoutParams.height = 310
+                    layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (name3.length) {
                         2 -> {
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[1].toString()
+
                             tmp.append(name3[0]).append("\n").append("\n").append(name3[1])
+//                            layoutBoneTabletResult2.setLineSpacing(260f, 1f)
                         }
                         3 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
-                                .append(name3[2])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[2].toString()
+
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
+//                                .append(name3[2])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 3.2f)
                         }
                         4 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
-                                .append(name3[2]).append("\n").append(name3[3])
-                            binding.layoutBoneTabletResult21.setLineSpacing(0f, 1.2f)
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = name3[2].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[3].toString()
+
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n")
+//                                .append(name3[2]).append("\n").append(name3[3])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 2.2f)
                         }
                     }
 
-                    binding.layoutBoneTabletResult22.visibility = View.VISIBLE
                     when (tabletName2.length) {
                         2 ->{
-                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1])
+//                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1])
+                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         3 -> {
-                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1]).append("\n").append(tabletName2[2])
-
-                            binding.layoutBoneTabletResult22.setLineSpacing(0f, 1.0f)
+//                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1]).append("\n").append(tabletName2[2])
+                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         4 -> {
-                            tmp2.append(tabletName2[0] + "" + tabletName2[1]).append("\n").append(tabletName2[2] + "" + tabletName2[3])
+//                            tmp2.append(tabletName2[0] + "" + tabletName2[1]).append("\n").append(tabletName2[2] + "" + tabletName2[3])
+                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         5 -> {
-                            tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2])
-
-                            binding.layoutBoneTabletResult22.setLineSpacing(0f, 1.0f)
+//                            tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2])
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
+                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         6 -> {
-                            tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2] + "" + tabletName2[5])
-
-                            binding.layoutBoneTabletResult22.setLineSpacing(0f, 1.0f)
+//                            tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2] + "" + tabletName2[5])
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
+                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            layoutBoneTabletResult3.scaleY = 1.5f
                         }
                     }
-                    binding.layoutBoneTabletResult22.text = tmp2.toString()
-                    binding.layoutBoneTabletResult21.text = tmp.toString()
+//                    layoutBoneTabletResult2.text = tmp.toString()
+                    tmp2.append(tabletName2)
+                    layoutBoneTabletResult3.text = tmp2.toString()
                 }
             }
         }
         else if(tabletType.contains("본관") && tabletType != "문구") {
+            val layoutBoneTabletResult1 = binding.layoutBoneTabletResult1
+            val layoutBoneTabletResult2 = binding.layoutBoneTabletResult2
+            val layoutBoneTabletResult21 = binding.layoutBoneTabletResult21
+            val layoutBoneTabletResult22 = binding.layoutBoneTabletResult22
+            val layoutBoneTabletResult23 = binding.layoutBoneTabletResult23
+            val layoutBoneTabletResult24 = binding.layoutBoneTabletResult24
+            val layoutBoneTabletResult25 = binding.layoutBoneTabletResult25
+            val layoutBoneTabletResult26 = binding.layoutBoneTabletResult26
+            val layoutBoneTabletResult27 = binding.layoutBoneTabletResult27
+            val layoutBoneTabletResult28 = binding.layoutBoneTabletResult28
+            val layoutBoneTabletResult29 = binding.layoutBoneTabletResult29
+            val layoutBoneTabletResult3 = binding.layoutBoneTabletResult3
+            layoutBoneTabletResult2.visibility = View.VISIBLE
+
             println("본관 진입")
             when (tabletType) {
                 "일반(본관)" -> {
                     println("일반 진입")
 
-                    binding.layoutBoneTabletResult10.visibility = View.GONE
-                    binding.layoutBoneTabletResult12.visibility = View.GONE
-                    binding.layoutBoneTabletResult0.visibility = View.VISIBLE
+                    val layoutParams = layoutBoneTabletResult2.layoutParams
+                    layoutParams.width = 65
+                    layoutParams.height = 410
+                    layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (name3.length) {
                         7 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
-                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                                .append("\n").append(name3[6])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = name3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = name3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = name3[4].toString()
+
+                            layoutBoneTabletResult26.visibility = View.VISIBLE
+                            layoutBoneTabletResult26.text = name3[5].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[6].toString()
+
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+//                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+//                                .append("\n").append(name3[6])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 1.4f)
                         }
                         8 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
-                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                                .append("\n").append(name3[6]).append("\n").append(name3[7])
-                            binding.layoutBoneTabletResult0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = name3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = name3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = name3[4].toString()
+
+                            layoutBoneTabletResult26.visibility = View.VISIBLE
+                            layoutBoneTabletResult26.text = name3[5].toString()
+
+                            layoutBoneTabletResult27.visibility = View.VISIBLE
+                            layoutBoneTabletResult27.text = name3[6].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[7].toString()
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+//                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+//                                .append("\n").append(name3[6]).append("\n").append(name3[7])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 1.25f)
                         }
                         9 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
-                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                                .append("\n").append(name3[6]).append("\n").append(name3[7]).append("\n").append(name3[8])
-                            binding.layoutBoneTabletResult0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_17_5.toFloat())
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = name3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = name3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = name3[4].toString()
+
+                            layoutBoneTabletResult26.visibility = View.VISIBLE
+                            layoutBoneTabletResult26.text = name3[5].toString()
+
+                            layoutBoneTabletResult27.visibility = View.VISIBLE
+                            layoutBoneTabletResult27.text = name3[6].toString()
+
+                            layoutBoneTabletResult28.visibility = View.VISIBLE
+                            layoutBoneTabletResult28.text = name3[7].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[8].toString()
+
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+//                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+//                                .append("\n").append(name3[6]).append("\n").append(name3[7]).append("\n").append(name3[8])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 1.1f)
                         }
                     }
-                    binding.layoutBoneTabletResult0.text = tmp.toString()
+//                    layoutBoneTabletResult2.text = tmp.toString()
                 }
                 "기독교(본관)" -> {
                     println("기독교 진입")
 
-                    binding.layoutBoneTabletResult3.visibility = View.VISIBLE
+                    layoutBoneTabletResult1.visibility = View.VISIBLE
+                    layoutBoneTabletResult1.scaleY = 1.3f
 
-                    binding.layoutBoneTabletResult32.visibility = View.VISIBLE
+                    val layoutParams = layoutBoneTabletResult2.layoutParams
+                    layoutParams.width = 65
+                    layoutParams.height = 280
+                    layoutBoneTabletResult2.layoutParams = layoutParams
+//                    layoutBoneTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+
+
+                    layoutBoneTabletResult3.visibility = View.VISIBLE
                     val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
-                    binding.layoutBoneTabletResult32.typeface = hyhaeso
-                    binding.layoutBoneTabletResult32.text = "召天"
+                    layoutBoneTabletResult3.typeface = hyhaeso
+                    layoutBoneTabletResult3.text = "召天"
 
                     when (name3.length) {
                         5 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
-                                .append("\n").append(name3[3]).append("\n").append(name3[4])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = name3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = name3[3].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[4].toString()
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+//                                .append("\n").append(name3[3]).append("\n").append(name3[4])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 1.7f)
                         }
                         6 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
-                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                            binding.layoutBoneTabletResult3.setLineSpacing(0f, 1.0f)
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = name3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = name3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = name3[4].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[5].toString()
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+//                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 1.4f)
                         }
                         7 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
-                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                                .append("\n").append(name3[6])
-                            binding.layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
-                            binding.layoutBoneTabletResult3.setLineSpacing(0f, 1.0f)
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = name3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = name3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = name3[4].toString()
+
+                            layoutBoneTabletResult26.visibility = View.VISIBLE
+                            layoutBoneTabletResult26.text = name3[5].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[6].toString()
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+//                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+//                                .append("\n").append(name3[6])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 1.15f)
                         }
                     }
 
-                    binding.layoutBoneTabletResult30.visibility = View.VISIBLE
                     when (tabletName2.length) {
                         2 ->{
-                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1])
+//                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1])
+                            layoutBoneTabletResult1.scaleY = 1.3f
                         }
                         3 -> {
-                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1]).append("\n").append(tabletName2[2])
-
-                            binding.layoutBoneTabletResult30.setLineSpacing(0f, 1.0f)
+//                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1]).append("\n").append(tabletName2[2])
+                            layoutBoneTabletResult1.scaleY = 1.3f
                         }
                         4 -> {
-                            tmp2.append(tabletName2[0] + "" + tabletName2[1]).append("\n").append(tabletName2[2] + "" + tabletName2[3])
+//                            tmp2.append(tabletName2[0] + "" + tabletName2[1]).append("\n").append(tabletName2[2] + "" + tabletName2[3])
+                            layoutBoneTabletResult1.scaleY = 1.3f
+                            layoutBoneTabletResult1.letterSpacing = -0.2f
                         }
                     }
-                    binding.layoutBoneTabletResult30.text = tmp2.toString()
-                    binding.layoutBoneTabletResult3.text = tmp.toString()
+                    tmp2.append(tabletName2)
+                    layoutBoneTabletResult1.text = tmp2.toString()
+//                    layoutBoneTabletResult2.text = tmp.toString()
                 }
                 "불교(본관)" -> {
                     println("불교 진입")
 
-                    binding.layoutBoneTabletResult31.visibility = View.VISIBLE
+                    val layoutParams = layoutBoneTabletResult2.layoutParams
+                    layoutParams.width = 65
+                    layoutParams.height = 350
+                    layoutBoneTabletResult2.layoutParams = layoutParams
+//                    layoutBoneTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
 
                     when (name3.length) {
                         7 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
-                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                                .append("\n").append(name3[6])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = name3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = name3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = name3[4].toString()
+
+                            layoutBoneTabletResult26.visibility = View.VISIBLE
+                            layoutBoneTabletResult26.text = name3[5].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[6].toString()
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+//                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+//                                .append("\n").append(name3[6])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 1.35f)
                         }
                         8 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
-                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                                .append("\n").append(name3[6]).append("\n").append(name3[7])
-                            binding.layoutBoneTabletResult31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = name3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = name3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = name3[4].toString()
+
+                            layoutBoneTabletResult26.visibility = View.VISIBLE
+                            layoutBoneTabletResult26.text = name3[5].toString()
+
+                            layoutBoneTabletResult27.visibility = View.VISIBLE
+                            layoutBoneTabletResult27.text = name3[6].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[7].toString()
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+//                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+//                                .append("\n").append(name3[6]).append("\n").append(name3[7])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 1.2f)
                         }
                         9 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
-                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                                .append("\n").append(name3[6]).append("\n").append(name3[7]).append("\n").append(name3[8])
-                            binding.layoutBoneTabletResult31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_17_5.toFloat())
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = name3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = name3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = name3[4].toString()
+
+                            layoutBoneTabletResult26.visibility = View.VISIBLE
+                            layoutBoneTabletResult26.text = name3[5].toString()
+
+                            layoutBoneTabletResult27.visibility = View.VISIBLE
+                            layoutBoneTabletResult27.text = name3[6].toString()
+
+                            layoutBoneTabletResult28.visibility = View.VISIBLE
+                            layoutBoneTabletResult28.text = name3[7].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[8].toString()
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+//                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+//                                .append("\n").append(name3[6]).append("\n").append(name3[7]).append("\n").append(name3[8])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 1.5f)
                         }
                     }
-                    binding.layoutBoneTabletResult31.text = tmp.toString()
+//                    layoutBoneTabletResult2.text = tmp.toString()
                 }
                 "천주교(본관)" -> {
                     println("천주교 진입")
 
-                    binding.layoutBoneTabletResult312.visibility = View.VISIBLE
+                    val layoutParams = layoutBoneTabletResult2.layoutParams
+                    layoutParams.width = 65
+                    layoutParams.height = 310
+                    layoutBoneTabletResult2.layoutParams = layoutParams
+//                    layoutBoneTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+
+                    layoutBoneTabletResult3.visibility = View.VISIBLE
 
                     when (name3.length) {
                         5 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
-                                .append("\n").append(name3[3]).append("\n").append(name3[4])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = name3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = name3[3].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[4].toString()
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+//                                .append("\n").append(name3[3]).append("\n").append(name3[4])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 1.9f)
                         }
                         6 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
-                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                            binding.layoutBoneTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = name3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = name3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = name3[4].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[5].toString()
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+//                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 1.55f)
                         }
                         7 -> {
-                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
-                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                                .append("\n").append(name3[6])
-                            binding.layoutBoneTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
-                            binding.layoutBoneTabletResult312.setLineSpacing(0f, 1.0f)
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = name3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = name3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = name3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = name3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = name3[4].toString()
+
+                            layoutBoneTabletResult26.visibility = View.VISIBLE
+                            layoutBoneTabletResult26.text = name3[5].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = name3[6].toString()
+//                            tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
+//                                .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
+//                                .append("\n").append(name3[6])
+//                            layoutBoneTabletResult2.setLineSpacing(0f, 1.3f)
                         }
                     }
 
-                    binding.layoutBoneTabletResult32.visibility = View.VISIBLE
                     when (tabletName2.length) {
                         2 ->{
-                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1])
+//                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1])
+                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         3 -> {
-                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1]).append("\n").append(tabletName2[2])
-
-                            binding.layoutBoneTabletResult32.setLineSpacing(0f, 1.0f)
+//                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1]).append("\n").append(tabletName2[2])
+                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         4 -> {
-                            tmp2.append(tabletName2[0] + "" + tabletName2[1]).append("\n").append(tabletName2[2] + "" + tabletName2[3])
+//                            tmp2.append(tabletName2[0] + "" + tabletName2[1]).append("\n").append(tabletName2[2] + "" + tabletName2[3])
+                            layoutBoneTabletResult3.scaleY = 1.3f
+                            layoutBoneTabletResult3.letterSpacing = -0.2f
                         }
                         5 -> {
-                            tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2])
-
-                            binding.layoutBoneTabletResult32.setLineSpacing(0f, 1.0f)
+//                            tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2])
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
+                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         6 -> {
-                            tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2] + "" + tabletName2[5])
-
-                            binding.layoutBoneTabletResult32.setLineSpacing(0f, 1.0f)
+//                            tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2] + "" + tabletName2[5])
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
+                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            layoutBoneTabletResult3.scaleY = 1.5f
                         }
                     }
-                    binding.layoutBoneTabletResult32.text = tmp2.toString()
-                    binding.layoutBoneTabletResult312.text = tmp.toString()
+//                    layoutBoneTabletResult2.text = tmp.toString()
+                    tmp2.append(tabletName2)
+                    layoutBoneTabletResult3.text = tmp2.toString()
                 }
             }
         }
@@ -598,268 +915,574 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
         // 합골
         println("합골 진입")
         if(!boneTabletType.contains("본관") && boneTabletType != "문구") {
+            val layoutBoneTabletResult1 = binding.layoutBoneTablet2Result1
+            val layoutBoneTabletResult2 = binding.layoutBoneTablet2Result2
+            val layoutBoneTabletResult21 = binding.layoutBoneTablet2Result21
+            val layoutBoneTabletResult22 = binding.layoutBoneTablet2Result22
+            val layoutBoneTabletResult23 = binding.layoutBoneTablet2Result23
+            val layoutBoneTabletResult24 = binding.layoutBoneTablet2Result24
+            val layoutBoneTabletResult25 = binding.layoutBoneTablet2Result25
+            val layoutBoneTabletResult26 = binding.layoutBoneTablet2Result26
+            val layoutBoneTabletResult27 = binding.layoutBoneTablet2Result27
+            val layoutBoneTabletResult28 = binding.layoutBoneTablet2Result28
+            val layoutBoneTabletResult29 = binding.layoutBoneTablet2Result29
+            val layoutBoneTabletResult3 = binding.layoutBoneTablet2Result3
+            layoutBoneTabletResult2.visibility = View.VISIBLE
+
             when (boneTabletType) {
                 "일반", "불교" -> {
-                    binding.layoutBoneTablet2Result2.visibility = View.VISIBLE
+                    val layoutParams = layoutBoneTabletResult2.layoutParams
+                    layoutParams.width = 65
+                    layoutParams.height = 340
+                    layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (boneName3.length) {
                         2 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append("\n").append(boneName3[1])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[1].toString()
+
+                            tmp.append(boneName3[0]).append("\n").append("\n").append(boneName3[1])
                         }
                         3 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n")
-                                .append(boneName3[2])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[2].toString()
                         }
                         4 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n")
-                                .append(boneName3[2]).append("\n").append(boneName3[3])
-                            binding.layoutBoneTablet2Result2.setLineSpacing(0f, 1.4f)
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = boneName3[2].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[3].toString()
                         }
                     }
-                    binding.layoutBoneTablet2Result2.text = boneTmp.toString()
+//                    layoutBoneTabletResult2.text = tmp.toString()
                 }
                 "기독교" -> {
-                    binding.layoutBoneTablet2Result21.visibility = View.VISIBLE
+                    layoutBoneTabletResult1.visibility = View.VISIBLE
 
-                    val layoutParams = binding.layoutBoneTablet2Result21.layoutParams as ViewGroup.MarginLayoutParams
-                    val marginTopInPixels = 0
-                    layoutParams.topMargin = marginTopInPixels
-                    binding.layoutBoneTablet2Result21.setLineSpacing(0f, 1.7f)
-                    binding.layoutBoneTablet2Result21.layoutParams = layoutParams
+                    val layoutParams = layoutBoneTabletResult2.layoutParams
+                    layoutParams.width = 65
+                    layoutParams.height = 310
+                    layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (boneName3.length) {
                         2 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append("\n").append(boneName3[1])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[1].toString()
+
+                            tmp.append(boneName3[0]).append("\n").append("\n").append(boneName3[1])
+//                            layoutBoneTabletResult2.setLineSpacing(260f, 1f)
                         }
                         3 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n")
-                                .append(boneName3[2])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[2].toString()
                         }
                         4 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n")
-                                .append(boneName3[2]).append("\n").append(boneName3[3])
-                            binding.layoutBoneTablet2Result21.setLineSpacing(0f, 1.2f)
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = boneName3[2].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[3].toString()
                         }
                     }
 
-                    binding.layoutBoneTablet2Result20.visibility = View.VISIBLE
                     when (boneTabletName2.length) {
                         2 ->{
-                            boneTmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1])
+//                            tmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1])
                         }
                         3 -> {
-                            boneTmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1]).append("\n").append(boneTabletName2[2])
-
-                            binding.layoutBoneTablet2Result20.setLineSpacing(0f, 1.0f)
+//                            tmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1]).append("\n").append(boneTabletName2[2])
                         }
                         4 -> {
-                            boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[1]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[3])
+//                            tmp2.append(boneTabletName2[0] + "" + boneTabletName2[1]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[3])
+                            layoutBoneTabletResult1.letterSpacing = -0.2f
                         }
                     }
-                    binding.layoutBoneTablet2Result20.text = boneTmp2.toString()
-                    binding.layoutBoneTablet2Result21.text = boneTmp.toString()
+                    tmp2.append(boneTabletName2)
+                    layoutBoneTabletResult1.text = tmp2.toString()
                 }
                 "천주교" -> {
-                    binding.layoutBoneTablet2Result21.visibility = View.VISIBLE
-                    binding.layoutBoneTablet2Result21.setLineSpacing(0f, 1.7f)
+                    layoutBoneTabletResult3.visibility = View.VISIBLE
+
+                    val layoutParams = layoutBoneTabletResult2.layoutParams
+                    layoutParams.width = 65
+                    layoutParams.height = 310
+                    layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (boneName3.length) {
                         2 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append("\n").append(boneName3[1])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[1].toString()
+
+                            tmp.append(boneName3[0]).append("\n").append("\n").append(boneName3[1])
+//                            layoutBoneTabletResult2.setLineSpacing(260f, 1f)
                         }
                         3 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n")
-                                .append(boneName3[2])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[2].toString()
                         }
                         4 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n")
-                                .append(boneName3[2]).append("\n").append(boneName3[3])
-                            binding.layoutBoneTablet2Result21.setLineSpacing(0f, 1.2f)
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = boneName3[2].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[3].toString()
                         }
                     }
 
-                    binding.layoutBoneTablet2Result22.visibility = View.VISIBLE
                     when (boneTabletName2.length) {
                         2 ->{
-                            boneTmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1])
+//                            tmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1])
+                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         3 -> {
-                            boneTmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1]).append("\n").append(boneTabletName2[2])
-
-                            binding.layoutBoneTablet2Result22.setLineSpacing(0f, 1.0f)
+//                            tmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1]).append("\n").append(boneTabletName2[2])
+                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         4 -> {
-                            boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[1]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[3])
+//                            tmp2.append(boneTabletName2[0] + "" + boneTabletName2[1]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[3])
+                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         5 -> {
-                            boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[3]).append("\n").append(boneTabletName2[1] + "" + boneTabletName2[4]).append("\n").append(boneTabletName2[2])
-
-                            binding.layoutBoneTablet2Result22.setLineSpacing(0f, 1.0f)
+//                            tmp2.append(boneTabletName2[0] + "" + boneTabletName2[3]).append("\n").append(boneTabletName2[1] + "" + boneTabletName2[4]).append("\n").append(boneTabletName2[2])
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
+                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         6 -> {
-                            boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[3]).append("\n").append(boneTabletName2[1] + "" + boneTabletName2[4]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[5])
-
-                            binding.layoutBoneTablet2Result22.setLineSpacing(0f, 1.0f)
+//                            tmp2.append(boneTabletName2[0] + "" + boneTabletName2[3]).append("\n").append(boneTabletName2[1] + "" + boneTabletName2[4]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[5])
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
+                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            layoutBoneTabletResult3.scaleY = 1.5f
                         }
                     }
-                    binding.layoutBoneTablet2Result22.text = boneTmp2.toString()
-                    binding.layoutBoneTablet2Result21.text = boneTmp.toString()
+//                    layoutBoneTabletResult2.text = tmp.toString()
+                    tmp2.append(boneTabletName2)
+                    layoutBoneTabletResult3.text = tmp2.toString()
                 }
             }
         }
         else if(boneTabletType.contains("본관") && boneTabletType != "문구") {
-            println("합골 본관 진입")
+            val layoutBoneTabletResult1 = binding.layoutBoneTablet2Result1
+            val layoutBoneTabletResult2 = binding.layoutBoneTablet2Result2
+            val layoutBoneTabletResult21 = binding.layoutBoneTablet2Result21
+            val layoutBoneTabletResult22 = binding.layoutBoneTablet2Result22
+            val layoutBoneTabletResult23 = binding.layoutBoneTablet2Result23
+            val layoutBoneTabletResult24 = binding.layoutBoneTablet2Result24
+            val layoutBoneTabletResult25 = binding.layoutBoneTablet2Result25
+            val layoutBoneTabletResult26 = binding.layoutBoneTablet2Result26
+            val layoutBoneTabletResult27 = binding.layoutBoneTablet2Result27
+            val layoutBoneTabletResult28 = binding.layoutBoneTablet2Result28
+            val layoutBoneTabletResult29 = binding.layoutBoneTablet2Result29
+            val layoutBoneTabletResult3 = binding.layoutBoneTablet2Result3
+            layoutBoneTabletResult2.visibility = View.VISIBLE
+
+            println("본관 진입")
             when (boneTabletType) {
                 "일반(본관)" -> {
                     println("일반 진입")
-                    println(boneName3)
-                    binding.layoutBoneTablet2Result10.visibility = View.GONE
-                    binding.layoutBoneTablet2Result12.visibility = View.GONE
-                    binding.layoutBoneTablet2Result0.visibility = View.VISIBLE
+
+                    val layoutParams = layoutBoneTabletResult2.layoutParams
+                    layoutParams.width = 65
+                    layoutParams.height = 410
+                    layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (boneName3.length) {
                         7 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
-                                .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
-                                .append("\n").append(boneName3[6])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = boneName3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = boneName3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = boneName3[4].toString()
+
+                            layoutBoneTabletResult26.visibility = View.VISIBLE
+                            layoutBoneTabletResult26.text = boneName3[5].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[6].toString()
                         }
                         8 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
-                                .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
-                                .append("\n").append(boneName3[6]).append("\n").append(boneName3[7])
-                            binding.layoutBoneTablet2Result0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = boneName3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = boneName3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = boneName3[4].toString()
+
+                            layoutBoneTabletResult26.visibility = View.VISIBLE
+                            layoutBoneTabletResult26.text = boneName3[5].toString()
+
+                            layoutBoneTabletResult27.visibility = View.VISIBLE
+                            layoutBoneTabletResult27.text = boneName3[6].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[7].toString()
                         }
                         9 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
-                                .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
-                                .append("\n").append(boneName3[6]).append("\n").append(boneName3[7]).append("\n").append(boneName3[8])
-                            binding.layoutBoneTablet2Result0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_17_5.toFloat())
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = boneName3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = boneName3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = boneName3[4].toString()
+
+                            layoutBoneTabletResult26.visibility = View.VISIBLE
+                            layoutBoneTabletResult26.text = boneName3[5].toString()
+
+                            layoutBoneTabletResult27.visibility = View.VISIBLE
+                            layoutBoneTabletResult27.text = boneName3[6].toString()
+
+                            layoutBoneTabletResult28.visibility = View.VISIBLE
+                            layoutBoneTabletResult28.text = boneName3[7].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[8].toString()
                         }
                     }
-                    binding.layoutBoneTablet2Result0.text = boneTmp.toString()
                 }
                 "기독교(본관)" -> {
                     println("기독교 진입")
 
-                    binding.layoutBoneTablet2Result3.visibility = View.VISIBLE
+                    layoutBoneTabletResult1.visibility = View.VISIBLE
+                    layoutBoneTabletResult1.scaleY = 1.3f
 
-                    binding.layoutBoneTablet2Result32.visibility = View.VISIBLE
+                    val layoutParams = layoutBoneTabletResult2.layoutParams
+                    layoutParams.width = 65
+                    layoutParams.height = 280
+                    layoutBoneTabletResult2.layoutParams = layoutParams
+
+
+                    layoutBoneTabletResult3.visibility = View.VISIBLE
                     val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
-                    binding.layoutBoneTablet2Result32.typeface = hyhaeso
-                    binding.layoutBoneTablet2Result32.text = "召天"
+                    layoutBoneTabletResult3.typeface = hyhaeso
+                    layoutBoneTabletResult3.text = "召天"
 
                     when (boneName3.length) {
                         5 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
-                                .append("\n").append(boneName3[3]).append("\n").append(boneName3[4])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = boneName3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = boneName3[3].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[4].toString()
                         }
                         6 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
-                                .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
-                            binding.layoutBoneTablet2Result3.setLineSpacing(0f, 1.0f)
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = boneName3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = boneName3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = boneName3[4].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[5].toString()
                         }
                         7 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
-                                .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
-                                .append("\n").append(boneName3[6])
-                            binding.layoutBoneTablet2Result3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
-                            binding.layoutBoneTablet2Result3.setLineSpacing(0f, 1.0f)
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = boneName3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = boneName3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = boneName3[4].toString()
+
+                            layoutBoneTabletResult26.visibility = View.VISIBLE
+                            layoutBoneTabletResult26.text = boneName3[5].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[6].toString()
                         }
                     }
 
-                    binding.layoutBoneTablet2Result30.visibility = View.VISIBLE
                     when (boneTabletName2.length) {
                         2 ->{
-                            boneTmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1])
+                            layoutBoneTabletResult1.scaleY = 1.3f
                         }
                         3 -> {
-                            boneTmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1]).append("\n").append(boneTabletName2[2])
-
-                            binding.layoutBoneTablet2Result30.setLineSpacing(0f, 1.0f)
+                            layoutBoneTabletResult1.scaleY = 1.3f
                         }
                         4 -> {
-                            boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[1]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[3])
+                            layoutBoneTabletResult1.scaleY = 1.3f
+                            layoutBoneTabletResult1.letterSpacing = -0.2f
                         }
                     }
-                    binding.layoutBoneTablet2Result30.text = boneTmp2.toString()
-                    binding.layoutBoneTablet2Result3.text = boneTmp.toString()
+                    tmp2.append(boneTabletName2)
+                    layoutBoneTabletResult1.text = tmp2.toString()
                 }
                 "불교(본관)" -> {
                     println("불교 진입")
 
-                    binding.layoutBoneTablet2Result31.visibility = View.VISIBLE
+                    val layoutParams = layoutBoneTabletResult2.layoutParams
+                    layoutParams.width = 65
+                    layoutParams.height = 350
+                    layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (boneName3.length) {
                         7 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
-                                .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
-                                .append("\n").append(boneName3[6])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = boneName3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = boneName3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = boneName3[4].toString()
+
+                            layoutBoneTabletResult26.visibility = View.VISIBLE
+                            layoutBoneTabletResult26.text = boneName3[5].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[6].toString()
                         }
                         8 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
-                                .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
-                                .append("\n").append(boneName3[6]).append("\n").append(boneName3[7])
-                            binding.layoutBoneTablet2Result31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = boneName3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = boneName3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = boneName3[4].toString()
+
+                            layoutBoneTabletResult26.visibility = View.VISIBLE
+                            layoutBoneTabletResult26.text = boneName3[5].toString()
+
+                            layoutBoneTabletResult27.visibility = View.VISIBLE
+                            layoutBoneTabletResult27.text = boneName3[6].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[7].toString()
                         }
                         9 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
-                                .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
-                                .append("\n").append(boneName3[6]).append("\n").append(boneName3[7]).append("\n").append(boneName3[8])
-                            binding.layoutBoneTablet2Result31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_17_5.toFloat())
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = boneName3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = boneName3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = boneName3[4].toString()
+
+                            layoutBoneTabletResult26.visibility = View.VISIBLE
+                            layoutBoneTabletResult26.text = boneName3[5].toString()
+
+                            layoutBoneTabletResult27.visibility = View.VISIBLE
+                            layoutBoneTabletResult27.text = boneName3[6].toString()
+
+                            layoutBoneTabletResult28.visibility = View.VISIBLE
+                            layoutBoneTabletResult28.text = boneName3[7].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[8].toString()
                         }
                     }
-                    binding.layoutBoneTablet2Result31.text = boneTmp.toString()
                 }
                 "천주교(본관)" -> {
                     println("천주교 진입")
 
-                    binding.layoutBoneTablet2Result312.visibility = View.VISIBLE
+                    val layoutParams = layoutBoneTabletResult2.layoutParams
+                    layoutParams.width = 65
+                    layoutParams.height = 310
+                    layoutBoneTabletResult2.layoutParams = layoutParams
+
+                    layoutBoneTabletResult3.visibility = View.VISIBLE
 
                     when (boneName3.length) {
                         5 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
-                                .append("\n").append(boneName3[3]).append("\n").append(boneName3[4])
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = boneName3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = boneName3[3].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[4].toString()
                         }
                         6 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
-                                .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
-                            binding.layoutBoneTablet2Result312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = boneName3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = boneName3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = boneName3[4].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[5].toString()
                         }
                         7 -> {
-                            boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
-                                .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
-                                .append("\n").append(boneName3[6])
-                            binding.layoutBoneTablet2Result312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
-                            binding.layoutBoneTablet2Result312.setLineSpacing(0f, 1.0f)
+                            layoutBoneTabletResult21.visibility = View.VISIBLE
+                            layoutBoneTabletResult21.text = boneName3[0].toString()
+
+                            layoutBoneTabletResult22.visibility = View.VISIBLE
+                            layoutBoneTabletResult22.text = boneName3[1].toString()
+
+                            layoutBoneTabletResult23.visibility = View.VISIBLE
+                            layoutBoneTabletResult23.text = boneName3[2].toString()
+
+                            layoutBoneTabletResult24.visibility = View.VISIBLE
+                            layoutBoneTabletResult24.text = boneName3[3].toString()
+
+                            layoutBoneTabletResult25.visibility = View.VISIBLE
+                            layoutBoneTabletResult25.text = boneName3[4].toString()
+
+                            layoutBoneTabletResult26.visibility = View.VISIBLE
+                            layoutBoneTabletResult26.text = boneName3[5].toString()
+
+                            layoutBoneTabletResult29.visibility = View.VISIBLE
+                            layoutBoneTabletResult29.text = boneName3[6].toString()
                         }
                     }
 
-                    binding.layoutBoneTablet2Result32.visibility = View.VISIBLE
                     when (boneTabletName2.length) {
                         2 ->{
-                            boneTmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1])
+                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         3 -> {
-                            boneTmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1]).append("\n").append(boneTabletName2[2])
-
-                            binding.layoutBoneTablet2Result32.setLineSpacing(0f, 1.0f)
+                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         4 -> {
-                            boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[1]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[3])
+                            layoutBoneTabletResult3.scaleY = 1.3f
+                            layoutBoneTabletResult3.letterSpacing = -0.2f
                         }
                         5 -> {
-                            boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[3]).append("\n").append(boneTabletName2[1] + "" + boneTabletName2[4]).append("\n").append(boneTabletName2[2])
-
-                            binding.layoutBoneTablet2Result32.setLineSpacing(0f, 1.0f)
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
+                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         6 -> {
-                            boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[3]).append("\n").append(boneTabletName2[1] + "" + boneTabletName2[4]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[5])
-
-                            binding.layoutBoneTablet2Result32.setLineSpacing(0f, 1.0f)
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
+                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            layoutBoneTabletResult3.scaleY = 1.5f
                         }
                     }
-                    binding.layoutBoneTablet2Result32.text = boneTmp2.toString()
-                    binding.layoutBoneTablet2Result312.text = boneTmp.toString()
+                    tmp2.append(boneTabletName2)
+                    layoutBoneTabletResult3.text = tmp2.toString()
                 }
             }
         }

@@ -634,6 +634,7 @@
                         app:layout_constraintStart_toEndOf="@+id/layout_urn"
                         app:layout_constraintEnd_toStartOf="@+id/layout_bone1"
                         app:layout_constraintTop_toTopOf="parent"
+                        android:visibility="gone"
                         >
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_urn_image2"
@@ -722,7 +723,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:background="@drawable/img_bone2_1"
+                            android:background="@drawable/img_bone2_2"
                             >
                             <ImageView
                                 android:id="@+id/image_bone2_image"
@@ -737,11 +738,10 @@
                             <ImageView
                                 android:id="@+id/image_bone2_image2"
                                 android:layout_width="190px"
-                                android:layout_height="100px"
+                                android:layout_height="60px"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                android:visibility="gone"
                                 >
                             </ImageView>
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -859,12 +859,12 @@
                             >
                             <ImageView
                                 android:id="@+id/image_bone_tablet_image"
-                                android:layout_width="130px"
-                                android:layout_height="410px"
+                                android:layout_width="120px"
+                                android:layout_height="400px"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintBottom_toTopOf="@+id/image_bone_tablet_image2"
-                                android:layout_marginBottom="20px"
+                                android:layout_marginBottom="25px"
                                 >
                             </ImageView>
                             <ImageView
@@ -985,82 +985,100 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     >
                     <!--유골함 내용-->
-                    <FrameLayout
-                        android:id="@+id/fragment_urn_content"
-                        android:layout_width="180px"
-                        android:layout_height="280px"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/fragment_urn_content2"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginBottom="40px"
-                        android:visibility="gone"
-                        />
-                    <!--유골함 내용-->
-                    <FrameLayout
-                        android:id="@+id/fragment_urn_content2"
-                        android:layout_width="180px"
-                        android:layout_height="280px"
-                        app:layout_constraintStart_toEndOf="@+id/fragment_urn_content"
-                        app:layout_constraintEnd_toStartOf="@+id/fragment_bone_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginBottom="40px"
-                        android:visibility="gone"
-                        />
-                    <!--합골 추가 내용-->
-                    <FrameLayout
-                        android:id="@+id/fragment_bone_content"
-                        android:layout_width="180px"
-                        android:layout_height="280px"
-                        app:layout_constraintStart_toEndOf="@+id/fragment_urn_content2"
-                        app:layout_constraintEnd_toStartOf="@+id/fragment_bone2_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginBottom="40px"
-                        android:visibility="gone"
-                        />
-                    <!--합골2 추가 내용-->
-                    <FrameLayout
-                        android:id="@+id/fragment_bone2_content"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_result_content1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:layout_constraintStart_toEndOf="@+id/fragment_bone_content"
-                        app:layout_constraintEnd_toStartOf="@+id/fragment_tablet_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginBottom="40px"
-                        android:visibility="gone"
-                        />
-                    <!--위패 내용-->
-                    <FrameLayout
-                        android:id="@+id/fragment_tablet_content"
-                        android:layout_width="75px"
-                        android:layout_height="210px"
-                        app:layout_constraintStart_toEndOf="@+id/fragment_bone2_content"
-                        app:layout_constraintEnd_toStartOf="@+id/fragment_tablet2_content"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_marginTop="20px"
-                        android:visibility="gone"
-                        />
-                    <!--위패 내용-->
-                    <FrameLayout
-                        android:id="@+id/fragment_tablet2_content"
-                        android:layout_width="75px"
-                        android:layout_height="210px"
-                        app:layout_constraintStart_toEndOf="@+id/fragment_tablet_content"
-                        app:layout_constraintEnd_toStartOf="@+id/fragment_bone_tablet_content"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_marginTop="20px"
-                        android:visibility="gone"
-                        />
-                    <!--합골 위패-->
-                    <FrameLayout
-                        android:id="@+id/fragment_bone_tablet_content"
-                        android:layout_width="75px"
-                        android:layout_height="210px"
-                        app:layout_constraintStart_toEndOf="@+id/fragment_tablet2_content"
+                        android:minWidth="10px"
+                        android:minHeight="10px"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/layout_result_content2"
+                        >
+                        <!--유골함 내용-->
+                        <FrameLayout
+                            android:id="@+id/fragment_urn_content"
+                            android:layout_width="180px"
+                            android:layout_height="280px"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/fragment_urn_content2"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="gone"
+                            />
+                        <!--유골함 내용-->
+                        <FrameLayout
+                            android:id="@+id/fragment_urn_content2"
+                            android:layout_width="180px"
+                            android:layout_height="280px"
+                            app:layout_constraintStart_toEndOf="@+id/fragment_urn_content"
+                            app:layout_constraintEnd_toStartOf="@+id/fragment_bone_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="gone"
+                            />
+                        <!--합골 추가 내용-->
+                        <FrameLayout
+                            android:id="@+id/fragment_bone_content"
+                            android:layout_width="180px"
+                            android:layout_height="280px"
+                            app:layout_constraintStart_toEndOf="@+id/fragment_urn_content2"
+                            app:layout_constraintEnd_toStartOf="@+id/fragment_bone2_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="gone"
+                            />
+                        <!--합골2 추가 내용-->
+                        <FrameLayout
+                            android:id="@+id/fragment_bone2_content"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toEndOf="@+id/fragment_bone_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="gone"
+                            />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_result_content2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="10px"
+                        android:minHeight="10px"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_result_content1"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_marginTop="20px"
-                        android:visibility="gone"
-                        />
+                        >
+                        <!--위패 내용-->
+                        <FrameLayout
+                            android:id="@+id/fragment_tablet_content"
+                            android:layout_width="75px"
+                            android:layout_height="210px"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/fragment_tablet2_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="gone"
+                            />
+                        <!--위패 내용-->
+                        <FrameLayout
+                            android:id="@+id/fragment_tablet2_content"
+                            android:layout_width="75px"
+                            android:layout_height="210px"
+                            app:layout_constraintStart_toEndOf="@+id/fragment_tablet_content"
+                            app:layout_constraintEnd_toStartOf="@+id/fragment_bone_tablet_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="gone"
+                            />
+                        <!--합골 위패-->
+                        <FrameLayout
+                            android:id="@+id/fragment_bone_tablet_content"
+                            android:layout_width="130px"
+                            android:layout_height="410px"
+                            app:layout_constraintStart_toEndOf="@+id/fragment_tablet2_content"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:visibility="gone"
+                            />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
