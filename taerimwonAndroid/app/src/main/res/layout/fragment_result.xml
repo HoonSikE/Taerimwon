@@ -1000,7 +1000,7 @@
                         <FrameLayout
                             android:id="@+id/fragment_urn_content"
                             android:layout_width="180px"
-                            android:layout_height="280px"
+                            android:layout_height="300px"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/fragment_urn_content2"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -1010,7 +1010,7 @@
                         <FrameLayout
                             android:id="@+id/fragment_urn_content2"
                             android:layout_width="180px"
-                            android:layout_height="280px"
+                            android:layout_height="300px"
                             app:layout_constraintStart_toEndOf="@+id/fragment_urn_content"
                             app:layout_constraintEnd_toStartOf="@+id/fragment_bone_content"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -1020,7 +1020,7 @@
                         <FrameLayout
                             android:id="@+id/fragment_bone_content"
                             android:layout_width="180px"
-                            android:layout_height="280px"
+                            android:layout_height="300px"
                             app:layout_constraintStart_toEndOf="@+id/fragment_urn_content2"
                             app:layout_constraintEnd_toStartOf="@+id/fragment_bone2_content"
                             app:layout_constraintBottom_toBottomOf="parent"

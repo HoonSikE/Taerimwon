@@ -8,7 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.view.MotionEvent
+import android.view.ScaleGestureDetector
 import android.view.WindowManager
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -18,6 +21,10 @@ import dagger.hilt.android.AndroidEntryPoint
 @SuppressLint("ResourceAsColor")
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+    private lateinit var mainConstraintLayout: ConstraintLayout
+    private lateinit var scaleGestureDetector: ScaleGestureDetector
+
+    private var scaleFactor = 1.0f
     private val REQUEST_CODE_STORAGE_PERMISSION = 101 // 권한 요청 코드
     override fun onCreate(savedInstanceState: Bundle?) {
         // 스플래시
@@ -25,6 +32,9 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        mainConstraintLayout = findViewById(R.id.main_activity)
+        scaleGestureDetector = ScaleGestureDetector(this, ScaleListener())
 
         // 권한 확인 및 요청
         checkStoragePermission()
@@ -87,5 +97,20 @@ class MainActivity : AppCompatActivity() {
                 // 사용자에게 알림 또는 다른 조치를 취할 수 있습니다.
             }
         }
+    }
+
+    private inner class ScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
+        override fun onScale(detector: ScaleGestureDetector): Boolean {
+            scaleFactor *= detector.scaleFactor
+            scaleFactor = Math.max(1.0f, Math.min(scaleFactor, 3.0f)) // 확대/축소 한계 설정 (1.0 이상, 3.0 이하)
+            mainConstraintLayout.scaleX = scaleFactor
+            mainConstraintLayout.scaleY = scaleFactor
+            return true
+        }
+    }
+
+    override fun onTouchEvent(event: MotionEvent): Boolean {
+        scaleGestureDetector.onTouchEvent(event)
+        return super.onTouchEvent(event)
     }
 }

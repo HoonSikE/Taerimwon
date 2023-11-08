@@ -25,6 +25,7 @@
     <dimen name="pixel_size_100">100px</dimen>
     <dimen name="pixel_size_145">145px</dimen>
     <dimen name="pixel_size_170">170px</dimen>
+    <dimen name="pixel_size_210">210px</dimen>
     <dimen name="pixel_size_270">270px</dimen>
     <dimen name="pixel_size_280">280px</dimen>
     <dimen name="pixel_size_215">215px</dimen>

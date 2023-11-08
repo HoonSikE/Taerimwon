@@ -90,12 +90,15 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
 
         if(selectedUrnName!!.contains("블랙") || selectedUrnName!!.contains("검정")
             || selectedUrnName!!.contains("휴안홍") || selectedUrnName!!.contains("휴안흑")) {
-            if(engraveTypePosition == 3){
+            if(engraveTypePosition == 2){
+                imageName = "img_mark2_2"
+            }else if(engraveTypePosition == 3){
                 imageName = "img_mark4_2"
             }else if(engraveTypePosition == 4 || engraveTypePosition == 5) {
                 imageName = "img_mark5_2"
             }
         }
+
         val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
         binding.imageUrnResult21.setImageResource(imageResource)
     }
@@ -104,40 +107,43 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             || selectedUrnName!!.contains("휴안홍") || selectedUrnName!!.contains("휴안흑")){
             binding.layoutUrnResult111.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult112.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult121.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult122.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult123.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult124.setTextColor(Color.parseColor("#FFD700"))
+//            binding.layoutUrnResult121.setTextColor(Color.parseColor("#FFD700"))
+//            binding.layoutUrnResult122.setTextColor(Color.parseColor("#FFD700"))
+//            binding.layoutUrnResult123.setTextColor(Color.parseColor("#FFD700"))
+//            binding.layoutUrnResult124.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult13.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult131.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult141.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult142.setTextColor(Color.parseColor("#FFD700"))
+//            binding.layoutUrnResult141.setTextColor(Color.parseColor("#FFD700"))
+//            binding.layoutUrnResult142.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult15.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult151.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult161.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult162.setTextColor(Color.parseColor("#FFD700"))
+//            binding.layoutUrnResult161.setTextColor(Color.parseColor("#FFD700"))
+//            binding.layoutUrnResult162.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult171.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult17.setTextColor(Color.parseColor("#FFD700"))
 
             binding.layoutUrnResult21.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult220.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult221.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult2211.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult2212.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult2213.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutUrnResult2214.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult222.setTextColor(Color.parseColor("#FFD700"))
 
             binding.layoutUrnResult311.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult312.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult321.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult322.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult323.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult324.setTextColor(Color.parseColor("#FFD700"))
+//            binding.layoutUrnResult321.setTextColor(Color.parseColor("#FFD700"))
+//            binding.layoutUrnResult322.setTextColor(Color.parseColor("#FFD700"))
+//            binding.layoutUrnResult323.setTextColor(Color.parseColor("#FFD700"))
+//            binding.layoutUrnResult324.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult33.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult331.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult341.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult342.setTextColor(Color.parseColor("#FFD700"))
+//            binding.layoutUrnResult341.setTextColor(Color.parseColor("#FFD700"))
+//            binding.layoutUrnResult342.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult35.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult351.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult361.setTextColor(Color.parseColor("#FFD700"))
-            binding.layoutUrnResult362.setTextColor(Color.parseColor("#FFD700"))
+//            binding.layoutUrnResult361.setTextColor(Color.parseColor("#FFD700"))
+//            binding.layoutUrnResult362.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult371.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutUrnResult37.setTextColor(Color.parseColor("#FFD700"))
         }
@@ -181,6 +187,10 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             binding.layoutUrnResult112.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
             binding.layoutUrnResult112.setTypeface(hyhaeso, Typeface.BOLD)
 
+            binding.layoutUrnResult110.visibility = View.GONE
+            binding.layoutUrnResult120.visibility = View.GONE
+            binding.layoutUrnResult170.visibility = View.GONE
+
             binding.layoutUrnResult13.visibility = View.GONE
             binding.layoutUrnResult131.visibility = View.VISIBLE
             binding.layoutUrnResult15.visibility = View.GONE
@@ -195,6 +205,10 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             binding.layoutUrnResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
             binding.layoutUrnResult312.setTypeface(hyhaeso, Typeface.BOLD)
 
+            binding.layoutUrnResult310.visibility = View.GONE
+            binding.layoutUrnResult320.visibility = View.GONE
+            binding.layoutUrnResult370.visibility = View.GONE
+
             binding.layoutUrnResult33.visibility = View.GONE
             binding.layoutUrnResult331.visibility = View.VISIBLE
             binding.layoutUrnResult35.visibility = View.GONE
@@ -207,7 +221,10 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
 
         binding.layoutUrnResult22.visibility = View.VISIBLE
         // 이름
-        val layoutUrnResult221 = binding.layoutUrnResult221
+        val layoutUrnResult2211 = binding.layoutUrnResult2211
+        val layoutUrnResult2212 = binding.layoutUrnResult2212
+        val layoutUrnResult2213 = binding.layoutUrnResult2213
+        val layoutUrnResult2214 = binding.layoutUrnResult2214
 
         if((engraveType == "일반" && (engraveType2 == "기본" || engraveType2.contains("年月日")))
             || (engraveType == "기독교" && (engraveType2 == "직분X"))
@@ -217,19 +234,29 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
 
             when (name1.length) {
                 2 -> {
-                    tmp.append(name1[0]).append("\n").append("\n").append(name1[1])
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2214.text = name1[1].toString()
                 }
                 3 -> {
-                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2])
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2212.visibility = View.VISIBLE
+                    layoutUrnResult2212.text = name1[1].toString()
+                    layoutUrnResult2214.text = name1[2].toString()
                 }
                 4 -> {
-                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2212.visibility = View.VISIBLE
+                    layoutUrnResult2212.text = name1[1].toString()
+                    layoutUrnResult2213.visibility = View.VISIBLE
+                    layoutUrnResult2213.text = name1[2].toString()
+                    layoutUrnResult2214.text = name1[3].toString()
 
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
-                    layoutUrnResult221.setLineSpacing(0f, 1.0f)
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
+                    layoutUrnResult2213.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
                 }
             }
-            layoutUrnResult221.text = tmp.toString()
         }else if(engraveType2 == "형제" || engraveType2 == "자매"){
             binding.layoutUrnResult222.visibility = View.VISIBLE
 
@@ -238,48 +265,74 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             else if(engraveType2 == "자매")
                 binding.layoutUrnResult222.text = "자매"
 
-            layoutUrnResult221.height = pixel_size_170
             when (name1.length) {
                 2 -> {
-                    tmp.append(name1[0]).append("\n").append("\n").append(name1[1])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
-                    layoutUrnResult221.setLineSpacing(0f, 1.1f)
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2214.text = name1[1].toString()
+
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
                 }
                 3 -> {
-                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
-                    layoutUrnResult221.setLineSpacing(0f, 1.1f)
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2212.visibility = View.VISIBLE
+                    layoutUrnResult2212.text = name1[1].toString()
+                    layoutUrnResult2214.text = name1[2].toString()
+
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
                 }
                 4 -> {
-                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
-                    layoutUrnResult221.setLineSpacing(0f, 1.0f)
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2212.visibility = View.VISIBLE
+                    layoutUrnResult2212.text = name1[1].toString()
+                    layoutUrnResult2213.visibility = View.VISIBLE
+                    layoutUrnResult2213.text = name1[2].toString()
+                    layoutUrnResult2214.text = name1[3].toString()
+
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                    layoutUrnResult2213.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
                 }
             }
-            layoutUrnResult221.text = tmp.toString()
         }else if(engraveType == "기독교" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日"))
             || engraveType == "불교" && engraveType2 == "법명"
             || engraveType == "순복음"){
             val layoutUrnResult220 = binding.layoutUrnResult220
-            layoutUrnResult221.height = pixel_size_170
             when (name1.length) {
                 2 -> {
-                    tmp.append(name1[0]).append("\n").append("\n").append(name1[1])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
-                    layoutUrnResult221.setLineSpacing(0f, 1.1f)
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2214.text = name1[1].toString()
+
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
                 }
                 3 -> {
-                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
-                    layoutUrnResult221.setLineSpacing(0f, 1.1f)
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2212.visibility = View.VISIBLE
+                    layoutUrnResult2212.text = name1[1].toString()
+                    layoutUrnResult2214.text = name1[2].toString()
+
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
                 }
                 4 -> {
-                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
-                    layoutUrnResult221.setLineSpacing(0f, 1.0f)
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2212.visibility = View.VISIBLE
+                    layoutUrnResult2212.text = name1[1].toString()
+                    layoutUrnResult2213.visibility = View.VISIBLE
+                    layoutUrnResult2213.text = name1[2].toString()
+                    layoutUrnResult2214.text = name1[3].toString()
+
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                    layoutUrnResult2213.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
                 }
             }
-            layoutUrnResult221.text = tmp.toString()
             layoutUrnResult220.visibility = View.VISIBLE
             when (name2.length) {
                 4 -> {
@@ -291,23 +344,32 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             layoutUrnResult220.text = name2
         } else if(engraveType == "천주교" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日"))){
             val layoutUrnResult222 = binding.layoutUrnResult222
-            layoutUrnResult221.height = pixel_size_170
+//            layoutUrnResult221.height = pixel_size_170
             when (name1.length) {
                 2 -> {
-                    tmp.append(name1[0]).append("\n").append("\n").append(name1[1])
-                    layoutUrnResult221.setLineSpacing(0f, 1.1f)
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2214.text = name1[1].toString()
                 }
                 3 -> {
-                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2])
-                    layoutUrnResult221.setLineSpacing(0f, 1.1f)
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2212.visibility = View.VISIBLE
+                    layoutUrnResult2212.text = name1[1].toString()
+                    layoutUrnResult2214.text = name1[2].toString()
                 }
                 4 -> {
-                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
-                    layoutUrnResult221.setLineSpacing(0f, 1.0f)
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2212.visibility = View.VISIBLE
+                    layoutUrnResult2212.text = name1[1].toString()
+                    layoutUrnResult2213.visibility = View.VISIBLE
+                    layoutUrnResult2213.text = name1[2].toString()
+                    layoutUrnResult2214.text = name1[3].toString()
+
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                    layoutUrnResult2213.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_40.toFloat())
                 }
             }
-            layoutUrnResult221.text = tmp.toString()
             layoutUrnResult222.visibility = View.VISIBLE
             layoutUrnResult222.width = pixel_size_100
             when (name2.length) {
@@ -336,64 +398,90 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             layoutUrnResult220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
             layoutUrnResult220.letterSpacing = 0f
 
-            layoutUrnResult221.height = pixel_size_145
-            layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
-            layoutUrnResult221.setLineSpacing(0f, 1.0f)
-
             val layoutUrnResult222 = binding.layoutUrnResult222
             layoutUrnResult222.visibility = View.VISIBLE
             layoutUrnResult222.text = "位"
             val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
             layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
-//            layoutUrnResult222.typeface = hyhaeso
             layoutUrnResult222.setLineSpacing(0f, 1.0f)
 
             when (name1.length) {
                 2 -> {
-                    tmp.append(name1[0]).append("\n").append("\n").append(name1[1])
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2214.text = name1[1].toString()
+
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
                 }
                 3 -> {
-                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2])
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2212.visibility = View.VISIBLE
+                    layoutUrnResult2212.text = name1[1].toString()
+                    layoutUrnResult2214.text = name1[2].toString()
+
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
                 }
                 4 -> {
-                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2212.visibility = View.VISIBLE
+                    layoutUrnResult2212.text = name1[1].toString()
+                    layoutUrnResult2213.visibility = View.VISIBLE
+                    layoutUrnResult2213.text = name1[2].toString()
+                    layoutUrnResult2214.text = name1[3].toString()
+
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                    layoutUrnResult2213.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
                 }
             }
-            layoutUrnResult221.text = tmp.toString()
         }else if(engraveType == "묘법"){
             val layoutUrnResult220 = binding.layoutUrnResult220
             layoutUrnResult220.visibility = View.VISIBLE
-//            layoutUrnResult220.width = pixel_size_80
             layoutUrnResult220.text = "妙法"
             val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
             layoutUrnResult220.setTypeface(hyhaeso, Typeface.BOLD)
-//            layoutUrnResult220.typeface = hyhaeso
             layoutUrnResult220.letterSpacing = 0f
-
-            layoutUrnResult221.height = pixel_size_145
-            layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
-            layoutUrnResult221.setLineSpacing(0f, 1.0f)
 
             val layoutUrnResult222 = binding.layoutUrnResult222
             layoutUrnResult222.visibility = View.VISIBLE
             layoutUrnResult222.text = "位"
             layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
-//            layoutUrnResult222.typeface = hyhaeso
 
             when (name1.length) {
                 2 -> {
-                    tmp.append(name1[0]).append("\n").append("\n").append(name1[1])
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2214.text = name1[1].toString()
+
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
                 }
                 3 -> {
-                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2])
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2212.visibility = View.VISIBLE
+                    layoutUrnResult2212.text = name1[1].toString()
+                    layoutUrnResult2214.text = name1[2].toString()
+
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
                 }
                 4 -> {
-                    tmp.append(name1[0]).append("\n").append(name1[1]).append("\n").append(name1[2]).append("\n").append(name1[3])
-                    layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                    layoutUrnResult2211.text = name1[0].toString()
+                    layoutUrnResult2212.visibility = View.VISIBLE
+                    layoutUrnResult2212.text = name1[1].toString()
+                    layoutUrnResult2213.visibility = View.VISIBLE
+                    layoutUrnResult2213.text = name1[2].toString()
+                    layoutUrnResult2214.text = name1[3].toString()
+
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                    layoutUrnResult2213.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
                 }
             }
-            layoutUrnResult221.text = tmp.toString()
         }
 
         // 출생일
@@ -421,14 +509,49 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         }
 
         if(date1.length == 10){
-            binding.layoutUrnResult121.text = date1[0].toString()
-            binding.layoutUrnResult122.text = date1[1].toString()
-            binding.layoutUrnResult123.text = date1[2].toString()
-            binding.layoutUrnResult124.text = date1[3].toString()
-            binding.layoutUrnResult141.text = date1[5].toString()
-            binding.layoutUrnResult142.text = date1[6].toString()
-            binding.layoutUrnResult161.text = date1[8].toString()
-            binding.layoutUrnResult162.text = date1[9].toString()
+            var imageName1 = "img_num" + date1[0].toString()
+            var imageName2 = "img_num" + date1[1].toString()
+            var imageName3 = "img_num" + date1[2].toString()
+            var imageName4 = "img_num" + date1[3].toString()
+            var imageName5 = "img_num" + date1[5].toString()
+            var imageName6 = "img_num" + date1[6].toString()
+            var imageName7 = "img_num" + date1[8].toString()
+            var imageName8 = "img_num" + date1[9].toString()
+
+            if(selectedUrnName!!.contains("블랙") || selectedUrnName!!.contains("검정")
+                || selectedUrnName!!.contains("휴안홍") || selectedUrnName!!.contains("휴안흑")){
+                imageName1 += "_2"
+                imageName2 += "_2"
+                imageName3 += "_2"
+                imageName4 += "_2"
+                imageName5 += "_2"
+                imageName6 += "_2"
+                imageName7 += "_2"
+                imageName8 += "_2"
+            }
+            var imageResource = resources.getIdentifier(imageName1, "drawable", requireActivity().packageName)
+            binding.layoutUrnResult121.setImageResource(imageResource)
+
+            imageResource = resources.getIdentifier(imageName2, "drawable", requireActivity().packageName)
+            binding.layoutUrnResult122.setImageResource(imageResource)
+
+            imageResource = resources.getIdentifier(imageName3, "drawable", requireActivity().packageName)
+            binding.layoutUrnResult123.setImageResource(imageResource)
+
+            imageResource = resources.getIdentifier(imageName4, "drawable", requireActivity().packageName)
+            binding.layoutUrnResult124.setImageResource(imageResource)
+
+            imageResource = resources.getIdentifier(imageName5, "drawable", requireActivity().packageName)
+            binding.layoutUrnResult141.setImageResource(imageResource)
+
+            imageResource = resources.getIdentifier(imageName6, "drawable", requireActivity().packageName)
+            binding.layoutUrnResult142.setImageResource(imageResource)
+
+            imageResource = resources.getIdentifier(imageName7, "drawable", requireActivity().packageName)
+            binding.layoutUrnResult161.setImageResource(imageResource)
+
+            imageResource = resources.getIdentifier(imageName8, "drawable", requireActivity().packageName)
+            binding.layoutUrnResult162.setImageResource(imageResource)
         }
 
         if(date1Type == "양력")
@@ -458,7 +581,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
                 val yujimai = ResourcesCompat.getFont(requireContext(), R.font.yujimai)
                 binding.layoutUrnResult312.typeface = yujimai
                 binding.layoutUrnResult312.letterSpacing = -0.1f
-                binding.layoutUrnResult312.scaleX = 0.7f
+                binding.layoutUrnResult312.scaleX = 0.9f
 
                 if(engraveType2.toString().contains("年月日"))
                     binding.layoutUrnResult312.text = "善\n終"
@@ -468,14 +591,49 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         }
 
         if(date2.length == 10){
-            binding.layoutUrnResult321.text = date2[0].toString()
-            binding.layoutUrnResult322.text = date2[1].toString()
-            binding.layoutUrnResult323.text = date2[2].toString()
-            binding.layoutUrnResult324.text = date2[3].toString()
-            binding.layoutUrnResult341.text = date2[5].toString()
-            binding.layoutUrnResult342.text = date2[6].toString()
-            binding.layoutUrnResult361.text = date2[8].toString()
-            binding.layoutUrnResult362.text = date2[9].toString()
+            var imageName1 = "img_num" + date2[0].toString()
+            var imageName2 = "img_num" + date2[1].toString()
+            var imageName3 = "img_num" + date2[2].toString()
+            var imageName4 = "img_num" + date2[3].toString()
+            var imageName5 = "img_num" + date2[5].toString()
+            var imageName6 = "img_num" + date2[6].toString()
+            var imageName7 = "img_num" + date2[8].toString()
+            var imageName8 = "img_num" + date2[9].toString()
+
+            if(selectedUrnName!!.contains("블랙") || selectedUrnName!!.contains("검정")
+                || selectedUrnName!!.contains("휴안홍") || selectedUrnName!!.contains("휴안흑")){
+                imageName1 += "_2"
+                imageName2 += "_2"
+                imageName3 += "_2"
+                imageName4 += "_2"
+                imageName5 += "_2"
+                imageName6 += "_2"
+                imageName7 += "_2"
+                imageName8 += "_2"
+            }
+            var imageResource = resources.getIdentifier(imageName1, "drawable", requireActivity().packageName)
+            binding.layoutUrnResult321.setImageResource(imageResource)
+
+            imageResource = resources.getIdentifier(imageName2, "drawable", requireActivity().packageName)
+            binding.layoutUrnResult322.setImageResource(imageResource)
+
+            imageResource = resources.getIdentifier(imageName3, "drawable", requireActivity().packageName)
+            binding.layoutUrnResult323.setImageResource(imageResource)
+
+            imageResource = resources.getIdentifier(imageName4, "drawable", requireActivity().packageName)
+            binding.layoutUrnResult324.setImageResource(imageResource)
+
+            imageResource = resources.getIdentifier(imageName5, "drawable", requireActivity().packageName)
+            binding.layoutUrnResult341.setImageResource(imageResource)
+
+            imageResource = resources.getIdentifier(imageName6, "drawable", requireActivity().packageName)
+            binding.layoutUrnResult342.setImageResource(imageResource)
+
+            imageResource = resources.getIdentifier(imageName7, "drawable", requireActivity().packageName)
+            binding.layoutUrnResult361.setImageResource(imageResource)
+
+            imageResource = resources.getIdentifier(imageName8, "drawable", requireActivity().packageName)
+            binding.layoutUrnResult362.setImageResource(imageResource)
         }
 
         if(date2Type == "양력")
