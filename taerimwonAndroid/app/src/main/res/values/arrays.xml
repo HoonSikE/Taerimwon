@@ -114,7 +114,6 @@
     <string-array name="selected_urn_types">
         <item>선택안함</item>
         <item>유골함</item>
-        <item>유골함</item>
         <item>합골함1</item>
         <item>합골함2</item>
     </string-array>

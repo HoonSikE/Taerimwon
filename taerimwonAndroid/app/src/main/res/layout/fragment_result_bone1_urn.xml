@@ -94,8 +94,8 @@
 
                 <ImageView
                     android:id="@+id/layout_urn_result1_2_1"
-                    android:layout_width="18px"
-                    android:layout_height="20px"
+                    android:layout_width="14px"
+                    android:layout_height="17px"
                     android:layout_marginBottom="1px"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
@@ -104,8 +104,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_urn_result1_2_2"
-                    android:layout_width="18px"
-                    android:layout_height="20px"
+                    android:layout_width="14px"
+                    android:layout_height="17px"
                     android:layout_marginVertical="1px"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
@@ -114,8 +114,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_urn_result1_2_3"
-                    android:layout_width="18px"
-                    android:layout_height="20px"
+                    android:layout_width="14px"
+                    android:layout_height="17px"
                     android:layout_marginVertical="1px"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
@@ -124,8 +124,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_urn_result1_2_4"
-                    android:layout_width="18px"
-                    android:layout_height="20px"
+                    android:layout_width="14px"
+                    android:layout_height="17px"
                     android:layout_marginVertical="1px"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
@@ -166,8 +166,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_urn_result1_4_1"
-                    android:layout_width="18px"
-                    android:layout_height="20px"
+                    android:layout_width="14px"
+                    android:layout_height="17px"
                     android:layout_marginVertical="1px"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
@@ -176,8 +176,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_urn_result1_4_2"
-                    android:layout_width="18px"
-                    android:layout_height="20px"
+                    android:layout_width="14px"
+                    android:layout_height="17px"
                     android:layout_marginVertical="1px"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
@@ -218,8 +218,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_urn_result1_6_1"
-                    android:layout_width="18px"
-                    android:layout_height="20px"
+                    android:layout_width="14px"
+                    android:layout_height="17px"
                     android:layout_marginVertical="1px"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
@@ -228,8 +228,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_urn_result1_6_2"
-                    android:layout_width="18px"
-                    android:layout_height="20px"
+                    android:layout_width="14px"
+                    android:layout_height="17px"
                     android:layout_marginVertical="1px"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
@@ -492,8 +492,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_urn_result3_2_1"
-                    android:layout_width="18px"
-                    android:layout_height="20px"
+                    android:layout_width="14px"
+                    android:layout_height="17px"
                     android:layout_marginBottom="1px"                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
                     app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_2_0"
@@ -501,8 +501,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_urn_result3_2_2"
-                    android:layout_width="18px"
-                    android:layout_height="20px"
+                    android:layout_width="14px"
+                    android:layout_height="17px"
                     android:layout_marginVertical="1px"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
@@ -511,8 +511,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_urn_result3_2_3"
-                    android:layout_width="18px"
-                    android:layout_height="20px"
+                    android:layout_width="14px"
+                    android:layout_height="17px"
                     android:layout_marginVertical="1px"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
@@ -521,8 +521,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_urn_result3_2_4"
-                    android:layout_width="18px"
-                    android:layout_height="20px"
+                    android:layout_width="14px"
+                    android:layout_height="17px"
                     android:layout_marginVertical="1px"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
@@ -564,8 +564,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_urn_result3_4_1"
-                    android:layout_width="18px"
-                    android:layout_height="20px"
+                    android:layout_width="14px"
+                    android:layout_height="17px"
                     android:layout_marginVertical="1px"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
@@ -574,8 +574,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_urn_result3_4_2"
-                    android:layout_width="18px"
-                    android:layout_height="20px"
+                    android:layout_width="14px"
+                    android:layout_height="17px"
                     android:layout_marginVertical="1px"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
@@ -616,8 +616,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_urn_result3_6_1"
-                    android:layout_width="18px"
-                    android:layout_height="20px"
+                    android:layout_width="14px"
+                    android:layout_height="17px"
                     android:layout_marginVertical="1px"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
@@ -626,8 +626,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_urn_result3_6_2"
-                    android:layout_width="18px"
-                    android:layout_height="20px"
+                    android:layout_width="14px"
+                    android:layout_height="17px"
                     android:layout_marginVertical="1px"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"

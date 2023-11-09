@@ -74,6 +74,11 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         if(name1 == "")
             return
 
+        if(selectedUrnName!!.contains("휴안화이트기독교") || selectedUrnName!!.contains("휴안화이트불교")
+            || selectedUrnName!!.contains("휴안화이트천주교")) {
+            return
+        }
+
         if(engraveTypePosition == 0){
             binding.layoutUrnResult21.visibility = View.VISIBLE
             binding.imageUrnResult21.visibility = View.GONE

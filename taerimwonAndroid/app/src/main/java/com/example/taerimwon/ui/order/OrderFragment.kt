@@ -1155,6 +1155,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
     }
     private fun settingList2() {
         searchList2.add("미정")
+        searchList2.add("흰색위패")
         searchList2.add("조각위패(황금향,조각종교)")
         searchList2.add("검정위패-TR-2-0802")
         searchList2.add("사진위패 TR-3 1005")

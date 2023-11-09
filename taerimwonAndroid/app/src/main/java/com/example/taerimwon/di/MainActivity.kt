@@ -111,6 +111,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         scaleGestureDetector.onTouchEvent(event)
-        return super.onTouchEvent(event)
+//        return super.onTouchEvent(event)
+        return true
     }
 }

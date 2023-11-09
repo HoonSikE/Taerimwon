@@ -794,7 +794,8 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
     }
     private fun settingList() {
         searchList.add(TabletItem("미정", 0))
-        searchList.add(TabletItem("조각위패(황금향,조각종교)", R.drawable.img_tablet1))
+        searchList.add(TabletItem("흰색위패", R.drawable.img_tablet))
+//        searchList.add(TabletItem("조각위패(황금향,조각종교)", R.drawable.img_tablet1))
         searchList.add(TabletItem("검정위패-TR-2-0802", R.drawable.img_tablet2))
 //        searchList.add(TabletItem("사진위패 TR-3 1005", R.drawable.img_tablet3))
 //        searchList.add(TabletItem("추모패-TR-4-1307", R.drawable.img_tablet4))
@@ -812,12 +813,9 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
     }
     private fun settingBoneList() {
         searchBoneList.add(TabletItem("미정", 0))
-        searchBoneList.add(TabletItem("조각위패(황금향,조각종교)", R.drawable.img_tablet1))
+        searchBoneList.add(TabletItem("흰색위패", R.drawable.img_tablet))
+//        searchBoneList.add(TabletItem("조각위패(황금향,조각종교)", R.drawable.img_tablet1))
         searchBoneList.add(TabletItem("검정위패-TR-2-0802", R.drawable.img_tablet2))
-//        searchList.add(TabletItem("사진위패 TR-3 1005", R.drawable.img_tablet3))
-//        searchList.add(TabletItem("추모패-TR-4-1307", R.drawable.img_tablet4))
-//        searchList.add(TabletItem("기본", R.drawable.img_tablet))
-//        searchList.add(TabletItem("기본(검정)", R.drawable.img_tablet))
     }
     private fun settingBoneList2() {
         searchBoneList2.add(TabletItem("미정", 0))

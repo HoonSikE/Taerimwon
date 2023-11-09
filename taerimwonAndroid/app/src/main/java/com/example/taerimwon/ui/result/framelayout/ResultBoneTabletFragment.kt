@@ -267,8 +267,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
             when (tabletType) {
                 "일반", "불교" -> {
                     val layoutParams = layoutBoneTabletResult2.layoutParams
-                    layoutParams.width = 65
-                    layoutParams.height = 340
+                    layoutParams.width = 37
+                    layoutParams.height = 170
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (name3.length) {
@@ -279,7 +279,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                             layoutBoneTabletResult29.visibility = View.VISIBLE
                             layoutBoneTabletResult29.text = name3[1].toString()
 
-                                tmp.append(name3[0]).append("\n").append("\n").append(name3[1])
+                            tmp.append(name3[0]).append("\n").append("\n").append(name3[1])
 //                            layoutBoneTabletResult2.setLineSpacing(260f, 1f)
                         }
                         3 -> {
@@ -320,8 +320,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     layoutBoneTabletResult1.visibility = View.VISIBLE
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
-                    layoutParams.width = 65
-                    layoutParams.height = 310
+                    layoutParams.width = 37
+                    layoutParams.height = 155
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (name3.length) {
@@ -388,8 +388,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     layoutBoneTabletResult3.visibility = View.VISIBLE
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
-                    layoutParams.width = 65
-                    layoutParams.height = 310
+                    layoutParams.width = 37
+                    layoutParams.height = 155
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (name3.length) {
@@ -490,8 +490,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     println("일반 진입")
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
-                    layoutParams.width = 65
-                    layoutParams.height = 410
+                    layoutParams.width = 37
+                    layoutParams.height = 205
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (name3.length) {
@@ -594,8 +594,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     layoutBoneTabletResult1.scaleY = 1.3f
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
-                    layoutParams.width = 65
-                    layoutParams.height = 280
+                    layoutParams.width = 37
+                    layoutParams.height = 140
                     layoutBoneTabletResult2.layoutParams = layoutParams
 //                    layoutBoneTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
 
@@ -698,8 +698,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     println("불교 진입")
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
-                    layoutParams.width = 65
-                    layoutParams.height = 350
+                    layoutParams.width = 37
+                    layoutParams.height = 175
                     layoutBoneTabletResult2.layoutParams = layoutParams
 //                    layoutBoneTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
 
@@ -798,8 +798,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     println("천주교 진입")
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
-                    layoutParams.width = 65
-                    layoutParams.height = 310
+                    layoutParams.width = 37
+                    layoutParams.height = 155
                     layoutBoneTabletResult2.layoutParams = layoutParams
 //                    layoutBoneTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
 
@@ -932,8 +932,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
             when (boneTabletType) {
                 "일반", "불교" -> {
                     val layoutParams = layoutBoneTabletResult2.layoutParams
-                    layoutParams.width = 65
-                    layoutParams.height = 340
+                    layoutParams.width = 37
+                    layoutParams.height = 170
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (boneName3.length) {
@@ -976,8 +976,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     layoutBoneTabletResult1.visibility = View.VISIBLE
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
-                    layoutParams.width = 65
-                    layoutParams.height = 310
+                    layoutParams.width = 37
+                    layoutParams.height = 155
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (boneName3.length) {
@@ -1035,8 +1035,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     layoutBoneTabletResult3.visibility = View.VISIBLE
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
-                    layoutParams.width = 65
-                    layoutParams.height = 310
+                    layoutParams.width = 37
+                    layoutParams.height = 155
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (boneName3.length) {
@@ -1129,8 +1129,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     println("일반 진입")
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
-                    layoutParams.width = 65
-                    layoutParams.height = 410
+                    layoutParams.width = 37
+                    layoutParams.height = 205
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (boneName3.length) {
@@ -1218,8 +1218,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     layoutBoneTabletResult1.scaleY = 1.3f
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
-                    layoutParams.width = 65
-                    layoutParams.height = 280
+                    layoutParams.width = 37
+                    layoutParams.height = 140
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
 
@@ -1307,8 +1307,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     println("불교 진입")
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
-                    layoutParams.width = 65
-                    layoutParams.height = 350
+                    layoutParams.width = 37
+                    layoutParams.height = 175
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (boneName3.length) {
@@ -1393,8 +1393,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     println("천주교 진입")
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
-                    layoutParams.width = 65
-                    layoutParams.height = 310
+                    layoutParams.width = 37
+                    layoutParams.height = 155
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     layoutBoneTabletResult3.visibility = View.VISIBLE
