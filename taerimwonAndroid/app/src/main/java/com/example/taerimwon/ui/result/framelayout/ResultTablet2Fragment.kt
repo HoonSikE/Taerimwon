@@ -94,6 +94,9 @@ class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layou
             return
 
         if(selectedTabletName2!!.contains("검정")) {
+            if(boneTabletReligion == "기독교" && boneTabletType != "문구"){
+                imageName = "img_mark2_2"
+            }
             if(boneTabletReligion == "천주교" && boneTabletType != "문구"){
                 imageName = "img_mark4_2"
             }

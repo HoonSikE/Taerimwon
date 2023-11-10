@@ -24,7 +24,8 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
         selectedUrnType = ApplicationClass.prefs.selectedUrnType.toString()
 
         if(selectedUrnType != "선택안함") {
-            if(selectedUrnType.contains("합골함2")){
+            if(ApplicationClass.prefs.selectedUrnName!!.contains("합골금띠")
+                || ApplicationClass.prefs.selectedUrnName!!.contains("합골실버십장생")){
                 setBone2Data()
             }else {
                 binding.layoutResultContent.visibility = View.GONE

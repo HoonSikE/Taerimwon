@@ -552,6 +552,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/layout_urn2"
                         app:layout_constraintTop_toTopOf="parent"
+                        android:visibility="gone"
                         >
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_urn_image"
@@ -560,7 +561,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:background="@drawable/img_urn10_13"
+                            android:background="@drawable/img_urn3_6"
                             >
                             <!-- android:layout_width="180px"
                                 android:layout_height="270px" -->
@@ -579,8 +580,8 @@
                             </ImageView>
                             <ImageView
                                 android:id="@+id/image_urn_image"
-                                android:layout_width="200px"
-                                android:layout_height="300px"
+                                android:layout_width="180px"
+                                android:layout_height="270px"
                                 android:scaleType="fitXY"
                                 app:layout_constraintStart_toEndOf="@+id/image_urn_image_left"
                                 app:layout_constraintEnd_toStartOf="@+id/image_urn_image_right"
@@ -599,7 +600,7 @@
                             <ImageView
                                 android:id="@+id/image_urn_image_under"
                                 android:layout_width="190px"
-                                android:layout_height="100px"
+                                android:layout_height="90px"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -673,7 +674,6 @@
                         app:layout_constraintStart_toEndOf="@+id/layout_urn2"
                         app:layout_constraintEnd_toStartOf="@+id/layout_bone2"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:visibility="gone"
                         >
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_bone1_image"
@@ -683,26 +683,27 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             android:background="@drawable/img_bone1_1"
+                            android:visibility="gone"
                             >
                             <ImageView
                                 android:id="@+id/image_bone1_image1"
-                                android:layout_width="220px"
-                                android:layout_height="380px"
+                                android:layout_width="190px"
+                                android:layout_height="310px"
                                 android:scaleType="fitXY"
                                 app:layout_constraintStart_toStartOf="parent"
-                                android:layout_marginStart="75px"
+                                android:layout_marginStart="90px"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                android:layout_marginBottom="70px"
+                                android:layout_marginBottom="130px"
                                 >
                             </ImageView>
                             <ImageView
                                 android:id="@+id/image_bone1_image2"
-                                android:layout_width="220px"
-                                android:layout_height="380px"
+                                android:layout_width="190px"
+                                android:layout_height="310px"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                android:layout_marginEnd="75px"
+                                android:layout_marginEnd="90px"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                android:layout_marginBottom="70px"
+                                android:layout_marginBottom="130px"
                                 >
                             </ImageView>
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -734,7 +735,7 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintBottom_toTopOf="@+id/image_bone2_image2"
-                                android:layout_marginBottom="50px"
+                                android:layout_marginBottom="55px"
                                 >
                             </ImageView>
                             <ImageView
@@ -766,7 +767,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/layout_tablet2"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        android:visibility="gone"
                         >
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_tablet_image"
@@ -775,7 +775,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            android:background="@drawable/img_tablet1"
+                            android:background="@drawable/img_tablet0"
                             >
                             <ImageView
                                 android:id="@+id/image_tablet_image"
@@ -784,18 +784,8 @@
                                 android:scaleType="fitXY"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintBottom_toTopOf="@+id/image_tablet_image2"
-                                android:layout_marginBottom="20px"
-                                >
-                            </ImageView>
-                            <ImageView
-                                android:id="@+id/image_tablet_image2"
-                                android:layout_width="190px"
-                                android:layout_height="20px"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintBottom_toBottomOf="parent"
-                                android:visibility="gone"
+                                android:layout_marginBottom="20px"
                                 >
                             </ImageView>
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -808,14 +798,13 @@
                         app:layout_constraintStart_toEndOf="@+id/layout_tablet"
                         app:layout_constraintEnd_toStartOf="@+id/layout_bone_tablet"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        android:visibility="gone"
                         >
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/layout_tablet2_image"
                             android:layout_width="200px"
                             android:layout_height="480px"
-                            android:background="@drawable/img_tablet1"
+                            android:background="@drawable/img_tablet"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
@@ -826,20 +815,11 @@
                                 android:layout_height="410px"
                                 android:scaleType="fitXY"
                                 android:layout_marginBottom="20px"
-                                app:layout_constraintBottom_toTopOf="@+id/image_tablet2_image2"
+                                app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent">
                             </ImageView>
-                            <ImageView
-                                android:id="@+id/image_tablet2_image2"
-                                android:layout_width="190px"
-                                android:layout_height="20px"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                android:visibility="gone"
-                                >
-                            </ImageView>
+
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <!--합골 위패-->

@@ -184,10 +184,8 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.layoutBoneEngrave.visibility = View.VISIBLE
             binding.layoutUrnAutoComplete2.visibility = View.GONE
 
-            if(selectedUrnType == "합골함1")
+            if(selectedUrnType == "합골함")
                 settingList2()
-            else if(selectedUrnType == "합골함2")
-                settingList3()
         }
 
         binding.autoCompleteTextView.setAdapter(UrnAutoCompleteAdapter(
@@ -431,7 +429,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                             )
                         )
                     }
-                    "합골함1" -> {
+                    "합골함" -> {
                         binding.textBoneUrnTitle.text = "● 유골함[합골] 주문"
                         binding.layoutBoneUrnTitle.visibility = View.VISIBLE
                         binding.spinnerBoneUrnType.visibility = View.GONE
@@ -442,26 +440,6 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                         ApplicationClass.prefs.selectedUrnType2 = "선택안함"
 
                         settingList2()
-
-                        binding.autoCompleteTextView.setAdapter(
-                            UrnAutoCompleteAdapter(
-                                requireContext(),
-                                android.R.layout.simple_dropdown_item_1line,
-                                searchList
-                            )
-                        )
-                    }
-                    "합골함2" -> {
-                        binding.textBoneUrnTitle.text = "● 유골함[합골] 주문"
-                        binding.layoutBoneUrnTitle.visibility = View.VISIBLE
-                        binding.spinnerBoneUrnType.visibility = View.GONE
-                        binding.imageBoneUrnType.visibility = View.GONE
-                        binding.layoutBoneEngrave.visibility = View.VISIBLE
-                        binding.layoutUrnAutoComplete2.visibility = View.GONE
-
-                        ApplicationClass.prefs.selectedUrnType2 = "선택안함"
-
-                        settingList3()
 
                         binding.autoCompleteTextView.setAdapter(
                             UrnAutoCompleteAdapter(
@@ -967,20 +945,11 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         searchList = mutableListOf()
 
         searchList.add(UrnItem("미정", 0))
-//        searchList2.add(UrnItem("기본", R.drawable.img_bone1))
-//        searchList2.add(UrnItem("기본(검정)", R.drawable.img_bone1_0))
         searchList.add(UrnItem("ZEN사각합골진공함-HG-3-8228", R.drawable.img_bone1_1))
-    }
-    private fun settingList3() {
-        searchList = mutableListOf()
-
-        searchList.add(UrnItem("미정", 0))
-//        searchList3.add(UrnItem("기본", R.drawable.img_bone2))
-//        searchList3.add(UrnItem("기본(검정)", R.drawable.img_bone2_0))
         searchList.add(UrnItem("합골금띠 HG-1 4612", R.drawable.img_bone2_1))
         searchList.add(UrnItem("합골실버십장생 HG-2 4914", R.drawable.img_bone2_2))
     }
-    // 장동완성 단어 세팅
+    // 자동완성 단어 세팅
     private fun settingList_2() {
         searchList2 = mutableListOf()
 

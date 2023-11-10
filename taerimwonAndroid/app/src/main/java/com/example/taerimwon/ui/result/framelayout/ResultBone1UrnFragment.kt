@@ -48,7 +48,7 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
         boneDate2 = ApplicationClass.prefs.boneDate2.toString()
         boneDate2Type = ApplicationClass.prefs.boneDate2Type.toString()
 
-        if(!selectedUrnType.contains("선택안함") && (selectedUrnType.contains("합골함1") || !selectedUrnType2.contains("선택안함"))) {
+        if(!selectedUrnType.contains("선택안함") && (ApplicationClass.prefs.selectedUrnName!!.contains("ZEN사각합골진공함") || !selectedUrnType2.contains("선택안함"))) {
             if(ApplicationClass.prefs.boneSex == "남성"){
                 selectedUrnType = ApplicationClass.prefs.selectedUrnType2.toString()
                 selectedUrnType2 = ApplicationClass.prefs.selectedUrnType.toString()
@@ -67,7 +67,7 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
             }
         }
 
-        if(selectedUrnType2 != "선택안함") {
+        if(selectedUrnType2 != "선택안함" || ApplicationClass.prefs.selectedUrnName!!.contains("ZEN사각합골진공함")) {
             setUrnData()
         }else{
             binding.layoutResultContent.visibility = View.GONE
@@ -93,7 +93,7 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
 
         if(selectedUrnName2!!.contains("블랙") || selectedUrnName2!!.contains("검정")
             || selectedUrnName2!!.contains("휴안홍") || selectedUrnName2!!.contains("휴안흑")) {
-            if(boneEngraveTypePosition == 2){
+            if(boneEngraveTypePosition == 1){
                 imageName = "img_mark2_2"
             }else if(boneEngraveTypePosition == 3){
                 imageName = "img_mark4_2"

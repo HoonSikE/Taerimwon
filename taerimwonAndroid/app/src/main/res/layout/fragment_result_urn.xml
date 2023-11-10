@@ -63,9 +63,9 @@
                         android:textColor="@color/black"
                         android:textFontWeight="300"
                         android:textSize="35px"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_1_0" />
+                        app:layout_constraintTop_toBottomOf="@+id/layout_urn_result1_1_0"
+                        />
                     <TextView
                         android:id="@+id/layout_urn_result1_1_2"
                         android:layout_width="wrap_content"
@@ -315,7 +315,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_urn_result2_2"
                     android:layout_width="80px"
-                    android:layout_height="215px"
+                    android:layout_height="230px"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/image_urn_result2_1"
@@ -352,6 +352,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/layout_urn_result2_2_0"
+                        android:layout_marginTop="5px"
                         android:gravity="center"
                         android:lineSpacingMultiplier="1.2"
                         />
@@ -417,6 +418,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginTop="10px"
                         android:gravity="center"
                         android:lineSpacingMultiplier="1.0"
                         android:visibility="gone"
@@ -463,7 +465,6 @@
                         android:textColor="@color/black"
                         android:textFontWeight="300"
                         android:textSize="35px"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_1_0" />
                     <TextView

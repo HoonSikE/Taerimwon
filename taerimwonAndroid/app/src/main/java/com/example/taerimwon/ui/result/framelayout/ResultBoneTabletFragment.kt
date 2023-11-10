@@ -110,6 +110,9 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
             }else if(tabletReligion == "기독교"){
                 layoutBoneTabletResult01.visibility = View.VISIBLE
                 imageName = "img_mark2"
+                if(selectedTabletName!!.contains("검정")) {
+                    imageName = "img_mark2_2"
+                }
             }else if(tabletReligion == "불교"){
                 layoutBoneTabletResult01.visibility = View.VISIBLE
                 imageName = "img_mark3"
@@ -135,9 +138,12 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 //            imageName = "img_mark1"
                     layoutBoneTabletResult10.visibility = View.VISIBLE
                     layoutBoneTabletResult12.visibility = View.GONE
-                }else if(tabletReligion == "기독교")
+                }else if(tabletReligion == "기독교") {
                     imageName = "img_mark2"
-                else if(tabletReligion == "불교")
+                    if(selectedTabletName!!.contains("검정")) {
+                        imageName = "img_mark2_2"
+                    }
+                }else if(tabletReligion == "불교")
                     imageName = "img_mark3"
                 else if(tabletReligion == "천주교") {
                     imageName = "img_mark4"
@@ -162,9 +168,12 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 //            imageName = "img_mark1"
                     layoutBoneTablet2Result10.visibility = View.VISIBLE
                     layoutBoneTablet2Result12.visibility = View.GONE
-                }else if(boneTabletReligion == "기독교")
+                }else if(boneTabletReligion == "기독교") {
                     imageName = "img_mark2"
-                else if(boneTabletReligion == "불교")
+                    if(selectedTabletName!!.contains("검정")) {
+                        imageName = "img_mark2_2"
+                    }
+                }else if(boneTabletReligion == "불교")
                     imageName = "img_mark3"
                 else if(boneTabletReligion == "천주교"){
                     imageName = "img_mark4"

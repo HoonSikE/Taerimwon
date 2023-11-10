@@ -79,6 +79,9 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
             return
 
         if(selectedTabletName!!.contains("검정")) {
+            if(tabletReligion == "기독교" && tabletType != "문구"){
+                imageName = "img_mark2_2"
+            }
             if(tabletReligion == "천주교" && tabletType != "문구"){
                 imageName = "img_mark4_2"
             }

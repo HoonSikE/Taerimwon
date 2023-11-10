@@ -47,7 +47,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         date2 = ApplicationClass.prefs.date2.toString()
         date2Type = ApplicationClass.prefs.date2Type.toString()
 
-        if(!selectedUrnType.contains("선택안함") && (selectedUrnType.contains("합골함1") || !ApplicationClass.prefs.selectedUrnType2.toString().contains("선택안함"))) {
+        if(!selectedUrnType.contains("선택안함") && (selectedUrnName.contains("ZEN사각합골진공함") || !ApplicationClass.prefs.selectedUrnType2.toString().contains("선택안함"))) {
             if(ApplicationClass.prefs.boneSex == "남성"){
                 selectedUrnName = ApplicationClass.prefs.selectedUrnName2.toString()
                 name1 = ApplicationClass.prefs.boneName1.toString()
@@ -95,7 +95,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
 
         if(selectedUrnName!!.contains("블랙") || selectedUrnName!!.contains("검정")
             || selectedUrnName!!.contains("휴안홍") || selectedUrnName!!.contains("휴안흑")) {
-            if(engraveTypePosition == 2){
+            if(engraveTypePosition == 1){
                 imageName = "img_mark2_2"
             }else if(engraveTypePosition == 3){
                 imageName = "img_mark4_2"
