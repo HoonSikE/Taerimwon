@@ -22,6 +22,8 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
     private lateinit var name2 : String
     private lateinit var engraveType : String
     private lateinit var engraveType2 : String
+    private lateinit var checkCatholic : String
+    private lateinit var checkHangle : String
     private var engraveTypePosition by Delegates.notNull<Int>()
     private var engraveType2Position by Delegates.notNull<Int>()
     private lateinit var date1 : String
@@ -39,6 +41,8 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         name2 = ApplicationClass.prefs.name2.toString()
         engraveType = ApplicationClass.prefs.engraveType.toString()
         engraveType2 = ApplicationClass.prefs.engraveType2.toString()
+        checkCatholic = ApplicationClass.prefs.checkCatholic.toString()
+        checkHangle = ApplicationClass.prefs.checkHangle.toString()
         engraveTypePosition = ApplicationClass.prefs.engraveTypePosition
         engraveType2Position = ApplicationClass.prefs.engraveType2Position
 
@@ -47,13 +51,15 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         date2 = ApplicationClass.prefs.date2.toString()
         date2Type = ApplicationClass.prefs.date2Type.toString()
 
-        if(!selectedUrnType.contains("선택안함") && (selectedUrnName.contains("ZEN사각합골진공함") || !ApplicationClass.prefs.selectedUrnType2.toString().contains("선택안함"))) {
+        if(!selectedUrnType.contains("선택안함") && (ApplicationClass.prefs.selectedUrnName!!.contains("미정(타입1)") || selectedUrnName.contains("ZEN사각합골진공함") || !ApplicationClass.prefs.selectedUrnType2.toString().contains("선택안함"))) {
             if(ApplicationClass.prefs.boneSex == "남성"){
                 selectedUrnName = ApplicationClass.prefs.selectedUrnName2.toString()
                 name1 = ApplicationClass.prefs.boneName1.toString()
                 name2 = ApplicationClass.prefs.boneName2.toString()
                 engraveType = ApplicationClass.prefs.boneEngraveType.toString()
                 engraveType2 = ApplicationClass.prefs.boneEngraveType2.toString()
+                checkCatholic = ApplicationClass.prefs.checkCatholic2.toString()
+                checkHangle = ApplicationClass.prefs.checkHangle2.toString()
                 engraveTypePosition = ApplicationClass.prefs.boneEngraveTypePosition
                 engraveType2Position = ApplicationClass.prefs.boneEngraveType2Position
 
@@ -405,9 +411,16 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
 
             val layoutUrnResult222 = binding.layoutUrnResult222
             layoutUrnResult222.visibility = View.VISIBLE
-            layoutUrnResult222.text = "位"
-            val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
-            layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
+            if (checkHangle == "한글"){
+                val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+                layoutUrnResult222.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult222.text = "위"
+            }else {
+                val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
+                layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
+                layoutUrnResult222.text = "位"
+            }
+
             layoutUrnResult222.setLineSpacing(0f, 1.0f)
 
             when (name1.length) {
@@ -445,15 +458,28 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         }else if(engraveType == "묘법"){
             val layoutUrnResult220 = binding.layoutUrnResult220
             layoutUrnResult220.visibility = View.VISIBLE
-            layoutUrnResult220.text = "妙法"
+            val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
             val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
-            layoutUrnResult220.setTypeface(hyhaeso, Typeface.BOLD)
+            if (checkHangle == "한글"){
+                layoutUrnResult220.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult220.text = "묘법"
+            }else {
+                layoutUrnResult220.setTypeface(hyhaeso, Typeface.BOLD)
+                layoutUrnResult220.text = "妙法"
+            }
+
             layoutUrnResult220.letterSpacing = 0f
 
             val layoutUrnResult222 = binding.layoutUrnResult222
             layoutUrnResult222.visibility = View.VISIBLE
-            layoutUrnResult222.text = "位"
-            layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
+
+            if (checkHangle == "한글"){
+                layoutUrnResult222.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult222.text = "위"
+            }else {
+                layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
+                layoutUrnResult222.text = "位"
+            }
 
             when (name1.length) {
                 2 -> {
@@ -494,22 +520,54 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             "일반", "불교", "묘법", "SGI", "원불교" -> {
                 binding.layoutUrnResult111.visibility = View.VISIBLE
                 binding.layoutUrnResult112.visibility = View.GONE
+                val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+                if (checkHangle == "한글"){
+                    binding.layoutUrnResult111.setTypeface(hygungso, Typeface.BOLD)
+                    binding.layoutUrnResult111.text = "생"
+                }
             }
             "기독교", "순복음" -> {
                 binding.layoutUrnResult111.visibility = View.GONE
                 binding.layoutUrnResult112.visibility = View.VISIBLE
-                if(engraveType2.toString().contains("年月日"))
-                    binding.layoutUrnResult112.text = "出\n生"
-                else
-                    binding.layoutUrnResult112.text = "出生"
+                if(engraveType2.toString().contains("年月日")) {
+                    val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+                    if (checkHangle == "한글"){
+                        binding.layoutUrnResult112.setTypeface(hygungso, Typeface.BOLD)
+                        binding.layoutUrnResult112.text = "출\n생"
+                    }else {
+                        binding.layoutUrnResult112.text = "出\n生"
+                    }
+                }else{
+                    val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+                    if (checkHangle == "한글"){
+                        binding.layoutUrnResult112.setTypeface(hygungso, Typeface.BOLD)
+                        binding.layoutUrnResult112.text = "출생"
+                    }else {
+                        binding.layoutUrnResult112.text = "出生"
+                    }
+                }
             }
             "천주교" -> {
                 binding.layoutUrnResult111.visibility = View.GONE
                 binding.layoutUrnResult112.visibility = View.VISIBLE
-                if(engraveType2.contains("年月日"))
-                    binding.layoutUrnResult112.text = "出\n生"
-                else
-                    binding.layoutUrnResult112.text = "出生"
+
+                if(engraveType2.contains("年月日")) {
+                    val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+                    if (checkHangle == "한글"){
+                        binding.layoutUrnResult112.setTypeface(hygungso, Typeface.BOLD)
+                        binding.layoutUrnResult112.text = "출\n생"
+                    }else {
+                        binding.layoutUrnResult112.text = "出\n生"
+                    }
+                }else {
+                    val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+                    if (checkHangle == "한글"){
+                        binding.layoutUrnResult112.setTypeface(hygungso, Typeface.BOLD)
+                        binding.layoutUrnResult112.text = "출생"
+                    }else {
+                        binding.layoutUrnResult112.text = "出生"
+                    }
+                }
             }
         }
 
@@ -559,39 +617,110 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             binding.layoutUrnResult162.setImageResource(imageResource)
         }
 
-        if(date1Type == "양력")
-            binding.layoutUrnResult17.text = "陽"
-        else if(date1Type == "음력")
-            binding.layoutUrnResult17.text = "陰"
-
+        if(date1Type == "양력") {
+            val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+            if (checkHangle == "한글"){
+                binding.layoutUrnResult17.setTypeface(hygungso, Typeface.BOLD)
+                binding.layoutUrnResult17.text = "양"
+            }else {
+                binding.layoutUrnResult17.text = "陽"
+            }
+        }else if(date1Type == "음력") {
+            val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+            if (checkHangle == "한글"){
+                binding.layoutUrnResult17.setTypeface(hygungso, Typeface.BOLD)
+                binding.layoutUrnResult17.text = "음"
+            }else {
+                binding.layoutUrnResult17.text = "陰"
+            }
+        }
         // 사망일
         // 출생일
         when (engraveType) {
             "일반", "불교", "묘법", "SGI", "원불교" -> {
                 binding.layoutUrnResult311.visibility = View.VISIBLE
                 binding.layoutUrnResult312.visibility = View.GONE
+
+                val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+                if (checkHangle == "한글"){
+                    binding.layoutUrnResult311.setTypeface(hygungso, Typeface.BOLD)
+                    binding.layoutUrnResult311.text = "졸"
+                }
             }
             "기독교", "순복음" -> {
                 binding.layoutUrnResult311.visibility = View.GONE
                 binding.layoutUrnResult312.visibility = View.VISIBLE
-                if(engraveType2.toString().contains("年月日"))
-                    binding.layoutUrnResult312.text = "召\n天"
-                else
-                    binding.layoutUrnResult312.text = "召天"
+                if(engraveType2.toString().contains("年月日")) {
+
+                    val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+                    if (checkCatholic == "별세") {
+                        val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+                        if (checkHangle == "한글"){
+                            binding.layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                            binding.layoutUrnResult312.text = "별\n세"
+                        }else {
+                            binding.layoutUrnResult312.text = "別\n世"
+                        }
+                    }else{
+                        if (checkHangle == "한글"){
+                            binding.layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                            binding.layoutUrnResult312.text = "소\n천"
+                        }else {
+                            binding.layoutUrnResult312.text = "召\n天"
+                        }
+                    }
+                }else{
+                    if (checkCatholic == "별세") {
+                        val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+                        if (checkHangle == "한글"){
+                            binding.layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                            binding.layoutUrnResult312.text = "별세"
+                        }else {
+                            binding.layoutUrnResult312.text = "別世"
+                        }
+                    }else {
+                        val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+                        if (checkHangle == "한글") {
+                            binding.layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                            binding.layoutUrnResult312.text = "소천"
+                        } else {
+                            binding.layoutUrnResult312.text = "召天"
+                        }
+                    }
+                }
             }
             "천주교" -> {
                 binding.layoutUrnResult311.visibility = View.GONE
                 binding.layoutUrnResult312.visibility = View.VISIBLE
 
-                val yujimai = ResourcesCompat.getFont(requireContext(), R.font.yujimai)
-                binding.layoutUrnResult312.typeface = yujimai
-                binding.layoutUrnResult312.letterSpacing = -0.1f
-                binding.layoutUrnResult312.scaleX = 0.9f
+                if(engraveType2.contains("年月日")) {
+                    val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+                    val yujimai = ResourcesCompat.getFont(requireContext(), R.font.yujimai)
 
-                if(engraveType2.toString().contains("年月日"))
-                    binding.layoutUrnResult312.text = "善\n終"
-                else
-                    binding.layoutUrnResult312.text = "善終"
+                    if (checkHangle == "한글"){
+                        binding.layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                        binding.layoutUrnResult312.text = "선\n종"
+                    }else {
+                        binding.layoutUrnResult312.typeface = yujimai
+                        binding.layoutUrnResult312.setLineSpacing(0f, -15.0f)
+
+                        binding.layoutUrnResult312.text = "善\n終"
+                    }
+                }else {
+                    val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+                    val yujimai = ResourcesCompat.getFont(requireContext(), R.font.yujimai)
+
+                    if (checkHangle == "한글"){
+                        binding.layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                        binding.layoutUrnResult312.text = "선종"
+                    }else {
+                        binding.layoutUrnResult312.typeface = yujimai
+                        binding.layoutUrnResult312.letterSpacing = -0.1f
+                        binding.layoutUrnResult312.scaleX = 0.9f
+
+                        binding.layoutUrnResult312.text = "善終"
+                    }
+                }
             }
         }
 
@@ -641,9 +770,22 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             binding.layoutUrnResult362.setImageResource(imageResource)
         }
 
-        if(date2Type == "양력")
-            binding.layoutUrnResult37.text = "陽"
-        else if(date2Type == "음력")
-            binding.layoutUrnResult37.text = "陰"
+        if(date2Type == "양력") {
+            val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+            if (checkHangle == "한글"){
+                binding.layoutUrnResult37.setTypeface(hygungso, Typeface.BOLD)
+                binding.layoutUrnResult37.text = "양"
+            }else {
+                binding.layoutUrnResult37.text = "陽"
+            }
+        }else if(date2Type == "음력") {
+            val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+            if (checkHangle == "한글"){
+                binding.layoutUrnResult37.setTypeface(hygungso, Typeface.BOLD)
+                binding.layoutUrnResult37.text = "음"
+            }else {
+                binding.layoutUrnResult37.text = "陰"
+            }
+        }
     }
 }

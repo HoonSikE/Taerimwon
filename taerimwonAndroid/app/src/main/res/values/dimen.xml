@@ -8,6 +8,9 @@
     <dimen name="pixel_size_23">23px</dimen>
     <dimen name="pixel_size_25">25px</dimen>
 
+    <dimen name="pixel_size_7">7px</dimen>
+    <dimen name="pixel_size_9">9px</dimen>
+    <dimen name="pixel_size_12">12px</dimen>
     <dimen name="pixel_size_13">13px</dimen>
     <dimen name="pixel_size_15">15px</dimen>
     <dimen name="pixel_size_17_5">17.5px</dimen>

@@ -145,9 +145,9 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet_result1"
                     android:layout_width="37.5px"
-                    android:layout_height="15px"
-                    android:text="윗글"
-                    android:textSize="10px"
+                    android:layout_height="20px"
+                    android:text=""
+                    android:textSize="15px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/hygungso"
                     android:textFontWeight="300"
@@ -310,9 +310,9 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet_result3"
                     android:layout_width="37.5px"
-                    android:layout_height="15px"
-                    android:text="밑글자"
-                    android:textSize="20px"
+                    android:layout_height="20px"
+                    android:text=""
+                    android:textSize="15px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/hygungso"
                     android:textFontWeight="300"
@@ -337,9 +337,9 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet2_result1"
                     android:layout_width="37.5px"
-                    android:layout_height="15px"
-                    android:text="윗글자"
-                    android:textSize="10px"
+                    android:layout_height="20px"
+                    android:text=""
+                    android:textSize="15px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/hygungso"
                     android:textFontWeight="300"
@@ -502,9 +502,9 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet2_result3"
                     android:layout_width="37.5px"
-                    android:layout_height="15px"
-                    android:text="밑글자"
-                    android:textSize="10px"
+                    android:layout_height="20px"
+                    android:text=""
+                    android:textSize="15px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/hygungso"
                     android:textFontWeight="300"
@@ -515,6 +515,21 @@
                     android:visibility="gone"
                     />
             </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/layout_bone_tablet_result_under"
+                android:layout_width="37.5px"
+                android:layout_height="20px"
+                android:text="밑글자"
+                android:textSize="15px"
+                android:textColor="@color/black"
+                android:fontFamily="@font/hygungso"
+                android:textFontWeight="300"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_content2"
+                android:visibility="gone"
+                />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

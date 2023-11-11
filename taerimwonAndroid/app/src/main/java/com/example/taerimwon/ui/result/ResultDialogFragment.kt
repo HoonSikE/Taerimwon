@@ -50,7 +50,28 @@ class ResultDialogFragment : DialogFragment() {
             scaleGestureDetector.onTouchEvent(event)
             true
         }
+
+        // 확대 버튼 클릭 이벤트
+        binding.buttonZoomIn.setOnClickListener {
+            scaleFactor *= 1.2f // 예시로 20%씩 확대
+            updateImageSize()
+        }
+
+        // 축소 버튼 클릭 이벤트
+        binding.buttonZoomOut.setOnClickListener {
+            scaleFactor *= 0.8f // 예시로 20%씩 축소
+            updateImageSize()
+        }
     }
+
+    private fun updateImageSize() {
+        // LayoutParams를 사용하여 뷰의 크기 조절
+        val params = binding.imageResult.layoutParams
+        params.width = (initialWidth * scaleFactor).toInt()
+        params.height = (initialHeight * scaleFactor).toInt()
+        binding.imageResult.layoutParams = params
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = DlgResultBinding.inflate(inflater, container, false)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))

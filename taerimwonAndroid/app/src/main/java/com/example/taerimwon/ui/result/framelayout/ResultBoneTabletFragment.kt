@@ -190,6 +190,9 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
     }
     private fun setTablet2Data() {
         setTable2Mark()
+        val pixel_size_7 = resources.getDimensionPixelSize(R.dimen.pixel_size_7)
+        val pixel_size_9 = resources.getDimensionPixelSize(R.dimen.pixel_size_9)
+        val pixel_size_12 = resources.getDimensionPixelSize(R.dimen.pixel_size_12)
         val pixel_size_13 = resources.getDimensionPixelSize(R.dimen.pixel_size_13)
         val pixel_size_15 = resources.getDimensionPixelSize(R.dimen.pixel_size_15)
         val pixel_size_17_5 = resources.getDimensionPixelSize(R.dimen.pixel_size_17_5)
@@ -256,7 +259,13 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
             binding.layoutBoneTablet2Result28.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutBoneTablet2Result29.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutBoneTablet2Result3.setTextColor(Color.parseColor("#FFD700"))
+
+            binding.layoutBoneTabletResultUnder.setTextColor(Color.parseColor("#FFD700"))
+
         }
+
+        var flagUp = false;
+        var flagDown = false;
 
         if(!tabletType.contains("본관") && tabletType != "문구") {
             val layoutBoneTabletResult1 = binding.layoutBoneTabletResult1
@@ -326,6 +335,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 //                    layoutBoneTabletResult2.text = tmp.toString()
                 }
                 "기독교" -> {
+                    flagUp = true
+
                     layoutBoneTabletResult1.visibility = View.VISIBLE
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
@@ -379,13 +390,15 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     when (tabletName2.length) {
                         2 ->{
-//                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1])
+                            layoutBoneTabletResult1.scaleY = 1.3f
                         }
                         3 -> {
-//                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1]).append("\n").append(tabletName2[2])
+                            layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                            layoutBoneTabletResult1.scaleY = 1.6f
                         }
                         4 -> {
-//                            tmp2.append(tabletName2[0] + "" + tabletName2[1]).append("\n").append(tabletName2[2] + "" + tabletName2[3])
+                            layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                            layoutBoneTabletResult1.scaleY = 1.8f
                             layoutBoneTabletResult1.letterSpacing = -0.2f
                         }
                     }
@@ -394,6 +407,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 //                    layoutBoneTabletResult2.text = tmp.toString()
                 }
                 "천주교" -> {
+                    flagDown = true
                     layoutBoneTabletResult3.visibility = View.VISIBLE
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
@@ -447,29 +461,26 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     when (tabletName2.length) {
                         2 ->{
-//                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1])
                             layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         3 -> {
-//                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1]).append("\n").append(tabletName2[2])
-                            layoutBoneTabletResult3.scaleY = 1.3f
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                            layoutBoneTabletResult3.scaleY = 1.6f
                         }
                         4 -> {
-//                            tmp2.append(tabletName2[0] + "" + tabletName2[1]).append("\n").append(tabletName2[2] + "" + tabletName2[3])
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                            layoutBoneTabletResult3.scaleY = 1.8f
                             layoutBoneTabletResult3.letterSpacing = -0.2f
-                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         5 -> {
-//                            tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2])
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                            layoutBoneTabletResult3.scaleY = 1.8f
                             layoutBoneTabletResult3.letterSpacing = -0.2f
-                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         6 -> {
-//                            tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2] + "" + tabletName2[5])
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_7.toFloat())
                             layoutBoneTabletResult3.letterSpacing = -0.2f
-                            layoutBoneTabletResult3.scaleY = 1.5f
+                            layoutBoneTabletResult3.scaleY = 2.0f
                         }
                     }
 //                    layoutBoneTabletResult2.text = tmp.toString()
@@ -597,6 +608,9 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 //                    layoutBoneTabletResult2.text = tmp.toString()
                 }
                 "기독교(본관)" -> {
+                    flagUp = true
+                    flagDown = true
+
                     println("기독교 진입")
 
                     layoutBoneTabletResult1.visibility = View.VISIBLE
@@ -604,10 +618,9 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 37
-                    layoutParams.height = 140
+                    layoutParams.height = 135
                     layoutBoneTabletResult2.layoutParams = layoutParams
 //                    layoutBoneTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
-
 
                     layoutBoneTabletResult3.visibility = View.VISIBLE
                     val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
@@ -686,16 +699,15 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     when (tabletName2.length) {
                         2 ->{
-//                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1])
                             layoutBoneTabletResult1.scaleY = 1.3f
                         }
                         3 -> {
-//                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1]).append("\n").append(tabletName2[2])
-                            layoutBoneTabletResult1.scaleY = 1.3f
+                            layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                            layoutBoneTabletResult1.scaleY = 1.6f
                         }
                         4 -> {
-//                            tmp2.append(tabletName2[0] + "" + tabletName2[1]).append("\n").append(tabletName2[2] + "" + tabletName2[3])
-                            layoutBoneTabletResult1.scaleY = 1.3f
+                            layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                            layoutBoneTabletResult1.scaleY = 1.8f
                             layoutBoneTabletResult1.letterSpacing = -0.2f
                         }
                     }
@@ -804,6 +816,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 //                    layoutBoneTabletResult2.text = tmp.toString()
                 }
                 "천주교(본관)" -> {
+                    flagDown = true
                     println("천주교 진입")
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
@@ -886,29 +899,26 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     when (tabletName2.length) {
                         2 ->{
-//                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1])
                             layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         3 -> {
-//                            tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1]).append("\n").append(tabletName2[2])
-                            layoutBoneTabletResult3.scaleY = 1.3f
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                            layoutBoneTabletResult3.scaleY = 1.6f
                         }
                         4 -> {
-//                            tmp2.append(tabletName2[0] + "" + tabletName2[1]).append("\n").append(tabletName2[2] + "" + tabletName2[3])
-                            layoutBoneTabletResult3.scaleY = 1.3f
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                            layoutBoneTabletResult3.scaleY = 1.8f
                             layoutBoneTabletResult3.letterSpacing = -0.2f
                         }
                         5 -> {
-//                            tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2])
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                            layoutBoneTabletResult3.scaleY = 1.8f
                             layoutBoneTabletResult3.letterSpacing = -0.2f
-                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         6 -> {
-//                            tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2] + "" + tabletName2[5])
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_7.toFloat())
                             layoutBoneTabletResult3.letterSpacing = -0.2f
-                            layoutBoneTabletResult3.scaleY = 1.5f
+                            layoutBoneTabletResult3.scaleY = 2.0f
                         }
                     }
 //                    layoutBoneTabletResult2.text = tmp.toString()
@@ -953,7 +963,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                             layoutBoneTabletResult29.visibility = View.VISIBLE
                             layoutBoneTabletResult29.text = boneName3[1].toString()
 
-                            tmp.append(boneName3[0]).append("\n").append("\n").append(boneName3[1])
+                            boneTmp.append(boneName3[0]).append("\n").append("\n").append(boneName3[1])
                         }
                         3 -> {
                             layoutBoneTabletResult21.visibility = View.VISIBLE
@@ -979,9 +989,11 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                             layoutBoneTabletResult29.text = boneName3[3].toString()
                         }
                     }
-//                    layoutBoneTabletResult2.text = tmp.toString()
+//                    layoutBoneTabletResult2.text = boneTmp.toString()
                 }
                 "기독교" -> {
+                    flagDown = true
+
                     layoutBoneTabletResult1.visibility = View.VISIBLE
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
@@ -997,7 +1009,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                             layoutBoneTabletResult29.visibility = View.VISIBLE
                             layoutBoneTabletResult29.text = boneName3[1].toString()
 
-                            tmp.append(boneName3[0]).append("\n").append("\n").append(boneName3[1])
+                            boneTmp.append(boneName3[0]).append("\n").append("\n").append(boneName3[1])
 //                            layoutBoneTabletResult2.setLineSpacing(260f, 1f)
                         }
                         3 -> {
@@ -1027,20 +1039,24 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     when (boneTabletName2.length) {
                         2 ->{
-//                            tmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1])
+                            layoutBoneTabletResult1.scaleY = 1.3f
                         }
                         3 -> {
-//                            tmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1]).append("\n").append(boneTabletName2[2])
+                            layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                            layoutBoneTabletResult1.scaleY = 1.6f
                         }
                         4 -> {
-//                            tmp2.append(boneTabletName2[0] + "" + boneTabletName2[1]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[3])
+                            layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                            layoutBoneTabletResult1.scaleY = 1.8f
                             layoutBoneTabletResult1.letterSpacing = -0.2f
                         }
                     }
-                    tmp2.append(boneTabletName2)
-                    layoutBoneTabletResult1.text = tmp2.toString()
+                    boneTmp2.append(boneTabletName2)
+                    layoutBoneTabletResult1.text = boneTmp2.toString()
                 }
                 "천주교" -> {
+                    flagUp = true
+
                     layoutBoneTabletResult3.visibility = View.VISIBLE
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
@@ -1056,7 +1072,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                             layoutBoneTabletResult29.visibility = View.VISIBLE
                             layoutBoneTabletResult29.text = boneName3[1].toString()
 
-                            tmp.append(boneName3[0]).append("\n").append("\n").append(boneName3[1])
+                            boneTmp.append(boneName3[0]).append("\n").append("\n").append(boneName3[1])
 //                            layoutBoneTabletResult2.setLineSpacing(260f, 1f)
                         }
                         3 -> {
@@ -1086,34 +1102,31 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     when (boneTabletName2.length) {
                         2 ->{
-//                            tmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1])
                             layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         3 -> {
-//                            tmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1]).append("\n").append(boneTabletName2[2])
-                            layoutBoneTabletResult3.scaleY = 1.3f
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                            layoutBoneTabletResult3.scaleY = 1.6f
                         }
                         4 -> {
-//                            tmp2.append(boneTabletName2[0] + "" + boneTabletName2[1]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[3])
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                            layoutBoneTabletResult3.scaleY = 1.8f
                             layoutBoneTabletResult3.letterSpacing = -0.2f
-                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         5 -> {
-//                            tmp2.append(boneTabletName2[0] + "" + boneTabletName2[3]).append("\n").append(boneTabletName2[1] + "" + boneTabletName2[4]).append("\n").append(boneTabletName2[2])
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                            layoutBoneTabletResult3.scaleY = 1.8f
                             layoutBoneTabletResult3.letterSpacing = -0.2f
-                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         6 -> {
-//                            tmp2.append(boneTabletName2[0] + "" + boneTabletName2[3]).append("\n").append(boneTabletName2[1] + "" + boneTabletName2[4]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[5])
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_7.toFloat())
                             layoutBoneTabletResult3.letterSpacing = -0.2f
-                            layoutBoneTabletResult3.scaleY = 1.5f
+                            layoutBoneTabletResult3.scaleY = 2.0f
                         }
                     }
-//                    layoutBoneTabletResult2.text = tmp.toString()
-                    tmp2.append(boneTabletName2)
-                    layoutBoneTabletResult3.text = tmp2.toString()
+//                    layoutBoneTabletResult2.text = boneTmp.toString()
+                    boneTmp2.append(boneTabletName2)
+                    layoutBoneTabletResult3.text = boneTmp2.toString()
                 }
             }
         }
@@ -1221,6 +1234,9 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     }
                 }
                 "기독교(본관)" -> {
+                    flagUp = true
+                    flagDown = true
+
                     println("기독교 진입")
 
                     layoutBoneTabletResult1.visibility = View.VISIBLE
@@ -1228,9 +1244,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 37
-                    layoutParams.height = 140
+                    layoutParams.height = 135
                     layoutBoneTabletResult2.layoutParams = layoutParams
-
 
                     layoutBoneTabletResult3.visibility = View.VISIBLE
                     val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
@@ -1302,15 +1317,17 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                             layoutBoneTabletResult1.scaleY = 1.3f
                         }
                         3 -> {
-                            layoutBoneTabletResult1.scaleY = 1.3f
+                            layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                            layoutBoneTabletResult1.scaleY = 1.6f
                         }
                         4 -> {
-                            layoutBoneTabletResult1.scaleY = 1.3f
+                            layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                            layoutBoneTabletResult1.scaleY = 1.8f
                             layoutBoneTabletResult1.letterSpacing = -0.2f
                         }
                     }
-                    tmp2.append(boneTabletName2)
-                    layoutBoneTabletResult1.text = tmp2.toString()
+                    boneTmp2.append(boneTabletName2)
+                    layoutBoneTabletResult1.text = boneTmp2.toString()
                 }
                 "불교(본관)" -> {
                     println("불교 진입")
@@ -1399,6 +1416,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     }
                 }
                 "천주교(본관)" -> {
+                    flagDown = true
+
                     println("천주교 진입")
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
@@ -1473,31 +1492,95 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                             layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         3 -> {
-                            layoutBoneTabletResult3.scaleY = 1.3f
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                            layoutBoneTabletResult3.scaleY = 1.6f
                         }
                         4 -> {
-                            layoutBoneTabletResult3.scaleY = 1.3f
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                            layoutBoneTabletResult3.scaleY = 1.8f
                             layoutBoneTabletResult3.letterSpacing = -0.2f
                         }
                         5 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                            layoutBoneTabletResult3.scaleY = 1.8f
                             layoutBoneTabletResult3.letterSpacing = -0.2f
-                            layoutBoneTabletResult3.scaleY = 1.3f
                         }
                         6 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
+                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_7.toFloat())
                             layoutBoneTabletResult3.letterSpacing = -0.2f
-                            layoutBoneTabletResult3.scaleY = 1.5f
+                            layoutBoneTabletResult3.scaleY = 2.0f
                         }
                     }
-                    tmp2.append(boneTabletName2)
-                    layoutBoneTabletResult3.text = tmp2.toString()
+                    boneTmp2.append(boneTabletName2)
+                    layoutBoneTabletResult3.text = boneTmp2.toString()
                 }
             }
         }
         else if(boneTabletType == "문구"){
 
         }
+        if(!tabletType.contains("본관") && !boneTabletType.contains("본관")){
+            if(flagUp && flagUp){
+                binding.layoutBoneTabletResult1.visibility = View.VISIBLE
+                binding.layoutBoneTabletResult3.visibility = View.VISIBLE
+                binding.layoutBoneTablet2Result1.visibility = View.VISIBLE
+                binding.layoutBoneTablet2Result3.visibility = View.VISIBLE
 
+                // 레이아웃 파일에서 뷰 가져오기
+                val layoutBoneTabletResult2 = binding.layoutBoneTabletResult2
+                // 현재 레이아웃 파라미터를 가져옵니다.
+                val params = layoutBoneTabletResult2.layoutParams
+                // 뷰의 높이를 픽셀 단위로 설정
+                params.height = 135
+                layoutBoneTabletResult2.layoutParams = params
+
+                val layoutBoneTablet2Result2 = binding.layoutBoneTablet2Result2
+                val params2 = layoutBoneTablet2Result2.layoutParams
+                params2.height = 135
+                layoutBoneTablet2Result2.layoutParams = params2
+            }else if(flagDown){
+                binding.layoutBoneTabletResult3.visibility = View.VISIBLE
+                binding.layoutBoneTablet2Result3.visibility = View.VISIBLE
+
+                // 레이아웃 파일에서 뷰 가져오기
+                val layoutBoneTabletResult2 = binding.layoutBoneTabletResult2
+                // 현재 레이아웃 파라미터를 가져옵니다.
+                val params = layoutBoneTabletResult2.layoutParams
+                // 뷰의 높이를 픽셀 단위로 설정
+                params.height = 155
+                layoutBoneTabletResult2.layoutParams = params
+
+                val layoutBoneTablet2Result2 = binding.layoutBoneTablet2Result2
+                val params2 = layoutBoneTablet2Result2.layoutParams
+                params2.height = 155
+                layoutBoneTablet2Result2.layoutParams = params2
+            }else if(flagUp){
+                binding.layoutBoneTabletResult1.visibility = View.VISIBLE
+                binding.layoutBoneTablet2Result1.visibility = View.VISIBLE
+
+                // 레이아웃 파일에서 뷰 가져오기
+                val layoutBoneTabletResult2 = binding.layoutBoneTabletResult2
+                // 현재 레이아웃 파라미터를 가져옵니다.
+                val params = layoutBoneTabletResult2.layoutParams
+                // 뷰의 높이를 픽셀 단위로 설정
+                params.height = 155
+                layoutBoneTabletResult2.layoutParams = params
+
+                val layoutBoneTablet2Result2 = binding.layoutBoneTablet2Result2
+                val params2 = layoutBoneTablet2Result2.layoutParams
+                params2.height = 155
+                layoutBoneTablet2Result2.layoutParams = params2
+            }
+        }
+
+        if(tabletType == "기독교(본관)" && boneTabletType == "기독교(본관)"){
+            binding.layoutBoneTabletResult3.visibility = View.GONE
+            binding.layoutBoneTablet2Result3.visibility = View.GONE
+            binding.layoutBoneTabletResultUnder.visibility = View.VISIBLE
+
+            val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
+            binding.layoutBoneTabletResultUnder.typeface = hyhaeso
+            binding.layoutBoneTabletResultUnder.text = "召天"
+        }
     }
 }

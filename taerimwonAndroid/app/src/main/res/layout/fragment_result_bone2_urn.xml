@@ -6,7 +6,7 @@
     <!--합골2 추가 내용-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_result_content"
-        android:layout_width="wrap_content"
+        android:layout_width="210px"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -15,7 +15,7 @@
         <!--출생일1-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_bone2_1_result1"
-            android:layout_width="wrap_content"
+            android:layout_width="30px"
             android:layout_height="300px"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/layout_bone2_1_result3"
@@ -264,7 +264,7 @@
         <!--사망일1-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_bone2_1_result3"
-            android:layout_width="wrap_content"
+            android:layout_width="30px"
             android:layout_height="300px"
             app:layout_constraintStart_toEndOf="@+id/layout_bone2_1_result1"
             app:layout_constraintEnd_toStartOf="@+id/layout_bone2_result2"
@@ -511,7 +511,7 @@
         <!--이름 / 마크-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_bone2_result2"
-            android:layout_width="match_parent"
+            android:layout_width="90px"
             android:layout_height="300px"
             app:layout_constraintStart_toEndOf="@+id/layout_bone2_1_result3"
             app:layout_constraintEnd_toStartOf="@+id/layout_bone2_2_result1"
@@ -651,18 +651,18 @@
                 <!--이름-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_bone2_1_result2_2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="90px"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layout_bone2_1_result2_1"
                     app:layout_constraintBottom_toTopOf="@+id/layout_bone2_1_result2_3"
-                    android:layout_marginTop="10px"
+                    android:layout_marginTop="5px"
                     tools:ignore="MissingConstraints"
                     >
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/layout_bone2_1_result2_2_1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="45px"
                         android:layout_height="240px"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/layout_bone2_2_result2_2_1"
@@ -735,7 +735,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/layout_bone2_2_result2_2_1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="45px"
                         android:layout_height="240px"
                         app:layout_constraintStart_toEndOf="@+id/layout_bone2_1_result2_2_1"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -859,7 +859,7 @@
         <!--출생일1-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_bone2_2_result1"
-            android:layout_width="wrap_content"
+            android:layout_width="30px"
             android:layout_height="300px"
             app:layout_constraintStart_toEndOf="@+id/layout_bone2_result2"
             app:layout_constraintEnd_toStartOf="@+id/layout_bone2_2_result3"
@@ -1105,7 +1105,7 @@
         <!--사망일2-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_bone2_2_result3"
-            android:layout_width="wrap_content"
+            android:layout_width="30px"
             android:layout_height="300px"
             app:layout_constraintStart_toEndOf="@+id/layout_bone2_2_result1"
             app:layout_constraintEnd_toEndOf="parent"

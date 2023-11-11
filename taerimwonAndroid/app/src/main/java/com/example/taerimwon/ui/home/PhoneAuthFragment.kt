@@ -40,6 +40,8 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
     }
 
     private fun initData() {
+        findNavController().navigate(R.id.action_phoneAuthFragment_to_orderFragment)
+
         authViewModel.getBlackList()
 
         // 타이머

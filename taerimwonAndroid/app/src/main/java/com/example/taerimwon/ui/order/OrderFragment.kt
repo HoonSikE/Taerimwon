@@ -226,6 +226,90 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
     }
 
     private fun setOnClickListeners() {
+        val whiteColor = ContextCompat.getColor(requireContext(), R.color.white)
+        val blackColor = ContextCompat.getColor(requireContext(), R.color.black)
+
+        binding.menuButton1.setOnClickListener {
+            // style 변경
+            binding.menuButton1.setTextColor(whiteColor)
+            // background 변경
+            binding.menuButton1.setBackgroundResource(R.drawable.button_primary)
+
+            binding.menuButton2.setTextColor(blackColor)
+            binding.menuButton2.setBackgroundResource(R.drawable.button_gray)
+
+            binding.menuButton3.setTextColor(blackColor)
+            binding.menuButton3.setBackgroundResource(R.drawable.button_gray)
+
+            binding.menuButton4.setTextColor(blackColor)
+            binding.menuButton4.setBackgroundResource(R.drawable.button_gray)
+
+            binding.layoutMenu1.visibility = View.VISIBLE
+            binding.layoutUrnContainer.visibility = View.GONE
+            binding.layoutTabletContainer.visibility = View.GONE
+            binding.layoutPyeongjangContainer.visibility = View.GONE
+        }
+        binding.menuButton2.setOnClickListener {
+            // style 변경
+            binding.menuButton1.setTextColor(blackColor)
+            // background 변경
+            binding.menuButton1.setBackgroundResource(R.drawable.button_gray)
+
+            binding.menuButton2.setTextColor(whiteColor)
+            binding.menuButton2.setBackgroundResource(R.drawable.button_primary)
+
+            binding.menuButton3.setTextColor(blackColor)
+            binding.menuButton3.setBackgroundResource(R.drawable.button_gray)
+
+            binding.menuButton4.setTextColor(blackColor)
+            binding.menuButton4.setBackgroundResource(R.drawable.button_gray)
+
+            binding.layoutMenu1.visibility = View.GONE
+            binding.layoutUrnContainer.visibility = View.VISIBLE
+            binding.layoutTabletContainer.visibility = View.GONE
+            binding.layoutPyeongjangContainer.visibility = View.GONE
+        }
+        binding.menuButton3.setOnClickListener {
+            // style 변경
+            binding.menuButton1.setTextColor(blackColor)
+            // background 변경
+            binding.menuButton1.setBackgroundResource(R.drawable.button_gray)
+
+            binding.menuButton2.setTextColor(blackColor)
+            binding.menuButton2.setBackgroundResource(R.drawable.button_gray)
+
+            binding.menuButton3.setTextColor(whiteColor)
+            binding.menuButton3.setBackgroundResource(R.drawable.button_primary)
+
+            binding.menuButton4.setTextColor(blackColor)
+            binding.menuButton4.setBackgroundResource(R.drawable.button_gray)
+
+            binding.layoutMenu1.visibility = View.GONE
+            binding.layoutUrnContainer.visibility = View.GONE
+            binding.layoutTabletContainer.visibility = View.VISIBLE
+            binding.layoutPyeongjangContainer.visibility = View.GONE
+        }
+        binding.menuButton4.setOnClickListener {
+            // style 변경
+            binding.menuButton1.setTextColor(blackColor)
+            // background 변경
+            binding.menuButton1.setBackgroundResource(R.drawable.button_gray)
+
+            binding.menuButton2.setTextColor(blackColor)
+            binding.menuButton2.setBackgroundResource(R.drawable.button_gray)
+
+            binding.menuButton3.setTextColor(blackColor)
+            binding.menuButton3.setBackgroundResource(R.drawable.button_gray)
+
+            binding.menuButton4.setTextColor(whiteColor)
+            binding.menuButton4.setBackgroundResource(R.drawable.button_primary)
+
+            binding.layoutMenu1.visibility = View.GONE
+            binding.layoutUrnContainer.visibility = View.GONE
+            binding.layoutTabletContainer.visibility = View.GONE
+            binding.layoutPyeongjangContainer.visibility = View.VISIBLE
+        }
+
         binding.buttonOrderToOrderFragment.setOnClickListener{
             ApplicationClass.prefs.resetPreferences()
             findNavController().navigate(R.id.action_orderFragment_to_orderFragment)
@@ -237,9 +321,6 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         val layoutRadioCremation = binding.layoutRadioCremation
         val layoutRadioFuneral = binding.layoutRadioFuneral
         val layoutRadioBurial = binding.layoutRadioBurial
-
-        val whiteColor = ContextCompat.getColor(requireContext(), R.color.white)
-        val blackColor = ContextCompat.getColor(requireContext(), R.color.black)
         binding.button1.setOnClickListener {
             // style 변경
             binding.button1.setTextColor(whiteColor)
@@ -1147,10 +1228,12 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         searchList.add("화접도 ZE-5 11832")
 
         // 합골 1
+        searchList.add("미정(타입2)")
         searchList.add("합골금띠 HG-1 4612")
         searchList.add("합골실버십장생 HG-2 4914")
         
         // 합골 2
+        searchList.add("미정(타입1)")
         searchList.add("ZEN사각합골진공함-HG-3-8228")
     }
     private fun settingList2() {

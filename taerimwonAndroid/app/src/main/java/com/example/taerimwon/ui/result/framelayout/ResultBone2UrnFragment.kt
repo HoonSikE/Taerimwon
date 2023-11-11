@@ -24,7 +24,8 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
         selectedUrnType = ApplicationClass.prefs.selectedUrnType.toString()
 
         if(selectedUrnType != "선택안함") {
-            if(ApplicationClass.prefs.selectedUrnName!!.contains("합골금띠")
+            if(ApplicationClass.prefs.selectedUrnName!!.contains("미정(타입2)")
+                || ApplicationClass.prefs.selectedUrnName!!.contains("합골금띠")
                 || ApplicationClass.prefs.selectedUrnName!!.contains("합골실버십장생")){
                 setBone2Data()
             }else {
@@ -72,9 +73,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 binding.imageBone2Result21.setImageResource(imageResource)
                 return
             }
-        }
-
-        if(engraveTypePosition == boneEngraveTypePosition && !(name1 == "" || boneName1 == "")) {
+        }else if(engraveTypePosition == boneEngraveTypePosition && !(name1 == "" || boneName1 == "")) {
             binding.imageBone2Result21.visibility = View.VISIBLE
             binding.imageBone2Result211.visibility = View.GONE
             binding.imageBone2Result212.visibility = View.GONE
@@ -96,7 +95,9 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
             binding.imageBone2Result21.setImageResource(imageResource)
             return
-        }else if(ApplicationClass.prefs.boneSex == "남성"){
+        }
+
+        if(ApplicationClass.prefs.boneSex == "남성"){
             // 정보1
             name1 = ApplicationClass.prefs.boneName1
             engraveTypePosition = ApplicationClass.prefs.boneEngraveTypePosition
@@ -157,6 +158,8 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
         val tmp1_2 = StringBuilder()
 
         var engraveType = ApplicationClass.prefs.engraveType
+        var checkCatholic = ApplicationClass.prefs.checkCatholic
+        var checkHangle = ApplicationClass.prefs.checkHangle
         var engraveType2 = ApplicationClass.prefs.engraveType2
 
         var date1 = ApplicationClass.prefs.date1.toString()
@@ -171,6 +174,8 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
         val tmp2_2 = StringBuilder()
 
         var boneEngraveType = ApplicationClass.prefs.boneEngraveType
+        var checkCatholic2 = ApplicationClass.prefs.checkCatholic2
+        var checkHangle2 = ApplicationClass.prefs.checkHangle2
         var boneEngraveType2 = ApplicationClass.prefs.boneEngraveType2
 
         var boneDate1 = ApplicationClass.prefs.boneDate1.toString()
@@ -304,6 +309,8 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             name2 = ApplicationClass.prefs.boneName2.toString()
 
             engraveType = ApplicationClass.prefs.boneEngraveType
+            checkCatholic = ApplicationClass.prefs.checkCatholic2
+            checkHangle = ApplicationClass.prefs.checkHangle2
             engraveType2 = ApplicationClass.prefs.boneEngraveType2
 
             date1 = ApplicationClass.prefs.boneDate1.toString()
@@ -316,6 +323,8 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             boneName2 = ApplicationClass.prefs.name2.toString()
 
             boneEngraveType = ApplicationClass.prefs.engraveType
+            checkCatholic2 = ApplicationClass.prefs.checkCatholic
+            checkHangle2 = ApplicationClass.prefs.checkHangle
             boneEngraveType2 = ApplicationClass.prefs.engraveType2
 
             boneDate1 = ApplicationClass.prefs.date1.toString()
@@ -528,6 +537,8 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
         var flagUp = false;
         var flagDown = false;
 
+        val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+
         /**정보1*/
         if((engraveType == "일반" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日")))
             || (engraveType == "기독교" && (engraveType2 == "직분X"))
@@ -619,14 +630,26 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutUrnResult220.visibility = View.VISIBLE
             when (name2.length) {
                 2 ->{
+                    val params = layoutUrnResult220.layoutParams
+                    params.height = 50
+                    layoutUrnResult220.layoutParams = params
+
                     tmp1_2.append(name2[0]).append("\n").append(name2[1])
                 }
                 3 -> {
+                    val params = layoutUrnResult220.layoutParams
+                    params.height = 70
+                    layoutUrnResult220.layoutParams = params
+
                     tmp1_2.append(name2[0]).append("\n").append(name2[1]).append("\n").append(name2[2])
 
                     layoutUrnResult220.setLineSpacing(0f, 1.0f)
                 }
                 4 -> {
+                    val params = layoutUrnResult220.layoutParams
+                    params.height = 50
+                    layoutUrnResult220.layoutParams = params
+
                     tmp1_2.append(name2[0] + "" + name2[1]).append("\n").append(name2[2] + "" + name2[3])
                 }
             }
@@ -660,22 +683,42 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutUrnResult220.visibility = View.VISIBLE
             when (name2.length) {
                 2 ->{
+                    val params = layoutUrnResult220.layoutParams
+                    params.height = 50
+                    layoutUrnResult220.layoutParams = params
+
                     tmp1_2.append(name2[0]).append("\n").append(name2[1])
                 }
                 3 -> {
+                    val params = layoutUrnResult220.layoutParams
+                    params.height = 70
+                    layoutUrnResult220.layoutParams = params
+
                     tmp1_2.append(name2[0]).append("\n").append(name2[1]).append("\n").append(name2[2])
 
                     layoutUrnResult220.setLineSpacing(0f, 1.0f)
                 }
                 4 -> {
+                    val params = layoutUrnResult220.layoutParams
+                    params.height = 50
+                    layoutUrnResult220.layoutParams = params
+
                     tmp1_2.append(name2[0] + "" + name2[1]).append("\n").append(name2[2] + "" + name2[3])
                 }
                 5 -> {
+                    val params = layoutUrnResult220.layoutParams
+                    params.height = 70
+                    layoutUrnResult220.layoutParams = params
+
                     tmp1_2.append(name2[0] + "" + name2[3]).append("\n").append(name2[1] + "" + name2[4]).append("\n").append(name2[2])
 
                     layoutUrnResult220.setLineSpacing(0f, 1.0f)
                 }
                 6 -> {
+                    val params = layoutUrnResult220.layoutParams
+                    params.height = 70
+                    layoutUrnResult220.layoutParams = params
+
                     tmp1_2.append(name2[0] + "" + name2[3]).append("\n").append(name2[1] + "" + name2[4]).append("\n").append(name2[2] + "" + name2[5])
 
                     layoutUrnResult220.setLineSpacing(0f, 1.0f)
@@ -811,18 +854,33 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             "일반", "불교", "묘법", "SGI", "원불교" -> {
                 layoutUrnResult111.visibility = View.VISIBLE
                 layoutUrnResult112.visibility = View.GONE
+
+                if (checkHangle == "한글"){
+                    layoutUrnResult111.setTypeface(hygungso, Typeface.BOLD)
+                    layoutUrnResult111.text = "생"
+                }
             }
             "기독교", "순복음" -> {
                 layoutUrnResult111.visibility = View.GONE
                 layoutUrnResult112.visibility = View.VISIBLE
-                layoutUrnResult112.text = "出\n生"
+
+                if (checkHangle == "한글") {
+                    layoutUrnResult112.setTypeface(hygungso, Typeface.BOLD)
+                    layoutUrnResult112.text = "소\n천"
+                }else
+                    layoutUrnResult112.text = "出\n生"
 
                 layoutUrnResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
             "천주교" -> {
                 layoutUrnResult111.visibility = View.GONE
                 layoutUrnResult112.visibility = View.VISIBLE
-                layoutUrnResult112.text = "出\n生"
+
+                if (checkHangle == "한글") {
+                    layoutUrnResult112.setTypeface(hygungso, Typeface.BOLD)
+                    layoutUrnResult112.text = "소\n천"
+                }else
+                    layoutUrnResult112.text = "出\n生"
 
                 layoutUrnResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
@@ -862,29 +920,68 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             imageResource = resources.getIdentifier(imageName8, "drawable", requireActivity().packageName)
             layoutUrnResult162.setImageResource(imageResource)
         }
-        if(date1Type == "양력")
-            layoutUrnResult17.text = "陽"
-        else if(date1Type == "음력")
-            layoutUrnResult17.text = "陰"
 
+        if(date1Type == "양력") {
+            if (checkHangle == "한글") {
+                layoutUrnResult17.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult17.text = "양"
+            }else
+                layoutUrnResult17.text = "陽"
+        }else if(date1Type == "음력"){
+            if (checkHangle == "한글") {
+                layoutUrnResult17.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult17.text = "음"
+            }else
+                layoutUrnResult17.text = "陰"
+        }
         // 사망일
         // 출생일
         when (engraveType) {
             "일반", "불교", "묘법", "SGI", "원불교" -> {
                 layoutUrnResult311.visibility = View.VISIBLE
                 layoutUrnResult312.visibility = View.GONE
+
+                if (checkHangle == "한글"){
+                    layoutUrnResult311.setTypeface(hygungso, Typeface.BOLD)
+                    layoutUrnResult311.text = "졸"
+                }
             }
             "기독교", "순복음" -> {
                 layoutUrnResult311.visibility = View.GONE
                 layoutUrnResult312.visibility = View.VISIBLE
-                layoutUrnResult312.text = "召\n天"
+                if (checkCatholic == "별세") {
+                    if (checkHangle == "한글"){
+                        layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                        layoutUrnResult312.text = "별\n세"
+                    }else {
+                        layoutUrnResult312.text = "別\n世"
+                    }
+                }else {
+                    if (checkHangle == "한글") {
+                        layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                        layoutUrnResult312.text = "소\n천"
+                    } else {
+                        layoutUrnResult312.text = "召\n天"
+                    }
+                }
 
                 layoutUrnResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
             "천주교" -> {
                 layoutUrnResult311.visibility = View.GONE
                 layoutUrnResult312.visibility = View.VISIBLE
-                layoutUrnResult312.text = "善\n終"
+
+                val yujimai = ResourcesCompat.getFont(requireContext(), R.font.yujimai)
+
+                if (checkHangle == "한글"){
+                    layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                    layoutUrnResult312.text = "선\n종"
+                }else {
+                    layoutUrnResult312.typeface = yujimai
+                    layoutUrnResult312.setLineSpacing(0f, -15.0f)
+
+                    layoutUrnResult312.text = "善\n終"
+                }
 
                 layoutUrnResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
@@ -925,10 +1022,19 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutUrnResult362.setImageResource(imageResource)
         }
 
-        if(date2Type == "양력")
-            layoutUrnResult37.text = "陽"
-        else if(date2Type == "음력")
-            layoutUrnResult37.text = "陰"
+        if(date2Type == "양력") {
+            if (checkHangle == "한글") {
+                layoutUrnResult37.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult37.text = "양"
+            }else
+                layoutUrnResult37.text = "陽"
+        }else if(date2Type == "음력"){
+            if (checkHangle == "한글") {
+                layoutUrnResult37.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult37.text = "음"
+            }else
+                layoutUrnResult37.text = "陰"
+        }
 
         /**정보2*/
         if((boneEngraveType == "일반" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日")))
@@ -1023,9 +1129,17 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutBoneResult220.visibility = View.VISIBLE
             when (boneName2.length) {
                 2 -> {
+                    val params = layoutBoneResult220.layoutParams
+                    params.height = 50
+                    layoutBoneResult220.layoutParams = params
+
                     tmp2_2.append(boneName2[0]).append("\n").append(boneName2[1])
                 }
                 3 -> {
+                    val params = layoutBoneResult220.layoutParams
+                    params.height = 70
+                    layoutBoneResult220.layoutParams = params
+
                     tmp2_2.append(boneName2[0]).append("\n").append(boneName2[1]).append("\n").append(boneName2[2])
 
                     layoutBoneResult220.setLineSpacing(0f, 1.0f)
@@ -1034,6 +1148,10 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 //                    layoutBoneResult222.letterSpacing = -0.15f
                 }
                 4 -> {
+                    val params = layoutBoneResult220.layoutParams
+                    params.height = 50
+                    layoutBoneResult220.layoutParams = params
+
                     tmp2_2.append(boneName2[0] + "" + boneName2[1]).append("\n").append(boneName2[2] + "" + boneName2[3])
 //                    layoutBoneResult220.width = pixel_size_100
 //                    layoutBoneResult220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
@@ -1070,22 +1188,42 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutBoneResult220.visibility = View.VISIBLE
             when (boneName2.length) {
                 2 -> {
+                    val params = layoutBoneResult220.layoutParams
+                    params.height = 50
+                    layoutBoneResult220.layoutParams = params
+
                     tmp2_2.append(boneName2[0]).append("\n").append(boneName2[1])
                 }
                 3 -> {
+                    val params = layoutBoneResult220.layoutParams
+                    params.height = 70
+                    layoutBoneResult220.layoutParams = params
+
                     tmp2_2.append(boneName2[0]).append("\n").append(boneName2[1]).append("\n").append(boneName2[2])
 
                     layoutBoneResult220.setLineSpacing(0f, 1.0f)
                 }
                 4 -> {
+                    val params = layoutBoneResult220.layoutParams
+                    params.height = 50
+                    layoutBoneResult220.layoutParams = params
+
                     tmp2_2.append(boneName2[0] + "" + boneName2[1]).append("\n").append(boneName2[2] + "" + boneName2[3])
                 }
                 5 -> {
+                    val params = layoutBoneResult220.layoutParams
+                    params.height = 70
+                    layoutBoneResult220.layoutParams = params
+
                     tmp2_2.append(boneName2[0] + "" + boneName2[3]).append("\n").append(boneName2[1] + "" + boneName2[4]).append("\n").append(boneName2[3])
 
                     layoutBoneResult220.setLineSpacing(0f, 1.0f)
                 }
                 6 -> {
+                    val params = layoutBoneResult220.layoutParams
+                    params.height = 70
+                    layoutBoneResult220.layoutParams = params
+
                     tmp2_2.append(boneName2[0] + "" + boneName2[3]).append("\n").append(boneName2[1] + "" + boneName2[4]).append("\n").append(boneName2[2] + "" + boneName2[5])
 
                     layoutBoneResult220.setLineSpacing(0f, 1.0f)
@@ -1109,9 +1247,13 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
             binding.layoutBone21Result23.visibility = View.VISIBLE
             layoutBoneResult222.visibility = View.VISIBLE
-            layoutBoneResult222.text = "位"
+            if (checkHangle2 == "한글"){
+                layoutBoneResult222.setTypeface(hygungso, Typeface.BOLD)
+                layoutBoneResult222.text = "위"
+            }else{
+                layoutBoneResult222.text = "位"
+            }
             layoutBoneResult222.scaleY = 1f
-            layoutBoneResult222.setTypeface(hyhaeso, Typeface.BOLD)
             layoutBoneResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
 
 //            layoutBoneResult222.typeface = hyhaeso
@@ -1156,15 +1298,24 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
             binding.layoutBone21Result21.visibility = View.VISIBLE
             layoutBoneResult220.visibility = View.VISIBLE
-            layoutBoneResult220.text = "妙法"
-            layoutBoneResult220.setTypeface(hyhaeso, Typeface.BOLD)
+            if (checkHangle2 == "한글"){
+                layoutBoneResult220.setTypeface(hygungso, Typeface.BOLD)
+                layoutBoneResult220.text = "묘법"
+            }else{
+                layoutBoneResult220.text = "妙法"
+            }
             layoutBoneResult220.letterSpacing = 0f
 
             binding.layoutBone21Result23.visibility = View.VISIBLE
             layoutBoneResult222.visibility = View.VISIBLE
-            layoutBoneResult222.text = "位"
+
+            if (checkHangle2 == "한글"){
+                layoutBoneResult222.setTypeface(hygungso, Typeface.BOLD)
+                layoutBoneResult222.text = "위"
+            }else{
+                layoutBoneResult222.text = "位"
+            }
             layoutBoneResult222.scaleY = 1f
-            layoutBoneResult222.setTypeface(hyhaeso, Typeface.BOLD)
             layoutBoneResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
 
 //            layoutBoneResult222.typeface = hyhaeso
@@ -1209,18 +1360,32 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             "일반", "불교", "묘법", "SGI", "원불교" -> {
                 layoutBoneResult111.visibility = View.VISIBLE
                 layoutBoneResult112.visibility = View.GONE
+
+                if (checkHangle2 == "한글"){
+                    layoutBoneResult111.setTypeface(hygungso, Typeface.BOLD)
+                    layoutBoneResult111.text = "생"
+                }
             }
             "기독교", "순복음" -> {
                 layoutBoneResult111.visibility = View.GONE
                 layoutBoneResult112.visibility = View.VISIBLE
-                layoutBoneResult112.text = "出\n生"
-
+                if (checkHangle2 == "한글") {
+                    layoutBoneResult112.setTypeface(hygungso, Typeface.BOLD)
+                    layoutBoneResult112.text = "출\n생"
+                }else{
+                    layoutBoneResult112.text = "出\n生"
+                }
                 layoutBoneResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
             "천주교" -> {
                 layoutBoneResult111.visibility = View.GONE
                 layoutBoneResult112.visibility = View.VISIBLE
-                layoutBoneResult112.text = "出\n生"
+                if (checkHangle2 == "한글") {
+                    layoutBoneResult112.setTypeface(hygungso, Typeface.BOLD)
+                    layoutBoneResult112.text = "출\n생"
+                }else{
+                    layoutBoneResult112.text = "出\n生"
+                }
 
                 layoutBoneResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
@@ -1260,29 +1425,69 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             imageResource = resources.getIdentifier(imageName8, "drawable", requireActivity().packageName)
             layoutBoneResult162.setImageResource(imageResource)
         }
-        if(boneDate1Type == "양력")
-            layoutBoneResult17.text = "陽"
-        else if(boneDate1Type == "음력")
-            layoutBoneResult17.text = "陰"
 
+        if(boneDate1Type == "양력") {
+            if (checkHangle2 == "한글") {
+                layoutBoneResult17.setTypeface(hygungso, Typeface.BOLD)
+                layoutBoneResult17.text = "양"
+            }else
+                layoutBoneResult17.text = "陽"
+        }else if(boneDate1Type == "음력"){
+            if (checkHangle2 == "한글") {
+                layoutBoneResult17.setTypeface(hygungso, Typeface.BOLD)
+                layoutBoneResult17.text = "음"
+            }else
+                layoutBoneResult17.text = "陰"
+        }
         // 사망일
         // 출생일
         when (boneEngraveType) {
             "일반", "불교", "묘법", "SGI", "원불교" -> {
                 layoutBoneResult311.visibility = View.VISIBLE
                 layoutBoneResult312.visibility = View.GONE
+
+                if (checkHangle2 == "한글"){
+                    layoutBoneResult311.setTypeface(hygungso, Typeface.BOLD)
+                    layoutBoneResult311.text = "졸"
+                }
             }
             "기독교", "순복음" -> {
                 layoutBoneResult311.visibility = View.GONE
                 layoutBoneResult312.visibility = View.VISIBLE
-                layoutBoneResult312.text = "召\n天"
+
+                if (checkCatholic2 == "별세") {
+                    if (checkHangle2 == "한글") {
+                        layoutBoneResult312.setTypeface(hygungso, Typeface.BOLD)
+                        layoutBoneResult312.text = "별세"
+                    }else{
+                        layoutBoneResult312.text = "別\n世"
+                    }
+                }else {
+                    if (checkHangle2 == "한글") {
+                        layoutBoneResult312.setTypeface(hygungso, Typeface.BOLD)
+                        layoutBoneResult312.text = "소\n천"
+                    } else {
+                        layoutBoneResult312.text = "召\n天"
+                    }
+                }
 
                 layoutBoneResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
             "천주교" -> {
                 layoutBoneResult311.visibility = View.GONE
                 layoutBoneResult312.visibility = View.VISIBLE
-                layoutBoneResult312.text = "善\n終"
+
+                val yujimai = ResourcesCompat.getFont(requireContext(), R.font.yujimai)
+
+                if (checkHangle2 == "한글"){
+                    layoutBoneResult312.setTypeface(hygungso, Typeface.BOLD)
+                    layoutBoneResult312.text = "선\n종"
+                }else {
+                    layoutBoneResult312.typeface = yujimai
+                    layoutBoneResult312.setLineSpacing(0f, -15.0f)
+
+                    layoutBoneResult312.text = "善\n終"
+                }
 
                 layoutBoneResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
@@ -1323,18 +1528,19 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutBoneResult362.setImageResource(imageResource)
         }
 
-        if(boneDate2Type == "양력")
-            layoutBoneResult37.text = "陽"
-        else if(boneDate2Type == "음력")
-            layoutBoneResult37.text = "陰"
-
-        // 레이아웃 파일에서 뷰 가져오기
-        val layoutBone21Result221 = binding.layoutBone21Result221
-        // 현재 레이아웃 파라미터를 가져옵니다.
-        val params = layoutBone21Result221.layoutParams
-        // 뷰의 높이를 픽셀 단위로 설정
-        params.height = 170
-        layoutBone21Result221.layoutParams = params
+        if(boneDate2Type == "양력") {
+            if (checkHangle2 == "한글") {
+                layoutBoneResult37.setTypeface(hygungso, Typeface.BOLD)
+                layoutBoneResult37.text = "양"
+            }else
+                layoutBoneResult37.text = "陽"
+        }else if(boneDate2Type == "음력"){
+            if (checkHangle2 == "한글") {
+                layoutBoneResult37.setTypeface(hygungso, Typeface.BOLD)
+                layoutBoneResult37.text = "음"
+            }else
+                layoutBoneResult37.text = "陰"
+        }
 
         if(flagUp && flagUp){
             // 레이아웃 파일에서 뷰 가져오기
@@ -1351,38 +1557,58 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutBone22Result221.layoutParams = params2
 //            binding.layoutBone21Result221.height = pixel_size_170
 //            binding.layoutBone22Result221.height = pixel_size_170
-        }else{
-            if(flagUp || flagDown){
-                val layoutBone21Result221 = binding.layoutBone21Result221
-                val params = layoutBone21Result221.layoutParams
-                params.height = 210
-                layoutBone21Result221.layoutParams = params
+        }else if(flagDown){
+            val layoutBone21Result221 = binding.layoutBone21Result221
+            val params = layoutBone21Result221.layoutParams
+            params.height = 210
+            layoutBone21Result221.layoutParams = params
 
-                val layoutBone22Result221 = binding.layoutBone22Result221
-                val params2 = layoutBone22Result221.layoutParams
-                params2.height = 210
-                layoutBone22Result221.layoutParams = params2
+            val layoutBone22Result221 = binding.layoutBone22Result221
+            val params2 = layoutBone22Result221.layoutParams
+            params2.height = 210
+            layoutBone22Result221.layoutParams = params2
+        }else if(flagUp){
+            val layoutBone21Result221 = binding.layoutBone21Result221
+            val params = layoutBone21Result221.layoutParams
+
+            if(name2.length == 2 || name2.length == 4 || boneName2.length == 2 || boneName2.length == 4)
+                params.height = 190
+            else if(name2.length == 3 || name2.length == 5 || name2.length == 6
+                || boneName2.length == 3 || boneName2.length == 5 || boneName2.length == 6)
+                params.height = 170
+
+            layoutBone21Result221.layoutParams = params
+
+            val layoutBone22Result221 = binding.layoutBone22Result221
+            val params2 = layoutBone22Result221.layoutParams
+
+            if(name2.length == 2 || name2.length == 4 || boneName2.length == 2 || boneName2.length == 4)
+                params2.height = 190
+            else if(name2.length == 3 || name2.length == 5 || name2.length == 6
+                || boneName2.length == 3 || boneName2.length == 5 || boneName2.length == 6)
+                params2.height = 170
+
+            layoutBone22Result221.layoutParams = params2
 //                binding.layoutBone21Result221.height = pixel_size_210
 //                binding.layoutBone22Result221.height = pixel_size_210
-            }
         }
 
         if((engraveType2 == "형제" && boneEngraveType2 == "형제")
             || (engraveType2 == "자매" && boneEngraveType2 == "자매")
-            || (engraveType2 == "SGI" && boneEngraveType2 == "SGI")
-            || (engraveType2 == "묘법" && boneEngraveType2 == "묘법")
-            || (engraveType2 == "묘법" && boneEngraveType2 == "SGI")
-            || (engraveType2 == "SGI" && boneEngraveType2 == "묘법")){
+            || (engraveType == "SGI" && boneEngraveType == "SGI")
+            || (engraveType == "묘법" && boneEngraveType == "묘법")
+            || (engraveType == "묘법" && boneEngraveType == "SGI")
+            || (engraveType == "SGI" && boneEngraveType == "묘법")){
             binding.layoutBone21Result222.scaleY = 1f
             binding.layoutBone21Result222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
 
             binding.layoutBone22Result222.visibility = View.GONE
         }
-        if(engraveType2 == "SGI" && boneEngraveType2 == "SGI") {
+        if(engraveType == "SGI" && boneEngraveType == "SGI") {
             binding.layoutBone21Result220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
 
             binding.layoutBone22Result220.visibility = View.GONE
-        }else if(engraveType2 == "묘법" && boneEngraveType2 == "묘법") {
+        }else if(engraveType == "묘법" && boneEngraveType == "묘법") {
             binding.layoutBone21Result220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
 
             binding.layoutBone22Result220.visibility = View.GONE

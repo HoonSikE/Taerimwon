@@ -74,6 +74,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         setImage()
         setOnClickListeners()
         observer()
+        binding.layoutResultContent.visibility = View.VISIBLE
+        binding.layoutResultContent1.visibility = View.VISIBLE
+//        binding.fragmentBone2Content.visibility = View.VISIBLE
     }
     // 최초 크기를 저장해둘 변수
     private var initialWidth = 0
@@ -237,7 +240,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             binding.View2.visibility = View.VISIBLE
             binding.layoutUrnResultText.visibility = View.VISIBLE
 
-            if(ApplicationClass.prefs.selectedUrnName!!.contains("합골금띠")
+            if(ApplicationClass.prefs.selectedUrnName!!.contains("미정(타입2)")
+                || ApplicationClass.prefs.selectedUrnName!!.contains("합골금띠")
                 || ApplicationClass.prefs.selectedUrnName!!.contains("합골실버십장생")) {
                 setBone2Data()
                 binding.fragmentBone2Content.visibility = View.VISIBLE
@@ -245,7 +249,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 binding.layoutBone2ResultImage.visibility = View.VISIBLE
             }else {
                 setUrnData()
-                if (ApplicationClass.prefs.selectedUrnName!!.contains("ZEN사각합골진공함")) {
+                if (ApplicationClass.prefs.selectedUrnName!!.contains("미정(타입1)") || ApplicationClass.prefs.selectedUrnName!!.contains("ZEN사각합골진공함")) {
                     setBone1Data()
                     binding.fragmentUrnContent.visibility = View.VISIBLE
                     binding.fragmentBoneContent.visibility = View.VISIBLE
@@ -380,7 +384,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         var urnType = ApplicationClass.prefs.selectedUrnType
 
-        if(!selectedUrnType.contains("선택안함") && (ApplicationClass.prefs.selectedUrnName!!.contains("ZEN사각합골진공함") || !selectedUrnType2.contains("선택안함"))) {
+        if(!selectedUrnType.contains("선택안함") && (ApplicationClass.prefs.selectedUrnName!!.contains("미정(타입1)") || ApplicationClass.prefs.selectedUrnName!!.contains("ZEN사각합골진공함") || !selectedUrnType2.contains("선택안함"))) {
             if(ApplicationClass.prefs.boneSex == "남성"){
                 urnType = ApplicationClass.prefs.selectedUrnType2
                 selectedUrnName = ApplicationClass.prefs.selectedUrnName2
@@ -1536,7 +1540,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         var urnType2 = ApplicationClass.prefs.selectedUrnType2
 
-        if(!selectedUrnType.contains("선택안함") && (ApplicationClass.prefs.selectedUrnName!!.contains("ZEN사각합골진공함") || !selectedUrnType2.contains("선택안함"))) {
+        if(!selectedUrnType.contains("선택안함") && (ApplicationClass.prefs.selectedUrnName!!.contains("미정(타입1)") || ApplicationClass.prefs.selectedUrnName!!.contains("ZEN사각합골진공함") || !selectedUrnType2.contains("선택안함"))) {
             if(ApplicationClass.prefs.boneSex == "남성"){
                 urnType2 = ApplicationClass.prefs.selectedUrnType
                 selectedUrnName2 = ApplicationClass.prefs.selectedUrnName
@@ -2680,7 +2684,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         var newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
 
         when (selectedUrnName) {
-            "미정" -> {
+            "미정(타입1)" -> {
                 val layoutParams3 = binding.layoutBone1Image.layoutParams
                 layoutParams3.width = 460
                 layoutParams3.height = 400
@@ -2710,7 +2714,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         val selectedUrnName = ApplicationClass.prefs.selectedUrnName
         when (selectedUrnName) {
-            "미정" -> {
+            "미정(타입2)" -> {
                 val layoutParams3 = binding.layoutBone2Image.layoutParams
                 layoutParams3.width = 420
                 layoutParams3.height = 420
@@ -3143,7 +3147,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             // 유골
             if(selectedUrnType != "선택안함") {
                 if(selectedUrnType.contains("합골함")){
-                    if(ApplicationClass.prefs.selectedUrnName!!.contains("ZEN사각합골진공함")){
+                    if(ApplicationClass.prefs.selectedUrnName!!.contains("미정(타입1)") || ApplicationClass.prefs.selectedUrnName!!.contains("ZEN사각합골진공함")){
                         // 유골 정보
                         var layoutUrnContent = binding.fragmentUrnContent
 
@@ -3176,7 +3180,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
                         val layoutBoneResultImage = binding.layoutBoneResultImage
                         layoutBoneResultImage.setImageBitmap(boneBitmap)
-                    }else if(ApplicationClass.prefs.selectedUrnName!!.contains("합골금띠")
+                    }else if(ApplicationClass.prefs.selectedUrnName!!.contains("미정(타입2)")
+                        || ApplicationClass.prefs.selectedUrnName!!.contains("합골금띠")
                         || ApplicationClass.prefs.selectedUrnName!!.contains("합골실버십장생")){
                         // 텍스트를 이미지화
                         // 1. XML 레이아웃
@@ -3397,11 +3402,11 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                         layoutPyeongjangResultImage4.setImageBitmap(pyeongjangBitmap2)
                     }
                 }
-                binding.layoutResult1.visibility = View.GONE
-                binding.layoutResult2.visibility = View.GONE
-                binding.layoutResult3.visibility = View.GONE
-                binding.layoutResultContent.visibility = View.GONE
             }
+//            binding.layoutResult1.visibility = View.GONE
+//            binding.layoutResult2.visibility = View.GONE
+//            binding.layoutResult3.visibility = View.GONE
+//            binding.layoutResultContent.visibility = View.GONE
             setOnTouchListener()
         }, delayMillis.toLong())
     }

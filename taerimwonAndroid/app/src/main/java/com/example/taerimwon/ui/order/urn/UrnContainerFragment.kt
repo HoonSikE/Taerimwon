@@ -153,6 +153,36 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
 //        searchList3 = mutableListOf()
         settingList()
 
+        if(ApplicationClass.prefs.engraveType == "기독교")
+            binding.checkboxCatholic.visibility = View.VISIBLE
+        else
+            binding.checkboxCatholic.visibility = View.GONE
+
+        if(ApplicationClass.prefs.boneEngraveType == "기독교")
+            binding.checkboxCatholic2.visibility = View.VISIBLE
+        else
+            binding.checkboxCatholic2.visibility = View.GONE
+
+        if(ApplicationClass.prefs.checkCatholic == "별세")
+            binding.checkboxCatholic.isChecked = true
+        else
+            binding.checkboxCatholic.isChecked = false
+
+        if(ApplicationClass.prefs.checkCatholic2 == "별세")
+            binding.checkboxCatholic2.isChecked = true
+        else
+            binding.checkboxCatholic2.isChecked = false
+
+        if(ApplicationClass.prefs.checkHangle == "한글")
+            binding.checkboxHangle.isChecked = true
+        else
+            binding.checkboxHangle.isChecked = false
+
+        if(ApplicationClass.prefs.checkHangle2 == "한글")
+            binding.checkboxHangle2.isChecked = true
+        else
+            binding.checkboxHangle2.isChecked = false
+
         val selectedUrnType = ApplicationClass.prefs.selectedUrnType.toString()
         // "ArrayList" - 리스트 객체
 //        var searchListTmp = searchList
@@ -270,6 +300,10 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.imageName2.visibility = View.GONE
             ApplicationClass.prefs.name2 = ""
         }
+        if(engraveType == "천주교")
+            binding.checkboxCatholic.visibility = View.VISIBLE
+        else
+            binding.checkboxCatholic.visibility = View.GONE
 
         /** 합골 **/
         val boneSexArray = resources.getStringArray(R.array.bone_sex)
@@ -331,6 +365,11 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             ApplicationClass.prefs.boneName2 = ""
         }
 
+        if(boneEngraveType == "천주교")
+            binding.checkboxCatholic.visibility = View.VISIBLE
+        else
+            binding.checkboxCatholic.visibility = View.GONE
+
         // 배열을 가져옵니다.
         // 문자열 이름을 문자열로 정의합니다.
         val arrName2 = "engrave_type" + (ApplicationClass.prefs.boneEngraveTypePosition + 1)
@@ -343,6 +382,30 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         binding.recyclerviewBoneEngraveSelectType.scrollToPosition(ApplicationClass.prefs.boneEngraveType2Position)
     }
     private fun setOnClickListeners() {
+        binding.checkboxCatholic.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked)
+                ApplicationClass.prefs.checkCatholic = "별세"
+            else
+                ApplicationClass.prefs.checkCatholic = "소천"
+        }
+        binding.checkboxCatholic2.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked)
+                ApplicationClass.prefs.checkCatholic2 = "별세"
+            else
+                ApplicationClass.prefs.checkCatholic2 = "소천"
+        }
+        binding.checkboxHangle.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked)
+                ApplicationClass.prefs.checkHangle = "한글"
+            else
+                ApplicationClass.prefs.checkHangle = "한자"
+        }
+        binding.checkboxHangle2.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked)
+                ApplicationClass.prefs.checkHangle2 = "한글"
+            else
+                ApplicationClass.prefs.checkHangle2 = "한자"
+        }
         binding.autoCompleteTextView.setOnItemClickListener { adapterView, view, position, rowId ->
             println("tag "+ "position: $position, rowId:$rowId, string: ${adapterView.getItemAtPosition(position)}")
             val selectedUrnItem = adapterView.getItemAtPosition(position) as UrnItem
@@ -764,6 +827,10 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.imageName2.visibility = View.GONE
             ApplicationClass.prefs.name2 = ""
         }
+        if(engraveType == "기독교")
+            binding.checkboxCatholic.visibility = View.VISIBLE
+        else
+            binding.checkboxCatholic.visibility = View.GONE
     }
     /** 합골 **/
     private fun setBoneName2(engraveType: String, engraveType2: String) {
@@ -798,6 +865,10 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.imageBoneName2.visibility = View.GONE
             ApplicationClass.prefs.boneName2 = ""
         }
+        if(engraveType == "기독교")
+            binding.checkboxCatholic2.visibility = View.VISIBLE
+        else
+            binding.checkboxCatholic2.visibility = View.GONE
     }
 
     // 장동완성 단어 세팅
@@ -944,8 +1015,9 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
     private fun settingList2() {
         searchList = mutableListOf()
 
-        searchList.add(UrnItem("미정", 0))
+        searchList.add(UrnItem("미정(타입1)", 0))
         searchList.add(UrnItem("ZEN사각합골진공함-HG-3-8228", R.drawable.img_bone1_1))
+        searchList.add(UrnItem("미정(타입2)", 0))
         searchList.add(UrnItem("합골금띠 HG-1 4612", R.drawable.img_bone2_1))
         searchList.add(UrnItem("합골실버십장생 HG-2 4914", R.drawable.img_bone2_2))
     }
