@@ -74,9 +74,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         setImage()
         setOnClickListeners()
         observer()
-        binding.layoutResultContent.visibility = View.VISIBLE
-        binding.layoutResultContent1.visibility = View.VISIBLE
-//        binding.fragmentBone2Content.visibility = View.VISIBLE
     }
     // 최초 크기를 저장해둘 변수
     private var initialWidth = 0
