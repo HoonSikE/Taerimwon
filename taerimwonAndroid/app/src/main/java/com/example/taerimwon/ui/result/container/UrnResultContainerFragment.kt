@@ -23,8 +23,7 @@ class UrnResultContainerFragment : BaseFragment<FragmentUrnResultContainerBindin
     private fun initData() {
         var textResultTextUrn = ""
         val selectedUrnType = ApplicationClass.prefs.selectedUrnType.toString()
-        textResultTextUrn += " - 함 종류: " + selectedUrnType +
-                            "\n - 함 명칭: " + ApplicationClass.prefs.selectedUrnName
+        textResultTextUrn += " - 함 명칭: " + ApplicationClass.prefs.selectedUrnName
         if(selectedUrnType == "선택안함"){
             binding.View1.visibility = View.GONE
             binding.layoutResultTextUrn.visibility = View.GONE
@@ -47,9 +46,7 @@ class UrnResultContainerFragment : BaseFragment<FragmentUrnResultContainerBindin
             // 추가
             val selectedUrnType2 = ApplicationClass.prefs.selectedUrnType2.toString()
             if(selectedUrnType2 != "선택안함"){
-                textResultTextUrn += "\n\n유골함 추가 정보" +
-                        "\n - 함 종류: " + selectedUrnType2 +
-                        "\n - 함 명칭: " + ApplicationClass.prefs.selectedUrnName2 +
+                textResultTextUrn += "\n\n - [추가] 함 명칭: " + ApplicationClass.prefs.selectedUrnName2 +
                         "\n - 각인 종류: " + ApplicationClass.prefs.boneEngraveType + "[" + ApplicationClass.prefs.boneEngraveType2 + "]" +
                         "\n - 성별: " + ApplicationClass.prefs.boneSex +
                         "\n - 고인명: " + ApplicationClass.prefs.boneName1 +
@@ -67,8 +64,7 @@ class UrnResultContainerFragment : BaseFragment<FragmentUrnResultContainerBindin
             }
             // 합골
             if(selectedUrnType.contains("합골")){
-                textResultTextUrn += "\n\n합골 추가 정보" +
-                        "\n - 각인 종류: " + ApplicationClass.prefs.boneEngraveType + "[" + ApplicationClass.prefs.boneEngraveType2 + "]" +
+                textResultTextUrn += "\n\n - [합골] 각인 종류: " + ApplicationClass.prefs.boneEngraveType + "[" + ApplicationClass.prefs.boneEngraveType2 + "]" +
                         "\n - 성별: " + ApplicationClass.prefs.boneSex +
                         "\n - 고인명: " + ApplicationClass.prefs.boneName1 +
                         "\n - 생년월일: " + ApplicationClass.prefs.boneDate1.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate1Type})" +

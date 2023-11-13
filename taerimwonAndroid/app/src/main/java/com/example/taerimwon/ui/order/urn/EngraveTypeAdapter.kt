@@ -29,7 +29,7 @@ class EngraveTypeAdapter(private val context: Context): RecyclerView.Adapter<Eng
     fun setSelectedItem(position: Int) {
         selectedItemPosition = position
         ApplicationClass.prefs.engraveTypePosition = position
-        println("engraveTypePositionㅇㅇ: " + ApplicationClass.prefs.engraveTypePosition)
+        println("engraveTypePosition: " + ApplicationClass.prefs.engraveTypePosition)
 
         notifyDataSetChanged() // 변경 사항을 적용하기 위해 어댑터에 알립니다.
     }

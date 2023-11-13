@@ -143,11 +143,6 @@ class PreferenceUtil(context: Context) {
         set(value){
             order.edit().putString(CHECKCATHOLIC, value).apply()
         }
-    var checkHangle : String?
-        get() = order.getString(CHECKHANGLE, "한자")
-        set(value){
-            order.edit().putString(CHECKHANGLE, value).apply()
-        }
     var engraveType2Position : Int
         get() = order.getInt(ENGRAVETYPE2POSITION, 0)
         set(value){
@@ -238,11 +233,6 @@ class PreferenceUtil(context: Context) {
         get() = order.getString(CHECKCATHOLIC2, "소천")
         set(value){
             order.edit().putString(CHECKCATHOLIC2, value).apply()
-        }
-    var checkHangle2 : String?
-        get() = order.getString(CHECKHANGLE2, "한자")
-        set(value){
-            order.edit().putString(CHECKHANGLE2, value).apply()
         }
     var boneEngraveType2Position : Int
         get() = order.getInt(BONEENGRAVETYPE2POSITION, 0)
@@ -484,7 +474,6 @@ class PreferenceUtil(context: Context) {
         engraveTypePosition = 0
         engraveType2 = "기본"
         checkCatholic = "소천"
-        checkHangle = "한자"
         engraveType2Position = 0
         name1 = ""
         name2 = ""
@@ -503,7 +492,6 @@ class PreferenceUtil(context: Context) {
         boneEngraveTypePosition = 0
         boneEngraveType2 = "기본"
         checkCatholic2 = "소천"
-        checkHangle2 = "한자"
         boneEngraveType2Position = 0
         sex = "남성"
         boneSex = "여성"

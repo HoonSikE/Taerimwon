@@ -25,12 +25,11 @@ class TabletResultContainerFragment : BaseFragment<FragmentTabletResultContainer
         var textResultTextTablet = ""
 
         val selectedTabletType = ApplicationClass.prefs.selectedTabletType.toString()
-        textResultTextTablet += " - 위패 종류: " + selectedTabletType
         if(selectedTabletType == "선택안함") {
             binding.View1.visibility = View.GONE
             binding.layoutResultTextTablet.visibility = View.GONE
         }else {
-            textResultTextTablet += "\n - 위패 상세 종류: " + ApplicationClass.prefs.tabletType +
+            textResultTextTablet += " - 위패 상세 종류: " + ApplicationClass.prefs.tabletType +
                                     "\n - 위패 명칭: " + ApplicationClass.prefs.selectedTabletName
 
             if(!selectedTabletType.contains("사진")){
@@ -45,10 +44,8 @@ class TabletResultContainerFragment : BaseFragment<FragmentTabletResultContainer
         }
         val boneSelectedTabletType = ApplicationClass.prefs.boneSelectedTabletType.toString()
         if(boneSelectedTabletType != "선택안함") {
-            textResultTextTablet += "\n\n위패 추가 정보"
-            textResultTextTablet += "\n - 추가 위패 종류: " + ApplicationClass.prefs.boneSelectedTabletType
-            textResultTextTablet += "\n - 위패 상세 종류: " + ApplicationClass.prefs.boneTabletType +
-                                    "\n - 추가 위패 명칭: " + ApplicationClass.prefs.selectedTabletName2
+            textResultTextTablet += "\n\n - [추가] 위패 상세 종류: " + ApplicationClass.prefs.boneTabletType +
+                                    "\n - 위패 명칭: " + ApplicationClass.prefs.selectedTabletName2
 
             if(!boneSelectedTabletType.contains("사진")){
                 textResultTextTablet += "\n - 위패 내용: " + ApplicationClass.prefs.boneName3
@@ -62,8 +59,7 @@ class TabletResultContainerFragment : BaseFragment<FragmentTabletResultContainer
         }
 
         if(selectedTabletType.contains("합골")) {
-            textResultTextTablet += "\n\n합골 추가 정보"
-            textResultTextTablet += "\n - 위패 상세 종류: " + ApplicationClass.prefs.boneTabletType
+            textResultTextTablet += "\n\n - [합골] 위패 상세 종류: " + ApplicationClass.prefs.boneTabletType
 
             if(!boneSelectedTabletType.contains("사진")){
                 textResultTextTablet += "\n - 위패 내용: " + ApplicationClass.prefs.boneName3

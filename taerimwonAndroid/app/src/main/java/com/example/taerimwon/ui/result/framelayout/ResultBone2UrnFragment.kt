@@ -159,8 +159,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
         var engraveType = ApplicationClass.prefs.engraveType
         var checkCatholic = ApplicationClass.prefs.checkCatholic
-        var checkHangle = ApplicationClass.prefs.checkHangle
-        var engraveType2 = ApplicationClass.prefs.engraveType2
+        var engraveType2 = ApplicationClass.prefs.engraveType2.toString()
 
         var date1 = ApplicationClass.prefs.date1.toString()
         var date1Type = ApplicationClass.prefs.date1Type
@@ -175,8 +174,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
         var boneEngraveType = ApplicationClass.prefs.boneEngraveType
         var checkCatholic2 = ApplicationClass.prefs.checkCatholic2
-        var checkHangle2 = ApplicationClass.prefs.checkHangle2
-        var boneEngraveType2 = ApplicationClass.prefs.boneEngraveType2
+        var boneEngraveType2 = ApplicationClass.prefs.boneEngraveType2.toString()
 
         var boneDate1 = ApplicationClass.prefs.boneDate1.toString()
         var boneDate1Type = ApplicationClass.prefs.boneDate1Type
@@ -310,8 +308,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
             engraveType = ApplicationClass.prefs.boneEngraveType
             checkCatholic = ApplicationClass.prefs.checkCatholic2
-            checkHangle = ApplicationClass.prefs.checkHangle2
-            engraveType2 = ApplicationClass.prefs.boneEngraveType2
+            engraveType2 = ApplicationClass.prefs.boneEngraveType2.toString()
 
             date1 = ApplicationClass.prefs.boneDate1.toString()
             date1Type = ApplicationClass.prefs.boneDate1Type
@@ -324,8 +321,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
             boneEngraveType = ApplicationClass.prefs.engraveType
             checkCatholic2 = ApplicationClass.prefs.checkCatholic
-            checkHangle2 = ApplicationClass.prefs.checkHangle
-            boneEngraveType2 = ApplicationClass.prefs.engraveType2
+            boneEngraveType2 = ApplicationClass.prefs.engraveType2.toString()
 
             boneDate1 = ApplicationClass.prefs.date1.toString()
             boneDate1Type = ApplicationClass.prefs.date1Type
@@ -540,11 +536,11 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
         val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
 
         /**정보1*/
-        if((engraveType == "일반" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日")))
+        if((engraveType == "일반" && (engraveType2 == "기본" || engraveType2.contains("한글") || engraveType2.toString().contains("年月日")))
             || (engraveType == "기독교" && (engraveType2 == "직분X"))
-            || (engraveType == "불교" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日")))
+            || (engraveType == "불교" && (engraveType2 == "기본" || engraveType2.contains("한글") || engraveType2.toString().contains("年月日")))
             || (engraveType == "천주교" && (engraveType2 == "세례명X"))
-            || (engraveType == "원불교")){
+            || (engraveType == "원불교" && (engraveType2 == "기본" || engraveType2.contains("한글")))){
 
             when (name1.length) {
                 2 -> {
@@ -600,9 +596,9 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 }
             }
         }
-        else if(engraveType == "기독교" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日"))
+        else if(engraveType == "기독교" && (engraveType2 == "기본" || engraveType2.contains("한글") || engraveType2.toString().contains("年月日"))
             || engraveType == "불교" && engraveType2 == "법명"
-            || engraveType == "순복음"){
+            || engraveType == "순복음" && (engraveType2 == "기본" || engraveType2.contains("한글"))){
             flagUp = true
 
 //            layoutUrnResult221.height = pixel_size_170
@@ -655,7 +651,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             }
             layoutUrnResult220.text = tmp1_2
         }
-        else if(engraveType == "천주교" && (engraveType2 == "기본" || engraveType2.toString().contains("年月日"))){
+        else if(engraveType == "천주교" && (engraveType2 == "기본" || engraveType2.contains("한글") || engraveType2.toString().contains("年月日"))){
             flagUp = true
 
 //            layoutUrnResult221.height = pixel_size_170
@@ -747,9 +743,17 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
             binding.layoutBone21Result23.visibility = View.VISIBLE
             layoutUrnResult222.visibility = View.VISIBLE
-            layoutUrnResult222.text = "位"
+
+            if (engraveType2.contains("한글")){
+                val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
+                layoutUrnResult222.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult222.text = "위"
+            }else {
+                val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
+                layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
+                layoutUrnResult222.text = "位"
+            }
             layoutUrnResult222.scaleY = 1f
-            layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
             layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
 
 //            layoutUrnResult222.typeface = hyhaeso
@@ -794,15 +798,16 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
             binding.layoutBone21Result21.visibility = View.VISIBLE
             layoutUrnResult220.visibility = View.VISIBLE
-//            layoutUrnResult220.width = pixel_size_80
-            layoutUrnResult220.text = "妙法"
-            layoutUrnResult220.setTypeface(hyhaeso, Typeface.BOLD)
-//            layoutUrnResult220.typeface = hyhaeso
+
+            if (engraveType2.contains("한글")){
+                layoutUrnResult220.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult220.text = "묘법"
+            }else {
+                layoutUrnResult220.setTypeface(hyhaeso, Typeface.BOLD)
+                layoutUrnResult220.text = "妙法"
+            }
             layoutUrnResult220.letterSpacing = 0f
 
-//            layoutUrnResult221.height = pixel_size_145
-//            layoutUrnResult221.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
-//            layoutUrnResult221.setLineSpacing(0f, 1.0f)
 
             binding.layoutBone21Result23.visibility = View.VISIBLE
             layoutUrnResult222.visibility = View.VISIBLE
@@ -813,7 +818,6 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
 //            layoutUrnResult222.typeface = hyhaeso
             layoutUrnResult222.setLineSpacing(0f, 1.0f)
-
 
             when (name1.length) {
                 2 -> {
@@ -855,7 +859,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutUrnResult111.visibility = View.VISIBLE
                 layoutUrnResult112.visibility = View.GONE
 
-                if (checkHangle == "한글"){
+                if (engraveType2.contains("한글")){
                     layoutUrnResult111.setTypeface(hygungso, Typeface.BOLD)
                     layoutUrnResult111.text = "생"
                 }
@@ -864,7 +868,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutUrnResult111.visibility = View.GONE
                 layoutUrnResult112.visibility = View.VISIBLE
 
-                if (checkHangle == "한글") {
+                if (engraveType2.contains("한글")) {
                     layoutUrnResult112.setTypeface(hygungso, Typeface.BOLD)
                     layoutUrnResult112.text = "소\n천"
                 }else
@@ -876,7 +880,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutUrnResult111.visibility = View.GONE
                 layoutUrnResult112.visibility = View.VISIBLE
 
-                if (checkHangle == "한글") {
+                if (engraveType2.contains("한글")) {
                     layoutUrnResult112.setTypeface(hygungso, Typeface.BOLD)
                     layoutUrnResult112.text = "소\n천"
                 }else
@@ -922,13 +926,13 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
         }
 
         if(date1Type == "양력") {
-            if (checkHangle == "한글") {
+            if (engraveType2.contains("한글")) {
                 layoutUrnResult17.setTypeface(hygungso, Typeface.BOLD)
                 layoutUrnResult17.text = "양"
             }else
                 layoutUrnResult17.text = "陽"
         }else if(date1Type == "음력"){
-            if (checkHangle == "한글") {
+            if (engraveType2.contains("한글")) {
                 layoutUrnResult17.setTypeface(hygungso, Typeface.BOLD)
                 layoutUrnResult17.text = "음"
             }else
@@ -941,7 +945,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutUrnResult311.visibility = View.VISIBLE
                 layoutUrnResult312.visibility = View.GONE
 
-                if (checkHangle == "한글"){
+                if (engraveType2.contains("한글")){
                     layoutUrnResult311.setTypeface(hygungso, Typeface.BOLD)
                     layoutUrnResult311.text = "졸"
                 }
@@ -950,14 +954,14 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutUrnResult311.visibility = View.GONE
                 layoutUrnResult312.visibility = View.VISIBLE
                 if (checkCatholic == "별세") {
-                    if (checkHangle == "한글"){
+                    if (engraveType2.contains("한글")){
                         layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
                         layoutUrnResult312.text = "별\n세"
                     }else {
                         layoutUrnResult312.text = "別\n世"
                     }
                 }else {
-                    if (checkHangle == "한글") {
+                    if (engraveType2.contains("한글")) {
                         layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
                         layoutUrnResult312.text = "소\n천"
                     } else {
@@ -973,7 +977,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
                 val yujimai = ResourcesCompat.getFont(requireContext(), R.font.yujimai)
 
-                if (checkHangle == "한글"){
+                if (engraveType2.contains("한글")){
                     layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
                     layoutUrnResult312.text = "선\n종"
                 }else {
@@ -1023,13 +1027,13 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
         }
 
         if(date2Type == "양력") {
-            if (checkHangle == "한글") {
+            if (engraveType2.contains("한글")) {
                 layoutUrnResult37.setTypeface(hygungso, Typeface.BOLD)
                 layoutUrnResult37.text = "양"
             }else
                 layoutUrnResult37.text = "陽"
         }else if(date2Type == "음력"){
-            if (checkHangle == "한글") {
+            if (engraveType2.contains("한글")) {
                 layoutUrnResult37.setTypeface(hygungso, Typeface.BOLD)
                 layoutUrnResult37.text = "음"
             }else
@@ -1037,11 +1041,11 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
         }
 
         /**정보2*/
-        if((boneEngraveType == "일반" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日")))
+        if((boneEngraveType == "일반" && (boneEngraveType2 == "기본" || boneEngraveType2.contains("한글") || boneEngraveType2.toString().contains("年月日")))
             || (boneEngraveType == "기독교" && (boneEngraveType2 == "직분X"))
-            || (boneEngraveType == "불교" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日")))
+            || (boneEngraveType == "불교" && (boneEngraveType2 == "기본" || boneEngraveType2.contains("한글") || boneEngraveType2.toString().contains("年月日")))
             || (boneEngraveType == "천주교" && (boneEngraveType2 == "세례명X"))
-            || (boneEngraveType == "원불교")){
+            || (boneEngraveType == "원불교" && (boneEngraveType2 == "기본" || boneEngraveType2.contains("한글")))){
 
             when (boneName1.length) {
                 2 -> {
@@ -1099,9 +1103,9 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 }
             }
         }
-        else if(boneEngraveType == "기독교" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日"))
+        else if(boneEngraveType == "기독교" && (boneEngraveType2 == "기본" || boneEngraveType2.contains("한글") || boneEngraveType2.toString().contains("年月日"))
             || boneEngraveType == "불교" && boneEngraveType2 == "법명"
-            || boneEngraveType == "순복음"){
+            || boneEngraveType == "순복음" && (boneEngraveType2 == "기본" || boneEngraveType2.contains("한글"))){
             flagUp = true
 
 //            layoutBoneResult221.height = pixel_size_170
@@ -1160,7 +1164,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             }
             layoutBoneResult220.text = tmp2_2
         }
-        else if(boneEngraveType == "천주교" && (boneEngraveType2 == "기본" || boneEngraveType2.toString().contains("年月日"))){
+        else if(boneEngraveType == "천주교" && (boneEngraveType2 == "기본" || boneEngraveType2.contains("한글") || boneEngraveType2.toString().contains("年月日"))){
             flagUp = true
 
 //            layoutBoneResult221.height = pixel_size_170
@@ -1247,7 +1251,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
             binding.layoutBone21Result23.visibility = View.VISIBLE
             layoutBoneResult222.visibility = View.VISIBLE
-            if (checkHangle2 == "한글"){
+            if (boneEngraveType2.contains("한글")){
                 layoutBoneResult222.setTypeface(hygungso, Typeface.BOLD)
                 layoutBoneResult222.text = "위"
             }else{
@@ -1298,7 +1302,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
             binding.layoutBone21Result21.visibility = View.VISIBLE
             layoutBoneResult220.visibility = View.VISIBLE
-            if (checkHangle2 == "한글"){
+            if (boneEngraveType2.contains("한글")){
                 layoutBoneResult220.setTypeface(hygungso, Typeface.BOLD)
                 layoutBoneResult220.text = "묘법"
             }else{
@@ -1309,7 +1313,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             binding.layoutBone21Result23.visibility = View.VISIBLE
             layoutBoneResult222.visibility = View.VISIBLE
 
-            if (checkHangle2 == "한글"){
+            if (boneEngraveType2.contains("한글")){
                 layoutBoneResult222.setTypeface(hygungso, Typeface.BOLD)
                 layoutBoneResult222.text = "위"
             }else{
@@ -1361,7 +1365,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutBoneResult111.visibility = View.VISIBLE
                 layoutBoneResult112.visibility = View.GONE
 
-                if (checkHangle2 == "한글"){
+                if (boneEngraveType2.contains("한글")){
                     layoutBoneResult111.setTypeface(hygungso, Typeface.BOLD)
                     layoutBoneResult111.text = "생"
                 }
@@ -1369,7 +1373,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             "기독교", "순복음" -> {
                 layoutBoneResult111.visibility = View.GONE
                 layoutBoneResult112.visibility = View.VISIBLE
-                if (checkHangle2 == "한글") {
+                if (boneEngraveType2.contains("한글")) {
                     layoutBoneResult112.setTypeface(hygungso, Typeface.BOLD)
                     layoutBoneResult112.text = "출\n생"
                 }else{
@@ -1380,7 +1384,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             "천주교" -> {
                 layoutBoneResult111.visibility = View.GONE
                 layoutBoneResult112.visibility = View.VISIBLE
-                if (checkHangle2 == "한글") {
+                if (boneEngraveType2.contains("한글")) {
                     layoutBoneResult112.setTypeface(hygungso, Typeface.BOLD)
                     layoutBoneResult112.text = "출\n생"
                 }else{
@@ -1427,13 +1431,13 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
         }
 
         if(boneDate1Type == "양력") {
-            if (checkHangle2 == "한글") {
+            if (boneEngraveType2.contains("한글")) {
                 layoutBoneResult17.setTypeface(hygungso, Typeface.BOLD)
                 layoutBoneResult17.text = "양"
             }else
                 layoutBoneResult17.text = "陽"
         }else if(boneDate1Type == "음력"){
-            if (checkHangle2 == "한글") {
+            if (boneEngraveType2.contains("한글")) {
                 layoutBoneResult17.setTypeface(hygungso, Typeface.BOLD)
                 layoutBoneResult17.text = "음"
             }else
@@ -1446,7 +1450,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutBoneResult311.visibility = View.VISIBLE
                 layoutBoneResult312.visibility = View.GONE
 
-                if (checkHangle2 == "한글"){
+                if (boneEngraveType2.contains("한글")){
                     layoutBoneResult311.setTypeface(hygungso, Typeface.BOLD)
                     layoutBoneResult311.text = "졸"
                 }
@@ -1456,14 +1460,14 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutBoneResult312.visibility = View.VISIBLE
 
                 if (checkCatholic2 == "별세") {
-                    if (checkHangle2 == "한글") {
+                    if (boneEngraveType2.contains("한글")) {
                         layoutBoneResult312.setTypeface(hygungso, Typeface.BOLD)
                         layoutBoneResult312.text = "별세"
                     }else{
                         layoutBoneResult312.text = "別\n世"
                     }
                 }else {
-                    if (checkHangle2 == "한글") {
+                    if (boneEngraveType2.contains("한글")) {
                         layoutBoneResult312.setTypeface(hygungso, Typeface.BOLD)
                         layoutBoneResult312.text = "소\n천"
                     } else {
@@ -1479,7 +1483,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
                 val yujimai = ResourcesCompat.getFont(requireContext(), R.font.yujimai)
 
-                if (checkHangle2 == "한글"){
+                if (boneEngraveType2.contains("한글")){
                     layoutBoneResult312.setTypeface(hygungso, Typeface.BOLD)
                     layoutBoneResult312.text = "선\n종"
                 }else {
@@ -1529,13 +1533,13 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
         }
 
         if(boneDate2Type == "양력") {
-            if (checkHangle2 == "한글") {
+            if (boneEngraveType2.contains("한글")) {
                 layoutBoneResult37.setTypeface(hygungso, Typeface.BOLD)
                 layoutBoneResult37.text = "양"
             }else
                 layoutBoneResult37.text = "陽"
         }else if(boneDate2Type == "음력"){
-            if (checkHangle2 == "한글") {
+            if (boneEngraveType2.contains("한글")) {
                 layoutBoneResult37.setTypeface(hygungso, Typeface.BOLD)
                 layoutBoneResult37.text = "음"
             }else

@@ -173,16 +173,6 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         else
             binding.checkboxCatholic2.isChecked = false
 
-        if(ApplicationClass.prefs.checkHangle == "한글")
-            binding.checkboxHangle.isChecked = true
-        else
-            binding.checkboxHangle.isChecked = false
-
-        if(ApplicationClass.prefs.checkHangle2 == "한글")
-            binding.checkboxHangle2.isChecked = true
-        else
-            binding.checkboxHangle2.isChecked = false
-
         val selectedUrnType = ApplicationClass.prefs.selectedUrnType.toString()
         // "ArrayList" - 리스트 객체
 //        var searchListTmp = searchList
@@ -393,18 +383,6 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                 ApplicationClass.prefs.checkCatholic2 = "별세"
             else
                 ApplicationClass.prefs.checkCatholic2 = "소천"
-        }
-        binding.checkboxHangle.setOnCheckedChangeListener { buttonView, isChecked ->
-            if(isChecked)
-                ApplicationClass.prefs.checkHangle = "한글"
-            else
-                ApplicationClass.prefs.checkHangle = "한자"
-        }
-        binding.checkboxHangle2.setOnCheckedChangeListener { buttonView, isChecked ->
-            if(isChecked)
-                ApplicationClass.prefs.checkHangle2 = "한글"
-            else
-                ApplicationClass.prefs.checkHangle2 = "한자"
         }
         binding.autoCompleteTextView.setOnItemClickListener { adapterView, view, position, rowId ->
             println("tag "+ "position: $position, rowId:$rowId, string: ${adapterView.getItemAtPosition(position)}")

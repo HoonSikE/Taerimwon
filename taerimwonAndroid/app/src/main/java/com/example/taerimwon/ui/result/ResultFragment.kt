@@ -11,6 +11,7 @@ import android.net.Uri
 import android.os.Handler
 import android.util.Log
 import android.util.TypedValue
+import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import android.view.View
 import android.view.ViewGroup
@@ -76,8 +77,27 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         observer()
     }
     // 최초 크기를 저장해둘 변수
-    private var initialWidth = 0
-    private var initialHeight = 0
+    private var initialWidth1 = 0
+    private var initialHeight1 = 0
+    private var initialWidth1_1 = 0
+    private var initialHeight1_1 = 0
+    private var initialWidth1_2 = 0
+    private var initialHeight1_2 = 0
+    private var initialWidth1_3 = 0
+    private var initialHeight1_3 = 0
+    private var initialWidth1_4 = 0
+    private var initialHeight1_4 = 0
+    private var initialWidth1_5 = 0
+    private var initialHeight1_5 = 0
+    private var initialWidth1_6 = 0
+    private var initialHeight1_6 = 0
+    private var initialWidth1_7 = 0
+    private var initialHeight1_7 = 0
+    private var initialWidth1_8 = 0
+    private var initialHeight1_8 = 0
+    private var initialWidth1_9 = 0
+    private var initialHeight1_9 = 0
+
     private var scaleFactor = 1.0f
     private lateinit var scaleGestureDetector: ScaleGestureDetector
     private inner class ScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
@@ -89,10 +109,55 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             scaleFactor = scaleFactor.coerceIn(0.5f, 5.0f)
 
             // LayoutParams를 사용하여 뷰의 크기 조절
-            val params = binding.layoutResultImage1.layoutParams
-            params.width = (initialWidth * scaleFactor).toInt()
-            params.height = (initialHeight * scaleFactor).toInt()
-            binding.layoutResultImage1.layoutParams = params
+//            val params = binding.layoutResultImage1.layoutParams
+//            params.width = (initialWidth1 * scaleFactor).toInt()
+//            params.height = (initialHeight1 * scaleFactor).toInt()
+//            binding.layoutResultImage1.layoutParams = params
+
+            val params1_1 = binding.layoutTabletResultImage.layoutParams
+            params1_1.width = (initialWidth1_1 * scaleFactor).toInt()
+            params1_1.height = (initialHeight1_1 * scaleFactor).toInt()
+            binding.layoutTabletResultImage.layoutParams = params1_1
+
+            val params1_2 = binding.layoutTabletPhoto.layoutParams
+            params1_2.width = (initialWidth1_2 * scaleFactor).toInt()
+            params1_2.height = (initialHeight1_2 * scaleFactor).toInt()
+            binding.layoutTabletPhoto.layoutParams = params1_2
+
+            val params1_3 = binding.layoutUrnResultImage12.layoutParams
+            params1_3.width = (initialWidth1_3 * scaleFactor).toInt()
+            params1_3.height = (initialHeight1_3 * scaleFactor).toInt()
+            binding.layoutUrnResultImage12.layoutParams = params1_3
+
+            val params1_4 = binding.layoutUrnResultImage.layoutParams
+            params1_4.width = (initialWidth1_4 * scaleFactor).toInt()
+            params1_4.height = (initialHeight1_4 * scaleFactor).toInt()
+            binding.layoutUrnResultImage.layoutParams = params1_4
+
+            val params1_5 = binding.layoutUrnResultImage22.layoutParams
+            params1_5.width = (initialWidth1_5 * scaleFactor).toInt()
+            params1_5.height = (initialHeight1_5 * scaleFactor).toInt()
+            binding.layoutUrnResultImage22.layoutParams = params1_5
+
+            val params1_6 = binding.layoutUrnResultImage2.layoutParams
+            params1_6.width = (initialWidth1_6 * scaleFactor).toInt()
+            params1_6.height = (initialHeight1_6 * scaleFactor).toInt()
+            binding.layoutUrnResultImage2.layoutParams = params1_6
+
+            val params1_7 = binding.layoutBoneResultImage.layoutParams
+            params1_7.width = (initialWidth1_7 * scaleFactor).toInt()
+            params1_7.height = (initialHeight1_7 * scaleFactor).toInt()
+            binding.layoutBoneResultImage.layoutParams = params1_7
+
+            val params1_8 = binding.layoutBone2ResultImage.layoutParams
+            params1_8.width = (initialWidth1_8 * scaleFactor).toInt()
+            params1_8.height = (initialHeight1_8 * scaleFactor).toInt()
+            binding.layoutBone2ResultImage.layoutParams = params1_8
+
+            val params1_9 = binding.layoutTablet2ResultImage.layoutParams
+            params1_9.width = (initialWidth1_9 * scaleFactor).toInt()
+            params1_9.height = (initialHeight1_9 * scaleFactor).toInt()
+            binding.layoutTablet2ResultImage.layoutParams = params1_9
 
             return true
 
@@ -107,6 +172,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     // 최초 크기를 저장해둘 변수
     private var initialWidth2 = 0
     private var initialHeight2 = 0
+    private var initialWidth2_1 = 0
+    private var initialHeight2_1 = 0
+    private var initialWidth2_2 = 0
+    private var initialHeight2_2 = 0
+    private var initialWidth2_3 = 0
+    private var initialHeight2_3 = 0
+    private var initialWidth2_4 = 0
+    private var initialHeight2_4 = 0
     private var scaleFactor2 = 1.0f
     private lateinit var scaleGestureDetector2: ScaleGestureDetector
     private inner class ScaleListener2 : ScaleGestureDetector.SimpleOnScaleGestureListener() {
@@ -118,21 +191,80 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             scaleFactor2 = scaleFactor2.coerceIn(0.5f, 5.0f)
 
             // LayoutParams를 사용하여 뷰의 크기 조절
-            val params = binding.layoutResultImage3.layoutParams
-            params.width = (initialWidth2 * scaleFactor2).toInt()
-            params.height = (initialHeight2 * scaleFactor2).toInt()
-            binding.layoutResultImage3.layoutParams = params
+//            val params = binding.layoutResultImage3.layoutParams
+//            params.width = (initialWidth2 * scaleFactor2).toInt()
+//            params.height = (initialHeight2 * scaleFactor2).toInt()
+//            binding.layoutResultImage3.layoutParams = params
+
+            val params2_1 = binding.layoutPyeongjangResultImage.layoutParams
+            params2_1.width = (initialWidth2_1 * scaleFactor2).toInt()
+            params2_1.height = (initialHeight2_1 * scaleFactor2).toInt()
+            binding.layoutPyeongjangResultImage.layoutParams = params2_1
+
+            val params2_2 = binding.layoutPyeongjangResultImage2.layoutParams
+            params2_2.width = (initialWidth2_2 * scaleFactor2).toInt()
+            params2_2.height = (initialHeight2_2 * scaleFactor2).toInt()
+            binding.layoutPyeongjangResultImage2.layoutParams = params2_2
+
+            val params2_3 = binding.layoutPyeongjangResultImage3.layoutParams
+            params2_3.width = (initialWidth2_3 * scaleFactor2).toInt()
+            params2_3.height = (initialHeight2_3 * scaleFactor2).toInt()
+            binding.layoutPyeongjangResultImage3.layoutParams = params2_3
+
+            val params2_4 = binding.layoutPyeongjangResultImage4.layoutParams
+            params2_4.width = (initialWidth2_4 * scaleFactor2).toInt()
+            params2_4.height = (initialHeight2_4 * scaleFactor2).toInt()
+            binding.layoutPyeongjangResultImage4.layoutParams = params2_4
 
             return true
         }
     }
     private fun setOnTouchListener(){
         // 최초 크기 저장
-        initialWidth = binding.layoutResultImage1.width
-        initialHeight = binding.layoutResultImage1.height
+        initialWidth1 = binding.layoutResultImage1.width
+        initialHeight1 = binding.layoutResultImage1.height
+
+        initialWidth1_1 = binding.layoutTabletResultImage.width
+        initialHeight1_1 = binding.layoutTabletResultImage.height
+
+        initialWidth1_2 = binding.layoutTabletPhoto.width
+        initialHeight1_2 = binding.layoutTabletPhoto.height
+
+        initialWidth1_3 = binding.layoutUrnResultImage12.width
+        initialHeight1_3 = binding.layoutUrnResultImage12.height
+
+        initialWidth1_4 = binding.layoutUrnResultImage.width
+        initialHeight1_4 = binding.layoutUrnResultImage.height
+
+        initialWidth1_5 = binding.layoutUrnResultImage22.width
+        initialHeight1_5 = binding.layoutUrnResultImage22.height
+
+        initialWidth1_6 = binding.layoutUrnResultImage2.width
+        initialHeight1_6 = binding.layoutUrnResultImage2.height
+
+        initialWidth1_7 = binding.layoutBoneResultImage.width
+        initialHeight1_7 = binding.layoutBoneResultImage.height
+
+        initialWidth1_8 = binding.layoutBone2ResultImage.width
+        initialHeight1_8 = binding.layoutBone2ResultImage.height
+
+        initialWidth1_9 = binding.layoutTablet2ResultImage.width
+        initialHeight1_9 = binding.layoutTablet2ResultImage.height
 
         initialWidth2 = binding.layoutResultImage3.width
         initialHeight2 = binding.layoutResultImage3.height
+
+        initialWidth2_1 = binding.layoutPyeongjangResultImage.width
+        initialHeight2_1 = binding.layoutPyeongjangResultImage.height
+
+        initialWidth2_2 = binding.layoutPyeongjangResultImage2.width
+        initialHeight2_2 = binding.layoutPyeongjangResultImage2.height
+
+        initialWidth2_3 = binding.layoutPyeongjangResultImage3.width
+        initialHeight2_3 = binding.layoutPyeongjangResultImage3.height
+
+        initialWidth2_4 = binding.layoutPyeongjangResultImage4.width
+        initialHeight2_4 = binding.layoutPyeongjangResultImage4.height
 
         // ScaleGestureDetector 초기화
         scaleGestureDetector = ScaleGestureDetector(requireContext(), ScaleListener())
@@ -151,6 +283,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             scaleGestureDetector2.onTouchEvent(event)
             true
         }
+
+
     }
     private fun initData() {
         searchList = mutableListOf()
@@ -343,7 +477,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         if(selectedPyeongjangType != "선택안함") {
             binding.layoutResultTitleImage3.visibility = View.VISIBLE
-            binding.View4.visibility = View.VISIBLE
             binding.layoutPyeongjangResultText.visibility = View.VISIBLE
 
             setPyeongjangData()
@@ -352,7 +485,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             }
         }else{
             binding.layoutResultTitleImage3.visibility = View.GONE
-            binding.View4.visibility = View.GONE
             binding.layoutPyeongjangResultText.visibility = View.GONE
         }
 
@@ -367,6 +499,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         var layoutUrnResultImage12 = binding.layoutUrnResultImage12
         var layoutUrnResultImage = binding.layoutUrnResultImage
 
+        var imageUrnImageBackgound = binding.imageUrnImageBackgound
+        var layoutParamsUrnBackgound = imageUrnImageBackgound.layoutParams
         var imageUrnImage = binding.imageUrnImage
         var layoutParamsUrn = imageUrnImage.layoutParams
         var imageUrnImageUnder = binding.imageUrnImageUnder
@@ -395,13 +529,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             when (selectedUrnName) {
                 "미정" -> {
                     val layoutParams3 = binding.layoutUrnImage.layoutParams
-                    layoutParams3.width = 420
-                    layoutParams3.height = 520
+                    layoutParams3.width = 360
+                    layoutParams3.height = 580
                     binding.layoutUrnImage.layoutParams = layoutParams3
 
                     val layoutParams = imageUrnImage.layoutParams
-                    layoutParams.width = 420
-                    layoutParams.height = 500
+                    layoutParams.width = 360
+                    layoutParams.height = 580
                     imageUrnImage.layoutParams = layoutParams
 
                     val layoutParams2 = imageUrnImageUnder.layoutParams
@@ -716,6 +850,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 "휴안백십장생자개 HUG-17 12535" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_5)
 
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn4_5))
+                    layoutParamsUrnBackgound.width = 170
+                    layoutParamsUrnBackgound.height = 240
+
                     layoutParamsUrn.width = 170
                     layoutParamsUrn.height = 240
 
@@ -731,6 +869,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 "휴안홍한지십장생자개 HUG-19 13139" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_7)
+
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn4_7))
+                    layoutParamsUrnBackgound.width = 170
+                    layoutParamsUrnBackgound.height = 240
 
                     layoutParamsUrn.width = 170
                     layoutParamsUrn.height = 240
@@ -749,6 +891,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 "휴안흑십장생자개 HUG-18 12535" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_9)
+
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn4_9))
+                    layoutParamsUrnBackgound.width = 170
+                    layoutParamsUrnBackgound.height = 240
 
                     layoutParamsUrn.width = 170
                     layoutParamsUrn.height = 240
@@ -775,6 +921,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 "휴안궁 HU-1 8525" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_3)
+
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn5_3))
+                    layoutParamsUrnBackgound.width = 200
+                    layoutParamsUrnBackgound.height = 300
 
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
@@ -825,6 +975,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 "휴안명성 HU-3 8525" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_9)
+
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn5_9))
+                    layoutParamsUrnBackgound.width = 200
+                    layoutParamsUrnBackgound.height = 300
 
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
@@ -943,6 +1097,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 "휴안천향 HU-2 8525" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_23)
+
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn5_23))
+                    layoutParamsUrnBackgound.width = 200
+                    layoutParamsUrnBackgound.height = 300
 
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
@@ -1081,6 +1239,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 "봉분천향 BOB-5 6621" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_8)
+
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn8_8))
+                    layoutParamsUrnBackgound.width = 150
+                    layoutParamsUrnBackgound.height = 210
 
                     layoutParamsUrn.width = 150
                     layoutParamsUrn.height = 210
@@ -1301,6 +1463,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 "국화 ZE-1 11832" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_1)
 
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_1))
+                    layoutParamsUrnBackgound.width = 200
+                    layoutParamsUrnBackgound.height = 300
+
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
@@ -1317,6 +1483,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 "선궁 ZE-3 11832" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_3)
 
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_3))
+                    layoutParamsUrnBackgound.width = 200
+                    layoutParamsUrnBackgound.height = 300
+
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
@@ -1324,6 +1494,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 "소망 ZE-6 11832" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_4)
+
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_4))
+                    layoutParamsUrnBackgound.width = 200
+                    layoutParamsUrnBackgound.height = 300
 
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
@@ -1448,7 +1622,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutUrnResultImage12.visibility = View.VISIBLE
                     layoutUrnResultImage12.background = newBackground2
 
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet1)                }
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet1)
+                }
                 "조각천주교 ZE-13 1035" -> {
                     val layoutParams = layoutUrnImage.layoutParams
                     layoutParams.width = 200
@@ -1496,6 +1671,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 "청연 ZE-2 11832" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_12)
 
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_12))
+                    layoutParamsUrnBackgound.width = 200
+                    layoutParamsUrnBackgound.height = 300
+
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
@@ -1512,6 +1691,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             }
             layoutUrnImage.background = newBackground
 
+            imageUrnImageBackgound.layoutParams = layoutParamsUrnBackgound
             imageUrnImage.layoutParams = layoutParamsUrn
             imageUrnImageUnder.layoutParams = layoutParamsUnder
             imageUrnImageLeft.layoutParams = layoutParamsLeft
@@ -1524,6 +1704,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         var layoutUrnResultImage22 = binding.layoutUrnResultImage22
         var layoutUrnResultImage2 = binding.layoutUrnResultImage2
 
+        var imageUrnImageBackgound = binding.imageUrnImage2Backgound
+        var layoutParamsUrnBackgound = imageUrnImageBackgound.layoutParams
         var imageUrnImage2 = binding.imageUrnImage2
         var layoutParamsUrn = imageUrnImage2.layoutParams
         var imageUrnImageUnder = binding.imageUrnImage2Under
@@ -1550,13 +1732,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             when (selectedUrnName2) {
                 "미정" -> {
                     val layoutParams3 = binding.layoutUrnImage2.layoutParams
-                    layoutParams3.width = 420
-                    layoutParams3.height = 520
+                    layoutParams3.width = 360
+                    layoutParams3.height = 580
                     binding.layoutUrnImage2.layoutParams = layoutParams3
 
                     val layoutParams = imageUrnImage2.layoutParams
-                    layoutParams.width = 420
-                    layoutParams.height = 500
+                    layoutParams.width = 360
+                    layoutParams.height = 580
                     imageUrnImage2.layoutParams = layoutParams
 
                     val layoutParams2 = imageUrnImageUnder.layoutParams
@@ -1871,6 +2053,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 "휴안백십장생자개 HUG-17 12535" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_5)
 
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn4_5))
+                    layoutParamsUrnBackgound.width = 170
+                    layoutParamsUrnBackgound.height = 240
+
                     layoutParamsUrn.width = 170
                     layoutParamsUrn.height = 240
 
@@ -1886,6 +2072,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 "휴안홍한지십장생자개 HUG-19 13139" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_7)
+
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn4_7))
+                    layoutParamsUrnBackgound.width = 170
+                    layoutParamsUrnBackgound.height = 240
 
                     layoutParamsUrn.width = 170
                     layoutParamsUrn.height = 240
@@ -1904,6 +2094,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 "휴안흑십장생자개 HUG-18 12535" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_9)
+
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn4_9))
+                    layoutParamsUrnBackgound.width = 170
+                    layoutParamsUrnBackgound.height = 240
 
                     layoutParamsUrn.width = 170
                     layoutParamsUrn.height = 240
@@ -1930,6 +2124,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 "휴안궁 HU-1 8525" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_3)
+
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn5_3))
+                    layoutParamsUrnBackgound.width = 200
+                    layoutParamsUrnBackgound.height = 300
 
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
@@ -1980,6 +2178,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 "휴안명성 HU-3 8525" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_9)
+
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn5_9))
+                    layoutParamsUrnBackgound.width = 200
+                    layoutParamsUrnBackgound.height = 300
 
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
@@ -2098,6 +2300,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 "휴안천향 HU-2 8525" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_23)
+
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn5_23))
+                    layoutParamsUrnBackgound.width = 200
+                    layoutParamsUrnBackgound.height = 300
 
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
@@ -2236,6 +2442,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 "봉분천향 BOB-5 6621" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_8)
+
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn8_8))
+                    layoutParamsUrnBackgound.width = 150
+                    layoutParamsUrnBackgound.height = 210
 
                     layoutParamsUrn.width = 150
                     layoutParamsUrn.height = 210
@@ -2456,6 +2666,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 "국화 ZE-1 11832" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_1)
 
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_1))
+                    layoutParamsUrnBackgound.width = 200
+                    layoutParamsUrnBackgound.height = 300
+
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
@@ -2472,6 +2686,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 "선궁 ZE-3 11832" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_3)
 
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_3))
+                    layoutParamsUrnBackgound.width = 200
+                    layoutParamsUrnBackgound.height = 300
+
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
@@ -2479,6 +2697,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
                 "소망 ZE-6 11832" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_4)
+
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_4))
+                    layoutParamsUrnBackgound.width = 200
+                    layoutParamsUrnBackgound.height = 300
 
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
@@ -2654,6 +2876,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 "청연 ZE-2 11832" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_12)
 
+                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_12))
+                    layoutParamsUrnBackgound.width = 200
+                    layoutParamsUrnBackgound.height = 300
+
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
@@ -2668,9 +2894,11 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 100
                 }
             }
+            imageUrnImageBackgound.layoutParams = layoutParamsUrnBackgound
             layoutUrnImage2.background = newBackground
-
             imageUrnImageUnder.layoutParams = layoutParamsUnder
+            imageUrnImageLeft.layoutParams = layoutParamsLeft
+            imageUrnImageRight.layoutParams = layoutParamsRight
         }
 
     }
@@ -2999,11 +3227,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     "\n - 함 도착 시간: " + ApplicationClass.prefs.burialTime
         }
 
-        msg += "\n\n${index++}. 유골함" +
-                "\n - 함 종류: " + ApplicationClass.prefs.selectedUrnType
-
-
         if(selectedUrnType != "선택안함"){
+            msg += "\n\n${index++}. 유골함"
             msg += "\n - 함 명칭: " + ApplicationClass.prefs.selectedUrnName +
                     "\n - 각인 종류: " + ApplicationClass.prefs.engraveType + "[" + ApplicationClass.prefs.engraveType2 + "]"
 
@@ -3022,10 +3247,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
             // 추가
             if(selectedUrnType2 != "선택안함"){
-                msg += "\n========== "
-
-                msg += "\n유골함 추가 정보" +
-                        "\n - 함 명칭: " + ApplicationClass.prefs.selectedUrnName2 +
+                msg += "\n\n - [추가] 함 명칭: " + ApplicationClass.prefs.selectedUrnName2 +
                         "\n - 각인 종류: " + ApplicationClass.prefs.boneEngraveType + "[" + ApplicationClass.prefs.boneEngraveType2 + "]" +
                         "\n - 고인명: " + ApplicationClass.prefs.boneName1 +
                         "\n - 생년월일: " + ApplicationClass.prefs.boneDate1.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate1Type})" +
@@ -3039,15 +3261,11 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }else if(ApplicationClass.prefs.boneEngraveType == "천주교" && ApplicationClass.prefs.boneEngraveType2 == "기본") {
                     msg += "\n - 세례명: " + ApplicationClass.prefs.boneName2
                 }
-                msg += "\n========== "
             }
 
             // 합골
             if(selectedUrnType.contains("합골")){
-                msg += "\n========== "
-
-                msg += "\n합골 추가 정보" +
-                        "\n - 각인 종류: " + ApplicationClass.prefs.boneEngraveType + "[" + ApplicationClass.prefs.boneEngraveType2 + "]" +
+                msg += "\n\n - [합골] 각인 종류: " + ApplicationClass.prefs.boneEngraveType + "[" + ApplicationClass.prefs.boneEngraveType2 + "]" +
                         "\n - 고인명: " + ApplicationClass.prefs.boneName1 +
                         "\n - 생년월일: " + ApplicationClass.prefs.boneDate1.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate1Type})" +
                         "\n - 사망월일: " + ApplicationClass.prefs.boneDate2.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate2Type})"
@@ -3060,13 +3278,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }else if(ApplicationClass.prefs.boneEngraveType == "천주교" && ApplicationClass.prefs.boneEngraveType2 == "기본") {
                     msg += "\n - 세례명: " + ApplicationClass.prefs.boneName2
                 }
-                msg += "\n========== "
             }
         }
 
-        msg += "\n\n${index++}. 위패" +
-                "\n - 위패 종류: " + ApplicationClass.prefs.selectedTabletType
         if(selectedTabletType != "선택안함") {
+            msg += "\n\n${index++}. 위패"
+
             msg += "\n - 위패 명칭: " + ApplicationClass.prefs.selectedTabletName +
                 "\n - 위패 상세 종류: " + ApplicationClass.prefs.tabletType
 
@@ -3081,11 +3298,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             }
         }
         if(boneSelectedTabletType != "선택안함") {
-            msg += "\n========== "
-            msg += "\n위패 추가 정보" +
-                    "\n - 추가 위패 종류: " + ApplicationClass.prefs.boneSelectedTabletType +
-                    "\n - 추가 위패 명칭: " + ApplicationClass.prefs.selectedTabletName2
-            msg += "\n - 위패 상세 종류: " + ApplicationClass.prefs.boneTabletType
+            msg += "\n\n - [추가] 위패 명칭: " + ApplicationClass.prefs.selectedTabletName2
+            msg += "\n - 상세 종류: " + ApplicationClass.prefs.boneTabletType
 
             if(!boneSelectedTabletType.contains("사진")){
                 msg += "\n - 위패 내용: " + ApplicationClass.prefs.boneName3
@@ -3096,12 +3310,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                         msg += "\n - 세례명: " + ApplicationClass.prefs.boneTabletName2
                 }
             }
-            msg += "\n========== "
         }
-        if(selectedTabletType != "합골") {
-            msg += "\n========== "
-            msg += "\n합골 추가 정보"
-            msg += "\n - 위패 상세 종류: " + ApplicationClass.prefs.boneTabletType
+        if(selectedTabletType.contains("합골")) {
+            msg += "\n\n - [합골] 위패 상세 종류: " + ApplicationClass.prefs.boneTabletType
 
             if(!boneSelectedTabletType.contains("사진")){
                 msg += "\n - 위패 내용: " + ApplicationClass.prefs.boneName3
@@ -3112,21 +3323,16 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                         msg += "\n - 세례명: " + ApplicationClass.prefs.boneTabletName2
                 }
             }
-            msg += "\n========== "
         }
-
-        msg += "\n\n${index++}. 평장" +
-                "\n - 평장 종류: " + ApplicationClass.prefs.selectedPyeongjangType
 
         if(selectedPyeongjangType != "선택안함") {
-            msg += "\n- ${ApplicationClass.prefs.selectedPyeongjangType} 명칭: " + ApplicationClass.prefs.selectedPyeongjangName
+            msg += "\n\n${index++}. 평장" +
+                    "\n - 평장 종류: " + ApplicationClass.prefs.selectedPyeongjangType
+            msg += "\n - ${ApplicationClass.prefs.selectedPyeongjangType} 명칭: " + ApplicationClass.prefs.selectedPyeongjangName
         }
         if(selectedPyeongjangType2 != "선택안함") {
-            msg += "\n========== "
-            msg += "\n평장 추가 정보" +
-                    "\n - 평장 종류: " + ApplicationClass.prefs.selectedPyeongjangType2 +
-                    "\n - 추가 ${ApplicationClass.prefs.selectedPyeongjangType} 명칭: " + ApplicationClass.prefs.selectedPyeongjangName2
-            msg += "\n========== "
+            msg += "\n\n - [추가] 평장 종류: " + ApplicationClass.prefs.selectedPyeongjangType2 +
+                    "\n - ${ApplicationClass.prefs.selectedPyeongjangType} 명칭: " + ApplicationClass.prefs.selectedPyeongjangName2
         }
     }
     private fun setImage() {
@@ -3400,61 +3606,61 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     }
                 }
             }
-//            binding.layoutResult1.visibility = View.GONE
-//            binding.layoutResult2.visibility = View.GONE
-//            binding.layoutResult3.visibility = View.GONE
-//            binding.layoutResultContent.visibility = View.GONE
+            binding.layoutResult1.visibility = View.GONE
+            binding.layoutResult2.visibility = View.GONE
+            binding.layoutResult3.visibility = View.GONE
+            binding.layoutResultContent.visibility = View.GONE
             setOnTouchListener()
         }, delayMillis.toLong())
     }
     private fun setOnClickListeners() {
         val selectedUrnName = ApplicationClass.prefs.selectedUrnName
-        val index = searchList.indexOf(selectedUrnName)
-        binding.layoutCurrent.text = "${index+1} / ${searchList.size}"
+        val urnIndex = searchList.indexOf(selectedUrnName)
+        binding.layoutCurrent.text = "${urnIndex+1} / ${searchList.size}"
 
         binding.layoutPre.setOnClickListener {
-            if(index > 0){
-                ApplicationClass.prefs.selectedUrnName = searchList.get(index-1)
+            if(urnIndex > 0){
+                ApplicationClass.prefs.selectedUrnName = searchList.get(urnIndex-1)
                 findNavController().navigate(R.id.action_resultFragment_to_resultFragment)
             }
         }
         binding.layoutNext.setOnClickListener {
-            if(index < searchList.size - 1){
-                ApplicationClass.prefs.selectedUrnName = searchList.get(index+1)
+            if(urnIndex < searchList.size - 1){
+                ApplicationClass.prefs.selectedUrnName = searchList.get(urnIndex+1)
                 findNavController().navigate(R.id.action_resultFragment_to_resultFragment)
             }
         }
 
-        binding.layoutZoom1.setOnClickListener {
-            val dialog = ResultDialogFragment()
-            // 화면 밖 터치시 종료되지 않게 하기
-            dialog.isCancelable = false
-
-            val layoutResultImage = binding.layoutResultImage1
-
-            val resultBitmap = Bitmap.createBitmap(layoutResultImage.width, layoutResultImage.height, Bitmap.Config.ARGB_8888)
-            val canvasBitmap = Canvas(resultBitmap)
-            layoutResultImage.draw(canvasBitmap)
-
-            dialog.setImageBitmap(resultBitmap)
-
-            dialog.show(childFragmentManager, "show layout zoom")
-        }
-
-        binding.layoutZoom3.setOnClickListener {
-            val dialog = ResultDialogFragment()
-            // 화면 밖 터치시 종료되지 않게 하기
-            dialog.isCancelable = false
-
-            val layoutResultImage = binding.layoutResultImage3
-            val resultBitmap = Bitmap.createBitmap(layoutResultImage.width, layoutResultImage.height, Bitmap.Config.ARGB_8888)
-            val canvasBitmap = Canvas(resultBitmap)
-            layoutResultImage.draw(canvasBitmap)
-
-            dialog.setImageBitmap(resultBitmap)
-
-            dialog.show(childFragmentManager, "show layout zoom")
-        }
+//        binding.layoutZoom1.setOnClickListener {
+//            val dialog = ResultDialogFragment()
+//            // 화면 밖 터치시 종료되지 않게 하기
+//            dialog.isCancelable = false
+//
+//            val layoutResultImage = binding.layoutResultImage1
+//
+//            val resultBitmap = Bitmap.createBitmap(layoutResultImage.width, layoutResultImage.height, Bitmap.Config.ARGB_8888)
+//            val canvasBitmap = Canvas(resultBitmap)
+//            layoutResultImage.draw(canvasBitmap)
+//
+//            dialog.setImageBitmap(resultBitmap)
+//
+//            dialog.show(childFragmentManager, "show layout zoom")
+//        }
+//
+//        binding.layoutZoom3.setOnClickListener {
+//            val dialog = ResultDialogFragment()
+//            // 화면 밖 터치시 종료되지 않게 하기
+//            dialog.isCancelable = false
+//
+//            val layoutResultImage = binding.layoutResultImage3
+//            val resultBitmap = Bitmap.createBitmap(layoutResultImage.width, layoutResultImage.height, Bitmap.Config.ARGB_8888)
+//            val canvasBitmap = Canvas(resultBitmap)
+//            layoutResultImage.draw(canvasBitmap)
+//
+//            dialog.setImageBitmap(resultBitmap)
+//
+//            dialog.show(childFragmentManager, "show layout zoom")
+//        }
 
         binding.buttonResultToOrderFragment.setOnClickListener{
             findNavController().navigate(R.id.action_resultFragment_to_orderFragment)

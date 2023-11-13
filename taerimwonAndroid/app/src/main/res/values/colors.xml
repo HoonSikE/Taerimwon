@@ -47,5 +47,17 @@
     <color name="man">#82A0D8</color>
     <color name="woman">#FF9B9B</color>
 
+    <color name="img_urn4_5">#DFE2EB</color>
+    <color name="img_urn4_7">#831C1D</color>
+    <color name="img_urn4_9">#0A0C0C</color>
+    <color name="img_urn5_3">#C4BFBB</color>
+    <color name="img_urn5_9">#B8BBBF</color>
+    <color name="img_urn5_23">#D9CFC7</color>
+    <color name="img_urn8_8">#EFF1F1</color>
+    <color name="img_urn10_1">#C2B9B0</color>
+    <color name="img_urn10_3">#D4CCC6</color>
+    <color name="img_urn10_4">#95ABAF</color>
+    <color name="img_urn10_12">#D4CEC8</color>
+
     <color name="backgroundResultImage">#ced5d9</color>
 </resources>

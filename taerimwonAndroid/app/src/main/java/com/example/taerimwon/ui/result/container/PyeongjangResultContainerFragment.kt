@@ -37,8 +37,7 @@ class PyeongjangResultContainerFragment : BaseFragment<FragmentPyeongjangResultC
 
             if(selectedPyeongjangType2 == "선택안함") {
             }else {
-                textResultTextPyeongjang += "\n\n평장 추가 정보"
-                textResultTextPyeongjang += "\n - 평장 종류: " + selectedPyeongjangType2
+                textResultTextPyeongjang += "\n\n - [추가] 평장 종류: " + selectedPyeongjangType2
                 textResultTextPyeongjang += "\n - 평장 명칭: " + ApplicationClass.prefs.selectedPyeongjangName2
             }
         }

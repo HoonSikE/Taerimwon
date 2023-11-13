@@ -17,7 +17,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/button_result_fragment"
+            app:layout_constraintBottom_toTopOf="@+id/layout_button_order"
             android:paddingBottom="8dp"
             app:layout_constraintVertical_bias="0.0">
 
@@ -66,7 +66,7 @@
                         android:background="@drawable/button_primary"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
-                        android:text="기본정보"
+                        android:text="홈"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +81,7 @@
                         android:background="@drawable/button_gray"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
-                        android:text="유골함"
+                        android:text="각인"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/menuButton1"
@@ -96,32 +96,18 @@
                         android:background="@drawable/button_gray"
                         android:layout_width="0dp"
                         android:layout_height="40dp"
-                        android:text="위패"
+                        android:text="유골함"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/menuButton2"
-                        app:layout_constraintEnd_toStartOf="@+id/menuButton4"
+                        app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginRight="4dp"
                         android:gravity="center"
                         />
-
-                    <TextView
-                        android:id="@+id/menuButton4"
-                        style="@style/SubHead"
-                        android:background="@drawable/button_gray"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:text="평장"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/menuButton3"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:gravity="center"
-                        />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-                <!-- 기본정보 -->
+                <!-- 홈 -->
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layoutMenu1"
+                    android:id="@+id/layoutHome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -129,877 +115,943 @@
                     app:layout_constraintTop_toBottomOf="@+id/menuButtonGroup"
                     android:gravity="center"
                     >
-                    <!--=====발주자 정보 입력=====-->
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/layout_leader"
-                        android:background="@color/contentBackground"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="20dp"
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
+                        android:text="홈"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:elevation="4dp"
-                        tools:ignore="MissingConstraints"
-                        >
-                        <!-- 발주자 정보 입력 -->
-                        <TextView
-                            android:id="@+id/text_leader_title"
-                            style="@style/SubHeadBold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="● 발주자 정보 입력 "
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            />
-
-                        <TextView
-                            android:id="@+id/text_leader_title2"
-                            style="@style/SubHeadBold"
-                            android:textColor="@color/redTextColor"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="(필수)"
-                            app:layout_constraintStart_toEndOf="@+id/text_leader_title"
-                            app:layout_constraintTop_toTopOf="parent"
-                            />
-
-                        <CheckBox
-                            android:id="@+id/checkbox_leader"
-                            style="@style/SubHeadBold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="정보 저장"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            android:layout_marginEnd="20dp"
-                            app:layout_constraintTop_toTopOf="@id/text_leader_title"
-                            app:layout_constraintBottom_toBottomOf="@id/text_leader_title"
-                            />
-
-                        <!--소속-->
-                        <TextView
-                            android:id="@+id/text_leader_department"
-                            style="@style/SubHead"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:text="소속"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/text_leader_title"
-                            />
-
-                        <EditText
-                            android:id="@+id/editText_leader_department"
-                            style="@style/Body"
-                            android:background="@drawable/edittext_regular"
-                            android:layout_width="0dp"
-                            android:layout_height="48dp"
-                            android:layout_marginHorizontal="16dp"
-                            android:layout_marginTop="8dp"
-                            android:ems="10"
-                            android:hint="소속"
-                            android:paddingLeft="48dp"
-                            android:imeOptions="actionDone"
-                            android:inputType="text"
-                            android:maxLength="8"
-                            android:textColorHint="@color/hintGray"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/text_leader_department"
-                            />
-
-                        <ImageView
-                            android:id="@+id/image_leader_department"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="10dp"
-                            app:layout_constraintStart_toStartOf="@+id/editText_leader_department"
-                            app:layout_constraintTop_toTopOf="@+id/editText_leader_department"
-                            app:srcCompat="@drawable/ic_company"
-                            />
-
-                        <!-- 발주자 명 -->
-                        <TextView
-                            android:id="@+id/text_leader_name"
-                            style="@style/SubHead"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:text="발주자 명"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/editText_leader_department"
-                            />
-
-                        <EditText
-                            android:id="@+id/editText_leader_name"
-                            style="@style/Body"
-                            android:background="@drawable/edittext_regular"
-                            android:layout_width="0dp"
-                            android:layout_height="48dp"
-                            android:layout_marginHorizontal="16dp"
-                            android:layout_marginTop="8dp"
-                            android:ems="10"
-                            android:hint="이름을 입력하세요"
-                            android:paddingLeft="48dp"
-                            android:imeOptions="actionDone"
-                            android:inputType="textPersonName"
-                            android:maxLength="4"
-                            android:textColorHint="@color/hintGray"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/text_leader_name"
-                            />
-
-                        <ImageView
-                            android:id="@+id/image_leader_name"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="10dp"
-                            app:layout_constraintStart_toStartOf="@+id/editText_leader_name"
-                            app:layout_constraintTop_toTopOf="@+id/editText_leader_name"
-                            app:srcCompat="@drawable/ic_name"
-                            />
-
-                        <!-- 발주자 전화번호 -->
-                        <TextView
-                            android:id="@+id/text_leader_tel"
-                            style="@style/SubHead"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:text="전화번호"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/editText_leader_name"
-                            />
-
-                        <EditText
-                            android:id="@+id/editText_leader_tel"
-                            style="@style/Body"
-                            android:background="@drawable/edittext_regular"
-                            android:layout_width="0dp"
-                            android:layout_height="48dp"
-                            android:layout_marginHorizontal="16dp"
-                            android:layout_marginTop="8dp"
-                            android:ems="10"
-                            android:hint="010-1234-5678"
-                            android:paddingLeft="48dp"
-                            android:imeOptions="actionDone"
-                            android:inputType="phone"
-                            android:maxLength="13"
-                            android:textColorHint="@color/hintGray"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/text_leader_tel"
-                            />
-
-                        <ImageView
-                            android:id="@+id/image_leader_tel"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="10dp"
-                            app:layout_constraintStart_toStartOf="@+id/editText_leader_tel"
-                            app:layout_constraintTop_toTopOf="@+id/editText_leader_tel"
-                            app:srcCompat="@drawable/ic_phone"
-                            />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    <View
-                        android:id="@+id/View2"
-                        android:layout_width="match_parent"
-                        android:layout_height="10dp"
-                        android:background="@color/viewColor"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_leader"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        tools:ignore="MissingConstraints"
                         />
-                    <!-- 상주 정보 입력 -->
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/layout_client"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/contentBackground"
-                        android:elevation="2dp"
-                        android:orientation="vertical"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="20dp"
-                        app:layout_constraintTop_toBottomOf="@+id/View2"
-                        tools:ignore="MissingConstraints"
-                        tools:layout_editor_absoluteX="8dp">
-                        <!-- 발주자 정보 입력 -->
-                        <TextView
-                            android:id="@+id/text_client_title"
-                            style="@style/SubHeadBold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="● 상주 정보 입력 (선택)"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <!-- 상주 명 -->
-                        <TextView
-                            android:id="@+id/text_client_name"
-                            style="@style/SubHead"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:text="상주 명"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_client_title" />
-
-                        <EditText
-                            android:id="@+id/editText_client_name"
-                            style="@style/Body"
-                            android:layout_width="0dp"
-                            android:layout_height="48dp"
-                            android:layout_marginHorizontal="16dp"
-                            android:layout_marginTop="8dp"
-                            android:background="@drawable/edittext_regular"
-                            android:ems="10"
-                            android:hint="이름을 입력하세요."
-                            android:imeOptions="actionDone"
-                            android:inputType="textPersonName"
-                            android:maxLength="4"
-                            android:paddingLeft="48dp"
-                            android:textColorHint="@color/hintGray"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/text_client_name" />
-
-                        <ImageView
-                            android:id="@+id/image_client_name"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="10dp"
-                            app:layout_constraintStart_toStartOf="@+id/editText_client_name"
-                            app:layout_constraintTop_toTopOf="@+id/editText_client_name"
-                            app:srcCompat="@drawable/ic_name" />
-
-                        <!-- 상주 전화번호 -->
-                        <TextView
-                            android:id="@+id/text_client_tel"
-                            style="@style/SubHead"
-                            android:layout_width="wrap_content"
-                            android:layout_height="22dp"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:text="전화번호"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/editText_client_name" />
-
-                        <EditText
-                            android:id="@+id/editText_client_tel"
-                            style="@style/Body"
-                            android:layout_width="0dp"
-                            android:layout_height="48dp"
-                            android:layout_marginHorizontal="16dp"
-                            android:layout_marginTop="8dp"
-                            android:background="@drawable/edittext_regular"
-                            android:ems="10"
-                            android:hint="010-1234-5678"
-                            android:imeOptions="actionDone"
-                            android:inputType="phone"
-                            android:maxLength="13"
-                            android:paddingLeft="48dp"
-                            android:textColorHint="@color/hintGray"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/text_client_tel" />
-
-                        <ImageView
-                            android:id="@+id/image_client_tel"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="10dp"
-                            app:layout_constraintStart_toStartOf="@+id/editText_client_tel"
-                            app:layout_constraintTop_toTopOf="@+id/editText_client_tel"
-                            app:srcCompat="@drawable/ic_phone" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    <View
-                        android:id="@+id/View3"
-                        android:layout_width="match_parent"
-                        android:layout_height="10dp"
-                        android:background="@color/viewColor"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_client"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        tools:ignore="MissingConstraints"
-                        />
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/layout_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/contentBackground"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="20dp"
-                        android:orientation="vertical"
-                        app:layout_constraintTop_toBottomOf="@+id/View3"
-                        android:elevation="4dp"
-                        tools:ignore="MissingConstraints"
-                        >
-                        <!-- 발주자 정보 입력 -->
-                        <TextView
-                            android:id="@+id/text_button_title"
-                            style="@style/SubHeadBold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:text="● 발주 장소 입력 "
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            />
-
-                        <TextView
-                            android:id="@+id/text_button_title2"
-                            style="@style/SubHeadBold"
-                            android:textColor="@color/redTextColor"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="(필수)"
-                            app:layout_constraintStart_toEndOf="@+id/text_button_title"
-                            app:layout_constraintTop_toTopOf="parent"
-                            />
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/buttonGroup"
-                            android:layout_width="0dp"
-                            android:layout_height="48dp"
-                            android:orientation="horizontal"
-                            android:layout_marginHorizontal="16dp"
-                            android:layout_marginTop="8dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/text_button_title"
-                            android:gravity="center">
-
-                            <TextView
-                                android:id="@+id/button1"
-                                style="@style/SubHeadWhite"
-                                android:background="@drawable/button_primary"
-                                android:layout_width="0dp"
-                                android:layout_height="40dp"
-                                android:text="화장장"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toStartOf="@+id/button2"
-                                android:layout_marginRight="4dp"
-                                android:gravity="center"
-                                />
-
-                            <TextView
-                                android:id="@+id/button2"
-                                style="@style/SubHead"
-                                android:background="@drawable/button_gray"
-                                android:layout_width="0dp"
-                                android:layout_height="40dp"
-                                android:text="장례식장"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/button1"
-                                app:layout_constraintEnd_toStartOf="@+id/button3"
-                                android:layout_marginRight="4dp"
-                                android:gravity="center"
-                                />
-
-                            <TextView
-                                android:id="@+id/button3"
-                                style="@style/SubHead"
-                                android:background="@drawable/button_gray"
-                                android:layout_width="0dp"
-                                android:layout_height="40dp"
-                                android:text="장지"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toEndOf="@+id/button2"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                android:gravity="center"
-                                />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                        <!-- 화장장 -->
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/layout_radio_cremation"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toBottomOf="@+id/buttonGroup"
-                            >
-                            <!-- 화장장 -->
-                            <TextView
-                                android:id="@+id/text_cremation_area"
-                                style="@style/SubHead"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginTop="8dp"
-                                android:text="화장장"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                />
-
-                            <Spinner
-                                android:id="@+id/spinner_cremation_area"
-                                style="@style/SubHead"
-                                android:background="@drawable/edittext_regular"
-                                android:layout_width="0dp"
-                                android:layout_height="48dp"
-                                android:layout_marginHorizontal="16dp"
-                                android:layout_marginTop="8dp"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/text_cremation_area"
-                                android:entries="@array/cremationAreas"
-                                android:spinnerMode="dropdown"
-                                android:defaultValue="0"
-                                />
-
-                            <ImageView
-                                android:id="@+id/image_cremation_area"
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintEnd_toEndOf="@+id/spinner_cremation_area"
-                                app:layout_constraintTop_toTopOf="@+id/spinner_cremation_area"
-                                app:srcCompat="@drawable/ic_spinner"
-                                />
-
-                            <Spinner
-                                android:id="@+id/spinner_cremation_area2"
-                                style="@style/SubHead"
-                                android:background="@drawable/edittext_regular"
-                                android:layout_width="0dp"
-                                android:layout_height="48dp"
-                                android:layout_marginHorizontal="16dp"
-                                android:layout_marginTop="8dp"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/spinner_cremation_area"
-                                android:entries="@array/cremationSeoul"
-                                android:spinnerMode="dropdown"
-                                android:defaultValue="0"
-                                />
-
-                            <ImageView
-                                android:id="@+id/image_cremation_area2"
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                android:layout_marginEnd="8dp"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintEnd_toEndOf="@+id/spinner_cremation_area2"
-                                app:layout_constraintTop_toTopOf="@+id/spinner_cremation_area2"
-                                app:srcCompat="@drawable/ic_spinner"
-                                />
-
-                            <!-- 화장 시간 -->
-                            <TextView
-                                android:id="@+id/text_cremation_time"
-                                style="@style/SubHead"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginTop="16dp"
-                                android:text="화장시간"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/spinner_cremation_area2"
-                                />
-
-                            <EditText
-                                android:id="@+id/editText_cremation_time"
-                                style="@style/Body"
-                                android:background="@drawable/edittext_regular"
-                                android:layout_width="0dp"
-                                android:layout_height="48dp"
-                                android:layout_marginHorizontal="16dp"
-                                android:layout_marginTop="8dp"
-                                android:ems="10"
-                                android:hint="2023-09-01 00:00"
-                                android:paddingLeft="48dp"
-                                android:imeOptions="actionDone"
-                                android:inputType="datetime"
-                                android:maxLength="16"
-                                android:textColorHint="@color/hintGray"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/text_cremation_time"
-                                />
-
-                            <ImageView
-                                android:id="@+id/image_cremation_time"
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintStart_toStartOf="@+id/editText_cremation_time"
-                                app:layout_constraintTop_toTopOf="@+id/editText_cremation_time"
-                                app:srcCompat="@drawable/ic_time"
-                                />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                        <!-- 장례식장 -->
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/layout_radio_funeral"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toBottomOf="@+id/buttonGroup"
-                            android:visibility="gone"
-                            >
-
-                            <!-- 장례식장 명 -->
-                            <TextView
-                                android:id="@+id/text_funeral_name"
-                                style="@style/SubHead"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginTop="8dp"
-                                android:text="장례식장 명"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                />
-
-                            <EditText
-                                android:id="@+id/editText_funeral_name"
-                                style="@style/Body"
-                                android:background="@drawable/edittext_regular"
-                                android:layout_width="0dp"
-                                android:layout_height="48dp"
-                                android:layout_marginHorizontal="16dp"
-                                android:layout_marginTop="8dp"
-                                android:ems="10"
-                                android:hint="장례식장명을 입력하세요."
-                                android:paddingLeft="48dp"
-                                android:imeOptions="actionDone"
-                                android:inputType="text"
-                                android:maxLength="12"
-                                android:textColorHint="@color/hintGray"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/text_funeral_name"
-                                />
-
-                            <ImageView
-                                android:id="@+id/image_funeral_name"
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintStart_toStartOf="@+id/editText_funeral_name"
-                                app:layout_constraintTop_toTopOf="@+id/editText_funeral_name"
-                                app:srcCompat="@drawable/ic_place"
-                                />
-
-                            <!-- 호실 -->
-                            <TextView
-                                android:id="@+id/text_funeral_number"
-                                style="@style/SubHead"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginTop="16dp"
-                                android:text="호실"
-                                android:maxLength="8"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/editText_funeral_name"
-                                />
-
-                            <EditText
-                                android:id="@+id/editText_funeral_number"
-                                style="@style/Body"
-                                android:background="@drawable/edittext_regular"
-                                android:layout_width="0dp"
-                                android:layout_height="48dp"
-                                android:layout_marginHorizontal="16dp"
-                                android:layout_marginTop="8dp"
-                                android:ems="10"
-                                android:hint="호실을 입력하세요."
-                                android:paddingLeft="48dp"
-                                android:imeOptions="actionDone"
-                                android:inputType="text"
-                                android:maxLength="8"
-                                android:textColorHint="@color/hintGray"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/text_funeral_number"
-                                />
-
-                            <ImageView
-                                android:id="@+id/image_funeral_number"
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintStart_toStartOf="@+id/editText_funeral_number"
-                                app:layout_constraintTop_toTopOf="@+id/editText_funeral_number"
-                                app:srcCompat="@drawable/ic_key"
-                                />
-
-                            <!-- 함 도착 시간 -->
-                            <TextView
-                                android:id="@+id/text_funeral_time"
-                                style="@style/SubHead"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginTop="16dp"
-                                android:text="함 도착 시간"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/editText_funeral_number"
-                                />
-
-                            <EditText
-                                android:id="@+id/editText_funeral_time"
-                                style="@style/Body"
-                                android:background="@drawable/edittext_regular"
-                                android:layout_width="0dp"
-                                android:layout_height="48dp"
-                                android:layout_marginHorizontal="16dp"
-                                android:layout_marginTop="8dp"
-                                android:ems="10"
-                                android:hint="2023-09-01 00:00"
-                                android:paddingLeft="48dp"
-                                android:imeOptions="actionDone"
-                                android:inputType="datetime"
-                                android:maxLength="16"
-                                android:textColorHint="@color/hintGray"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/text_funeral_time"
-                                />
-
-                            <ImageView
-                                android:id="@+id/image_funeral_time"
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintStart_toStartOf="@+id/editText_funeral_time"
-                                app:layout_constraintTop_toTopOf="@+id/editText_funeral_time"
-                                app:srcCompat="@drawable/ic_time"
-                                />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                        <!-- 장지 -->
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/layout_radio_burial"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintTop_toBottomOf="@+id/buttonGroup"
-                            android:visibility="gone"
-                            >
-
-                            <!-- 장지 명 -->
-                            <TextView
-                                android:id="@+id/text_burial_name"
-                                style="@style/SubHead"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginTop="8dp"
-                                android:text="장지 명"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                />
-
-                            <EditText
-                                android:id="@+id/editText_burial_name"
-                                style="@style/Body"
-                                android:background="@drawable/edittext_regular"
-                                android:layout_width="0dp"
-                                android:layout_height="48dp"
-                                android:layout_marginHorizontal="16dp"
-                                android:layout_marginTop="8dp"
-                                android:ems="10"
-                                android:hint="장지명을 입력하세요."
-                                android:paddingLeft="48dp"
-                                android:imeOptions="actionDone"
-                                android:inputType="text"
-                                android:maxLength="8"
-                                android:textColorHint="@color/hintGray"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/text_burial_name"
-                                />
-
-                            <ImageView
-                                android:id="@+id/image_buriall_name"
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintStart_toStartOf="@+id/editText_burial_name"
-                                app:layout_constraintTop_toTopOf="@+id/editText_burial_name"
-                                app:srcCompat="@drawable/ic_place"
-                                />
-
-                            <!-- 함 도착 시간 -->
-                            <TextView
-                                android:id="@+id/text_burial_time"
-                                style="@style/SubHead"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginTop="16dp"
-                                android:text="함 도착 시간"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/editText_burial_name"
-                                />
-
-                            <EditText
-                                android:id="@+id/editText_burial_time"
-                                style="@style/Body"
-                                android:background="@drawable/edittext_regular"
-                                android:layout_width="0dp"
-                                android:layout_height="48dp"
-                                android:layout_marginHorizontal="16dp"
-                                android:layout_marginTop="8dp"
-                                android:ems="10"
-                                android:hint="2023-09-01 00:00"
-                                android:paddingLeft="48dp"
-                                android:imeOptions="actionDone"
-                                android:inputType="datetime"
-                                android:maxLength="16"
-                                android:textColorHint="@color/hintGray"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/text_burial_time"
-                                />
-
-                            <ImageView
-                                android:id="@+id/image_burial_time"
-                                android:layout_width="28dp"
-                                android:layout_height="28dp"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintStart_toStartOf="@+id/editText_burial_time"
-                                app:layout_constraintTop_toTopOf="@+id/editText_burial_time"
-                                app:srcCompat="@drawable/ic_time"
-                                />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-                <!-- 유골함 -->
+                <!-- 기본정보 -->
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_urn_container"
+                    android:id="@+id/layoutOrder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/contentBackground"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="12dp"
-                    android:orientation="vertical"
-                    app:layout_constraintTop_toBottomOf="@+id/layoutMenu1"
-                    app:layout_constraintBottom_toTopOf="@+id/layout_tablet_container"
-                    android:elevation="4dp"
-                    tools:ignore="MissingConstraints"
-                    android:visibility="gone"
-                    >
-
-                    <FrameLayout
-                        android:id="@+id/fragment_urn_container"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                <!-- 위패 -->
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_tablet_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/contentBackground"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="12dp"
-                    android:orientation="vertical"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_container"
-                    android:elevation="4dp"
-                    tools:ignore="MissingConstraints"
-                    android:visibility="gone"
-                    >
-
-                    <FrameLayout
-                        android:id="@+id/fragment_tablet_container"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                <!-- 평장 -->
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_pyeongjang_container"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/contentBackground"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="12dp"
-                    android:orientation="vertical"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_tablet_container"
-                    android:elevation="4dp"
-                    tools:ignore="MissingConstraints"
-                    android:visibility="gone"
-                    >
-
-                    <FrameLayout
-                        android:id="@+id/fragment_pyeongjang_container"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <View
-                    android:id="@+id/View7"
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:background="@color/viewColor"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_pyeongjang_container"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:ignore="MissingConstraints"
-                    />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/menuButtonGroup"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    >
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layoutOrderContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:gravity="center"
+                        >
+                        <!--=====발주자 정보 입력=====-->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_leader"
+                            android:background="@color/contentBackground"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:elevation="4dp"
+                            tools:ignore="MissingConstraints"
+                            >
+                            <!-- 발주자 정보 입력 -->
+                            <TextView
+                                android:id="@+id/text_leader_title"
+                                style="@style/SubHeadBold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:text="● 발주자 정보 입력 "
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                />
+
+                            <TextView
+                                android:id="@+id/text_leader_title2"
+                                style="@style/SubHeadBold"
+                                android:textColor="@color/redTextColor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="(필수)"
+                                app:layout_constraintStart_toEndOf="@+id/text_leader_title"
+                                app:layout_constraintTop_toTopOf="parent"
+                                />
+
+                            <CheckBox
+                                android:id="@+id/checkbox_leader"
+                                style="@style/SubHeadBold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="정보 저장"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginEnd="20dp"
+                                app:layout_constraintTop_toTopOf="@id/text_leader_title"
+                                app:layout_constraintBottom_toBottomOf="@id/text_leader_title"
+                                />
+
+                            <!--소속-->
+                            <TextView
+                                android:id="@+id/text_leader_department"
+                                style="@style/SubHead"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"
+                                android:text="소속"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/text_leader_title"
+                                />
+
+                            <EditText
+                                android:id="@+id/editText_leader_department"
+                                style="@style/Body"
+                                android:background="@drawable/edittext_regular"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_marginHorizontal="16dp"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:hint="소속"
+                                android:paddingLeft="48dp"
+                                android:imeOptions="actionDone"
+                                android:inputType="text"
+                                android:maxLength="8"
+                                android:textColorHint="@color/hintGray"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/text_leader_department"
+                                />
+
+                            <ImageView
+                                android:id="@+id/image_leader_department"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="10dp"
+                                app:layout_constraintStart_toStartOf="@+id/editText_leader_department"
+                                app:layout_constraintTop_toTopOf="@+id/editText_leader_department"
+                                app:srcCompat="@drawable/ic_company"
+                                />
+
+                            <!-- 발주자 명 -->
+                            <TextView
+                                android:id="@+id/text_leader_name"
+                                style="@style/SubHead"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"
+                                android:text="발주자 명"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/editText_leader_department"
+                                />
+
+                            <EditText
+                                android:id="@+id/editText_leader_name"
+                                style="@style/Body"
+                                android:background="@drawable/edittext_regular"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_marginHorizontal="16dp"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:hint="이름을 입력하세요"
+                                android:paddingLeft="48dp"
+                                android:imeOptions="actionDone"
+                                android:inputType="textPersonName"
+                                android:maxLength="4"
+                                android:textColorHint="@color/hintGray"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/text_leader_name"
+                                />
+
+                            <ImageView
+                                android:id="@+id/image_leader_name"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="10dp"
+                                app:layout_constraintStart_toStartOf="@+id/editText_leader_name"
+                                app:layout_constraintTop_toTopOf="@+id/editText_leader_name"
+                                app:srcCompat="@drawable/ic_name"
+                                />
+
+                            <!-- 발주자 전화번호 -->
+                            <TextView
+                                android:id="@+id/text_leader_tel"
+                                style="@style/SubHead"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"
+                                android:text="전화번호"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/editText_leader_name"
+                                />
+
+                            <EditText
+                                android:id="@+id/editText_leader_tel"
+                                style="@style/Body"
+                                android:background="@drawable/edittext_regular"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_marginHorizontal="16dp"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:hint="010-1234-5678"
+                                android:paddingLeft="48dp"
+                                android:imeOptions="actionDone"
+                                android:inputType="phone"
+                                android:maxLength="13"
+                                android:textColorHint="@color/hintGray"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/text_leader_tel"
+                                />
+
+                            <ImageView
+                                android:id="@+id/image_leader_tel"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="10dp"
+                                app:layout_constraintStart_toStartOf="@+id/editText_leader_tel"
+                                app:layout_constraintTop_toTopOf="@+id/editText_leader_tel"
+                                app:srcCompat="@drawable/ic_phone"
+                                />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <View
+                            android:id="@+id/View2"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:background="@color/viewColor"
+                            app:layout_constraintTop_toBottomOf="@+id/layout_leader"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:ignore="MissingConstraints"
+                            />
+                        <!-- 상주 정보 입력 -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_client"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/contentBackground"
+                            android:elevation="2dp"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="20dp"
+                            app:layout_constraintTop_toBottomOf="@+id/View2"
+                            tools:ignore="MissingConstraints"
+                            tools:layout_editor_absoluteX="8dp">
+                            <!-- 발주자 정보 입력 -->
+                            <TextView
+                                android:id="@+id/text_client_title"
+                                style="@style/SubHeadBold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:text="● 상주 정보 입력 (선택)"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <!-- 상주 명 -->
+                            <TextView
+                                android:id="@+id/text_client_name"
+                                style="@style/SubHead"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"
+                                android:text="상주 명"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/text_client_title" />
+
+                            <EditText
+                                android:id="@+id/editText_client_name"
+                                style="@style/Body"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_marginHorizontal="16dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/edittext_regular"
+                                android:ems="10"
+                                android:hint="이름을 입력하세요."
+                                android:imeOptions="actionDone"
+                                android:inputType="textPersonName"
+                                android:maxLength="4"
+                                android:paddingLeft="48dp"
+                                android:textColorHint="@color/hintGray"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/text_client_name" />
+
+                            <ImageView
+                                android:id="@+id/image_client_name"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="10dp"
+                                app:layout_constraintStart_toStartOf="@+id/editText_client_name"
+                                app:layout_constraintTop_toTopOf="@+id/editText_client_name"
+                                app:srcCompat="@drawable/ic_name" />
+
+                            <!-- 상주 전화번호 -->
+                            <TextView
+                                android:id="@+id/text_client_tel"
+                                style="@style/SubHead"
+                                android:layout_width="wrap_content"
+                                android:layout_height="22dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"
+                                android:text="전화번호"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/editText_client_name" />
+
+                            <EditText
+                                android:id="@+id/editText_client_tel"
+                                style="@style/Body"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:layout_marginHorizontal="16dp"
+                                android:layout_marginTop="8dp"
+                                android:background="@drawable/edittext_regular"
+                                android:ems="10"
+                                android:hint="010-1234-5678"
+                                android:imeOptions="actionDone"
+                                android:inputType="phone"
+                                android:maxLength="13"
+                                android:paddingLeft="48dp"
+                                android:textColorHint="@color/hintGray"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/text_client_tel" />
+
+                            <ImageView
+                                android:id="@+id/image_client_tel"
+                                android:layout_width="28dp"
+                                android:layout_height="28dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="10dp"
+                                app:layout_constraintStart_toStartOf="@+id/editText_client_tel"
+                                app:layout_constraintTop_toTopOf="@+id/editText_client_tel"
+                                app:srcCompat="@drawable/ic_phone" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <View
+                            android:id="@+id/View3"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:background="@color/viewColor"
+                            app:layout_constraintTop_toBottomOf="@+id/layout_client"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:ignore="MissingConstraints"
+                            />
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/layout_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/contentBackground"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="20dp"
+                            android:orientation="vertical"
+                            app:layout_constraintTop_toBottomOf="@+id/View3"
+                            android:elevation="4dp"
+                            tools:ignore="MissingConstraints"
+                            >
+                            <!-- 발주자 정보 입력 -->
+                            <TextView
+                                android:id="@+id/text_button_title"
+                                style="@style/SubHeadBold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="16dp"
+                                android:text="● 발인 장소 입력 "
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                />
+
+                            <TextView
+                                android:id="@+id/text_button_title2"
+                                style="@style/SubHeadBold"
+                                android:textColor="@color/redTextColor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="(필수)"
+                                app:layout_constraintStart_toEndOf="@+id/text_button_title"
+                                app:layout_constraintTop_toTopOf="parent"
+                                />
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/buttonGroup"
+                                android:layout_width="0dp"
+                                android:layout_height="48dp"
+                                android:orientation="horizontal"
+                                android:layout_marginHorizontal="16dp"
+                                android:layout_marginTop="8dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/text_button_title"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/button1"
+                                    style="@style/SubHeadWhite"
+                                    android:background="@drawable/button_primary"
+                                    android:layout_width="0dp"
+                                    android:layout_height="40dp"
+                                    android:text="화장장"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/button2"
+                                    android:layout_marginRight="4dp"
+                                    android:gravity="center"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/button2"
+                                    style="@style/SubHead"
+                                    android:background="@drawable/button_gray"
+                                    android:layout_width="0dp"
+                                    android:layout_height="40dp"
+                                    android:text="장례식장"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/button1"
+                                    app:layout_constraintEnd_toStartOf="@+id/button3"
+                                    android:layout_marginRight="4dp"
+                                    android:gravity="center"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/button3"
+                                    style="@style/SubHead"
+                                    android:background="@drawable/button_gray"
+                                    android:layout_width="0dp"
+                                    android:layout_height="40dp"
+                                    android:text="장지"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toEndOf="@+id/button2"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    android:gravity="center"
+                                    />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <!-- 화장장 -->
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/layout_radio_cremation"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toBottomOf="@+id/buttonGroup"
+                                >
+                                <!-- 화장장 -->
+                                <TextView
+                                    android:id="@+id/text_cremation_area"
+                                    style="@style/SubHead"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="8dp"
+                                    android:text="화장장"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/spinner_cremation_area"
+                                    style="@style/SubHead"
+                                    android:background="@drawable/edittext_regular"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_marginHorizontal="16dp"
+                                    android:layout_marginTop="8dp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/text_cremation_area"
+                                    android:entries="@array/cremationAreas"
+                                    android:spinnerMode="dropdown"
+                                    android:defaultValue="0"
+                                    />
+
+                                <ImageView
+                                    android:id="@+id/image_cremation_area"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintEnd_toEndOf="@+id/spinner_cremation_area"
+                                    app:layout_constraintTop_toTopOf="@+id/spinner_cremation_area"
+                                    app:srcCompat="@drawable/ic_spinner"
+                                    />
+
+                                <Spinner
+                                    android:id="@+id/spinner_cremation_area2"
+                                    style="@style/SubHead"
+                                    android:background="@drawable/edittext_regular"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_marginHorizontal="16dp"
+                                    android:layout_marginTop="8dp"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/spinner_cremation_area"
+                                    android:entries="@array/cremationSeoul"
+                                    android:spinnerMode="dropdown"
+                                    android:defaultValue="0"
+                                    />
+
+                                <ImageView
+                                    android:id="@+id/image_cremation_area2"
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintEnd_toEndOf="@+id/spinner_cremation_area2"
+                                    app:layout_constraintTop_toTopOf="@+id/spinner_cremation_area2"
+                                    app:srcCompat="@drawable/ic_spinner"
+                                    />
+
+                                <!-- 화장 시간 -->
+                                <TextView
+                                    android:id="@+id/text_cremation_time"
+                                    style="@style/SubHead"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="화장시간"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/spinner_cremation_area2"
+                                    />
+
+                                <EditText
+                                    android:id="@+id/editText_cremation_time"
+                                    style="@style/Body"
+                                    android:background="@drawable/edittext_regular"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_marginHorizontal="16dp"
+                                    android:layout_marginTop="8dp"
+                                    android:ems="10"
+                                    android:hint="2023-09-01 00:00"
+                                    android:paddingLeft="48dp"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="datetime"
+                                    android:maxLength="16"
+                                    android:textColorHint="@color/hintGray"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/text_cremation_time"
+                                    />
+
+                                <ImageView
+                                    android:id="@+id/image_cremation_time"
+                                    android:layout_width="28dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="@+id/editText_cremation_time"
+                                    app:layout_constraintTop_toTopOf="@+id/editText_cremation_time"
+                                    app:srcCompat="@drawable/ic_time"
+                                    />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <!-- 장례식장 -->
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/layout_radio_funeral"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toBottomOf="@+id/buttonGroup"
+                                android:visibility="gone"
+                                >
+
+                                <!-- 장례식장 명 -->
+                                <TextView
+                                    android:id="@+id/text_funeral_name"
+                                    style="@style/SubHead"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="8dp"
+                                    android:text="장례식장 명"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    />
+
+                                <EditText
+                                    android:id="@+id/editText_funeral_name"
+                                    style="@style/Body"
+                                    android:background="@drawable/edittext_regular"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_marginHorizontal="16dp"
+                                    android:layout_marginTop="8dp"
+                                    android:ems="10"
+                                    android:hint="장례식장명을 입력하세요."
+                                    android:paddingLeft="48dp"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="text"
+                                    android:maxLength="12"
+                                    android:textColorHint="@color/hintGray"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/text_funeral_name"
+                                    />
+
+                                <ImageView
+                                    android:id="@+id/image_funeral_name"
+                                    android:layout_width="28dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="@+id/editText_funeral_name"
+                                    app:layout_constraintTop_toTopOf="@+id/editText_funeral_name"
+                                    app:srcCompat="@drawable/ic_place"
+                                    />
+
+                                <!-- 호실 -->
+                                <TextView
+                                    android:id="@+id/text_funeral_number"
+                                    style="@style/SubHead"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="호실"
+                                    android:maxLength="8"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/editText_funeral_name"
+                                    />
+
+                                <EditText
+                                    android:id="@+id/editText_funeral_number"
+                                    style="@style/Body"
+                                    android:background="@drawable/edittext_regular"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_marginHorizontal="16dp"
+                                    android:layout_marginTop="8dp"
+                                    android:ems="10"
+                                    android:hint="호실을 입력하세요."
+                                    android:paddingLeft="48dp"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="text"
+                                    android:maxLength="8"
+                                    android:textColorHint="@color/hintGray"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/text_funeral_number"
+                                    />
+
+                                <ImageView
+                                    android:id="@+id/image_funeral_number"
+                                    android:layout_width="28dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="@+id/editText_funeral_number"
+                                    app:layout_constraintTop_toTopOf="@+id/editText_funeral_number"
+                                    app:srcCompat="@drawable/ic_key"
+                                    />
+
+                                <!-- 함 도착 시간 -->
+                                <TextView
+                                    android:id="@+id/text_funeral_time"
+                                    style="@style/SubHead"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="함 도착 시간"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/editText_funeral_number"
+                                    />
+
+                                <EditText
+                                    android:id="@+id/editText_funeral_time"
+                                    style="@style/Body"
+                                    android:background="@drawable/edittext_regular"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_marginHorizontal="16dp"
+                                    android:layout_marginTop="8dp"
+                                    android:ems="10"
+                                    android:hint="2023-09-01 00:00"
+                                    android:paddingLeft="48dp"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="datetime"
+                                    android:maxLength="16"
+                                    android:textColorHint="@color/hintGray"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/text_funeral_time"
+                                    />
+
+                                <ImageView
+                                    android:id="@+id/image_funeral_time"
+                                    android:layout_width="28dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="@+id/editText_funeral_time"
+                                    app:layout_constraintTop_toTopOf="@+id/editText_funeral_time"
+                                    app:srcCompat="@drawable/ic_time"
+                                    />
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            <!-- 장지 -->
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/layout_radio_burial"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toBottomOf="@+id/buttonGroup"
+                                android:visibility="gone"
+                                >
+
+                                <!-- 장지 명 -->
+                                <TextView
+                                    android:id="@+id/text_burial_name"
+                                    style="@style/SubHead"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="8dp"
+                                    android:text="장지 명"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    />
+
+                                <EditText
+                                    android:id="@+id/editText_burial_name"
+                                    style="@style/Body"
+                                    android:background="@drawable/edittext_regular"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_marginHorizontal="16dp"
+                                    android:layout_marginTop="8dp"
+                                    android:ems="10"
+                                    android:hint="장지명을 입력하세요."
+                                    android:paddingLeft="48dp"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="text"
+                                    android:maxLength="8"
+                                    android:textColorHint="@color/hintGray"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/text_burial_name"
+                                    />
+
+                                <ImageView
+                                    android:id="@+id/image_buriall_name"
+                                    android:layout_width="28dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="@+id/editText_burial_name"
+                                    app:layout_constraintTop_toTopOf="@+id/editText_burial_name"
+                                    app:srcCompat="@drawable/ic_place"
+                                    />
+
+                                <!-- 함 도착 시간 -->
+                                <TextView
+                                    android:id="@+id/text_burial_time"
+                                    style="@style/SubHead"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:text="함 도착 시간"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/editText_burial_name"
+                                    />
+
+                                <EditText
+                                    android:id="@+id/editText_burial_time"
+                                    style="@style/Body"
+                                    android:background="@drawable/edittext_regular"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_marginHorizontal="16dp"
+                                    android:layout_marginTop="8dp"
+                                    android:ems="10"
+                                    android:hint="2023-09-01 00:00"
+                                    android:paddingLeft="48dp"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="datetime"
+                                    android:maxLength="16"
+                                    android:textColorHint="@color/hintGray"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@id/text_burial_time"
+                                    />
+
+                                <ImageView
+                                    android:id="@+id/image_burial_time"
+                                    android:layout_width="28dp"
+                                    android:layout_height="28dp"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginTop="10dp"
+                                    app:layout_constraintStart_toStartOf="@+id/editText_burial_time"
+                                    app:layout_constraintTop_toTopOf="@+id/editText_burial_time"
+                                    app:srcCompat="@drawable/ic_time"
+                                    />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                        <!-- 유골함 -->
+                        <View
+                            android:id="@+id/View4"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:background="@color/viewColor"
+                            app:layout_constraintTop_toBottomOf="@+id/layout_button"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:ignore="MissingConstraints"
+                            />
+                        <FrameLayout
+                            android:id="@+id/fragment_urn_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="20dp"
+                            app:layout_constraintTop_toBottomOf="@+id/View4"
+                            />
+                        <!-- 위패 -->
+                        <View
+                            android:id="@+id/View5"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:background="@color/viewColor"
+                            app:layout_constraintTop_toBottomOf="@+id/fragment_urn_container"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:ignore="MissingConstraints"
+                            />
+                        <FrameLayout
+                            android:id="@+id/fragment_tablet_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="20dp"
+                            app:layout_constraintTop_toBottomOf="@+id/View5"
+                            />
+                        <!-- 평장 -->
+                        <View
+                            android:id="@+id/View6"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:background="@color/viewColor"
+                            app:layout_constraintTop_toBottomOf="@+id/fragment_tablet_container"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:ignore="MissingConstraints"
+                            />
+                        <FrameLayout
+                            android:id="@+id/fragment_pyeongjang_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="20dp"
+                            app:layout_constraintTop_toBottomOf="@+id/View6"
+                            />
+                        <View
+                            android:id="@+id/View7"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:background="@color/viewColor"
+                            app:layout_constraintTop_toBottomOf="@+id/fragment_pyeongjang_container"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:ignore="MissingConstraints"
+                            />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <!-- 유골함 리스트 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutUrnList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/menuButtonGroup"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        android:id="@+id/text_urn_list"
+                        style="@style/SubHeadBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="● 유골함 목록"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_urn_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="16dp"
+                        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                        app:spanCount="2"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_urn_list"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        >
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 
-        <TextView
-            android:id="@+id/button_order_to_order_fragment"
-            style="@style/BackButtonText"
-            android:background="@drawable/button_back"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="4dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_button_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button_result_fragment"
-            android:gravity="center"
-            android:text="초기화"
-            />
+            android:visibility="gone"
+            >
+            <!-- 버튼 -->
+            <TextView
+                android:id="@+id/button_order_to_order_fragment"
+                style="@style/BackButtonText"
+                android:background="@drawable/button_back"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button_result_fragment"
+                android:gravity="center"
+                android:text="초기화"
+                />
 
-        <TextView
-            android:id="@+id/button_result_fragment"
-            style="@style/ButtonText"
-            android:background="@drawable/button_regular"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="12dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button_order_to_order_fragment"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="시안 보기"
-            android:gravity="center"
-            />
+            <TextView
+                android:id="@+id/button_result_fragment"
+                style="@style/ButtonText"
+                android:background="@drawable/button_regular"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button_order_to_order_fragment"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="시안 보기"
+                android:gravity="center"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

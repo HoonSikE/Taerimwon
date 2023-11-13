@@ -36,7 +36,6 @@ const val ENGRAVETYPEPOSITION = "engraveTypePosition"
 // 각인 상세 종류 (일반, 형제, 직분, 기독, ...)
 const val ENGRAVETYPE2 = "engraveType2"
 const val CHECKCATHOLIC = "checkCatholic"
-const val CHECKHANGLE = "checkHangle"
 const val ENGRAVETYPE2POSITION = "engraveType2Position"
 // 고인 성함
 const val NAME1 = "name1"
@@ -61,7 +60,6 @@ const val BONEENGRAVETYPEPOSITION = "boneEngraveTypePosition"
 // 각인 상세 종류 (일반, 형제, 직분, 기독, ...)
 const val BONEENGRAVETYPE2 = "boneEngraveType2"
 const val CHECKCATHOLIC2 = "checkCatholic2"
-const val CHECKHANGLE2 = "checkHangle2"
 const val BONEENGRAVETYPE2POSITION = "boneEngraveType2Position"
 const val SEX = "sex"
 const val BONESEX = "boneSex"

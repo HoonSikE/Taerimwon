@@ -207,24 +207,11 @@
                         style="@style/SubHeadBold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="별세"
-                        app:layout_constraintEnd_toStartOf="@+id/checkbox_hangle"
-                        android:layout_marginEnd="20dp"
+                        android:text="소천->별세 변경"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/text_dead_title"
                         app:layout_constraintBottom_toBottomOf="@id/text_dead_title"
                         android:visibility="gone"
-                        />
-
-                    <CheckBox
-                        android:id="@+id/checkbox_hangle"
-                        style="@style/SubHeadBold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="한글"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginEnd="20dp"
-                        app:layout_constraintTop_toTopOf="@id/text_dead_title"
-                        app:layout_constraintBottom_toBottomOf="@id/text_dead_title"
                         />
 
                     <!-- 고인 명 -->
@@ -651,24 +638,11 @@
                         style="@style/SubHeadBold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="별세"
-                        app:layout_constraintEnd_toStartOf="@+id/checkbox_hangle2"
-                        android:layout_marginEnd="20dp"
+                        android:text="소천->별세 변경"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@id/text_bone_dead_title"
                         app:layout_constraintBottom_toBottomOf="@id/text_bone_dead_title"
                         android:visibility="gone"
-                        />
-
-                    <CheckBox
-                        android:id="@+id/checkbox_hangle2"
-                        style="@style/SubHeadBold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="한글"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginEnd="20dp"
-                        app:layout_constraintTop_toTopOf="@id/text_bone_dead_title"
-                        app:layout_constraintBottom_toBottomOf="@id/text_bone_dead_title"
                         />
 
                     <!-- 성별 -->

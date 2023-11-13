@@ -17,13 +17,17 @@ import com.example.taerimwon.databinding.FragmentOrderBinding
 import com.example.taerimwon.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.taerimwon.data.dto.tablet.TabletItem
 import com.example.taerimwon.data.dto.urn.UrnItem
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.home.AuthViewModel
 import com.example.taerimwon.ui.order.pyeongjang.PyeongjangContainerFragment
 import com.example.taerimwon.ui.order.tablet.TabletContainerFragment
+import com.example.taerimwon.ui.order.urn.EngraveTypeAdapter
 import com.example.taerimwon.ui.order.urn.UrnContainerFragment
+import com.example.taerimwon.ui.urnlist.UrnListAdapter
 import com.example.taerimwon.utils.input.DateTimeTextWatcher
 import com.example.taerimwon.utils.input.PhoneNumberTextWatcher
 import com.example.taerimwon.utils.view.toast
@@ -41,8 +45,13 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
     private lateinit var searchList: MutableList<String>
     private lateinit var searchList2: MutableList<String>
     private lateinit var searchList3: MutableList<String>
+    private lateinit var urnList: MutableList<UrnItem>
+
+    private lateinit var urnListAdapter: UrnListAdapter
+
 
     override fun init() {
+        initAdapter()
         initData()
         setOnClickListeners()
         setOnItemSelectedListener()
@@ -50,7 +59,41 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         observer()
     }
 
+    private fun initAdapter(){
+        urnListAdapter = UrnListAdapter(requireContext())
+
+        binding.recyclerviewUrnList.apply {
+            adapter = urnListAdapter
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+        }
+        urnList = mutableListOf()
+        settingUrnList()
+        urnListAdapter.updateList(urnList)
+    }
+
     private fun initData() {
+        if(ApplicationClass.prefs.selectedUrnType != "선택안함"
+            || ApplicationClass.prefs.selectedTabletType != "선택안함"
+            || ApplicationClass.prefs.selectedPyeongjangType != "선택안함"){
+            val whiteColor = ContextCompat.getColor(requireContext(), R.color.white)
+            val blackColor = ContextCompat.getColor(requireContext(), R.color.black)
+
+            // style 변경
+            binding.menuButton1.setTextColor(blackColor)
+            // background 변경
+            binding.menuButton1.setBackgroundResource(R.drawable.button_gray)
+
+            binding.menuButton2.setTextColor(whiteColor)
+            binding.menuButton2.setBackgroundResource(R.drawable.button_primary)
+
+            binding.menuButton3.setTextColor(blackColor)
+            binding.menuButton3.setBackgroundResource(R.drawable.button_gray)
+
+            binding.layoutHome.visibility = View.GONE
+            binding.layoutOrder.visibility = View.VISIBLE
+            binding.layoutButtonOrder.visibility = View.VISIBLE
+            binding.layoutUrnList.visibility = View.GONE
+        }
 //        authViewModel.getBlackList()
 //        if (!ApplicationClass.prefs.authenticated)
 //            findNavController().navigate(R.id.action_orderFragment_to_phoneAuthFragment)
@@ -61,11 +104,6 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         settingList()
         settingList2()
         settingList3()
-
-        println("ApplicationClass.prefs.saveInfo :" + ApplicationClass.prefs.saveInfo)
-        println("ApplicationClass.prefs.leaderName :" + ApplicationClass.prefs.leaderName)
-        println("ApplicationClass.prefs.leaderTel :" + ApplicationClass.prefs.leaderTel)
-        println("ApplicationClass.prefs.leaderDepartment :" + ApplicationClass.prefs.leaderDepartment)
 
         // 발주자 정보
 //        if(ApplicationClass.prefs.saveInfo) {
@@ -241,13 +279,10 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             binding.menuButton3.setTextColor(blackColor)
             binding.menuButton3.setBackgroundResource(R.drawable.button_gray)
 
-            binding.menuButton4.setTextColor(blackColor)
-            binding.menuButton4.setBackgroundResource(R.drawable.button_gray)
-
-            binding.layoutMenu1.visibility = View.VISIBLE
-            binding.layoutUrnContainer.visibility = View.GONE
-            binding.layoutTabletContainer.visibility = View.GONE
-            binding.layoutPyeongjangContainer.visibility = View.GONE
+            binding.layoutHome.visibility = View.VISIBLE
+            binding.layoutOrder.visibility = View.GONE
+            binding.layoutButtonOrder.visibility = View.GONE
+            binding.layoutUrnList.visibility = View.GONE
         }
         binding.menuButton2.setOnClickListener {
             // style 변경
@@ -261,13 +296,10 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             binding.menuButton3.setTextColor(blackColor)
             binding.menuButton3.setBackgroundResource(R.drawable.button_gray)
 
-            binding.menuButton4.setTextColor(blackColor)
-            binding.menuButton4.setBackgroundResource(R.drawable.button_gray)
-
-            binding.layoutMenu1.visibility = View.GONE
-            binding.layoutUrnContainer.visibility = View.VISIBLE
-            binding.layoutTabletContainer.visibility = View.GONE
-            binding.layoutPyeongjangContainer.visibility = View.GONE
+            binding.layoutHome.visibility = View.GONE
+            binding.layoutOrder.visibility = View.VISIBLE
+            binding.layoutButtonOrder.visibility = View.VISIBLE
+            binding.layoutUrnList.visibility = View.GONE
         }
         binding.menuButton3.setOnClickListener {
             // style 변경
@@ -281,33 +313,10 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             binding.menuButton3.setTextColor(whiteColor)
             binding.menuButton3.setBackgroundResource(R.drawable.button_primary)
 
-            binding.menuButton4.setTextColor(blackColor)
-            binding.menuButton4.setBackgroundResource(R.drawable.button_gray)
-
-            binding.layoutMenu1.visibility = View.GONE
-            binding.layoutUrnContainer.visibility = View.GONE
-            binding.layoutTabletContainer.visibility = View.VISIBLE
-            binding.layoutPyeongjangContainer.visibility = View.GONE
-        }
-        binding.menuButton4.setOnClickListener {
-            // style 변경
-            binding.menuButton1.setTextColor(blackColor)
-            // background 변경
-            binding.menuButton1.setBackgroundResource(R.drawable.button_gray)
-
-            binding.menuButton2.setTextColor(blackColor)
-            binding.menuButton2.setBackgroundResource(R.drawable.button_gray)
-
-            binding.menuButton3.setTextColor(blackColor)
-            binding.menuButton3.setBackgroundResource(R.drawable.button_gray)
-
-            binding.menuButton4.setTextColor(whiteColor)
-            binding.menuButton4.setBackgroundResource(R.drawable.button_primary)
-
-            binding.layoutMenu1.visibility = View.GONE
-            binding.layoutUrnContainer.visibility = View.GONE
-            binding.layoutTabletContainer.visibility = View.GONE
-            binding.layoutPyeongjangContainer.visibility = View.VISIBLE
+            binding.layoutHome.visibility = View.GONE
+            binding.layoutOrder.visibility = View.GONE
+            binding.layoutButtonOrder.visibility = View.GONE
+            binding.layoutUrnList.visibility = View.VISIBLE
         }
 
         binding.buttonOrderToOrderFragment.setOnClickListener{
@@ -1254,5 +1263,138 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         searchList3.add("피아노(大) PS-1 3020")
         searchList3.add("피아노(小) PS-3 2015")
     }
+    private fun settingUrnList(){
+        // 1. 일반 밀봉진공함
+        urnList.add(UrnItem("도원기독교 DW-3 4010", R.drawable.img_urn1_1))
+        urnList.add(UrnItem("도원불교 DW-4 4010", R.drawable.img_urn1_2))
+        urnList.add(UrnItem("도원천주교 DW-5 4010", R.drawable.img_urn1_3))
+        urnList.add(UrnItem("도원칼라난 DW-2 4010", R.drawable.img_urn1_4))
+        urnList.add(UrnItem("도원칼라송학 DW-1 4010", R.drawable.img_urn1_5))
+        urnList.add(UrnItem("도화청꽃 DH-4 4010", R.drawable.img_urn1_6))
+        urnList.add(UrnItem("도화홍꽃 DH-5 4010", R.drawable.img_urn1_7))
+        urnList.add(UrnItem("소담난 SDN-2 4008", R.drawable.img_urn1_8))
+        urnList.add(UrnItem("소담송학 SDS-1 4008", R.drawable.img_urn1_9))
 
+        // 2. 일반함
+        urnList.add(UrnItem("매화조각민트 MH-2 2906", R.drawable.img_urn2_1))
+        urnList.add(UrnItem("매화조각핑크 MH-1 2906", R.drawable.img_urn2_2))
+        urnList.add(UrnItem("매화조각화이트 MH-3 2906", R.drawable.img_urn2_3))
+        urnList.add(UrnItem("원통난 WT-1 3307", R.drawable.img_urn2_4))
+        urnList.add(UrnItem("원통송학 WT-2 3307", R.drawable.img_urn2_5))
+        urnList.add(UrnItem("황토기독교 DR-1 2906", R.drawable.img_urn2_6))
+        urnList.add(UrnItem("황토난 DR-5 2906", R.drawable.img_urn2_7))
+        urnList.add(UrnItem("황토무지 DR-8 2505", R.drawable.img_urn2_8))
+        urnList.add(UrnItem("황토불교 DR-2 2906", R.drawable.img_urn2_9))
+        urnList.add(UrnItem("황토송학 DR-4 2906", R.drawable.img_urn2_10))
+        urnList.add(UrnItem("황토천주교 DR-3 2906", R.drawable.img_urn2_11))
+        urnList.add(UrnItem("황토청꽃 DR-6 2906", R.drawable.img_urn2_12))
+        urnList.add(UrnItem("황토홍꽃 DR-7 2906", R.drawable.img_urn2_13))
+
+        // 3. 이중 밀봉진공함
+        urnList.add(UrnItem("이중기독교 EG-1 5114", R.drawable.img_urn3_1))
+        urnList.add(UrnItem("이중밀봉블랙자개 EMR-1 5020", R.drawable.img_urn3_2))
+        urnList.add(UrnItem("이중밀봉송학 EM-1 4411", R.drawable.img_urn3_3))
+        urnList.add(UrnItem("이중백자 EW-6 4010", R.drawable.img_urn3_4))
+        urnList.add(UrnItem("이중불교 EBB-2 5114", R.drawable.img_urn3_5))
+        urnList.add(UrnItem("이중진주운학 EW-6 5114", R.drawable.img_urn3_6))
+        urnList.add(UrnItem("이중천주교 EC-3 5114", R.drawable.img_urn3_7))
+        urnList.add(UrnItem("이중칼라난 EH-5 5114", R.drawable.img_urn3_8))
+        urnList.add(UrnItem("이중칼라송학 EH-4 5114", R.drawable.img_urn3_9))
+
+        // 4. 잠금형 삼중 명품자개함
+        urnList.add(UrnItem("아름골드자개 ARG-1 8025", R.drawable.img_urn4_1))
+        urnList.add(UrnItem("아름꽃자개 ARF-2 8025", R.drawable.img_urn4_2))
+        urnList.add(UrnItem("아름화이트자개 SGS-3 8025", R.drawable.img_urn4_3))
+        urnList.add(UrnItem("휴안골드자개 HUG-16 10228", R.drawable.img_urn4_4))
+        urnList.add(UrnItem("휴안백십장생자개 HUG-17 12535", R.drawable.img_urn4_5))
+        urnList.add(UrnItem("휴안블랙자개 HUG-15 10228", R.drawable.img_urn4_6))
+        urnList.add(UrnItem("휴안홍한지십장생자개 HUG-19 13139", R.drawable.img_urn4_7))
+        urnList.add(UrnItem("휴안화이트자개 HUG-14 10228", R.drawable.img_urn4_8))
+        urnList.add(UrnItem("휴안흑십장생자개 HUG-18 12535", R.drawable.img_urn4_9))
+
+        // 5. 잠금형 삼중실크 밀봉진공함
+        urnList.add(UrnItem("안향궁 AN-1 8525", R.drawable.img_urn5_1))
+        urnList.add(UrnItem("안향천향 AN-2 8619.png", R.drawable.img_urn5_2))
+        urnList.add(UrnItem("휴안궁 HU-1 8525", R.drawable.img_urn5_3))
+        urnList.add(UrnItem("휴안그린난 HGN-2 9020", R.drawable.img_urn5_4))
+        urnList.add(UrnItem("휴안그린송학 HGS-1 9020", R.drawable.img_urn5_5))
+        urnList.add(UrnItem("휴안기독교 HUG-1 8817", R.drawable.img_urn5_6))
+        urnList.add(UrnItem("휴안루엔골드 HLG-1 8723", R.drawable.img_urn5_7))
+        urnList.add(UrnItem("휴안루엔화이트 HLS-2 8723", R.drawable.img_urn5_8))
+        urnList.add(UrnItem("휴안명성 HU-3 8525", R.drawable.img_urn5_9))
+        urnList.add(UrnItem("휴안불교 HUB-2 8817", R.drawable.img_urn5_10))
+        urnList.add(UrnItem("휴안상아난 HSN-20 8718", R.drawable.img_urn5_11))
+        urnList.add(UrnItem("휴안상아학 HSH-9 8718", R.drawable.img_urn5_12))
+        urnList.add(UrnItem("휴안샤이니블루보석 HU-6 9520", R.drawable.img_urn5_13))
+        urnList.add(UrnItem("휴안실버당초보석 HU-5 9520", R.drawable.img_urn5_14))
+        urnList.add(UrnItem("휴안오로라블루 HUO-3 9822", R.drawable.img_urn5_15))
+        urnList.add(UrnItem("휴안오로라실버 HUO-1 9822", R.drawable.img_urn5_16))
+        urnList.add(UrnItem("휴안오로라핑크 HUO-2 9822", R.drawable.img_urn5_17))
+        urnList.add(UrnItem("휴안천궁기독교 CGG-2 8723", R.drawable.img_urn5_18))
+        urnList.add(UrnItem("휴안천궁불교 CGB-3 8723", R.drawable.img_urn5_19))
+        urnList.add(UrnItem("휴안천궁일반 CG-1 8723", R.drawable.img_urn5_20))
+        urnList.add(UrnItem("휴안천궁천주교 CGC-4 8723", R.drawable.img_urn5_21))
+        urnList.add(UrnItem("휴안천주교 HUC-3 8817", R.drawable.img_urn5_22))
+        urnList.add(UrnItem("휴안천향 HU-2 8525", R.drawable.img_urn5_23))
+        urnList.add(UrnItem("휴안핑크당초보석 HU-4 9520", R.drawable.img_urn5_24))
+        urnList.add(UrnItem("휴안화이트기독교 HUG-7 9421", R.drawable.img_urn5_25))
+        urnList.add(UrnItem("휴안화이트불교 HU-8 9421", R.drawable.img_urn5_26))
+        urnList.add(UrnItem("휴안화이트천주교 HU-9 9421", R.drawable.img_urn5_27))
+
+        // 6. 소함
+        urnList.add(UrnItem("소함난 EB-1 3713", R.drawable.img_urn6_1))
+        urnList.add(UrnItem("소함송학 EB-2 3713", R.drawable.img_urn6_2))
+
+        // 7. 수목함
+        urnList.add(UrnItem("운학수목함 WH-1 1505", R.drawable.img_urn7_1))
+        urnList.add(UrnItem("황토수목함 HT-1 1604", R.drawable.img_urn7_2))
+
+        // 8. 스크류(잠금형)고급 진공함
+        urnList.add(UrnItem("봉분궁 BOB-3 6621", R.drawable.img_urn8_1))
+        urnList.add(UrnItem("봉분기독교 BOB-6 6621", R.drawable.img_urn8_2))
+        urnList.add(UrnItem("봉분난 BOB-2 6621", R.drawable.img_urn8_3))
+        urnList.add(UrnItem("봉분명성 BOB-4 6621", R.drawable.img_urn8_4))
+        urnList.add(UrnItem("봉분불교 BOB-7 6621", R.drawable.img_urn8_5))
+        urnList.add(UrnItem("봉분송학 BOB-1 6621", R.drawable.img_urn8_6))
+        urnList.add(UrnItem("봉분천주교 BOB-8 6621", R.drawable.img_urn8_7))
+        urnList.add(UrnItem("봉분천향 BOB-5 6621", R.drawable.img_urn8_8))
+        urnList.add(UrnItem("아름궁 AR-3 6117", R.drawable.img_urn8_9))
+        urnList.add(UrnItem("아름기독교 AR-9-6117", R.drawable.img_urn8_10))
+        urnList.add(UrnItem("아름난 AR-2 6117", R.drawable.img_urn8_11))
+        urnList.add(UrnItem("아름명성 AR-4 6117", R.drawable.img_urn8_12))
+        urnList.add(UrnItem("아름불교-AR-10-6117", R.drawable.img_urn8_13))
+        urnList.add(UrnItem("아름선궁 AR-6 6117", R.drawable.img_urn8_14))
+        urnList.add(UrnItem("아름선명성 AR-7 6117", R.drawable.img_urn8_15))
+        urnList.add(UrnItem("아름선천향 AR-8 6117", R.drawable.img_urn8_16))
+        urnList.add(UrnItem("아름송학 AR-1 6117", R.drawable.img_urn8_17))
+        urnList.add(UrnItem("아름천주교-AR-11-6117", R.drawable.img_urn8_18))
+        urnList.add(UrnItem("아름천향 AR-5 6117", R.drawable.img_urn8_19))
+        urnList.add(UrnItem("태림조각기독교 TA-2 6520", R.drawable.img_urn8_20))
+        urnList.add(UrnItem("태림조각불교 TA-3 6520", R.drawable.img_urn8_21))
+        urnList.add(UrnItem("태림조각일반 TA-1 6520", R.drawable.img_urn8_22))
+        urnList.add(UrnItem("태림조각천주교 TA-4 6520", R.drawable.img_urn8_23))
+
+        // 9. 황금함
+        urnList.add(UrnItem("황금십장생 WGS-1 18040", R.drawable.img_urn9_1))
+        urnList.add(UrnItem("황실황금기독교 HSG-2 13535", R.drawable.img_urn9_2))
+        urnList.add(UrnItem("황실황금불교 HSB-3 13535", R.drawable.img_urn9_3))
+        urnList.add(UrnItem("황실황금송학 HSS-5 13535", R.drawable.img_urn9_4))
+        urnList.add(UrnItem("황실황금천주교 HSC-4 13535", R.drawable.img_urn9_5))
+        urnList.add(UrnItem("황제황금함 ZE-14 20180", R.drawable.img_urn9_6))
+
+        // 10. KS인증 ZEN한국도자기
+        urnList.add(UrnItem("국화 ZE-1 11832", R.drawable.img_urn10_1))
+        urnList.add(UrnItem("사군자 ZE-8 9030", R.drawable.img_urn10_2))
+        urnList.add(UrnItem("선궁 ZE-3 11832", R.drawable.img_urn10_3))
+        urnList.add(UrnItem("소망 ZE-6 11832", R.drawable.img_urn10_4))
+        urnList.add(UrnItem("수복 ZE-10 9030", R.drawable.img_urn10_5))
+        urnList.add(UrnItem("십장생 ZE-7 9030", R.drawable.img_urn10_6))
+        urnList.add(UrnItem("아일렛 ZE-4 11832", R.drawable.img_urn10_7))
+        urnList.add(UrnItem("옥자수 ZE-9 9030", R.drawable.img_urn10_8))
+        urnList.add(UrnItem("조각기독교 ZE-11 1035", R.drawable.img_urn10_9))
+        urnList.add(UrnItem("조각불교 ZE-12 1035", R.drawable.img_urn10_10))
+        urnList.add(UrnItem("조각천주교 ZE-13 1035", R.drawable.img_urn10_11))
+        urnList.add(UrnItem("청연 ZE-2 11832", R.drawable.img_urn10_12))
+        urnList.add(UrnItem("화접도 ZE-5 11832", R.drawable.img_urn10_13))
+    }
 }
