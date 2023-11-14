@@ -17,6 +17,7 @@ import com.example.taerimwon.databinding.FragmentOrderBinding
 import com.example.taerimwon.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taerimwon.data.dto.tablet.TabletItem
@@ -62,9 +63,12 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
     private fun initAdapter(){
         urnListAdapter = UrnListAdapter(requireContext())
 
+        var listManager = GridLayoutManager(requireContext(), 2)
+
         binding.recyclerviewUrnList.apply {
             adapter = urnListAdapter
-            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            layoutManager = listManager
+//            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         }
         urnList = mutableListOf()
         settingUrnList()
