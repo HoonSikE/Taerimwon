@@ -266,6 +266,27 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         initialWidth2_4 = binding.layoutPyeongjangResultImage4.width
         initialHeight2_4 = binding.layoutPyeongjangResultImage4.height
 
+        println("dddd")
+        println("initialWidth2 " + initialWidth2)
+        println(initialHeight2)
+        println()
+
+        println("initialWidth2_1 " + initialWidth2_1)
+        println(initialHeight2_1)
+        println()
+
+        println("initialWidth2_2 " + initialWidth2_2)
+        println(initialHeight2_2)
+        println()
+
+        println("initialWidth2_3 " + initialWidth2_3)
+        println(initialHeight2_3)
+        println()
+
+        println("initialWidth2_4 " + initialWidth2_4)
+        println(initialHeight2_4)
+        println()
+
         // ScaleGestureDetector 초기화
         scaleGestureDetector = ScaleGestureDetector(requireContext(), ScaleListener())
 
@@ -280,11 +301,71 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         // 뷰에 터치 이벤트 리스너 설정
         binding.layoutResultImage3.setOnTouchListener { _, event ->
-            scaleGestureDetector2.onTouchEvent(event)
+//            scaleGestureDetector2.onTouchEvent(event)
             true
         }
 
+        // 확대 버튼 클릭 이벤트
+        binding.buttonZoomIn.setOnClickListener {
+            scaleFactor *= 1.2f // 예시로 20%씩 확대
+            if(scaleFactor > 3.0f)
+                scaleFactor = 3.0f
+            updateImageSize()
+        }
 
+        // 축소 버튼 클릭 이벤트
+        binding.buttonZoomOut.setOnClickListener {
+            scaleFactor *= 0.8f // 예시로 20%씩 축소
+            if(scaleFactor < 0.5f)
+                scaleFactor = 0.5f
+            updateImageSize()
+        }
+    }
+    private fun updateImageSize() {
+        val params1_1 = binding.layoutTabletResultImage.layoutParams
+        params1_1.width = (initialWidth1_1 * scaleFactor).toInt()
+        params1_1.height = (initialHeight1_1 * scaleFactor).toInt()
+        binding.layoutTabletResultImage.layoutParams = params1_1
+
+        val params1_2 = binding.layoutTabletPhoto.layoutParams
+        params1_2.width = (initialWidth1_2 * scaleFactor).toInt()
+        params1_2.height = (initialHeight1_2 * scaleFactor).toInt()
+        binding.layoutTabletPhoto.layoutParams = params1_2
+
+        val params1_3 = binding.layoutUrnResultImage12.layoutParams
+        params1_3.width = (initialWidth1_3 * scaleFactor).toInt()
+        params1_3.height = (initialHeight1_3 * scaleFactor).toInt()
+        binding.layoutUrnResultImage12.layoutParams = params1_3
+
+        val params1_4 = binding.layoutUrnResultImage.layoutParams
+        params1_4.width = (initialWidth1_4 * scaleFactor).toInt()
+        params1_4.height = (initialHeight1_4 * scaleFactor).toInt()
+        binding.layoutUrnResultImage.layoutParams = params1_4
+
+        val params1_5 = binding.layoutUrnResultImage22.layoutParams
+        params1_5.width = (initialWidth1_5 * scaleFactor).toInt()
+        params1_5.height = (initialHeight1_5 * scaleFactor).toInt()
+        binding.layoutUrnResultImage22.layoutParams = params1_5
+
+        val params1_6 = binding.layoutUrnResultImage2.layoutParams
+        params1_6.width = (initialWidth1_6 * scaleFactor).toInt()
+        params1_6.height = (initialHeight1_6 * scaleFactor).toInt()
+        binding.layoutUrnResultImage2.layoutParams = params1_6
+
+        val params1_7 = binding.layoutBoneResultImage.layoutParams
+        params1_7.width = (initialWidth1_7 * scaleFactor).toInt()
+        params1_7.height = (initialHeight1_7 * scaleFactor).toInt()
+        binding.layoutBoneResultImage.layoutParams = params1_7
+
+        val params1_8 = binding.layoutBone2ResultImage.layoutParams
+        params1_8.width = (initialWidth1_8 * scaleFactor).toInt()
+        params1_8.height = (initialHeight1_8 * scaleFactor).toInt()
+        binding.layoutBone2ResultImage.layoutParams = params1_8
+
+        val params1_9 = binding.layoutTablet2ResultImage.layoutParams
+        params1_9.width = (initialWidth1_9 * scaleFactor).toInt()
+        params1_9.height = (initialHeight1_9 * scaleFactor).toInt()
+        binding.layoutTablet2ResultImage.layoutParams = params1_9
     }
     private fun initData() {
         searchList = mutableListOf()
@@ -529,8 +610,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             when (selectedUrnName) {
                 "미정" -> {
                     val layoutParams3 = binding.layoutUrnImage.layoutParams
-                    layoutParams3.width = 360
-                    layoutParams3.height = 580
+                    layoutParams3.width = 390
+                    layoutParams3.height = 630
                     binding.layoutUrnImage.layoutParams = layoutParams3
 
                     val layoutParams = imageUrnImage.layoutParams
@@ -539,7 +620,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     imageUrnImage.layoutParams = layoutParams
 
                     val layoutParams2 = imageUrnImageUnder.layoutParams
-                    layoutParams2.height = 10
+                    layoutParams2.height = 25
                     imageUrnImageUnder.layoutParams = layoutParams2
 
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
@@ -1732,8 +1813,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             when (selectedUrnName2) {
                 "미정" -> {
                     val layoutParams3 = binding.layoutUrnImage2.layoutParams
-                    layoutParams3.width = 360
-                    layoutParams3.height = 580
+                    layoutParams3.width = 390
+                    layoutParams3.height = 630
                     binding.layoutUrnImage2.layoutParams = layoutParams3
 
                     val layoutParams = imageUrnImage2.layoutParams
@@ -1742,7 +1823,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     imageUrnImage2.layoutParams = layoutParams
 
                     val layoutParams2 = imageUrnImageUnder.layoutParams
-                    layoutParams2.height = 10
+                    layoutParams2.height = 25
                     imageUrnImageUnder.layoutParams = layoutParams2
 
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
@@ -2911,8 +2992,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         when (selectedUrnName) {
             "미정(타입1)" -> {
                 val layoutParams3 = binding.layoutBone1Image.layoutParams
-                layoutParams3.width = 460
-                layoutParams3.height = 400
+                layoutParams3.width = 420
+                layoutParams3.height = 350
                 binding.layoutBone1Image.layoutParams = layoutParams3
 
                 val layoutParams = binding.imageBone1Image1.layoutParams as ViewGroup.MarginLayoutParams
@@ -2941,8 +3022,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         when (selectedUrnName) {
             "미정(타입2)" -> {
                 val layoutParams3 = binding.layoutBone2Image.layoutParams
-                layoutParams3.width = 420
-                layoutParams3.height = 420
+                layoutParams3.width = 430
+                layoutParams3.height = 450
                 binding.layoutBone2Image.layoutParams = layoutParams3
 
                 val layoutParams = binding.imageBone2Image.layoutParams as ViewGroup.MarginLayoutParams
@@ -2952,7 +3033,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 binding.imageBone2Image.layoutParams = layoutParams
 
                 val layoutParams2 = binding.imageBone2Image2.layoutParams
-                layoutParams2.height = 10
+                layoutParams2.height = 25
                 binding.imageBone2Image2.layoutParams = layoutParams2
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
@@ -3029,8 +3110,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         when (selectedTabletName2) {
             "미정" -> {
                 val layoutParams3 = binding.layoutTablet2Image.layoutParams
-                layoutParams3.width = 140
-                layoutParams3.height = 430
+                layoutParams3.width = 150
+                layoutParams3.height = 450
                 binding.layoutTablet2Image.layoutParams = layoutParams3
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
@@ -3062,8 +3143,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         when (selectedTabletName) {
             "미정" -> {
                 val layoutParams3 = binding.layoutBoneTabletImage.layoutParams
-                layoutParams3.width = 140
-                layoutParams3.height = 430
+                layoutParams3.width = 150
+                layoutParams3.height = 450
                 binding.layoutBoneTabletImage.layoutParams = layoutParams3
 
 //                val layoutParams = binding.imageBone2Image.layoutParams
