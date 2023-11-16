@@ -60,6 +60,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         observer()
     }
 
+    // 유골함 리스트
     private fun initAdapter(){
         urnListAdapter = UrnListAdapter(requireContext())
 
