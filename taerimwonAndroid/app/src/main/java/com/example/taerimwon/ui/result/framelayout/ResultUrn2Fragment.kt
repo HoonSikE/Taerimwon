@@ -345,6 +345,7 @@ class ResultUrn2Fragment : BaseFragment<FragmentResultUrn2Binding>(R.layout.frag
                     layoutUrnResult220.width = pixel_size_100
                     layoutUrnResult220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
                     layoutUrnResult220.letterSpacing = -0.2f
+                    layoutUrnResult220.textScaleX = 1f
                 }
             }
             layoutUrnResult220.text = boneName2
@@ -695,10 +696,20 @@ class ResultUrn2Fragment : BaseFragment<FragmentResultUrn2Binding>(R.layout.frag
                         binding.layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
                         binding.layoutUrnResult312.text = "선\n종"
                     }else {
-                        binding.layoutUrnResult312.typeface = yujimai
-                        binding.layoutUrnResult312.setLineSpacing(0f, -15.0f)
-
-                        binding.layoutUrnResult312.text = "善\n終"
+                        val width = binding.layoutUrnResult112.width
+                        val height = binding.layoutUrnResult112.height
+                        binding.layoutUrnResult312.visibility = View.GONE
+                        binding.layoutUrnResult314.visibility = View.VISIBLE
+                        if(selectedUrnName2!!.contains("블랙") || selectedUrnName2!!.contains("검정")
+                            || selectedUrnName2!!.contains("휴안홍") || selectedUrnName2!!.contains("휴안흑")){
+                            binding.layoutUrnResult314.setBackgroundResource(R.drawable.img_text_catholic4)
+                        }else{
+                            binding.layoutUrnResult314.setBackgroundResource(R.drawable.img_text_catholic3)
+                        }
+                        val layoutParams = binding.layoutUrnResult312.layoutParams
+                        layoutParams.width = width
+                        layoutParams.height = height
+                        binding.layoutUrnResult312.layoutParams = layoutParams
                     }
                 }else {
                     val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)

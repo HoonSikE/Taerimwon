@@ -15,28 +15,28 @@
         <item>1 기본</item>
         <item>1_2 형제</item>
         <item>1_3 자매</item>
-        <item>1 한글</item>
+        <item>1_5 한글</item>
         <item>1_4 年月日</item>
     </string-array>
     <!--기독교-->
     <string-array name="engrave_type2">
         <item>2 기본</item>
         <item>2_2 직분X</item>
-        <item>2 한글</item>
+        <item>2_5 한글</item>
         <item>2_3 年月日</item>
     </string-array>
     <!--불교-->
     <string-array name="engrave_type3">
         <item>3 기본</item>
         <item>3_2 법명</item>
-        <item>3 한글</item>
+        <item>3_5 한글</item>
         <item>3_3 年月日</item>
     </string-array>
     <!--천주교-->
     <string-array name="engrave_type4">
         <item>4 기본</item>
         <item>4_2 세례명X</item>
-        <item>4 한글</item>
+        <item>4_5 한글</item>
         <item>4_3 年月日</item>
     </string-array>
     <!--SGI-->

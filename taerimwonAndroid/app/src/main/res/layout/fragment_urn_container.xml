@@ -348,7 +348,19 @@
                         android:textColorHint="@color/hintGray"
                         app:layout_constraintEnd_toStartOf="@+id/spinner_date2_type"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/text_date2" />
+                        app:layout_constraintTop_toBottomOf="@id/text_date2" />일
+
+                    <TextView
+                        android:id="@+id/text_today1"
+                        style="@style/BodyGreen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:text="Today"
+                        app:layout_constraintEnd_toEndOf="@+id/editText_date2"
+                        app:layout_constraintTop_toTopOf="@id/editText_date2"
+                        app:layout_constraintBottom_toBottomOf="@id/editText_date2"
+                        />
 
                     <ImageView
                         android:id="@+id/image_date2"
@@ -816,6 +828,18 @@
                         app:layout_constraintEnd_toStartOf="@+id/spinner_bone_date2_type"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/text_bone_date2" />
+
+                    <TextView
+                        android:id="@+id/text_today2"
+                        style="@style/BodyGreen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:text="Today"
+                        app:layout_constraintEnd_toEndOf="@+id/editText_bone_date2"
+                        app:layout_constraintTop_toTopOf="@id/editText_bone_date2"
+                        app:layout_constraintBottom_toBottomOf="@id/editText_bone_date2"
+                        />
 
                     <ImageView
                         android:id="@+id/image_bone_date2"

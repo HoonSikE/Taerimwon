@@ -14,6 +14,7 @@ import com.example.taerimwon.di.ApplicationClass
 
 class UrnListAdapter(private val context: Context): RecyclerView.Adapter<UrnListAdapter.UrnListViewHolder>() {
     private var urnList = mutableListOf<UrnItem>()
+    lateinit var onItemClickListener: (View, String, Int) -> Unit
     // 클릭된 아이템의 위치를 저장하는 변수
     private var selectedItemPosition = 0
 
@@ -40,7 +41,9 @@ class UrnListAdapter(private val context: Context): RecyclerView.Adapter<UrnList
                 false
             ),
             context // Context를 생성자를 통해 전달
-        )
+        ).apply {
+            bindOnItemClickListener(onItemClickListener)
+        }
     }
 
     override fun onBindViewHolder(holder: UrnListViewHolder, position: Int) {
@@ -54,13 +57,22 @@ class UrnListAdapter(private val context: Context): RecyclerView.Adapter<UrnList
 
     inner class UrnListViewHolder(private val binding: ItemHomeUrnListBinding, private val context: Context)
         : RecyclerView.ViewHolder(binding.root) {
+        lateinit var urnName : String
+        var imageName = 0
 
         fun bind(data: UrnItem) {
-            val urnName = data.urnItem
+            urnName = data.urnItem
             binding.textView.text = urnName
             // 이미지 이름을 문자열로 정의합니다.
-            val imageName = data.flagImage
+            imageName = data.flagImage
             binding.imageView.setImageResource(imageName)
+        }
+
+        fun bindOnItemClickListener(onItemClickListener: (View, String, Int) -> Unit) {
+            binding.root.setOnClickListener {
+                onItemClickListener(it, urnName, imageName)
+                setSelectedItem(adapterPosition)
+            }
         }
     }
 }

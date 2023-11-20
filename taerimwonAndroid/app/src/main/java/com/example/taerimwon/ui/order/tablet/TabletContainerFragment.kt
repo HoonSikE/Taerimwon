@@ -10,6 +10,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AutoCompleteTextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -184,6 +185,8 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.layoutTablet.visibility = View.GONE
             binding.layoutTabletPhoto.visibility = View.GONE
             binding.layoutBone.visibility = View.GONE
+
+            binding.menuButtonGroup.visibility = View.GONE
         }else {
             binding.textSelectBoneTabletType.text = "● 위패 추가 주문"
             binding.spinnerSelectBoneTabletType.visibility = View.VISIBLE
@@ -192,6 +195,8 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.layoutTabletAutoComplete.visibility = View.VISIBLE
             binding.layoutTablet2AutoComplete.visibility = View.VISIBLE
             binding.layoutBone.visibility = View.VISIBLE
+
+            binding.menuButtonGroup.visibility = View.GONE
             if(ApplicationClass.prefs.selectedTabletType!!.contains("사진")){
                 binding.layoutTablet.visibility = View.GONE
                 binding.layoutTabletPhoto.visibility = View.VISIBLE
@@ -209,6 +214,8 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
                     binding.layoutBoneTablet.visibility = View.VISIBLE
                     binding.layoutTablet2AutoComplete.visibility = View.GONE
                     binding.layoutBoneTablet2.visibility = View.VISIBLE
+
+                    binding.menuButtonGroup.visibility = View.VISIBLE
                 }
             }
         }
@@ -261,6 +268,52 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         }
     }
     private fun setOnClickListeners() {
+        val whiteColor = ContextCompat.getColor(requireContext(), R.color.white)
+        val blackColor = ContextCompat.getColor(requireContext(), R.color.black)
+
+        binding.menuButton1.setOnClickListener {
+            // style 변경
+            binding.menuButton1.setTextColor(whiteColor)
+            // background 변경
+            binding.menuButton1.setBackgroundResource(R.drawable.button_primary)
+
+            binding.menuButton2.setTextColor(blackColor)
+            binding.menuButton2.setBackgroundResource(R.drawable.button_gray)
+
+            binding.menuButton3.setTextColor(blackColor)
+            binding.menuButton3.setBackgroundResource(R.drawable.button_gray)
+
+            ApplicationClass.prefs.tabletExample = "직분위/세례아"
+        }
+        binding.menuButton2.setOnClickListener {
+            // style 변경
+            binding.menuButton1.setTextColor(blackColor)
+            // background 변경
+            binding.menuButton1.setBackgroundResource(R.drawable.button_gray)
+
+            binding.menuButton2.setTextColor(whiteColor)
+            binding.menuButton2.setBackgroundResource(R.drawable.button_primary)
+
+            binding.menuButton3.setTextColor(blackColor)
+            binding.menuButton3.setBackgroundResource(R.drawable.button_gray)
+
+            ApplicationClass.prefs.tabletExample = "위/위"
+        }
+        binding.menuButton3.setOnClickListener {
+            // style 변경
+            binding.menuButton1.setTextColor(blackColor)
+            // background 변경
+            binding.menuButton1.setBackgroundResource(R.drawable.button_gray)
+
+            binding.menuButton2.setTextColor(blackColor)
+            binding.menuButton2.setBackgroundResource(R.drawable.button_gray)
+
+            binding.menuButton3.setTextColor(whiteColor)
+            binding.menuButton3.setBackgroundResource(R.drawable.button_primary)
+
+            ApplicationClass.prefs.tabletExample = "위/위(세로)"
+        }
+
         binding.autoCompleteTextView.setOnItemClickListener { adapterView, view, position, rowId ->
             println("tag1 "+ "position: $position, rowId:$rowId, string: ${adapterView.getItemAtPosition(position)}")
             val selectedTabletItem = adapterView.getItemAtPosition(position) as TabletItem
@@ -371,6 +424,8 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
                     binding.layoutTablet.visibility = View.GONE
                     binding.layoutTabletPhoto.visibility = View.GONE
                     binding.layoutBone.visibility = View.GONE
+
+                    binding.menuButtonGroup.visibility = View.GONE
                 }else {
                     binding.textSelectBoneTabletType.text = "● 위패 추가 주문"
                     binding.spinnerSelectBoneTabletType.visibility = View.VISIBLE
@@ -379,6 +434,9 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
                     binding.layoutTabletAutoComplete.visibility = View.VISIBLE
                     binding.layoutTablet2AutoComplete.visibility = View.VISIBLE
                     binding.layoutBone.visibility = View.VISIBLE
+
+                    binding.menuButtonGroup.visibility = View.GONE
+
                     if(ApplicationClass.prefs.selectedTabletType!!.contains("사진")){
                         binding.layoutTablet.visibility = View.GONE
                         binding.layoutTabletPhoto.visibility = View.VISIBLE
@@ -396,6 +454,8 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
                             binding.layoutBoneTablet.visibility = View.VISIBLE
                             binding.layoutTablet2AutoComplete.visibility = View.GONE
                             binding.layoutBoneTablet2.visibility = View.VISIBLE
+
+                            binding.menuButtonGroup.visibility = View.VISIBLE
                         }
                     }
                 }

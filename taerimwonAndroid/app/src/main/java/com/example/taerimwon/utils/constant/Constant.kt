@@ -18,6 +18,7 @@ const val ClIENTNAME = "clientName"
 const val CLIENTTEL = "clientTel"
 // 발주 장소
 const val SELECTEDLOCATION = "selectedLocation"
+const val STARTAREA = "startArea"
 // 화장장
 const val CREMATIONAREA = "cremationArea"
 const val CREMATIONAREA2 = "cremationArea2"
@@ -97,6 +98,9 @@ const val BONENAME3 = "boneName3"
 const val BONETABLETNAME3 = "boneTabletName3"
 // 선택된 위패 종류
 const val BONESELECTEDTABLETTYPE = "boneSelectedTabletType"
+
+const val TABLETEXAMPLE = "tabletExample"
+
 
 /**평장**/
 // 선택된 평장 종류

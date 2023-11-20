@@ -327,8 +327,8 @@
                         android:id="@+id/layout_urn_result2_2_0"
                         android:layout_width="90px"
                         android:layout_height="30px"
-                        android:text="윗글자"
-                        android:textSize="30px"
+                        android:text="윗글"
+                        android:textSize="27px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -337,7 +337,7 @@
                         app:layout_constraintTop_toTopOf="parent"
                         android:gravity="center"
                         android:letterSpacing="-0.15"
-                        android:visibility="gone"
+                        android:textScaleX="1.15"
                         />
                     <!--이름-->
                     <TextView
@@ -466,7 +466,8 @@
                         android:textFontWeight="300"
                         android:textSize="35px"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_1_0" />
+                        app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_1_0"
+                        />
                     <TextView
                         android:id="@+id/layout_urn_result3_1_2"
                         android:layout_width="wrap_content"
@@ -489,6 +490,16 @@
                         android:scaleType="fitXY"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_1_2"
+                        android:visibility="gone"
+                        />
+                    <ImageView
+                        android:id="@+id/layout_urn_result3_1_4"
+                        android:layout_width="25px"
+                        android:layout_height="50px"
+                        android:scaleType="fitXY"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_1_3"
                         android:visibility="gone"
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>

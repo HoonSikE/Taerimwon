@@ -209,6 +209,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
         // 우
         var layoutUrnResult311 = binding.layoutBone21Result311
         var layoutUrnResult312 = binding.layoutBone21Result312
+        var layoutUrnResult314 = binding.layoutBone21Result314
         var layoutUrnResult321 = binding.layoutBone21Result321
         var layoutUrnResult322 = binding.layoutBone21Result322
         var layoutUrnResult323 = binding.layoutBone21Result323
@@ -247,6 +248,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
         // 우
         var layoutBoneResult311 = binding.layoutBone22Result311
         var layoutBoneResult312 = binding.layoutBone22Result312
+        var layoutBoneResult314 = binding.layoutBone22Result314
         var layoutBoneResult321 = binding.layoutBone22Result321
         var layoutBoneResult322 = binding.layoutBone22Result322
         var layoutBoneResult323 = binding.layoutBone22Result323
@@ -865,6 +867,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 }
             }
             "기독교", "순복음" -> {
+                layoutUrnResult110.visibility = View.GONE
                 layoutUrnResult111.visibility = View.GONE
                 layoutUrnResult112.visibility = View.VISIBLE
 
@@ -877,6 +880,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutUrnResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
             "천주교" -> {
+                layoutUrnResult110.visibility = View.GONE
                 layoutUrnResult111.visibility = View.GONE
                 layoutUrnResult112.visibility = View.VISIBLE
 
@@ -951,6 +955,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 }
             }
             "기독교", "순복음" -> {
+                layoutUrnResult310.visibility = View.GONE
                 layoutUrnResult311.visibility = View.GONE
                 layoutUrnResult312.visibility = View.VISIBLE
                 if (checkCatholic == "별세") {
@@ -972,6 +977,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutUrnResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
             "천주교" -> {
+                layoutUrnResult310.visibility = View.GONE
                 layoutUrnResult311.visibility = View.GONE
                 layoutUrnResult312.visibility = View.VISIBLE
 
@@ -981,10 +987,19 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                     layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
                     layoutUrnResult312.text = "선\n종"
                 }else {
-                    layoutUrnResult312.typeface = yujimai
-                    layoutUrnResult312.setLineSpacing(0f, -15.0f)
-
-                    layoutUrnResult312.text = "善\n終"
+                    val width = layoutUrnResult112.width
+                    val height = layoutUrnResult112.height
+                    layoutUrnResult312.visibility = View.GONE
+                    layoutUrnResult314.visibility = View.VISIBLE
+                    if(selectedUrnName!!.contains("검정")){
+                        layoutUrnResult314.setBackgroundResource(R.drawable.img_text_catholic4)
+                    }else{
+                        layoutUrnResult314.setBackgroundResource(R.drawable.img_text_catholic3)
+                    }
+                    val layoutParams = layoutUrnResult312.layoutParams
+                    layoutParams.width = width
+                    layoutParams.height = height
+                    layoutUrnResult312.layoutParams = layoutParams
                 }
 
                 layoutUrnResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
@@ -1371,6 +1386,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 }
             }
             "기독교", "순복음" -> {
+                layoutBoneResult110.visibility = View.GONE
                 layoutBoneResult111.visibility = View.GONE
                 layoutBoneResult112.visibility = View.VISIBLE
                 if (boneEngraveType2.contains("한글")) {
@@ -1382,6 +1398,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutBoneResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
             "천주교" -> {
+                layoutBoneResult110.visibility = View.GONE
                 layoutBoneResult111.visibility = View.GONE
                 layoutBoneResult112.visibility = View.VISIBLE
                 if (boneEngraveType2.contains("한글")) {
@@ -1456,6 +1473,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 }
             }
             "기독교", "순복음" -> {
+                layoutBoneResult310.visibility = View.GONE
                 layoutBoneResult311.visibility = View.GONE
                 layoutBoneResult312.visibility = View.VISIBLE
 
@@ -1478,6 +1496,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutBoneResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_30.toFloat())
             }
             "천주교" -> {
+                layoutBoneResult310.visibility = View.GONE
                 layoutBoneResult311.visibility = View.GONE
                 layoutBoneResult312.visibility = View.VISIBLE
 
@@ -1487,6 +1506,20 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                     layoutBoneResult312.setTypeface(hygungso, Typeface.BOLD)
                     layoutBoneResult312.text = "선\n종"
                 }else {
+                    val width = layoutBoneResult112.width
+                    val height = layoutBoneResult112.height
+                    layoutBoneResult312.visibility = View.GONE
+                    layoutBoneResult314.visibility = View.VISIBLE
+                    if(selectedUrnName!!.contains("검정")){
+                        layoutBoneResult314.setBackgroundResource(R.drawable.img_text_catholic4)
+                    }else{
+                        layoutBoneResult314.setBackgroundResource(R.drawable.img_text_catholic3)
+                    }
+                    val layoutParams = layoutBoneResult312.layoutParams
+                    layoutParams.width = width
+                    layoutParams.height = height
+                    layoutBoneResult312.layoutParams = layoutParams
+
                     layoutBoneResult312.typeface = yujimai
                     layoutBoneResult312.setLineSpacing(0f, -15.0f)
 

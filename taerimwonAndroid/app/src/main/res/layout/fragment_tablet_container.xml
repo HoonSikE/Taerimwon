@@ -759,6 +759,65 @@
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/menuButtonGroup"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet"
+                android:gravity="center"
+                android:visibility="gone"
+                >
+
+                <TextView
+                    android:id="@+id/menuButton1"
+                    style="@style/SubHeadWhite"
+                    android:background="@drawable/button_primary"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:text="직분위/세례아"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/menuButton2"
+                    android:layout_marginRight="4dp"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/menuButton2"
+                    style="@style/SubHead"
+                    android:background="@drawable/button_gray"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:text="위/위"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/menuButton1"
+                    app:layout_constraintEnd_toStartOf="@+id/menuButton3"
+                    android:layout_marginRight="4dp"
+                    android:gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/menuButton3"
+                    style="@style/SubHead"
+                    android:background="@drawable/button_gray"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:text="위세/위세"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/menuButton2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginRight="4dp"
+                    android:gravity="center"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

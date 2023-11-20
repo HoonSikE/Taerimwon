@@ -38,15 +38,17 @@ class ResultContainerFragment : BaseFragment<FragmentResultContainerBinding>(R.l
         var textResultTextLocation = ""
 
         val selectedLocation = ApplicationClass.prefs.selectedLocation.toString()
+
+        textResultTextLocation += " - 발인 장례식장: " + ApplicationClass.prefs.startArea
         if(selectedLocation.equals("화장장")){
-            textResultTextLocation += " - 화장장소: " + ApplicationClass.prefs.cremationArea2 +
+            textResultTextLocation += "\n - 화장장소: " + ApplicationClass.prefs.cremationArea2 +
                     "\n - 화장시간: " + ApplicationClass.prefs.cremationTime
         } else if(selectedLocation.equals("장례식장")){
-            textResultTextLocation += " - 장례식장 명: " + ApplicationClass.prefs.funeralName +
+            textResultTextLocation += "\n - 장례식장 명: " + ApplicationClass.prefs.funeralName +
                     "\n - 호실: " + ApplicationClass.prefs.funeralNumber +
                     "\n - 함 도착 시간: " + ApplicationClass.prefs.funeralTime
         } else if(selectedLocation.equals("장지")){
-            textResultTextLocation += " - 장지명: " + ApplicationClass.prefs.burialName +
+            textResultTextLocation += "\n - 장지명: " + ApplicationClass.prefs.burialName +
                     "\n - 함 도착 시간: " + ApplicationClass.prefs.burialTime
         }
         binding.textResultTextLocation.text = textResultTextLocation

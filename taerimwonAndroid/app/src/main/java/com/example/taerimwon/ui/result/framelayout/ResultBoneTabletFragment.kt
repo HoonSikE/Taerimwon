@@ -215,6 +215,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
         var boneTabletReligion = ApplicationClass.prefs.boneTabletReligion
         var boneTabletType = ApplicationClass.prefs.boneTabletType.toString()
 
+        val tabletExample = ApplicationClass.prefs.tabletExample
 
         // 추가 정보 / 기존 정보
         if(ApplicationClass.prefs.boneTabletSex == "남성"){
@@ -390,25 +391,60 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     when (tabletName2.length) {
                         2 ->{
-                            layoutBoneTabletResult1.scaleY = 1.3f
+                            if(tabletExample!!.contains("세로")) {
+                                tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 130
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                layoutBoneTabletResult1.scaleY = 1.3f
+                                tmp2.append(tabletName2)
+                            }
                         }
                         3 -> {
-                            layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
-                            layoutBoneTabletResult1.scaleY = 1.6f
+                            if(tabletExample!!.contains("세로")) {
+                                tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1]).append("\n").append(tabletName2[2])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 110
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                                layoutBoneTabletResult1.scaleY = 1.6f
+                                tmp2.append(tabletName2)
+                            }
                         }
                         4 -> {
-                            layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
-                            layoutBoneTabletResult1.scaleY = 1.8f
-                            layoutBoneTabletResult1.letterSpacing = -0.2f
+                            if(tabletExample!!.contains("세로")) {
+                                tmp2.append(tabletName2[0] + "" + tabletName2[1]).append("\n").append(tabletName2[2] + "" + tabletName2[3])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 130
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                layoutBoneTabletResult1.scaleY = 1.8f
+                                layoutBoneTabletResult1.letterSpacing = -0.2f
+                                tmp2.append(tabletName2)
+                            }
                         }
                     }
-                    tmp2.append(tabletName2)
+
                     layoutBoneTabletResult1.text = tmp2.toString()
 //                    layoutBoneTabletResult2.text = tmp.toString()
                 }
                 "천주교" -> {
-                    flagDown = true
-                    layoutBoneTabletResult3.visibility = View.VISIBLE
+                    if(tabletExample!!.contains("위/위")) {
+                        flagUp = true
+                        layoutBoneTabletResult1.visibility = View.VISIBLE
+                    }else{
+                        flagDown = true
+                        layoutBoneTabletResult3.visibility = View.VISIBLE
+                    }
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 37
@@ -461,31 +497,111 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     when (tabletName2.length) {
                         2 ->{
-                            layoutBoneTabletResult3.scaleY = 1.3f
+                            if(tabletExample!!.contains("세로")) {
+                                tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 130
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.scaleY = 1.3f
+                                }else{
+                                    layoutBoneTabletResult3.scaleY = 1.3f
+                                }
+                                tmp2.append(tabletName2)
+                            }
                         }
                         3 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
-                            layoutBoneTabletResult3.scaleY = 1.6f
+                            if(tabletExample!!.contains("세로")) {
+                                tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1]).append("\n").append(tabletName2[2])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 100
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                                    layoutBoneTabletResult1.scaleY = 1.6f
+                                }else{
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                                    layoutBoneTabletResult3.scaleY = 1.6f
+                                }
+                                tmp2.append(tabletName2)
+                            }
                         }
                         4 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
-                            layoutBoneTabletResult3.scaleY = 1.8f
-                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            if(tabletExample!!.contains("세로")) {
+                                tmp2.append(tabletName2[0] + "" + tabletName2[1]).append("\n").append(tabletName2[2] + "" + tabletName2[3])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 130
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                    layoutBoneTabletResult1.scaleY = 1.8f
+                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                }else{
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                    layoutBoneTabletResult3.scaleY = 1.8f
+                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                }
+                                tmp2.append(tabletName2)
+                            }
                         }
                         5 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
-                            layoutBoneTabletResult3.scaleY = 1.8f
-                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            if(tabletExample!!.contains("세로")) {
+                                tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 100
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                    layoutBoneTabletResult1.scaleY = 1.8f
+                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                }else{
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                    layoutBoneTabletResult3.scaleY = 1.8f
+                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                }
+                                tmp2.append(tabletName2)
+                            }
                         }
                         6 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_7.toFloat())
-                            layoutBoneTabletResult3.letterSpacing = -0.2f
-                            layoutBoneTabletResult3.scaleY = 2.0f
+                            if(tabletExample!!.contains("세로")) {
+                                tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2] + "" + tabletName2[5])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 100
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_7.toFloat())
+                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                    layoutBoneTabletResult1.scaleY = 2.0f
+                                }else{
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_7.toFloat())
+                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                    layoutBoneTabletResult3.scaleY = 2.0f
+                                }
+                                tmp2.append(tabletName2)
+                            }
                         }
                     }
 //                    layoutBoneTabletResult2.text = tmp.toString()
-                    tmp2.append(tabletName2)
-                    layoutBoneTabletResult3.text = tmp2.toString()
+                    if(tabletExample!!.contains("위/위")) {
+                        layoutBoneTabletResult1.text = tmp2.toString()
+                    }else{
+                        layoutBoneTabletResult3.text = tmp2.toString()
+                    }
                 }
             }
         }
@@ -699,19 +815,48 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     when (tabletName2.length) {
                         2 ->{
-                            layoutBoneTabletResult1.scaleY = 1.3f
+                            if(tabletExample!!.contains("세로")) {
+                                tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 115
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                layoutBoneTabletResult1.scaleY = 1.3f
+                                tmp2.append(tabletName2)
+                            }
                         }
                         3 -> {
-                            layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
-                            layoutBoneTabletResult1.scaleY = 1.6f
+                            if(tabletExample!!.contains("세로")) {
+                                tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1]).append("\n").append(tabletName2[2])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 90
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                                layoutBoneTabletResult1.scaleY = 1.6f
+                                tmp2.append(tabletName2)
+                            }
                         }
                         4 -> {
-                            layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
-                            layoutBoneTabletResult1.scaleY = 1.8f
-                            layoutBoneTabletResult1.letterSpacing = -0.2f
+                            if(tabletExample!!.contains("세로")) {
+                                tmp2.append(tabletName2[0] + "" + tabletName2[1]).append("\n").append(tabletName2[2] + "" + tabletName2[3])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 115
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                layoutBoneTabletResult1.scaleY = 1.8f
+                                layoutBoneTabletResult1.letterSpacing = -0.2f
+                                tmp2.append(tabletName2)
+                            }
                         }
                     }
-                    tmp2.append(tabletName2)
                     layoutBoneTabletResult1.text = tmp2.toString()
 //                    layoutBoneTabletResult2.text = tmp.toString()
                 }
@@ -816,7 +961,13 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 //                    layoutBoneTabletResult2.text = tmp.toString()
                 }
                 "천주교(본관)" -> {
-                    flagDown = true
+                    if(tabletExample!!.contains("위/위")) {
+                        flagUp = true
+                        layoutBoneTabletResult1.visibility = View.VISIBLE
+                    }else{
+                        flagDown = true
+                        layoutBoneTabletResult3.visibility = View.VISIBLE
+                    }
                     println("천주교 진입")
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
@@ -824,8 +975,6 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     layoutParams.height = 155
                     layoutBoneTabletResult2.layoutParams = layoutParams
 //                    layoutBoneTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
-
-                    layoutBoneTabletResult3.visibility = View.VISIBLE
 
                     when (name3.length) {
                         5 -> {
@@ -899,31 +1048,111 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     when (tabletName2.length) {
                         2 ->{
-                            layoutBoneTabletResult3.scaleY = 1.3f
+                            if(tabletExample!!.contains("세로")) {
+                                tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 115
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.scaleY = 1.3f
+                                }else{
+                                    layoutBoneTabletResult3.scaleY = 1.3f
+                                }
+                                tmp2.append(tabletName2)
+                            }
                         }
                         3 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
-                            layoutBoneTabletResult3.scaleY = 1.6f
+                            if(tabletExample!!.contains("세로")) {
+                                tmp2.append(tabletName2[0]).append("\n").append(tabletName2[1]).append("\n").append(tabletName2[2])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 90
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                                    layoutBoneTabletResult1.scaleY = 1.6f
+                                }else{
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                                    layoutBoneTabletResult3.scaleY = 1.6f
+                                }
+                                tmp2.append(tabletName2)
+                            }
                         }
                         4 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
-                            layoutBoneTabletResult3.scaleY = 1.8f
-                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            if(tabletExample!!.contains("세로")) {
+                                tmp2.append(tabletName2[0] + "" + tabletName2[1]).append("\n").append(tabletName2[2] + "" + tabletName2[3])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 115
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                    layoutBoneTabletResult1.scaleY = 1.8f
+                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                }else{
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                    layoutBoneTabletResult3.scaleY = 1.8f
+                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                }
+                                tmp2.append(tabletName2)
+                            }
                         }
                         5 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
-                            layoutBoneTabletResult3.scaleY = 1.8f
-                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            if(tabletExample!!.contains("세로")) {
+                                tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 90
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                    layoutBoneTabletResult1.scaleY = 1.8f
+                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                }else{
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                    layoutBoneTabletResult3.scaleY = 1.8f
+                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                }
+                                tmp2.append(tabletName2)
+                            }
                         }
                         6 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_7.toFloat())
-                            layoutBoneTabletResult3.letterSpacing = -0.2f
-                            layoutBoneTabletResult3.scaleY = 2.0f
+                            if(tabletExample!!.contains("세로")) {
+                                tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2] + "" + tabletName2[5])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 90
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_7.toFloat())
+                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                    layoutBoneTabletResult1.scaleY = 2.0f
+                                }else{
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_7.toFloat())
+                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                    layoutBoneTabletResult3.scaleY = 2.0f
+                                }
+                                tmp2.append(tabletName2)
+                            }
                         }
                     }
 //                    layoutBoneTabletResult2.text = tmp.toString()
-                    tmp2.append(tabletName2)
-                    layoutBoneTabletResult3.text = tmp2.toString()
+                    if(tabletExample!!.contains("위/위")) {
+                        layoutBoneTabletResult1.text = tmp2.toString()
+                    }else{
+                        layoutBoneTabletResult3.text = tmp2.toString()
+                    }
                 }
             }
         }
@@ -1039,25 +1268,58 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     when (boneTabletName2.length) {
                         2 ->{
-                            layoutBoneTabletResult1.scaleY = 1.3f
+                            if(tabletExample!!.contains("세로")) {
+                                boneTmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 130
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                layoutBoneTabletResult1.scaleY = 1.3f
+                                boneTmp2.append(boneTabletName2)
+                            }
                         }
                         3 -> {
-                            layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
-                            layoutBoneTabletResult1.scaleY = 1.6f
+                            if(tabletExample!!.contains("세로")) {
+                                boneTmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1]).append("\n").append(boneTabletName2[2])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 100
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                                layoutBoneTabletResult1.scaleY = 1.6f
+                                boneTmp2.append(boneTabletName2)
+                            }
                         }
                         4 -> {
-                            layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
-                            layoutBoneTabletResult1.scaleY = 1.8f
-                            layoutBoneTabletResult1.letterSpacing = -0.2f
+                            if(tabletExample!!.contains("세로")) {
+                                boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[1]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[3])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 130
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                layoutBoneTabletResult1.scaleY = 1.8f
+                                layoutBoneTabletResult1.letterSpacing = -0.2f
+                                boneTmp2.append(boneTabletName2)
+                            }
                         }
                     }
-                    boneTmp2.append(boneTabletName2)
                     layoutBoneTabletResult1.text = boneTmp2.toString()
                 }
                 "천주교" -> {
-                    flagUp = true
-
-                    layoutBoneTabletResult3.visibility = View.VISIBLE
+                    if(tabletExample!!.contains("위/위")) {
+                        flagUp = true
+                        layoutBoneTabletResult1.visibility = View.VISIBLE
+                    }else{
+                        flagDown = true
+                        layoutBoneTabletResult3.visibility = View.VISIBLE
+                    }
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 37
@@ -1102,31 +1364,111 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     when (boneTabletName2.length) {
                         2 ->{
-                            layoutBoneTabletResult3.scaleY = 1.3f
+                            if(tabletExample!!.contains("세로")) {
+                                boneTmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 130
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.scaleY = 1.3f
+                                }else{
+                                    layoutBoneTabletResult3.scaleY = 1.3f
+                                }
+                                boneTmp2.append(boneTabletName2)
+                            }
                         }
                         3 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
-                            layoutBoneTabletResult3.scaleY = 1.6f
+                            if(tabletExample!!.contains("세로")) {
+                                boneTmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1]).append("\n").append(boneTabletName2[2])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 100
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                                    layoutBoneTabletResult1.scaleY = 1.6f
+                                }else{
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                                    layoutBoneTabletResult3.scaleY = 1.6f
+                                }
+                                boneTmp2.append(boneTabletName2)
+                            }
                         }
                         4 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
-                            layoutBoneTabletResult3.scaleY = 1.8f
-                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            if(tabletExample!!.contains("세로")) {
+                                boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[1]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[3])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 130
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                    layoutBoneTabletResult1.scaleY = 1.8f
+                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                }else{
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                    layoutBoneTabletResult3.scaleY = 1.8f
+                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                }
+                                boneTmp2.append(boneTabletName2)
+                            }
                         }
                         5 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
-                            layoutBoneTabletResult3.scaleY = 1.8f
-                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            if(tabletExample!!.contains("세로")) {
+                                boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[3]).append("\n").append(boneTabletName2[1] + "" + boneTabletName2[4]).append("\n").append(boneTabletName2[2])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 100
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                    layoutBoneTabletResult1.scaleY = 1.8f
+                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                }else{
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                    layoutBoneTabletResult3.scaleY = 1.8f
+                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                }
+                                boneTmp2.append(boneTabletName2)
+                            }
                         }
                         6 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_7.toFloat())
-                            layoutBoneTabletResult3.letterSpacing = -0.2f
-                            layoutBoneTabletResult3.scaleY = 2.0f
+                            if(tabletExample!!.contains("세로")) {
+                                boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[3]).append("\n").append(boneTabletName2[1] + "" + boneTabletName2[4]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[5])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 100
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_7.toFloat())
+                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                    layoutBoneTabletResult1.scaleY = 2.0f
+                                }else{
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_7.toFloat())
+                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                    layoutBoneTabletResult3.scaleY = 2.0f
+                                }
+                                boneTmp2.append(boneTabletName2)
+                            }
                         }
                     }
 //                    layoutBoneTabletResult2.text = boneTmp.toString()
-                    boneTmp2.append(boneTabletName2)
-                    layoutBoneTabletResult3.text = boneTmp2.toString()
+                    if(tabletExample!!.contains("위/위")) {
+                        layoutBoneTabletResult1.text = boneTmp2.toString()
+                    }else{
+                        layoutBoneTabletResult3.text = boneTmp2.toString()
+                    }
                 }
             }
         }
@@ -1314,19 +1656,48 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     when (boneTabletName2.length) {
                         2 ->{
-                            layoutBoneTabletResult1.scaleY = 1.3f
+                            if(tabletExample!!.contains("세로")) {
+                                boneTmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 110
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                layoutBoneTabletResult1.scaleY = 1.3f
+                                boneTmp2.append(boneTabletName2)
+                            }
                         }
                         3 -> {
-                            layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
-                            layoutBoneTabletResult1.scaleY = 1.6f
+                            if(tabletExample!!.contains("세로")) {
+                                boneTmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1]).append("\n").append(boneTabletName2[2])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 90
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                                layoutBoneTabletResult1.scaleY = 1.6f
+                                boneTmp2.append(boneTabletName2)
+                            }
                         }
                         4 -> {
-                            layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
-                            layoutBoneTabletResult1.scaleY = 1.8f
-                            layoutBoneTabletResult1.letterSpacing = -0.2f
+                            if(tabletExample!!.contains("세로")) {
+                                boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[1]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[3])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 110
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                layoutBoneTabletResult1.scaleY = 1.8f
+                                layoutBoneTabletResult1.letterSpacing = -0.2f
+                                boneTmp2.append(boneTabletName2)
+                            }
                         }
                     }
-                    boneTmp2.append(boneTabletName2)
                     layoutBoneTabletResult1.text = boneTmp2.toString()
                 }
                 "불교(본관)" -> {
@@ -1416,8 +1787,13 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     }
                 }
                 "천주교(본관)" -> {
-                    flagDown = true
-
+                    if(tabletExample!!.contains("위/위")) {
+                        flagUp = true
+                        layoutBoneTabletResult1.visibility = View.VISIBLE
+                    }else{
+                        flagDown = true
+                        layoutBoneTabletResult3.visibility = View.VISIBLE
+                    }
                     println("천주교 진입")
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
@@ -1489,30 +1865,112 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     when (boneTabletName2.length) {
                         2 ->{
-                            layoutBoneTabletResult3.scaleY = 1.3f
+                            if(tabletExample!!.contains("세로")) {
+                                boneTmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 130
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.scaleY = 1.3f
+                                }else{
+                                    layoutBoneTabletResult3.scaleY = 1.3f
+                                }
+                                boneTmp2.append(boneTabletName2)
+                            }
                         }
                         3 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
-                            layoutBoneTabletResult3.scaleY = 1.6f
+                            if(tabletExample!!.contains("세로")) {
+                                boneTmp2.append(boneTabletName2[0]).append("\n").append(boneTabletName2[1]).append("\n").append(boneTabletName2[2])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 110
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                                    layoutBoneTabletResult1.scaleY = 1.6f
+                                }else{
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_12.toFloat())
+                                    layoutBoneTabletResult3.scaleY = 1.6f
+                                }
+                                boneTmp2.append(boneTabletName2)
+                            }
                         }
                         4 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
-                            layoutBoneTabletResult3.scaleY = 1.8f
-                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            if(tabletExample!!.contains("세로")) {
+                                boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[1]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[3])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 130
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                    layoutBoneTabletResult1.scaleY = 1.8f
+                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                }else{
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                    layoutBoneTabletResult3.scaleY = 1.8f
+                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                }
+                                boneTmp2.append(boneTabletName2)
+                            }
                         }
                         5 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
-                            layoutBoneTabletResult3.scaleY = 1.8f
-                            layoutBoneTabletResult3.letterSpacing = -0.2f
+                            if(tabletExample!!.contains("세로")) {
+                                boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[3]).append("\n").append(boneTabletName2[1] + "" + boneTabletName2[4]).append("\n").append(boneTabletName2[2])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 110
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                    layoutBoneTabletResult1.scaleY = 1.8f
+                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                }else{
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_9.toFloat())
+                                    layoutBoneTabletResult3.scaleY = 1.8f
+                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                }
+                                boneTmp2.append(boneTabletName2)
+                            }
                         }
                         6 -> {
-                            layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_7.toFloat())
-                            layoutBoneTabletResult3.letterSpacing = -0.2f
-                            layoutBoneTabletResult3.scaleY = 2.0f
+                            if(tabletExample!!.contains("세로")) {
+                                boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[3]).append("\n").append(boneTabletName2[1] + "" + boneTabletName2[4]).append("\n").append(boneTabletName2[2] + "" + boneTabletName2[5])
+
+                                val layoutParams = layoutBoneTabletResult2.layoutParams
+                                layoutParams.width = 37
+                                layoutParams.height = 110
+                                layoutBoneTabletResult2.layoutParams = layoutParams
+                            }else{
+                                if(tabletExample!!.contains("위/위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_7.toFloat())
+                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                    layoutBoneTabletResult1.scaleY = 2.0f
+                                }else{
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_7.toFloat())
+                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                    layoutBoneTabletResult3.scaleY = 2.0f
+                                }
+                                boneTmp2.append(boneTabletName2)
+                            }
                         }
                     }
                     boneTmp2.append(boneTabletName2)
-                    layoutBoneTabletResult3.text = boneTmp2.toString()
+
+                    if(tabletExample!!.contains("위/위")) {
+                        layoutBoneTabletResult1.text = boneTmp2.toString()
+                    }else{
+                        layoutBoneTabletResult3.text = boneTmp2.toString()
+                    }
                 }
             }
         }

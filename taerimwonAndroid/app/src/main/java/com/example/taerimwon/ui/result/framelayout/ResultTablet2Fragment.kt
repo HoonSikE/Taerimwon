@@ -148,6 +148,8 @@ class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layou
         var layoutTablet2Result312 = binding.layoutTablet2Result312
         var layoutTablet2Result32 = binding.layoutTablet2Result32
 
+        val tabletExample = ApplicationClass.prefs.tabletExample
+
         // 추가
         if(!boneTabletType.contains("본관") && boneTabletType != "문구") {
             when (boneTabletType) {
@@ -227,6 +229,7 @@ class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layou
                         }
                     }
 
+                    layoutTablet2Result20.text = boneTmp2.toString()
                     layoutTablet2Result22.visibility = View.VISIBLE
                     boneTmp2.append(boneTabletName2)
                     when (boneTabletName2.length) {

@@ -858,7 +858,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 120
+                    layoutParamsUnder.height = 90
 
                     layoutParamsRight.width = 15
                 }
@@ -1264,7 +1264,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 170
                     layoutParamsUrn.height = 240
 
-                    layoutParamsUnder.height = 90
+                    layoutParamsUnder.height = 110
                 }
                 "봉분기독교 BOB-6 6621" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_2)
@@ -1368,7 +1368,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 80
+                    layoutParamsUnder.height = 100
                 }
                 "아름선궁 AR-6 6117" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_14)
@@ -2467,7 +2467,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 170
                     layoutParamsUrn.height = 240
 
-                    layoutParamsUnder.height = 90
+                    layoutParamsUnder.height = 110
                 }
                 "봉분기독교 BOB-6 6621" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_2)
@@ -2571,7 +2571,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 80
+                    layoutParamsUnder.height = 100
                 }
                 "아름선궁 AR-6 6117" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_14)
@@ -3296,6 +3296,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         msg += "\n\n${index++}. 발주 장소"
 
         val selectedLocation = ApplicationClass.prefs.selectedLocation
+
+        msg += "\n - 발인 장례식장: " + ApplicationClass.prefs.startArea
+
         if(selectedLocation.equals("화장장")){
             msg += "\n - 화장장소: " + ApplicationClass.prefs.cremationArea2 +
                     "\n - 화장시간: " + ApplicationClass.prefs.cremationTime

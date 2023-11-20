@@ -19,11 +19,16 @@ import com.example.taerimwon.ui.order.urn.bone.BoneEngraveType2Adapter
 import com.example.taerimwon.ui.order.urn.bone.BoneEngraveTypeAdapter
 import com.example.taerimwon.utils.input.DateTextWatcher
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 @AndroidEntryPoint
 class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.fragment_urn_container) {
     private val orderViewModel: OrderViewModel by viewModels()
+
+    // 날짜
+    private lateinit var datetime: String
 
     // 자동완성 단어들을 담을 리스트
     private lateinit var searchList: MutableList<UrnItem>
@@ -147,11 +152,19 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         boneEngraveType2Adapter.setSelectedItem(ApplicationClass.prefs.boneEngraveType2Position)
     }
     private fun initData() {
+        // 현재 시간
+        val calendar = Calendar.getInstance()
+        datetime = String.format(
+            "%04d-%02d-%02d",
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH) + 1,
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+
         // 검색 리스트
         searchList = mutableListOf()
         searchList2 = mutableListOf()
 //        searchList3 = mutableListOf()
-        settingList()
 
         if(ApplicationClass.prefs.engraveType == "기독교")
             binding.checkboxCatholic.visibility = View.VISIBLE
@@ -182,9 +195,11 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.imageBoneUrnType.visibility = View.VISIBLE
             binding.layoutBoneEngrave.visibility = View.VISIBLE
 
+            settingList()
+
             binding.textBoneUrnTitle.text = "● 유골함[추가] 주문"
 
-            settingList_2()
+            settingList2_2()
             binding.autoCompleteTextView2.setAdapter(UrnAutoCompleteAdapter(
                     requireContext(),
                     android.R.layout.simple_dropdown_item_1line,
@@ -257,6 +272,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         val engraveType = ApplicationClass.prefs.engraveType
         val engraveType2 = ApplicationClass.prefs.engraveType2
         val name2 = ApplicationClass.prefs.name2
+
         if((engraveType == "기독교" || engraveType == "순복음") && (engraveType2 == "기본" || engraveType2 == "年月日")) {
             binding.textName2.visibility = View.VISIBLE
             binding.editTextName2.visibility = View.VISIBLE
@@ -290,10 +306,6 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.imageName2.visibility = View.GONE
             ApplicationClass.prefs.name2 = ""
         }
-        if(engraveType == "천주교")
-            binding.checkboxCatholic.visibility = View.VISIBLE
-        else
-            binding.checkboxCatholic.visibility = View.GONE
 
         /** 합골 **/
         val boneSexArray = resources.getStringArray(R.array.bone_sex)
@@ -355,11 +367,6 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             ApplicationClass.prefs.boneName2 = ""
         }
 
-        if(boneEngraveType == "천주교")
-            binding.checkboxCatholic.visibility = View.VISIBLE
-        else
-            binding.checkboxCatholic.visibility = View.GONE
-
         // 배열을 가져옵니다.
         // 문자열 이름을 문자열로 정의합니다.
         val arrName2 = "engrave_type" + (ApplicationClass.prefs.boneEngraveTypePosition + 1)
@@ -372,6 +379,14 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         binding.recyclerviewBoneEngraveSelectType.scrollToPosition(ApplicationClass.prefs.boneEngraveType2Position)
     }
     private fun setOnClickListeners() {
+        binding.textToday1.setOnClickListener{
+            ApplicationClass.prefs.date2 = datetime
+            binding.editTextDate2.setText(datetime)
+        }
+        binding.textToday2.setOnClickListener{
+            ApplicationClass.prefs.boneDate2 = datetime
+            binding.editTextBoneDate2.setText(datetime)
+        }
         binding.checkboxCatholic.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked)
                 ApplicationClass.prefs.checkCatholic = "별세"
@@ -430,6 +445,11 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         })
         binding.spinnerUrnType.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if(ApplicationClass.prefs.selectedUrnType != parent?.getItemAtPosition(position).toString() ?: ""){
+                    ApplicationClass.prefs.selectedUrnName = ""
+                    binding.autoCompleteTextView.setText("")
+                }
+
                 ApplicationClass.prefs.selectedUrnType = parent?.getItemAtPosition(position).toString() ?: ""
 
                 if(ApplicationClass.prefs.selectedUrnType!!.contains("선택안함"))
@@ -447,7 +467,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
 
                         binding.textBoneUrnTitle.text = "● 유골함[추가] 주문"
 
-                        settingList_2()
+                        settingList2_2()
                         binding.autoCompleteTextView2.setAdapter(UrnAutoCompleteAdapter(
                             requireContext(),
                             android.R.layout.simple_dropdown_item_1line,
@@ -512,6 +532,11 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         /** 추가 **/
         binding.spinnerBoneUrnType.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                if(ApplicationClass.prefs.selectedUrnType2 != parent?.getItemAtPosition(position).toString() ?: ""){
+                    ApplicationClass.prefs.selectedUrnName2 = ""
+                    binding.autoCompleteTextView2.setText("")
+                }
+
                 ApplicationClass.prefs.selectedUrnType2 = parent?.getItemAtPosition(position).toString() ?: ""
 
                 if(ApplicationClass.prefs.selectedUrnType2!!.contains("선택안함"))
@@ -523,7 +548,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                 when (ApplicationClass.prefs.selectedUrnType2) {
                     "유골함" -> {
                         binding.layoutUrnAutoComplete2.visibility = View.VISIBLE
-                        settingList_2()
+                        settingList2_2()
 
                         binding.autoCompleteTextView2.setAdapter(
                             UrnAutoCompleteAdapter(
@@ -1000,7 +1025,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         searchList.add(UrnItem("합골실버십장생 HG-2 4914", R.drawable.img_bone2_2))
     }
     // 자동완성 단어 세팅
-    private fun settingList_2() {
+    private fun settingList2_2() {
         searchList2 = mutableListOf()
 
         searchList2.add(UrnItem("미정", 0))

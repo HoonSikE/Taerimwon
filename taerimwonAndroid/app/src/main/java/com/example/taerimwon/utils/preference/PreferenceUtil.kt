@@ -77,6 +77,11 @@ class PreferenceUtil(context: Context) {
         set(value){
             order.edit().putString(SELECTEDLOCATION, value).apply()
         }
+    var startArea : String?
+        get() = order.getString(STARTAREA, "")
+        set(value){
+            order.edit().putString(STARTAREA, value).apply()
+        }
     // 화장장
     var cremationArea : String?
         get() = order.getString(CREMATIONAREA, "전국")
@@ -442,6 +447,12 @@ class PreferenceUtil(context: Context) {
         set(value){
             order.edit().putString(NOTE, value).apply()
         }
+
+    var tabletExample : String?
+        get() = order.getString(TABLETEXAMPLE, "직분위/세례아")
+        set(value){
+            order.edit().putString(TABLETEXAMPLE, value).apply()
+        }
     fun resetPreferencesUser() {
         // user SharedPreferences 초기화
         uid = ""
@@ -461,6 +472,7 @@ class PreferenceUtil(context: Context) {
         clientName = ""
         clientTel = ""
         selectedLocation = "화장장"
+        startArea = ""
         cremationArea = "전국"
         cremationArea2 = "서울시립승화원"
         cremationTime = ""
@@ -538,5 +550,8 @@ class PreferenceUtil(context: Context) {
         boneImageUrl = ""
         boneTabletImageUri = ""
         tabletImageUri = ""
+
+        /** 임시 **/
+        tabletExample = "직분위/세례아"
     }
 }
