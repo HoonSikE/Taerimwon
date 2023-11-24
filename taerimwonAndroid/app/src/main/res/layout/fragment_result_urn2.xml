@@ -338,6 +338,7 @@
                         android:gravity="center"
                         android:letterSpacing="-0.15"
                         android:textScaleX="1.15"
+                        android:visibility="gone"
                         />
                     <!--이름-->
                     <TextView
