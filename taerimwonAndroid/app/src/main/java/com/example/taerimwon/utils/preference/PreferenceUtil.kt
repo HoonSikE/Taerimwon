@@ -555,5 +555,8 @@ class PreferenceUtil(context: Context) {
         tabletExample = "직분위/세례아"
         tabletExample = "위/위"
         tabletExample = "아/아"
+        tabletExample = "아/아"
+        tabletExample = "아/아"
+        tabletExample = "아/아"
     }
 }
