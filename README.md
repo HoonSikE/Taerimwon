@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="90%;" src="./README/img_logo.png" />
+  <img width="70%;" src="./README/img_logo.png" />
 <br/>  
 <br/> 
 </div>
@@ -50,20 +50,117 @@
 
 ## 1. 전화번호 인증
    - 전화번호 인증 후 서비스 이용 가능
+   - 블랙리스트 등록 번호는 전화번호 인증 불가
    - Firebase
 
 <div align="center">
-   <img src="./README/mypage/Favorites1.png" width="30%">
-   <h3>[즐겨찾기 등록]</h3>
+   <img src="./README/phoneAuth/phoneauth1.jpg" width="40%">
+   <img src="./README/phoneAuth/phoneauth2.jpg" width="40%">
+   <h3>전화번호 인증</h3>
 </div>
 
 <br>
 
+## 2. 블랙리스트 차단
+   - 블랙리스트 등록 번호는 등록 즉시 전화번호 인증으로 이동
+   - Firebase
+
+<br>
+
+## 3. 캡처방지
+   - 캡처 시 "보안 정책에 따라 캡처할 수 없습니다." 문구 출력 (고객 요구 사항)
+
+<br>
+
+## 4. 주문 정보 입력
+   - 발주자 정보 입력 (정보 저장 기능)
+   - 상주 정보 입력
+   - 발주 장소 입력(yyyy:mm:dd hh:mm 형식 입력)
+   - 유골함 주문 (이미지 및 검색, yyyy:mm:dd 형식 입력)
+   - 위패 종류 (이미지 및 검색)
+
 <div align="center">
-   <img src="./README/mypage/Favorites4.png" width="30%">
-   <img src="./README/mypage/Favorites5.png" width="30%">
-   <h3>[즐겨찾기 삭제]</h3>
+   <img src="./README/order/order1.jpg" width="40%">
+   <h3>발주자 정보 입력</h3>
 </div>
+<br>
+
+<div align="center">
+   <img src="./README/order/order2.jpg" width="40%">
+   <h3>상주 정보 입력</h3>
+</div>
+<br>
+
+<div align="center">
+   <img src="./README/order/order3.jpg" width="40%">
+   <h3>발주 장소 입력</h3>
+</div>
+<br>
+
+<div align="center">
+   <img src="./README/order/order4.jpg" width="40%">
+   <img src="./README/order/order4_1.jpg" width="40%">
+   <h3>유골함 주문</h3>
+</div>
+<br>
+
+<div align="center">
+   <img src="./README/order/order5.jpg" width="40%">
+   <img src="./README/order/order5_1.jpg" width="40%">
+   <h3>위패 주문</h3>
+</div>
+<br>
+
+<div align="center">
+   <img src="./README/order/order6.jpg" width="40%">
+   <img src="./README/order/order6_1.jpg" width="40%">
+   <h3>평장 주문</h3>
+</div>
+<br>
+
+## 5. 각인 정보 출력
+   - 주문 정보 확인
+   - 확대 기능
+
+<div align="center">
+   <img src="./README/result/result1.jpg" width="40%">
+   <img src="./README/result/result2.jpg" width="40%">
+   <h3>주문 정보 확인</h3>
+</div>
+
+<div align="center">
+   <img src="./README/result/result3.jpg" width="40%">
+   <img src="./README/result/result4.jpg" width="40%">
+   <h3>확대</h3>
+</div>
+
+<br>
+
+## 6. 주문 정보 MMS 전송
+   - 발주자에게 각인 정보 전송 (사진, 텍스트)
+
+<div align="center">
+   <img src="./README/mms/mms.jpg" width="40%">
+   <h3>발주자에게 각인 정보 전송 (사진, 텍스트)</h3>
+</div>
+
+<br>
+
+## 7. 유골함 리스트
+   - 유골함 리스트 출력 및 확대
+
+<div align="center">
+   <img src="./README/urnList/urnList1.jpg" width="40%">
+   <img src="./README/urnList/urnList2.jpg" width="40%">
+   <h3>유골함 리스트 출력 및 확대</h3>
+</div>
+
+<br>
+
+## 8. 로그 수집
+   - 사용자 활동(페이지 이동, 정보 입력 등), 장치 정보, 성능 지표, 오류 등을 데이터 베이스에 수집
+
+<br>
 
 <br><br>
 
@@ -140,7 +237,3 @@
       </td>
   </tr>
 </table>
-
-# 📚 산출물
-
-# 
