@@ -286,24 +286,6 @@
                         android:progressDrawable= 시크바 진행 배경 색상
                         android:splitTrack= 시크바 thumb 아이콘 여백 없애기 -->
 
-
-                    <TextView
-                        android:id="@+id/layout_zoom1"
-                        style="@style/Body"
-                        android:background="@drawable/view_zoom"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="확대"
-                        app:layout_constraintTop_toBottomOf="@+id/seekbar_zoom1"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginTop="8dp"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="2dp"
-                        tools:viewBindingIgnore="true"
-                        android:visibility="gone"
-                        >
-                    </TextView>
                     <TextView
                         android:id="@+id/layout_pre"
                         style="@style/Body"
@@ -311,7 +293,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="이전"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_zoom1"
+                        app:layout_constraintTop_toBottomOf="@+id/seekbar_zoom1"
                         app:layout_constraintEnd_toStartOf="@+id/layout_current"
                         android:layout_marginTop="8dp"
                         android:paddingHorizontal="8dp"
@@ -326,9 +308,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1/00"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_zoom1"
-                        app:layout_constraintStart_toStartOf="@+id/layout_zoom1"
-                        app:layout_constraintEnd_toEndOf="@+id/layout_zoom1"
+                        app:layout_constraintTop_toBottomOf="@+id/seekbar_zoom1"
+                        app:layout_constraintStart_toStartOf="@+id/seekbar_zoom1"
+                        app:layout_constraintEnd_toEndOf="@+id/seekbar_zoom1"
                         android:layout_marginTop="8dp"
                         android:paddingHorizontal="8dp"
                         android:paddingVertical="2dp"
@@ -343,7 +325,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="다음"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_zoom1"
+                        app:layout_constraintTop_toBottomOf="@+id/seekbar_zoom1"
                         app:layout_constraintStart_toEndOf="@+id/layout_current"
                         android:layout_marginTop="8dp"
                         android:paddingHorizontal="8dp"
@@ -352,49 +334,6 @@
                         android:visibility="gone"
                         >
                     </TextView>
-                    <TextView
-                        android:id="@+id/buttonZoomIn"
-                        style="@style/Body"
-                        android:background="@drawable/view_zoom"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="확대"
-                        app:layout_constraintEnd_toStartOf="@+id/buttonZoomText"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_current"
-                        android:layout_marginTop="8dp"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="2dp"
-                        tools:viewBindingIgnore="true"
-                        />
-
-                    <TextView
-                        android:id="@+id/buttonZoomText"
-                        style="@style/Body"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text=" "
-                        app:layout_constraintStart_toStartOf="@+id/layout_current"
-                        app:layout_constraintEnd_toEndOf="@+id/layout_current"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_current"
-                        android:layout_marginTop="8dp"
-                        android:paddingVertical="2dp"
-                        tools:viewBindingIgnore="true"
-                        />
-
-                    <TextView
-                        android:id="@+id/buttonZoomOut"
-                        style="@style/Body"
-                        android:background="@drawable/view_zoom"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="축소"
-                        app:layout_constraintStart_toEndOf="@+id/buttonZoomText"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_current"
-                        android:layout_marginTop="8dp"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="2dp"
-                        tools:viewBindingIgnore="true"
-                        />
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 <View
                     android:id="@+id/View2"
@@ -500,11 +439,22 @@
                                     android:visibility="gone"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toEndOf="@+id/layout_pyeongjang_result_image3"></ImageView>
-
+                                    app:layout_constraintStart_toEndOf="@+id/layout_pyeongjang_result_image3">
+                                </ImageView>
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </LinearLayout>
                     </HorizontalScrollView>
+                    <SeekBar
+                        android:id="@+id/seekbar_zoom2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_result_image3_0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:thumb="@drawable/seekbar_custom_thumb"
+                        android:progressDrawable="@drawable/seekbar_custom_progress"
+                        android:splitTrack="false"
+                        />
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 <View
                     android:id="@+id/View3"

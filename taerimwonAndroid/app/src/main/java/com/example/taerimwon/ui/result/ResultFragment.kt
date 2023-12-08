@@ -15,6 +15,7 @@ import android.view.MotionEvent
 import android.view.ScaleGestureDetector
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.content.res.ResourcesCompat
@@ -65,17 +66,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     private lateinit var pyeongjangBitmap: Bitmap
     private lateinit var pyeongjangBitmap2: Bitmap
 
+    private var scaleFactor1 = 1.0
+    private var scaleFactor2 = 1.0
     private var index = 1;
-    private var scale = 1.0f
 
-    private lateinit var searchList: MutableList<String>
-
-    override fun init() {
-        initData()
-        setImage()
-        setOnClickListeners()
-        observer()
-    }
     // 최초 크기를 저장해둘 변수
     private var initialWidth1 = 0
     private var initialHeight1 = 0
@@ -98,77 +92,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     private var initialWidth1_9 = 0
     private var initialHeight1_9 = 0
 
-    private var scaleFactor = 1.0f
-    private lateinit var scaleGestureDetector: ScaleGestureDetector
-    private inner class ScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
-        override fun onScale(detector: ScaleGestureDetector): Boolean {
-            // scaleFactor를 사용하여 현재 확대/축소 비율 업데이트
-            scaleFactor *= detector.scaleFactor
-
-            // 최소 0.1배, 최대 5배까지 확대/축소
-            scaleFactor = scaleFactor.coerceIn(0.5f, 5.0f)
-
-            // LayoutParams를 사용하여 뷰의 크기 조절
-//            val params = binding.layoutResultImage1.layoutParams
-//            params.width = (initialWidth1 * scaleFactor).toInt()
-//            params.height = (initialHeight1 * scaleFactor).toInt()
-//            binding.layoutResultImage1.layoutParams = params
-
-            val params1_1 = binding.layoutTabletResultImage.layoutParams
-            params1_1.width = (initialWidth1_1 * scaleFactor).toInt()
-            params1_1.height = (initialHeight1_1 * scaleFactor).toInt()
-            binding.layoutTabletResultImage.layoutParams = params1_1
-
-            val params1_2 = binding.layoutTabletPhoto.layoutParams
-            params1_2.width = (initialWidth1_2 * scaleFactor).toInt()
-            params1_2.height = (initialHeight1_2 * scaleFactor).toInt()
-            binding.layoutTabletPhoto.layoutParams = params1_2
-
-            val params1_3 = binding.layoutUrnResultImage12.layoutParams
-            params1_3.width = (initialWidth1_3 * scaleFactor).toInt()
-            params1_3.height = (initialHeight1_3 * scaleFactor).toInt()
-            binding.layoutUrnResultImage12.layoutParams = params1_3
-
-            val params1_4 = binding.layoutUrnResultImage.layoutParams
-            params1_4.width = (initialWidth1_4 * scaleFactor).toInt()
-            params1_4.height = (initialHeight1_4 * scaleFactor).toInt()
-            binding.layoutUrnResultImage.layoutParams = params1_4
-
-            val params1_5 = binding.layoutUrnResultImage22.layoutParams
-            params1_5.width = (initialWidth1_5 * scaleFactor).toInt()
-            params1_5.height = (initialHeight1_5 * scaleFactor).toInt()
-            binding.layoutUrnResultImage22.layoutParams = params1_5
-
-            val params1_6 = binding.layoutUrnResultImage2.layoutParams
-            params1_6.width = (initialWidth1_6 * scaleFactor).toInt()
-            params1_6.height = (initialHeight1_6 * scaleFactor).toInt()
-            binding.layoutUrnResultImage2.layoutParams = params1_6
-
-            val params1_7 = binding.layoutBoneResultImage.layoutParams
-            params1_7.width = (initialWidth1_7 * scaleFactor).toInt()
-            params1_7.height = (initialHeight1_7 * scaleFactor).toInt()
-            binding.layoutBoneResultImage.layoutParams = params1_7
-
-            val params1_8 = binding.layoutBone2ResultImage.layoutParams
-            params1_8.width = (initialWidth1_8 * scaleFactor).toInt()
-            params1_8.height = (initialHeight1_8 * scaleFactor).toInt()
-            binding.layoutBone2ResultImage.layoutParams = params1_8
-
-            val params1_9 = binding.layoutTablet2ResultImage.layoutParams
-            params1_9.width = (initialWidth1_9 * scaleFactor).toInt()
-            params1_9.height = (initialHeight1_9 * scaleFactor).toInt()
-            binding.layoutTablet2ResultImage.layoutParams = params1_9
-
-            return true
-
-            // ViewPropertyAnimator를 사용하여 뷰에 애니메이션 적용
-//            binding.layoutResultImage1.animate()
-//                .scaleX(scaleFactor)
-//                .scaleY(scaleFactor)
-//                .setDuration(0) // 애니메이션 지속 시간을 0으로 설정하여 즉시 적용
-//                .start()
-        }
-    }
     // 최초 크기를 저장해둘 변수
     private var initialWidth2 = 0
     private var initialHeight2 = 0
@@ -180,44 +103,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     private var initialHeight2_3 = 0
     private var initialWidth2_4 = 0
     private var initialHeight2_4 = 0
-    private var scaleFactor2 = 1.0f
-    private lateinit var scaleGestureDetector2: ScaleGestureDetector
-    private inner class ScaleListener2 : ScaleGestureDetector.SimpleOnScaleGestureListener() {
-        override fun onScale(detector: ScaleGestureDetector): Boolean {
-            // scaleFactor를 사용하여 현재 확대/축소 비율 업데이트
-            scaleFactor2 *= detector.scaleFactor
 
-            // 최소 0.1배, 최대 5배까지 확대/축소
-            scaleFactor2 = scaleFactor2.coerceIn(0.5f, 5.0f)
-
-            // LayoutParams를 사용하여 뷰의 크기 조절
-//            val params = binding.layoutResultImage3.layoutParams
-//            params.width = (initialWidth2 * scaleFactor2).toInt()
-//            params.height = (initialHeight2 * scaleFactor2).toInt()
-//            binding.layoutResultImage3.layoutParams = params
-
-            val params2_1 = binding.layoutPyeongjangResultImage.layoutParams
-            params2_1.width = (initialWidth2_1 * scaleFactor2).toInt()
-            params2_1.height = (initialHeight2_1 * scaleFactor2).toInt()
-            binding.layoutPyeongjangResultImage.layoutParams = params2_1
-
-            val params2_2 = binding.layoutPyeongjangResultImage2.layoutParams
-            params2_2.width = (initialWidth2_2 * scaleFactor2).toInt()
-            params2_2.height = (initialHeight2_2 * scaleFactor2).toInt()
-            binding.layoutPyeongjangResultImage2.layoutParams = params2_2
-
-            val params2_3 = binding.layoutPyeongjangResultImage3.layoutParams
-            params2_3.width = (initialWidth2_3 * scaleFactor2).toInt()
-            params2_3.height = (initialHeight2_3 * scaleFactor2).toInt()
-            binding.layoutPyeongjangResultImage3.layoutParams = params2_3
-
-            val params2_4 = binding.layoutPyeongjangResultImage4.layoutParams
-            params2_4.width = (initialWidth2_4 * scaleFactor2).toInt()
-            params2_4.height = (initialHeight2_4 * scaleFactor2).toInt()
-            binding.layoutPyeongjangResultImage4.layoutParams = params2_4
-
-            return true
-        }
+    private lateinit var searchList: MutableList<String>
+    override fun init() {
+        initData()
+        setImage()
+        setOnClickListeners()
+        observer()
     }
     private fun setOnTouchListener(){
         // 최초 크기 저장
@@ -265,107 +157,73 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         initialWidth2_4 = binding.layoutPyeongjangResultImage4.width
         initialHeight2_4 = binding.layoutPyeongjangResultImage4.height
-
-        println("dddd")
-        println("initialWidth2 " + initialWidth2)
-        println(initialHeight2)
-        println()
-
-        println("initialWidth2_1 " + initialWidth2_1)
-        println(initialHeight2_1)
-        println()
-
-        println("initialWidth2_2 " + initialWidth2_2)
-        println(initialHeight2_2)
-        println()
-
-        println("initialWidth2_3 " + initialWidth2_3)
-        println(initialHeight2_3)
-        println()
-
-        println("initialWidth2_4 " + initialWidth2_4)
-        println(initialHeight2_4)
-        println()
-
-        // ScaleGestureDetector 초기화
-        scaleGestureDetector = ScaleGestureDetector(requireContext(), ScaleListener())
-
-        // 뷰에 터치 이벤트 리스너 설정
-        binding.layoutResultImage1.setOnTouchListener { _, event ->
-            scaleGestureDetector.onTouchEvent(event)
-            true
-        }
-
-        // ScaleGestureDetector 초기화
-        scaleGestureDetector2 = ScaleGestureDetector(requireContext(), ScaleListener2())
-
-        // 뷰에 터치 이벤트 리스너 설정
-        binding.layoutResultImage3.setOnTouchListener { _, event ->
-//            scaleGestureDetector2.onTouchEvent(event)
-            true
-        }
-
-        // 확대 버튼 클릭 이벤트
-        binding.buttonZoomIn.setOnClickListener {
-            scaleFactor *= 1.2f // 예시로 20%씩 확대
-            if(scaleFactor > 3.0f)
-                scaleFactor = 3.0f
-            updateImageSize()
-        }
-
-        // 축소 버튼 클릭 이벤트
-        binding.buttonZoomOut.setOnClickListener {
-            scaleFactor *= 0.8f // 예시로 20%씩 축소
-            if(scaleFactor < 0.5f)
-                scaleFactor = 0.5f
-            updateImageSize()
-        }
     }
-    private fun updateImageSize() {
+    private fun updateImageSize1() {
         val params1_1 = binding.layoutTabletResultImage.layoutParams
-        params1_1.width = (initialWidth1_1 * scaleFactor).toInt()
-        params1_1.height = (initialHeight1_1 * scaleFactor).toInt()
+        params1_1.width = (initialWidth1_1 * scaleFactor1).toInt()
+        params1_1.height = (initialHeight1_1 * scaleFactor1).toInt()
         binding.layoutTabletResultImage.layoutParams = params1_1
 
         val params1_2 = binding.layoutTabletPhoto.layoutParams
-        params1_2.width = (initialWidth1_2 * scaleFactor).toInt()
-        params1_2.height = (initialHeight1_2 * scaleFactor).toInt()
+        params1_2.width = (initialWidth1_2 * scaleFactor1).toInt()
+        params1_2.height = (initialHeight1_2 * scaleFactor1).toInt()
         binding.layoutTabletPhoto.layoutParams = params1_2
 
         val params1_3 = binding.layoutUrnResultImage12.layoutParams
-        params1_3.width = (initialWidth1_3 * scaleFactor).toInt()
-        params1_3.height = (initialHeight1_3 * scaleFactor).toInt()
+        params1_3.width = (initialWidth1_3 * scaleFactor1).toInt()
+        params1_3.height = (initialHeight1_3 * scaleFactor1).toInt()
         binding.layoutUrnResultImage12.layoutParams = params1_3
 
         val params1_4 = binding.layoutUrnResultImage.layoutParams
-        params1_4.width = (initialWidth1_4 * scaleFactor).toInt()
-        params1_4.height = (initialHeight1_4 * scaleFactor).toInt()
+        params1_4.width = (initialWidth1_4 * scaleFactor1).toInt()
+        params1_4.height = (initialHeight1_4 * scaleFactor1).toInt()
         binding.layoutUrnResultImage.layoutParams = params1_4
 
         val params1_5 = binding.layoutUrnResultImage22.layoutParams
-        params1_5.width = (initialWidth1_5 * scaleFactor).toInt()
-        params1_5.height = (initialHeight1_5 * scaleFactor).toInt()
+        params1_5.width = (initialWidth1_5 * scaleFactor1).toInt()
+        params1_5.height = (initialHeight1_5 * scaleFactor1).toInt()
         binding.layoutUrnResultImage22.layoutParams = params1_5
 
         val params1_6 = binding.layoutUrnResultImage2.layoutParams
-        params1_6.width = (initialWidth1_6 * scaleFactor).toInt()
-        params1_6.height = (initialHeight1_6 * scaleFactor).toInt()
+        params1_6.width = (initialWidth1_6 * scaleFactor1).toInt()
+        params1_6.height = (initialHeight1_6 * scaleFactor1).toInt()
         binding.layoutUrnResultImage2.layoutParams = params1_6
 
         val params1_7 = binding.layoutBoneResultImage.layoutParams
-        params1_7.width = (initialWidth1_7 * scaleFactor).toInt()
-        params1_7.height = (initialHeight1_7 * scaleFactor).toInt()
+        params1_7.width = (initialWidth1_7 * scaleFactor1).toInt()
+        params1_7.height = (initialHeight1_7 * scaleFactor1).toInt()
         binding.layoutBoneResultImage.layoutParams = params1_7
 
         val params1_8 = binding.layoutBone2ResultImage.layoutParams
-        params1_8.width = (initialWidth1_8 * scaleFactor).toInt()
-        params1_8.height = (initialHeight1_8 * scaleFactor).toInt()
+        params1_8.width = (initialWidth1_8 * scaleFactor1).toInt()
+        params1_8.height = (initialHeight1_8 * scaleFactor1).toInt()
         binding.layoutBone2ResultImage.layoutParams = params1_8
 
         val params1_9 = binding.layoutTablet2ResultImage.layoutParams
-        params1_9.width = (initialWidth1_9 * scaleFactor).toInt()
-        params1_9.height = (initialHeight1_9 * scaleFactor).toInt()
+        params1_9.width = (initialWidth1_9 * scaleFactor1).toInt()
+        params1_9.height = (initialHeight1_9 * scaleFactor1).toInt()
         binding.layoutTablet2ResultImage.layoutParams = params1_9
+    }
+    private fun updateImageSize2() {
+        val params2_1 = binding.layoutPyeongjangResultImage.layoutParams
+        params2_1.width = (initialWidth2_1 * scaleFactor2).toInt()
+        params2_1.height = (initialHeight2_1 * scaleFactor2).toInt()
+        binding.layoutPyeongjangResultImage.layoutParams = params2_1
+
+        val params2_2 = binding.layoutPyeongjangResultImage2.layoutParams
+        params2_2.width = (initialWidth2_2 * scaleFactor2).toInt()
+        params2_2.height = (initialHeight2_2 * scaleFactor2).toInt()
+        binding.layoutPyeongjangResultImage2.layoutParams = params2_2
+
+        val params2_3 = binding.layoutPyeongjangResultImage3.layoutParams
+        params2_3.width = (initialWidth2_3 * scaleFactor2).toInt()
+        params2_3.height = (initialHeight2_3 * scaleFactor2).toInt()
+        binding.layoutPyeongjangResultImage3.layoutParams = params2_3
+
+        val params2_4 = binding.layoutPyeongjangResultImage4.layoutParams
+        params2_4.width = (initialWidth2_4 * scaleFactor2).toInt()
+        params2_4.height = (initialHeight2_4 * scaleFactor2).toInt()
+        binding.layoutPyeongjangResultImage4.layoutParams = params2_4
     }
     private fun initData() {
         searchList = mutableListOf()
@@ -568,6 +426,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             binding.layoutResultTitleImage3.visibility = View.GONE
             binding.layoutPyeongjangResultText.visibility = View.GONE
         }
+
+        binding.seekbarZoom1.min = 10
+        binding.seekbarZoom1.max = 30
+        binding.seekbarZoom1.progress = 10
+
+        binding.seekbarZoom2.min = 10
+        binding.seekbarZoom2.max = 30
+        binding.seekbarZoom2.progress = 10
 
         setMsg()
 //        authViewModel.getBlackList()
@@ -3694,7 +3560,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             binding.layoutResult2.visibility = View.GONE
             binding.layoutResult3.visibility = View.GONE
             binding.layoutResultContent.visibility = View.GONE
-            setOnTouchListener()
+
+            handler.postDelayed({
+                setOnTouchListener()
+            }, delayMillis.toLong())
         }, delayMillis.toLong())
     }
     private fun setOnClickListeners() {
@@ -3715,36 +3584,41 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             }
         }
 
-//        binding.layoutZoom1.setOnClickListener {
-//            val dialog = ResultDialogFragment()
-//            // 화면 밖 터치시 종료되지 않게 하기
-//            dialog.isCancelable = false
-//
-//            val layoutResultImage = binding.layoutResultImage1
-//
-//            val resultBitmap = Bitmap.createBitmap(layoutResultImage.width, layoutResultImage.height, Bitmap.Config.ARGB_8888)
-//            val canvasBitmap = Canvas(resultBitmap)
-//            layoutResultImage.draw(canvasBitmap)
-//
-//            dialog.setImageBitmap(resultBitmap)
-//
-//            dialog.show(childFragmentManager, "show layout zoom")
-//        }
-//
-//        binding.layoutZoom3.setOnClickListener {
-//            val dialog = ResultDialogFragment()
-//            // 화면 밖 터치시 종료되지 않게 하기
-//            dialog.isCancelable = false
-//
-//            val layoutResultImage = binding.layoutResultImage3
-//            val resultBitmap = Bitmap.createBitmap(layoutResultImage.width, layoutResultImage.height, Bitmap.Config.ARGB_8888)
-//            val canvasBitmap = Canvas(resultBitmap)
-//            layoutResultImage.draw(canvasBitmap)
-//
-//            dialog.setImageBitmap(resultBitmap)
-//
-//            dialog.show(childFragmentManager, "show layout zoom")
-//        }
+        binding.seekbarZoom1.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                // 시크바 값이 변경될 때 호출되는 메서드
+                // 뷰의 크기 조절 최소 1배, 최대 3배까지 확대/축소
+                scaleFactor1 = (progress * 0.1)
+
+                updateImageSize1()
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                // 사용자가 시크바를 터치하여 조작을 시작할 때 호출되는 메서드
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                // 사용자가 시크바 조작을 멈출 때 호출되는 메서드
+            }
+        })
+
+        binding.seekbarZoom2.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                // 시크바 값이 변경될 때 호출되는 메서드
+                // 뷰의 크기 조절 최소 1배, 최대 3배까지 확대/축소
+                scaleFactor2 = (progress * 0.1)
+
+                updateImageSize2()
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                // 사용자가 시크바를 터치하여 조작을 시작할 때 호출되는 메서드
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                // 사용자가 시크바 조작을 멈출 때 호출되는 메서드
+            }
+        })
 
         binding.buttonResultToOrderFragment.setOnClickListener{
             findNavController().navigate(R.id.action_resultFragment_to_orderFragment)

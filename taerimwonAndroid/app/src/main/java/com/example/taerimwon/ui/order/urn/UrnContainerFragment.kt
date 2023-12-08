@@ -379,14 +379,6 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         binding.recyclerviewBoneEngraveSelectType.scrollToPosition(ApplicationClass.prefs.boneEngraveType2Position)
     }
     private fun setOnClickListeners() {
-        binding.textToday1.setOnClickListener{
-            ApplicationClass.prefs.date2 = datetime
-            binding.editTextDate2.setText(datetime)
-        }
-        binding.textToday2.setOnClickListener{
-            ApplicationClass.prefs.boneDate2 = datetime
-            binding.editTextBoneDate2.setText(datetime)
-        }
         binding.checkboxCatholic.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked)
                 ApplicationClass.prefs.checkCatholic = "별세"

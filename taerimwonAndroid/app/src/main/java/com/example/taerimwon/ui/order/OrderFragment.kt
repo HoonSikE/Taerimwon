@@ -524,11 +524,6 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             binding.layoutUrnList.visibility = View.VISIBLE
         }
 
-        binding.textCremationTimeToday.setOnClickListener{
-            ApplicationClass.prefs.cremationTime = datetime
-            binding.editTextCremationTime.setText(datetime)
-        }
-
         binding.buttonOrderToOrderFragment.setOnClickListener{
             ApplicationClass.prefs.resetPreferences()
             findNavController().navigate(R.id.action_orderFragment_to_orderFragment)

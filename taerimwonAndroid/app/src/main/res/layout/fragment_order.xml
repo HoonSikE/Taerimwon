@@ -211,6 +211,7 @@
                             <EditText
                                 android:id="@+id/editText_leader_department"
                                 style="@style/Body"
+                                android:textColor="#000000"
                                 android:background="@drawable/edittext_regular"
                                 android:layout_width="0dp"
                                 android:layout_height="48dp"
@@ -255,6 +256,7 @@
                             <EditText
                                 android:id="@+id/editText_leader_name"
                                 style="@style/Body"
+                                android:textColor="#000000"
                                 android:background="@drawable/edittext_regular"
                                 android:layout_width="0dp"
                                 android:layout_height="48dp"
@@ -299,6 +301,7 @@
                             <EditText
                                 android:id="@+id/editText_leader_tel"
                                 style="@style/Body"
+                                android:textColor="#000000"
                                 android:background="@drawable/edittext_regular"
                                 android:layout_width="0dp"
                                 android:layout_height="48dp"
@@ -376,6 +379,7 @@
                             <EditText
                                 android:id="@+id/editText_client_name"
                                 style="@style/Body"
+                                android:textColor="#000000"
                                 android:layout_width="0dp"
                                 android:layout_height="48dp"
                                 android:layout_marginHorizontal="16dp"
@@ -417,6 +421,7 @@
                             <EditText
                                 android:id="@+id/editText_client_tel"
                                 style="@style/Body"
+                                android:textColor="#000000"
                                 android:layout_width="0dp"
                                 android:layout_height="48dp"
                                 android:layout_marginHorizontal="16dp"
@@ -562,6 +567,7 @@
                             <EditText
                                 android:id="@+id/editText_start_area"
                                 style="@style/Body"
+                                android:textColor="#000000"
                                 android:background="@drawable/edittext_regular"
                                 android:layout_width="0dp"
                                 android:layout_height="48dp"
@@ -667,6 +673,7 @@
                                 <EditText
                                     android:id="@+id/editText_cremation_time"
                                     style="@style/Body"
+                                    android:textColor="#000000"
                                     android:background="@drawable/edittext_regular"
                                     android:layout_width="0dp"
                                     android:layout_height="48dp"
@@ -694,18 +701,6 @@
                                     app:layout_constraintTop_toTopOf="@+id/editText_cremation_time"
                                     app:srcCompat="@drawable/ic_time"
                                     />
-
-                                <TextView
-                                    android:id="@+id/text_cremation_time_today"
-                                    style="@style/BodyGreen"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="16dp"
-                                    android:text="Today"
-                                    app:layout_constraintEnd_toEndOf="@+id/editText_cremation_time"
-                                    app:layout_constraintTop_toTopOf="@id/editText_cremation_time"
-                                    app:layout_constraintBottom_toBottomOf="@id/editText_cremation_time"
-                                    />
                             </androidx.constraintlayout.widget.ConstraintLayout>
                             <!-- 장례식장 -->
                             <androidx.constraintlayout.widget.ConstraintLayout
@@ -732,6 +727,7 @@
                                 <EditText
                                     android:id="@+id/editText_funeral_name"
                                     style="@style/Body"
+                                    android:textColor="#000000"
                                     android:background="@drawable/edittext_regular"
                                     android:layout_width="0dp"
                                     android:layout_height="48dp"
@@ -777,6 +773,7 @@
                                 <EditText
                                     android:id="@+id/editText_funeral_number"
                                     style="@style/Body"
+                                    android:textColor="#000000"
                                     android:background="@drawable/edittext_regular"
                                     android:layout_width="0dp"
                                     android:layout_height="48dp"
@@ -821,6 +818,7 @@
                                 <EditText
                                     android:id="@+id/editText_funeral_time"
                                     style="@style/Body"
+                                    android:textColor="#000000"
                                     android:background="@drawable/edittext_regular"
                                     android:layout_width="0dp"
                                     android:layout_height="48dp"
@@ -875,6 +873,7 @@
                                 <EditText
                                     android:id="@+id/editText_burial_name"
                                     style="@style/Body"
+                                    android:textColor="#000000"
                                     android:background="@drawable/edittext_regular"
                                     android:layout_width="0dp"
                                     android:layout_height="48dp"
@@ -919,6 +918,7 @@
                                 <EditText
                                     android:id="@+id/editText_burial_time"
                                     style="@style/Body"
+                                    android:textColor="#000000"
                                     android:background="@drawable/edittext_regular"
                                     android:layout_width="0dp"
                                     android:layout_height="48dp"
