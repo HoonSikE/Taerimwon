@@ -1,16 +1,11 @@
 package com.example.taerimwon.ui.order
 
-import android.annotation.SuppressLint
-import android.os.Build
-import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.RadioButton
 import androidx.core.content.ContextCompat
-import androidx.core.view.isGone
 import androidx.fragment.app.viewModels
 import com.example.taerimwon.R
 import com.example.taerimwon.databinding.FragmentOrderBinding
@@ -18,15 +13,11 @@ import com.example.taerimwon.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.taerimwon.data.dto.tablet.TabletItem
 import com.example.taerimwon.data.dto.urn.UrnItem
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.home.AuthViewModel
-import com.example.taerimwon.ui.order.pyeongjang.PyeongjangContainerFragment
+import com.example.taerimwon.ui.order.add.AddContainerFragment
 import com.example.taerimwon.ui.order.tablet.TabletContainerFragment
-import com.example.taerimwon.ui.order.urn.EngraveTypeAdapter
 import com.example.taerimwon.ui.order.urn.UrnContainerFragment
 import com.example.taerimwon.ui.urnlist.UrnListAdapter
 import com.example.taerimwon.ui.urnlist.UrnListDialogFragment
@@ -461,10 +452,14 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             .replace(R.id.fragment_tablet_container, tabletFragment)
             .commit()
 
-        // Tablet Fragment 추가
-        val pyeongjangFragment = PyeongjangContainerFragment()
+        // 추가 주문 Fragment 추가
+//        val pyeongjangFragment = PyeongjangContainerFragment()
+//        childFragmentManager.beginTransaction()
+//            .replace(R.id.fragment_pyeongjang_container, pyeongjangFragment)
+//            .commit()
+        val addFragment = AddContainerFragment()
         childFragmentManager.beginTransaction()
-            .replace(R.id.fragment_pyeongjang_container, pyeongjangFragment)
+            .replace(R.id.fragment_add_container, addFragment)
             .commit()
     }
 

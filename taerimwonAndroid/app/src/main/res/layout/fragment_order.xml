@@ -998,7 +998,7 @@
                             tools:ignore="MissingConstraints"
                             />
                         <FrameLayout
-                            android:id="@+id/fragment_pyeongjang_container"
+                            android:id="@+id/fragment_add_container"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingHorizontal="8dp"
@@ -1010,7 +1010,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="10dp"
                             android:background="@color/viewColor"
-                            app:layout_constraintTop_toBottomOf="@+id/fragment_pyeongjang_container"
+                            app:layout_constraintTop_toBottomOf="@+id/fragment_add_container"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             tools:ignore="MissingConstraints"

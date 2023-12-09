@@ -1,30 +1,18 @@
 package com.example.taerimwon.ui.order.pyeongjang
 
-import android.app.Activity
-import android.content.Intent
-import android.graphics.BitmapFactory
-import android.net.Uri
 import android.text.Editable
-import android.text.InputFilter
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.taerimwon.R
 import com.example.taerimwon.base.BaseFragment
 import com.example.taerimwon.data.dto.pyeongjang.PyeongjangItem
-import com.example.taerimwon.data.dto.urn.UrnItem
 import com.example.taerimwon.databinding.FragmentPyeongjangContainerBinding
 import dagger.hilt.android.AndroidEntryPoint
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.order.OrderViewModel
-import com.example.taerimwon.ui.order.urn.UrnAutoCompleteAdapter
-import com.example.taerimwon.utils.input.saveImageToInternalStorage
-import com.example.taerimwon.utils.view.toast
-import java.lang.Math.abs
 
 
 @AndroidEntryPoint

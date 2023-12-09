@@ -1,4 +1,4 @@
-package com.example.taerimwon.ui.order.pyeongjang
+package com.example.taerimwon.ui.order.add
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,9 +9,9 @@ import android.widget.Filter
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.taerimwon.R
-import com.example.taerimwon.data.dto.pyeongjang.PyeongjangItem
+import com.example.taerimwon.data.dto.add.AddItem
 
-class PyeongjangAutoCompleteAdapter(context: Context, resource: Int, private val items: List<PyeongjangItem>) : ArrayAdapter<PyeongjangItem>(context, resource, items) {
+class AddAutoCompleteAdapter(context: Context, resource: Int, private val items: List<AddItem>) : ArrayAdapter<AddItem>(context, resource, items) {
     private val originalItems = items.toMutableList() // 원본 아이템 유지
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -19,7 +19,7 @@ class PyeongjangAutoCompleteAdapter(context: Context, resource: Int, private val
 
         if (tmpConvertView == null) {
             tmpConvertView = LayoutInflater.from(context).inflate(
-                R.layout.item_pyeongjang_list, parent, false
+                R.layout.item_add_list, parent, false
             )
         }
 
@@ -29,11 +29,11 @@ class PyeongjangAutoCompleteAdapter(context: Context, resource: Int, private val
         //getItem(position) 코드로 자동완성 될 아이템을 가져온다
 
         //getItem(position) 코드로 자동완성 될 아이템을 가져온다
-        val pyeongjangItem: PyeongjangItem? = getItem(position)
+        val addItem: AddItem? = getItem(position)
 
-        if (pyeongjangItem != null) {
-            textView.setText(pyeongjangItem.pyeongjangItem)
-            imageView.setImageResource(pyeongjangItem.flagImage)
+        if (addItem != null) {
+            textView.setText(addItem.addItem)
+            imageView.setImageResource(addItem.flagImage)
         }
         return tmpConvertView
     }
@@ -42,7 +42,7 @@ class PyeongjangAutoCompleteAdapter(context: Context, resource: Int, private val
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val filterResults = FilterResults()
-                val filteredItems = mutableListOf<PyeongjangItem>()
+                val filteredItems = mutableListOf<AddItem>()
 
                 if (constraint.isNullOrBlank()) {
                     // 검색어가 비어있으면 모든 원본 아이템을 유지합니다.
@@ -53,10 +53,10 @@ class PyeongjangAutoCompleteAdapter(context: Context, resource: Int, private val
 
 
                     for (item in originalItems) {
-                        val itemInitialSound = getInitialSounds(item.pyeongjangItem.toLowerCase().replace(" ", "").trim())
+                        val itemInitialSound = getInitialSounds(item.addItem.toLowerCase().replace(" ", "").trim())
 
                         // 여기서 초성과 부분 검색을 모두 적용합니다.
-                        if (item.pyeongjangItem.toLowerCase().replace(" ", "").trim().contains(filterPattern) || itemInitialSound.contains(filterInitialSound)) {
+                        if (item.addItem.toLowerCase().replace(" ", "").trim().contains(filterPattern) || itemInitialSound.contains(filterInitialSound)) {
                             filteredItems.add(item)
                         }
                     }
@@ -71,7 +71,7 @@ class PyeongjangAutoCompleteAdapter(context: Context, resource: Int, private val
                 // 필터링된 결과를 AutoCompleteTextView에 게시하고 표시 업데이트를 처리합니다.
                 clear()
                 if (results != null && results.count > 0) {
-                    addAll(results.values as List<PyeongjangItem>)
+                    addAll(results.values as List<AddItem>)
                 } else {
                     // 결과가 없는 경우 AutoCompleteTextView를 초기화합니다.
                     notifyDataSetInvalidated()

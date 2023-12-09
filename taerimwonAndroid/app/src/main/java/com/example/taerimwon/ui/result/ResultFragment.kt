@@ -795,7 +795,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 110
                 }
                 "휴안백십장생자개 HUG-17 12535" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_5)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_5_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn4_5))
                     layoutParamsUrnBackgound.width = 170
@@ -815,7 +815,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 110
                 }
                 "휴안홍한지십장생자개 HUG-19 13139" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_7)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_7_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn4_7))
                     layoutParamsUrnBackgound.width = 170
@@ -837,7 +837,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsRight.width = 151
                 }
                 "휴안흑십장생자개 HUG-18 12535" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_9)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_9_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn4_9))
                     layoutParamsUrnBackgound.width = 170
@@ -867,7 +867,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 70
                 }
                 "휴안궁 HU-1 8525" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_3)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_3_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn5_3))
                     layoutParamsUrnBackgound.width = 200
@@ -921,7 +921,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 70
                 }
                 "휴안명성 HU-3 8525" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_9)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_9_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn5_9))
                     layoutParamsUrnBackgound.width = 200
@@ -1043,7 +1043,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 80
                 }
                 "휴안천향 HU-2 8525" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_23)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_23_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn5_23))
                     layoutParamsUrnBackgound.width = 200
@@ -1185,7 +1185,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 140
                 }
                 "봉분천향 BOB-5 6621" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_8)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_8_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn8_8))
                     layoutParamsUrnBackgound.width = 150
@@ -1408,7 +1408,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
                 // 10. KS인증 ZEN한국도자기
                 "국화 ZE-1 11832" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_1)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_1_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_1))
                     layoutParamsUrnBackgound.width = 200
@@ -1428,7 +1428,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 90
                 }
                 "선궁 ZE-3 11832" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_3)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_3_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_3))
                     layoutParamsUrnBackgound.width = 200
@@ -1440,7 +1440,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 90
                 }
                 "소망 ZE-6 11832" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_4)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_4_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_4))
                     layoutParamsUrnBackgound.width = 200
@@ -1616,7 +1616,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet1)
                 }
                 "청연 ZE-2 11832" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_12)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_12_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_12))
                     layoutParamsUrnBackgound.width = 200
@@ -1998,7 +1998,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 110
                 }
                 "휴안백십장생자개 HUG-17 12535" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_5)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_5_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn4_5))
                     layoutParamsUrnBackgound.width = 170
@@ -2018,7 +2018,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 110
                 }
                 "휴안홍한지십장생자개 HUG-19 13139" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_7)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_7_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn4_7))
                     layoutParamsUrnBackgound.width = 170
@@ -2040,7 +2040,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsRight.width = 151
                 }
                 "휴안흑십장생자개 HUG-18 12535" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_9)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_9_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn4_9))
                     layoutParamsUrnBackgound.width = 170
@@ -2070,7 +2070,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 70
                 }
                 "휴안궁 HU-1 8525" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_3)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_3_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn5_3))
                     layoutParamsUrnBackgound.width = 200
@@ -2124,7 +2124,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 70
                 }
                 "휴안명성 HU-3 8525" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_9)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_9_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn5_9))
                     layoutParamsUrnBackgound.width = 200
@@ -2246,7 +2246,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 80
                 }
                 "휴안천향 HU-2 8525" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_23)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_23_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn5_23))
                     layoutParamsUrnBackgound.width = 200
@@ -2388,7 +2388,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 140
                 }
                 "봉분천향 BOB-5 6621" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_8)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_8_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn8_8))
                     layoutParamsUrnBackgound.width = 150
@@ -2611,7 +2611,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
                 // 10. KS인증 ZEN한국도자기
                 "국화 ZE-1 11832" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_1)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_1_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_1))
                     layoutParamsUrnBackgound.width = 200
@@ -2631,7 +2631,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 90
                 }
                 "선궁 ZE-3 11832" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_3)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_3_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_3))
                     layoutParamsUrnBackgound.width = 200
@@ -2643,7 +2643,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUnder.height = 90
                 }
                 "소망 ZE-6 11832" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_4)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_4_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_4))
                     layoutParamsUrnBackgound.width = 200
@@ -2821,7 +2821,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet1)
                 }
                 "청연 ZE-2 11832" -> {
-                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_12)
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_12_2)
 
                     imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_12))
                     layoutParamsUrnBackgound.width = 200
