@@ -555,7 +555,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                         }
                         5 -> {
                             if(tabletExample!!.contains("세로")) {
-                                tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2])
+                                tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2]).append("　")
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 37
@@ -1106,7 +1106,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                         }
                         5 -> {
                             if(tabletExample!!.contains("세로")) {
-                                tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2])
+                                tmp2.append(tabletName2[0] + "" + tabletName2[3]).append("\n").append(tabletName2[1] + "" + tabletName2[4]).append("\n").append(tabletName2[2]).append("　")
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 37
@@ -1422,7 +1422,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                         }
                         5 -> {
                             if(tabletExample!!.contains("세로")) {
-                                boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[3]).append("\n").append(boneTabletName2[1] + "" + boneTabletName2[4]).append("\n").append(boneTabletName2[2])
+                                boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[3]).append("\n").append(boneTabletName2[1] + "" + boneTabletName2[4]).append("\n").append(boneTabletName2[2]).append("　")
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 37
@@ -1923,7 +1923,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                         }
                         5 -> {
                             if(tabletExample!!.contains("세로")) {
-                                boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[3]).append("\n").append(boneTabletName2[1] + "" + boneTabletName2[4]).append("\n").append(boneTabletName2[2])
+                                boneTmp2.append(boneTabletName2[0] + "" + boneTabletName2[3]).append("\n").append(boneTabletName2[1] + "" + boneTabletName2[4]).append("\n").append(boneTabletName2[2]).append("　")
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 37
@@ -1964,7 +1964,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                             }
                         }
                     }
-                    boneTmp2.append(boneTabletName2)
+//                    boneTmp2.append(boneTabletName2)
 
                     if(tabletExample!!.contains("위/위")) {
                         layoutBoneTabletResult1.text = boneTmp2.toString()
@@ -1978,7 +1978,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
         }
         if(!tabletType.contains("본관") && !boneTabletType.contains("본관")){
-            if(flagUp && flagUp){
+            if(flagUp && flagDown){
                 binding.layoutBoneTabletResult1.visibility = View.VISIBLE
                 binding.layoutBoneTabletResult3.visibility = View.VISIBLE
                 binding.layoutBoneTablet2Result1.visibility = View.VISIBLE

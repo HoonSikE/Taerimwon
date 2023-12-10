@@ -407,6 +407,32 @@ class PreferenceUtil(context: Context) {
         set(value){
             order.edit().putString(BONEIMAGEURL, value).apply()
         }
+    // 추가 주문 1, 2, 3, 4, 5
+    var selectedAddName1 : String?
+        get() = order.getString(SELECTEDADDNAME1, "")
+        set(value){
+            order.edit().putString(SELECTEDADDNAME1, value).apply()
+        }
+    var selectedAddName2 : String?
+        get() = order.getString(SELECTEDADDNAME2, "")
+        set(value){
+            order.edit().putString(SELECTEDADDNAME2, value).apply()
+        }
+    var selectedAddName3 : String?
+        get() = order.getString(SELECTEDADDNAME3, "")
+        set(value){
+            order.edit().putString(SELECTEDADDNAME3, value).apply()
+        }
+    var selectedAddName4 : String?
+        get() = order.getString(SELECTEDADDNAME4, "")
+        set(value){
+            order.edit().putString(SELECTEDADDNAME4, value).apply()
+        }
+    var selectedAddName5 : String?
+        get() = order.getString(SELECTEDADDNAME5, "")
+        set(value){
+            order.edit().putString(SELECTEDADDNAME5, value).apply()
+        }
     // 선택된 평장 종류
     var selectedPyeongjangType : String?
         get() = order.getString(SELECTEDPYEONGJANGTYPE, "선택안함")
@@ -534,7 +560,12 @@ class PreferenceUtil(context: Context) {
         boneName3 = ""
         boneTabletName2 = ""
         boneSelectedTabletType = "선택안함"
-
+        /**추가 주문**/
+        selectedAddName1 = ""
+        selectedAddName2 = ""
+        selectedAddName3 = ""
+        selectedAddName4 = ""
+        selectedAddName5 = ""
         /**평장**/
         selectedPyeongjangType = "선택안함"
         selectedPyeongjangName = ""

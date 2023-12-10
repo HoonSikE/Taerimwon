@@ -1,8 +1,11 @@
 package com.example.taerimwon.ui.order
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.ViewTreeObserver
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.core.content.ContextCompat
@@ -88,6 +91,79 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
 
         dialog.show(childFragmentManager, "show layout zoom")
     }
+
+    private fun test(){
+        val test1 = binding.test1
+        test1.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                test1.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                val bitmap = Bitmap.createBitmap(test1.width, test1.height, Bitmap.Config.ARGB_8888)
+                val canvas = Canvas(bitmap)
+                test1.draw(canvas)
+                val imageTest = binding.imageTest1
+                imageTest.setImageBitmap(bitmap)
+
+                test1.visibility = View.GONE
+            }
+        })
+
+        val test2 = binding.test2
+        test2.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                test2.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                val bitmap = Bitmap.createBitmap(test2.width, test2.height, Bitmap.Config.ARGB_8888)
+                val canvas = Canvas(bitmap)
+                test2.draw(canvas)
+                val imageTest = binding.imageTest2
+                imageTest.setImageBitmap(bitmap)
+
+                test2.visibility = View.GONE
+            }
+        })
+
+        val test3 = binding.test3
+        test3.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                test3.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                val bitmap = Bitmap.createBitmap(test3.width, test3.height, Bitmap.Config.ARGB_8888)
+                val canvas = Canvas(bitmap)
+                test3.draw(canvas)
+                val imageTest = binding.imageTest3
+                imageTest.setImageBitmap(bitmap)
+
+                test3.visibility = View.GONE
+            }
+        })
+
+        val test4 = binding.test4
+        test4.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                test4.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                val bitmap = Bitmap.createBitmap(test4.width, test4.height, Bitmap.Config.ARGB_8888)
+                val canvas = Canvas(bitmap)
+                test4.draw(canvas)
+                val imageTest = binding.imageTest4
+                imageTest.setImageBitmap(bitmap)
+
+                test4.visibility = View.GONE
+            }
+        })
+
+        val test5 = binding.test5
+        test5.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                test5.viewTreeObserver.removeOnGlobalLayoutListener(this)
+                val bitmap = Bitmap.createBitmap(test5.width, test5.height, Bitmap.Config.ARGB_8888)
+                val canvas = Canvas(bitmap)
+                test5.draw(canvas)
+                val imageTest = binding.imageTest5
+                imageTest.setImageBitmap(bitmap)
+
+                test5.visibility = View.GONE
+            }
+        })
+    }
+
     // 유골함 리스트
     private fun initAdapter(){
         // 1
@@ -288,6 +364,9 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             binding.layoutButtonOrder.visibility = View.VISIBLE
             binding.layoutUrnList.visibility = View.GONE
         }
+        else{
+            test()
+        }
 //        authViewModel.getBlackList()
 //        if (!ApplicationClass.prefs.authenticated)
 //            findNavController().navigate(R.id.action_orderFragment_to_phoneAuthFragment)
@@ -401,7 +480,8 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             binding.spinnerCremationArea2.setSelection(cremationAreasList2.indexOf(ApplicationClass.prefs.cremationArea2))
             
             binding.editTextCremationTime.setText(ApplicationClass.prefs.cremationTime)
-        }else if(selectedLocation == "장례식장"){
+        }
+        else if(selectedLocation == "장례식장"){
             // style 변경
             binding.button1.setTextColor(blackColor)
             // background 변경
@@ -420,7 +500,8 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             binding.editTextFuneralName.setText(ApplicationClass.prefs.funeralName)
             binding.editTextFuneralNumber.setText(ApplicationClass.prefs.funeralNumber)
             binding.editTextFuneralTime.setText(ApplicationClass.prefs.funeralTime)
-        }else if(selectedLocation == "장지"){
+        }
+        else if(selectedLocation == "장지"){
             // style 변경
             binding.button1.setTextColor(blackColor)
             // background 변경
@@ -483,6 +564,8 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             binding.layoutOrder.visibility = View.GONE
             binding.layoutButtonOrder.visibility = View.GONE
             binding.layoutUrnList.visibility = View.GONE
+
+            test()
         }
         binding.menuButton2.setOnClickListener {
             // style 변경

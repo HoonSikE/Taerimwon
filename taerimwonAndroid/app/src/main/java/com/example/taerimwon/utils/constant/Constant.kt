@@ -101,6 +101,12 @@ const val BONESELECTEDTABLETTYPE = "boneSelectedTabletType"
 
 const val TABLETEXAMPLE = "tabletExample"
 
+/**추가주문**/
+const val SELECTEDADDNAME1 = "selectedAddName1"
+const val SELECTEDADDNAME2 = "selectedAddName2"
+const val SELECTEDADDNAME3 = "selectedAddName3"
+const val SELECTEDADDNAME4 = "selectedAddName4"
+const val SELECTEDADDNAME5 = "selectedAddName5"
 
 /**평장**/
 // 선택된 평장 종류

@@ -809,7 +809,7 @@
                     android:background="@drawable/button_gray"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
-                    android:text="위세/위세"
+                    android:text="위/위(세로)"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/menuButton2"
