@@ -138,33 +138,58 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         // 최초 크기 저장
         initialWidth1 = binding.layoutResultImage1.width
         initialHeight1 = binding.layoutResultImage1.height
+        println("initialWidth1 " + initialWidth1)
+        println("initialHeight1 " + initialHeight1)
 
         initialWidth1_1 = binding.layoutTabletResultImage.width
         initialHeight1_1 = binding.layoutTabletResultImage.height
+        println("initialWidth11 " + initialWidth1_1)
+        println("initialHeight11 " + initialHeight1_1)
 
         initialWidth1_2 = binding.layoutTabletPhoto.width
         initialHeight1_2 = binding.layoutTabletPhoto.height
+        println("initialWidth12 " + initialWidth1_2)
+        println("initialHeight12 " + initialHeight1_2)
+
+        initialWidth1_3 = binding.layoutUrnResultImage12.width
+        initialHeight1_3 = binding.layoutUrnResultImage12.height
+        println("initialWidth13 " + initialWidth1_3)
+        println("initialHeight13 " + initialHeight1_3)
 
         initialWidth1_4 = binding.layoutUrnResultImage.width
         initialHeight1_4 = binding.layoutUrnResultImage.height
+        println("initialWidth14 " + initialWidth1_4)
+        println("initialHeight14 " + initialHeight1_4)
 
         initialWidth1_5 = binding.layoutUrnResultImage22.width
         initialHeight1_5 = binding.layoutUrnResultImage22.height
+        println("initialWidth15 " + initialWidth1_5)
+        println("initialHeight15 " + initialHeight1_5)
 
         initialWidth1_6 = binding.layoutUrnResultImage2.width
         initialHeight1_6 = binding.layoutUrnResultImage2.height
+        println("initialWidth16 " + initialWidth1_6)
+        println("initialHeight16 " + initialHeight1_6)
 
         initialWidth1_7 = binding.layoutBoneResultImage.width
         initialHeight1_7 = binding.layoutBoneResultImage.height
+        println("initialWidth17 " + initialWidth1_7)
+        println("initialHeight17 " + initialHeight1_7)
 
         initialWidth1_8 = binding.layoutBone2ResultImage.width
         initialHeight1_8 = binding.layoutBone2ResultImage.height
+        println("initialWidth18 " + initialWidth1_8)
+        println("initialHeight18 " + initialHeight1_8)
 
         initialWidth1_9 = binding.layoutTablet2ResultImage.width
         initialHeight1_9 = binding.layoutTablet2ResultImage.height
+        println("initialWidth19 " + initialWidth1_9)
+        println("initialHeight19 " + initialHeight1_9)
 
         initialWidth1_10 = binding.layoutBoneTabletResultImage.width
         initialHeight1_10 = binding.layoutBoneTabletResultImage.height
+        println("initialWidth110 " + initialWidth1_10)
+        println("initialHeight110 " + initialHeight1_10)
 
         initialWidth2 = binding.layoutResultImage3.width
         initialHeight2 = binding.layoutResultImage3.height
@@ -195,6 +220,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         initialHeight2_5_2 = binding.layoutAddResultImage52.height
     }
     private fun updateImageSize1() {
+        println("scaleFactor1 " + scaleFactor1)
+
         val params1_1 = binding.layoutTabletResultImage.layoutParams
         params1_1.width = (initialWidth1_1 * scaleFactor1).toInt()
         params1_1.height = (initialHeight1_1 * scaleFactor1).toInt()
@@ -243,7 +270,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         val params1_10 = binding.layoutBoneTabletResultImage.layoutParams
         params1_10.width = (initialWidth1_10 * scaleFactor1).toInt()
         params1_10.height = (initialHeight1_10 * scaleFactor1).toInt()
-        binding.layoutBoneTabletResultImage.layoutParams = params1_9
+        binding.layoutBoneTabletResultImage.layoutParams = params1_10
     }
     private fun updateImageSize2() {
         val params2_1 = binding.layoutAddResultImage1.layoutParams
@@ -3138,13 +3165,18 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         // 결과 이미지
         var layoutAddResultImage = binding.layoutAddResultImage1
+
         layoutAddResultImage.visibility = View.VISIBLE
 
+        var layoutParams = layoutAddResultImage.layoutParams
         val density = resources.displayMetrics.density
-        var layoutParams2 = ViewGroup.LayoutParams(
-            (135 * density).toInt(),
-            (150 * density).toInt()
-        )
+        layoutParams.width = (135 * density).toInt()
+        layoutParams.height = (150 * density).toInt()
+
+//        var layoutParams2 = ViewGroup.LayoutParams(
+//            (135 * density).toInt(),
+//            (150 * density).toInt()
+//        )
         // 조각 위패
         var layoutAddResultImage2 = binding.layoutAddResultImage12
 
@@ -3156,10 +3188,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_2)
             }
@@ -3167,10 +3198,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_3)
             }
@@ -3178,10 +3208,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_4)
             }
@@ -3189,10 +3218,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_5)
             }
@@ -3567,10 +3595,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
             }
@@ -3578,10 +3605,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet2)
             }
@@ -3589,10 +3615,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet3)
             }
@@ -3600,17 +3625,17 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet4)
             }
         }
 //        layoutAdd.visibility = View.VISIBLE
 //        layoutAddImage.layoutParams = layoutParams
-        layoutAddResultImage.layoutParams = layoutParams2
+        layoutAddResultImage.layoutParams = layoutParams
+//        layoutAddResultImage.layoutParams = layoutParams2
 //        layoutAddImage.background = newBackground
         layoutAddResultImage.background = newBackground
     }
@@ -3619,13 +3644,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         // 결과 이미지
         var layoutAddResultImage = binding.layoutAddResultImage2
+
         layoutAddResultImage.visibility = View.VISIBLE
 
+        var layoutParams = layoutAddResultImage.layoutParams
         val density = resources.displayMetrics.density
-        var layoutParams2 = ViewGroup.LayoutParams(
-            (135 * density).toInt(),
-            (150 * density).toInt()
-        )
+        layoutParams.width = (135 * density).toInt()
+        layoutParams.height = (150 * density).toInt()
+
         // 조각 위패
         var layoutAddResultImage2 = binding.layoutAddResultImage22
 
@@ -3637,10 +3663,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_2)
             }
@@ -3648,10 +3673,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_3)
             }
@@ -3659,10 +3683,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_4)
             }
@@ -3670,10 +3693,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_5)
             }
@@ -4048,10 +4070,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
             }
@@ -4059,10 +4080,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet2)
             }
@@ -4070,10 +4090,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet3)
             }
@@ -4081,15 +4100,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet4)
             }
         }
-        layoutAddResultImage.layoutParams = layoutParams2
+        layoutAddResultImage.layoutParams = layoutParams
         layoutAddResultImage.background = newBackground
     }
     private fun setAddData3() {
@@ -4097,13 +4115,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         // 결과 이미지
         var layoutAddResultImage = binding.layoutAddResultImage3
+
         layoutAddResultImage.visibility = View.VISIBLE
 
+        var layoutParams = layoutAddResultImage.layoutParams
         val density = resources.displayMetrics.density
-        var layoutParams2 = ViewGroup.LayoutParams(
-            (135 * density).toInt(),
-            (150 * density).toInt()
-        )
+        layoutParams.width = (135 * density).toInt()
+        layoutParams.height = (150 * density).toInt()
+
         // 조각 위패
         var layoutAddResultImage2 = binding.layoutAddResultImage32
 
@@ -4115,10 +4134,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_2)
             }
@@ -4126,10 +4144,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_3)
             }
@@ -4137,10 +4154,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_4)
             }
@@ -4148,10 +4164,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_5)
             }
@@ -4526,10 +4541,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
             }
@@ -4537,10 +4551,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet2)
             }
@@ -4548,10 +4561,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet3)
             }
@@ -4559,15 +4571,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet4)
             }
         }
-        layoutAddResultImage.layoutParams = layoutParams2
+        layoutAddResultImage.layoutParams = layoutParams
         layoutAddResultImage.background = newBackground
     }
     private fun setAddData4() {
@@ -4575,13 +4586,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         // 결과 이미지
         var layoutAddResultImage = binding.layoutAddResultImage4
+
         layoutAddResultImage.visibility = View.VISIBLE
 
+        var layoutParams = layoutAddResultImage.layoutParams
         val density = resources.displayMetrics.density
-        var layoutParams2 = ViewGroup.LayoutParams(
-            (135 * density).toInt(),
-            (150 * density).toInt()
-        )
+        layoutParams.width = (135 * density).toInt()
+        layoutParams.height = (150 * density).toInt()
+
         // 조각 위패
         var layoutAddResultImage2 = binding.layoutAddResultImage42
 
@@ -4593,10 +4605,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_2)
             }
@@ -4604,10 +4615,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_3)
             }
@@ -4615,10 +4625,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_4)
             }
@@ -4626,10 +4635,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_5)
             }
@@ -5004,10 +5012,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
             }
@@ -5015,10 +5022,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet2)
             }
@@ -5026,10 +5032,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet3)
             }
@@ -5037,15 +5042,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet4)
             }
         }
-        layoutAddResultImage.layoutParams = layoutParams2
+        layoutAddResultImage.layoutParams = layoutParams
         layoutAddResultImage.background = newBackground
     }
     private fun setAddData5() {
@@ -5053,13 +5057,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         // 결과 이미지
         var layoutAddResultImage = binding.layoutAddResultImage5
+
         layoutAddResultImage.visibility = View.VISIBLE
 
+        var layoutParams = layoutAddResultImage.layoutParams
         val density = resources.displayMetrics.density
-        var layoutParams2 = ViewGroup.LayoutParams(
-            (135 * density).toInt(),
-            (150 * density).toInt()
-        )
+        layoutParams.width = (135 * density).toInt()
+        layoutParams.height = (150 * density).toInt()
+
         // 조각 위패
         var layoutAddResultImage2 = binding.layoutAddResultImage52
 
@@ -5071,10 +5076,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_2)
             }
@@ -5082,10 +5086,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_3)
             }
@@ -5093,10 +5096,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_4)
             }
@@ -5104,10 +5106,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 540
 //                layoutParams.height = 300
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (135 * density).toInt(),
-                    (75 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (135 * density).toInt()
+                layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_5)
             }
@@ -5482,10 +5483,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
             }
@@ -5493,10 +5493,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet2)
             }
@@ -5504,10 +5503,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet3)
             }
@@ -5515,15 +5513,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 130
 //                layoutParams.height = 410
 
-                layoutParams2 = ViewGroup.LayoutParams(
-                    (50 * density).toInt(),
-                    (120 * density).toInt()
-                )
+                layoutParams = layoutAddResultImage.layoutParams
+                layoutParams.width = (50 * density).toInt()
+                layoutParams.height = (120 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet4)
             }
         }
-        layoutAddResultImage.layoutParams = layoutParams2
+        layoutAddResultImage.layoutParams = layoutParams
         layoutAddResultImage.background = newBackground
     }
     private fun setMsg() {
