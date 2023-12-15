@@ -505,6 +505,20 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/layout_result_image3_0" />
+
+                    <TextView
+                        android:id="@+id/text_add"
+                        style="@style/Body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="시안요청은 별도로 보내주세요."
+                        android:textColor="@color/redTextColor"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/seekbar_zoom2"
+                        tools:viewBindingIgnore="true" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <View

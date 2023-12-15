@@ -408,7 +408,6 @@ class PreferenceUtil(context: Context) {
             order.edit().putString(BONEIMAGEURL, value).apply()
         }
     // 추가 주문 1, 2, 3, 4, 5
-    // 추가 주문 1, 2, 3, 4, 5
     var selectedAddName1 : String?
         get() = order.getString(SELECTEDADDNAME1, "")
         set(value){
