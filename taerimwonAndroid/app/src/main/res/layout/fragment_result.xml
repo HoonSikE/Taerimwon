@@ -512,7 +512,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="시안요청은 별도로 보내주세요."
+                        android:text="[시안요청은 별도로 보내주세요.]"
                         android:textColor="@color/redTextColor"
                         android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
