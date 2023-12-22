@@ -1,3 +1,6 @@
+# Git에 업로드가 덜 된 부분은 연휴 이후 업로드 예정
+# 개선 UX/UI, Web, 기능 설명 중 생략된 코드 등
+
 <div align="center">
   <img width="70%;" src="./README/img_logo.png" />
 <br/>  
