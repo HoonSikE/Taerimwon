@@ -40,7 +40,7 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
     }
 
     private fun initData() {
-        findNavController().navigate(R.id.action_phoneAuthFragment_to_orderFragment)
+        findNavController().navigate(R.id.action_phoneAuthFragment_to_homeFragment)
 
         authViewModel.getBlackList()
 
@@ -131,7 +131,7 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
                     val blackListItems = state.data // 실제 데이터를 얻기 위해 data 속성을 사용
                     if(ApplicationClass.prefs.authenticated) {
                         timer?.cancel()
-                        findNavController().navigate(R.id.action_phoneAuthFragment_to_orderFragment)
+                        findNavController().navigate(R.id.action_phoneAuthFragment_to_homeFragment)
                     }
                     binding.textTel.visibility = View.VISIBLE
                     binding.editTextTel.visibility = View.VISIBLE
