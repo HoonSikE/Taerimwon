@@ -68,7 +68,7 @@
             android:layout_height="0dp"
             android:layout_marginBottom="12dp"
             android:fillViewport="true"
-            app:layout_constraintBottom_toTopOf="@+id/button_result_to_order_fragment"
+            app:layout_constraintBottom_toTopOf="@+id/button_MMS"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -155,7 +155,6 @@
                                     app:layout_constraintEnd_toStartOf="@+id/layout_urn_result_image1_2"
                                     app:layout_constraintStart_toEndOf="@+id/layout_tablet_result_image"
                                     tools:ignore="MissingConstraints">
-
                                     <ImageView
                                         android:id="@+id/image_add_photo"
                                         android:layout_width="90dp"
@@ -175,7 +174,8 @@
                                     android:visibility="gone"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toStartOf="@+id/layout_urn_result_image"
-                                    app:layout_constraintStart_toEndOf="@+id/layout_tablet_photo"></androidx.constraintlayout.widget.ConstraintLayout>
+                                    app:layout_constraintStart_toEndOf="@+id/layout_tablet_photo">
+                                </androidx.constraintlayout.widget.ConstraintLayout>
 
                                 <ImageView
                                     android:id="@+id/layout_urn_result_image"
@@ -194,7 +194,8 @@
                                     android:visibility="gone"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toStartOf="@+id/layout_urn_result_image2"
-                                    app:layout_constraintStart_toEndOf="@+id/layout_urn_result_image"></androidx.constraintlayout.widget.ConstraintLayout>
+                                    app:layout_constraintStart_toEndOf="@+id/layout_urn_result_image">
+                                </androidx.constraintlayout.widget.ConstraintLayout>
 
                                 <ImageView
                                     android:id="@+id/layout_urn_result_image2"
@@ -340,7 +341,6 @@
                         app:layout_constraintTop_toBottomOf="@+id/seekbar_zoom1"
                         tools:viewBindingIgnore="true"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <View
                     android:id="@+id/View2"
                     android:layout_width="match_parent"
@@ -545,13 +545,11 @@
                         android:layout_marginTop="8dp"
                         android:text="[시안요청은 별도로 보내주세요.]"
                         android:textColor="@color/redTextColor"
-                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/seekbar_zoom2"
                         tools:viewBindingIgnore="true" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <View
                     android:id="@+id/View3"
                     android:layout_width="match_parent"
@@ -562,12 +560,27 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layout_result_title_image3"
                     tools:ignore="MissingConstraints" />
+                <!--특이사항 안내-->
+                <!--결과 텍스트(특이사항)-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_result_text2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/View3">
+
+                    <FrameLayout
+                        android:id="@+id/fragment_result_container2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
                 <!--결과 텍스트(기본 정보)-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_result_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/View3">
+                    app:layout_constraintTop_toBottomOf="@+id/layout_result_text2">
 
                     <FrameLayout
                         android:id="@+id/fragment_result_container"
@@ -620,21 +633,6 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-                <!--특이사항 안내-->
-                <!--결과 텍스트(특이사항)-->
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/layout_result_text2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_add_result_text">
-
-                    <FrameLayout
-                        android:id="@+id/fragment_result_container2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
                 <!--배경에 내용 추가-->
                 <!--유골함-->
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -643,13 +641,12 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_result_text2">
+                    app:layout_constraintTop_toBottomOf="@+id/layout_result_text">
                     <!--유골함-->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/layout_urn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         app:layout_constraintEnd_toStartOf="@+id/layout_urn2"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -658,7 +655,7 @@
                             android:id="@+id/layout_urn_image"
                             android:layout_width="540px"
                             android:layout_height="600px"
-                            android:background="@drawable/img_urn3_6"
+                            android:background="@drawable/img_urn4_1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
@@ -705,7 +702,7 @@
                             <ImageView
                                 android:id="@+id/image_urn_image_under"
                                 android:layout_width="190px"
-                                android:layout_height="90px"
+                                android:layout_height="100px"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"/>
@@ -1069,7 +1066,7 @@
                     <!--                        </androidx.constraintlayout.widget.ConstraintLayout>-->
                     <!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
+                <!--FrameLayout-->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_result_content"
                     android:layout_width="1dp"
@@ -1084,6 +1081,7 @@
                     <!--유골함 내용-->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/layout_result_content1"
+                        android:background="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="10px"
@@ -1095,8 +1093,8 @@
                         <!--위패 내용-->
                         <FrameLayout
                             android:id="@+id/fragment_tablet_content"
-                            android:layout_width="75px"
-                            android:layout_height="210px"
+                            android:layout_width="275px"
+                            android:layout_height="630px"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/fragment_urn_content"
@@ -1104,8 +1102,8 @@
                         <!--유골함 내용-->
                         <FrameLayout
                             android:id="@+id/fragment_urn_content"
-                            android:layout_width="180px"
-                            android:layout_height="300px"
+                            android:layout_width="540px"
+                            android:layout_height="900px"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/fragment_urn_content2"
@@ -1113,8 +1111,8 @@
                         <!--유골함 내용-->
                         <FrameLayout
                             android:id="@+id/fragment_urn_content2"
-                            android:layout_width="180px"
-                            android:layout_height="300px"
+                            android:layout_width="540px"
+                            android:layout_height="900px"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/fragment_bone_content"
@@ -1122,8 +1120,8 @@
                         <!--합골 추가 내용-->
                         <FrameLayout
                             android:id="@+id/fragment_bone_content"
-                            android:layout_width="180px"
-                            android:layout_height="300px"
+                            android:layout_width="540px"
+                            android:layout_height="900px"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/fragment_bone2_content"
@@ -1131,8 +1129,8 @@
                         <!--합골2 추가 내용-->
                         <FrameLayout
                             android:id="@+id/fragment_bone2_content"
-                            android:layout_width="210px"
-                            android:layout_height="300px"
+                            android:layout_width="630px"
+                            android:layout_height="900px"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/fragment_tablet2_content"
@@ -1140,8 +1138,8 @@
                         <!--위패 내용-->
                         <FrameLayout
                             android:id="@+id/fragment_tablet2_content"
-                            android:layout_width="75px"
-                            android:layout_height="210px"
+                            android:layout_width="275px"
+                            android:layout_height="630px"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/fragment_bone_tablet_content"
@@ -1149,8 +1147,8 @@
                         <!--합골 위패-->
                         <FrameLayout
                             android:id="@+id/fragment_bone_tablet_content"
-                            android:layout_width="75px"
-                            android:layout_height="210px"
+                            android:layout_width="225px"
+                            android:layout_height="630px"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -1161,33 +1159,14 @@
         </androidx.core.widget.NestedScrollView>
 
         <TextView
-            android:id="@+id/button_result_to_order_fragment"
-            style="@style/BackButtonText"
-            android:background="@drawable/button_back"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button_MMS"
-            android:text="이전으로"
-            android:gravity="center"
-            />
-
-        <TextView
             android:id="@+id/button_MMS"
             style="@style/ButtonText"
             android:background="@drawable/button_regular"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button_result_to_order_fragment"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="주문하기"
             android:gravity="center"

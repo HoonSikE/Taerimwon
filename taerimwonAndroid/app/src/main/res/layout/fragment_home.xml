@@ -5,7 +5,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/linearBackground">
+        android:background="@color/white"
+        >
 
         <ImageView
             android:id="@+id/image_home_logo"
@@ -13,6 +14,7 @@
             android:layout_width="300dp"
             android:layout_height="150dp"
             android:src="@drawable/img_logo"
+            android:adjustViewBounds="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -20,43 +22,92 @@
 
         <ImageView
             android:id="@+id/image_slide"
-            android:layout_marginTop="50dp"
-            android:layout_width="300dp"
-            android:layout_height="200dp"
-            android:src="@drawable/img_logo"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_slide1"
+            android:adjustViewBounds="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_home_logo"
             />
 
-        <ImageView
-            android:id="@+id/image_home_to_order"
-            android:layout_marginTop="50dp"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/img_logo"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_home_to_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/image_slide"
+            app:layout_constraintBottom_toTopOf="@+id/image_footer"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/image_home_to_urnlist"
-            app:layout_constraintTop_toBottomOf="@+id/image_slide"
-            />
+            app:layout_constraintEnd_toStartOf="@+id/layout_home_to_urnlist"
+            >
+            <ImageView
+                android:id="@+id/image_home_to_order"
+                android:background="@drawable/view_radius"
+                android:paddingVertical="8dp"
+                android:layout_width="160dp"
+                android:layout_height="170dp"
+                android:src="@drawable/img_order"
+                android:adjustViewBounds="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
-        <ImageView
-            android:id="@+id/image_home_to_urnlist"
-            android:layout_marginTop="50dp"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/img_logo"
-            app:layout_constraintStart_toEndOf="@+id/image_home_to_order"
-            app:layout_constraintEnd_toEndOf="parent"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주문하기"
+                android:layout_marginTop="4dp"
+                style="@style/SubHeadBold"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="@+id/image_home_to_order"
+                app:layout_constraintEnd_toEndOf="@+id/image_home_to_order"
+                app:layout_constraintTop_toBottomOf="@+id/image_home_to_order"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_home_to_urnlist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/image_slide"
-            />
+            app:layout_constraintBottom_toTopOf="@+id/image_footer"
+            app:layout_constraintStart_toEndOf="@+id/layout_home_to_order"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+            <ImageView
+                android:id="@+id/image_home_to_urnlist"
+                android:background="@drawable/view_radius"
+                android:paddingVertical="8dp"
+                android:layout_width="160dp"
+                android:layout_height="170dp"
+                android:src="@drawable/img_urnlist"
+                android:adjustViewBounds="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="유골함 목록"
+                android:layout_marginTop="4dp"
+                style="@style/SubHeadBold"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="@+id/image_home_to_urnlist"
+                app:layout_constraintEnd_toEndOf="@+id/image_home_to_urnlist"
+                app:layout_constraintTop_toBottomOf="@+id/image_home_to_urnlist"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
             android:id="@+id/image_footer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
             android:src="@drawable/img_footer"
+            android:adjustViewBounds="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

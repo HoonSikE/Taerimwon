@@ -5,8 +5,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_result_content"
-        android:layout_width="75px"
-        android:layout_height="210px"
+        android:layout_width="225px"
+        android:layout_height="630px"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -15,8 +15,8 @@
         <!--합골 위패-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_bone_tablet_content"
-            android:layout_width="75px"
-            android:layout_height="210px"
+            android:layout_width="225px"
+            android:layout_height="630px"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -25,7 +25,7 @@
             <!--공통 마크-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_bone_tablet_mark0"
-                android:layout_width="75px"
+                android:layout_width="225px"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -34,10 +34,10 @@
                 <!--마크-->
                 <TextView
                     android:id="@+id/layout_bone_tablet_result0_0"
-                    android:layout_width="30px"
-                    android:layout_height="30px"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
                     android:text="故"
-                    android:textSize="25px"
+                    android:textSize="75px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/hyhaeso"
                     android:textFontWeight="300"
@@ -49,8 +49,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_bone_tablet_result0_1"
-                    android:layout_width="25px"
-                    android:layout_height="25px"
+                    android:layout_width="75px"
+                    android:layout_height="75px"
                     android:layout_marginTop="5px"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
             <!--위패 마크 1-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_bone_tablet_mark1"
-                android:layout_width="37.5px"
+                android:layout_width="112.5px"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_mark0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -71,10 +71,10 @@
                 <!--마크-->
                 <TextView
                     android:id="@+id/layout_bone_tablet_result1_0"
-                    android:layout_width="35px"
-                    android:layout_height="35px"
+                    android:layout_width="105px"
+                    android:layout_height="105px"
                     android:text="故"
-                    android:textSize="30px"
+                    android:textSize="90px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/hyhaeso"
                     android:textFontWeight="300"
@@ -86,8 +86,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_bone_tablet_result1_2"
-                    android:layout_width="30px"
-                    android:layout_height="30px"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
                     android:layout_marginTop="5px"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -99,7 +99,7 @@
             <!--위패 마크 2-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_bone_tablet_mark2"
-                android:layout_width="37.5px"
+                android:layout_width="112.5px"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_mark0"
                 app:layout_constraintStart_toEndOf="@+id/layout_bone_tablet_mark1"
@@ -108,10 +108,10 @@
                 <!--마크-->
                 <TextView
                     android:id="@+id/layout_bone_tablet2_result1_0"
-                    android:layout_width="35px"
-                    android:layout_height="35px"
+                    android:layout_width="105px"
+                    android:layout_height="105px"
                     android:text="故"
-                    android:textSize="30px"
+                    android:textSize="90px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/hyhaeso"
                     android:textFontWeight="300"
@@ -123,8 +123,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_bone_tablet2_result1_2"
-                    android:layout_width="30px"
-                    android:layout_height="30px"
+                    android:layout_width="90px"
+                    android:layout_height="90px"
                     android:layout_marginTop="5px"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -136,7 +136,7 @@
             <!--위패 내용 1-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_bone_tablet_content1"
-                android:layout_width="37.5px"
+                android:layout_width="112.5px"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/layout_bone_tablet_content2"
@@ -144,11 +144,11 @@
                 >
                 <TextView
                     android:id="@+id/layout_bone_tablet_result1"
-                    android:layout_width="37.5px"
+                    android:layout_width="112.5px"
                     android:layout_height="wrap_content"
-                    android:minHeight="20px"
+                    android:minHeight="60px"
                     android:text=""
-                    android:textSize="15px"
+                    android:textSize="45px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/hygungso"
                     android:textFontWeight="300"
@@ -160,18 +160,18 @@
                     />
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_bone_tablet_result2"
-                    android:layout_width="37.5px"
-                    android:layout_height="210px"
+                    android:layout_width="112.5px"
+                    android:layout_height="630px"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result1"
                     >
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_1"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -182,10 +182,10 @@
                         />
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_2"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -198,10 +198,10 @@
                         />
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_3"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -214,10 +214,10 @@
                         />
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_4"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -230,10 +230,10 @@
                         />
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_5"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -246,10 +246,10 @@
                         />
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_6"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -262,10 +262,10 @@
                         />
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_7"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -278,10 +278,10 @@
                         />
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_8"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -294,10 +294,10 @@
                         />
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_9"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -309,11 +309,11 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 <TextView
                     android:id="@+id/layout_bone_tablet_result3"
-                    android:layout_width="37.5px"
+                    android:layout_width="112.5px"
                     android:layout_height="wrap_content"
-                    android:minHeight="20px"
+                    android:minHeight="60px"
                     android:text=""
-                    android:textSize="15px"
+                    android:textSize="45px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/hygungso"
                     android:textFontWeight="300"
@@ -328,20 +328,20 @@
             <!--위패 내용 2-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_bone_tablet_content2"
-                android:layout_width="37.5px"
+                android:layout_width="112.5px"
                 android:layout_height="wrap_content"
-                android:minWidth="30px"
+                android:minWidth="90px"
                 app:layout_constraintStart_toEndOf="@+id/layout_bone_tablet_content1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_mark2"
                 >
                 <TextView
                     android:id="@+id/layout_bone_tablet2_result1"
-                    android:layout_width="37.5px"
+                    android:layout_width="112.5px"
                     android:layout_height="wrap_content"
-                    android:minHeight="20px"
+                    android:minHeight="60px"
                     android:text=""
-                    android:textSize="15px"
+                    android:textSize="45px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/hygungso"
                     android:textFontWeight="300"
@@ -353,18 +353,18 @@
                     />
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_bone_tablet2_result2"
-                    android:layout_width="37.5px"
-                    android:layout_height="210px"
+                    android:layout_width="112.5px"
+                    android:layout_height="630px"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet2_result1"
                     >
                     <TextView
                         android:id="@+id/layout_bone_tablet2_result2_1"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -375,10 +375,10 @@
                         />
                     <TextView
                         android:id="@+id/layout_bone_tablet2_result2_2"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -391,10 +391,10 @@
                         />
                     <TextView
                         android:id="@+id/layout_bone_tablet2_result2_3"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -407,10 +407,10 @@
                         />
                     <TextView
                         android:id="@+id/layout_bone_tablet2_result2_4"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -423,10 +423,10 @@
                         />
                     <TextView
                         android:id="@+id/layout_bone_tablet2_result2_5"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -439,10 +439,10 @@
                         />
                     <TextView
                         android:id="@+id/layout_bone_tablet2_result2_6"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -458,7 +458,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -471,10 +471,10 @@
                         />
                     <TextView
                         android:id="@+id/layout_bone_tablet2_result2_8"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -487,10 +487,10 @@
                         />
                     <TextView
                         android:id="@+id/layout_bone_tablet2_result2_9"
-                        android:layout_width="20px"
-                        android:layout_height="20px"
+                        android:layout_width="60px"
+                        android:layout_height="60px"
                         android:text="희"
-                        android:textSize="20px"
+                        android:textSize="60px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -503,11 +503,11 @@
 
                 <TextView
                     android:id="@+id/layout_bone_tablet2_result3"
-                    android:layout_width="37.5px"
+                    android:layout_width="112.5px"
                     android:layout_height="wrap_content"
-                    android:minHeight="20px"
+                    android:minHeight="60px"
                     android:text=""
-                    android:textSize="15px"
+                    android:textSize="45px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/hygungso"
                     android:textFontWeight="300"
@@ -520,10 +520,10 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
             <TextView
                 android:id="@+id/layout_bone_tablet_result_under"
-                android:layout_width="37.5px"
-                android:layout_height="20px"
+                android:layout_width="112.5px"
+                android:layout_height="60px"
                 android:text="밑글자"
-                android:textSize="15px"
+                android:textSize="45px"
                 android:textColor="@color/black"
                 android:fontFamily="@font/hygungso"
                 android:textFontWeight="300"

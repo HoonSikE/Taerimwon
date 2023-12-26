@@ -108,10 +108,10 @@ class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layou
     }
     private fun setTablet2Data() {
         setTable2Mark()
-        val pixel_size_13 = resources.getDimensionPixelSize(R.dimen.pixel_size_13)
-        val pixel_size_15 = resources.getDimensionPixelSize(R.dimen.pixel_size_15)
-        val pixel_size_17_5 = resources.getDimensionPixelSize(R.dimen.pixel_size_17_5)
-        val pixel_size_20 = resources.getDimensionPixelSize(R.dimen.pixel_size_20)
+        val pixel_size_39 = resources.getDimensionPixelSize(R.dimen.pixel_size_39)
+        val pixel_size_45 = resources.getDimensionPixelSize(R.dimen.pixel_size_45)
+        val pixel_size_52_5 = resources.getDimensionPixelSize(R.dimen.pixel_size_52_5)
+        val pixel_size_60 = resources.getDimensionPixelSize(R.dimen.pixel_size_60)
 
         if(selectedTabletName2!!.contains("검정")){
             binding.layoutTablet2Result0.setTextColor(Color.parseColor("#FFD700"))
@@ -241,7 +241,7 @@ class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layou
                             layoutTablet2Result22.letterSpacing = -0.15f
                         }
                         6 -> {
-                            layoutTablet2Result22.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
+                            layoutTablet2Result22.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_39.toFloat())
                             layoutTablet2Result22.letterSpacing = -0.17f
                         }
                     }
@@ -269,13 +269,13 @@ class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layou
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
                                 .append("\n").append(boneName3[6]).append("\n").append(boneName3[7])
-                            layoutTablet2Result0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutTablet2Result0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_60.toFloat())
                         }
                         9 -> {
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
                                 .append("\n").append(boneName3[6]).append("\n").append(boneName3[7]).append("\n").append(boneName3[8])
-                            layoutTablet2Result0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_17_5.toFloat())
+                            layoutTablet2Result0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_52_5.toFloat())
                         }
                     }
                     layoutTablet2Result0.text = boneTmp.toString()
@@ -304,7 +304,7 @@ class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layou
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
                                 .append("\n").append(boneName3[6])
-                            layoutTablet2Result3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
+                            layoutTablet2Result3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
                             layoutTablet2Result3.setLineSpacing(0f, 1.0f)
                         }
                     }
@@ -338,13 +338,13 @@ class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layou
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
                                 .append("\n").append(boneName3[6]).append("\n").append(boneName3[7])
-                            layoutTablet2Result31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutTablet2Result31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_60.toFloat())
                         }
                         9 -> {
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
                                 .append("\n").append(boneName3[6]).append("\n").append(boneName3[7]).append("\n").append(boneName3[8])
-                            layoutTablet2Result31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_17_5.toFloat())
+                            layoutTablet2Result31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_52_5.toFloat())
                         }
                     }
                     layoutTablet2Result31.text = boneTmp.toString()
@@ -362,13 +362,13 @@ class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layou
                         6 -> {
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
-                            layoutTablet2Result312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutTablet2Result312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_60.toFloat())
                         }
                         7 -> {
                             boneTmp.append(boneName3[0]).append("\n").append(boneName3[1]).append("\n").append(boneName3[2])
                                 .append("\n").append(boneName3[3]).append("\n").append(boneName3[4]).append("\n").append(boneName3[5])
                                 .append("\n").append(boneName3[6])
-                            layoutTablet2Result312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutTablet2Result312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_60.toFloat())
                             layoutTablet2Result312.setLineSpacing(0f, 1.0f)
                         }
                     }
@@ -384,7 +384,7 @@ class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layou
                             layoutTablet2Result32.letterSpacing = -0.15f
                         }
                         6 -> {
-                            layoutTablet2Result32.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
+                            layoutTablet2Result32.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_39.toFloat())
                             layoutTablet2Result32.letterSpacing = -0.17f
                         }
                     }

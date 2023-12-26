@@ -94,17 +94,10 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
     private fun setTabletData() {
 
         setTableMark()
-        val pixel_size_13 = resources.getDimensionPixelSize(R.dimen.pixel_size_13)
-        val pixel_size_15 = resources.getDimensionPixelSize(R.dimen.pixel_size_15)
-        val pixel_size_17_5 = resources.getDimensionPixelSize(R.dimen.pixel_size_17_5)
-        val pixel_size_20 = resources.getDimensionPixelSize(R.dimen.pixel_size_20)
-//        val pixel_size_22_5 = resources.getDimensionPixelSize(R.dimen.pixel_size_22_5)
-//        val pixel_size_26 = resources.getDimensionPixelSize(R.dimen.pixel_size_26)
-//        val pixel_size_30 = resources.getDimensionPixelSize(R.dimen.pixel_size_30)
-//        val pixel_size_35 = resources.getDimensionPixelSize(R.dimen.pixel_size_35)
-//        val pixel_size_40 = resources.getDimensionPixelSize(R.dimen.pixel_size_40)
-//        val pixel_size_45 = resources.getDimensionPixelSize(R.dimen.pixel_size_45)
-
+        val pixel_size_39 = resources.getDimensionPixelSize(R.dimen.pixel_size_39)
+        val pixel_size_45 = resources.getDimensionPixelSize(R.dimen.pixel_size_45)
+        val pixel_size_52_5 = resources.getDimensionPixelSize(R.dimen.pixel_size_52_5)
+        val pixel_size_60 = resources.getDimensionPixelSize(R.dimen.pixel_size_60)
 
         val tmp = StringBuilder()
         val tmp2 = StringBuilder()
@@ -223,7 +216,7 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
                             layoutTabletResult22.letterSpacing = -0.15f
                         }
                         6 -> {
-                            layoutTabletResult22.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
+                            layoutTabletResult22.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_39.toFloat())
                             layoutTabletResult22.letterSpacing = -0.17f
                         }
                     }
@@ -251,13 +244,13 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6]).append("\n").append(name3[7])
-                            layoutTabletResult0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutTabletResult0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_60.toFloat())
                         }
                         9 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6]).append("\n").append(name3[7]).append("\n").append(name3[8])
-                            layoutTabletResult0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_17_5.toFloat())
+                            layoutTabletResult0.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_52_5.toFloat())
                         }
                     }
                     layoutTabletResult0.text = tmp.toString()
@@ -286,7 +279,7 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6])
-                            layoutTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_15.toFloat())
+                            layoutTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
                             layoutTabletResult3.setLineSpacing(0f, 1.0f)
                         }
                     }
@@ -320,13 +313,13 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6]).append("\n").append(name3[7])
-                            layoutTabletResult31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutTabletResult31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_60.toFloat())
                         }
                         9 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6]).append("\n").append(name3[7]).append("\n").append(name3[8])
-                            layoutTabletResult31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_17_5.toFloat())
+                            layoutTabletResult31.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_52_5.toFloat())
                         }
                     }
                     layoutTabletResult31.text = tmp.toString()
@@ -344,13 +337,13 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
                         6 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
-                            layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_60.toFloat())
                         }
                         7 -> {
                             tmp.append(name3[0]).append("\n").append(name3[1]).append("\n").append(name3[2])
                                 .append("\n").append(name3[3]).append("\n").append(name3[4]).append("\n").append(name3[5])
                                 .append("\n").append(name3[6])
-                            layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                            layoutTabletResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_60.toFloat())
                             layoutTabletResult312.setLineSpacing(0f, 1.0f)
                         }
                     }
@@ -366,7 +359,7 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
                             layoutTabletResult32.letterSpacing = -0.15f
                         }
                         6 -> {
-                            layoutTabletResult32.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_13.toFloat())
+                            layoutTabletResult32.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_39.toFloat())
                             layoutTabletResult32.letterSpacing = -0.17f
                         }
                     }

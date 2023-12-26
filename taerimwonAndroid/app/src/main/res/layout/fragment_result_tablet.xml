@@ -2,8 +2,6 @@
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_result_content"
         android:layout_width="wrap_content"
@@ -16,8 +14,8 @@
         <!--위패 내용-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_tablet_content"
-            android:layout_width="75px"
-            android:layout_height="210px"
+            android:layout_width="275px"
+            android:layout_height="630px"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -25,10 +23,10 @@
             >
             <TextView
                 android:id="@+id/layout_tablet_result0"
-                android:layout_width="27.5px"
-                android:layout_height="210px"
+                android:layout_width="82.5px"
+                android:layout_height="630px"
                 android:text="희\n빈\n홍\n씨\n길\n동\n신\n위"
-                android:textSize="22.5px"
+                android:textSize="67.5px"
                 android:textColor="@color/black"
                 android:fontFamily="@font/hygungso"
                 android:textFontWeight="300"
@@ -43,10 +41,10 @@
 
             <TextView
                 android:id="@+id/layout_tablet_result1_0"
-                android:layout_width="27.5px"
-                android:layout_height="27.5px"
+                android:layout_width="82.5px"
+                android:layout_height="82.5px"
                 android:text="故"
-                android:textSize="27.5px"
+                android:textSize="82.5px"
                 android:textColor="@color/black"
                 android:fontFamily="@font/hyhaeso"
                 android:textFontWeight="300"
@@ -60,7 +58,7 @@
             <ImageView
                 android:id="@+id/layout_tablet_result1_2"
                 android:layout_width="wrap_content"
-                android:layout_height="27.5px"
+                android:layout_height="82.5px"
                 android:layout_marginTop="7.5px"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -69,10 +67,10 @@
                 />
             <TextView
                 android:id="@+id/layout_tablet_result2_0"
-                android:layout_width="65px"
-                android:layout_height="25px"
+                android:layout_width="195px"
+                android:layout_height="75px"
                 android:text="윗글자"
-                android:textSize="15px"
+                android:textSize="45px"
                 android:textColor="@color/black"
                 android:fontFamily="@font/hygungso"
                 android:textFontWeight="300"
@@ -85,10 +83,10 @@
                 />
             <TextView
                 android:id="@+id/layout_tablet_result2"
-                android:layout_width="27.5px"
-                android:layout_height="165px"
+                android:layout_width="82.5px"
+                android:layout_height="495px"
                 android:text="홍\n길\n동"
-                android:textSize="27.5px"
+                android:textSize="82.5px"
                 android:textColor="@color/black"
                 android:fontFamily="@font/hygungso"
                 android:textFontWeight="300"
@@ -102,10 +100,10 @@
                 />
             <TextView
                 android:id="@+id/layout_tablet_result2_1"
-                android:layout_width="27.5px"
-                android:layout_height="135px"
+                android:layout_width="82.5px"
+                android:layout_height="405px"
                 android:text="홍\n길\n동"
-                android:textSize="27.5px"
+                android:textSize="82.5px"
                 android:textColor="@color/black"
                 android:fontFamily="@font/hygungso"
                 android:textFontWeight="300"
@@ -119,10 +117,10 @@
                 />
             <TextView
                 android:id="@+id/layout_tablet_result2_2"
-                android:layout_width="65px"
-                android:layout_height="25px"
+                android:layout_width="195px"
+                android:layout_height="75px"
                 android:text="밑글자"
-                android:textSize="15px"
+                android:textSize="45px"
                 android:textColor="@color/black"
                 android:fontFamily="@font/hygungso"
                 android:textFontWeight="300"
@@ -136,10 +134,10 @@
             <!--본관-->
             <TextView
                 android:id="@+id/layout_tablet_result3_0"
-                android:layout_width="65px"
-                android:layout_height="25px"
+                android:layout_width="195px"
+                android:layout_height="75px"
                 android:text="윗글자"
-                android:textSize="15px"
+                android:textSize="45px"
                 android:textColor="@color/black"
                 android:fontFamily="@font/hygungso"
                 android:textFontWeight="300"
@@ -152,10 +150,10 @@
                 />
             <TextView
                 android:id="@+id/layout_tablet_result3"
-                android:layout_width="27.5px"
-                android:layout_height="107.5px"
+                android:layout_width="82.5px"
+                android:layout_height="322.5px"
                 android:text="희\n빈\n홍\n씨\n길\n동"
-                android:textSize="17.5px"
+                android:textSize="52.5px"
                 android:textColor="@color/black"
                 android:fontFamily="@font/hygungso"
                 android:textFontWeight="300"
@@ -168,10 +166,10 @@
                 />
             <TextView
                 android:id="@+id/layout_tablet_result3_1"
-                android:layout_width="27.5px"
+                android:layout_width="82.5px"
                 android:layout_height="167.5px"
                 android:text="희\n빈\n홍\n씨\n길\n동\n영\n가"
-                android:textSize="22.5px"
+                android:textSize="67.5px"
                 android:textColor="@color/black"
                 android:fontFamily="@font/hygungso"
                 android:textFontWeight="300"
@@ -185,10 +183,10 @@
                 />
             <TextView
                 android:id="@+id/layout_tablet_result3_1_2"
-                android:layout_width="27.5px"
-                android:layout_height="140px"
+                android:layout_width="82.5px"
+                android:layout_height="420px"
                 android:text="희\n빈\n홍\n씨\n길\n동"
-                android:textSize="22.5px"
+                android:textSize="67.5px"
                 android:textColor="@color/black"
                 android:fontFamily="@font/hygungso"
                 android:textFontWeight="300"
@@ -202,10 +200,10 @@
                 />
             <TextView
                 android:id="@+id/layout_tablet_result3_2"
-                android:layout_width="65px"
-                android:layout_height="25px"
+                android:layout_width="195px"
+                android:layout_height="75px"
                 android:text="밑글자"
-                android:textSize="15px"
+                android:textSize="45px"
                 android:textColor="@color/black"
                 android:fontFamily="@font/hygungso"
                 android:textFontWeight="300"

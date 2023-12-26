@@ -137,7 +137,7 @@
                     android:layout_width="54px"
                     android:layout_height="24px"
                     android:text="●"
-                    android:textSize="5px"
+                    android:textSize="15px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
@@ -150,9 +150,9 @@
                 <TextView
                     android:id="@+id/layout_urn_result1_3_1"
                     android:layout_width="wrap_content"
-                    android:layout_height="17px"
+                    android:layout_height="51px"
                     android:text="年"
-                    android:textSize="17px"
+                    android:textSize="51px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/hyhaeso"
                     android:textFontWeight="900"
@@ -189,7 +189,7 @@
                     android:layout_width="54px"
                     android:layout_height="24px"
                     android:text="●"
-                    android:textSize="5px"
+                    android:textSize="15px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
@@ -202,9 +202,9 @@
                 <TextView
                     android:id="@+id/layout_urn_result1_5_1"
                     android:layout_width="wrap_content"
-                    android:layout_height="17px"
+                    android:layout_height="51px"
                     android:text="月"
-                    android:textSize="17px"
+                    android:textSize="51px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/hyhaeso"
                     android:textFontWeight="900"
@@ -239,9 +239,9 @@
                 <TextView
                     android:id="@+id/layout_urn_result1_7_1"
                     android:layout_width="wrap_content"
-                    android:layout_height="17px"
+                    android:layout_height="51px"
                     android:text="日"
-                    android:textSize="17px"
+                    android:textSize="51px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/hyhaeso"
                     android:textFontWeight="900"
@@ -264,8 +264,8 @@
 
                 <TextView
                     android:id="@+id/layout_urn_result1_7"
-                    android:layout_width="27dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/hyhaeso"
                     android:gravity="center"
                     android:text="陰"
@@ -297,7 +297,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:gravity="center"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/image_urn_result2_1"
                     android:visibility="gone"
                     />
                 <!--로고-->
@@ -309,7 +309,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_urn_result2_1"
+                    app:layout_constraintBottom_toTopOf="@+id/layout_urn_result2_2"
                     />
                 <!--이름-->
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -318,7 +318,7 @@
                     android:layout_height="690px"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/image_urn_result2_1"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginTop="15px"
                     tools:ignore="MissingConstraints"
                     >
@@ -557,7 +557,7 @@
                     android:layout_width="54px"
                     android:layout_height="24px"
                     android:text="●"
-                    android:textSize="5px"
+                    android:textSize="15px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
@@ -610,7 +610,7 @@
                     android:layout_width="54px"
                     android:layout_height="24px"
                     android:text="●"
-                    android:textSize="5px"
+                    android:textSize="15px"
                     android:textColor="@color/black"
                     android:fontFamily="@font/century"
                     android:textFontWeight="900"
@@ -685,8 +685,8 @@
 
                 <TextView
                     android:id="@+id/layout_urn_result3_7"
-                    android:layout_width="27dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/hyhaeso"
                     android:gravity="center"
                     android:text="陽"
