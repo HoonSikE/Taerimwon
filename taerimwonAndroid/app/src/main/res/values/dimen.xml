@@ -23,10 +23,12 @@
     <dimen name="pixel_size_36">36px</dimen>
     <dimen name="pixel_size_39">39px</dimen>
     <dimen name="pixel_size_40">40px</dimen>
+    <dimen name="pixel_size_43">43px</dimen>
     <dimen name="pixel_size_45">45px</dimen>
     <dimen name="pixel_size_50">50px</dimen>
     <dimen name="pixel_size_52_5">52.5px</dimen>
     <dimen name="pixel_size_60">60px</dimen>
+    <dimen name="pixel_size_65">65px</dimen>
     <dimen name="pixel_size_69">69px</dimen>
     <dimen name="pixel_size_75">75px</dimen>
     <dimen name="pixel_size_80">80px</dimen>

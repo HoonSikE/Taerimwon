@@ -1,5 +1,9 @@
-# Git에 업로드가 덜 된 부분은 연휴 이후 업로드 예정
-# 개선 UX/UI, Web, 기능 설명 중 생략된 코드 등
+#### 2023. 12. 26. 흐림 현상 등 버그 수정
+
+#### 2023. 12. 28. 개선 UX/UI 적용
+- SPA 형식의 UI -> MPA 형식의 UI로 변경 (디자인 및 속도 개선)
+
+<br>
 
 <div align="center">
   <img width="70%;" src="./README/img_logo.png" />
@@ -49,6 +53,14 @@
 
 <br>
 
+## 0. 홈 화면
+
+<div align="center">
+   <img src="./README/home.png" width="40%">
+</div>
+
+<br>
+
 ## 1. 전화번호 인증
    - 전화번호 인증 후 서비스 이용 가능
    - 블랙리스트 등록 번호는 전화번호 인증 불가
@@ -77,7 +89,7 @@
    
    - 발주자 정보 입력 (정보 저장 기능)
 <div align="center">
-   <img src="./README/order/order1.jpg" width="40%">
+   <img src="./README/order/order1.png" width="40%">
 </div>
 <br>
 
@@ -143,7 +155,7 @@
 
    - 유골함 리스트 출력 및 확대
 <div align="center">
-   <img src="./README/urnList/urnList1.jpg" width="40%">
+   <img src="./README/urnList/urnList1.png" width="40%">
    <img src="./README/urnList/urnList2.jpg" width="40%">
 </div>
 
@@ -209,12 +221,13 @@
   <tr>
     <td>Back-End</td>
     <td>- 기능: 주문 관리, 블랙 리스트 관리
-    <br>- 기술: Security(jwt), DB설계, Spring Boot, AWS</td>
+    <br>- 기술: Security(jwt), DB설계, Spring Boot, AWS
+    <br>- 특이사항: 고객 요청사항으로 Firebase 및 Netlify로 대체</td>
   </tr>
   <tr>
     <td>Android</td>
     <td>- 기능 : 전화번호 인증 및 블랙리스트 차단, 캡처방지, 주문 정보 입력 및 각인 정보 출력, 주문 정보 MMS 전송, 로그 수집<br>- 기술 : Android(MVVM/Hilt), Kotlin, nav_graph 설계
-    <br>- 2023년 12월 출시 예정</td>
+    <br>- 2024년 1월 출시 예정</td>
   </tr>
   <tr>
     <td>iOS</td>

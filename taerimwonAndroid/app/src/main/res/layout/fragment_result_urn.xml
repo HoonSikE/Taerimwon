@@ -325,7 +325,7 @@
                     <!--위 글씨-->
                     <TextView
                         android:id="@+id/layout_urn_result2_2_0"
-                        android:layout_width="270px"
+                        android:layout_width="240px"
                         android:layout_height="90px"
                         android:text="윗글"
                         android:textSize="81px"
@@ -336,8 +336,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:gravity="center"
-                        android:letterSpacing="-0.15"
-                        android:textScaleX="1.15"
+                        android:layout_marginTop="20px"
                         android:visibility="gone"
                         />
                     <!--이름-->
@@ -412,7 +411,7 @@
                         android:layout_width="240px"
                         android:layout_height="90px"
                         android:text="형제"
-                        android:textSize="90px"
+                        android:textSize="81px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="300"
@@ -421,7 +420,6 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_marginTop="30px"
                         android:gravity="center"
-                        android:lineSpacingMultiplier="1.0"
                         android:visibility="gone"
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>

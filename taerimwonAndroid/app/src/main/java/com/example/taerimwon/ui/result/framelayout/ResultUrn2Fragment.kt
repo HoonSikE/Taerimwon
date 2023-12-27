@@ -172,6 +172,9 @@ class ResultUrn2Fragment : BaseFragment<FragmentResultUrn2Binding>(R.layout.frag
             setUrnMark()
         }
 
+        val pixel_size_43 = resources.getDimensionPixelSize(R.dimen.pixel_size_43)
+        val pixel_size_50 = resources.getDimensionPixelSize(R.dimen.pixel_size_50)
+        val pixel_size_65 = resources.getDimensionPixelSize(R.dimen.pixel_size_65)
         val pixel_size_75 = resources.getDimensionPixelSize(R.dimen.pixel_size_75)
         val pixel_size_105 = resources.getDimensionPixelSize(R.dimen.pixel_size_105)
         val pixel_size_120 = resources.getDimensionPixelSize(R.dimen.pixel_size_120)
@@ -339,12 +342,24 @@ class ResultUrn2Fragment : BaseFragment<FragmentResultUrn2Binding>(R.layout.frag
             }
             layoutUrnResult220.visibility = View.VISIBLE
             when (boneName2.length) {
-                4 -> {
-                    layoutUrnResult220.width = pixel_size_300
+                3 -> {
                     layoutUrnResult220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-                    layoutUrnResult220.letterSpacing = -0.2f
-                    layoutUrnResult220.textScaleX = 1f
+                    layoutUrnResult220.letterSpacing = -0.1f
+//                    layoutUrnResult220.textScaleY = 1.1f
                 }
+                4 -> {
+//                    layoutUrnResult220.width = pixel_size_300
+                    layoutUrnResult220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_65.toFloat())
+                    layoutUrnResult220.letterSpacing = -0.1f
+//                    layoutUrnResult220.textScaleX = 1.2f
+
+                }
+//                4 -> {
+//                    layoutUrnResult220.width = pixel_size_300
+//                    layoutUrnResult220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
+//                    layoutUrnResult220.letterSpacing = -0.2f
+//                    layoutUrnResult220.textScaleX = 1f
+//                }
             }
             layoutUrnResult220.text = boneName2
         } else if(boneEngraveType == "천주교" && (boneEngraveType2 == "기본" || boneEngraveType2.contains("한글") || boneEngraveType2.toString().contains("年月日"))){
@@ -377,19 +392,41 @@ class ResultUrn2Fragment : BaseFragment<FragmentResultUrn2Binding>(R.layout.frag
             layoutUrnResult222.visibility = View.VISIBLE
             layoutUrnResult222.width = pixel_size_300
             when (boneName2.length) {
-                2, 3 -> {
-                    layoutUrnResult222.width = pixel_size_270
-                    layoutUrnResult222.letterSpacing = -0.15f
+                3 -> {
+                    layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
+                    layoutUrnResult222.letterSpacing = -0.1f
+//                    layoutUrnResult220.textScaleY = 1.1f
+                    layoutUrnResult222.scaleY = 1.1f
                 }
                 4 -> {
-                    layoutUrnResult222.textScaleX = 0.65f
+                    layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_65.toFloat())
+                    layoutUrnResult222.letterSpacing = -0.1f
+//                    layoutUrnResult220.textScaleX = 1.2f
+                    layoutUrnResult222.scaleY = 1.2f
                 }
                 5 -> {
-                    layoutUrnResult222.textScaleX = 0.54f
+                    layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_50.toFloat())
+                    layoutUrnResult222.letterSpacing = -0.1f
+                    layoutUrnResult222.scaleY = 1.5f
                 }
                 6 -> {
-                    layoutUrnResult222.textScaleX = 0.44f
+                    layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_43.toFloat())
+                    layoutUrnResult222.letterSpacing = -0.1f
+                    layoutUrnResult222.scaleY = 1.7f
                 }
+//                2, 3 -> {
+//                    layoutUrnResult222.width = pixel_size_270
+//                    layoutUrnResult222.letterSpacing = -0.15f
+//                }
+//                4 -> {
+//                    layoutUrnResult222.textScaleX = 0.65f
+//                }
+//                5 -> {
+//                    layoutUrnResult222.textScaleX = 0.54f
+//                }
+//                6 -> {
+//                    layoutUrnResult222.textScaleX = 0.44f
+//                }
             }
             layoutUrnResult222.text = boneName2
         }else if(boneEngraveType == "SGI"){
