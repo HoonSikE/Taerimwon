@@ -413,19 +413,6 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                     layoutUrnResult222.letterSpacing = -0.1f
                     layoutUrnResult222.scaleY = 1.7f
                 }
-//                2, 3 -> {
-//                    layoutUrnResult222.width = pixel_size_270
-//                    layoutUrnResult222.letterSpacing = -0.15f
-//                }
-//                4 -> {
-//                    layoutUrnResult222.textScaleX = 0.65f
-//                }
-//                5 -> {
-//                    layoutUrnResult222.textScaleX = 0.54f
-//                }
-//                6 -> {
-//                    layoutUrnResult222.textScaleX = 0.44f
-//                }
             }
             layoutUrnResult222.text = boneName2
         }else if(boneEngraveType == "SGI"){

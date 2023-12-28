@@ -397,20 +397,6 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
                     layoutUrnResult222.letterSpacing = -0.1f
                     layoutUrnResult222.scaleY = 1.7f
                 }
-//                2, 3 -> {
-//                    layoutUrnResult222.width = pixel_size_270
-//                    layoutUrnResult222.letterSpacing = -0.15f
-//                }
-//                4 -> {
-//                    layoutUrnResult222.letterSpacing = -0.1f
-//                    layoutUrnResult222.textScaleX = 0.85f
-//                }
-//                5 -> {
-//                    layoutUrnResult222.textScaleX = 0.54f
-//                }
-//                6 -> {
-//                    layoutUrnResult222.textScaleX = 0.44f
-//                }
             }
             layoutUrnResult222.text = name2
         }else if(engraveType == "SGI"){
