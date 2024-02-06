@@ -3156,6 +3156,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //                layoutParams.width = 400
 //                layoutParams.height = 400
 //                binding.imageBone2Image.layoutParams = layoutParams
+/**                val layoutParams = binding.imageBone2Image.layoutParams
+//                layoutParams.width = 400
+//                layoutParams.height = 400
+//                binding.imageBone2Image.layoutParams = layoutParams*/
 
                 val layoutParams2 = binding.imageBoneTabletImage2.layoutParams
                 layoutParams2.height = 10
