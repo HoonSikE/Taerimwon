@@ -176,9 +176,9 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
 
             binding.layoutUrnResult111.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            binding.layoutUrnResult111.setTypeface(hyhaeso, Typeface.BOLD)
+            binding.layoutUrnResult111.setTypeface(hyhaeso, Typeface.NORMAL)
             binding.layoutUrnResult112.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            binding.layoutUrnResult112.setTypeface(hyhaeso, Typeface.BOLD)
+            binding.layoutUrnResult112.setTypeface(hyhaeso, Typeface.NORMAL)
 
             binding.layoutUrnResult110.visibility = View.GONE
             binding.layoutUrnResult120.visibility = View.GONE
@@ -191,12 +191,12 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             binding.layoutUrnResult171.visibility = View.VISIBLE
 
             binding.layoutUrnResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            binding.layoutUrnResult17.setTypeface(hyhaeso, Typeface.BOLD)
+            binding.layoutUrnResult17.setTypeface(hyhaeso, Typeface.NORMAL)
 
             binding.layoutUrnResult311.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            binding.layoutUrnResult311.setTypeface(hyhaeso, Typeface.BOLD)
+            binding.layoutUrnResult311.setTypeface(hyhaeso, Typeface.NORMAL)
             binding.layoutUrnResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            binding.layoutUrnResult312.setTypeface(hyhaeso, Typeface.BOLD)
+            binding.layoutUrnResult312.setTypeface(hyhaeso, Typeface.NORMAL)
 
             binding.layoutUrnResult310.visibility = View.GONE
             binding.layoutUrnResult320.visibility = View.GONE
@@ -209,7 +209,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             binding.layoutUrnResult371.visibility = View.VISIBLE
 
             binding.layoutUrnResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            binding.layoutUrnResult37.setTypeface(hyhaeso, Typeface.BOLD)
+            binding.layoutUrnResult37.setTypeface(hyhaeso, Typeface.NORMAL)
         }
 
         binding.layoutUrnResult22.visibility = View.VISIBLE
@@ -413,11 +413,11 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             layoutUrnResult222.visibility = View.VISIBLE
             if (engraveType2.contains("한글")){
                 val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
-                layoutUrnResult222.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult222.setTypeface(hygungso, Typeface.NORMAL)
                 layoutUrnResult222.text = "위"
             }else {
                 val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
-                layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
+                layoutUrnResult222.setTypeface(hyhaeso, Typeface.NORMAL)
                 layoutUrnResult222.text = "位"
             }
 
@@ -461,10 +461,10 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
             val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
             if (engraveType2.contains("한글")){
-                layoutUrnResult220.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult220.setTypeface(hygungso, Typeface.NORMAL)
                 layoutUrnResult220.text = "묘법"
             }else {
-                layoutUrnResult220.setTypeface(hyhaeso, Typeface.BOLD)
+                layoutUrnResult220.setTypeface(hyhaeso, Typeface.NORMAL)
                 layoutUrnResult220.text = "妙法"
             }
 
@@ -474,10 +474,10 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
             layoutUrnResult222.visibility = View.VISIBLE
 
             if (engraveType2.contains("한글")){
-                layoutUrnResult222.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult222.setTypeface(hygungso, Typeface.NORMAL)
                 layoutUrnResult222.text = "위"
             }else {
-                layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
+                layoutUrnResult222.setTypeface(hyhaeso, Typeface.NORMAL)
                 layoutUrnResult222.text = "位"
             }
 
@@ -522,7 +522,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
                 binding.layoutUrnResult112.visibility = View.GONE
                 val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
                 if (engraveType2.contains("한글")){
-                    binding.layoutUrnResult111.setTypeface(hygungso, Typeface.BOLD)
+                    binding.layoutUrnResult111.setTypeface(hygungso, Typeface.NORMAL)
                     binding.layoutUrnResult111.text = "생"
                 }
             }
@@ -532,7 +532,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
                 if(engraveType2.toString().contains("年月日")) {
                     val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
                     if (engraveType2.contains("한글")){
-                        binding.layoutUrnResult112.setTypeface(hygungso, Typeface.BOLD)
+                        binding.layoutUrnResult112.setTypeface(hygungso, Typeface.NORMAL)
                         binding.layoutUrnResult112.text = "출\n생"
                     }else {
                         binding.layoutUrnResult112.text = "出\n生"
@@ -540,7 +540,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
                 }else{
                     val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
                     if (engraveType2.contains("한글")){
-                        binding.layoutUrnResult112.setTypeface(hygungso, Typeface.BOLD)
+                        binding.layoutUrnResult112.setTypeface(hygungso, Typeface.NORMAL)
                         binding.layoutUrnResult112.text = "출생"
                     }else {
                         binding.layoutUrnResult112.text = "出生"
@@ -554,7 +554,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
                 if(engraveType2.contains("年月日")) {
                     val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
                     if (engraveType2.contains("한글")){
-                        binding.layoutUrnResult112.setTypeface(hygungso, Typeface.BOLD)
+                        binding.layoutUrnResult112.setTypeface(hygungso, Typeface.NORMAL)
                         binding.layoutUrnResult112.text = "출\n생"
                     }else {
                         binding.layoutUrnResult112.text = "出\n生"
@@ -562,7 +562,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
                 }else {
                     val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
                     if (engraveType2.contains("한글")){
-                        binding.layoutUrnResult112.setTypeface(hygungso, Typeface.BOLD)
+                        binding.layoutUrnResult112.setTypeface(hygungso, Typeface.NORMAL)
                         binding.layoutUrnResult112.text = "출생"
                     }else {
                         binding.layoutUrnResult112.text = "出生"
@@ -620,7 +620,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         if(date1Type == "양력") {
             val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
             if (engraveType2.contains("한글")){
-                binding.layoutUrnResult17.setTypeface(hygungso, Typeface.BOLD)
+                binding.layoutUrnResult17.setTypeface(hygungso, Typeface.NORMAL)
                 binding.layoutUrnResult17.text = "양"
             }else {
                 binding.layoutUrnResult17.text = "陽"
@@ -628,7 +628,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         }else if(date1Type == "음력") {
             val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
             if (engraveType2.contains("한글")){
-                binding.layoutUrnResult17.setTypeface(hygungso, Typeface.BOLD)
+                binding.layoutUrnResult17.setTypeface(hygungso, Typeface.NORMAL)
                 binding.layoutUrnResult17.text = "음"
             }else {
                 binding.layoutUrnResult17.text = "陰"
@@ -643,7 +643,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
 
                 val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
                 if (engraveType2.contains("한글")){
-                    binding.layoutUrnResult311.setTypeface(hygungso, Typeface.BOLD)
+                    binding.layoutUrnResult311.setTypeface(hygungso, Typeface.NORMAL)
                     binding.layoutUrnResult311.text = "졸"
                 }
             }
@@ -656,14 +656,14 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
                     if (checkCatholic == "별세") {
                         val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
                         if (engraveType2.contains("한글")){
-                            binding.layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                            binding.layoutUrnResult312.setTypeface(hygungso, Typeface.NORMAL)
                             binding.layoutUrnResult312.text = "별\n세"
                         }else {
                             binding.layoutUrnResult312.text = "別\n世"
                         }
                     }else{
                         if (engraveType2.contains("한글")){
-                            binding.layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                            binding.layoutUrnResult312.setTypeface(hygungso, Typeface.NORMAL)
                             binding.layoutUrnResult312.text = "소\n천"
                         }else {
                             binding.layoutUrnResult312.text = "召\n天"
@@ -673,7 +673,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
                     if (checkCatholic == "별세") {
                         val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
                         if (engraveType2.contains("한글")){
-                            binding.layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                            binding.layoutUrnResult312.setTypeface(hygungso, Typeface.NORMAL)
                             binding.layoutUrnResult312.text = "별세"
                         }else {
                             binding.layoutUrnResult312.text = "別世"
@@ -681,7 +681,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
                     }else {
                         val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
                         if (engraveType2.contains("한글")) {
-                            binding.layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                            binding.layoutUrnResult312.setTypeface(hygungso, Typeface.NORMAL)
                             binding.layoutUrnResult312.text = "소천"
                         } else {
                             binding.layoutUrnResult312.text = "召天"
@@ -698,7 +698,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
                     val yujimai = ResourcesCompat.getFont(requireContext(), R.font.yujimai)
 
                     if (engraveType2.contains("한글")){
-                        binding.layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                        binding.layoutUrnResult312.setTypeface(hygungso, Typeface.NORMAL)
                         binding.layoutUrnResult312.text = "선\n종"
                     }else {
                         val width = binding.layoutUrnResult112.width
@@ -724,7 +724,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
                     val yujimai = ResourcesCompat.getFont(requireContext(), R.font.yujimai)
 
                     if (engraveType2.contains("한글")){
-                        binding.layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                        binding.layoutUrnResult312.setTypeface(hygungso, Typeface.NORMAL)
                         binding.layoutUrnResult312.text = "선종"
                     }else {
                         binding.layoutUrnResult312.visibility = View.GONE
@@ -789,7 +789,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         if(date2Type == "양력") {
             val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
             if (engraveType2.contains("한글")){
-                binding.layoutUrnResult37.setTypeface(hygungso, Typeface.BOLD)
+                binding.layoutUrnResult37.setTypeface(hygungso, Typeface.NORMAL)
                 binding.layoutUrnResult37.text = "양"
             }else {
                 binding.layoutUrnResult37.text = "陽"
@@ -797,7 +797,7 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         }else if(date2Type == "음력") {
             val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
             if (engraveType2.contains("한글")){
-                binding.layoutUrnResult37.setTypeface(hygungso, Typeface.BOLD)
+                binding.layoutUrnResult37.setTypeface(hygungso, Typeface.NORMAL)
                 binding.layoutUrnResult37.text = "음"
             }else {
                 binding.layoutUrnResult37.text = "陰"

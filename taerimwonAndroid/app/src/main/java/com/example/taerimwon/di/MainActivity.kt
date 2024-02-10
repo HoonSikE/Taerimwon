@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         // 뒤로가기 버튼을 막고 싶다면 아무 동작도 하지 않습니다.
         // super.onBackPressed() 호출을 제거하거나 주석 처리합니다.
+        super.onBackPressed()
     }
 
     private fun checkStoragePermission() {

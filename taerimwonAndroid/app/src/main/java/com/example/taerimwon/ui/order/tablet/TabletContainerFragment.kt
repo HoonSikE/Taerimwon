@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.text.Editable
 import android.text.InputFilter
+import android.text.Spanned
 import android.text.TextWatcher
 import android.view.View
 import android.widget.AdapterView
@@ -671,6 +672,47 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
 
             override fun afterTextChanged(s: Editable?) {
                 // 텍스트 변경 후 이벤트
+                if(ApplicationClass.prefs.tabletType == "문구"){
+                    // 최대 길이 10까지 입력 가능
+                    val maxLengthPerLine = 10
+                    // 최대 3줄까지 입력 가능
+                    val maxLines = 3
+
+                    // 텍스트 변경 후 이벤트
+                    val lines = binding.editTextName3.lineCount
+                    // 현재 입력된 전체 텍스트의 길이
+                    val length = s?.length ?: 0
+
+                    // 줄 수가 최대 줄 수를 초과하면 텍스트 변경을 취소하고 이전 상태로 되돌림
+                    if (lines > maxLines) {
+                        s?.delete(length - 1, length)
+                        return
+                    }
+
+                    // 10글자가 입력될 때마다 자동으로 줄바꿈 추가
+                    when(lines){
+                        1 -> {
+                            if (length % maxLengthPerLine == 0 && length > 9) {
+                                binding.editTextName3.append("\n")
+                            }
+                        }
+                        2 -> {
+                            if ((length-1) % maxLengthPerLine == 0 && length > 20) {
+                                binding.editTextName3.append("\n")
+                            }
+                        }
+                        3 -> {
+                            // "\n"을 기준으로 split하여 리스트로 변환
+                            val text: List<String> = binding.editTextName3.text.toString().split("\n")
+
+//                            s?.delete(length - (10-text[3].length), length)
+                        }
+                    }
+
+//                    if (length % maxLengthPerLine == 0 && length > 0) {
+//                        binding.editTextName3.append("\n")
+//                    }
+                }
             }
         })
         /**합골**/
@@ -753,6 +795,8 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.textName3.text = "이름"
             binding.editTextName3.hint = "이름을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
+            var maxLines = 1
+            binding.editTextName3.maxLines = maxLines
             binding.editTextName3.filters = arrayOf(inputFilter)
         }else if(tabletType.contains("본관")) {
             binding.textName3.visibility = View.VISIBLE
@@ -762,6 +806,8 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.textName3.text = "본관"
             binding.editTextName3.hint = "본관을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(10)
+            var maxLines = 1
+            binding.editTextName3.maxLines = maxLines
             binding.editTextName3.filters = arrayOf(inputFilter)
         }else if(tabletType == "문구") {
             binding.textName3.visibility = View.VISIBLE
@@ -770,7 +816,10 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.imageHeart.visibility = View.VISIBLE
             binding.textName3.text = "문구"
             binding.editTextName3.hint = "문구를 입력하세요. (최대 30자)"
-            val inputFilter = InputFilter.LengthFilter(30)
+            val inputFilter = InputFilter.LengthFilter(32)
+
+            var maxLines = 3
+            binding.editTextName3.maxLines = maxLines
             binding.editTextName3.filters = arrayOf(inputFilter)
         }else{
             binding.textName3.visibility = View.GONE
@@ -825,6 +874,8 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.textBoneName3.text = "이름"
             binding.editTextBoneName3.hint = "이름을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
+            var maxLines = 1
+            binding.editTextBoneName3.maxLines = maxLines
             binding.editTextBoneName3.filters = arrayOf(inputFilter)
         }else if(boneTabletType.contains("본관")) {
             binding.textBoneName3.visibility = View.VISIBLE
@@ -834,6 +885,8 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.textBoneName3.text = "본관"
             binding.editTextBoneName3.hint = "본관을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(10)
+            var maxLines = 1
+            binding.editTextBoneName3.maxLines = maxLines
             binding.editTextBoneName3.filters = arrayOf(inputFilter)
         }else if(boneTabletType == "문구") {
             binding.textBoneName3.visibility = View.VISIBLE
@@ -843,6 +896,8 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.textBoneName3.text = "문구"
             binding.editTextBoneName3.hint = "문구를 입력하세요. (최대 30자)"
             val inputFilter = InputFilter.LengthFilter(30)
+            var maxLines = 3
+            binding.editTextBoneName3.maxLines = maxLines
             binding.editTextBoneName3.filters = arrayOf(inputFilter)
         }else{
             binding.textBoneName3.visibility = View.GONE

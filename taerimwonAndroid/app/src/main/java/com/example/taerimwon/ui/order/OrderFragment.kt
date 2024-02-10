@@ -733,10 +733,10 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                 val tabletType = ApplicationClass.prefs.tabletType.toString()
 
                 if(tabletType.contains("문구")){
-                    if (!(name3.length in 1..20 && name3.matches(hanglePattern))) {
-                        toast("문구 내용을 한글 1~20글자로 올바르게 입력해주세요.")
-                        return false
-                    }
+//                    if (!(name3.length in 1..20 && name3.matches(hanglePattern))) {
+//                        toast("문구 내용을 한글 1~20글자로 올바르게 입력해주세요.")
+//                        return false
+//                    }
                 }else if(!tabletType.contains("본관") && !tabletType.contains("사진")){
                     if (!(name3.length in 2..4 && name3.matches(hanglePattern))) {
                         toast("이름을 한글 2~4글자로 올바르게 입력해주세요.")
@@ -795,10 +795,10 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                     val boneTabletType = ApplicationClass.prefs.boneTabletType.toString()
 
                     if(boneTabletType.contains("문구")){
-                        if (!(boneName3.length in 1..20 && boneName3.matches(hanglePattern))) {
-                            toast("[합골]문구 내용을 한글 1~20글자로 올바르게 입력해주세요.")
-                            return false
-                        }
+//                        if (!(boneName3.length in 1..20 && boneName3.matches(hanglePattern))) {
+//                            toast("[합골]문구 내용을 한글 1~20글자로 올바르게 입력해주세요.")
+//                            return false
+//                        }
                     }else if(!boneTabletType.contains("본관") && !boneTabletType.contains("사진")){
                         if (!(boneName3.length in 2..4 && boneName3.matches(hanglePattern))) {
                             toast("[합골]이름을 한글 2~4글자로 올바르게 입력해주세요.")

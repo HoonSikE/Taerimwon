@@ -348,9 +348,9 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             val pixel_size_75 = resources.getDimensionPixelSize(R.dimen.pixel_size_75)
             val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
             layoutUrnResult111.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            layoutUrnResult111.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutUrnResult111.setTypeface(hyhaeso, Typeface.NORMAL)
             layoutUrnResult112.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            layoutUrnResult112.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutUrnResult112.setTypeface(hyhaeso, Typeface.NORMAL)
 
             layoutUrnResult110.visibility = View.GONE
             layoutUrnResult120.visibility = View.GONE
@@ -363,12 +363,12 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutUrnResult171.visibility = View.VISIBLE
 
             layoutUrnResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            layoutUrnResult17.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutUrnResult17.setTypeface(hyhaeso, Typeface.NORMAL)
 
             layoutUrnResult311.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            layoutUrnResult311.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutUrnResult311.setTypeface(hyhaeso, Typeface.NORMAL)
             layoutUrnResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            layoutUrnResult312.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutUrnResult312.setTypeface(hyhaeso, Typeface.NORMAL)
 
             layoutUrnResult310.visibility = View.GONE
             layoutUrnResult320.visibility = View.GONE
@@ -387,9 +387,9 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
             val pixel_size_75 = resources.getDimensionPixelSize(R.dimen.pixel_size_75)
             layoutBoneResult111.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            layoutBoneResult111.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutBoneResult111.setTypeface(hyhaeso, Typeface.NORMAL)
             layoutBoneResult112.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            layoutBoneResult112.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutBoneResult112.setTypeface(hyhaeso, Typeface.NORMAL)
 
             layoutBoneResult110.visibility = View.GONE
             layoutBoneResult120.visibility = View.GONE
@@ -402,12 +402,12 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutBoneResult171.visibility = View.VISIBLE
 
             layoutBoneResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            layoutBoneResult17.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutBoneResult17.setTypeface(hyhaeso, Typeface.NORMAL)
 
             layoutBoneResult311.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            layoutBoneResult311.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutBoneResult311.setTypeface(hyhaeso, Typeface.NORMAL)
             layoutBoneResult312.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            layoutBoneResult312.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutBoneResult312.setTypeface(hyhaeso, Typeface.NORMAL)
 
             layoutBoneResult310.visibility = View.GONE
             layoutBoneResult320.visibility = View.GONE
@@ -420,7 +420,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutBoneResult371.visibility = View.VISIBLE
 
             layoutBoneResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_75.toFloat())
-            layoutBoneResult37.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutBoneResult37.setTypeface(hyhaeso, Typeface.NORMAL)
         }
 
         if(selectedUrnName!!.contains("검정")){
@@ -734,11 +734,11 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
             if (engraveType2.contains("한글")){
                 val hygungso = ResourcesCompat.getFont(requireContext(), R.font.hygungso)
-                layoutUrnResult222.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult222.setTypeface(hygungso, Typeface.NORMAL)
                 layoutUrnResult222.text = "위"
             }else {
                 val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
-                layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
+                layoutUrnResult222.setTypeface(hyhaeso, Typeface.NORMAL)
                 layoutUrnResult222.text = "位"
             }
             layoutUrnResult222.scaleY = 1f
@@ -788,10 +788,10 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutUrnResult220.visibility = View.VISIBLE
 
             if (engraveType2.contains("한글")){
-                layoutUrnResult220.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult220.setTypeface(hygungso, Typeface.NORMAL)
                 layoutUrnResult220.text = "묘법"
             }else {
-                layoutUrnResult220.setTypeface(hyhaeso, Typeface.BOLD)
+                layoutUrnResult220.setTypeface(hyhaeso, Typeface.NORMAL)
                 layoutUrnResult220.text = "妙法"
             }
             layoutUrnResult220.letterSpacing = 0f
@@ -801,7 +801,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutUrnResult222.visibility = View.VISIBLE
             layoutUrnResult222.text = "位"
             layoutUrnResult222.scaleY = 1f
-            layoutUrnResult222.setTypeface(hyhaeso, Typeface.BOLD)
+            layoutUrnResult222.setTypeface(hyhaeso, Typeface.NORMAL)
             layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
 
 //            layoutUrnResult222.typeface = hyhaeso
@@ -848,7 +848,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutUrnResult112.visibility = View.GONE
 
                 if (engraveType2.contains("한글")){
-                    layoutUrnResult111.setTypeface(hygungso, Typeface.BOLD)
+                    layoutUrnResult111.setTypeface(hygungso, Typeface.NORMAL)
                     layoutUrnResult111.text = "생"
                 }
             }
@@ -858,7 +858,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutUrnResult112.visibility = View.VISIBLE
 
                 if (engraveType2.contains("한글")) {
-                    layoutUrnResult112.setTypeface(hygungso, Typeface.BOLD)
+                    layoutUrnResult112.setTypeface(hygungso, Typeface.NORMAL)
                     layoutUrnResult112.text = "소\n천"
                 }else
                     layoutUrnResult112.text = "出\n生"
@@ -871,7 +871,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutUrnResult112.visibility = View.VISIBLE
 
                 if (engraveType2.contains("한글")) {
-                    layoutUrnResult112.setTypeface(hygungso, Typeface.BOLD)
+                    layoutUrnResult112.setTypeface(hygungso, Typeface.NORMAL)
                     layoutUrnResult112.text = "소\n천"
                 }else
                     layoutUrnResult112.text = "出\n生"
@@ -917,13 +917,13 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
         if(date1Type == "양력") {
             if (engraveType2.contains("한글")) {
-                layoutUrnResult17.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult17.setTypeface(hygungso, Typeface.NORMAL)
                 layoutUrnResult17.text = "양"
             }else
                 layoutUrnResult17.text = "陽"
         }else if(date1Type == "음력"){
             if (engraveType2.contains("한글")) {
-                layoutUrnResult17.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult17.setTypeface(hygungso, Typeface.NORMAL)
                 layoutUrnResult17.text = "음"
             }else
                 layoutUrnResult17.text = "陰"
@@ -936,7 +936,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutUrnResult312.visibility = View.GONE
 
                 if (engraveType2.contains("한글")){
-                    layoutUrnResult311.setTypeface(hygungso, Typeface.BOLD)
+                    layoutUrnResult311.setTypeface(hygungso, Typeface.NORMAL)
                     layoutUrnResult311.text = "졸"
                 }
             }
@@ -946,14 +946,14 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutUrnResult312.visibility = View.VISIBLE
                 if (checkCatholic == "별세") {
                     if (engraveType2.contains("한글")){
-                        layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                        layoutUrnResult312.setTypeface(hygungso, Typeface.NORMAL)
                         layoutUrnResult312.text = "별\n세"
                     }else {
                         layoutUrnResult312.text = "別\n世"
                     }
                 }else {
                     if (engraveType2.contains("한글")) {
-                        layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                        layoutUrnResult312.setTypeface(hygungso, Typeface.NORMAL)
                         layoutUrnResult312.text = "소\n천"
                     } else {
                         layoutUrnResult312.text = "召\n天"
@@ -970,7 +970,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 val yujimai = ResourcesCompat.getFont(requireContext(), R.font.yujimai)
 
                 if (engraveType2.contains("한글")){
-                    layoutUrnResult312.setTypeface(hygungso, Typeface.BOLD)
+                    layoutUrnResult312.setTypeface(hygungso, Typeface.NORMAL)
                     layoutUrnResult312.text = "선\n종"
                 }else {
                     val width = layoutUrnResult112.width
@@ -1029,13 +1029,13 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
         if(date2Type == "양력") {
             if (engraveType2.contains("한글")) {
-                layoutUrnResult37.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult37.setTypeface(hygungso, Typeface.NORMAL)
                 layoutUrnResult37.text = "양"
             }else
                 layoutUrnResult37.text = "陽"
         }else if(date2Type == "음력"){
             if (engraveType2.contains("한글")) {
-                layoutUrnResult37.setTypeface(hygungso, Typeface.BOLD)
+                layoutUrnResult37.setTypeface(hygungso, Typeface.NORMAL)
                 layoutUrnResult37.text = "음"
             }else
                 layoutUrnResult37.text = "陰"
@@ -1253,7 +1253,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             binding.layoutBone21Result23.visibility = View.VISIBLE
             layoutBoneResult222.visibility = View.VISIBLE
             if (boneEngraveType2.contains("한글")){
-                layoutBoneResult222.setTypeface(hygungso, Typeface.BOLD)
+                layoutBoneResult222.setTypeface(hygungso, Typeface.NORMAL)
                 layoutBoneResult222.text = "위"
             }else{
                 layoutBoneResult222.text = "位"
@@ -1304,7 +1304,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             binding.layoutBone21Result21.visibility = View.VISIBLE
             layoutBoneResult220.visibility = View.VISIBLE
             if (boneEngraveType2.contains("한글")){
-                layoutBoneResult220.setTypeface(hygungso, Typeface.BOLD)
+                layoutBoneResult220.setTypeface(hygungso, Typeface.NORMAL)
                 layoutBoneResult220.text = "묘법"
             }else{
                 layoutBoneResult220.text = "妙法"
@@ -1315,7 +1315,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             layoutBoneResult222.visibility = View.VISIBLE
 
             if (boneEngraveType2.contains("한글")){
-                layoutBoneResult222.setTypeface(hygungso, Typeface.BOLD)
+                layoutBoneResult222.setTypeface(hygungso, Typeface.NORMAL)
                 layoutBoneResult222.text = "위"
             }else{
                 layoutBoneResult222.text = "位"
@@ -1367,7 +1367,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutBoneResult112.visibility = View.GONE
 
                 if (boneEngraveType2.contains("한글")){
-                    layoutBoneResult111.setTypeface(hygungso, Typeface.BOLD)
+                    layoutBoneResult111.setTypeface(hygungso, Typeface.NORMAL)
                     layoutBoneResult111.text = "생"
                 }
             }
@@ -1376,7 +1376,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutBoneResult111.visibility = View.GONE
                 layoutBoneResult112.visibility = View.VISIBLE
                 if (boneEngraveType2.contains("한글")) {
-                    layoutBoneResult112.setTypeface(hygungso, Typeface.BOLD)
+                    layoutBoneResult112.setTypeface(hygungso, Typeface.NORMAL)
                     layoutBoneResult112.text = "출\n생"
                 }else{
                     layoutBoneResult112.text = "出\n生"
@@ -1388,7 +1388,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutBoneResult111.visibility = View.GONE
                 layoutBoneResult112.visibility = View.VISIBLE
                 if (boneEngraveType2.contains("한글")) {
-                    layoutBoneResult112.setTypeface(hygungso, Typeface.BOLD)
+                    layoutBoneResult112.setTypeface(hygungso, Typeface.NORMAL)
                     layoutBoneResult112.text = "출\n생"
                 }else{
                     layoutBoneResult112.text = "出\n生"
@@ -1435,13 +1435,13 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
         if(boneDate1Type == "양력") {
             if (boneEngraveType2.contains("한글")) {
-                layoutBoneResult17.setTypeface(hygungso, Typeface.BOLD)
+                layoutBoneResult17.setTypeface(hygungso, Typeface.NORMAL)
                 layoutBoneResult17.text = "양"
             }else
                 layoutBoneResult17.text = "陽"
         }else if(boneDate1Type == "음력"){
             if (boneEngraveType2.contains("한글")) {
-                layoutBoneResult17.setTypeface(hygungso, Typeface.BOLD)
+                layoutBoneResult17.setTypeface(hygungso, Typeface.NORMAL)
                 layoutBoneResult17.text = "음"
             }else
                 layoutBoneResult17.text = "陰"
@@ -1454,7 +1454,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 layoutBoneResult312.visibility = View.GONE
 
                 if (boneEngraveType2.contains("한글")){
-                    layoutBoneResult311.setTypeface(hygungso, Typeface.BOLD)
+                    layoutBoneResult311.setTypeface(hygungso, Typeface.NORMAL)
                     layoutBoneResult311.text = "졸"
                 }
             }
@@ -1465,14 +1465,14 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
                 if (checkCatholic2 == "별세") {
                     if (boneEngraveType2.contains("한글")) {
-                        layoutBoneResult312.setTypeface(hygungso, Typeface.BOLD)
+                        layoutBoneResult312.setTypeface(hygungso, Typeface.NORMAL)
                         layoutBoneResult312.text = "별세"
                     }else{
                         layoutBoneResult312.text = "別\n世"
                     }
                 }else {
                     if (boneEngraveType2.contains("한글")) {
-                        layoutBoneResult312.setTypeface(hygungso, Typeface.BOLD)
+                        layoutBoneResult312.setTypeface(hygungso, Typeface.NORMAL)
                         layoutBoneResult312.text = "소\n천"
                     } else {
                         layoutBoneResult312.text = "召\n天"
@@ -1489,7 +1489,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 val yujimai = ResourcesCompat.getFont(requireContext(), R.font.yujimai)
 
                 if (boneEngraveType2.contains("한글")){
-                    layoutBoneResult312.setTypeface(hygungso, Typeface.BOLD)
+                    layoutBoneResult312.setTypeface(hygungso, Typeface.NORMAL)
                     layoutBoneResult312.text = "선\n종"
                 }else {
                     val width = layoutBoneResult112.width
@@ -1553,13 +1553,13 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
         if(boneDate2Type == "양력") {
             if (boneEngraveType2.contains("한글")) {
-                layoutBoneResult37.setTypeface(hygungso, Typeface.BOLD)
+                layoutBoneResult37.setTypeface(hygungso, Typeface.NORMAL)
                 layoutBoneResult37.text = "양"
             }else
                 layoutBoneResult37.text = "陽"
         }else if(boneDate2Type == "음력"){
             if (boneEngraveType2.contains("한글")) {
-                layoutBoneResult37.setTypeface(hygungso, Typeface.BOLD)
+                layoutBoneResult37.setTypeface(hygungso, Typeface.NORMAL)
                 layoutBoneResult37.text = "음"
             }else
                 layoutBoneResult37.text = "陰"

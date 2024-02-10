@@ -1521,9 +1521,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 "국화 ZE-1 11832" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_1_2)
 
-                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_1))
-                    layoutParamsUrnBackgound.width = 220
-                    layoutParamsUrnBackgound.height = 360
+//                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_1))
+//                    layoutParamsUrnBackgound.width = 220
+//                    layoutParamsUrnBackgound.height = 360
 
                     layoutParamsUrn.width = 220
                     layoutParamsUrn.height = 360
@@ -2724,9 +2724,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 "국화 ZE-1 11832" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_1_2)
 
-                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_1))
-                    layoutParamsUrnBackgound.width = 220
-                    layoutParamsUrnBackgound.height = 360
+//                    imageUrnImageBackgound.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.img_urn10_1))
+//                    layoutParamsUrnBackgound.width = 220
+//                    layoutParamsUrnBackgound.height = 360
 
                     layoutParamsUrn.width = 220
                     layoutParamsUrn.height = 360
@@ -5526,9 +5526,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
     private fun setMsg() {
         msg = "[태림원 주문]" +
                 "\n${index++}. 발주자 정보" +
+                "\n - 소속: " + ApplicationClass.prefs.leaderDepartment +
                 "\n - 발주자명: " + ApplicationClass.prefs.leaderName +
-                "\n - 발주자 전화번호: " + ApplicationClass.prefs.leaderTel +
-                "\n - 소속: " + ApplicationClass.prefs.leaderDepartment
+                "\n - 발주자 전화번호: " + ApplicationClass.prefs.leaderTel
+
 
         if(ApplicationClass.prefs.clientName != "" && ApplicationClass.prefs.clientName != ""){
             msg += "\n\n${index++}. 상주 정보" +

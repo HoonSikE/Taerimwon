@@ -255,6 +255,52 @@
                         app:srcCompat="@drawable/ic_name"
                         />
 
+                    <!-- 직분, 세례명, 법명 -->
+                    <TextView
+                        android:id="@+id/text_name2"
+                        style="@style/SubHead"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="직분, 세례명, 법명"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/editText_name1" />
+
+                    <EditText
+                        android:id="@+id/editText_name2"
+                        style="@style/Body"
+                        android:textColor="#000000"
+                        android:background="@drawable/edittext_regular"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:ems="10"
+                        android:hint="직분, 세례명, 법명을 입력하세요"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPersonName"
+                        android:maxLength="4"
+                        android:paddingLeft="48dp"
+                        android:textColorHint="@color/hintGray"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/text_name2"
+                        />
+
+                    <ImageView
+                        android:id="@+id/image_name2"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="@+id/editText_name2"
+                        app:layout_constraintTop_toTopOf="@+id/editText_name2"
+                        app:srcCompat="@drawable/ic_heart"
+                        />
+
                     <!-- 고인 생년월일 -->
                     <TextView
                         android:id="@+id/text_date1"
@@ -264,7 +310,7 @@
                         android:layout_marginTop="16dp"
                         android:text="생년월일"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/editText_name1" />
+                        app:layout_constraintTop_toBottomOf="@id/editText_name2" />
 
                     <EditText
                         android:id="@+id/editText_date1"
@@ -386,54 +432,8 @@
                         android:layout_marginTop="10dp"
                         app:layout_constraintEnd_toEndOf="@+id/spinner_date2_type"
                         app:layout_constraintTop_toTopOf="@+id/spinner_date2_type"
-                        app:srcCompat="@drawable/ic_spinner"
-                        />
-
-                    <!-- 직분, 세례명, 법명 -->
-                    <TextView
-                        android:id="@+id/text_name2"
-                        style="@style/SubHead"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="직분, 세례명, 법명"
-                        android:visibility="gone"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/editText_date2" />
-
-                    <EditText
-                        android:id="@+id/editText_name2"
-                        style="@style/Body"
-                        android:textColor="#000000"
-                        android:background="@drawable/edittext_regular"
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:ems="10"
-                        android:hint="직분, 세례명, 법명을 입력하세요"
-                        android:imeOptions="actionDone"
-                        android:inputType="textPersonName"
-                        android:maxLength="4"
-                        android:paddingLeft="48dp"
-                        android:textColorHint="@color/hintGray"
-                        android:visibility="gone"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/text_name2"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        />
-
-                    <ImageView
-                        android:id="@+id/image_name2"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="10dp"
-                        android:visibility="gone"
-                        app:layout_constraintStart_toStartOf="@+id/editText_name2"
-                        app:layout_constraintTop_toTopOf="@+id/editText_name2"
-                        app:srcCompat="@drawable/ic_heart"
+                        app:srcCompat="@drawable/ic_spinner"
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -726,6 +726,50 @@
                         app:srcCompat="@drawable/ic_name"
                         />
 
+                    <!-- 직분, 세례명, 법명 -->
+                    <TextView
+                        android:id="@+id/text_bone_name2"
+                        style="@style/SubHead"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="직분, 세례명, 법명"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/image_bone_name1" />
+
+                    <EditText
+                        android:id="@+id/editText_bone_name2"
+                        style="@style/Body"
+                        android:textColor="#000000"
+                        android:background="@drawable/edittext_regular"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="직분, 세례명, 법명을 입력하세요"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPersonName"
+                        android:maxLength="4"
+                        android:paddingLeft="48dp"
+                        android:textColorHint="@color/hintGray"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/text_bone_name2" />
+
+                    <ImageView
+                        android:id="@+id/image_bone_name2"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="@+id/editText_bone_name2"
+                        app:layout_constraintTop_toTopOf="@+id/editText_bone_name2"
+                        app:srcCompat="@drawable/ic_heart"
+                        />
+
                     <!-- 고인 생년월일 -->
                     <TextView
                         android:id="@+id/text_bone_date1"
@@ -735,7 +779,7 @@
                         android:layout_marginTop="8dp"
                         android:text="생년월일"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/editText_bone_name1" />
+                        app:layout_constraintTop_toBottomOf="@id/editText_bone_name2" />
 
                     <EditText
                         android:id="@+id/editText_bone_date1"
@@ -857,50 +901,6 @@
                         app:layout_constraintEnd_toEndOf="@+id/spinner_bone_date2_type"
                         app:layout_constraintTop_toTopOf="@+id/spinner_bone_date2_type"
                         app:srcCompat="@drawable/ic_spinner"
-                        />
-
-                    <!-- 직분, 세례명, 법명 -->
-                    <TextView
-                        android:id="@+id/text_bone_name2"
-                        style="@style/SubHead"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="직분, 세례명, 법명"
-                        android:visibility="gone"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/editText_bone_date2" />
-
-                    <EditText
-                        android:id="@+id/editText_bone_name2"
-                        style="@style/Body"
-                        android:textColor="#000000"
-                        android:background="@drawable/edittext_regular"
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="8dp"
-                        android:ems="10"
-                        android:hint="직분, 세례명, 법명을 입력하세요"
-                        android:imeOptions="actionDone"
-                        android:inputType="textPersonName"
-                        android:maxLength="4"
-                        android:paddingLeft="48dp"
-                        android:textColorHint="@color/hintGray"
-                        android:visibility="gone"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/text_bone_name2" />
-
-                    <ImageView
-                        android:id="@+id/image_bone_name2"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="10dp"
-                        android:visibility="gone"
-                        app:layout_constraintStart_toStartOf="@+id/editText_bone_name2"
-                        app:layout_constraintTop_toTopOf="@+id/editText_bone_name2"
-                        app:srcCompat="@drawable/ic_heart"
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
