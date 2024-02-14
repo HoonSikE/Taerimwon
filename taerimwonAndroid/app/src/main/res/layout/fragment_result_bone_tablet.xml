@@ -15,12 +15,11 @@
         <!--합골 위패-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_bone_tablet_content"
-            android:layout_width="225px"
-            android:layout_height="630px"
+            android:layout_width="220px"
+            android:layout_height="625px"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="20px"
             >
             <!--공통 마크-->
             <androidx.constraintlayout.widget.ConstraintLayout

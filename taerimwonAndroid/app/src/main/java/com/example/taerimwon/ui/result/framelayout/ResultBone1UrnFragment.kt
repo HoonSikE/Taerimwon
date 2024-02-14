@@ -68,6 +68,11 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                 boneDate2 = ApplicationClass.prefs.date2.toString()
                 boneDate2Type = ApplicationClass.prefs.date2Type.toString()
             }
+
+            if(ApplicationClass.prefs.selectedUrnName!!.contains("미정(타입1)")){
+                binding.layoutResultContent.setBackgroundColor(resources.getColor(android.R.color.black))
+                binding.layoutUrnContent.setBackgroundColor(resources.getColor(android.R.color.white))
+            }
         }
 
         if(selectedUrnType2 != "선택안함" || ApplicationClass.prefs.selectedUrnName!!.contains("미정(타입1)") || ApplicationClass.prefs.selectedUrnName!!.contains("ZEN사각합골진공함")) {
@@ -177,7 +182,9 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
         val pixel_size_75 = resources.getDimensionPixelSize(R.dimen.pixel_size_75)
         val pixel_size_105 = resources.getDimensionPixelSize(R.dimen.pixel_size_105)
         val pixel_size_120 = resources.getDimensionPixelSize(R.dimen.pixel_size_120)
+        val pixel_size_130 = resources.getDimensionPixelSize(R.dimen.pixel_size_130)
         val pixel_size_135 = resources.getDimensionPixelSize(R.dimen.pixel_size_135)
+        val pixel_size_140 = resources.getDimensionPixelSize(R.dimen.pixel_size_140)
         val pixel_size_150 = resources.getDimensionPixelSize(R.dimen.pixel_size_150)
         val pixel_size_240 = resources.getDimensionPixelSize(R.dimen.pixel_size_240)
         val pixel_size_270 = resources.getDimensionPixelSize(R.dimen.pixel_size_270)
@@ -257,10 +264,10 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                     layoutUrnResult2213.text = boneName1[2].toString()
                     layoutUrnResult2214.text = boneName1[3].toString()
 
-                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_150.toFloat())
-                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_150.toFloat())
-                    layoutUrnResult2213.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_150.toFloat())
-                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_150.toFloat())
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
+                    layoutUrnResult2213.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
                 }
             }
         }else if(boneEngraveType2 == "형제" || boneEngraveType2 == "자매"){
@@ -276,8 +283,8 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                     layoutUrnResult2211.text = boneName1[0].toString()
                     layoutUrnResult2214.text = boneName1[1].toString()
 
-                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_150.toFloat())
-                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_150.toFloat())
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
                 }
                 3 -> {
                     layoutUrnResult2211.text = boneName1[0].toString()
@@ -285,9 +292,9 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                     layoutUrnResult2212.text = boneName1[1].toString()
                     layoutUrnResult2214.text = boneName1[2].toString()
 
-                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_150.toFloat())
-                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_150.toFloat())
-                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_150.toFloat())
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
                 }
                 4 -> {
                     layoutUrnResult2211.text = boneName1[0].toString()
@@ -297,10 +304,10 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                     layoutUrnResult2213.text = boneName1[2].toString()
                     layoutUrnResult2214.text = boneName1[3].toString()
 
-                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_120.toFloat())
-                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_120.toFloat())
-                    layoutUrnResult2213.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_120.toFloat())
-                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_120.toFloat())
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
+                    layoutUrnResult2213.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
                 }
             }
         }else if(boneEngraveType == "기독교" && (boneEngraveType2 == "기본" || boneEngraveType2.contains("한글") || boneEngraveType2.toString().contains("年月日"))
@@ -312,8 +319,8 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                     layoutUrnResult2211.text = boneName1[0].toString()
                     layoutUrnResult2214.text = boneName1[1].toString()
 
-                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_150.toFloat())
-                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_150.toFloat())
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
                 }
                 3 -> {
                     layoutUrnResult2211.text = boneName1[0].toString()
@@ -321,9 +328,9 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                     layoutUrnResult2212.text = boneName1[1].toString()
                     layoutUrnResult2214.text = boneName1[2].toString()
 
-                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_150.toFloat())
-                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_150.toFloat())
-                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_150.toFloat())
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
                 }
                 4 -> {
                     layoutUrnResult2211.text = boneName1[0].toString()
@@ -333,10 +340,10 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                     layoutUrnResult2213.text = boneName1[2].toString()
                     layoutUrnResult2214.text = boneName1[3].toString()
 
-                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_120.toFloat())
-                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_120.toFloat())
-                    layoutUrnResult2213.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_120.toFloat())
-                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_120.toFloat())
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
+                    layoutUrnResult2213.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
                 }
             }
             layoutUrnResult220.visibility = View.VISIBLE
@@ -349,7 +356,7 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                 4 -> {
 //                    layoutUrnResult220.width = pixel_size_300
                     layoutUrnResult220.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_65.toFloat())
-                    layoutUrnResult220.letterSpacing = -0.1f
+                    layoutUrnResult220.letterSpacing = -0.18f
 //                    layoutUrnResult220.textScaleX = 1.2f
 
                 }
@@ -367,12 +374,17 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                 2 -> {
                     layoutUrnResult2211.text = boneName1[0].toString()
                     layoutUrnResult2214.text = boneName1[1].toString()
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
                 }
                 3 -> {
                     layoutUrnResult2211.text = boneName1[0].toString()
                     layoutUrnResult2212.visibility = View.VISIBLE
                     layoutUrnResult2212.text = boneName1[1].toString()
                     layoutUrnResult2214.text = boneName1[2].toString()
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_140.toFloat())
                 }
                 4 -> {
                     layoutUrnResult2211.text = boneName1[0].toString()
@@ -382,10 +394,10 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                     layoutUrnResult2213.text = boneName1[2].toString()
                     layoutUrnResult2214.text = boneName1[3].toString()
 
-                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_120.toFloat())
-                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_120.toFloat())
-                    layoutUrnResult2213.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_120.toFloat())
-                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_120.toFloat())
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
+                    layoutUrnResult2213.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
                 }
             }
             layoutUrnResult222.visibility = View.VISIBLE
@@ -399,7 +411,7 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                 }
                 4 -> {
                     layoutUrnResult222.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_65.toFloat())
-                    layoutUrnResult222.letterSpacing = -0.1f
+                    layoutUrnResult222.letterSpacing = -0.18f
 //                    layoutUrnResult220.textScaleX = 1.2f
                     layoutUrnResult222.scaleY = 1.2f
                 }
@@ -443,8 +455,8 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                     layoutUrnResult2211.text = boneName1[0].toString()
                     layoutUrnResult2214.text = boneName1[1].toString()
 
-                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_135.toFloat())
-                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_135.toFloat())
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
                 }
                 3 -> {
                     layoutUrnResult2211.text = boneName1[0].toString()
@@ -452,9 +464,9 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                     layoutUrnResult2212.text = boneName1[1].toString()
                     layoutUrnResult2214.text = boneName1[2].toString()
 
-                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_135.toFloat())
-                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_135.toFloat())
-                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_135.toFloat())
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
                 }
                 4 -> {
                     layoutUrnResult2211.text = boneName1[0].toString()
@@ -500,8 +512,8 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                     layoutUrnResult2211.text = boneName1[0].toString()
                     layoutUrnResult2214.text = boneName1[1].toString()
 
-                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_135.toFloat())
-                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_135.toFloat())
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
                 }
                 3 -> {
                     layoutUrnResult2211.text = boneName1[0].toString()
@@ -509,9 +521,9 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
                     layoutUrnResult2212.text = boneName1[1].toString()
                     layoutUrnResult2214.text = boneName1[2].toString()
 
-                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_135.toFloat())
-                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_135.toFloat())
-                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_135.toFloat())
+                    layoutUrnResult2211.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
+                    layoutUrnResult2212.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
+                    layoutUrnResult2214.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_130.toFloat())
                 }
                 4 -> {
                     layoutUrnResult2211.text = boneName1[0].toString()

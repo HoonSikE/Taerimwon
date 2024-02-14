@@ -28,6 +28,11 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 || ApplicationClass.prefs.selectedUrnName!!.contains("합골금띠")
                 || ApplicationClass.prefs.selectedUrnName!!.contains("합골실버십장생")){
                 setBone2Data()
+
+                if(ApplicationClass.prefs.selectedUrnName!!.contains("미정(타입2)")){
+                    binding.layoutResultContent.setBackgroundColor(resources.getColor(android.R.color.black))
+                    binding.layoutBoneContent.setBackgroundColor(resources.getColor(android.R.color.white))
+                }
             }else {
                 binding.layoutResultContent.visibility = View.GONE
             }

@@ -457,6 +457,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             }
             else if(selectedTabletType.contains("사진")){
                 setTabletData()
+                binding.ViewPhoto.visibility = View.VISIBLE
+                binding.layoutPhoto.visibility = View.VISIBLE
                 binding.fragmentTabletContent.visibility = View.VISIBLE
                 binding.layoutTablet.visibility = View.VISIBLE
                 binding.layoutTabletPhoto.visibility = View.VISIBLE
@@ -482,6 +484,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             if(boneSelectedTabletType != "선택안함") {
                 if(boneSelectedTabletType.contains("사진")){
                     setTablet2Data()
+                    binding.ViewPhoto.visibility = View.VISIBLE
+                    binding.layoutPhoto.visibility = View.VISIBLE
                     binding.fragmentTablet2Content.visibility = View.VISIBLE
                     binding.layoutTablet2.visibility = View.VISIBLE
                     binding.layoutTablet2Photo.visibility = View.VISIBLE
@@ -6087,6 +6091,29 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
                     // 5. attachmentUri를 사용하여 MMS 메시지를 만들고 보냅니다.
                     sendMMS(tel, subject, sms_body, imageUri)
+
+//                    if(ApplicationClass.prefs.tabletType.toString().contains("사진") || ApplicationClass.prefs.boneTabletType.toString().contains("사진")){
+//                        val imageUris = ArrayList<Uri>()
+//                        imageUris.add(imageUri)
+//
+//                        // 이미지 경로(URI)를 SharedPreferences에서 가져옴
+//                        val tabletImageUri = ApplicationClass.prefs.tabletImageUri
+//                        if (tabletImageUri != "") {
+//                            val imageUri2 = Uri.parse(tabletImageUri)
+//                            imageUris.add(imageUri2)
+//                        }
+//
+//                        val boneTabletImageUri = ApplicationClass.prefs.boneTabletImageUri
+//                        if (boneTabletImageUri != "") {
+//                            val imageUri3 = Uri.parse(boneTabletImageUri)
+//                            imageUris.add(imageUri3)
+//                        }
+//
+//                        sendMMS2(tel, subject, sms_body, imageUris)
+//                    }else{
+//                        sendMMS(tel, subject, sms_body, imageUri)
+//                    }
+
 //                } else {
 //                    // 하나 이상의 권한이 거부된 경우
 //                    // 권한을 요청합니다.
@@ -6137,6 +6164,42 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         Log.d(TAG, "subject: " + subject)
         Log.d(TAG, "sms_body: " + sms_body)
         Log.d(TAG, "imageUri: " + imageUri)
+
+        try {
+            if (activity?.let { intent.resolveActivity(it.packageManager) } != null) {
+                startActivity(intent)
+            } else {
+                // SMS/MMS 앱이 설치되어 있지 않음 또는 처리할 수 없는 경우
+                toast("기본 메시지 앱을 찾을 수 없습니다.")
+            }
+        } catch (e: ActivityNotFoundException) {
+            // SMS/MMS 앱을 찾을 수 없는 경우
+            toast("기본 메시지 앱을 찾을 수 없습니다.")
+        }
+    }
+    private fun sendMMS2(tel: String, subject: String, sms_body: String, imageUris: ArrayList<Uri>) {
+        var intent = Intent(Intent.ACTION_SEND_MULTIPLE)
+        if((ApplicationClass.prefs.name1 == "" && ApplicationClass.prefs.selectedTabletType == "선택안함")
+            || (ApplicationClass.prefs.name3 == "" && ApplicationClass.prefs.selectedUrnType == "선택안함")
+        ){
+            intent.apply {
+                type = "image/*"
+                putExtra("address", tel)
+                putExtra("sms_body", sms_body)
+            }
+        }else{
+            intent.apply {
+                type = "image/*"
+                putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris)
+                putExtra("address", tel)
+//            putExtra("subject", subject)
+                putExtra("sms_body", sms_body)
+            }
+        }
+
+        Log.d(TAG, "subject: " + subject)
+        Log.d(TAG, "sms_body: " + sms_body)
+        Log.d(TAG, "imageUri: " + imageUris)
 
         try {
             if (activity?.let { intent.resolveActivity(it.packageManager) } != null) {

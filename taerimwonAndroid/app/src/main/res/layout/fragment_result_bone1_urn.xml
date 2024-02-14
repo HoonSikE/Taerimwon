@@ -12,18 +12,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_result"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@android:color/black"
         >
         <!--유골함 내용-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_urn_content"
-            android:layout_width="520px"
-            android:layout_height="880px"
+            android:layout_width="535px"
+            android:layout_height="895px"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@android:color/white"
             >
             <!--왼쪽-->
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,7 +46,7 @@
                     <TextView
                         android:id="@+id/layout_urn_result1_1_0"
                         android:layout_width="wrap_content"
-                        android:layout_height="60px"
+                        android:layout_height="130px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hyhaeso"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -257,8 +255,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_urn_result1_7_0"
-                    android:layout_width="18px"
-                    android:layout_height="5px"
+                    android:layout_width="54px"
+                    android:layout_height="15px"
                     app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
                     app:layout_constraintBottom_toTopOf="@+id/layout_urn_result1_7"
@@ -276,7 +274,9 @@
                     android:textSize="105px"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result1_1"
-                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1" />
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result1_1"
+                    android:layout_marginBottom="8px"
+                    />
             </androidx.constraintlayout.widget.ConstraintLayout>
             <!--이름-->
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -322,6 +322,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginTop="15px"
+                    android:layout_marginBottom="15px"
                     tools:ignore="MissingConstraints"
                     >
                     <!--위 글씨-->
@@ -338,7 +339,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:gravity="center"
-                        android:layout_marginTop="20px"
+                        android:layout_marginTop="25px"
                         android:visibility="gone"
                         />
                     <!--이름-->
@@ -347,14 +348,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="홍"
-                        android:textSize="165px"
+                        android:textSize="150px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="100"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/layout_urn_result2_2_0"
-                        android:layout_marginTop="15px"
+                        android:layout_marginTop="25px"
                         android:gravity="center"
                         android:lineSpacingMultiplier="1.2"
                         />
@@ -363,7 +364,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="길"
-                        android:textSize="165px"
+                        android:textSize="150px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="100"
@@ -380,7 +381,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="동"
-                        android:textSize="165px"
+                        android:textSize="150px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="100"
@@ -397,7 +398,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="동"
-                        android:textSize="165px"
+                        android:textSize="150px"
                         android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
                         android:textFontWeight="100"
@@ -406,6 +407,7 @@
                         app:layout_constraintBottom_toTopOf="@+id/layout_urn_result2_2_2"
                         android:gravity="center"
                         android:lineSpacingMultiplier="1.2"
+                        android:layout_marginBottom="25px"
                         />
                     <!--밑 글씨-->
                     <TextView
@@ -420,7 +422,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_marginTop="30px"
                         android:gravity="center"
                         android:visibility="gone"
                         />
@@ -436,25 +437,26 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 >
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_urn_result3_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:ignore="MissingConstraints"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toTopOf="@+id/layout_urn_result3_2_1"
-                    >
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.47"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints">
+
                     <TextView
                         android:id="@+id/layout_urn_result3_1_0"
                         android:layout_width="wrap_content"
-                        android:layout_height="60px"
-                        android:textColor="@color/black"
+                        android:layout_height="130px"
                         android:fontFamily="@font/hyhaeso"
+                        android:textColor="@color/black"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/layout_urn_result3_1_1"
@@ -467,43 +469,44 @@
                         android:textFontWeight="300"
                         android:textSize="105px"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_1_0"
-                        />
+                        app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_1_0" />
+
                     <TextView
                         android:id="@+id/layout_urn_result3_1_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="召天"
-                        android:textSize="90px"
-                        android:textColor="@color/black"
                         android:fontFamily="@font/hyhaeso"
-                        android:textFontWeight="300"
-                        android:letterSpacing="-0.25"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_1_1"
                         android:gravity="center"
+                        android:letterSpacing="-0.25"
+                        android:text="召天"
+                        android:textColor="@color/black"
+                        android:textFontWeight="300"
+                        android:textSize="90px"
                         android:visibility="gone"
-                        />
+                        android:paddingRight="8px"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_1_1" />
+
                     <ImageView
                         android:id="@+id/layout_urn_result3_1_3"
                         android:layout_width="135px"
                         android:layout_height="93px"
                         android:scaleType="fitXY"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_1_2"
                         android:visibility="gone"
-                        />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_1_2" />
+
                     <ImageView
                         android:id="@+id/layout_urn_result3_1_4"
                         android:layout_width="75px"
                         android:layout_height="150px"
                         android:scaleType="fitXY"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_1_3"
                         android:visibility="gone"
-                        />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_urn_result3_1_3" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <ImageView
                     android:id="@+id/layout_urn_result3_2_0"
                     android:layout_width="54px"
@@ -695,7 +698,9 @@
                     android:textSize="105px"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/layout_urn_result3_1"
-                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1" />
+                    app:layout_constraintStart_toStartOf="@+id/layout_urn_result3_1"
+                    android:layout_marginBottom="8px"
+                    />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

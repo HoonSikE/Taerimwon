@@ -51,6 +51,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 //                setTabletData()
                 setTablet2Data()
             }
+            if(selectedTabletName!!.contains("미정")){
+                binding.layoutResultContent.setBackgroundColor(resources.getColor(android.R.color.black))
+                binding.layoutBoneTabletContent.setBackgroundColor(resources.getColor(android.R.color.white))
+            }
         }else {
             binding.layoutResultContent.visibility = View.GONE
         }

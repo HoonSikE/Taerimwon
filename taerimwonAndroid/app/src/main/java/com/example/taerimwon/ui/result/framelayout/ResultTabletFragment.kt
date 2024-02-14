@@ -58,6 +58,10 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
             }else {
                 setTabletData()
             }
+            if(selectedTabletName!!.contains("미정")){
+                binding.layoutResultContent.setBackgroundColor(resources.getColor(android.R.color.black))
+                binding.layoutTabletContent.setBackgroundColor(resources.getColor(android.R.color.white))
+            }
         }
     }
     private fun setTableMark() {

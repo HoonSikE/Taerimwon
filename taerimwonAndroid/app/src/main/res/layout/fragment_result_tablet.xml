@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_result_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="275px"
+        android:layout_height="630px"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -14,12 +14,12 @@
         <!--위패 내용-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_tablet_content"
-            android:layout_width="275px"
-            android:layout_height="630px"
+            android:layout_width="270px"
+            android:layout_height="625px"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="20px"
             >
             <TextView
                 android:id="@+id/layout_tablet_result0"

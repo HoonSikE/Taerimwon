@@ -71,6 +71,10 @@ class ResultTablet2Fragment : BaseFragment<FragmentResultTablet2Binding>(R.layou
             }else {
                 setTablet2Data()
             }
+            if(selectedTabletName2!!.contains("미정")){
+                binding.layoutResultContent.setBackgroundColor(resources.getColor(android.R.color.black))
+                binding.layoutTablet2Content.setBackgroundColor(resources.getColor(android.R.color.white))
+            }
         }
     }
     private fun setTable2Mark() {

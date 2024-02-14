@@ -37,7 +37,9 @@
     <dimen name="pixel_size_105">105px</dimen>
     <dimen name="pixel_size_120">120px</dimen>
     <dimen name="pixel_size_125">125px</dimen>
+    <dimen name="pixel_size_130">130px</dimen>
     <dimen name="pixel_size_135">135px</dimen>
+    <dimen name="pixel_size_140">140px</dimen>
     <dimen name="pixel_size_145">145px</dimen>
     <dimen name="pixel_size_150">150px</dimen>
     <dimen name="pixel_size_170">170px</dimen>
