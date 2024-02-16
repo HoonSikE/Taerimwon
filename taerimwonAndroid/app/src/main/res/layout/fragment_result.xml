@@ -696,7 +696,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintEnd_toStartOf="@+id/layout_urn2"
-                        android:visibility="gone"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
@@ -704,10 +703,13 @@
                             android:id="@+id/layout_urn_image"
                             android:layout_width="540px"
                             android:layout_height="600px"
-                            android:background="@drawable/img_urn4_1"
+                            android:background="@drawable/img_urn1_1"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
+
+
+
                             <!-- android:layout_width="180px"
                                 android:layout_height="270px" -->
                             <!-- android:layout_width="170px"
@@ -751,7 +753,7 @@
                             <ImageView
                                 android:id="@+id/image_urn_image_under"
                                 android:layout_width="190px"
-                                android:layout_height="100px"
+                                android:layout_height="110px"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"/>

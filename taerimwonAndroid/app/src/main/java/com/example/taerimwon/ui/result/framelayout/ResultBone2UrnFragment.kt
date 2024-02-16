@@ -92,9 +92,9 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             var imageName = "img_mark" + (engraveTypePosition + 1)
 
             if(engraveTypePosition == 4 || engraveTypePosition == 5){
-                if(ApplicationClass.prefs.engraveType2Position == 0)
+                if(ApplicationClass.prefs.engraveType2Position == 0 || ApplicationClass.prefs.engraveType2Position == 2)
                     imageName = "img_mark5"
-                else if(ApplicationClass.prefs.engraveType2Position == 1 || ApplicationClass.prefs.engraveType2Position == 2)
+                else if(ApplicationClass.prefs.engraveType2Position == 1 || ApplicationClass.prefs.engraveType2Position == 3)
                     imageName = "img_mark5_2"
             }
             val imageResource = resources.getIdentifier(imageName, "drawable", requireActivity().packageName)
@@ -126,9 +126,9 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             var imageName1 = "img_mark" + (engraveTypePosition + 1)
 
             if(engraveTypePosition == 4 || engraveTypePosition == 5){
-                if(engraveType2Position == 0)
+                if(engraveType2Position == 0 || engraveType2Position == 2)
                     imageName1 = "img_mark5"
-                else if(engraveType2Position == 1 || engraveType2Position == 2)
+                else if(engraveType2Position == 1 || engraveType2Position == 3)
                     imageName1 = "img_mark5_2"
             }
             val imageResource1 = resources.getIdentifier(imageName1, "drawable", requireActivity().packageName)
@@ -144,9 +144,9 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             var imageName2 = "img_mark" + (boneEngraveTypePosition + 1)
 
             if(boneEngraveTypePosition == 4 || boneEngraveTypePosition == 5){
-                if(boneEngraveType2Position == 0)
+                if(boneEngraveType2Position == 0 || boneEngraveType2Position == 2)
                     imageName2 = "img_mark5"
-                else if(boneEngraveType2Position == 1 || boneEngraveType2Position == 2)
+                else if(boneEngraveType2Position == 1 || boneEngraveType2Position == 3)
                     imageName2 = "img_mark5_2"
             }
             val imageResource = resources.getIdentifier(imageName2, "drawable", requireActivity().packageName)
@@ -1576,34 +1576,34 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             // 현재 레이아웃 파라미터를 가져옵니다.
             val params = layoutBone21Result221.layoutParams
             // 뷰의 높이를 픽셀 단위로 설정
-            params.height = 170
+            params.height = 600
             layoutBone21Result221.layoutParams = params
 
             val layoutBone22Result221 = binding.layoutBone22Result221
             val params2 = layoutBone22Result221.layoutParams
-            params2.height = 170
+            params2.height = 600
             layoutBone22Result221.layoutParams = params2
 //            binding.layoutBone21Result221.height = pixel_size_170
 //            binding.layoutBone22Result221.height = pixel_size_170
         }else if(flagDown){
             val layoutBone21Result221 = binding.layoutBone21Result221
             val params = layoutBone21Result221.layoutParams
-            params.height = 210
+            params.height = 600
             layoutBone21Result221.layoutParams = params
 
             val layoutBone22Result221 = binding.layoutBone22Result221
             val params2 = layoutBone22Result221.layoutParams
-            params2.height = 210
+            params2.height = 600
             layoutBone22Result221.layoutParams = params2
         }else if(flagUp){
             val layoutBone21Result221 = binding.layoutBone21Result221
             val params = layoutBone21Result221.layoutParams
 
             if(name2.length == 2 || name2.length == 4 || boneName2.length == 2 || boneName2.length == 4)
-                params.height = 190
+                params.height = 480
             else if(name2.length == 3 || name2.length == 5 || name2.length == 6
                 || boneName2.length == 3 || boneName2.length == 5 || boneName2.length == 6)
-                params.height = 170
+                params.height = 460
 
             layoutBone21Result221.layoutParams = params
 
@@ -1611,10 +1611,10 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             val params2 = layoutBone22Result221.layoutParams
 
             if(name2.length == 2 || name2.length == 4 || boneName2.length == 2 || boneName2.length == 4)
-                params2.height = 190
+                params2.height = 480
             else if(name2.length == 3 || name2.length == 5 || name2.length == 6
                 || boneName2.length == 3 || boneName2.length == 5 || boneName2.length == 6)
-                params2.height = 170
+                params2.height = 460
 
             layoutBone22Result221.layoutParams = params2
 //                binding.layoutBone21Result221.height = pixel_size_210

@@ -93,9 +93,9 @@ class ResultBone1UrnFragment : BaseFragment<FragmentResultBone1UrnBinding>(R.lay
         var imageName = "img_mark" + (boneEngraveTypePosition + 1)
 
         if(boneEngraveTypePosition == 4 || boneEngraveTypePosition == 5){
-            if(boneEngraveType2Position == 0)
+            if(boneEngraveType2Position == 0 || boneEngraveType2Position == 2)
                 imageName = "img_mark5"
-            else if(boneEngraveType2Position == 1 || boneEngraveType2Position == 2)
+            else if(boneEngraveType2Position == 1 || boneEngraveType2Position == 3)
                 imageName = "img_mark5_2"
         }
 

@@ -444,7 +444,7 @@
                 android:textColor="@color/redTextColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="* 수목함, 표석, 밀봉외함은 별도 안내해 드리겠습니다."
+                android:text="* 표석 선택시 발주 주시면 별도로 안내해 드리겠습니다."
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/layout_engrave"

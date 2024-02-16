@@ -95,9 +95,9 @@ class ResultUrnFragment : BaseFragment<FragmentResultUrnBinding>(R.layout.fragme
         var imageName = "img_mark" + (engraveTypePosition + 1)
 
         if(engraveTypePosition == 4 || engraveTypePosition == 5){
-            if(engraveType2Position == 0)
+            if(engraveType2Position == 0 || engraveType2Position == 2)
                 imageName = "img_mark5"
-            else if(engraveType2Position == 1 || engraveType2Position == 2)
+            else if(engraveType2Position == 1 || engraveType2Position == 3)
                 imageName = "img_mark5_2"
         }
 

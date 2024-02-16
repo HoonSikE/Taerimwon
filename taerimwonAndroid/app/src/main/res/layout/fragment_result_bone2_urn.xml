@@ -25,7 +25,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_bone2_1_result1"
                 android:layout_width="90px"
-                android:layout_height="880px"
+                android:layout_height="895px"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/layout_bone2_1_result3"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -274,7 +274,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_bone2_1_result3"
                 android:layout_width="90px"
-                android:layout_height="880px"
+                android:layout_height="895px"
                 app:layout_constraintStart_toEndOf="@+id/layout_bone2_1_result1"
                 app:layout_constraintEnd_toStartOf="@+id/layout_bone2_result2"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -531,7 +531,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_bone2_result2"
                 android:layout_width="270px"
-                android:layout_height="880px"
+                android:layout_height="895px"
                 app:layout_constraintStart_toEndOf="@+id/layout_bone2_1_result3"
                 app:layout_constraintEnd_toStartOf="@+id/layout_bone2_2_result1"
                 tools:ignore="MissingConstraints"
@@ -614,9 +614,8 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_bone2_1_result2"
                     android:layout_width="match_parent"
-                    android:layout_height="780px"
-                    android:layout_marginTop="45px"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_height="775px"
+                    android:paddingTop="10px"
                     app:layout_constraintBottom_toBottomOf="parent"
                     tools:ignore="MissingConstraints"
                     >
@@ -878,7 +877,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_bone2_2_result1"
                 android:layout_width="90px"
-                android:layout_height="880px"
+                android:layout_height="895px"
                 app:layout_constraintStart_toEndOf="@+id/layout_bone2_result2"
                 app:layout_constraintEnd_toStartOf="@+id/layout_bone2_2_result3"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -1124,7 +1123,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_bone2_2_result3"
                 android:layout_width="90px"
-                android:layout_height="880px"
+                android:layout_height="895px"
                 app:layout_constraintStart_toEndOf="@+id/layout_bone2_2_result1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"

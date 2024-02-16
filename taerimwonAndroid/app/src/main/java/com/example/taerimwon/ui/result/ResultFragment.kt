@@ -654,7 +654,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 90
+                    layoutParamsUnder.height = 110
                 }
                 "도화홍꽃 DH-5 4010" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn1_7)
@@ -662,7 +662,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 90
+                    layoutParamsUnder.height = 110
                 }
                 "소담난 SDN-2 4008" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn1_8)
@@ -678,7 +678,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 170
                     layoutParamsUrn.height = 240
 
-                    layoutParamsUnder.height = 130
+                    layoutParamsUnder.height = 160
                 }
                 // 2. 일반함
                 "매화조각민트 MH-2 2906" -> {
@@ -687,7 +687,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 160
                     layoutParamsUrn.height = 230
 
-                    layoutParamsUnder.height = 110
+                    layoutParamsUnder.height = 130
                 }
                 "매화조각핑크 MH-1 2906" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn2_2)
@@ -695,7 +695,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 160
                     layoutParamsUrn.height = 230
 
-                    layoutParamsUnder.height = 110
+                    layoutParamsUnder.height = 130
                 }
                 "매화조각화이트 MH-3 2906" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn2_3)
@@ -719,7 +719,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 80
+                    layoutParamsUnder.height = 90
 
                     layoutParamsLeft.width = 15
                 }
@@ -865,7 +865,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 90
+                    layoutParamsUnder.height = 110
                 }
                 "이중칼라송학 EH-4 5114" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn3_9)
@@ -873,7 +873,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 170
                     layoutParamsUrn.height = 240
 
-                    layoutParamsUnder.height = 140
+                    layoutParamsUnder.height = 160
                 }
 
                 // 4. 잠금형 삼중 명품자개함
@@ -919,7 +919,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 110
+                    layoutParamsUnder.height = 120
                 }
                 "휴안블랙자개 HUG-15 10228" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_6)
@@ -927,7 +927,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 170
                     layoutParamsUrn.height = 240
 
-                    layoutParamsUnder.height = 110
+                    layoutParamsUnder.height = 130
                 }
                 "휴안홍한지십장생자개 HUG-19 13139" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_7_2)
@@ -979,7 +979,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 70
+                    layoutParamsUnder.height = 60
                 }
                 "휴안궁 HU-1 8525" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_3_2)
@@ -999,7 +999,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 100
+                    layoutParamsUnder.height = 120
                 }
                 "휴안그린송학 HGS-1 9020" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_5)
@@ -1007,7 +1007,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 90
+                    layoutParamsUnder.height = 120
 
                     layoutParamsLeft.width = 15
                 }
@@ -1017,7 +1017,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 70
+                    layoutParamsUnder.height = 80
                 }
                 "휴안루엔골드 HLG-1 8723" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_7)
@@ -1045,7 +1045,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 780
+                    layoutParamsUnder.height = 90
                 }
                 "휴안불교 HUB-2 8817" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_10)
@@ -1053,7 +1053,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 70
+                    layoutParamsUnder.height = 90
                 }
                 "휴안상아난 HSN-20 8718" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_11)
@@ -1076,16 +1076,16 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 "휴안샤이니블루보석 HU-6 9520" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_13)
 
-                    layoutParamsUrn.width = 180
-                    layoutParamsUrn.height = 270
+                    layoutParamsUrn.width = 200
+                    layoutParamsUrn.height = 300
 
                     layoutParamsUnder.height = 110
                 }
                 "휴안실버당초보석 HU-5 9520" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_14)
 
-                    layoutParamsUrn.width = 180
-                    layoutParamsUrn.height = 270
+                    layoutParamsUrn.width = 200
+                    layoutParamsUrn.height = 300
 
                     layoutParamsUnder.height = 120
                 }
@@ -1095,7 +1095,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 120
+                    layoutParamsUnder.height = 140
 
                     layoutParamsRight.width = 15
                 }
@@ -1105,7 +1105,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 120
+                    layoutParamsUnder.height = 140
 
                     layoutParamsRight.width = 15
                 }
@@ -1115,7 +1115,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 120
+                    layoutParamsUnder.height = 140
                 }
                 "휴안천궁기독교 CGG-2 8723" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_18)
@@ -1155,7 +1155,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 80
+                    layoutParamsUnder.height = 100
                 }
                 "휴안천향 HU-2 8525" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_23_2)
@@ -1167,7 +1167,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 90
+                    layoutParamsUnder.height = 130
                 }
                 "휴안핑크당초보석 HU-4 9520" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_24)
@@ -1215,7 +1215,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 90
+                    layoutParamsUnder.height = 110
 
                     layoutParamsLeft.width = 15
                 }
@@ -1225,7 +1225,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 90
+                    layoutParamsUnder.height = 110
 
                     layoutParamsLeft.width = 15
                 }
@@ -1273,7 +1273,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 120
+                    layoutParamsUnder.height = 100
                 }
                 "봉분불교 BOB-7 6621" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_5)
@@ -1281,7 +1281,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 140
+                    layoutParamsUnder.height = 100
                 }
                 "봉분송학 BOB-1 6621" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_6)
@@ -1294,8 +1294,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 "봉분천주교 BOB-8 6621" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_7)
 
-                    layoutParamsUrn.width = 180
-                    layoutParamsUrn.height = 270
+                    layoutParamsUrn.width = 160
+                    layoutParamsUrn.height = 240
 
                     layoutParamsUnder.height = 140
                 }
@@ -1317,7 +1317,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 80
+                    layoutParamsUnder.height = 90
                 }
                 "아름기독교 AR-9-6117" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_10)
@@ -1333,7 +1333,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 120
+                    layoutParamsUnder.height = 140
                 }
                 "아름명성 AR-4 6117" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_12)
@@ -1341,7 +1341,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 80
+                    layoutParamsUnder.height = 100
                 }
                 "아름불교-AR-10-6117" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_13)
@@ -1381,7 +1381,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 120
+                    layoutParamsUnder.height = 140
                 }
                 "아름천주교-AR-11-6117" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_18)
@@ -1397,7 +1397,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 100
+                    layoutParamsUnder.height = 120
                 }
                 "태림조각기독교 TA-2 6520" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_20)
@@ -1596,7 +1596,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 100
+                    layoutParamsUnder.height = 120
                 }
                 "조각기독교 ZE-11 1035" -> {
                     val layoutParams = layoutUrnImage.layoutParams
@@ -1740,7 +1740,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 100
+                    layoutParamsUnder.height = 120
                 }
                 "화접도 ZE-5 11832" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_13)
@@ -1748,7 +1748,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 100
+                    layoutParamsUnder.height = 130
                 }
             }
             layoutUrnImage.background = newBackground
@@ -1857,7 +1857,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 90
+                    layoutParamsUnder.height = 110
                 }
                 "도화홍꽃 DH-5 4010" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn1_7)
@@ -1865,7 +1865,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 90
+                    layoutParamsUnder.height = 110
                 }
                 "소담난 SDN-2 4008" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn1_8)
@@ -1881,7 +1881,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 170
                     layoutParamsUrn.height = 240
 
-                    layoutParamsUnder.height = 130
+                    layoutParamsUnder.height = 160
                 }
                 // 2. 일반함
                 "매화조각민트 MH-2 2906" -> {
@@ -1890,7 +1890,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 160
                     layoutParamsUrn.height = 230
 
-                    layoutParamsUnder.height = 110
+                    layoutParamsUnder.height = 130
                 }
                 "매화조각핑크 MH-1 2906" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn2_2)
@@ -1898,7 +1898,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 160
                     layoutParamsUrn.height = 230
 
-                    layoutParamsUnder.height = 110
+                    layoutParamsUnder.height = 130
                 }
                 "매화조각화이트 MH-3 2906" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn2_3)
@@ -1922,7 +1922,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 80
+                    layoutParamsUnder.height = 90
 
                     layoutParamsLeft.width = 15
                 }
@@ -2068,7 +2068,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 90
+                    layoutParamsUnder.height = 110
                 }
                 "이중칼라송학 EH-4 5114" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn3_9)
@@ -2076,7 +2076,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 170
                     layoutParamsUrn.height = 240
 
-                    layoutParamsUnder.height = 140
+                    layoutParamsUnder.height = 160
                 }
 
                 // 4. 잠금형 삼중 명품자개함
@@ -2122,7 +2122,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 110
+                    layoutParamsUnder.height = 120
                 }
                 "휴안블랙자개 HUG-15 10228" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_6)
@@ -2130,7 +2130,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 170
                     layoutParamsUrn.height = 240
 
-                    layoutParamsUnder.height = 110
+                    layoutParamsUnder.height = 130
                 }
                 "휴안홍한지십장생자개 HUG-19 13139" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn4_7_2)
@@ -2182,7 +2182,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 70
+                    layoutParamsUnder.height = 60
                 }
                 "휴안궁 HU-1 8525" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_3_2)
@@ -2202,7 +2202,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 100
+                    layoutParamsUnder.height = 120
                 }
                 "휴안그린송학 HGS-1 9020" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_5)
@@ -2210,7 +2210,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 90
+                    layoutParamsUnder.height = 120
 
                     layoutParamsLeft.width = 15
                 }
@@ -2220,7 +2220,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 70
+                    layoutParamsUnder.height = 80
                 }
                 "휴안루엔골드 HLG-1 8723" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_7)
@@ -2248,7 +2248,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 80
+                    layoutParamsUnder.height = 90
                 }
                 "휴안불교 HUB-2 8817" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_10)
@@ -2256,7 +2256,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 70
+                    layoutParamsUnder.height = 90
                 }
                 "휴안상아난 HSN-20 8718" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_11)
@@ -2279,16 +2279,16 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 "휴안샤이니블루보석 HU-6 9520" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_13)
 
-                    layoutParamsUrn.width = 180
-                    layoutParamsUrn.height = 270
+                    layoutParamsUrn.width = 200
+                    layoutParamsUrn.height = 300
 
                     layoutParamsUnder.height = 110
                 }
                 "휴안실버당초보석 HU-5 9520" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_14)
 
-                    layoutParamsUrn.width = 180
-                    layoutParamsUrn.height = 270
+                    layoutParamsUrn.width = 200
+                    layoutParamsUrn.height = 300
 
                     layoutParamsUnder.height = 120
                 }
@@ -2298,7 +2298,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 120
+                    layoutParamsUnder.height = 140
 
                     layoutParamsRight.width = 15
                 }
@@ -2308,7 +2308,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 120
+                    layoutParamsUnder.height = 140
 
                     layoutParamsRight.width = 15
                 }
@@ -2318,7 +2318,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 120
+                    layoutParamsUnder.height = 140
                 }
                 "휴안천궁기독교 CGG-2 8723" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_18)
@@ -2358,7 +2358,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 80
+                    layoutParamsUnder.height = 100
                 }
                 "휴안천향 HU-2 8525" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_23_2)
@@ -2370,7 +2370,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 90
+                    layoutParamsUnder.height = 130
                 }
                 "휴안핑크당초보석 HU-4 9520" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn5_24)
@@ -2418,7 +2418,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 140
+                    layoutParamsUnder.height = 110
 
                     layoutParamsLeft.width = 15
                 }
@@ -2428,7 +2428,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 140
+                    layoutParamsUnder.height = 110
 
                     layoutParamsLeft.width = 15
                 }
@@ -2476,7 +2476,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 120
+                    layoutParamsUnder.height = 100
                 }
                 "봉분불교 BOB-7 6621" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_5)
@@ -2484,7 +2484,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 140
+                    layoutParamsUnder.height = 100
                 }
                 "봉분송학 BOB-1 6621" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_6)
@@ -2497,8 +2497,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 "봉분천주교 BOB-8 6621" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_7)
 
-                    layoutParamsUrn.width = 180
-                    layoutParamsUrn.height = 270
+                    layoutParamsUrn.width = 160
+                    layoutParamsUrn.height = 240
 
                     layoutParamsUnder.height = 140
                 }
@@ -2520,7 +2520,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 80
+                    layoutParamsUnder.height = 90
                 }
                 "아름기독교 AR-9-6117" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_10)
@@ -2536,7 +2536,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 120
+                    layoutParamsUnder.height = 140
                 }
                 "아름명성 AR-4 6117" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_12)
@@ -2544,7 +2544,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 80
+                    layoutParamsUnder.height = 100
                 }
                 "아름불교-AR-10-6117" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_13)
@@ -2584,7 +2584,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 120
+                    layoutParamsUnder.height = 140
                 }
                 "아름천주교-AR-11-6117" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_18)
@@ -2600,7 +2600,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 180
                     layoutParamsUrn.height = 270
 
-                    layoutParamsUnder.height = 100
+                    layoutParamsUnder.height = 120
                 }
                 "태림조각기독교 TA-2 6520" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn8_20)
@@ -2799,7 +2799,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 100
+                    layoutParamsUnder.height = 120
                 }
                 "조각기독교 ZE-11 1035" -> {
                     // 밑 내용
@@ -2945,7 +2945,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 100
+                    layoutParamsUnder.height = 120
                 }
                 "화접도 ZE-5 11832" -> {
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn10_13)
@@ -2953,7 +2953,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     layoutParamsUrn.width = 200
                     layoutParamsUrn.height = 300
 
-                    layoutParamsUnder.height = 100
+                    layoutParamsUnder.height = 130
                 }
             }
             imageUrnImageBackgound.layoutParams = layoutParamsUrnBackgound
@@ -3197,6 +3197,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_2)
+
+                binding.textAdd.text = "표석, 피아노 시안내용은 별도로 보내주세요"
             }
             "표석(小) PS-4 0911" -> {
 //                layoutParams.width = 540
@@ -3207,6 +3209,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_3)
+
+                binding.textAdd.text = "표석, 피아노 시안내용은 별도로 보내주세요"
             }
             "피아노(大) PS-1 3020" -> {
 //                layoutParams.width = 540
@@ -3217,6 +3221,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_4)
+
+                binding.textAdd.text = "표석, 피아노 시안내용은 별도로 보내주세요"
             }
             "피아노(小) PS-3 2015" -> {
 //                layoutParams.width = 540
@@ -3227,9 +3233,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_5)
+
+                binding.textAdd.text = "표석, 피아노 시안내용은 별도로 보내주세요"
             }
             "밀봉외함 MH-1 1015" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_1)
+
+                binding.textAdd.text = "표석, 피아노 시안내용은 별도로 보내주세요"
             }
             // 유골함
             // 1. 일반 밀봉진공함
@@ -3672,6 +3682,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_2)
+
+                binding.textAdd.text = "표석, 피아노 시안내용은 별도로 보내주세요"
             }
             "표석(小) PS-4 0911" -> {
 //                layoutParams.width = 540
@@ -3682,6 +3694,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_3)
+
+                binding.textAdd.text = "표석, 피아노 시안내용은 별도로 보내주세요"
             }
             "피아노(大) PS-1 3020" -> {
 //                layoutParams.width = 540
@@ -3692,6 +3706,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_4)
+
+                binding.textAdd.text = "표석, 피아노 시안내용은 별도로 보내주세요"
             }
             "피아노(小) PS-3 2015" -> {
 //                layoutParams.width = 540
@@ -3702,9 +3718,13 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 layoutParams.height = (75 * density).toInt()
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_5)
+
+                binding.textAdd.text = "표석, 피아노 시안내용은 별도로 보내주세요"
             }
             "밀봉외함 MH-1 1015" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_1)
+
+                binding.textAdd.text = "표석, 피아노 시안내용은 별도로 보내주세요"
             }
             // 유골함
             // 1. 일반 밀봉진공함
@@ -5571,6 +5591,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             // 직분, 세례명, 법명
             if((ApplicationClass.prefs.engraveType == "기독교" || ApplicationClass.prefs.engraveType == "순복음") && (ApplicationClass.prefs.engraveType2 == "기본")) {
                 msg += "\n - 직분: " + ApplicationClass.prefs.name2
+
+                if(ApplicationClass.prefs.checkCatholic == "별세"){
+                    msg += "\n - 소전 -> 별세 변경"
+                }
             }else if(ApplicationClass.prefs.engraveType == "불교" && ApplicationClass.prefs.engraveType2 == "법명") {
                 msg += "\n - 법명: " + ApplicationClass.prefs.name2
             }else if(ApplicationClass.prefs.engraveType == "천주교" && ApplicationClass.prefs.engraveType2 == "기본") {
@@ -5605,6 +5629,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 // 직분, 세례명, 법명
                 if((ApplicationClass.prefs.boneEngraveType == "기독교" || ApplicationClass.prefs.boneEngraveType == "순복음") && (ApplicationClass.prefs.boneEngraveType2 == "기본")) {
                     msg += "\n - 직분: " + ApplicationClass.prefs.boneName2
+
+                    if(ApplicationClass.prefs.checkCatholic2 == "별세"){
+                        msg += "\n - 소전 -> 별세 변경"
+                    }
                 }else if(ApplicationClass.prefs.boneEngraveType == "불교" && ApplicationClass.prefs.boneEngraveType2 == "법명") {
                     msg += "\n - 법명: " + ApplicationClass.prefs.boneName2
                 }else if(ApplicationClass.prefs.boneEngraveType == "천주교" && ApplicationClass.prefs.boneEngraveType2 == "기본") {
