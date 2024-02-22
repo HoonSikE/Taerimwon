@@ -1070,7 +1070,9 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         searchList.add("미정")
 //        searchList.add("기본")
 //        searchList.add("기본(검정)")
-        
+
+        searchList.add("목함")
+
         // 1. 일반 밀봉진공함
         searchList.add("도원기독교 DW-3 4010")
         searchList.add("도원불교 DW-4 4010")

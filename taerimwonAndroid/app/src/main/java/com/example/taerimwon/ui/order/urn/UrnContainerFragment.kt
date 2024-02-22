@@ -618,6 +618,28 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
 
                 val selectedUrnName = ApplicationClass.prefs.selectedUrnName.toString()
 
+                if(selectedUrnName.contains("목함")){
+                    binding.layoutEngraveType.visibility = View.GONE
+                    binding.textEngraveSelectType.visibility = View.GONE
+                    binding.recyclerviewEngraveSelectType.visibility = View.GONE
+
+                    binding.textName2.visibility = View.GONE
+                    binding.editTextName2.visibility = View.GONE
+                    binding.imageName2.visibility = View.GONE
+
+                    binding.textDate1.visibility = View.GONE
+                    binding.editTextDate1.visibility = View.GONE
+                    binding.imageDate1.visibility = View.GONE
+                    binding.spinnerDate1Type.visibility = View.GONE
+                    binding.imageDate1Type.visibility = View.GONE
+
+                    binding.textDate2.visibility = View.GONE
+                    binding.editTextDate2.visibility = View.GONE
+                    binding.imageDate2.visibility = View.GONE
+                    binding.spinnerDate2Type.visibility = View.GONE
+                    binding.imageDate2Type.visibility = View.GONE
+                }
+
                 if(selectedUrnName.contains("수목함")
                     || selectedUrnName.contains("밀봉외함")
                     || selectedUrnName.contains("표석")
@@ -707,6 +729,28 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                 ApplicationClass.prefs.selectedUrnName2 = s?.toString() ?: ""
 
                 val selectedUrnName2 = ApplicationClass.prefs.selectedUrnName2.toString()
+
+                if(selectedUrnName2.contains("목함")){
+                    binding.layoutBoneEngraveType.visibility = View.GONE
+                    binding.textBoneEngraveSelectType.visibility = View.GONE
+                    binding.recyclerviewBoneEngraveSelectType.visibility = View.GONE
+
+                    binding.textBoneName2.visibility = View.GONE
+                    binding.editTextBoneName2.visibility = View.GONE
+                    binding.imageBoneName2.visibility = View.GONE
+
+                    binding.textBoneDate1.visibility = View.GONE
+                    binding.editTextBoneDate1.visibility = View.GONE
+                    binding.imageBoneDate1.visibility = View.GONE
+                    binding.spinnerBoneDate1Type.visibility = View.GONE
+                    binding.imageBoneDate1Type.visibility = View.GONE
+
+                    binding.textBoneDate2.visibility = View.GONE
+                    binding.editTextBoneDate2.visibility = View.GONE
+                    binding.imageBoneDate2.visibility = View.GONE
+                    binding.spinnerBoneDate2Type.visibility = View.GONE
+                    binding.imageBoneDate2Type.visibility = View.GONE
+                }
 
                 if(selectedUrnName2.contains("수목함")
                     || selectedUrnName2.contains("밀봉외함")
@@ -874,6 +918,8 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
 //        searchList.add(UrnItem("기본", R.drawable.img_urn))
 //        searchList.add(UrnItem("기본(검정)", R.drawable.img_urn0))
 
+        searchList.add(UrnItem("목함", 0))
+
         // 1. 일반 밀봉진공함
         searchList.add(UrnItem("도원기독교 DW-3 4010", R.drawable.img_urn1_1))
         searchList.add(UrnItem("도원불교 DW-4 4010", R.drawable.img_urn1_2))
@@ -1023,6 +1069,8 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         searchList2.add(UrnItem("미정", 0))
 //        searchList2.add(UrnItem("기본", R.drawable.img_urn))
 //        searchList2.add(UrnItem("기본(검정)", R.drawable.img_urn0))
+
+        searchList2.add(UrnItem("목함", 0))
 
         // 1. 일반 밀봉진공함
         searchList2.add(UrnItem("도원기독교 DW-3 4010", R.drawable.img_urn1_1))

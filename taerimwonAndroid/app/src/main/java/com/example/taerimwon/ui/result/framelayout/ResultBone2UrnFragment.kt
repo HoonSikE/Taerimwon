@@ -520,6 +520,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
 
         val pixel_size_12 = resources.getDimensionPixelSize(R.dimen.pixel_size_12)
         val pixel_size_69 = resources.getDimensionPixelSize(R.dimen.pixel_size_69)
+        val pixel_size_80 = resources.getDimensionPixelSize(R.dimen.pixel_size_80)
         val pixel_size_90 = resources.getDimensionPixelSize(R.dimen.pixel_size_90)
         val pixel_size_135 = resources.getDimensionPixelSize(R.dimen.pixel_size_135)
 
@@ -620,14 +621,14 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             when (name2.length) {
                 2 ->{
                     val params = layoutUrnResult220.layoutParams
-                    params.height = 50
+                    params.height = 120
                     layoutUrnResult220.layoutParams = params
 
                     tmp1_2.append(name2[0]).append("\n").append(name2[1])
                 }
                 3 -> {
                     val params = layoutUrnResult220.layoutParams
-                    params.height = 70
+                    params.height = 140
                     layoutUrnResult220.layoutParams = params
 
                     tmp1_2.append(name2[0]).append("\n").append(name2[1]).append("\n").append(name2[2])
@@ -636,7 +637,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 }
                 4 -> {
                     val params = layoutUrnResult220.layoutParams
-                    params.height = 50
+                    params.height = 120
                     layoutUrnResult220.layoutParams = params
 
                     tmp1_2.append(name2[0] + "" + name2[1]).append("\n").append(name2[2] + "" + name2[3])
@@ -673,14 +674,14 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             when (name2.length) {
                 2 ->{
                     val params = layoutUrnResult220.layoutParams
-                    params.height = 50
+                    params.height = 120
                     layoutUrnResult220.layoutParams = params
 
                     tmp1_2.append(name2[0]).append("\n").append(name2[1])
                 }
                 3 -> {
                     val params = layoutUrnResult220.layoutParams
-                    params.height = 70
+                    params.height = 140
                     layoutUrnResult220.layoutParams = params
 
                     tmp1_2.append(name2[0]).append("\n").append(name2[1]).append("\n").append(name2[2])
@@ -689,14 +690,14 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 }
                 4 -> {
                     val params = layoutUrnResult220.layoutParams
-                    params.height = 50
+                    params.height = 120
                     layoutUrnResult220.layoutParams = params
 
                     tmp1_2.append(name2[0] + "" + name2[1]).append("\n").append(name2[2] + "" + name2[3])
                 }
                 5 -> {
                     val params = layoutUrnResult220.layoutParams
-                    params.height = 70
+                    params.height = 140
                     layoutUrnResult220.layoutParams = params
 
                     tmp1_2.append(name2[0] + "" + name2[3]).append("\n").append(name2[1] + "" + name2[4]).append("\n").append(name2[2])
@@ -705,7 +706,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 }
                 6 -> {
                     val params = layoutUrnResult220.layoutParams
-                    params.height = 70
+                    params.height = 140
                     layoutUrnResult220.layoutParams = params
 
                     tmp1_2.append(name2[0] + "" + name2[3]).append("\n").append(name2[1] + "" + name2[4]).append("\n").append(name2[2] + "" + name2[5])
@@ -868,7 +869,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 }else
                     layoutUrnResult112.text = "出\n生"
 
-                layoutUrnResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
+//                layoutUrnResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
             }
             "천주교" -> {
                 layoutUrnResult110.visibility = View.GONE
@@ -881,7 +882,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 }else
                     layoutUrnResult112.text = "出\n生"
 
-                layoutUrnResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
+//                layoutUrnResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
             }
         }
 
@@ -965,7 +966,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                     }
                 }
 
-                layoutUrnResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
+//                layoutUrnResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
             }
             "천주교" -> {
                 layoutUrnResult310.visibility = View.GONE
@@ -993,7 +994,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                     layoutUrnResult312.layoutParams = layoutParams
                 }
 
-                layoutUrnResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
+//                layoutUrnResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
             }
         }
 
@@ -1140,14 +1141,14 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             when (boneName2.length) {
                 2 -> {
                     val params = layoutBoneResult220.layoutParams
-                    params.height = 50
+                    params.height = 120
                     layoutBoneResult220.layoutParams = params
 
                     tmp2_2.append(boneName2[0]).append("\n").append(boneName2[1])
                 }
                 3 -> {
                     val params = layoutBoneResult220.layoutParams
-                    params.height = 70
+                    params.height = 140
                     layoutBoneResult220.layoutParams = params
 
                     tmp2_2.append(boneName2[0]).append("\n").append(boneName2[1]).append("\n").append(boneName2[2])
@@ -1159,7 +1160,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 }
                 4 -> {
                     val params = layoutBoneResult220.layoutParams
-                    params.height = 50
+                    params.height = 120
                     layoutBoneResult220.layoutParams = params
 
                     tmp2_2.append(boneName2[0] + "" + boneName2[1]).append("\n").append(boneName2[2] + "" + boneName2[3])
@@ -1199,14 +1200,14 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
             when (boneName2.length) {
                 2 -> {
                     val params = layoutBoneResult220.layoutParams
-                    params.height = 50
+                    params.height = 120
                     layoutBoneResult220.layoutParams = params
 
                     tmp2_2.append(boneName2[0]).append("\n").append(boneName2[1])
                 }
                 3 -> {
                     val params = layoutBoneResult220.layoutParams
-                    params.height = 70
+                    params.height = 140
                     layoutBoneResult220.layoutParams = params
 
                     tmp2_2.append(boneName2[0]).append("\n").append(boneName2[1]).append("\n").append(boneName2[2])
@@ -1215,14 +1216,14 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 }
                 4 -> {
                     val params = layoutBoneResult220.layoutParams
-                    params.height = 50
+                    params.height = 120
                     layoutBoneResult220.layoutParams = params
 
                     tmp2_2.append(boneName2[0] + "" + boneName2[1]).append("\n").append(boneName2[2] + "" + boneName2[3])
                 }
                 5 -> {
                     val params = layoutBoneResult220.layoutParams
-                    params.height = 70
+                    params.height = 140
                     layoutBoneResult220.layoutParams = params
 
                     tmp2_2.append(boneName2[0] + "" + boneName2[3]).append("\n").append(boneName2[1] + "" + boneName2[4]).append("\n").append(boneName2[3])
@@ -1231,7 +1232,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 }
                 6 -> {
                     val params = layoutBoneResult220.layoutParams
-                    params.height = 70
+                    params.height = 120
                     layoutBoneResult220.layoutParams = params
 
                     tmp2_2.append(boneName2[0] + "" + boneName2[3]).append("\n").append(boneName2[1] + "" + boneName2[4]).append("\n").append(boneName2[2] + "" + boneName2[5])
@@ -1386,7 +1387,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                 }else{
                     layoutBoneResult112.text = "出\n生"
                 }
-                layoutBoneResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
+//                layoutBoneResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
             }
             "천주교" -> {
                 layoutBoneResult110.visibility = View.GONE
@@ -1399,7 +1400,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                     layoutBoneResult112.text = "出\n生"
                 }
 
-                layoutBoneResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
+//                layoutBoneResult17.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
             }
         }
 
@@ -1484,7 +1485,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                     }
                 }
 
-                layoutBoneResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
+//                layoutBoneResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
             }
             "천주교" -> {
                 layoutBoneResult310.visibility = View.GONE
@@ -1517,7 +1518,7 @@ class ResultBone2UrnFragment : BaseFragment<FragmentResultBone2UrnBinding>(R.lay
                     layoutBoneResult312.text = "善\n終"
                 }
 
-                layoutBoneResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
+//                layoutBoneResult37.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_90.toFloat())
             }
         }
 

@@ -2,6 +2,7 @@
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_result_content"
         android:layout_width="275px"
@@ -67,10 +68,11 @@
                 />
             <TextView
                 android:id="@+id/layout_tablet_result2_0"
-                android:layout_width="195px"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20px"
                 android:layout_height="75px"
                 android:text="윗글자"
-                android:textSize="45px"
+                android:textSize="48px"
                 android:textColor="@color/black"
                 android:fontFamily="@font/hygungso"
                 android:textFontWeight="300"
@@ -117,10 +119,11 @@
                 />
             <TextView
                 android:id="@+id/layout_tablet_result2_2"
-                android:layout_width="195px"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20px"
                 android:layout_height="75px"
                 android:text="밑글자"
-                android:textSize="45px"
+                android:textSize="48px"
                 android:textColor="@color/black"
                 android:fontFamily="@font/hygungso"
                 android:textFontWeight="300"
@@ -134,10 +137,11 @@
             <!--본관-->
             <TextView
                 android:id="@+id/layout_tablet_result3_0"
-                android:layout_width="195px"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20px"
                 android:layout_height="75px"
                 android:text="윗글자"
-                android:textSize="45px"
+                android:textSize="48px"
                 android:textColor="@color/black"
                 android:fontFamily="@font/hygungso"
                 android:textFontWeight="300"
@@ -200,10 +204,11 @@
                 />
             <TextView
                 android:id="@+id/layout_tablet_result3_2"
-                android:layout_width="195px"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20px"
                 android:layout_height="75px"
-                android:text="밑글자"
-                android:textSize="45px"
+                android:text="밑글"
+                android:textSize="48px"
                 android:textColor="@color/black"
                 android:fontFamily="@font/hygungso"
                 android:textFontWeight="300"

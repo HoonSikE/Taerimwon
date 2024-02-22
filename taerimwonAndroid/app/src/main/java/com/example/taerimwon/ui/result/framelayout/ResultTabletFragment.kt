@@ -184,7 +184,7 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
                         3 -> {
                         }
                         4 -> {
-                            layoutTabletResult20.letterSpacing = -0.15f
+//                            layoutTabletResult20.letterSpacing = -0.15f
                         }
                     }
                     layoutTabletResult20.text = tmp2.toString()
@@ -214,14 +214,14 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
                     when (tabletName2.length) {
                         2 -> {
                         }
-                        3 -> {
+                        3,4 -> {
                         }
-                        4, 5 -> {
+                        5 -> {
                             layoutTabletResult22.letterSpacing = -0.15f
                         }
                         6 -> {
-                            layoutTabletResult22.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_39.toFloat())
-                            layoutTabletResult22.letterSpacing = -0.17f
+                            layoutTabletResult22.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
+                            layoutTabletResult22.letterSpacing = -0.15f
                         }
                     }
                     layoutTabletResult22.text = tmp2.toString()
@@ -296,7 +296,7 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
                         3 -> {
                         }
                         4 -> {
-                            layoutTabletResult30.letterSpacing = -0.15f
+//                            layoutTabletResult30.letterSpacing = -0.15f
                         }
                     }
                     layoutTabletResult30.text = tmp2.toString()
@@ -357,14 +357,14 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
                     when (tabletName2.length) {
                         2 -> {
                         }
-                        3 -> {
+                        3,4 -> {
                         }
-                        4, 5 -> {
+                        5 -> {
                             layoutTabletResult32.letterSpacing = -0.15f
                         }
                         6 -> {
-                            layoutTabletResult32.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_39.toFloat())
-                            layoutTabletResult32.letterSpacing = -0.17f
+                            layoutTabletResult32.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_45.toFloat())
+                            layoutTabletResult32.letterSpacing = -0.15f
                         }
                     }
                     layoutTabletResult32.text = tmp2.toString()
