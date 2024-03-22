@@ -377,6 +377,54 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         boneEngraveType2List = mutableListOf(*boneEngraveTypes2Array) as ArrayList<String>
         boneEngraveType2Adapter.updateList(boneEngraveType2List)
         binding.recyclerviewBoneEngraveSelectType.scrollToPosition(ApplicationClass.prefs.boneEngraveType2Position)
+
+
+        val selectedUrnName = ApplicationClass.prefs.selectedUrnName.toString()
+        val selectedUrnName2 = ApplicationClass.prefs.selectedUrnName2.toString()
+
+        if(selectedUrnName.contains("목함")){
+            binding.layoutEngraveType.visibility = View.GONE
+            binding.textEngraveSelectType.visibility = View.GONE
+            binding.recyclerviewEngraveSelectType.visibility = View.GONE
+
+            binding.textName2.visibility = View.GONE
+            binding.editTextName2.visibility = View.GONE
+            binding.imageName2.visibility = View.GONE
+
+            binding.textDate1.visibility = View.GONE
+            binding.editTextDate1.visibility = View.GONE
+            binding.imageDate1.visibility = View.GONE
+            binding.spinnerDate1Type.visibility = View.GONE
+            binding.imageDate1Type.visibility = View.GONE
+
+            binding.textDate2.visibility = View.GONE
+            binding.editTextDate2.visibility = View.GONE
+            binding.imageDate2.visibility = View.GONE
+            binding.spinnerDate2Type.visibility = View.GONE
+            binding.imageDate2Type.visibility = View.GONE
+        }
+
+        if(selectedUrnName2.contains("목함")){
+            binding.layoutBoneEngraveType.visibility = View.GONE
+            binding.textBoneEngraveSelectType.visibility = View.GONE
+            binding.recyclerviewBoneEngraveSelectType.visibility = View.GONE
+
+            binding.textBoneName2.visibility = View.GONE
+            binding.editTextBoneName2.visibility = View.GONE
+            binding.imageBoneName2.visibility = View.GONE
+
+            binding.textBoneDate1.visibility = View.GONE
+            binding.editTextBoneDate1.visibility = View.GONE
+            binding.imageBoneDate1.visibility = View.GONE
+            binding.spinnerBoneDate1Type.visibility = View.GONE
+            binding.imageBoneDate1Type.visibility = View.GONE
+
+            binding.textBoneDate2.visibility = View.GONE
+            binding.editTextBoneDate2.visibility = View.GONE
+            binding.imageBoneDate2.visibility = View.GONE
+            binding.spinnerBoneDate2Type.visibility = View.GONE
+            binding.imageBoneDate2Type.visibility = View.GONE
+        }
     }
     private fun setOnClickListeners() {
         binding.checkboxCatholic.setOnCheckedChangeListener { buttonView, isChecked ->

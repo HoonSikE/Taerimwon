@@ -640,17 +640,20 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                     toast("고인 명을 한글 2~4글자로 올바르게 입력해주세요.")
                     return false
                 }
-                val date1 = ApplicationClass.prefs.date1.toString()
-                if (!date1.matches(datePattern)) {
-                    toast("생년월일을 1900-01-01 형태로 올바르게 입력해주세요.")
-                    return false
+                if(!ApplicationClass.prefs.selectedUrnName.toString().contains("목함")){
+                    val date1 = ApplicationClass.prefs.date1.toString()
+                    if (!date1.matches(datePattern)) {
+                        toast("생년월일을 1900-01-01 형태로 올바르게 입력해주세요.")
+                        return false
+                    }
+                    // date1Type 생략
+                    val date2 = ApplicationClass.prefs.date2.toString()
+                    if (!date2.matches(datePattern)) {
+                        toast("사망월일일을 2023-09-01 형태로 올바르게 입력해주세요.")
+                        return false
+                    }
                 }
-                // date1Type 생략
-                val date2 = ApplicationClass.prefs.date2.toString()
-                if (!date2.matches(datePattern)) {
-                    toast("사망월일일을 2023-09-01 형태로 올바르게 입력해주세요.")
-                    return false
-                }
+
                 // date2Type 생략
                 // 종교 생략
                 // 직분, 세례명, 법명

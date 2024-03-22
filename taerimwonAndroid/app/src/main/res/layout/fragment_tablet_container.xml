@@ -785,7 +785,7 @@
                     android:background="@drawable/button_primary"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
-                    android:text="직분위/세례아"
+                    android:text="기본"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -800,29 +800,44 @@
                     android:background="@drawable/button_gray"
                     android:layout_width="0dp"
                     android:layout_height="40dp"
-                    android:text="위/위"
+                    android:text="세례명 상단"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/menuButton1"
-                    app:layout_constraintEnd_toStartOf="@+id/menuButton3"
-                    android:layout_marginRight="4dp"
-                    android:gravity="center"
-                    />
-
-                <TextView
-                    android:id="@+id/menuButton3"
-                    style="@style/SubHead"
-                    android:background="@drawable/button_gray"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:text="위/위(세로)"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/menuButton2"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginRight="4dp"
                     android:gravity="center"
                     />
+
+<!--                <TextView-->
+<!--                    android:id="@+id/menuButton2"-->
+<!--                    style="@style/SubHead"-->
+<!--                    android:background="@drawable/button_gray"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:text="위/위"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/menuButton1"-->
+<!--                    app:layout_constraintEnd_toStartOf="@+id/menuButton3"-->
+<!--                    android:layout_marginRight="4dp"-->
+<!--                    android:gravity="center"-->
+<!--                    />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/menuButton3"-->
+<!--                    style="@style/SubHead"-->
+<!--                    android:background="@drawable/button_gray"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:text="위/위(세로)"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/menuButton2"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    android:layout_marginRight="4dp"-->
+<!--                    android:gravity="center"-->
+<!--                    />-->
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

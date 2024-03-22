@@ -1,6 +1,7 @@
 package com.example.taerimwon.ui.urnlist
 
 import android.view.View
+import android.view.ViewTreeObserver
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.taerimwon.R
@@ -12,6 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class UrnListFragment : BaseFragment<FragmentUrnListBinding>(R.layout.fragment_urn_list) {
+    var currentListIndex = 2
     private lateinit var urnListAdapter1: UrnListAdapter
     private lateinit var urnListAdapter2: UrnListAdapter
     private lateinit var urnListAdapter3: UrnListAdapter
@@ -40,6 +42,7 @@ class UrnListFragment : BaseFragment<FragmentUrnListBinding>(R.layout.fragment_u
         initAdapter()
         initData()
         setOnClickListeners()
+        setOnScrollChangedListener()
     }
 
     private val UrnListClickListener: (View, String, Int) -> Unit = { _, urnName, imageName ->
@@ -80,9 +83,6 @@ class UrnListFragment : BaseFragment<FragmentUrnListBinding>(R.layout.fragment_u
             layoutManager = listManager2
 //            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         }
-        urnList2 = mutableListOf()
-        settingUrnList2()
-        urnListAdapter2.updateList(urnList2)
 
         // 3
         urnListAdapter3 = UrnListAdapter(requireContext()).apply {
@@ -94,9 +94,6 @@ class UrnListFragment : BaseFragment<FragmentUrnListBinding>(R.layout.fragment_u
             layoutManager = listManager3
 //            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         }
-        urnList3 = mutableListOf()
-        settingUrnList3()
-        urnListAdapter3.updateList(urnList3)
 
         // 4
         urnListAdapter4 = UrnListAdapter(requireContext()).apply {
@@ -108,9 +105,6 @@ class UrnListFragment : BaseFragment<FragmentUrnListBinding>(R.layout.fragment_u
             layoutManager = listManager4
 //            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         }
-        urnList4 = mutableListOf()
-        settingUrnList4()
-        urnListAdapter4.updateList(urnList4)
 
         // 5
         urnListAdapter5 = UrnListAdapter(requireContext()).apply {
@@ -122,9 +116,6 @@ class UrnListFragment : BaseFragment<FragmentUrnListBinding>(R.layout.fragment_u
             layoutManager = listManager5
 //            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         }
-        urnList5 = mutableListOf()
-        settingUrnList5()
-        urnListAdapter5.updateList(urnList5)
 
         // 6
         urnListAdapter6 = UrnListAdapter(requireContext()).apply {
@@ -136,9 +127,6 @@ class UrnListFragment : BaseFragment<FragmentUrnListBinding>(R.layout.fragment_u
             layoutManager = listManager6
 //            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         }
-        urnList6 = mutableListOf()
-        settingUrnList6()
-        urnListAdapter6.updateList(urnList6)
 
         // 7
         urnListAdapter7 = UrnListAdapter(requireContext()).apply {
@@ -150,9 +138,6 @@ class UrnListFragment : BaseFragment<FragmentUrnListBinding>(R.layout.fragment_u
             layoutManager = listManager7
 //            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         }
-        urnList7 = mutableListOf()
-        settingUrnList7()
-        urnListAdapter7.updateList(urnList7)
 
         // 8
         urnListAdapter8 = UrnListAdapter(requireContext()).apply {
@@ -164,9 +149,6 @@ class UrnListFragment : BaseFragment<FragmentUrnListBinding>(R.layout.fragment_u
             layoutManager = listManager8
 //            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         }
-        urnList8 = mutableListOf()
-        settingUrnList8()
-        urnListAdapter8.updateList(urnList8)
 
         // 9
         urnListAdapter9 = UrnListAdapter(requireContext()).apply {
@@ -178,9 +160,6 @@ class UrnListFragment : BaseFragment<FragmentUrnListBinding>(R.layout.fragment_u
             layoutManager = listManager9
 //            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         }
-        urnList9 = mutableListOf()
-        settingUrnList9()
-        urnListAdapter9.updateList(urnList9)
 
         // 10
         urnListAdapter10 = UrnListAdapter(requireContext()).apply {
@@ -192,9 +171,6 @@ class UrnListFragment : BaseFragment<FragmentUrnListBinding>(R.layout.fragment_u
             layoutManager = listManager10
 //            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         }
-        urnList10 = mutableListOf()
-        settingUrnList10()
-        urnListAdapter10.updateList(urnList10)
 
         // 11
         urnListAdapter11 = UrnListAdapter(requireContext()).apply {
@@ -206,9 +182,6 @@ class UrnListFragment : BaseFragment<FragmentUrnListBinding>(R.layout.fragment_u
             layoutManager = listManager11
 //            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         }
-        urnList11 = mutableListOf()
-        settingUrnList11()
-        urnListAdapter11.updateList(urnList11)
     }
 
 
@@ -222,6 +195,105 @@ class UrnListFragment : BaseFragment<FragmentUrnListBinding>(R.layout.fragment_u
         }
     }
 
+    private fun setOnScrollChangedListener() {
+        val scrollViewOrder = binding?.scrollViewOrder
+        if(scrollViewOrder != null){
+            scrollViewOrder.viewTreeObserver.addOnScrollChangedListener(
+                ViewTreeObserver.OnScrollChangedListener {
+                    // 하단 끝에 도달했을 때
+                    if (!scrollViewOrder.canScrollVertically(1)) {
+                        println("currentListIndex" + currentListIndex)
+                        when(currentListIndex){
+                            1 -> {
+                                binding.layoutUrnList1.visibility = View.VISIBLE
+                                currentListIndex++;
+                            }
+                            2 -> {
+                                urnList2 = mutableListOf()
+                                settingUrnList2()
+                                urnListAdapter2.updateList(urnList2)
+
+                                binding.layoutUrnList2.visibility = View.VISIBLE
+                                currentListIndex++;
+                            }
+                            3 -> {
+                                urnList3 = mutableListOf()
+                                settingUrnList3()
+                                urnListAdapter3.updateList(urnList3)
+
+                                binding.layoutUrnList3.visibility = View.VISIBLE
+                                currentListIndex++;
+                            }
+                            4 -> {
+                                urnList4 = mutableListOf()
+                                settingUrnList4()
+                                urnListAdapter4.updateList(urnList4)
+
+                                binding.layoutUrnList4.visibility = View.VISIBLE
+                                currentListIndex++;
+                            }
+                            5 -> {
+                                urnList5 = mutableListOf()
+                                settingUrnList5()
+                                urnListAdapter5.updateList(urnList5)
+
+                                binding.layoutUrnList5.visibility = View.VISIBLE
+                                currentListIndex++;
+                            }
+                            6 -> {
+                                urnList6 = mutableListOf()
+                                settingUrnList6()
+                                urnListAdapter6.updateList(urnList6)
+
+                                binding.layoutUrnList6.visibility = View.VISIBLE
+                                currentListIndex++;
+                            }
+                            7 -> {
+                                urnList7 = mutableListOf()
+                                settingUrnList7()
+                                urnListAdapter7.updateList(urnList7)
+
+                                binding.layoutUrnList7.visibility = View.VISIBLE
+                                currentListIndex++;
+                            }
+                            8 -> {
+                                urnList8 = mutableListOf()
+                                settingUrnList8()
+                                urnListAdapter8.updateList(urnList8)
+
+                                binding.layoutUrnList8.visibility = View.VISIBLE
+                                currentListIndex++;
+                            }
+                            9 -> {
+                                urnList9 = mutableListOf()
+                                settingUrnList9()
+                                urnListAdapter9.updateList(urnList9)
+
+                                binding.layoutUrnList9.visibility = View.VISIBLE
+                                currentListIndex++;
+                            }
+                            10 -> {
+                                urnList10 = mutableListOf()
+                                settingUrnList10()
+                                urnListAdapter10.updateList(urnList10)
+
+                                binding.layoutUrnList10.visibility = View.VISIBLE
+                                currentListIndex++;
+                            }
+                            11 -> {
+                                urnList11 = mutableListOf()
+                                settingUrnList11()
+                                urnListAdapter11.updateList(urnList11)
+
+                                binding.layoutUrnList11.visibility = View.VISIBLE
+                                currentListIndex++;
+                            }
+                        }
+                    }
+                }
+            )
+        }
+    }
     private fun settingUrnList1(){
         // 1. 일반 밀봉진공함
         urnList1.add(UrnItem("도원기독교 DW-3 4010", R.drawable.img_urn1_1))

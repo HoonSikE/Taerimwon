@@ -695,6 +695,7 @@
                         android:id="@+id/layout_urn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         app:layout_constraintEnd_toStartOf="@+id/layout_urn2"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -725,7 +726,7 @@
                                 app:layout_constraintStart_toStartOf="parent"/>
 
                             <ImageView
-                                android:id="@+id/image_urn_image_backgound"
+                                android:id="@+id/image_urn_image_background"
                                 android:layout_width="180px"
                                 android:layout_height="270px"
                                 android:scaleType="fitXY"
@@ -787,7 +788,7 @@
                                 app:layout_constraintStart_toStartOf="parent"/>
 
                             <ImageView
-                                android:id="@+id/image_urn_image2_backgound"
+                                android:id="@+id/image_urn_image2_background"
                                 android:layout_width="210px"
                                 android:layout_height="250px"
                                 android:scaleType="fitXY"
@@ -974,7 +975,6 @@
                         android:id="@+id/layout_bone_tablet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/layout_tablet">
@@ -983,7 +983,7 @@
                             android:id="@+id/layout_bone_tablet_image"
                             android:layout_width="200px"
                             android:layout_height="480px"
-                            android:background="@drawable/img_tablet1"
+                            android:background="@drawable/img_tablet"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
@@ -1142,68 +1142,243 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
                         <!--위패 내용-->
-                        <FrameLayout
-                            android:id="@+id/fragment_tablet_content"
-                            android:layout_width="275px"
-                            android:layout_height="630px"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/fragment_tablet_content_background"
+                            android:layout_width="280px"
+                            android:layout_height="635px"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/fragment_urn_content"
-                            app:layout_constraintStart_toStartOf="parent" />
+                            app:layout_constraintEnd_toStartOf="@+id/fragment_urn_content_background"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:background="@color/black"
+                            >
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/fragment_tablet_content_background2"
+                                android:layout_width="275px"
+                                android:layout_height="630px"
+                                android:visibility="gone"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:background="@color/white"
+                                >
+                                <FrameLayout
+                                    android:id="@+id/fragment_tablet_content"
+                                    android:layout_width="275px"
+                                    android:layout_height="630px"
+                                    android:visibility="gone"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
                         <!--유골함 내용-->
-                        <FrameLayout
-                            android:id="@+id/fragment_urn_content"
-                            android:layout_width="540px"
-                            android:layout_height="900px"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/fragment_urn_content_background"
+                            android:layout_width="545px"
+                            android:layout_height="905px"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/fragment_urn_content2"
-                            app:layout_constraintStart_toEndOf="@+id/fragment_tablet_content" />
+                            app:layout_constraintEnd_toStartOf="@+id/fragment_urn_content2_background"
+                            app:layout_constraintStart_toEndOf="@+id/fragment_tablet_content_background"
+                            android:background="@color/black"
+                            >
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/fragment_urn_content_background2"
+                                android:layout_width="540px"
+                                android:layout_height="900px"
+                                android:visibility="gone"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:background="@color/white"
+                                >
+                                <FrameLayout
+                                    android:id="@+id/fragment_urn_content"
+                                    android:layout_width="540px"
+                                    android:layout_height="900px"
+                                    android:visibility="gone"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
                         <!--유골함 내용-->
-                        <FrameLayout
-                            android:id="@+id/fragment_urn_content2"
-                            android:layout_width="540px"
-                            android:layout_height="900px"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/fragment_urn_content2_background"
+                            android:layout_width="545px"
+                            android:layout_height="905px"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/fragment_bone_content"
-                            app:layout_constraintStart_toEndOf="@+id/fragment_urn_content" />
+                            app:layout_constraintEnd_toStartOf="@+id/fragment_bone_content_background"
+                            app:layout_constraintStart_toEndOf="@+id/fragment_urn_content_background"
+                            android:background="@color/black"
+                            >
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/fragment_urn_content2_background2"
+                                android:layout_width="540px"
+                                android:layout_height="900px"
+                                android:visibility="gone"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:background="@color/white"
+                                >
+                                <FrameLayout
+                                    android:id="@+id/fragment_urn_content2"
+                                    android:layout_width="540px"
+                                    android:layout_height="900px"
+                                    android:visibility="gone"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
                         <!--합골 추가 내용-->
-                        <FrameLayout
-                            android:id="@+id/fragment_bone_content"
-                            android:layout_width="540px"
-                            android:layout_height="900px"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/fragment_bone_content_background"
+                            android:layout_width="545px"
+                            android:layout_height="905px"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/fragment_bone2_content"
-                            app:layout_constraintStart_toEndOf="@+id/fragment_urn_content2" />
+                            app:layout_constraintEnd_toStartOf="@+id/fragment_bone2_content_background"
+                            app:layout_constraintStart_toEndOf="@+id/fragment_urn_content2_background"
+                            android:background="@color/black"
+                            >
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/fragment_bone_content_background2"
+                                android:layout_width="540px"
+                                android:layout_height="900px"
+                                android:visibility="gone"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:background="@color/white"
+                                >
+                                <FrameLayout
+                                    android:id="@+id/fragment_bone_content"
+                                    android:layout_width="540px"
+                                    android:layout_height="900px"
+                                    android:visibility="gone"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
                         <!--합골2 추가 내용-->
-                        <FrameLayout
-                            android:id="@+id/fragment_bone2_content"
-                            android:layout_width="630px"
-                            android:layout_height="900px"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/fragment_bone2_content_background"
+                            android:layout_width="635px"
+                            android:layout_height="905px"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/fragment_tablet2_content"
-                            app:layout_constraintStart_toEndOf="@+id/fragment_bone_content" />
+                            app:layout_constraintEnd_toStartOf="@+id/fragment_tablet2_content_background"
+                            app:layout_constraintStart_toEndOf="@+id/fragment_bone_content_background"
+                            android:background="@color/black"
+                            >
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/fragment_bone2_content_background2"
+                                android:layout_width="630px"
+                                android:layout_height="900px"
+                                android:visibility="gone"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:background="@color/white"
+                                >
+                                <FrameLayout
+                                    android:id="@+id/fragment_bone2_content"
+                                    android:layout_width="630px"
+                                    android:layout_height="900px"
+                                    android:visibility="gone"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
                         <!--위패 내용-->
-                        <FrameLayout
-                            android:id="@+id/fragment_tablet2_content"
-                            android:layout_width="275px"
-                            android:layout_height="630px"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/fragment_tablet2_content_background"
+                            android:layout_width="280px"
+                            android:layout_height="635px"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@+id/fragment_bone_tablet_content"
-                            app:layout_constraintStart_toEndOf="@+id/fragment_bone2_content" />
+                            app:layout_constraintEnd_toStartOf="@+id/fragment_bone_tablet_content_background"
+                            app:layout_constraintStart_toEndOf="@+id/fragment_bone2_content_background"
+                            android:background="@color/black"
+                            >
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/fragment_tablet2_content_background2"
+                                android:layout_width="275px"
+                                android:layout_height="630px"
+                                android:visibility="gone"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:background="@color/white"
+                                >
+                                <FrameLayout
+                                    android:id="@+id/fragment_tablet2_content"
+                                    android:layout_width="275px"
+                                    android:layout_height="630px"
+                                    android:visibility="gone"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
                         <!--합골 위패-->
-                        <FrameLayout
-                            android:id="@+id/fragment_bone_tablet_content"
-                            android:layout_width="225px"
-                            android:layout_height="630px"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/fragment_bone_tablet_content_background"
+                            android:layout_width="280px"
+                            android:layout_height="635px"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/fragment_tablet2_content" />
+                            app:layout_constraintStart_toEndOf="@+id/fragment_tablet2_content_background"
+                            android:background="@color/black"
+                            >
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/fragment_bone_tablet_content_background2"
+                                android:layout_width="275px"
+                                android:layout_height="630px"
+                                android:visibility="gone"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:background="@color/white"
+                                >
+                                <FrameLayout
+                                    android:id="@+id/fragment_bone_tablet_content"
+                                    android:layout_width="275px"
+                                    android:layout_height="630px"
+                                    android:visibility="gone"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    />
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>

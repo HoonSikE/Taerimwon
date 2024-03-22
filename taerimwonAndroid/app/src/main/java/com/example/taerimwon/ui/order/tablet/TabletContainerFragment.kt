@@ -281,10 +281,11 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.menuButton2.setTextColor(blackColor)
             binding.menuButton2.setBackgroundResource(R.drawable.button_gray)
 
-            binding.menuButton3.setTextColor(blackColor)
-            binding.menuButton3.setBackgroundResource(R.drawable.button_gray)
+//            binding.menuButton3.setTextColor(blackColor)
+//            binding.menuButton3.setBackgroundResource(R.drawable.button_gray)
 
-            ApplicationClass.prefs.tabletExample = "직분위/세례아"
+            ApplicationClass.prefs.tabletExample = "기본"
+//            ApplicationClass.prefs.tabletExample = "직분위/세례아"
         }
         binding.menuButton2.setOnClickListener {
             // style 변경
@@ -295,25 +296,26 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             binding.menuButton2.setTextColor(whiteColor)
             binding.menuButton2.setBackgroundResource(R.drawable.button_primary)
 
-            binding.menuButton3.setTextColor(blackColor)
-            binding.menuButton3.setBackgroundResource(R.drawable.button_gray)
+//            binding.menuButton3.setTextColor(blackColor)
+//            binding.menuButton3.setBackgroundResource(R.drawable.button_gray)
 
-            ApplicationClass.prefs.tabletExample = "위/위"
+            ApplicationClass.prefs.tabletExample = "세례명위"
+//            ApplicationClass.prefs.tabletExample = "위/위"
         }
-        binding.menuButton3.setOnClickListener {
-            // style 변경
-            binding.menuButton1.setTextColor(blackColor)
-            // background 변경
-            binding.menuButton1.setBackgroundResource(R.drawable.button_gray)
-
-            binding.menuButton2.setTextColor(blackColor)
-            binding.menuButton2.setBackgroundResource(R.drawable.button_gray)
-
-            binding.menuButton3.setTextColor(whiteColor)
-            binding.menuButton3.setBackgroundResource(R.drawable.button_primary)
-
-            ApplicationClass.prefs.tabletExample = "위/위(세로)"
-        }
+//        binding.menuButton3.setOnClickListener {
+//            // style 변경
+//            binding.menuButton1.setTextColor(blackColor)
+//            // background 변경
+//            binding.menuButton1.setBackgroundResource(R.drawable.button_gray)
+//
+//            binding.menuButton2.setTextColor(blackColor)
+//            binding.menuButton2.setBackgroundResource(R.drawable.button_gray)
+//
+//            binding.menuButton3.setTextColor(whiteColor)
+//            binding.menuButton3.setBackgroundResource(R.drawable.button_primary)
+//
+//            ApplicationClass.prefs.tabletExample = "위/위(세로)"
+//        }
 
         binding.autoCompleteTextView.setOnItemClickListener { adapterView, view, position, rowId ->
             println("tag1 "+ "position: $position, rowId:$rowId, string: ${adapterView.getItemAtPosition(position)}")

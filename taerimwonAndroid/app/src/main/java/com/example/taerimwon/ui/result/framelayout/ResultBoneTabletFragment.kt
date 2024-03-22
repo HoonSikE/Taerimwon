@@ -194,7 +194,9 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
     }
     private fun setTablet2Data() {
         setTable2Mark()
+        val pixel_size_20 = resources.getDimensionPixelSize(R.dimen.pixel_size_20)
         val pixel_size_21 = resources.getDimensionPixelSize(R.dimen.pixel_size_21)
+        val pixel_size_25 = resources.getDimensionPixelSize(R.dimen.pixel_size_25)
         val pixel_size_27 = resources.getDimensionPixelSize(R.dimen.pixel_size_27)
         val pixel_size_36 = resources.getDimensionPixelSize(R.dimen.pixel_size_36)
 
@@ -395,10 +397,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 390
+                                layoutParams.height = 420
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                layoutBoneTabletResult1.scaleY = 1.3f
+                                layoutBoneTabletResult1.scaleY = 1.1f
                                 tmp2.append(tabletName2)
                             }
                         }
@@ -408,11 +410,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 330
+                                layoutParams.height = 380
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_36.toFloat())
-                                layoutBoneTabletResult1.scaleY = 1.6f
+                                layoutBoneTabletResult1.scaleY = 1.1f
                                 tmp2.append(tabletName2)
                             }
                         }
@@ -422,12 +423,11 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 390
+                                layoutParams.height = 420
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
                                 layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                layoutBoneTabletResult1.scaleY = 1.8f
-                                layoutBoneTabletResult1.letterSpacing = -0.2f
+                                layoutBoneTabletResult1.scaleY = 1.4f
                                 tmp2.append(tabletName2)
                             }
                         }
@@ -437,7 +437,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 //                    layoutBoneTabletResult2.text = tmp.toString()
                 }
                 "천주교" -> {
-                    if(tabletExample!!.contains("위/위")) {
+                    if(tabletExample!!.contains("위")) {
                         flagUp = true
                         layoutBoneTabletResult1.visibility = View.VISIBLE
                     }else{
@@ -501,13 +501,13 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 390
+                                layoutParams.height = 420
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
-                                    layoutBoneTabletResult1.scaleY = 1.3f
+                                if(tabletExample!!.contains("위")) {
+                                    layoutBoneTabletResult1.scaleY = 1.1f
                                 }else{
-                                    layoutBoneTabletResult3.scaleY = 1.3f
+                                    layoutBoneTabletResult3.scaleY = 1.1f
                                 }
                                 tmp2.append(tabletName2)
                             }
@@ -518,15 +518,13 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 300
+                                layoutParams.height = 380
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
-                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_36.toFloat())
-                                    layoutBoneTabletResult1.scaleY = 1.6f
+                                if(tabletExample!!.contains("위")) {
+                                    layoutBoneTabletResult1.scaleY = 1.1f
                                 }else{
-                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_36.toFloat())
-                                    layoutBoneTabletResult3.scaleY = 1.6f
+                                    layoutBoneTabletResult3.scaleY = 1.1f
                                 }
                                 tmp2.append(tabletName2)
                             }
@@ -537,17 +535,15 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 390
+                                layoutParams.height = 420
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
+                                if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                    layoutBoneTabletResult1.scaleY = 1.8f
-                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                    layoutBoneTabletResult1.scaleY = 1.4f
                                 }else{
                                     layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                    layoutBoneTabletResult3.scaleY = 1.8f
-                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                    layoutBoneTabletResult3.scaleY = 1.4f
                                 }
                                 tmp2.append(tabletName2)
                             }
@@ -558,17 +554,17 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 300
+                                layoutParams.height = 380
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
-                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                    layoutBoneTabletResult1.scaleY = 1.8f
-                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                if(tabletExample!!.contains("위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+                                    layoutBoneTabletResult1.scaleY = 1.4f
+                                    layoutBoneTabletResult1.letterSpacing = -0.1f
                                 }else{
-                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                    layoutBoneTabletResult3.scaleY = 1.8f
-                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+                                    layoutBoneTabletResult3.scaleY = 1.4f
+                                    layoutBoneTabletResult3.letterSpacing = -0.1f
                                 }
                                 tmp2.append(tabletName2)
                             }
@@ -579,24 +575,24 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 300
+                                layoutParams.height = 380
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
-                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_21.toFloat())
-                                    layoutBoneTabletResult1.letterSpacing = -0.2f
-                                    layoutBoneTabletResult1.scaleY = 2.0f
+                                if(tabletExample!!.contains("위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                                    layoutBoneTabletResult1.letterSpacing = -0.1f
+                                    layoutBoneTabletResult1.scaleY = 1.9f
                                 }else{
-                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_21.toFloat())
-                                    layoutBoneTabletResult3.letterSpacing = -0.2f
-                                    layoutBoneTabletResult3.scaleY = 2.0f
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                                    layoutBoneTabletResult3.letterSpacing = -0.1f
+                                    layoutBoneTabletResult3.scaleY = 1.9f
                                 }
                                 tmp2.append(tabletName2)
                             }
                         }
                     }
 //                    layoutBoneTabletResult2.text = tmp.toString()
-                    if(tabletExample!!.contains("위/위")) {
+                    if(tabletExample!!.contains("위")) {
                         layoutBoneTabletResult1.text = tmp2.toString()
                     }else{
                         layoutBoneTabletResult3.text = tmp2.toString()
@@ -733,14 +729,14 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
-                    layoutParams.height = 405
+                    layoutParams.height = 400
                     layoutBoneTabletResult2.layoutParams = layoutParams
 //                    layoutBoneTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
 
-//                    layoutBoneTabletResult3.visibility = View.VISIBLE
-//                    val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
-//                    layoutBoneTabletResult3.typeface = hyhaeso
-//                    layoutBoneTabletResult3.text = "召天"
+                    layoutBoneTabletResult3.visibility = View.VISIBLE
+                    val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
+                    layoutBoneTabletResult3.typeface = hyhaeso
+                    layoutBoneTabletResult3.text = "召天"
 
                     when (name3.length) {
                         5 -> {
@@ -819,10 +815,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.width = 345
+                                layoutParams.height = 360
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                layoutBoneTabletResult1.scaleY = 1.3f
+                                layoutBoneTabletResult1.scaleY = 1.1f
                                 tmp2.append(tabletName2)
                             }
                         }
@@ -832,11 +828,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 270
+                                layoutParams.height = 320
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_36.toFloat())
-                                layoutBoneTabletResult1.scaleY = 1.6f
+                                layoutBoneTabletResult1.scaleY = 1.1f
                                 tmp2.append(tabletName2)
                             }
                         }
@@ -846,12 +841,11 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.width = 345
+                                layoutParams.width = 360
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
                                 layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                layoutBoneTabletResult1.scaleY = 1.8f
-                                layoutBoneTabletResult1.letterSpacing = -0.2f
+                                layoutBoneTabletResult1.scaleY = 1.4f
                                 tmp2.append(tabletName2)
                             }
                         }
@@ -864,7 +858,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
-                    layoutParams.height = 525
+                    layoutParams.height = 510
                     layoutBoneTabletResult2.layoutParams = layoutParams
 //                    layoutBoneTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
 
@@ -960,7 +954,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 //                    layoutBoneTabletResult2.text = tmp.toString()
                 }
                 "천주교(본관)" -> {
-                    if(tabletExample!!.contains("위/위")) {
+                    if(tabletExample!!.contains("위")) {
                         flagUp = true
                         layoutBoneTabletResult1.visibility = View.VISIBLE
                     }else{
@@ -1052,13 +1046,13 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.width = 345
+                                layoutParams.width = 420
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
-                                    layoutBoneTabletResult1.scaleY = 1.3f
+                                if(tabletExample!!.contains("위")) {
+                                    layoutBoneTabletResult1.scaleY = 1.1f
                                 }else{
-                                    layoutBoneTabletResult3.scaleY = 1.3f
+                                    layoutBoneTabletResult3.scaleY = 1.1f
                                 }
                                 tmp2.append(tabletName2)
                             }
@@ -1069,15 +1063,13 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 270
+                                layoutParams.height = 380
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
-                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_36.toFloat())
-                                    layoutBoneTabletResult1.scaleY = 1.6f
+                                if(tabletExample!!.contains("위")) {
+                                    layoutBoneTabletResult1.scaleY = 1.1f
                                 }else{
-                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_36.toFloat())
-                                    layoutBoneTabletResult3.scaleY = 1.6f
+                                    layoutBoneTabletResult3.scaleY = 1.1f
                                 }
                                 tmp2.append(tabletName2)
                             }
@@ -1088,17 +1080,15 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.width = 345
+                                layoutParams.width = 420
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
+                                if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                    layoutBoneTabletResult1.scaleY = 1.8f
-                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                    layoutBoneTabletResult1.scaleY = 1.4f
                                 }else{
                                     layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                    layoutBoneTabletResult3.scaleY = 1.8f
-                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                    layoutBoneTabletResult3.scaleY = 1.4f
                                 }
                                 tmp2.append(tabletName2)
                             }
@@ -1109,17 +1099,17 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 270
+                                layoutParams.height = 380
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
-                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                    layoutBoneTabletResult1.scaleY = 1.8f
-                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                if(tabletExample!!.contains("위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+                                    layoutBoneTabletResult1.scaleY = 1.4f
+                                    layoutBoneTabletResult1.letterSpacing = -0.1f
                                 }else{
-                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                    layoutBoneTabletResult3.scaleY = 1.8f
-                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+                                    layoutBoneTabletResult3.scaleY = 1.4f
+                                    layoutBoneTabletResult3.letterSpacing = -0.1f
                                 }
                                 tmp2.append(tabletName2)
                             }
@@ -1130,24 +1120,24 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 270
+                                layoutParams.height = 380
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
-                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_21.toFloat())
-                                    layoutBoneTabletResult1.letterSpacing = -0.2f
-                                    layoutBoneTabletResult1.scaleY = 2.0f
+                                if(tabletExample!!.contains("위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                                    layoutBoneTabletResult1.letterSpacing = -0.1f
+                                    layoutBoneTabletResult1.scaleY = 1.9f
                                 }else{
-                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_21.toFloat())
-                                    layoutBoneTabletResult3.letterSpacing = -0.2f
-                                    layoutBoneTabletResult3.scaleY = 2.0f
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                                    layoutBoneTabletResult3.letterSpacing = -0.1f
+                                    layoutBoneTabletResult3.scaleY = 1.9f
                                 }
                                 tmp2.append(tabletName2)
                             }
                         }
                     }
 //                    layoutBoneTabletResult2.text = tmp.toString()
-                    if(tabletExample!!.contains("위/위")) {
+                    if(tabletExample!!.contains("위")) {
                         layoutBoneTabletResult1.text = tmp2.toString()
                     }else{
                         layoutBoneTabletResult3.text = tmp2.toString()
@@ -1220,7 +1210,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 //                    layoutBoneTabletResult2.text = boneTmp.toString()
                 }
                 "기독교" -> {
-                    flagDown = true
+                    flagUp = true
 
                     layoutBoneTabletResult1.visibility = View.VISIBLE
 
@@ -1272,10 +1262,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 390
+                                layoutParams.height = 420
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                layoutBoneTabletResult1.scaleY = 1.3f
+                                layoutBoneTabletResult1.scaleY = 1.1f
                                 boneTmp2.append(boneTabletName2)
                             }
                         }
@@ -1285,11 +1275,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 300
+                                layoutParams.height = 380
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_36.toFloat())
-                                layoutBoneTabletResult1.scaleY = 1.6f
+                                layoutBoneTabletResult1.scaleY = 1.1f
                                 boneTmp2.append(boneTabletName2)
                             }
                         }
@@ -1299,12 +1288,12 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 390
+                                layoutParams.height = 420
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
                                 layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                layoutBoneTabletResult1.scaleY = 1.8f
-                                layoutBoneTabletResult1.letterSpacing = -0.2f
+                                layoutBoneTabletResult1.scaleY = 1.4f
+                                layoutBoneTabletResult1.letterSpacing = -0.1f
                                 boneTmp2.append(boneTabletName2)
                             }
                         }
@@ -1312,7 +1301,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     layoutBoneTabletResult1.text = boneTmp2.toString()
                 }
                 "천주교" -> {
-                    if(tabletExample!!.contains("위/위")) {
+                    if(tabletExample!!.contains("위")) {
                         flagUp = true
                         layoutBoneTabletResult1.visibility = View.VISIBLE
                     }else{
@@ -1368,13 +1357,13 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 390
+                                layoutParams.height = 420
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
-                                    layoutBoneTabletResult1.scaleY = 1.3f
+                                if(tabletExample!!.contains("위")) {
+                                    layoutBoneTabletResult1.scaleY = 1.1f
                                 }else{
-                                    layoutBoneTabletResult3.scaleY = 1.3f
+                                    layoutBoneTabletResult3.scaleY = 1.1f
                                 }
                                 boneTmp2.append(boneTabletName2)
                             }
@@ -1385,15 +1374,13 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 300
+                                layoutParams.height = 380
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
-                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_36.toFloat())
-                                    layoutBoneTabletResult1.scaleY = 1.6f
+                                if(tabletExample!!.contains("위")) {
+                                    layoutBoneTabletResult1.scaleY = 1.1f
                                 }else{
-                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_36.toFloat())
-                                    layoutBoneTabletResult3.scaleY = 1.6f
+                                    layoutBoneTabletResult3.scaleY = 1.1f
                                 }
                                 boneTmp2.append(boneTabletName2)
                             }
@@ -1404,17 +1391,15 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 390
+                                layoutParams.height = 420
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
+                                if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                    layoutBoneTabletResult1.scaleY = 1.8f
-                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                    layoutBoneTabletResult1.scaleY = 1.4f
                                 }else{
                                     layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                    layoutBoneTabletResult3.scaleY = 1.8f
-                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                    layoutBoneTabletResult3.scaleY = 1.4f
                                 }
                                 boneTmp2.append(boneTabletName2)
                             }
@@ -1425,17 +1410,17 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 300
+                                layoutParams.height = 380
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
-                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                    layoutBoneTabletResult1.scaleY = 1.8f
-                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                if(tabletExample!!.contains("위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+                                    layoutBoneTabletResult1.scaleY = 1.4f
+                                    layoutBoneTabletResult1.letterSpacing = -0.1f
                                 }else{
-                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                    layoutBoneTabletResult3.scaleY = 1.8f
-                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+                                    layoutBoneTabletResult3.scaleY = 1.4f
+                                    layoutBoneTabletResult3.letterSpacing = -0.1f
                                 }
                                 boneTmp2.append(boneTabletName2)
                             }
@@ -1446,24 +1431,24 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 300
+                                layoutParams.height = 380
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
-                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_21.toFloat())
-                                    layoutBoneTabletResult1.letterSpacing = -0.2f
-                                    layoutBoneTabletResult1.scaleY = 2.0f
+                                if(tabletExample!!.contains("위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                                    layoutBoneTabletResult1.letterSpacing = -0.1f
+                                    layoutBoneTabletResult1.scaleY = 1.9f
                                 }else{
-                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_21.toFloat())
-                                    layoutBoneTabletResult3.letterSpacing = -0.2f
-                                    layoutBoneTabletResult3.scaleY = 2.0f
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                                    layoutBoneTabletResult3.letterSpacing = -0.1f
+                                    layoutBoneTabletResult3.scaleY = 1.9f
                                 }
                                 boneTmp2.append(boneTabletName2)
                             }
                         }
                     }
 //                    layoutBoneTabletResult2.text = boneTmp.toString()
-                    if(tabletExample!!.contains("위/위")) {
+                    if(tabletExample!!.contains("위")) {
                         layoutBoneTabletResult1.text = boneTmp2.toString()
                     }else{
                         layoutBoneTabletResult3.text = boneTmp2.toString()
@@ -1585,13 +1570,13 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
-                    layoutParams.height = 405
+                    layoutParams.height = 400
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
-//                    layoutBoneTabletResult3.visibility = View.VISIBLE
-//                    val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
-//                    layoutBoneTabletResult3.typeface = hyhaeso
-//                    layoutBoneTabletResult3.text = "召天"
+                    layoutBoneTabletResult3.visibility = View.VISIBLE
+                    val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
+                    layoutBoneTabletResult3.typeface = hyhaeso
+                    layoutBoneTabletResult3.text = "召天"
 
                     when (boneName3.length) {
                         5 -> {
@@ -1660,10 +1645,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 330
+                                layoutParams.height = 360
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                layoutBoneTabletResult1.scaleY = 1.3f
+                                layoutBoneTabletResult1.scaleY = 1.1f
                                 boneTmp2.append(boneTabletName2)
                             }
                         }
@@ -1673,11 +1658,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 270
+                                layoutParams.height = 320
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_36.toFloat())
-                                layoutBoneTabletResult1.scaleY = 1.6f
+                                layoutBoneTabletResult1.scaleY = 1.1f
                                 boneTmp2.append(boneTabletName2)
                             }
                         }
@@ -1687,12 +1671,11 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 330
+                                layoutParams.height = 360
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
                                 layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                layoutBoneTabletResult1.scaleY = 1.8f
-                                layoutBoneTabletResult1.letterSpacing = -0.2f
+                                layoutBoneTabletResult1.scaleY = 1.4f
                                 boneTmp2.append(boneTabletName2)
                             }
                         }
@@ -1704,7 +1687,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
-                    layoutParams.height = 525
+                    layoutParams.height = 510
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (boneName3.length) {
@@ -1786,7 +1769,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     }
                 }
                 "천주교(본관)" -> {
-                    if(tabletExample!!.contains("위/위")) {
+                    if(tabletExample!!.contains("위")) {
                         flagUp = true
                         layoutBoneTabletResult1.visibility = View.VISIBLE
                     }else{
@@ -1869,13 +1852,13 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 390
+                                layoutParams.height = 420
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
-                                    layoutBoneTabletResult1.scaleY = 1.3f
+                                if(tabletExample!!.contains("위")) {
+                                    layoutBoneTabletResult1.scaleY = 1.1f
                                 }else{
-                                    layoutBoneTabletResult3.scaleY = 1.3f
+                                    layoutBoneTabletResult3.scaleY = 1.1f
                                 }
                                 boneTmp2.append(boneTabletName2)
                             }
@@ -1886,15 +1869,13 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 330
+                                layoutParams.height = 380
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
-                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_36.toFloat())
-                                    layoutBoneTabletResult1.scaleY = 1.6f
+                                if(tabletExample!!.contains("위")) {
+                                    layoutBoneTabletResult1.scaleY = 1.1f
                                 }else{
-                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_36.toFloat())
-                                    layoutBoneTabletResult3.scaleY = 1.6f
+                                    layoutBoneTabletResult3.scaleY = 1.1f
                                 }
                                 boneTmp2.append(boneTabletName2)
                             }
@@ -1905,17 +1886,15 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 390
+                                layoutParams.height = 420
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
+                                if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                    layoutBoneTabletResult1.scaleY = 1.8f
-                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                    layoutBoneTabletResult1.scaleY = 1.4f
                                 }else{
                                     layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                    layoutBoneTabletResult3.scaleY = 1.8f
-                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                    layoutBoneTabletResult3.scaleY = 1.4f
                                 }
                                 boneTmp2.append(boneTabletName2)
                             }
@@ -1926,17 +1905,17 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 330
+                                layoutParams.height = 380
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
-                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                    layoutBoneTabletResult1.scaleY = 1.8f
-                                    layoutBoneTabletResult1.letterSpacing = -0.2f
+                                if(tabletExample!!.contains("위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+                                    layoutBoneTabletResult1.scaleY = 1.4f
+                                    layoutBoneTabletResult1.letterSpacing = -0.1f
                                 }else{
-                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
-                                    layoutBoneTabletResult3.scaleY = 1.8f
-                                    layoutBoneTabletResult3.letterSpacing = -0.2f
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
+                                    layoutBoneTabletResult3.scaleY = 1.4f
+                                    layoutBoneTabletResult3.letterSpacing = -0.1f
                                 }
                                 boneTmp2.append(boneTabletName2)
                             }
@@ -1947,17 +1926,17 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
-                                layoutParams.height = 330
+                                layoutParams.height = 380
                                 layoutBoneTabletResult2.layoutParams = layoutParams
                             }else{
-                                if(tabletExample!!.contains("위/위")) {
-                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_21.toFloat())
-                                    layoutBoneTabletResult1.letterSpacing = -0.2f
-                                    layoutBoneTabletResult1.scaleY = 2.0f
+                                if(tabletExample!!.contains("위")) {
+                                    layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                                    layoutBoneTabletResult1.letterSpacing = -0.1f
+                                    layoutBoneTabletResult1.scaleY = 1.9f
                                 }else{
-                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_21.toFloat())
-                                    layoutBoneTabletResult3.letterSpacing = -0.2f
-                                    layoutBoneTabletResult3.scaleY = 2.0f
+                                    layoutBoneTabletResult3.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
+                                    layoutBoneTabletResult3.letterSpacing = -0.1f
+                                    layoutBoneTabletResult3.scaleY = 1.9f
                                 }
                                 boneTmp2.append(boneTabletName2)
                             }
@@ -1965,7 +1944,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     }
 //                    boneTmp2.append(boneTabletName2)
 
-                    if(tabletExample!!.contains("위/위")) {
+                    if(tabletExample!!.contains("위")) {
                         layoutBoneTabletResult1.text = boneTmp2.toString()
                     }else{
                         layoutBoneTabletResult3.text = boneTmp2.toString()
@@ -1976,6 +1955,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
         else if(boneTabletType == "문구"){
 
         }
+
         if(!tabletType.contains("본관") && !boneTabletType.contains("본관")){
             if(flagUp && flagDown){
                 binding.layoutBoneTabletResult1.visibility = View.VISIBLE
@@ -1988,12 +1968,12 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                 // 현재 레이아웃 파라미터를 가져옵니다.
                 val params = layoutBoneTabletResult2.layoutParams
                 // 뷰의 높이를 픽셀 단위로 설정
-                params.height = 135
+                params.height = 400
                 layoutBoneTabletResult2.layoutParams = params
 
                 val layoutBoneTablet2Result2 = binding.layoutBoneTablet2Result2
                 val params2 = layoutBoneTablet2Result2.layoutParams
-                params2.height = 135
+                params2.height = 400
                 layoutBoneTablet2Result2.layoutParams = params2
             }else if(flagDown){
                 binding.layoutBoneTabletResult3.visibility = View.VISIBLE
@@ -2004,12 +1984,12 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                 // 현재 레이아웃 파라미터를 가져옵니다.
                 val params = layoutBoneTabletResult2.layoutParams
                 // 뷰의 높이를 픽셀 단위로 설정
-                params.height = 155
+                params.height = 465
                 layoutBoneTabletResult2.layoutParams = params
 
                 val layoutBoneTablet2Result2 = binding.layoutBoneTablet2Result2
                 val params2 = layoutBoneTablet2Result2.layoutParams
-                params2.height = 155
+                params2.height = 465
                 layoutBoneTablet2Result2.layoutParams = params2
             }else if(flagUp){
                 binding.layoutBoneTabletResult1.visibility = View.VISIBLE
@@ -2020,13 +2000,19 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                 // 현재 레이아웃 파라미터를 가져옵니다.
                 val params = layoutBoneTabletResult2.layoutParams
                 // 뷰의 높이를 픽셀 단위로 설정
-                params.height = 155
-                layoutBoneTabletResult2.layoutParams = params
+                params.height = 465
 
                 val layoutBoneTablet2Result2 = binding.layoutBoneTablet2Result2
                 val params2 = layoutBoneTablet2Result2.layoutParams
-                params2.height = 155
+                params2.height = 465
+
+//                if(tabletExample!!.contains("세로")) {
+//
+//                }
+
+                layoutBoneTabletResult2.layoutParams = params
                 layoutBoneTablet2Result2.layoutParams = params2
+
             }
         }
 
@@ -2035,9 +2021,9 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
             binding.layoutBoneTablet2Result3.visibility = View.GONE
             binding.layoutBoneTabletResultUnder.visibility = View.VISIBLE
 
-//            val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
-//            binding.layoutBoneTabletResultUnder.typeface = hyhaeso
-//            binding.layoutBoneTabletResultUnder.text = "召天"
+            val hyhaeso = ResourcesCompat.getFont(requireContext(), R.font.hyhaeso)
+            binding.layoutBoneTabletResultUnder.typeface = hyhaeso
+            binding.layoutBoneTabletResultUnder.text = "召天"
         }
     }
 }

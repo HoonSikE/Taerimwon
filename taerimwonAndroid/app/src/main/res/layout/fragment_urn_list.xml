@@ -63,292 +63,387 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 >
-                <TextView
-                    android:id="@+id/text_urn_list1"
-                    style="@style/SubHeadBold"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutUrnList1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="● 일반 밀봉진공함"
+                    android:gravity="center"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_urn_list1"
+                    >
+                    <TextView
+                        android:id="@+id/text_urn_list1"
+                        style="@style/SubHeadBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="● 일반 밀봉진공함"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_urn_list1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_urn_list1"
+                        >
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutUrnList2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginVertical="8dp"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="8dp"
                     android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutUrnList1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_urn_list1"
                     >
-                </androidx.recyclerview.widget.RecyclerView>
-
-                <TextView
-                    android:id="@+id/text_urn_list2"
-                    style="@style/SubHeadBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="● 일반함"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerview_urn_list1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_urn_list2"
+                    <TextView
+                        android:id="@+id/text_urn_list2"
+                        style="@style/SubHeadBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="● 일반함"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_urn_list2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_urn_list2"
+                        >
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutUrnList3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginVertical="8dp"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="8dp"
                     android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutUrnList2"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_urn_list2"
                     >
-                </androidx.recyclerview.widget.RecyclerView>
-
-                <TextView
-                    android:id="@+id/text_urn_list3"
-                    style="@style/SubHeadBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="● 이중 밀봉진공함"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerview_urn_list2"
-                    app:layout_constraintStart_toStartOf="parent"
-                    />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_urn_list3"
+                    <TextView
+                        android:id="@+id/text_urn_list3"
+                        style="@style/SubHeadBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="● 이중 밀봉진공함"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_urn_list3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_urn_list3"
+                        >
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutUrnList4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginVertical="8dp"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="8dp"
                     android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutUrnList3"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_urn_list3"
                     >
-                </androidx.recyclerview.widget.RecyclerView>
-
-                <TextView
-                    android:id="@+id/text_urn_list4"
-                    style="@style/SubHeadBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="● 잠금형 삼중 명품자개함"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerview_urn_list3"
-                    app:layout_constraintStart_toStartOf="parent"
-                    />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_urn_list4"
+                    <TextView
+                        android:id="@+id/text_urn_list4"
+                        style="@style/SubHeadBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="● 잠금형 삼중 명품자개함"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_urn_list4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_urn_list4"
+                        >
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutUrnList5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginVertical="8dp"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="8dp"
                     android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutUrnList4"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_urn_list4"
                     >
-                </androidx.recyclerview.widget.RecyclerView>
-
-                <TextView
-                    android:id="@+id/text_urn_list5"
-                    style="@style/SubHeadBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="● 잠금형 삼중실크 밀봉진공함"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerview_urn_list4"
-                    app:layout_constraintStart_toStartOf="parent"
-                    />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_urn_list5"
+                    <TextView
+                        android:id="@+id/text_urn_list5"
+                        style="@style/SubHeadBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="● 잠금형 삼중실크 밀봉진공함"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_urn_list5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_urn_list5"
+                        >
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutUrnList6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginVertical="8dp"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="8dp"
                     android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutUrnList5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_urn_list5"
+                    android:visibility="gone"
                     >
-                </androidx.recyclerview.widget.RecyclerView>
-
-                <TextView
-                    android:id="@+id/text_urn_list6"
-                    style="@style/SubHeadBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="● 소함"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerview_urn_list5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_urn_list6"
+                    <TextView
+                        android:id="@+id/text_urn_list6"
+                        style="@style/SubHeadBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="● 소함"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_urn_list6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_urn_list6"
+                        >
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutUrnList7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginVertical="8dp"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="8dp"
                     android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutUrnList6"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_urn_list6"
+                    android:visibility="gone"
                     >
-                </androidx.recyclerview.widget.RecyclerView>
-
-                <TextView
-                    android:id="@+id/text_urn_list7"
-                    style="@style/SubHeadBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="● 수목함"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerview_urn_list6"
-                    app:layout_constraintStart_toStartOf="parent"
-                    />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_urn_list7"
+                    <TextView
+                        android:id="@+id/text_urn_list7"
+                        style="@style/SubHeadBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="● 수목함"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_urn_list7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_urn_list7"
+                        >
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutUrnList8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginVertical="8dp"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="8dp"
                     android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutUrnList7"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_urn_list7"
+                    android:visibility="gone"
                     >
-                </androidx.recyclerview.widget.RecyclerView>
-
-                <TextView
-                    android:id="@+id/text_urn_list8"
-                    style="@style/SubHeadBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="● 스크류(잠금형)고급 진공함"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerview_urn_list7"
-                    app:layout_constraintStart_toStartOf="parent"
-                    />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_urn_list8"
+                    <TextView
+                        android:id="@+id/text_urn_list8"
+                        style="@style/SubHeadBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="● 스크류(잠금형)고급 진공함"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_urn_list8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_urn_list8"
+                        >
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutUrnList9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginVertical="8dp"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="8dp"
                     android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutUrnList8"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_urn_list8"
+                    android:visibility="gone"
                     >
-                </androidx.recyclerview.widget.RecyclerView>
-
-                <TextView
-                    android:id="@+id/text_urn_list9"
-                    style="@style/SubHeadBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="● 황금함"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerview_urn_list8"
-                    app:layout_constraintStart_toStartOf="parent"
-                    />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_urn_list9"
+                    <TextView
+                        android:id="@+id/text_urn_list9"
+                        style="@style/SubHeadBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="● 황금함"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_urn_list9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_urn_list9"
+                        >
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutUrnList10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginVertical="8dp"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="8dp"
                     android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutUrnList9"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_urn_list9"
+                    android:visibility="gone"
                     >
-                </androidx.recyclerview.widget.RecyclerView>
-
-                <TextView
-                    android:id="@+id/text_urn_list10"
-                    style="@style/SubHeadBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="● KS인증 ZEN한국도자기"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerview_urn_list9"
-                    app:layout_constraintStart_toStartOf="parent"
-                    />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_urn_list10"
+                    <TextView
+                        android:id="@+id/text_urn_list10"
+                        style="@style/SubHeadBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="● KS인증 ZEN한국도자기"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_urn_list10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_urn_list10"
+                        >
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutUrnList11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginVertical="8dp"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="8dp"
                     android:gravity="center"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutUrnList10"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_urn_list10"
+                    android:visibility="gone"
                     >
-                </androidx.recyclerview.widget.RecyclerView>
-
-                <TextView
-                    android:id="@+id/text_urn_list11"
-                    style="@style/SubHeadBold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="● 합골"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerview_urn_list10"
-                    app:layout_constraintStart_toStartOf="parent"
-                    />
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview_urn_list11"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="8dp"
-                    android:layout_marginVertical="8dp"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="8dp"
-                    android:gravity="center"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_urn_list11"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    >
-                </androidx.recyclerview.widget.RecyclerView>
+                    <TextView
+                        android:id="@+id/text_urn_list11"
+                        style="@style/SubHeadBold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="● 합골"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_urn_list11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginVertical="8dp"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="8dp"
+                        android:gravity="center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_urn_list11"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        >
+                    </androidx.recyclerview.widget.RecyclerView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
