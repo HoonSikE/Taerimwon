@@ -402,6 +402,28 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.imageDate2.visibility = View.GONE
             binding.spinnerDate2Type.visibility = View.GONE
             binding.imageDate2Type.visibility = View.GONE
+        }else{
+            if(!selectedUrnName.contains("미정")){
+                binding.layoutEngraveType.visibility = View.VISIBLE
+                binding.textEngraveSelectType.visibility = View.VISIBLE
+                binding.recyclerviewEngraveSelectType.visibility = View.VISIBLE
+
+//                binding.textName2.visibility = View.VISIBLE
+//                binding.editTextName2.visibility = View.VISIBLE
+//                binding.imageName2.visibility = View.VISIBLE
+
+                binding.textDate1.visibility = View.VISIBLE
+                binding.editTextDate1.visibility = View.VISIBLE
+                binding.imageDate1.visibility = View.VISIBLE
+                binding.spinnerDate1Type.visibility = View.VISIBLE
+                binding.imageDate1Type.visibility = View.VISIBLE
+
+                binding.textDate2.visibility = View.VISIBLE
+                binding.editTextDate2.visibility = View.VISIBLE
+                binding.imageDate2.visibility = View.VISIBLE
+                binding.spinnerDate2Type.visibility = View.VISIBLE
+                binding.imageDate2Type.visibility = View.VISIBLE
+            }
         }
 
         if(selectedUrnName2.contains("목함")){
@@ -424,6 +446,28 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.imageBoneDate2.visibility = View.GONE
             binding.spinnerBoneDate2Type.visibility = View.GONE
             binding.imageBoneDate2Type.visibility = View.GONE
+        }else{
+            if(!selectedUrnName2.contains("미정")){
+                binding.layoutBoneEngraveType.visibility = View.VISIBLE
+                binding.textBoneEngraveSelectType.visibility = View.VISIBLE
+                binding.recyclerviewBoneEngraveSelectType.visibility = View.VISIBLE
+
+//                binding.textBoneName2.visibility = View.VISIBLE
+//                binding.editTextBoneName2.visibility = View.VISIBLE
+//                binding.imageBoneName2.visibility = View.VISIBLE
+
+                binding.textBoneDate1.visibility = View.VISIBLE
+                binding.editTextBoneDate1.visibility = View.VISIBLE
+                binding.imageBoneDate1.visibility = View.VISIBLE
+                binding.spinnerBoneDate1Type.visibility = View.VISIBLE
+                binding.imageBoneDate1Type.visibility = View.VISIBLE
+
+                binding.textBoneDate2.visibility = View.VISIBLE
+                binding.editTextBoneDate2.visibility = View.VISIBLE
+                binding.imageBoneDate2.visibility = View.VISIBLE
+                binding.spinnerBoneDate2Type.visibility = View.VISIBLE
+                binding.imageBoneDate2Type.visibility = View.VISIBLE
+            }
         }
     }
     private fun setOnClickListeners() {
@@ -686,6 +730,28 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                     binding.imageDate2.visibility = View.GONE
                     binding.spinnerDate2Type.visibility = View.GONE
                     binding.imageDate2Type.visibility = View.GONE
+                }else{
+                    if(!selectedUrnName.contains("미정")){
+                        binding.layoutEngraveType.visibility = View.VISIBLE
+                        binding.textEngraveSelectType.visibility = View.VISIBLE
+                        binding.recyclerviewEngraveSelectType.visibility = View.VISIBLE
+
+//                        binding.textName2.visibility = View.VISIBLE
+//                        binding.editTextName2.visibility = View.VISIBLE
+//                        binding.imageName2.visibility = View.VISIBLE
+
+                        binding.textDate1.visibility = View.VISIBLE
+                        binding.editTextDate1.visibility = View.VISIBLE
+                        binding.imageDate1.visibility = View.VISIBLE
+                        binding.spinnerDate1Type.visibility = View.VISIBLE
+                        binding.imageDate1Type.visibility = View.VISIBLE
+
+                        binding.textDate2.visibility = View.VISIBLE
+                        binding.editTextDate2.visibility = View.VISIBLE
+                        binding.imageDate2.visibility = View.VISIBLE
+                        binding.spinnerDate2Type.visibility = View.VISIBLE
+                        binding.imageDate2Type.visibility = View.VISIBLE
+                    }
                 }
 
                 if(selectedUrnName.contains("수목함")
@@ -798,6 +864,28 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
                     binding.imageBoneDate2.visibility = View.GONE
                     binding.spinnerBoneDate2Type.visibility = View.GONE
                     binding.imageBoneDate2Type.visibility = View.GONE
+                }else{
+                    if(!selectedUrnName2.contains("미정")){
+                        binding.layoutBoneEngraveType.visibility = View.VISIBLE
+                        binding.textBoneEngraveSelectType.visibility = View.VISIBLE
+                        binding.recyclerviewBoneEngraveSelectType.visibility = View.VISIBLE
+
+//                        binding.textBoneName2.visibility = View.VISIBLE
+//                        binding.editTextBoneName2.visibility = View.VISIBLE
+//                        binding.imageBoneName2.visibility = View.VISIBLE
+
+                        binding.textBoneDate1.visibility = View.VISIBLE
+                        binding.editTextBoneDate1.visibility = View.VISIBLE
+                        binding.imageBoneDate1.visibility = View.VISIBLE
+                        binding.spinnerBoneDate1Type.visibility = View.VISIBLE
+                        binding.imageBoneDate1Type.visibility = View.VISIBLE
+
+                        binding.textBoneDate2.visibility = View.VISIBLE
+                        binding.editTextBoneDate2.visibility = View.VISIBLE
+                        binding.imageBoneDate2.visibility = View.VISIBLE
+                        binding.spinnerBoneDate2Type.visibility = View.VISIBLE
+                        binding.imageBoneDate2Type.visibility = View.VISIBLE
+                    }
                 }
 
                 if(selectedUrnName2.contains("수목함")

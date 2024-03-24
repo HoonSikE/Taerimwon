@@ -48,8 +48,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_bone_tablet_result0_1"
-                    android:layout_width="75px"
-                    android:layout_height="75px"
+                    android:layout_width="85px"
+                    android:layout_height="85px"
                     android:layout_marginTop="5px"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -85,8 +85,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_bone_tablet_result1_2"
-                    android:layout_width="90px"
-                    android:layout_height="90px"
+                    android:layout_width="100px"
+                    android:layout_height="100px"
                     android:layout_marginTop="5px"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -122,8 +122,8 @@
                     />
                 <ImageView
                     android:id="@+id/layout_bone_tablet2_result1_2"
-                    android:layout_width="90px"
-                    android:layout_height="90px"
+                    android:layout_width="100px"
+                    android:layout_height="100px"
                     android:layout_marginTop="5px"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -144,7 +144,7 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet_result1"
                     android:layout_width="112.5px"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60px"
                     android:minHeight="60px"
                     android:text=""
                     android:textSize="37px"
@@ -161,150 +161,150 @@
                     android:id="@+id/layout_bone_tablet_result2"
                     android:layout_width="112.5px"
                     android:layout_height="630px"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result1"
-                    >
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result1">
+
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_1"
                         android:layout_width="60px"
                         android:layout_height="60px"
-                        android:text="희"
-                        android:textSize="60px"
-                        android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
-                        android:textFontWeight="300"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
                         android:gravity="center"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
+                        android:text="희"
+                        android:textColor="@color/black"
+                        android:textFontWeight="300"
+                        android:textSize="60px"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_2"
                         android:layout_width="60px"
                         android:layout_height="60px"
-                        android:text="희"
-                        android:textSize="60px"
-                        android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
-                        android:textFontWeight="300"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
                         android:gravity="center"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result2_1"
-                        app:layout_constraintBottom_toTopOf="@+id/layout_bone_tablet_result2_3"
+                        android:text="희"
+                        android:textColor="@color/black"
+                        android:textFontWeight="300"
+                        android:textSize="60px"
                         android:visibility="gone"
-                        />
+                        app:layout_constraintBottom_toTopOf="@+id/layout_bone_tablet_result2_3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result2_1" />
+
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_3"
                         android:layout_width="60px"
                         android:layout_height="60px"
-                        android:text="희"
-                        android:textSize="60px"
-                        android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
-                        android:textFontWeight="300"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
                         android:gravity="center"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result2_2"
-                        app:layout_constraintBottom_toTopOf="@+id/layout_bone_tablet_result2_4"
+                        android:text="희"
+                        android:textColor="@color/black"
+                        android:textFontWeight="300"
+                        android:textSize="60px"
                         android:visibility="gone"
-                        />
+                        app:layout_constraintBottom_toTopOf="@+id/layout_bone_tablet_result2_4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result2_2" />
+
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_4"
                         android:layout_width="60px"
                         android:layout_height="60px"
-                        android:text="희"
-                        android:textSize="60px"
-                        android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
-                        android:textFontWeight="300"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
                         android:gravity="center"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result2_3"
-                        app:layout_constraintBottom_toTopOf="@+id/layout_bone_tablet_result2_5"
+                        android:text="희"
+                        android:textColor="@color/black"
+                        android:textFontWeight="300"
+                        android:textSize="60px"
                         android:visibility="gone"
-                        />
+                        app:layout_constraintBottom_toTopOf="@+id/layout_bone_tablet_result2_5"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result2_3" />
+
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_5"
                         android:layout_width="60px"
                         android:layout_height="60px"
-                        android:text="희"
-                        android:textSize="60px"
-                        android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
-                        android:textFontWeight="300"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
                         android:gravity="center"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result2_4"
-                        app:layout_constraintBottom_toTopOf="@+id/layout_bone_tablet_result2_6"
+                        android:text="희"
+                        android:textColor="@color/black"
+                        android:textFontWeight="300"
+                        android:textSize="60px"
                         android:visibility="gone"
-                        />
+                        app:layout_constraintBottom_toTopOf="@+id/layout_bone_tablet_result2_6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result2_4" />
+
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_6"
                         android:layout_width="60px"
                         android:layout_height="60px"
-                        android:text="희"
-                        android:textSize="60px"
-                        android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
-                        android:textFontWeight="300"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
                         android:gravity="center"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result2_5"
-                        app:layout_constraintBottom_toTopOf="@+id/layout_bone_tablet_result2_7"
+                        android:text="희"
+                        android:textColor="@color/black"
+                        android:textFontWeight="300"
+                        android:textSize="60px"
                         android:visibility="gone"
-                        />
+                        app:layout_constraintBottom_toTopOf="@+id/layout_bone_tablet_result2_7"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result2_5" />
+
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_7"
                         android:layout_width="60px"
                         android:layout_height="60px"
-                        android:text="희"
-                        android:textSize="60px"
-                        android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
-                        android:textFontWeight="300"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
                         android:gravity="center"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result2_6"
-                        app:layout_constraintBottom_toTopOf="@+id/layout_bone_tablet_result2_8"
+                        android:text="희"
+                        android:textColor="@color/black"
+                        android:textFontWeight="300"
+                        android:textSize="60px"
                         android:visibility="gone"
-                        />
+                        app:layout_constraintBottom_toTopOf="@+id/layout_bone_tablet_result2_8"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result2_6" />
+
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_8"
                         android:layout_width="60px"
                         android:layout_height="60px"
-                        android:text="희"
-                        android:textSize="60px"
-                        android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
-                        android:textFontWeight="300"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
                         android:gravity="center"
-                        app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result2_7"
-                        app:layout_constraintBottom_toTopOf="@+id/layout_bone_tablet_result2_9"
+                        android:text="희"
+                        android:textColor="@color/black"
+                        android:textFontWeight="300"
+                        android:textSize="60px"
                         android:visibility="gone"
-                        />
+                        app:layout_constraintBottom_toTopOf="@+id/layout_bone_tablet_result2_9"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/layout_bone_tablet_result2_7" />
+
                     <TextView
                         android:id="@+id/layout_bone_tablet_result2_9"
                         android:layout_width="60px"
                         android:layout_height="60px"
-                        android:text="희"
-                        android:textSize="60px"
-                        android:textColor="@color/black"
                         android:fontFamily="@font/hygungso"
-                        android:textFontWeight="300"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
                         android:gravity="center"
+                        android:text="희"
+                        android:textColor="@color/black"
+                        android:textFontWeight="300"
+                        android:textSize="60px"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 <TextView
                     android:id="@+id/layout_bone_tablet_result3"
@@ -337,7 +337,7 @@
                 <TextView
                     android:id="@+id/layout_bone_tablet2_result1"
                     android:layout_width="112.5px"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60px"
                     android:minHeight="60px"
                     android:text=""
                     android:textSize="37px"
@@ -499,7 +499,6 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <TextView
                     android:id="@+id/layout_bone_tablet2_result3"
                     android:layout_width="112.5px"

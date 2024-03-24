@@ -567,11 +567,11 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         }
 
         binding.seekbarZoom1.min = 10
-        binding.seekbarZoom1.max = 30
+        binding.seekbarZoom1.max = 100
         binding.seekbarZoom1.progress = 10
 
         binding.seekbarZoom2.min = 10
-        binding.seekbarZoom2.max = 30
+        binding.seekbarZoom2.max = 100
         binding.seekbarZoom2.progress = 10
 
         setMsg()
@@ -2986,7 +2986,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             imageUrnImageLeft.layoutParams = layoutParamsLeft
             imageUrnImageRight.layoutParams = layoutParamsRight
         }
-
     }
     private fun setBone1Data() {
         val selectedUrnName = ApplicationClass.prefs.selectedUrnName
@@ -3165,6 +3164,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             }
             "흰색위패" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
+                binding.imageBoneTabletImage2.visibility = View.VISIBLE
             }
             "조각위패(황금향,조각종교)" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet1)
@@ -3172,6 +3172,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             }
             "검정위패-TR-2-0802" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet2)
+                binding.imageBoneTabletImage2.visibility = View.VISIBLE
             }
             "사진위패 TR-3 1005" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet3)
@@ -5738,12 +5739,6 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         handler.postDelayed({
             // 여기에 1초 후에 실행하고자 하는 코드를 작성합니다.
-            // 1. XML 레이아웃
-            val layoutResultContent = binding.layoutResultContent
-            // 2. 레이아웃을 이미지로 변환
-            msgBitmap = Bitmap.createBitmap(layoutResultContent.width, layoutResultContent.height, Bitmap.Config.ARGB_8888)
-            val canvasMsgBitmap = Canvas(msgBitmap)
-            layoutResultContent.draw(canvasMsgBitmap)
             // 유골
             if(selectedUrnType != "선택안함") {
                 if(selectedUrnType.contains("합골함")){
@@ -6025,6 +6020,15 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
             handler.postDelayed({
                 addOnGlobalLayoutListener()
+                // 1. XML 레이아웃
+                // 함 목록 사진 째로
+                val layoutResultContent = binding.layoutResultImage1
+                // 안에 글자만
+//                val layoutResultContent = binding.layoutResultContent
+                // 2. 레이아웃을 이미지로 변환
+                msgBitmap = Bitmap.createBitmap(layoutResultContent.width, layoutResultContent.height, Bitmap.Config.ARGB_8888)
+                val canvasMsgBitmap = Canvas(msgBitmap)
+                layoutResultContent.draw(canvasMsgBitmap)
             }, delayMillis.toLong())
         }, delayMillis.toLong())
     }
@@ -6135,7 +6139,8 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     Log.d(TAG, "imageUri: " + imageUri)
 
 
-                    val tel = ApplicationClass.prefs.leaderTel.toString().replace("-", "")
+//                    val tel = ApplicationClass.prefs.leaderTel.toString().replace("-", "")
+                    val tel = "01065673569"
                     val subject = "MMS 제목"
 //                    val sms_body = "MMS 내용"
 

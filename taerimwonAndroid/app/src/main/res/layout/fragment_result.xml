@@ -286,7 +286,6 @@
                         app:layout_constraintTop_toBottomOf="@+id/seekbar_zoom1"
                         tools:viewBindingIgnore="true"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <View
                     android:id="@+id/View_photo"
                     android:layout_width="match_parent"
@@ -298,7 +297,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/layout_result_title_image"
                     tools:ignore="MissingConstraints"
                     />
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_photo"
                     android:layout_width="match_parent"
@@ -374,7 +372,6 @@
                             />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <TextView
                     android:id="@+id/text_tablet_photo"
                     style="@style/Body"
@@ -388,7 +385,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layout_photo"
                     tools:viewBindingIgnore="true" />
-
                 <View
                     android:id="@+id/View2"
                     android:layout_width="match_parent"
@@ -993,6 +989,7 @@
                                 android:layout_width="120px"
                                 android:layout_height="400px"
                                 android:layout_marginBottom="25px"
+                                android:layout_marginLeft="3px"
                                 android:scaleType="fitXY"
                                 app:layout_constraintBottom_toTopOf="@+id/image_bone_tablet_image2"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -1348,7 +1345,7 @@
                         <!--합골 위패-->
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/fragment_bone_tablet_content_background"
-                            android:layout_width="280px"
+                            android:layout_width="225px"
                             android:layout_height="635px"
                             android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -1358,7 +1355,7 @@
                             >
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/fragment_bone_tablet_content_background2"
-                                android:layout_width="275px"
+                                android:layout_width="225px"
                                 android:layout_height="630px"
                                 android:visibility="gone"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -1369,7 +1366,7 @@
                                 >
                                 <FrameLayout
                                     android:id="@+id/fragment_bone_tablet_content"
-                                    android:layout_width="275px"
+                                    android:layout_width="225px"
                                     android:layout_height="630px"
                                     android:visibility="gone"
                                     app:layout_constraintStart_toStartOf="parent"

@@ -268,6 +268,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
         var flagUp = false;
         var flagDown = false;
+        var minHeight = 630;
+        var upHeight = 60
 
         if(!tabletType.contains("본관") && tabletType != "문구") {
             val layoutBoneTabletResult1 = binding.layoutBoneTabletResult1
@@ -289,6 +291,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
                     layoutParams.height = 510
+                    minHeight = Math.min(minHeight, 510)
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (name3.length) {
@@ -344,6 +347,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
                     layoutParams.height = 465
+                    minHeight = Math.min(minHeight, 465)
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (name3.length) {
@@ -398,7 +402,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 420
+                                minHeight = Math.min(minHeight, 420)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 80)
                             }else{
                                 layoutBoneTabletResult1.scaleY = 1.1f
                                 tmp2.append(tabletName2)
@@ -411,7 +418,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 380
+                                minHeight = Math.min(minHeight, 380)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 120)
                             }else{
                                 layoutBoneTabletResult1.scaleY = 1.1f
                                 tmp2.append(tabletName2)
@@ -424,7 +434,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 420
+                                minHeight = Math.min(minHeight, 420)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 80)
                             }else{
                                 layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
                                 layoutBoneTabletResult1.scaleY = 1.4f
@@ -448,6 +461,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
                     layoutParams.height = 465
+                    minHeight = Math.min(minHeight, 465)
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (name3.length) {
@@ -502,7 +516,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 420
+                                minHeight = Math.min(minHeight, 420)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 80)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.scaleY = 1.1f
@@ -519,7 +536,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 380
+                                minHeight = Math.min(minHeight, 380)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 120)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.scaleY = 1.1f
@@ -536,7 +556,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 420
+                                minHeight = Math.min(minHeight, 420)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 80)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
@@ -555,7 +578,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 380
+                                minHeight = Math.min(minHeight, 380)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 120)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
@@ -576,7 +602,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 380
+                                minHeight = Math.min(minHeight, 380)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 120)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
@@ -623,6 +652,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
                     layoutParams.height = 615
+                    minHeight = Math.min(minHeight, 615)
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (name3.length) {
@@ -730,6 +760,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
                     layoutParams.height = 400
+                    minHeight = Math.min(minHeight, 400)
                     layoutBoneTabletResult2.layoutParams = layoutParams
 //                    layoutBoneTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
 
@@ -816,7 +847,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 360
+                                minHeight = Math.min(minHeight, 360)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 80)
                             }else{
                                 layoutBoneTabletResult1.scaleY = 1.1f
                                 tmp2.append(tabletName2)
@@ -829,7 +863,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 320
+                                minHeight = Math.min(minHeight, 320)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 120)
                             }else{
                                 layoutBoneTabletResult1.scaleY = 1.1f
                                 tmp2.append(tabletName2)
@@ -843,6 +880,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 layoutParams.width = 111
                                 layoutParams.width = 360
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 80)
                             }else{
                                 layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
                                 layoutBoneTabletResult1.scaleY = 1.4f
@@ -859,6 +898,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
                     layoutParams.height = 510
+                    minHeight = Math.min(minHeight, 510)
                     layoutBoneTabletResult2.layoutParams = layoutParams
 //                    layoutBoneTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
 
@@ -966,6 +1006,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
                     layoutParams.height = 465
+                    minHeight = Math.min(minHeight, 465)
                     layoutBoneTabletResult2.layoutParams = layoutParams
 //                    layoutBoneTabletResult2.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_35.toFloat())
 
@@ -1048,6 +1089,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 layoutParams.width = 111
                                 layoutParams.width = 420
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 80)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.scaleY = 1.1f
@@ -1064,7 +1107,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 380
+                                minHeight = Math.min(minHeight, 380)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 120)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.scaleY = 1.1f
@@ -1082,6 +1128,8 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 layoutParams.width = 111
                                 layoutParams.width = 420
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 80)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
@@ -1100,7 +1148,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 380
+                                minHeight = Math.min(minHeight, 380)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 120)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
@@ -1121,7 +1172,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 380
+                                minHeight = Math.min(minHeight, 380)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 120)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
@@ -1171,6 +1225,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
                     layoutParams.height = 510
+                    minHeight = Math.min(minHeight, 510)
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (boneName3.length) {
@@ -1217,6 +1272,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
                     layoutParams.height = 465
+                    minHeight = Math.min(minHeight, 465)
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (boneName3.length) {
@@ -1263,7 +1319,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 420
+                                minHeight = Math.min(minHeight, 420)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 80)
                             }else{
                                 layoutBoneTabletResult1.scaleY = 1.1f
                                 boneTmp2.append(boneTabletName2)
@@ -1276,7 +1335,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 380
+                                minHeight = Math.min(minHeight, 380)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 120)
                             }else{
                                 layoutBoneTabletResult1.scaleY = 1.1f
                                 boneTmp2.append(boneTabletName2)
@@ -1289,7 +1351,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 420
+                                minHeight = Math.min(minHeight, 420)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 80)
                             }else{
                                 layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
                                 layoutBoneTabletResult1.scaleY = 1.4f
@@ -1312,6 +1377,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
                     layoutParams.height = 465
+                    minHeight = Math.min(minHeight, 465)
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (boneName3.length) {
@@ -1358,7 +1424,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 420
+                                minHeight = Math.min(minHeight, 420)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 80)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.scaleY = 1.1f
@@ -1375,7 +1444,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 380
+                                minHeight = Math.min(minHeight, 380)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 120)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.scaleY = 1.1f
@@ -1392,7 +1464,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 420
+                                minHeight = Math.min(minHeight, 420)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 80)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
@@ -1411,7 +1486,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 380
+                                minHeight = Math.min(minHeight, 380)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 120)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
@@ -1432,7 +1510,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 380
+                                minHeight = Math.min(minHeight, 380)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 120)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
@@ -1479,6 +1560,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
                     layoutParams.height = 615
+                    minHeight = Math.min(minHeight, 615)
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (boneName3.length) {
@@ -1571,6 +1653,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
                     layoutParams.height = 400
+                    minHeight = Math.min(minHeight, 400)
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     layoutBoneTabletResult3.visibility = View.VISIBLE
@@ -1646,7 +1729,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 360
+                                minHeight = Math.min(minHeight, 360)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 80)
                             }else{
                                 layoutBoneTabletResult1.scaleY = 1.1f
                                 boneTmp2.append(boneTabletName2)
@@ -1659,7 +1745,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 320
+                                minHeight = Math.min(minHeight, 320)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 120)
                             }else{
                                 layoutBoneTabletResult1.scaleY = 1.1f
                                 boneTmp2.append(boneTabletName2)
@@ -1672,7 +1761,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 360
+                                minHeight = Math.min(minHeight, 360)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 80)
                             }else{
                                 layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
                                 layoutBoneTabletResult1.scaleY = 1.4f
@@ -1688,6 +1780,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
                     layoutParams.height = 510
+                    minHeight = Math.min(minHeight, 510)
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     when (boneName3.length) {
@@ -1781,6 +1874,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     val layoutParams = layoutBoneTabletResult2.layoutParams
                     layoutParams.width = 111
                     layoutParams.height = 465
+                    minHeight = Math.min(minHeight, 460)
                     layoutBoneTabletResult2.layoutParams = layoutParams
 
                     layoutBoneTabletResult3.visibility = View.VISIBLE
@@ -1853,7 +1947,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 420
+                                minHeight = Math.min(minHeight, 420)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 80)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.scaleY = 1.1f
@@ -1870,7 +1967,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 380
+                                minHeight = Math.min(minHeight, 380)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 120)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.scaleY = 1.1f
@@ -1887,7 +1987,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 420
+                                minHeight = Math.min(minHeight, 420)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 80)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
@@ -1906,7 +2009,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 380
+                                minHeight = Math.min(minHeight, 380)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 120)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
@@ -1927,7 +2033,10 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                                 val layoutParams = layoutBoneTabletResult2.layoutParams
                                 layoutParams.width = 111
                                 layoutParams.height = 380
+                                minHeight = Math.min(minHeight, 380)
                                 layoutBoneTabletResult2.layoutParams = layoutParams
+
+                                upHeight = Math.max(upHeight, 120)
                             }else{
                                 if(tabletExample!!.contains("위")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
@@ -1974,6 +2083,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                 val layoutBoneTablet2Result2 = binding.layoutBoneTablet2Result2
                 val params2 = layoutBoneTablet2Result2.layoutParams
                 params2.height = 400
+                minHeight = Math.min(minHeight, 400)
                 layoutBoneTablet2Result2.layoutParams = params2
             }else if(flagDown){
                 binding.layoutBoneTabletResult3.visibility = View.VISIBLE
@@ -1990,6 +2100,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                 val layoutBoneTablet2Result2 = binding.layoutBoneTablet2Result2
                 val params2 = layoutBoneTablet2Result2.layoutParams
                 params2.height = 465
+                minHeight = Math.min(minHeight, 465)
                 layoutBoneTablet2Result2.layoutParams = params2
             }else if(flagUp){
                 binding.layoutBoneTabletResult1.visibility = View.VISIBLE
@@ -2005,6 +2116,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                 val layoutBoneTablet2Result2 = binding.layoutBoneTablet2Result2
                 val params2 = layoutBoneTablet2Result2.layoutParams
                 params2.height = 465
+                minHeight = Math.min(minHeight, 465)
 
 //                if(tabletExample!!.contains("세로")) {
 //
@@ -2015,6 +2127,20 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
             }
         }
+
+        val params1 = binding.layoutBoneTabletResult2.layoutParams
+        params1.height = minHeight
+        val params2 = binding.layoutBoneTablet2Result2.layoutParams
+        params2.height = minHeight
+        binding.layoutBoneTabletResult2.layoutParams = params1
+        binding.layoutBoneTablet2Result2.layoutParams = params2
+
+        val upParams1 = binding.layoutBoneTabletResult1.layoutParams
+        upParams1.height = upHeight
+        val upParams2 = binding.layoutBoneTablet2Result1.layoutParams
+        upParams2.height = upHeight
+        binding.layoutBoneTabletResult1.layoutParams = upParams1
+        binding.layoutBoneTablet2Result1.layoutParams = upParams2
 
         if(tabletType == "기독교(본관)" && boneTabletType == "기독교(본관)"){
             binding.layoutBoneTabletResult3.visibility = View.GONE
