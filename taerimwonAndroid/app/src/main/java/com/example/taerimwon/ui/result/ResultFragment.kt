@@ -10,23 +10,21 @@ import android.graphics.*
 import android.net.Uri
 import android.os.Handler
 import android.util.Log
-import android.util.TypedValue
 import android.view.*
 import android.widget.SeekBar
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.taerimwon.R
 import com.example.taerimwon.base.BaseFragment
 import com.example.taerimwon.databinding.FragmentResultBinding
-import dagger.hilt.android.AndroidEntryPoint
-import androidx.navigation.fragment.findNavController
 import com.example.taerimwon.di.ApplicationClass
 import com.example.taerimwon.ui.home.AuthViewModel
 import com.example.taerimwon.ui.result.container.*
 import com.example.taerimwon.ui.result.framelayout.*
 import com.example.taerimwon.utils.view.toast
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.io.FileOutputStream
 
@@ -6234,6 +6232,14 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             // SMS/MMS 앱을 찾을 수 없는 경우
             toast("기본 메시지 앱을 찾을 수 없습니다.")
         }
+
+        // 선택지 제공을 위해 Intent.createChooser()를 사용합니다.
+//        val chooserIntent = Intent.createChooser(intent, "Select SMS Application")
+//        chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK) // 새로운 태스크로 열도록 설정
+//
+//        if (activity?.let { intent.resolveActivity(it.packageManager) } != null) {
+//            startActivity(chooserIntent)
+//        }
     }
     private fun sendMMS2(tel: String, subject: String, sms_body: String, imageUris: ArrayList<Uri>) {
         var intent = Intent(Intent.ACTION_SEND_MULTIPLE)
