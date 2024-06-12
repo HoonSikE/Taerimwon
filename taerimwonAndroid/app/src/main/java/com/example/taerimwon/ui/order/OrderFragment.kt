@@ -851,23 +851,23 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         }
 
         // 평장
-        if(ApplicationClass.prefs.selectedPyeongjangType != "선택안함"){
-            if(!checkPyeongjangInput()) {
-                val containsString = searchList3.any { it == ApplicationClass.prefs.selectedPyeongjangName }
-                if (!containsString) {
-                    toast("평장 종류를 골라주세요.")
-                    return false
-                }
-                // 추가
-                if(ApplicationClass.prefs.selectedPyeongjangType2 != "선택안함"){
-                    val containsString2 = searchList3.any { it == ApplicationClass.prefs.selectedPyeongjangName2 }
-                    if (!containsString2) {
-                        toast("평장[추가] 종류를 골라주세요.")
-                        return false
-                    }
-                }
-            }
-        }
+//        if(ApplicationClass.prefs.selectedPyeongjangType != "선택안함"){
+//            if(!checkPyeongjangInput()) {
+//                val containsString = searchList3.any { it == ApplicationClass.prefs.selectedPyeongjangName }
+//                if (!containsString) {
+//                    toast("평장 종류를 골라주세요.")
+//                    return false
+//                }
+//                // 추가
+//                if(ApplicationClass.prefs.selectedPyeongjangType2 != "선택안함"){
+//                    val containsString2 = searchList3.any { it == ApplicationClass.prefs.selectedPyeongjangName2 }
+//                    if (!containsString2) {
+//                        toast("평장[추가] 종류를 골라주세요.")
+//                        return false
+//                    }
+//                }
+//            }
+//        }
 
         return true
     }
@@ -889,7 +889,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             toast("발주자 소속을 10글자 이내로 입력해주세요.")
             return false
         }
-        // 상주 정보 (선택)
+        // 상주 정보 (선택) / 빈 값이 아니라면 테스트한다.
         val clientName = ApplicationClass.prefs.clientName.toString()
         val clientTel = ApplicationClass.prefs.clientTel.toString()
         if(clientName != "" || clientTel != "") {
@@ -903,21 +903,27 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             }
         }
         // 발주 장소별 (필수)
+        val startArea = ApplicationClass.prefs.startArea.toString()
+        if (!(startArea.length <= 15)) {
+            toast("발인 장례식장 명을 한글 15글자 이내로 올바르게 입력해주세요.")
+            return false
+        }
+
         val selectedLocation = ApplicationClass.prefs.selectedLocation.toString()
         if(selectedLocation == "화장장"){
-//            val cremationArea = ApplicationClass.prefs.cremationArea.toString()
-//            if (cremationArea.isNotEmpty()) {
-//                return false
-//            }
+            val cremationArea = ApplicationClass.prefs.cremationArea.toString()
+            if (cremationArea.isNotEmpty()) {
+                return false
+            }
             val cremationTime = ApplicationClass.prefs.cremationTime.toString()
-//            if (!cremationTime.matches(dateTimePattern)) {
-//                toast("화장 시간을 2023-09-01 00:00 형태로 올바르게 입력해주세요.")
-//                return false
-//            }
+            if (!cremationTime.matches(dateTimePattern)) {
+                toast("화장 시간을 2023-09-01 00:00 형태로 올바르게 입력해주세요.")
+                return false
+            }
         } else if(selectedLocation == "장례식장"){
             val funeralName = ApplicationClass.prefs.funeralName.toString()
-            if (!(funeralName.length <= 10 && funeralName.matches(hanglePattern))) {
-                toast("장례식장명을 한글 10글자 이내로 올바르게 입력해주세요.")
+            if (!(funeralName.length <= 15)) {
+                toast("장례식장명을 한글 15글자 이내로 올바르게 입력해주세요.")
                 return false
             }
             val funeralNumber = ApplicationClass.prefs.funeralNumber.toString()
@@ -943,7 +949,6 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             }
         }
 
-        // 특이 사항 생략(선택)
         return true
     }
     private fun checkUrnInput(): Boolean {
