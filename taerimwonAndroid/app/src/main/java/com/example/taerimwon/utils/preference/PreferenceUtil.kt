@@ -475,7 +475,7 @@ class PreferenceUtil(context: Context) {
         }
 
     var tabletExample : String?
-        get() = order.getString(TABLETEXAMPLE, "직분위/세례아")
+        get() = order.getString(TABLETEXAMPLE, "세례명위")
         set(value){
             order.edit().putString(TABLETEXAMPLE, value).apply()
         }
@@ -583,8 +583,8 @@ class PreferenceUtil(context: Context) {
         tabletImageUri = ""
 
         /** 임시 **/
-        tabletExample = "직분위/세례아"
-        tabletExample = "위/위"
-        tabletExample = "아/아"
+//        tabletExample = "기본"
+//        tabletExample = "위"
+        tabletExample = "세로"
     }
 }

@@ -82,12 +82,12 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
         if(ApplicationClass.prefs.boneTabletSex == "남성"){
             println("ApplicationClass.prefs.boneTabletSex" + ApplicationClass.prefs.boneTabletSex)
-//            // 정보1
+            // 정보1
             name3 = ApplicationClass.prefs.boneName3
             tabletReligion = ApplicationClass.prefs.boneTabletReligion
             tabletType = ApplicationClass.prefs.boneTabletType
-//
-//            // 정보2
+
+            // 정보2
             boneName3 = ApplicationClass.prefs.name3
             boneTabletReligion = ApplicationClass.prefs.tabletReligion
             boneTabletType = ApplicationClass.prefs.tabletType
@@ -263,7 +263,6 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
             binding.layoutBoneTablet2Result3.setTextColor(Color.parseColor("#FFD700"))
 
             binding.layoutBoneTabletResultUnder.setTextColor(Color.parseColor("#FFD700"))
-
         }
 
         var flagUp = false;
@@ -450,7 +449,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 //                    layoutBoneTabletResult2.text = tmp.toString()
                 }
                 "천주교" -> {
-                    if(tabletExample!!.contains("위")) {
+                    if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                         flagUp = true
                         layoutBoneTabletResult1.visibility = View.VISIBLE
                     }else{
@@ -521,7 +520,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 80)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.scaleY = 1.1f
                                 }else{
                                     layoutBoneTabletResult3.scaleY = 1.1f
@@ -541,7 +540,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 120)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.scaleY = 1.1f
                                 }else{
                                     layoutBoneTabletResult3.scaleY = 1.1f
@@ -561,7 +560,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 80)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
                                     layoutBoneTabletResult1.scaleY = 1.4f
                                 }else{
@@ -583,7 +582,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 120)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
                                     layoutBoneTabletResult1.scaleY = 1.4f
                                     layoutBoneTabletResult1.letterSpacing = -0.1f
@@ -607,7 +606,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 120)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
                                     layoutBoneTabletResult1.letterSpacing = -0.1f
                                     layoutBoneTabletResult1.scaleY = 1.9f
@@ -621,7 +620,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                         }
                     }
 //                    layoutBoneTabletResult2.text = tmp.toString()
-                    if(tabletExample!!.contains("위")) {
+                    if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                         layoutBoneTabletResult1.text = tmp2.toString()
                     }else{
                         layoutBoneTabletResult3.text = tmp2.toString()
@@ -994,7 +993,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 //                    layoutBoneTabletResult2.text = tmp.toString()
                 }
                 "천주교(본관)" -> {
-                    if(tabletExample!!.contains("위")) {
+                    if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                         flagUp = true
                         layoutBoneTabletResult1.visibility = View.VISIBLE
                     }else{
@@ -1092,7 +1091,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 80)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.scaleY = 1.1f
                                 }else{
                                     layoutBoneTabletResult3.scaleY = 1.1f
@@ -1112,7 +1111,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 120)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.scaleY = 1.1f
                                 }else{
                                     layoutBoneTabletResult3.scaleY = 1.1f
@@ -1131,7 +1130,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 80)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
                                     layoutBoneTabletResult1.scaleY = 1.4f
                                 }else{
@@ -1153,7 +1152,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 120)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
                                     layoutBoneTabletResult1.scaleY = 1.4f
                                     layoutBoneTabletResult1.letterSpacing = -0.1f
@@ -1177,7 +1176,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 120)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
                                     layoutBoneTabletResult1.letterSpacing = -0.1f
                                     layoutBoneTabletResult1.scaleY = 1.9f
@@ -1191,7 +1190,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                         }
                     }
 //                    layoutBoneTabletResult2.text = tmp.toString()
-                    if(tabletExample!!.contains("위")) {
+                    if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                         layoutBoneTabletResult1.text = tmp2.toString()
                     }else{
                         layoutBoneTabletResult3.text = tmp2.toString()
@@ -1366,7 +1365,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     layoutBoneTabletResult1.text = boneTmp2.toString()
                 }
                 "천주교" -> {
-                    if(tabletExample!!.contains("위")) {
+                    if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                         flagUp = true
                         layoutBoneTabletResult1.visibility = View.VISIBLE
                     }else{
@@ -1429,7 +1428,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 80)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.scaleY = 1.1f
                                 }else{
                                     layoutBoneTabletResult3.scaleY = 1.1f
@@ -1449,7 +1448,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 120)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.scaleY = 1.1f
                                 }else{
                                     layoutBoneTabletResult3.scaleY = 1.1f
@@ -1469,7 +1468,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 80)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
                                     layoutBoneTabletResult1.scaleY = 1.4f
                                 }else{
@@ -1491,7 +1490,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 120)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
                                     layoutBoneTabletResult1.scaleY = 1.4f
                                     layoutBoneTabletResult1.letterSpacing = -0.1f
@@ -1515,7 +1514,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 120)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
                                     layoutBoneTabletResult1.letterSpacing = -0.1f
                                     layoutBoneTabletResult1.scaleY = 1.9f
@@ -1529,7 +1528,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                         }
                     }
 //                    layoutBoneTabletResult2.text = boneTmp.toString()
-                    if(tabletExample!!.contains("위")) {
+                    if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                         layoutBoneTabletResult1.text = boneTmp2.toString()
                     }else{
                         layoutBoneTabletResult3.text = boneTmp2.toString()
@@ -1862,7 +1861,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     }
                 }
                 "천주교(본관)" -> {
-                    if(tabletExample!!.contains("위")) {
+                    if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                         flagUp = true
                         layoutBoneTabletResult1.visibility = View.VISIBLE
                     }else{
@@ -1952,7 +1951,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 80)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.scaleY = 1.1f
                                 }else{
                                     layoutBoneTabletResult3.scaleY = 1.1f
@@ -1972,7 +1971,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 120)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.scaleY = 1.1f
                                 }else{
                                     layoutBoneTabletResult3.scaleY = 1.1f
@@ -1992,7 +1991,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 80)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_27.toFloat())
                                     layoutBoneTabletResult1.scaleY = 1.4f
                                 }else{
@@ -2014,7 +2013,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 120)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_25.toFloat())
                                     layoutBoneTabletResult1.scaleY = 1.4f
                                     layoutBoneTabletResult1.letterSpacing = -0.1f
@@ -2038,7 +2037,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                                 upHeight = Math.max(upHeight, 120)
                             }else{
-                                if(tabletExample!!.contains("위")) {
+                                if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                                     layoutBoneTabletResult1.setTextSize(TypedValue.COMPLEX_UNIT_PX, pixel_size_20.toFloat())
                                     layoutBoneTabletResult1.letterSpacing = -0.1f
                                     layoutBoneTabletResult1.scaleY = 1.9f
@@ -2053,7 +2052,7 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
                     }
 //                    boneTmp2.append(boneTabletName2)
 
-                    if(tabletExample!!.contains("위")) {
+                    if(tabletExample!!.contains("위") || tabletExample!!.contains("세로")) {
                         layoutBoneTabletResult1.text = boneTmp2.toString()
                     }else{
                         layoutBoneTabletResult3.text = boneTmp2.toString()
@@ -2124,7 +2123,6 @@ class ResultBoneTabletFragment : BaseFragment<FragmentResultBoneTabletBinding>(R
 
                 layoutBoneTabletResult2.layoutParams = params
                 layoutBoneTablet2Result2.layoutParams = params2
-
             }
         }
 

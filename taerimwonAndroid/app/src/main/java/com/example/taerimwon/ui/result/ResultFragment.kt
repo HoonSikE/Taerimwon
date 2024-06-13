@@ -144,10 +144,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         println("initialWidth11 " + initialWidth1_1)
         println("initialHeight11 " + initialHeight1_1)
 
-        initialWidth1_2 = binding.layoutTabletPhoto.width
-        initialHeight1_2 = binding.layoutTabletPhoto.height
-        println("initialWidth12 " + initialWidth1_2)
-        println("initialHeight12 " + initialHeight1_2)
+//        initialWidth1_2 = binding.layoutTabletPhoto.width
+//        initialHeight1_2 = binding.layoutTabletPhoto.height
+//        println("initialWidth12 " + initialWidth1_2)
+//        println("initialHeight12 " + initialHeight1_2)
 
         initialWidth1_3 = binding.layoutUrnResultImage12.width
         initialHeight1_3 = binding.layoutUrnResultImage12.height
@@ -225,10 +225,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         params1_1.height = (initialHeight1_1 * scaleFactor1).toInt()
         binding.layoutTabletResultImage.layoutParams = params1_1
 
-        val params1_2 = binding.layoutTabletPhoto.layoutParams
-        params1_2.width = (initialWidth1_2 * scaleFactor1).toInt()
-        params1_2.height = (initialHeight1_2 * scaleFactor1).toInt()
-        binding.layoutTabletPhoto.layoutParams = params1_2
+//        val params1_2 = binding.layoutTabletPhoto.layoutParams
+//        params1_2.width = (initialWidth1_2 * scaleFactor1).toInt()
+//        params1_2.height = (initialHeight1_2 * scaleFactor1).toInt()
+//        binding.layoutTabletPhoto.layoutParams = params1_2
 
         val params1_3 = binding.layoutUrnResultImage12.layoutParams
         params1_3.width = (initialWidth1_3 * scaleFactor1).toInt()
@@ -425,7 +425,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     binding.fragmentBoneContentBackground2.visibility = View.VISIBLE
                     binding.layoutBone1.visibility = View.VISIBLE
                     binding.layoutBoneResultImage.visibility = View.VISIBLE
-                } else if(!ApplicationClass.prefs.selectedUrnName.toString().contains("목함")){
+                } else {
                     binding.layoutPre.visibility = View.VISIBLE
                     binding.layoutCurrent.visibility = View.VISIBLE
                     binding.layoutNext.visibility = View.VISIBLE
@@ -437,7 +437,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     binding.layoutUrnResultImage.visibility = View.VISIBLE
                 }
             }
-            if(selectedUrnType2 != "선택안함" && !ApplicationClass.prefs.selectedUrnName2.toString().contains("목함")) {
+            if(selectedUrnType2 != "선택안함") {
                 setUrnData2()
                 binding.fragmentUrnContent2.visibility = View.VISIBLE
                 binding.fragmentUrnContent2Background.visibility = View.VISIBLE
@@ -473,16 +473,17 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 binding.fragmentTabletContentBackground.visibility = View.VISIBLE
                 binding.fragmentTabletContentBackground2.visibility = View.VISIBLE
                 binding.layoutTablet.visibility = View.VISIBLE
-                binding.layoutTabletPhoto.visibility = View.VISIBLE
+//                binding.layoutTabletPhoto.visibility = View.VISIBLE
                 binding.layoutTabletResultImage.visibility = View.VISIBLE
                 // 이미지 경로(URI)를 SharedPreferences에서 가져옴
                 val tabletImageUri = ApplicationClass.prefs.tabletImageUri
 
-                if (tabletImageUri != "") {
-                    val imageUri = Uri.parse(tabletImageUri)
-                    binding.imageAddPhoto.setImageURI(imageUri)
-                }
+//                if (tabletImageUri != "") {
+//                    val imageUri = Uri.parse(tabletImageUri)
+//                    binding.imageAddPhoto.setImageURI(imageUri)
+//                }
             }else if(ApplicationClass.prefs.tabletType.toString().contains("문구")){
+                setTabletData()
                 binding.fragmentTabletContent.visibility = View.VISIBLE
                 binding.fragmentTabletContentBackground.visibility = View.VISIBLE
                 binding.fragmentTabletContentBackground2.visibility = View.VISIBLE
@@ -506,16 +507,17 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     binding.fragmentTablet2ContentBackground.visibility = View.VISIBLE
                     binding.fragmentTablet2ContentBackground2.visibility = View.VISIBLE
                     binding.layoutTablet2.visibility = View.VISIBLE
-                    binding.layoutTablet2Photo.visibility = View.VISIBLE
+//                    binding.layoutTablet2Photo.visibility = View.VISIBLE
                     binding.layoutTablet2ResultImage.visibility = View.VISIBLE
                     // 이미지 경로(URI)를 SharedPreferences에서 가져옴
                     val boneTabletImageUri = ApplicationClass.prefs.boneTabletImageUri
 
-                    if (boneTabletImageUri != "") {
-                        val imageUri = Uri.parse(boneTabletImageUri)
-                        binding.imageBoneAddPhoto.setImageURI(imageUri)
-                    }
+//                    if (boneTabletImageUri != "") {
+//                        val imageUri = Uri.parse(boneTabletImageUri)
+//                        binding.imageBoneAddPhoto.setImageURI(imageUri)
+//                    }
                 }else if(ApplicationClass.prefs.boneTabletType.toString().contains("문구")){
+                    setTabletData()
                     binding.fragmentTablet2Content.visibility = View.VISIBLE
                     binding.fragmentTablet2ContentBackground.visibility = View.VISIBLE
                     binding.fragmentTablet2ContentBackground2.visibility = View.VISIBLE
@@ -627,6 +629,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     imageUrnImageUnder.layoutParams = layoutParams2
 
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
+                }
+                // 0. 목함
+                "목함" -> {
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn0_0)
                 }
                 // 1. 일반 밀봉진공함
                 "도원기독교 DW-3 4010" -> {
@@ -1830,6 +1836,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                     imageUrnImageUnder.layoutParams = layoutParams2
 
                     newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
+                }
+                // 0. 목함
+                "목함" -> {
+                    newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn0_0)
                 }
                 // 1. 일반 밀봉진공함
                 "도원기독교 DW-3 4010" -> {
@@ -3118,7 +3128,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_white)
             }
-            "색위패" -> {
+            "흰색위패" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_tablet)
             }
             "검정위패-TR-2-0802" -> {
@@ -3265,6 +3275,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 binding.textAdd.text = "표석, 피아노 시안내용은 별도로 보내주세요"
             }
             // 유골함
+            // 0. 목함
+            "목함" -> {
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn0_0)
+            }
             // 1. 일반 밀봉진공함
             "도원기독교 DW-3 4010" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn1_1)
@@ -3750,6 +3764,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 binding.textAdd.text = "표석, 피아노 시안내용은 별도로 보내주세요"
             }
             // 유골함
+            // 0. 목함
+            "목함" -> {
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn0_0)
+            }
             // 1. 일반 밀봉진공함
             "도원기독교 DW-3 4010" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn1_1)
@@ -4221,6 +4239,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_1)
             }
             // 유골함
+            // 0. 목함
+            "목함" -> {
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn0_0)
+            }
             // 1. 일반 밀봉진공함
             "도원기독교 DW-3 4010" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn1_1)
@@ -4692,6 +4714,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_1)
             }
             // 유골함
+            // 0. 목함
+            "목함" -> {
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn0_0)
+            }
             // 1. 일반 밀봉진공함
             "도원기독교 DW-3 4010" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn1_1)
@@ -5163,6 +5189,10 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn11_1)
             }
             // 유골함
+            // 0. 목함
+            "목함" -> {
+                newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn0_0)
+            }
             // 1. 일반 밀봉진공함
             "도원기독교 DW-3 4010" -> {
                 newBackground = ContextCompat.getDrawable(requireContext(), R.drawable.img_urn1_1)
@@ -5604,12 +5634,17 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         if(selectedUrnType != "선택안함"){
             msg += "\n\n${index++}. 유골함"
-            msg += "\n - 함 명칭: " + ApplicationClass.prefs.selectedUrnName +
-                    "\n - 각인 종류: " + ApplicationClass.prefs.engraveType + "[" + ApplicationClass.prefs.engraveType2 + "]"
+            msg += "\n - 함 명칭: " + ApplicationClass.prefs.selectedUrnName
 
-            msg += "\n - 고인명: " + ApplicationClass.prefs.name1 +
-                    "\n - 생년월일: " + ApplicationClass.prefs.date1.toString().replace("-", ".") + " (${ApplicationClass.prefs.date1Type})" +
-                    "\n - 사망월일: " + ApplicationClass.prefs.date2.toString().replace("-", ".") + " (${ApplicationClass.prefs.date2Type})"
+            if(ApplicationClass.prefs.name1.toString() != "") {
+                msg += "\n - 각인 종류: " + ApplicationClass.prefs.engraveType + "[" + ApplicationClass.prefs.engraveType2 + "]" +
+                    "\n - 고인명: " + ApplicationClass.prefs.name1
+            }
+
+            if(ApplicationClass.prefs.name1.toString() != "" && !ApplicationClass.prefs.selectedUrnName.toString().contains("목함")){
+                msg += "\n - 생년월일: " + ApplicationClass.prefs.date1.toString().replace("-", ".") + " (${ApplicationClass.prefs.date1Type})" +
+                        "\n - 사망월일: " + ApplicationClass.prefs.date2.toString().replace("-", ".") + " (${ApplicationClass.prefs.date2Type})"
+            }
 
             // 직분, 세례명, 법명
             if((ApplicationClass.prefs.engraveType == "기독교" || ApplicationClass.prefs.engraveType == "순복음") && (ApplicationClass.prefs.engraveType2 == "기본")) {
@@ -5626,11 +5661,16 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
             // 추가
             if(selectedUrnType2 != "선택안함"){
-                msg += "\n\n - [추가] 함 명칭: " + ApplicationClass.prefs.selectedUrnName2 +
-                        "\n - 각인 종류: " + ApplicationClass.prefs.boneEngraveType + "[" + ApplicationClass.prefs.boneEngraveType2 + "]" +
-                        "\n - 고인명: " + ApplicationClass.prefs.boneName1 +
-                        "\n - 생년월일: " + ApplicationClass.prefs.boneDate1.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate1Type})" +
-                        "\n - 사망월일: " + ApplicationClass.prefs.boneDate2.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate2Type})"
+                msg += "\n\n - [추가] 함 명칭: " + ApplicationClass.prefs.selectedUrnName2
+
+                if(ApplicationClass.prefs.boneName1.toString() != "") {
+                    msg += "\n - 각인 종류: " + ApplicationClass.prefs.boneEngraveType + "[" + ApplicationClass.prefs.boneEngraveType2 + "]" +
+                            "\n - 고인명: " + ApplicationClass.prefs.boneName1
+                }
+                if(ApplicationClass.prefs.boneName1.toString() != "" && !ApplicationClass.prefs.selectedUrnName2.toString().contains("목함")){
+                    msg += "\n - 생년월일: " + ApplicationClass.prefs.boneDate1.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate1Type})" +
+                            "\n - 사망월일: " + ApplicationClass.prefs.boneDate2.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate2Type})"
+                }
 
                 // 직분, 세례명, 법명
                 if((ApplicationClass.prefs.boneEngraveType == "기독교" || ApplicationClass.prefs.boneEngraveType == "순복음") && (ApplicationClass.prefs.boneEngraveType2 == "기본")) {
@@ -5667,30 +5707,57 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
         if(selectedTabletType != "선택안함") {
             msg += "\n\n${index++}. 위패"
 
-            msg += "\n - 위패 명칭: " + ApplicationClass.prefs.selectedTabletName +
-                "\n - 위패 상세 종류: " + ApplicationClass.prefs.tabletType
+            msg += "\n - 위패 명칭: " + ApplicationClass.prefs.selectedTabletName
 
-            if(!selectedTabletType.contains("사진")){
-                msg += "\n - 위패 내용: " + ApplicationClass.prefs.name3
-                if(!selectedTabletType.contains("본관")){
-                    if(ApplicationClass.prefs.tabletType.toString().contains("기독교"))
-                        msg += "\n - 직분: " + ApplicationClass.prefs.tabletName2
-                    else if(ApplicationClass.prefs.tabletType.toString().contains("천주교"))
-                        msg += "\n - 세례명: " + ApplicationClass.prefs.tabletName2
+            if(ApplicationClass.prefs.name3 != "" && !selectedTabletType.contains("사진")){
+                msg += "\n - 위패 상세 종류: " + ApplicationClass.prefs.tabletType
+
+                if(ApplicationClass.prefs.name3.toString() != "") {
+                    if(!ApplicationClass.prefs.tabletType.toString().contains("문구")){
+                        msg += "\n - 위패 내용: " + ApplicationClass.prefs.name3
+                    }else{
+                        val text = ApplicationClass.prefs.name3.toString()
+                        val lines = text.split("\n")
+                        msg += "\n - 위패 내용"
+
+                        for(line in lines){
+                            msg += "\n   - " + line
+                        }
+                    }
+                    if(!selectedTabletType.contains("본관")){
+                        if(ApplicationClass.prefs.tabletType.toString().contains("기독교"))
+                            msg += "\n - 직분: " + ApplicationClass.prefs.tabletName2
+                        else if(ApplicationClass.prefs.tabletType.toString().contains("천주교"))
+                            msg += "\n - 세례명: " + ApplicationClass.prefs.tabletName2
+                    }
                 }
             }
         }
         if(boneSelectedTabletType != "선택안함") {
             msg += "\n\n - [추가] 위패 명칭: " + ApplicationClass.prefs.selectedTabletName2
-            msg += "\n - 상세 종류: " + ApplicationClass.prefs.boneTabletType
 
-            if(!boneSelectedTabletType.contains("사진")){
-                msg += "\n - 위패 내용: " + ApplicationClass.prefs.boneName3
-                if(!boneSelectedTabletType.contains("본관")){
-                    if(ApplicationClass.prefs.boneTabletType.toString().contains("기독교"))
-                        msg += "\n - 직분: " + ApplicationClass.prefs.boneTabletName2
-                    else if(ApplicationClass.prefs.boneTabletType.toString().contains("천주교"))
-                        msg += "\n - 세례명: " + ApplicationClass.prefs.boneTabletName2
+            if(ApplicationClass.prefs.name3 != "" && !boneSelectedTabletType.contains("사진")){
+                msg += "\n - 상세 종류: " + ApplicationClass.prefs.boneTabletType
+
+                if(ApplicationClass.prefs.boneName3.toString() != "") {
+                    if(!ApplicationClass.prefs.boneTabletType.toString().contains("문구")){
+                        msg += "\n - 위패 내용: " + ApplicationClass.prefs.boneName3
+                    }else{
+                        val text = ApplicationClass.prefs.boneName3.toString()
+                        val lines = text.split("\n")
+                        msg += "\n - 위패 내용"
+
+                        for(line in lines){
+                            msg += "\n  - " + line
+                        }
+                    }
+
+                    if(!boneSelectedTabletType.contains("본관")){
+                        if(ApplicationClass.prefs.boneTabletType.toString().contains("기독교"))
+                            msg += "\n - 직분: " + ApplicationClass.prefs.boneTabletName2
+                        else if(ApplicationClass.prefs.boneTabletType.toString().contains("천주교"))
+                            msg += "\n - 세례명: " + ApplicationClass.prefs.boneTabletName2
+                    }
                 }
             }
         }
@@ -5798,7 +5865,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                         val layoutBone2ResultImage = binding.layoutBone2ResultImage
                         layoutBone2ResultImage.setImageBitmap(boneBitmap)
                     }
-                }else if(!ApplicationClass.prefs.selectedUrnName.toString().contains("목함")){
+                }else {
                     // 텍스트를 이미지화
                     // 1. XML 레이아웃
                     val layoutUrnContent = binding.fragmentUrnContent
@@ -5823,7 +5890,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
                 }
 
                 // 유골2
-                if(selectedUrnType2 != "선택안함" && !ApplicationClass.prefs.selectedUrnName2.toString().contains("목함")) {
+                if(selectedUrnType2 != "선택안함") {
                     // 텍스트를 이미지화
                     // 1. XML 레이아웃
                     val fragmentUrnContent2 = binding.fragmentUrnContent2
@@ -6223,7 +6290,9 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 
         try {
             if (activity?.let { intent.resolveActivity(it.packageManager) } != null) {
-                startActivity(intent)
+                val chooser = Intent.createChooser(intent, "Send MMS")
+                startActivity(chooser)
+//                startActivity(intent)
             } else {
                 // SMS/MMS 앱이 설치되어 있지 않음 또는 처리할 수 없는 경우
                 toast("기본 메시지 앱을 찾을 수 없습니다.")
@@ -6283,6 +6352,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
 //        searchList.add("기본(검정)")
 
         // 1. 일반 밀봉진공함
+        searchList.add("목함")
         searchList.add("도원기독교 DW-3 4010")
         searchList.add("도원불교 DW-4 4010")
         searchList.add("도원천주교 DW-5 4010")

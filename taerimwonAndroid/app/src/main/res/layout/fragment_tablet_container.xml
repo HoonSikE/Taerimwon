@@ -323,33 +323,33 @@
             android:visibility="gone"
             >
             <!-- 이미지 첨부 뷰 -->
-            <ImageView
-                android:id="@+id/image_add_photo"
-                android:layout_width="150dp"
-                android:layout_height="200dp"
-                android:layout_marginTop="8dp"
-                android:src="@drawable/img_profile"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:elevation="4dp"
-            />
+<!--            <ImageView-->
+<!--                android:id="@+id/image_add_photo"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_height="200dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:src="@drawable/img_profile"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                android:elevation="4dp"-->
+<!--            />-->
 
-            <!-- 사진 첨부 안내 메시지 -->
-            <Button
-                android:id="@+id/text_add_photo"
-                style="@style/SubHeadWhite"
-                android:background="@drawable/edittext_regular"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:text="사진 첨부 (가로:세로 = 3:4)"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_add_photo"
-                android:layout_marginTop="4dp"
-                android:clickable="true"
-                android:focusable="true"
-            />
+<!--            &lt;!&ndash; 사진 첨부 안내 메시지 &ndash;&gt;-->
+<!--            <Button-->
+<!--                android:id="@+id/text_add_photo"-->
+<!--                style="@style/SubHeadWhite"-->
+<!--                android:background="@drawable/edittext_regular"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="48dp"-->
+<!--                android:text="사진 첨부 (가로:세로 = 3:4)"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/image_add_photo"-->
+<!--                android:layout_marginTop="4dp"-->
+<!--                android:clickable="true"-->
+<!--                android:focusable="true"-->
+<!--            />-->
 
             <TextView
                 android:id="@+id/text_tablet_photo"
@@ -359,10 +359,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="사진 위패는 시안을 추후 제공해드립니다."
+                android:gravity="center"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_add_photo"
                 />
+<!--                app:layout_constraintTop_toBottomOf="@+id/text_add_photo"-->
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!--위패 추가-->
@@ -723,33 +724,33 @@
                     android:visibility="gone"
                     >
                     <!-- 이미지 첨부 뷰 -->
-                    <ImageView
-                        android:id="@+id/image_bone_add_photo"
-                        android:layout_width="150dp"
-                        android:layout_height="200dp"
-                        android:layout_marginTop="8dp"
-                        android:src="@drawable/img_profile"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:elevation="4dp"
-                        />
+<!--                    <ImageView-->
+<!--                        android:id="@+id/image_bone_add_photo"-->
+<!--                        android:layout_width="150dp"-->
+<!--                        android:layout_height="200dp"-->
+<!--                        android:layout_marginTop="8dp"-->
+<!--                        android:src="@drawable/img_profile"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        android:elevation="4dp"-->
+<!--                        />-->
 
-                    <!-- 사진 첨부 안내 메시지 -->
-                    <Button
-                        android:id="@+id/text_bone_add_photo"
-                        style="@style/SubHeadWhite"
-                        android:background="@drawable/edittext_regular"
-                        android:layout_width="0dp"
-                        android:layout_height="48dp"
-                        android:text="사진 첨부 (비율: 가로:세로 = 3:4)"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/image_bone_add_photo"
-                        android:layout_marginTop="4dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        />
+<!--                    &lt;!&ndash; 사진 첨부 안내 메시지 &ndash;&gt;-->
+<!--                    <Button-->
+<!--                        android:id="@+id/text_bone_add_photo"-->
+<!--                        style="@style/SubHeadWhite"-->
+<!--                        android:background="@drawable/edittext_regular"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="48dp"-->
+<!--                        android:text="사진 첨부 (비율: 가로:세로 = 3:4)"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/image_bone_add_photo"-->
+<!--                        android:layout_marginTop="4dp"-->
+<!--                        android:clickable="true"-->
+<!--                        android:focusable="true"-->
+<!--                        />-->
 
                     <TextView
                         android:id="@+id/text_bone_tablet_photo"
@@ -761,8 +762,8 @@
                         android:text="사진 위패는 시안을 추후 제공해드립니다."
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_bone_add_photo"
                         />
+                    <!--                        app:layout_constraintTop_toBottomOf="@+id/text_bone_add_photo"-->
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
             <androidx.constraintlayout.widget.ConstraintLayout

@@ -28,11 +28,12 @@ class UrnResultContainerFragment : BaseFragment<FragmentUrnResultContainerBindin
             binding.View1.visibility = View.GONE
             binding.layoutResultTextUrn.visibility = View.GONE
         }else {
-            textResultTextUrn += "\n - 각인 종류: " + ApplicationClass.prefs.engraveType + "[" + ApplicationClass.prefs.engraveType2 + "]"
+            if(ApplicationClass.prefs.name1.toString() != "") {
+                textResultTextUrn += "\n - 각인 종류: " + ApplicationClass.prefs.engraveType + "[" + ApplicationClass.prefs.engraveType2 + "]"
+                textResultTextUrn += "\n - 고인명: " + ApplicationClass.prefs.name1
+            }
 
-            textResultTextUrn += "\n - 고인명: " + ApplicationClass.prefs.name1
-
-            if(!ApplicationClass.prefs.selectedUrnName.toString().contains("목함")){
+            if(ApplicationClass.prefs.name1.toString() != "" && !ApplicationClass.prefs.selectedUrnName.toString().contains("목함")){
                 textResultTextUrn += "\n - 생년월일: " + ApplicationClass.prefs.date1.toString().replace("-", ".") + " (${ApplicationClass.prefs.date1Type})" +
                         "\n - 사망월일: " + ApplicationClass.prefs.date2.toString().replace("-", ".") + " (${ApplicationClass.prefs.date2Type})"
             }
@@ -49,12 +50,16 @@ class UrnResultContainerFragment : BaseFragment<FragmentUrnResultContainerBindin
             // 추가
             val selectedUrnType2 = ApplicationClass.prefs.selectedUrnType2.toString()
             if(selectedUrnType2 != "선택안함"){
-                textResultTextUrn += "\n\n - [추가] 함 명칭: " + ApplicationClass.prefs.selectedUrnName2 +
-                        "\n - 각인 종류: " + ApplicationClass.prefs.boneEngraveType + "[" + ApplicationClass.prefs.boneEngraveType2 + "]" +
-                        "\n - 성별: " + ApplicationClass.prefs.boneSex +
-                        "\n - 고인명: " + ApplicationClass.prefs.boneName1
+                textResultTextUrn += "\n\n - [추가] 함 명칭: " + ApplicationClass.prefs.selectedUrnName2
 
-                if(!ApplicationClass.prefs.selectedUrnName2.toString().contains("목함")){
+
+                if(ApplicationClass.prefs.boneName1.toString() != "") {
+                    textResultTextUrn += "\n - 각인 종류: " + ApplicationClass.prefs.boneEngraveType + "[" + ApplicationClass.prefs.boneEngraveType2 + "]" +
+                            "\n - 성별: " + ApplicationClass.prefs.boneSex +
+                            "\n - 고인명: " + ApplicationClass.prefs.boneName1
+                }
+
+                if(ApplicationClass.prefs.boneName1.toString() != "" && !ApplicationClass.prefs.selectedUrnName2.toString().contains("목함")){
                     textResultTextUrn += "\n - 생년월일: " + ApplicationClass.prefs.boneDate1.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate1Type})" +
                             "\n - 사망월일: " + ApplicationClass.prefs.boneDate2.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate2Type})"
                 }

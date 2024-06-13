@@ -172,7 +172,7 @@
             <TextView
                 android:id="@+id/layout_tablet2_result3_1"
                 android:layout_width="82.5px"
-                android:layout_height="167.5px"
+                android:layout_height="510px"
                 android:text="희\n빈\n홍\n씨\n길\n동\n영\n가"
                 android:textSize="67.5px"
                 android:textColor="@color/black"
