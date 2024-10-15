@@ -29,31 +29,58 @@ class TabletResultContainerFragment : BaseFragment<FragmentTabletResultContainer
             binding.View1.visibility = View.GONE
             binding.layoutResultTextTablet.visibility = View.GONE
         }else {
-            textResultTextTablet += " - 위패 상세 종류: " + ApplicationClass.prefs.tabletType +
-                                    "\n - 위패 명칭: " + ApplicationClass.prefs.selectedTabletName
+            textResultTextTablet += " - 위패 상세 종류: " + ApplicationClass.prefs.tabletType
+
 
             if(!selectedTabletType.contains("사진")){
-                textResultTextTablet += "\n - 위패 내용: " + ApplicationClass.prefs.name3
-                if(!selectedTabletType.contains("본관")){
-                    if(ApplicationClass.prefs.tabletType.toString().contains("기독교"))
-                        textResultTextTablet += "\n - 직분: " + ApplicationClass.prefs.tabletName2
-                    else if(ApplicationClass.prefs.tabletType.toString().contains("천주교"))
-                        textResultTextTablet += "\n - 세례명: " + ApplicationClass.prefs.tabletName2
+                textResultTextTablet += "\n - 위패 명칭: " + ApplicationClass.prefs.selectedTabletName
+
+                if(ApplicationClass.prefs.name3.toString() != "") {
+                    if(!ApplicationClass.prefs.tabletType.toString().contains("문구")){
+                        textResultTextTablet += "\n - 위패 내용: " + ApplicationClass.prefs.name3
+                    }else{
+                        val text = ApplicationClass.prefs.name3.toString()
+                        val lines = text.split("\n")
+                        textResultTextTablet += "\n - 위패 내용"
+
+                        for(line in lines){
+                            textResultTextTablet += "\n   - " + line
+                        }
+                    }
+                    if(!selectedTabletType.contains("본관")){
+                        if(ApplicationClass.prefs.tabletType.toString().contains("기독교"))
+                            textResultTextTablet += "\n - 직분: " + ApplicationClass.prefs.tabletName2
+                        else if(ApplicationClass.prefs.tabletType.toString().contains("천주교"))
+                            textResultTextTablet += "\n - 세례명: " + ApplicationClass.prefs.tabletName2
+                    }
                 }
             }
         }
         val boneSelectedTabletType = ApplicationClass.prefs.boneSelectedTabletType.toString()
         if(boneSelectedTabletType != "선택안함") {
-            textResultTextTablet += "\n\n - [추가] 위패 상세 종류: " + ApplicationClass.prefs.boneTabletType +
-                                    "\n - 위패 명칭: " + ApplicationClass.prefs.selectedTabletName2
+            textResultTextTablet += "\n\n - [추가] 위패 상세 종류: " + ApplicationClass.prefs.boneTabletType
 
             if(!boneSelectedTabletType.contains("사진")){
-                textResultTextTablet += "\n - 위패 내용: " + ApplicationClass.prefs.boneName3
-                if(!boneSelectedTabletType.contains("본관")){
-                    if(ApplicationClass.prefs.boneTabletType.toString().contains("기독교"))
-                        textResultTextTablet += "\n - 직분: " + ApplicationClass.prefs.boneTabletName2
-                    else if(ApplicationClass.prefs.boneTabletType.toString().contains("천주교"))
-                        textResultTextTablet += "\n - 세례명: " + ApplicationClass.prefs.boneTabletName2
+                textResultTextTablet += "\n - 위패 명칭: " + ApplicationClass.prefs.selectedTabletName2
+
+                if(ApplicationClass.prefs.boneName3.toString() != "") {
+                    if(!ApplicationClass.prefs.boneTabletType.toString().contains("문구")){
+                        textResultTextTablet += "\n - 위패 내용: " + ApplicationClass.prefs.boneName3
+                    }else{
+                        val text = ApplicationClass.prefs.boneName3.toString()
+                        val lines = text.split("\n")
+                        textResultTextTablet += "\n - 위패 내용"
+
+                        for(line in lines){
+                            textResultTextTablet += "\n   - " + line
+                        }
+                    }
+                    if(!boneSelectedTabletType.contains("본관")){
+                        if(ApplicationClass.prefs.boneTabletType.toString().contains("기독교"))
+                            textResultTextTablet += "\n - 직분: " + ApplicationClass.prefs.boneTabletName2
+                        else if(ApplicationClass.prefs.boneTabletType.toString().contains("천주교"))
+                            textResultTextTablet += "\n - 세례명: " + ApplicationClass.prefs.boneTabletName2
+                    }
                 }
             }
         }

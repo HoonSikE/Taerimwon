@@ -2,6 +2,7 @@ package com.example.taerimwon.ui.order
 
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Typeface
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -75,6 +76,8 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         )
 
         binding.editTextCremationTime.setHint(datetime2)
+        binding.editTextFuneralTime.setHint(datetime2)
+        binding.editTextBurialTime.setHint(datetime2)
 
         if(ApplicationClass.prefs.selectedUrnType != "선택안함"
             || ApplicationClass.prefs.selectedTabletType != "선택안함"
@@ -100,7 +103,11 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
 //        if(ApplicationClass.prefs.saveInfo) {
         binding.checkboxLeader.isChecked = ApplicationClass.prefs.saveInfo
         binding.editTextLeaderName.setText(ApplicationClass.prefs.leaderName)
+        ApplicationClass.prefs.leaderTel = "010-1234-5678"
         binding.editTextLeaderTel.setText(ApplicationClass.prefs.leaderTel)
+        binding.editTextLeaderTel.isEnabled = false
+        binding.editTextLeaderTel.setTextColor(ContextCompat.getColor(requireContext(), R.color.purple_700))
+        binding.editTextLeaderTel.setTypeface(null, Typeface.BOLD)
         binding.editTextLeaderDepartment.setText(ApplicationClass.prefs.leaderDepartment)
 
         binding.editTextClientName.setText(ApplicationClass.prefs.clientName)
@@ -440,21 +447,21 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             }
         })
 
-        val editTextLeaderTel = binding.editTextLeaderTel
-        editTextLeaderTel.addTextChangedListener(PhoneNumberTextWatcher(editTextLeaderTel))
-        editTextLeaderTel.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                ApplicationClass.prefs.leaderTel =
-                    s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
-                println("ApplicationClass.prefs.leaderTel :" + ApplicationClass.prefs.leaderTel)
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-            }
-        })
+//        val editTextLeaderTel = binding.editTextLeaderTel
+//        editTextLeaderTel.addTextChangedListener(PhoneNumberTextWatcher(editTextLeaderTel))
+//        editTextLeaderTel.addTextChangedListener(object : TextWatcher {
+//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+//            }
+//
+//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//                ApplicationClass.prefs.leaderTel =
+//                    s?.toString() ?: "" // editText의 텍스트를 가져오고 null이면 빈 문자열로 처리
+//                println("ApplicationClass.prefs.leaderTel :" + ApplicationClass.prefs.leaderTel)
+//            }
+//
+//            override fun afterTextChanged(s: Editable?) {
+//            }
+//        })
         binding.editTextLeaderDepartment.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -620,10 +627,14 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
         if(!checkOrderInput())
             return false;
 
-        if(ApplicationClass.prefs.selectedUrnType == "선택안함"  && ApplicationClass.prefs.selectedTabletType == "선택안함" && ApplicationClass.prefs.selectedPyeongjangType == "선택안함"){
-            toast("유골함, 위패, 평장 중 하나는 선택해주세요.")
+        println("기본 정보 체크 완료")
+
+        if(ApplicationClass.prefs.selectedUrnType == "선택안함"  && ApplicationClass.prefs.selectedTabletType == "선택안함"){
+            toast("유골함, 위패 중 하나는 선택해주세요.")
             return false
         }
+
+        println("유골함/위패 선택 완료")
 
         // 유골함
         if(ApplicationClass.prefs.selectedUrnType != "선택안함"){
@@ -721,6 +732,8 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
                 }
             }
         }
+
+        println("유골함 체크 완료")
 
         // 위패
         if(ApplicationClass.prefs.selectedTabletType != "선택안함"){
@@ -850,24 +863,26 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             }
         }
 
+        println("위패 체크 완료")
+
         // 평장
-        if(ApplicationClass.prefs.selectedPyeongjangType != "선택안함"){
-            if(!checkPyeongjangInput()) {
-                val containsString = searchList3.any { it == ApplicationClass.prefs.selectedPyeongjangName }
-                if (!containsString) {
-                    toast("평장 종류를 골라주세요.")
-                    return false
-                }
-                // 추가
-                if(ApplicationClass.prefs.selectedPyeongjangType2 != "선택안함"){
-                    val containsString2 = searchList3.any { it == ApplicationClass.prefs.selectedPyeongjangName2 }
-                    if (!containsString2) {
-                        toast("평장[추가] 종류를 골라주세요.")
-                        return false
-                    }
-                }
-            }
-        }
+//        if(ApplicationClass.prefs.selectedPyeongjangType != "선택안함"){
+//            if(!checkPyeongjangInput()) {
+//                val containsString = searchList3.any { it == ApplicationClass.prefs.selectedPyeongjangName }
+//                if (!containsString) {
+//                    toast("평장 종류를 골라주세요.")
+//                    return false
+//                }
+//                // 추가
+//                if(ApplicationClass.prefs.selectedPyeongjangType2 != "선택안함"){
+//                    val containsString2 = searchList3.any { it == ApplicationClass.prefs.selectedPyeongjangName2 }
+//                    if (!containsString2) {
+//                        toast("평장[추가] 종류를 골라주세요.")
+//                        return false
+//                    }
+//                }
+//            }
+//        }
 
         return true
     }
@@ -879,17 +894,17 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             toast("발주자 명을 한글 2~4글자로 올바르게 입력해주세요.")
             return false
         }
-        val leaderTel = ApplicationClass.prefs.leaderTel.toString()
-        if (!leaderTel.matches(telPattern)) {
-            toast("발주자 전화번호를 010-1234-5678 형태로 올바르게 입력해주세요.")
-            return false
-        }
+//        val leaderTel = ApplicationClass.prefs.leaderTel.toString()
+//        if (!leaderTel.matches(telPattern)) {
+//            toast("발주자 전화번호를 010-1234-5678 형태로 올바르게 입력해주세요.")
+//            return false
+//        }
         val leaderDepartment = ApplicationClass.prefs.leaderDepartment.toString()
         if (!(leaderDepartment.length in 1 .. 10)) {
             toast("발주자 소속을 10글자 이내로 입력해주세요.")
             return false
         }
-        // 상주 정보 (선택)
+        // 상주 정보 (선택) / 빈 값이 아니라면 테스트한다.
         val clientName = ApplicationClass.prefs.clientName.toString()
         val clientTel = ApplicationClass.prefs.clientTel.toString()
         if(clientName != "" || clientTel != "") {
@@ -903,47 +918,52 @@ class OrderFragment : BaseFragment<FragmentOrderBinding>(R.layout.fragment_order
             }
         }
         // 발주 장소별 (필수)
-        val selectedLocation = ApplicationClass.prefs.selectedLocation.toString()
-        if(selectedLocation == "화장장"){
+//        val startArea = ApplicationClass.prefs.startArea.toString()
+//        if (!(startArea.length <= 15)) {
+//            toast("발인 장례식장 명을 한글 15글자 이내로 올바르게 입력해주세요.")
+//            return false
+//        }
+//
+//        val selectedLocation = ApplicationClass.prefs.selectedLocation.toString()
+//        if(selectedLocation == "화장장"){
 //            val cremationArea = ApplicationClass.prefs.cremationArea.toString()
 //            if (cremationArea.isNotEmpty()) {
 //                return false
 //            }
-            val cremationTime = ApplicationClass.prefs.cremationTime.toString()
+//            val cremationTime = ApplicationClass.prefs.cremationTime.toString()
 //            if (!cremationTime.matches(dateTimePattern)) {
 //                toast("화장 시간을 2023-09-01 00:00 형태로 올바르게 입력해주세요.")
 //                return false
 //            }
-        } else if(selectedLocation == "장례식장"){
-            val funeralName = ApplicationClass.prefs.funeralName.toString()
-            if (!(funeralName.length <= 10 && funeralName.matches(hanglePattern))) {
-                toast("장례식장명을 한글 10글자 이내로 올바르게 입력해주세요.")
-                return false
-            }
-            val funeralNumber = ApplicationClass.prefs.funeralNumber.toString()
-            if (!(leaderDepartment.length in 1 .. 8)) {
-                toast("호실을 8글자 이내로 입력해주세요.")
-                return false
-            }
-            val funeralTime = ApplicationClass.prefs.funeralTime.toString()
-            if (!funeralTime.matches(dateTimePattern)) {
-                toast("함 도착 시간을 2023-09-01 00:00 형태로 올바르게 입력해주세요.")
-                return false
-            }
-        } else if(selectedLocation == "장지"){
-            val burialName = ApplicationClass.prefs.burialName.toString()
-            if (!(leaderDepartment.length in 1 .. 8)) {
-                toast("장지 명을 8글자 이내로 입력해주세요.")
-                return false
-            }
-            val burialTime = ApplicationClass.prefs.burialTime.toString()
-            if (!burialTime.matches(dateTimePattern)) {
-                toast("함 도착 시간을 2023-09-01 00:00 형태로 올바르게 입력해주세요.")
-                return false
-            }
-        }
+//        } else if(selectedLocation == "장례식장"){
+//            val funeralName = ApplicationClass.prefs.funeralName.toString()
+//            if (!(funeralName.length <= 15)) {
+//                toast("장례식장명을 한글 15글자 이내로 올바르게 입력해주세요.")
+//                return false
+//            }
+//            val funeralNumber = ApplicationClass.prefs.funeralNumber.toString()
+//            if (!(leaderDepartment.length in 1 .. 8)) {
+//                toast("호실을 8글자 이내로 입력해주세요.")
+//                return false
+//            }
+//            val funeralTime = ApplicationClass.prefs.funeralTime.toString()
+//            if (!funeralTime.matches(dateTimePattern)) {
+//                toast("함 도착 시간을 2023-09-01 00:00 형태로 올바르게 입력해주세요.")
+//                return false
+//            }
+//        } else if(selectedLocation == "장지"){
+//            val burialName = ApplicationClass.prefs.burialName.toString()
+//            if (!(leaderDepartment.length in 1 .. 8)) {
+//                toast("장지 명을 8글자 이내로 입력해주세요.")
+//                return false
+//            }
+//            val burialTime = ApplicationClass.prefs.burialTime.toString()
+//            if (!burialTime.matches(dateTimePattern)) {
+//                toast("함 도착 시간을 2023-09-01 00:00 형태로 올바르게 입력해주세요.")
+//                return false
+//            }
+//        }
 
-        // 특이 사항 생략(선택)
         return true
     }
     private fun checkUrnInput(): Boolean {

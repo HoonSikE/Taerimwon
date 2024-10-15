@@ -303,88 +303,90 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:paddingVertical="16dp"
+                    android:elevation="4dp"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="20dp"
+                    android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@+id/View_photo"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:visibility="gone"
                     >
-
                     <TextView
                         android:id="@+id/text_result_title_photo"
                         style="@style/SubHeadBold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:text="● 사진위패 내용"
+                        android:text="● 사진위패"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:viewBindingIgnore="true" />
 
-                    <!-- 사진 위패 1 -->
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/layout_tablet_photo"
+                    <TextView
+                        android:id="@+id/text_tablet_photo"
+                        style="@style/Body"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        app:layout_constraintTop_toBottomOf="@+id/text_result_title_photo"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/layout_tablet2_photo"
-                        tools:ignore="MissingConstraints"
-                        android:visibility="gone"
-                        >
-                        <ImageView
-                            android:id="@+id/image_add_photo"
-                            android:layout_width="90dp"
-                            android:layout_height="120dp"
-                            android:layout_marginTop="16dp"
-                            android:background="@drawable/img_profile"
-                            android:scaleType="fitCenter"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            android:adjustViewBounds="true"
-                            />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    <!-- 사진 위패 2 -->
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/layout_tablet2_photo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        app:layout_constraintTop_toBottomOf="@+id/text_result_title_photo"
-                        app:layout_constraintStart_toEndOf="@+id/layout_tablet_photo"
+                        android:layout_marginTop="8dp"
+                        android:text="사진 위패는 시안을 추후 제공해드립니다.\n문자 발송시 사진을 함께 첨부해주세요."
+                        android:gravity="center"
+                        android:textColor="@color/redTextColor"
                         app:layout_constraintEnd_toEndOf="parent"
-                        tools:ignore="MissingConstraints"
-                        android:visibility="gone"
-                        >
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_result_title_photo"
+                        tools:viewBindingIgnore="true" />
 
-                        <ImageView
-                            android:id="@+id/image_bone_add_photo"
-                            android:layout_width="90dp"
-                            android:layout_height="120dp"
-                            android:layout_marginTop="16dp"
-                            android:background="@drawable/img_profile"
-                            android:scaleType="fitCenter"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            android:adjustViewBounds="true"
-                            />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <!-- 사진 위패 1 -->
+<!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                        android:id="@+id/layout_tablet_photo"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="16dp"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/text_result_title_photo"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintEnd_toStartOf="@+id/layout_tablet2_photo"-->
+<!--                        tools:ignore="MissingConstraints"-->
+<!--                        android:visibility="gone"-->
+<!--                        >-->
+<!--                        <ImageView-->
+<!--                            android:id="@+id/image_add_photo"-->
+<!--                            android:layout_width="90dp"-->
+<!--                            android:layout_height="120dp"-->
+<!--                            android:layout_marginTop="16dp"-->
+<!--                            android:background="@drawable/img_profile"-->
+<!--                            android:scaleType="fitCenter"-->
+<!--                            app:layout_constraintEnd_toEndOf="parent"-->
+<!--                            app:layout_constraintStart_toStartOf="parent"-->
+<!--                            android:adjustViewBounds="true"-->
+<!--                            />-->
+<!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--                    &lt;!&ndash; 사진 위패 2 &ndash;&gt;-->
+<!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                        android:id="@+id/layout_tablet2_photo"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="16dp"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/text_result_title_photo"-->
+<!--                        app:layout_constraintStart_toEndOf="@+id/layout_tablet_photo"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        tools:ignore="MissingConstraints"-->
+<!--                        android:visibility="gone"-->
+<!--                        >-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/image_bone_add_photo"-->
+<!--                            android:layout_width="90dp"-->
+<!--                            android:layout_height="120dp"-->
+<!--                            android:layout_marginTop="16dp"-->
+<!--                            android:background="@drawable/img_profile"-->
+<!--                            android:scaleType="fitCenter"-->
+<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                            app:layout_constraintEnd_toEndOf="parent"-->
+<!--                            app:layout_constraintStart_toStartOf="parent"-->
+<!--                            android:adjustViewBounds="true"-->
+<!--                            />-->
+<!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
                 </androidx.constraintlayout.widget.ConstraintLayout>
-                <TextView
-                    android:id="@+id/text_tablet_photo"
-                    style="@style/Body"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="사진 위패는 시안을 추후 제공해드립니다."
-                    android:textColor="@color/redTextColor"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/layout_photo"
-                    tools:viewBindingIgnore="true" />
                 <View
                     android:id="@+id/View2"
                     android:layout_width="match_parent"
@@ -393,7 +395,7 @@
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_tablet_photo"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_photo"
                     tools:ignore="MissingConstraints" />
                 <!--추가 주문-->
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -973,6 +975,7 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        android:visibility="gone"
                         app:layout_constraintStart_toEndOf="@+id/layout_tablet">
 
                         <androidx.constraintlayout.widget.ConstraintLayout

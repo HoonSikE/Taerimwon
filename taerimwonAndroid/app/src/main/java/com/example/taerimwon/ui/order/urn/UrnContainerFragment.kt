@@ -282,7 +282,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         val engraveType2 = ApplicationClass.prefs.engraveType2
         val name2 = ApplicationClass.prefs.name2
 
-        if((engraveType == "기독교" || engraveType == "순복음") && (engraveType2 == "기본" || engraveType2 == "年月日")) {
+        if((engraveType == "기독교" || engraveType == "순복음") && (engraveType2 == "기본" || engraveType2 == "한글" || engraveType2 == "年月日")) {
             binding.textName2.visibility = View.VISIBLE
             binding.editTextName2.visibility = View.VISIBLE
             binding.imageName2.visibility = View.VISIBLE
@@ -300,7 +300,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextName2.filters = arrayOf(inputFilter)
             binding.editTextName2.setText(name2)
-        }else if(engraveType == "천주교" && (engraveType2 == "기본" || engraveType2 == "年月日")) {
+        }else if(engraveType == "천주교" && (engraveType2 == "기본" || engraveType2 == "한글" || engraveType2 == "年月日")) {
             binding.textName2.visibility = View.VISIBLE
             binding.editTextName2.visibility = View.VISIBLE
             binding.imageName2.visibility = View.VISIBLE
@@ -342,7 +342,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
         val boneEngraveType = ApplicationClass.prefs.boneEngraveType
         val boneEngraveType2 = ApplicationClass.prefs.boneEngraveType2
         val boneName2 = ApplicationClass.prefs.boneName2
-        if((boneEngraveType == "기독교" || boneEngraveType == "순복음") && (boneEngraveType2 == "기본" || boneEngraveType2 == "年月日")) {
+        if((boneEngraveType == "기독교" || boneEngraveType == "순복음") && (boneEngraveType2 == "기본" || boneEngraveType2 == "한글" || boneEngraveType2 == "年月日")) {
             binding.textBoneName2.visibility = View.VISIBLE
             binding.editTextBoneName2.visibility = View.VISIBLE
             binding.imageBoneName2.visibility = View.VISIBLE
@@ -360,7 +360,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextBoneName2.filters = arrayOf(inputFilter)
             binding.editTextBoneName2.setText(boneName2)
-        }else if(boneEngraveType == "천주교" && (boneEngraveType2 == "기본" || boneEngraveType2 == "年月日")) {
+        }else if(boneEngraveType == "천주교" && (boneEngraveType2 == "기본" || boneEngraveType2 == "한글" || boneEngraveType2 == "年月日")) {
             binding.textBoneName2.visibility = View.VISIBLE
             binding.editTextBoneName2.visibility = View.VISIBLE
             binding.imageBoneName2.visibility = View.VISIBLE
@@ -981,7 +981,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
     }
     private fun setName2(engraveType: String, engraveType2: String) {
         // 직분, 세례명, 법명
-        if((engraveType == "기독교" || engraveType == "순복음") && (engraveType2 == "기본" || engraveType2 == "年月日")) {
+        if((engraveType == "기독교" || engraveType == "순복음") && (engraveType2 == "기본" || engraveType2 == "한글" || engraveType2 == "年月日")) {
             binding.textName2.visibility = View.VISIBLE
             binding.editTextName2.visibility = View.VISIBLE
             binding.imageName2.visibility = View.VISIBLE
@@ -997,7 +997,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.editTextName2.hint = "법명을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextName2.filters = arrayOf(inputFilter)
-        }else if(engraveType == "천주교" && (engraveType2 == "기본" || engraveType2 == "年月日")) {
+        }else if(engraveType == "천주교" && (engraveType2 == "기본" || engraveType2 == "한글" || engraveType2 == "年月日")) {
             binding.textName2.visibility = View.VISIBLE
             binding.editTextName2.visibility = View.VISIBLE
             binding.imageName2.visibility = View.VISIBLE
@@ -1019,7 +1019,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
     /** 합골 **/
     private fun setBoneName2(engraveType: String, engraveType2: String) {
         // 직분, 세례명, 법명
-        if((engraveType == "기독교" || engraveType == "순복음") && (engraveType2 == "기본" || engraveType2 == "年月日")) {
+        if((engraveType == "기독교" || engraveType == "순복음") && (engraveType2 == "기본" || engraveType2 == "한글" || engraveType2 == "年月日")) {
             binding.textBoneName2.visibility = View.VISIBLE
             binding.editTextBoneName2.visibility = View.VISIBLE
             binding.imageBoneName2.visibility = View.VISIBLE
@@ -1035,7 +1035,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
             binding.editTextBoneName2.hint = "법명을 입력하세요."
             val inputFilter = InputFilter.LengthFilter(4)
             binding.editTextBoneName2.filters = arrayOf(inputFilter)
-        }else if(engraveType == "천주교" && (engraveType2 == "기본" || engraveType2 == "年月日")) {
+        }else if(engraveType == "천주교" && (engraveType2 == "기본" || engraveType2 == "한글" || engraveType2 == "年月日")) {
             binding.textBoneName2.visibility = View.VISIBLE
             binding.editTextBoneName2.visibility = View.VISIBLE
             binding.imageBoneName2.visibility = View.VISIBLE
@@ -1063,7 +1063,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
 //        searchList.add(UrnItem("기본", R.drawable.img_urn))
 //        searchList.add(UrnItem("기본(검정)", R.drawable.img_urn0))
 
-        searchList.add(UrnItem("목함", 0))
+        searchList.add(UrnItem("목함", R.drawable.img_urn0_0))
 
         // 1. 일반 밀봉진공함
         searchList.add(UrnItem("도원기독교 DW-3 4010", R.drawable.img_urn1_1))
@@ -1215,7 +1215,7 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
 //        searchList2.add(UrnItem("기본", R.drawable.img_urn))
 //        searchList2.add(UrnItem("기본(검정)", R.drawable.img_urn0))
 
-        searchList2.add(UrnItem("목함", 0))
+        searchList2.add(UrnItem("목함", R.drawable.img_urn0_0))
 
         // 1. 일반 밀봉진공함
         searchList2.add(UrnItem("도원기독교 DW-3 4010", R.drawable.img_urn1_1))

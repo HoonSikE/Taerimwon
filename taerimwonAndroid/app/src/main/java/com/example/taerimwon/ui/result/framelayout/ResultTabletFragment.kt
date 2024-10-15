@@ -52,7 +52,8 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
             if(selectedTabletType.contains("사진")){
                 binding.layoutResultContent.visibility = View.GONE
             }else if(tabletType.toString().contains("문구")){
-                binding.layoutResultContent.visibility = View.GONE
+                setTabletData()
+//                binding.layoutResultContent.visibility = View.GONE
             }else if(tabletType.toString().contains("합골")) {
                 binding.layoutResultContent.visibility = View.GONE
             }else {
@@ -96,8 +97,9 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
         binding.layoutTabletResult12.setImageResource(imageResource)
     }
     private fun setTabletData() {
-
-        setTableMark()
+        if(!tabletType.toString().contains("문구")){
+            setTableMark()
+        }
         val pixel_size_39 = resources.getDimensionPixelSize(R.dimen.pixel_size_39)
         val pixel_size_45 = resources.getDimensionPixelSize(R.dimen.pixel_size_45)
         val pixel_size_52_5 = resources.getDimensionPixelSize(R.dimen.pixel_size_52_5)
@@ -116,6 +118,9 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
         val layoutTabletResult31 = binding.layoutTabletResult31
         val layoutTabletResult312 = binding.layoutTabletResult312
         val layoutTabletResult32 = binding.layoutTabletResult32
+        val layoutTabletResult41 = binding.layoutTabletResult41
+        val layoutTabletResult42 = binding.layoutTabletResult42
+        val layoutTabletResult43 = binding.layoutTabletResult43
 
         if(selectedTabletName!!.contains("검정")){
             binding.layoutTabletResult0.setTextColor(Color.parseColor("#FFD700"))
@@ -129,8 +134,10 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
             binding.layoutTabletResult31.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutTabletResult312.setTextColor(Color.parseColor("#FFD700"))
             binding.layoutTabletResult32.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTabletResult41.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTabletResult42.setTextColor(Color.parseColor("#FFD700"))
+            binding.layoutTabletResult43.setTextColor(Color.parseColor("#FFD700"))
         }
-
         if(!tabletType.contains("본관") && tabletType != "문구") {
             when (tabletType) {
                 "일반", "불교" -> {
@@ -228,7 +235,8 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
                     layoutTabletResult21.text = tmp.toString()
                 }
             }
-        }else if(tabletType.contains("본관") && tabletType != "문구") {
+        }
+        else if(tabletType.contains("본관") && tabletType != "문구") {
             println("본관 진입")
             when (tabletType) {
                 "일반(본관)" -> {
@@ -371,9 +379,75 @@ class ResultTabletFragment : BaseFragment<FragmentResultTabletBinding>(R.layout.
                     layoutTabletResult312.text = tmp.toString()
                 }
             }
-        }else if(tabletType == "문구"){
-
         }
+        else if(tabletType == "문구"){
+            binding.layoutTabletResult10.visibility = View.GONE
+            binding.layoutTabletResult12.visibility = View.GONE
 
+            val text = ApplicationClass.prefs.name3.toString()
+            val lines = text.split("\n")
+
+            val tmp0_1 = StringBuilder()
+            val tmp0_2 = StringBuilder()
+            val tmp0_3 = StringBuilder()
+
+            // 1줄
+            if(lines.size == 1){
+                for (i in 0..lines[0].length-1) {
+                    tmp0_1.append(lines[0][i])
+                    if(i < lines[0].length)
+                        tmp0_1.append("\n")
+
+                    layoutTabletResult41.text = tmp0_1.toString()
+                    layoutTabletResult41.visibility = View.VISIBLE
+                }
+            }
+            // 2줄
+            else if(lines.size == 2){
+                for (i in 0..lines[0].length-1) {
+                    tmp0_1.append(lines[0][i])
+                    if(i < lines[0].length)
+                        tmp0_1.append("\n")
+
+                    layoutTabletResult41.visibility = View.VISIBLE
+                    layoutTabletResult41.text = tmp0_1.toString()
+                }
+                for (i in 0..lines[1].length-1) {
+                    tmp0_2.append(lines[1][i])
+                    if(i < lines[1].length)
+                        tmp0_2.append("\n")
+
+                    layoutTabletResult42.visibility = View.VISIBLE
+                    layoutTabletResult42.text = tmp0_2.toString()
+                }
+            }
+            // 3줄
+            else if(lines.size == 3){
+                for (i in 0..lines[0].length-1) {
+                    tmp0_1.append(lines[0][i])
+                    if(i < lines[0].length)
+                        tmp0_1.append("\n")
+
+                    layoutTabletResult41.visibility = View.VISIBLE
+                    layoutTabletResult41.text = tmp0_1.toString()
+                }
+                for (i in 0..lines[1].length-1) {
+                    tmp0_2.append(lines[1][i])
+                    if(i < lines[1].length)
+                        tmp0_2.append("\n")
+
+                    layoutTabletResult42.visibility = View.VISIBLE
+                    layoutTabletResult42.text = tmp0_2.toString()
+                }
+                for (i in 0..lines[2].length-1) {
+                    tmp0_3.append(lines[2][i])
+                    if(i < lines[2].length)
+                        tmp0_3.append("\n")
+
+                    layoutTabletResult43.visibility = View.VISIBLE
+                    layoutTabletResult43.text = tmp0_3.toString()
+                }
+            }
+        }
     }
 }

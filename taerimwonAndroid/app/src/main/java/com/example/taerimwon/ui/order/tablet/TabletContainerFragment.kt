@@ -173,12 +173,12 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         tabletSelectTypeAdapter.updateList(tabletSelectTypeList)
         binding.recyclerviewTabletType.scrollToPosition(ApplicationClass.prefs.tabletTypePosition)
 
-        val tabletImageUri = ApplicationClass.prefs.tabletImageUri
-
-        if (tabletImageUri != "") {
-            val imageUri = Uri.parse(tabletImageUri)
-            binding.imageAddPhoto.setImageURI(imageUri)
-        }
+//        val tabletImageUri = ApplicationClass.prefs.tabletImageUri
+//
+//        if (tabletImageUri != "") {
+//            val imageUri = Uri.parse(tabletImageUri)
+//            binding.imageAddPhoto.setImageURI(imageUri)
+//        }
 
         /**합골, 위패 추가*/
         if(ApplicationClass.prefs.selectedTabletType!!.contains("선택안함")) {
@@ -216,7 +216,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
                     binding.layoutTablet2AutoComplete.visibility = View.GONE
                     binding.layoutBoneTablet2.visibility = View.VISIBLE
 
-                    binding.menuButtonGroup.visibility = View.VISIBLE
+//                    binding.menuButtonGroup.visibility = View.VISIBLE
                 }
             }
         }
@@ -261,12 +261,12 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
         boneTabletSelectTypeAdapter.updateList(boneTabletSelectTypeList)
         binding.recyclerviewBoneTabletType.scrollToPosition(ApplicationClass.prefs.boneTabletTypePosition)
 
-        val boneTabletImageUri = ApplicationClass.prefs.boneTabletImageUri
-
-        if (boneTabletImageUri != "") {
-            val boneImageUri = Uri.parse(boneTabletImageUri)
-            binding.imageBoneAddPhoto.setImageURI(boneImageUri)
-        }
+//        val boneTabletImageUri = ApplicationClass.prefs.boneTabletImageUri
+//
+//        if (boneTabletImageUri != "") {
+//            val boneImageUri = Uri.parse(boneTabletImageUri)
+//            binding.imageBoneAddPhoto.setImageURI(boneImageUri)
+//        }
     }
     private fun setOnClickListeners() {
         val whiteColor = ContextCompat.getColor(requireContext(), R.color.white)
@@ -348,12 +348,12 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             if(updateText.length < 30)
                 editTextName3.setSelection(updateText.length)
         }
-        // 사진 첨부
-        binding.textAddPhoto.setOnClickListener{
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            startActivityForResult(intent, PICK_IMAGE_REQUEST_CODE)
-        }
+//        // 사진 첨부
+//        binding.textAddPhoto.setOnClickListener{
+//            val intent = Intent(Intent.ACTION_PICK)
+//            intent.type = "image/*"
+//            startActivityForResult(intent, PICK_IMAGE_REQUEST_CODE)
+//        }
 
         binding.imageBoneHeart.setOnClickListener{
             val editTextBoneName3 = binding.editTextBoneName3
@@ -362,58 +362,58 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             if(updateText.length < 30)
                 editTextBoneName3.setSelection(updateText.length)
         }
-        // 사진 첨부
-        binding.textBoneAddPhoto.setOnClickListener{
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            startActivityForResult(intent, PICK_IMAGE_REQUEST_CODE2)
-        }
+//        // 사진 첨부
+//        binding.textBoneAddPhoto.setOnClickListener{
+//            val intent = Intent(Intent.ACTION_PICK)
+//            intent.type = "image/*"
+//            startActivityForResult(intent, PICK_IMAGE_REQUEST_CODE2)
+//        }
     }
     // 사진 첨부
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == PICK_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            val selectedImageUri: Uri? = data?.data
-            if (selectedImageUri != null) {
-
-                // 이미지를 앱 내부 파일 시스템에 복사 또는 이동하고 그 경로를 얻음
-                val imageFile = saveImageToInternalStorage(requireContext(), selectedImageUri)
-
-                if (is3x4AspectRatio(selectedImageUri, 0.1f)) {
-                    // 이미지를 미리보기로 표시
-                    binding.imageAddPhoto.setImageURI(selectedImageUri)
-
-                    // 3:4 비율의 이미지를 선택한 경우
-                    // 경로(URI)를 SharedPreferences에 저장
-                    ApplicationClass.prefs.tabletImageUri = imageFile?.toString()
-                } else {
-                    // 3:4 비율이 아닌 이미지를 선택한 경우, 사용자에게 메시지 표시 또는 처리 방법을 결정
-                    // 예: Toast 메시지를 표시하거나 경고 메시지를 표시
-                    toast("이미지는 3:4 비율이어야 합니다.")
-                }
-            }
+//            val selectedImageUri: Uri? = data?.data
+//            if (selectedImageUri != null) {
+//
+//                // 이미지를 앱 내부 파일 시스템에 복사 또는 이동하고 그 경로를 얻음
+//                val imageFile = saveImageToInternalStorage(requireContext(), selectedImageUri)
+//
+//                if (is3x4AspectRatio(selectedImageUri, 0.1f)) {
+//                    // 이미지를 미리보기로 표시
+//                    binding.imageAddPhoto.setImageURI(selectedImageUri)
+//
+//                    // 3:4 비율의 이미지를 선택한 경우
+//                    // 경로(URI)를 SharedPreferences에 저장
+//                    ApplicationClass.prefs.tabletImageUri = imageFile?.toString()
+//                } else {
+//                    // 3:4 비율이 아닌 이미지를 선택한 경우, 사용자에게 메시지 표시 또는 처리 방법을 결정
+//                    // 예: Toast 메시지를 표시하거나 경고 메시지를 표시
+//                    toast("이미지는 3:4 비율이어야 합니다.")
+//                }
+//            }
         }
         else if (requestCode == PICK_IMAGE_REQUEST_CODE2 && resultCode == Activity.RESULT_OK) {
-            val selectedImageUri: Uri? = data?.data
-            if (selectedImageUri != null) {
-
-                // 이미지를 앱 내부 파일 시스템에 복사 또는 이동하고 그 경로를 얻음
-                val imageFile = saveImageToInternalStorage(requireContext(), selectedImageUri)
-
-                if (is3x4AspectRatio(selectedImageUri, 0.1f)) {
-                    // 이미지를 미리보기로 표시
-                    binding.imageBoneAddPhoto.setImageURI(selectedImageUri)
-
-                    // 3:4 비율의 이미지를 선택한 경우
-                    // 경로(URI)를 SharedPreferences에 저장
-                    ApplicationClass.prefs.boneTabletImageUri = imageFile?.toString()
-                } else {
-                    // 3:4 비율이 아닌 이미지를 선택한 경우, 사용자에게 메시지 표시 또는 처리 방법을 결정
-                    // 예: Toast 메시지를 표시하거나 경고 메시지를 표시
-                    toast("이미지는 3:4 비율이어야 합니다.")
-                }
-            }
+//            val selectedImageUri: Uri? = data?.data
+//            if (selectedImageUri != null) {
+//
+//                // 이미지를 앱 내부 파일 시스템에 복사 또는 이동하고 그 경로를 얻음
+//                val imageFile = saveImageToInternalStorage(requireContext(), selectedImageUri)
+//
+//                if (is3x4AspectRatio(selectedImageUri, 0.1f)) {
+//                    // 이미지를 미리보기로 표시
+//                    binding.imageBoneAddPhoto.setImageURI(selectedImageUri)
+//
+//                    // 3:4 비율의 이미지를 선택한 경우
+//                    // 경로(URI)를 SharedPreferences에 저장
+//                    ApplicationClass.prefs.boneTabletImageUri = imageFile?.toString()
+//                } else {
+//                    // 3:4 비율이 아닌 이미지를 선택한 경우, 사용자에게 메시지 표시 또는 처리 방법을 결정
+//                    // 예: Toast 메시지를 표시하거나 경고 메시지를 표시
+//                    toast("이미지는 3:4 비율이어야 합니다.")
+//                }
+//            }
         }
     }
     private fun setOnItemSelectedListener(){
@@ -458,7 +458,7 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
                             binding.layoutTablet2AutoComplete.visibility = View.GONE
                             binding.layoutBoneTablet2.visibility = View.VISIBLE
 
-                            binding.menuButtonGroup.visibility = View.VISIBLE
+//                            binding.menuButtonGroup.visibility = View.VISIBLE
                         }
                     }
                 }
@@ -675,45 +675,47 @@ class TabletContainerFragment : BaseFragment<FragmentTabletContainerBinding>(R.l
             override fun afterTextChanged(s: Editable?) {
                 // 텍스트 변경 후 이벤트
                 if(ApplicationClass.prefs.tabletType == "문구"){
-                    // 최대 길이 10까지 입력 가능
-                    val maxLengthPerLine = 10
-                    // 최대 3줄까지 입력 가능
-                    val maxLines = 3
+                    // 입력된 텍스트 길이 확인
+                    val text = s.toString()
+                    val lines = text.split("\n")
 
-                    // 텍스트 변경 후 이벤트
-                    val lines = binding.editTextName3.lineCount
-                    // 현재 입력된 전체 텍스트의 길이
-                    val length = s?.length ?: 0
-
-                    // 줄 수가 최대 줄 수를 초과하면 텍스트 변경을 취소하고 이전 상태로 되돌림
-                    if (lines > maxLines) {
-                        s?.delete(length - 1, length)
-                        return
-                    }
-
-                    // 10글자가 입력될 때마다 자동으로 줄바꿈 추가
-                    when(lines){
+                    when (lines.size) {
                         1 -> {
-                            if (length % maxLengthPerLine == 0 && length > 9) {
-                                binding.editTextName3.append("\n")
+                            if(lines[0].length <= 10){
+
+                            }else{
+                                val firstLine = lines[0].substring(0, 10)
+                                val secondLine = lines[0].substring(10)
+
+                                binding.editTextName3.setText(firstLine + "\n" + secondLine)
+                                binding.editTextName3.setSelection(binding.editTextName3.text.length)
                             }
                         }
                         2 -> {
-                            if ((length-1) % maxLengthPerLine == 0 && length > 20) {
-                                binding.editTextName3.append("\n")
+                            if(lines[1].length <= 10){
+
+                            }else{
+                                val firstLine = lines[0]
+                                val secondLine = lines[1].substring(0, 10)
+                                val thirdLine = lines[1].substring(10)
+
+                                binding.editTextName3.setText(firstLine + "\n" + secondLine + "\n" + thirdLine)
+                                binding.editTextName3.setSelection(binding.editTextName3.text.length)
                             }
                         }
                         3 -> {
-                            // "\n"을 기준으로 split하여 리스트로 변환
-                            val text: List<String> = binding.editTextName3.text.toString().split("\n")
+                            if(lines[2].length <= 10){
 
-//                            s?.delete(length - (10-text[3].length), length)
+                            }else{
+                                val firstLine = lines[0]
+                                val secondLine = lines[1]
+                                val thirdLine = lines[2].substring(0, 10)
+
+                                binding.editTextName3.setText(firstLine + "\n" + secondLine + "\n" + thirdLine)
+                                binding.editTextName3.setSelection(binding.editTextName3.text.length)
+                            }
                         }
                     }
-
-//                    if (length % maxLengthPerLine == 0 && length > 0) {
-//                        binding.editTextName3.append("\n")
-//                    }
                 }
             }
         })
