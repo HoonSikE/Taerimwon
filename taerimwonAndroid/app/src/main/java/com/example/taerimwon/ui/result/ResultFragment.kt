@@ -5607,9 +5607,12 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             msg += "\n - 함 명칭: " + ApplicationClass.prefs.selectedUrnName +
                     "\n - 각인 종류: " + ApplicationClass.prefs.engraveType + "[" + ApplicationClass.prefs.engraveType2 + "]"
 
-            msg += "\n - 고인명: " + ApplicationClass.prefs.name1 +
-                    "\n - 생년월일: " + ApplicationClass.prefs.date1.toString().replace("-", ".") + " (${ApplicationClass.prefs.date1Type})" +
-                    "\n - 사망월일: " + ApplicationClass.prefs.date2.toString().replace("-", ".") + " (${ApplicationClass.prefs.date2Type})"
+            msg += "\n - 고인명: " + ApplicationClass.prefs.name1
+
+            if(!ApplicationClass.prefs.selectedUrnName.toString().contains("목함")){
+                msg += "\n - 생년월일: " + ApplicationClass.prefs.date1.toString().replace("-", ".") + " (${ApplicationClass.prefs.date1Type})" +
+                        "\n - 사망월일: " + ApplicationClass.prefs.date2.toString().replace("-", ".") + " (${ApplicationClass.prefs.date2Type})"
+            }
 
             // 직분, 세례명, 법명
             if((ApplicationClass.prefs.engraveType == "기독교" || ApplicationClass.prefs.engraveType == "순복음") && (ApplicationClass.prefs.engraveType2 == "기본")) {
@@ -5628,9 +5631,11 @@ class ResultFragment : BaseFragment<FragmentResultBinding>(R.layout.fragment_res
             if(selectedUrnType2 != "선택안함"){
                 msg += "\n\n - [추가] 함 명칭: " + ApplicationClass.prefs.selectedUrnName2 +
                         "\n - 각인 종류: " + ApplicationClass.prefs.boneEngraveType + "[" + ApplicationClass.prefs.boneEngraveType2 + "]" +
-                        "\n - 고인명: " + ApplicationClass.prefs.boneName1 +
-                        "\n - 생년월일: " + ApplicationClass.prefs.boneDate1.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate1Type})" +
-                        "\n - 사망월일: " + ApplicationClass.prefs.boneDate2.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate2Type})"
+                        "\n - 고인명: " + ApplicationClass.prefs.boneName1
+                if(!ApplicationClass.prefs.selectedUrnName2.toString().contains("목함")){
+                    msg += "\n - 생년월일: " + ApplicationClass.prefs.boneDate1.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate1Type})" +
+                            "\n - 사망월일: " + ApplicationClass.prefs.boneDate2.toString().replace("-", ".") + " (${ApplicationClass.prefs.boneDate2Type})"
+                }
 
                 // 직분, 세례명, 법명
                 if((ApplicationClass.prefs.boneEngraveType == "기독교" || ApplicationClass.prefs.boneEngraveType == "순복음") && (ApplicationClass.prefs.boneEngraveType2 == "기본")) {

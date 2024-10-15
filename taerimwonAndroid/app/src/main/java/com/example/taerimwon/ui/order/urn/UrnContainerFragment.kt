@@ -154,12 +154,21 @@ class UrnContainerFragment : BaseFragment<FragmentUrnContainerBinding>(R.layout.
     private fun initData() {
         // 현재 시간
         val calendar = Calendar.getInstance()
+
+        // 타임존을 한국 표준시로 설정
+        calendar.timeZone = TimeZone.getTimeZone("Asia/Seoul")
+
         datetime = String.format(
             "%04d-%02d-%02d",
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH) + 1,
             calendar.get(Calendar.DAY_OF_MONTH)
         )
+
+//        binding.editTextDate1.hint = datetime
+        binding.editTextDate2.hint = datetime
+//        binding.editTextBoneDate1.hint = datetime
+        binding.editTextBoneDate2.hint = datetime
 
         // 검색 리스트
         searchList = mutableListOf()

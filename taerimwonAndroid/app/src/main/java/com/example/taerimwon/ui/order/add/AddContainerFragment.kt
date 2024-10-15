@@ -402,11 +402,11 @@ class AddContainerFragment : BaseFragment<FragmentAddContainerBinding>(R.layout.
     private fun settingList1_1() {
         searchList1 = mutableListOf()
 
-        searchList1.add(AddItem("표석(大) PS-2 2317", R.drawable.img_urn11_2))
-        searchList1.add(AddItem("표석(小) PS-4 0911", R.drawable.img_urn11_3))
-        searchList1.add(AddItem("피아노(大) PS-1 3020", R.drawable.img_urn11_4))
-        searchList1.add(AddItem("피아노(小) PS-3 2015", R.drawable.img_urn11_5))
-        searchList1.add(AddItem("밀봉외함 MH-1 1015", R.drawable.img_urn11_1))
+//        searchList1.add(AddItem("표석(大) PS-2 2317", R.drawable.img_urn11_2))
+//        searchList1.add(AddItem("표석(小) PS-4 0911", R.drawable.img_urn11_3))
+//        searchList1.add(AddItem("피아노(大) PS-1 3020", R.drawable.img_urn11_4))
+//        searchList1.add(AddItem("피아노(小) PS-3 2015", R.drawable.img_urn11_5))
+//        searchList1.add(AddItem("밀봉외함 MH-1 1015", R.drawable.img_urn11_1))
 
         /** 유골함 **/
         // 1. 일반 밀봉진공함
@@ -558,11 +558,11 @@ class AddContainerFragment : BaseFragment<FragmentAddContainerBinding>(R.layout.
     private fun settingList1_2() {
         searchList2 = mutableListOf()
 
-        searchList2.add(AddItem("표석(大) PS-2 2317", R.drawable.img_urn11_2))
-        searchList2.add(AddItem("표석(小) PS-4 0911", R.drawable.img_urn11_3))
-        searchList2.add(AddItem("피아노(大) PS-1 3020", R.drawable.img_urn11_4))
-        searchList2.add(AddItem("피아노(小) PS-3 2015", R.drawable.img_urn11_5))
-        searchList2.add(AddItem("밀봉외함 MH-1 1015", R.drawable.img_urn11_1))
+//        searchList2.add(AddItem("표석(大) PS-2 2317", R.drawable.img_urn11_2))
+//        searchList2.add(AddItem("표석(小) PS-4 0911", R.drawable.img_urn11_3))
+//        searchList2.add(AddItem("피아노(大) PS-1 3020", R.drawable.img_urn11_4))
+//        searchList2.add(AddItem("피아노(小) PS-3 2015", R.drawable.img_urn11_5))
+//        searchList2.add(AddItem("밀봉외함 MH-1 1015", R.drawable.img_urn11_1))
 
         /** 유골함 **/
         // 1. 일반 밀봉진공함
