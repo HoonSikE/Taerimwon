@@ -69,7 +69,7 @@ class AuthRepositoryImpl (
 
         println("phoneNumber : " + tel)
         val options = PhoneAuthOptions.newBuilder(auth)
-            .setPhoneNumber("+82" + tel)
+            .setPhoneNumber("+82" + tel.substring(1))
             .setTimeout(60L, TimeUnit.SECONDS)
             .setActivity(activity)
             .setCallbacks(object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {

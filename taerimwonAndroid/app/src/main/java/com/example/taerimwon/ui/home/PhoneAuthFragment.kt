@@ -41,7 +41,7 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
 
     private fun initData() {
         // 전화번호 인증 안 쓸때 사용
-        findNavController().navigate(R.id.action_phoneAuthFragment_to_homeFragment)
+//        findNavController().navigate(R.id.action_phoneAuthFragment_to_homeFragment)
 
         authViewModel.getBlackList()
 

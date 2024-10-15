@@ -27,10 +27,12 @@ class MainActivity : AppCompatActivity() {
     private var scaleFactor = 1.0f
     private val REQUEST_CODE_STORAGE_PERMISSION = 101 // 권한 요청 코드
     override fun onCreate(savedInstanceState: Bundle?) {
-        // 스플래시
-        val splashScreen = installSplashScreen()
-
         super.onCreate(savedInstanceState)
+
+        // SplashScreen을 적용한다.
+        // setContentView 전에 작성해야 한다.
+        installSplashScreen()
+
         setContentView(R.layout.activity_main)
 
         mainConstraintLayout = findViewById(R.id.main_activity)

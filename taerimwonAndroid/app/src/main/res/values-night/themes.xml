@@ -1,20 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Taerimwon" parent="Theme.MaterialComponents.Light.DarkActionBar">
-<<<<<<< HEAD
-=======
-<!--        &lt;!&ndash; Primary brand color. &ndash;&gt;-->
-<!--        <item name="colorPrimary">@color/purple_200</item>-->
-<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
-<!--        <item name="colorOnPrimary">@color/black</item>-->
-<!--        &lt;!&ndash; Secondary brand color. &ndash;&gt;-->
-<!--        <item name="colorSecondary">@color/teal_200</item>-->
-<!--        <item name="colorSecondaryVariant">@color/teal_200</item>-->
-<!--        <item name="colorOnSecondary">@color/black</item>-->
-<!--        &lt;!&ndash; Status bar color. &ndash;&gt;-->
-<!--        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>-->
-<!--        &lt;!&ndash; Customize your theme here. &ndash;&gt;-->
->>>>>>> b93db42526f9cc3aab7cb64e4b036ac6560bb544
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
@@ -35,5 +21,12 @@
         <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="s">@color/primaryColor</item>
         <!-- ActionBar Style-->
         <!--        <item name="actionBarStyle">@style/MyActionBar</item>-->
+    </style>
+    <!-- splash Screen Theme -->
+    <style name="AppTheme.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/primaryColor</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/img_logo</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.Taerimwon</item>
     </style>
 </resources>

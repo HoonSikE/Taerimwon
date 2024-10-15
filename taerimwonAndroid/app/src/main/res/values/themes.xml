@@ -22,4 +22,13 @@
         <!-- ActionBar Style-->
 <!--        <item name="actionBarStyle">@style/MyActionBar</item>-->
     </style>
+
+    <!-- splash Screen Theme -->
+    <style name="AppTheme.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/img_logo</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/primaryColor</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.Taerimwon</item>
+    </style>
 </resources>
