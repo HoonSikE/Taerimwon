@@ -21,27 +21,25 @@ import dagger.hilt.android.AndroidEntryPoint
 @SuppressLint("ResourceAsColor")
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private lateinit var mainConstraintLayout: ConstraintLayout
-    private lateinit var scaleGestureDetector: ScaleGestureDetector
-
-    private var scaleFactor = 1.0f
+//    private lateinit var mainConstraintLayout: ConstraintLayout
+//    private lateinit var scaleGestureDetector: ScaleGestureDetector
+//    private var scaleFactor = 1.0f
     private val REQUEST_CODE_STORAGE_PERMISSION = 101 // 권한 요청 코드
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // SplashScreen을 적용한다.
-        // setContentView 전에 작성해야 한다.
+        // SplashScreen을 적용한다. (setContentView 전 실행)
         installSplashScreen()
 
         setContentView(R.layout.activity_main)
 
-        mainConstraintLayout = findViewById(R.id.main_activity)
-        scaleGestureDetector = ScaleGestureDetector(this, ScaleListener())
+//        mainConstraintLayout = findViewById(R.id.main_activity)
+//        scaleGestureDetector = ScaleGestureDetector(this, ScaleListener())
 
         // 권한 확인 및 요청
         checkStoragePermission()
 
-        // 캡쳐방지
+        // 캡처 방지
 //        if(ApplicationClass.prefs.userTel != "01065673569"){
 //            window.setFlags(
 //                WindowManager.LayoutParams.FLAG_SECURE,
@@ -49,7 +47,10 @@ class MainActivity : AppCompatActivity() {
 //            )
 //        }
 
+        // 데이터 초기화
         ApplicationClass.prefs.resetPreferences()
+
+        // 상단 bar 제거
         supportActionBar?.hide()
     }
 
@@ -102,19 +103,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private inner class ScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
-        override fun onScale(detector: ScaleGestureDetector): Boolean {
-            scaleFactor *= detector.scaleFactor
-            scaleFactor = Math.max(1.0f, Math.min(scaleFactor, 3.0f)) // 확대/축소 한계 설정 (1.0 이상, 3.0 이하)
-            mainConstraintLayout.scaleX = scaleFactor
-            mainConstraintLayout.scaleY = scaleFactor
-            return true
-        }
-    }
+//    private inner class ScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener() {
+//        override fun onScale(detector: ScaleGestureDetector): Boolean {
+//            scaleFactor *= detector.scaleFactor
+//            scaleFactor = Math.max(1.0f, Math.min(scaleFactor, 3.0f)) // 확대/축소 한계 설정 (1.0 이상, 3.0 이하)
+//            mainConstraintLayout.scaleX = scaleFactor
+//            mainConstraintLayout.scaleY = scaleFactor
+//            return true
+//        }
+//    }
 
-    override fun onTouchEvent(event: MotionEvent): Boolean {
-        scaleGestureDetector.onTouchEvent(event)
-//        return super.onTouchEvent(event)
-        return true
-    }
+//    override fun onTouchEvent(event: MotionEvent): Boolean {
+//        scaleGestureDetector.onTouchEvent(event)
+////        return super.onTouchEvent(event)
+//        return true
+//    }
 }
