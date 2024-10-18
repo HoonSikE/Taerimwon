@@ -83,10 +83,15 @@ class AuthRepositoryImpl (
                     println("onVerificationFailed")
                     if (e is FirebaseAuthInvalidCredentialsException) {
                         // Invalid request
+                        println("onVerificationFailed: Invalid request")
                     } else if (e is FirebaseTooManyRequestsException) {
                         // The SMS quota for the project has been exceeded
+                        println("onVerificationFailed: The SMS quota for the project has been exceeded")
                     } else if (e is FirebaseAuthMissingActivityForRecaptchaException) {
                         // reCAPTCHA verification attempted with null Activity
+                        println("onVerificationFailed: reCAPTCHA verification attempted with null Activity")
+                    }else {
+                        println("onVerificationFailed: " + e)
                     }
 
                     result.invoke("fail")
@@ -112,7 +117,7 @@ class AuthRepositoryImpl (
         auth.signInWithCredential(credential)
             .addOnCompleteListener() { task ->
                 if (task.isSuccessful) {
-                    auth.signOut()
+//                    auth.signOut()
                     println("ckeckPhoneAuth isSuccessful")
 
                     // 유저 전화번호 추가

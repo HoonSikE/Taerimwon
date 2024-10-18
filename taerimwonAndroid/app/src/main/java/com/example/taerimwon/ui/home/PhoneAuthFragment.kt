@@ -1,14 +1,8 @@
 package com.example.taerimwon.ui.home
 
-import android.Manifest
-import android.app.PendingIntent
 import android.content.pm.PackageManager
 import android.os.CountDownTimer
-import android.telephony.PhoneNumberFormattingTextWatcher
-import android.telephony.SmsManager
 import android.view.View
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.example.taerimwon.R
 import com.example.taerimwon.data.dto.user.User
@@ -19,7 +13,6 @@ import com.example.taerimwon.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.navigation.fragment.findNavController
 import com.example.taerimwon.di.ApplicationClass
-import com.example.taerimwon.utils.constant.enabled
 import com.example.taerimwon.utils.input.PhoneNumberTextWatcher
 import java.util.*
 
@@ -30,6 +23,7 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
     lateinit var user: User
     var verificationId : String = ""
 
+    // 인증 시간 제한 타이머
     private var timer: CountDownTimer? = null
 
     override fun init() {
@@ -41,6 +35,8 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
 
     private fun initData() {
         // 전화번호 인증 안 쓸때 사용
+        println("ApplicationClass.prefs.authenticated" + ApplicationClass.prefs.authenticated)
+        println("ApplicationClass.prefs.userTel" + ApplicationClass.prefs.userTel)
 //        findNavController().navigate(R.id.action_phoneAuthFragment_to_homeFragment)
 
         authViewModel.getBlackList()
@@ -130,10 +126,12 @@ class PhoneAuthFragment : BaseFragment<FragmentPhoneAuthBinding>(R.layout.fragme
                 }
                 is UiState.Success -> {
                     val blackListItems = state.data // 실제 데이터를 얻기 위해 data 속성을 사용
+                    // 이미 인증한 경우 home으로 이동
                     if(ApplicationClass.prefs.authenticated) {
                         timer?.cancel()
                         findNavController().navigate(R.id.action_phoneAuthFragment_to_homeFragment)
                     }
+                    // 아직 인증을 하지 않은 경우 인증 UI 출력
                     binding.textTel.visibility = View.VISIBLE
                     binding.editTextTel.visibility = View.VISIBLE
 //                    binding.imageTel.visibility = View.VISIBLE
